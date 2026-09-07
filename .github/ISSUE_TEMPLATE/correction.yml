@@ -1,0 +1,49 @@
+name: Request a correction
+description: Request review of a specific source-attributed record or field.
+title: "[Correction] Record ID — field"
+body:
+  - type: markdown
+    attributes:
+      value: "Inclusion is not a finding of wrongdoing. Use public evidence; no allegations or personal information. Submissions never publish automatically. Private evaluation requires collaborator access."
+  - type: input
+    id: record_id
+    attributes:
+      label: Record ID
+      placeholder: WBFS- followed by 12 hexadecimal characters
+    validations:
+      required: true
+  - type: input
+    id: disputed_field
+    attributes:
+      label: Disputed field
+    validations:
+      required: true
+  - type: textarea
+    id: reason
+    attributes:
+      label: Reason for correction
+      description: Explain the factual or contextual issue neutrally.
+    validations:
+      required: true
+  - type: input
+    id: source_url
+    attributes:
+      label: Supporting public source URL
+    validations:
+      required: true
+  - type: textarea
+    id: context
+    attributes:
+      label: Optional context
+      description: Do not include personal contact details or private documents.
+  - type: checkboxes
+    id: acknowledgments
+    attributes:
+      label: Contribution requirements
+      options:
+        - label: I provide public-source evidence, not unsupported allegations.
+          required: true
+        - label: This submission contains no harassment, discriminatory material or unnecessary personal information.
+          required: true
+        - label: I understand that inclusion does not establish wrongdoing and that this submission will require review.
+          required: true

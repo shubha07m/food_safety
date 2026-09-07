@@ -1,0 +1,42 @@
+name: CI
+on:
+  push:
+  pull_request:
+permissions:
+  contents: read
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      AUTO_PUBLISH: 'false'
+      PIP_DISABLE_PIP_VERSION_CHECK: '1'
+    defaults:
+      run:
+        shell: bash -el {0}
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          persist-credentials: false
+      - uses: conda-incubator/setup-miniconda@fc2d68f6413eb2d87b895e92f8584b5b94a10167 # v3
+        with:
+          activate-environment: food
+          python-version: '3.12'
+          auto-activate-base: false
+      - name: Install pinned dependencies in food
+        run: |
+          python -c "import os; assert os.environ['CONDA_DEFAULT_ENV'] == 'food'"
+          python -m pip install -r requirements-dev.lock
+          python -m pip install --no-deps --no-build-isolation -e .
+      - name: Lint, fixture tests and public data validation
+        run: |
+          ruff check .
+          python -m pytest -q --basetemp=.cache/pytest
+          node --test tests/site_data.test.mjs
+          python -m food_safety.cli validate
+          python -m food_safety.cli build
+      - name: Audit installed dependencies
+        run: python -m pip_audit --skip-editable --progress-spinner off --cache-dir .cache/audit
