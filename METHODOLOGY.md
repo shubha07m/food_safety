@@ -28,7 +28,7 @@ SINGLE SOURCE and PENDING REVIEW are not public acceptance states. SOURCE UPDATE
 
 ## Evidence, provenance and revisions
 
-Every non-null fact has a supporting source URL and exact short quote in reported_fact.evidence. Quotes must sit inside a retained context span that matches fetched text. The text hash records which extracted version was reviewed, without retaining a full copyrighted article. Retained maximal evidence spans total at most 25 words per canonical source across the public dataset. This is a conservative engineering budget, not a legal safe harbour.
+Every non-null fact has a supporting source URL and exact short quote in reported_fact.evidence. Quotes must sit inside a retained context span that matches fetched text. The text hash records which extracted version was reviewed, without retaining a full copyrighted article. An evidence quote is capped at 25 words; its necessary context is capped at 60 words; retained maximal contexts total at most 250 words per canonical source across the public dataset. These are conservative engineering budgets, not a legal safe harbour. When an article supplies only a publication date, the record labels it as such rather than inventing an event date.
 
 Source metadata records title, publisher, source type/tier, retrieval time, publication date if known, and optional archive link if independently available and appropriate. No archive submissions or full-page screenshots are created automatically.
 

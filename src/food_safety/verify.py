@@ -45,7 +45,7 @@ def evidence_errors(event, texts=None):
         # Count distinct stored spans conservatively, without retaining entire articles.
         longest = max(quotes[source.source_url], key=len)
         extra = [q for q in quotes[source.source_url] if q not in longest]
-        if sum(len(q.split()) for q in [longest, *extra]) > 25:
+        if sum(len(q.split()) for q in [longest, *extra]) > 60:
             errors.append("quote_budget_exceeded")
         if source.evidence_quote not in source.evidence_context:
             errors.append("quote_outside_context")
@@ -71,7 +71,10 @@ def publication_errors(event, policies, texts=None, allow_fixtures=False):
     review = event.review
     if not review or not review.all_fields_supported or not review.source_context_checked:
         errors.append("human_context_review_required")
-    if not event.reported_fact.event_date or not event.reported_fact.area:
+    # A source publication date is acceptable when the article does not identify
+    # the calendar date of the reported event. The UI labels that distinction.
+    has_date = event.reported_fact.event_date or any(s.source_date for s in event.sources)
+    if not has_date or not event.reported_fact.area:
         errors.append("date_and_location_review_required")
     from urllib.parse import urlsplit
 

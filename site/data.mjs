@@ -11,7 +11,7 @@ export function safeExternal(value) {
 }
 
 export const dimensions = {
-  timeline: row => row.reported_fact.event_date || 'Unknown',
+  timeline: row => row.reported_fact.event_date || row.sources.find(s => s.source_date)?.source_date || 'Unknown',
   areas: row => row.reported_fact.area || 'Unknown',
   actions: row => row.derived_context.action_category,
   owners: row => row.derived_context.derived_owner_category,

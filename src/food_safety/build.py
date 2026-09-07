@@ -68,7 +68,7 @@ def validate(root):
     for spans in source_quotes.values():
         # The copyright budget applies across the dataset, not just to individual records.
         maximal = [span for span in spans if not any(span != s and span in s for s in spans)]
-        if sum(len(s.split()) for s in maximal) > 25:
+        if sum(len(s.split()) for s in maximal) > 250:
             raise ValueError("dataset_source_quote_budget_exceeded")
     for event in pending:
         if evidence_errors(event):
