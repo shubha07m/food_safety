@@ -63,3 +63,19 @@ def test_formal_finding_requires_authority(record):
     record.reported_fact.formal_finding = "Finding"
     record.sources[0].tier = "B"
     assert "formal_finding_requires_authority" in evidence_errors(record)
+
+
+def test_publication_accepts_source_publication_date_when_event_date_unknown(
+    record, policy, fixture_html
+):
+    _, text = article_text(fixture_html)
+    record.reported_fact.event_date = None
+    record.reported_fact.evidence.pop("event_date")
+    record.sources[0].source_date = "2026-01-03"
+    assert not publication_errors(record, [policy], {record.sources[0].source_url: text}, True)
+
+
+def test_context_allows_necessary_short_context(record):
+    record.sources[0].evidence_context = "word " * 59 + "end"
+    record.sources[0].evidence_quote = "word"
+    assert len(record.sources[0].evidence_context.split()) == 60

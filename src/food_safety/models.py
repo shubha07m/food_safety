@@ -66,11 +66,18 @@ class Source(StrictModel):
     evidence_context: Text
     archive_url: URL | None = None
 
-    @field_validator("evidence_quote", "evidence_context")
+    @field_validator("evidence_quote")
     @classmethod
     def short_quote(cls, value):
         if len(value.split()) > 25:
-            raise ValueError("Evidence/context must contain at most 25 words each")
+            raise ValueError("Evidence quote must contain at most 25 words")
+        return value
+
+    @field_validator("evidence_context")
+    @classmethod
+    def short_context(cls, value):
+        if len(value.split()) > 60:
+            raise ValueError("Evidence context must contain at most 60 words")
         return value
 
 

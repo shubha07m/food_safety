@@ -79,7 +79,8 @@ function renderRows() {
     const link = node('a', facts.establishment_name || 'Establishment unnamed', 'record-link');
     link.href = `?event=${encodeURIComponent(record.event_id)}`;
     name.append(link, node('small', record.event_id));
-    for (const text of [dateText(facts.event_date), facts.area || t.unknown]) tr.append(node('td', text));
+    const recordDate = facts.event_date || record.sources.find(item => item.source_date)?.source_date;
+    for (const text of [dateText(recordDate), facts.area || t.unknown]) tr.append(node('td', text));
     tr.append(name, node('td', `Source states: ${facts.reported_observation}`), node('td', facts.reported_action || t.notReported), node('td', facts.reported_quantity || t.notReported));
     const status = node('td'); status.append(node('span', record.verification_status, 'badge'));
     const source = node('td');

@@ -19,7 +19,7 @@ The authoritative executable schema is src/food_safety/models.py. Unknown fields
 | source_date | Article publication date if established, otherwise null |
 | source_type / tier | official/news/other/discovery and configured A/B/C/discovery tier |
 | retrieved_at / text_sha256 | UTC retrieval timestamp and SHA-256 of normalized extracted text |
-| evidence_quote / evidence_context | Exact minimal span plus necessary surrounding context; 25-word aggregate source budget |
+| evidence_quote / evidence_context | Exact minimal span plus necessary surrounding context; 25-word quote, 60-word context, and 250-word aggregate source budget |
 | archive_url | Optional existing appropriate archive link; never automatically created |
 | verification_status / verification_notes | Explicit review/source state and neutral explanatory note |
 | derived_context | Contextual metadata; never part of reported_fact |
