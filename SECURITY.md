@@ -1,6 +1,6 @@
 # Security policy
 
-V1 is static HTML/CSS/JavaScript and generated public JSON. There is no public admin endpoint, database write API, login, executable submission content, comments, arbitrary upload or SQL backend. Only the site/ directory may be deployed, after review. Never serve the repository root: it contains private pending/history/configuration.
+The public site is static HTML/CSS/JavaScript and generated public JSON. There is no public admin endpoint, database write API, login, executable submission content, comments, arbitrary upload or SQL backend. Only the site/ directory may be deployed, after review. Never serve the repository root: it contains private pending/history/configuration.
 
 ## Safeguards
 
@@ -18,7 +18,7 @@ Do not put credentials, exploit details or private data in public Issues. Enable
 
 ## Maintainer operations
 
-Keep .env and model secrets out of commits and frontend assets. Avoid logging exception bodies or environment variables. Review all action/config/dependency changes. Recommend protected main, required CI, at least one independent review, restricted direct pushes, secret scanning where available and tightly scoped deployment tokens.
+Keep .env and model secrets out of commits and frontend assets. Avoid logging exception bodies or environment variables. Review all action/config/dependency changes. Recommend protected main, required CI, restricted direct pushes, secret scanning where available and tightly scoped deployment tokens. GitHub Free does not expose branch-protection rules for this private repository; enable required CI, block force pushes and block deletion immediately if the plan changes or the repository becomes eligible. A single-maintainer project should not require multiple human approvals.
 
 An interrupted data transaction blocks validation and site build. Inspect data/.transaction.json and Git diffs, preserve any useful audit snapshots, restore the last reviewed coherent data set, then remove only that marker after review. Never automatically delete a marker or force a build through inconsistent data.
 
