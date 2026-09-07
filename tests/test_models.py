@@ -17,7 +17,7 @@ def test_valid_record(record):
         lambda d: d["reported_fact"].update(event_date="2026-02-30"),
         lambda d: d["reported_fact"].update(religion="not retained"),
         lambda d: d["derived_context"].update(caste="not retained"),
-        lambda d: d["reported_fact"].update(derived_menu_category="both"),
+        lambda d: d["reported_fact"].update(menu_context="mixed"),
         lambda d: d["sources"][0].update(phone_number="not retained"),
         lambda d: d.update(record_updated_at="2025-01-01T00:00:00Z"),
         lambda d: d["llm"].update(llm_used=True),

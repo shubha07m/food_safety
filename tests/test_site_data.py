@@ -10,7 +10,16 @@ from food_safety.storage import save_events
 
 def test_graph_totals(record):
     result = aggregates([record])
-    for key in ["timeline", "areas", "actions", "owners", "menus"]:
+    for key in [
+        "timeline",
+        "areas",
+        "actions",
+        "establishments",
+        "menus",
+        "business_formats",
+        "publishers",
+        "verification",
+    ]:
         assert sum(result[key].values()) == result["total"] == 1
     assert result["menus"] == {"unknown": 1}
 

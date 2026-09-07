@@ -11,7 +11,7 @@ Tier A means an official public authority source. Tier B means an established, i
 
 A tier is a retrieval/review policy, not an endorsement or guarantee of accuracy. A publisher can issue a correction or report an allegation without establishing its truth. Syndicated copies are not independent sources.
 
-Retain canonical URL, title, publisher, publication date if known, retrieval time, text hash, source type and the minimum exact evidence/context spans. The public dataset's engineering cap is 25 words of maximal quoted spans per canonical source, including multiple records. Do not use this cap to claim copyright compliance; context and rights remain a matter for review.
+Retain canonical URL, title, publisher, publication date if known, retrieval time, text hash, source type and the minimum exact evidence/context spans. Individual evidence quotes are capped at 25 words, contexts at 60 words, and maximal retained contexts at 250 words per canonical source, including multiple records. Do not use these caps to claim copyright compliance; context and rights remain a matter for review.
 
 Do not republish full articles, bypass paywalls, evade robots restrictions, upload pages to archive services, or download image collections. Optional archive links must already be available and legally/technically appropriate. Third-party content remains subject to its respective rights; the repository's code license does not relicense it.
 
