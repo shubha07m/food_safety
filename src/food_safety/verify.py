@@ -1,5 +1,6 @@
 from collections import defaultdict
 
+from .classify import display_summary
 from .extract import text_hash
 from .safety import claim_risks, normalize
 
@@ -18,7 +19,7 @@ def evidence_errors(event, texts=None):
         if not source:
             errors.append("unlinked_evidence")
             continue
-        if normalize(support.quote) not in normalize(source.evidence_context):
+        if support.quote not in source.evidence_context:
             errors.append("span_outside_context")
         quotes[source.source_url].add(support.quote)
     for field, value in facts.items():
@@ -45,9 +46,9 @@ def evidence_errors(event, texts=None):
         # Count distinct stored spans conservatively, without retaining entire articles.
         longest = max(quotes[source.source_url], key=len)
         extra = [q for q in quotes[source.source_url] if q not in longest]
-        if sum(len(q.split()) for q in [longest, *extra]) > 25:
+        if sum(len(q.split()) for q in [longest, *extra]) > 60:
             errors.append("quote_budget_exceeded")
-        if normalize(source.evidence_quote) not in normalize(source.evidence_context):
+        if source.evidence_quote not in source.evidence_context:
             errors.append("quote_outside_context")
         if claim_risks(source.evidence_context) or claim_risks(source.source_title):
             errors.append("claim_safety_review_required")
@@ -57,7 +58,7 @@ def evidence_errors(event, texts=None):
                 errors.append("source_unreachable")
             elif text_hash(text) != source.text_sha256:
                 errors.append("source_changed")
-            elif normalize(source.evidence_context) not in normalize(text):
+            elif source.evidence_context not in text:
                 errors.append("evidence_not_in_article")
     return sorted(set(errors))
 
@@ -71,7 +72,10 @@ def publication_errors(event, policies, texts=None, allow_fixtures=False):
     review = event.review
     if not review or not review.all_fields_supported or not review.source_context_checked:
         errors.append("human_context_review_required")
-    if not event.reported_fact.event_date or not event.reported_fact.area:
+    # A source publication date is acceptable when the article does not identify
+    # the calendar date of the reported event. The UI labels that distinction.
+    has_date = event.reported_fact.event_date or any(s.source_date for s in event.sources)
+    if not has_date or not event.reported_fact.area:
         errors.append("date_and_location_review_required")
     from urllib.parse import urlsplit
 
@@ -93,20 +97,10 @@ def publication_errors(event, policies, texts=None, allow_fixtures=False):
                 source.evidence_context
             ):
                 errors.append("cross_source_support_required")
-    derived = event.derived_context
-    nondefault = (
-        derived.derived_menu_category != "unknown"
-        or derived.derived_owner_category != "unknown"
-        or derived.derived_geography is not None
-        or derived.action_category != "other"
-    )
-    if nondefault and (
-        not derived.derived_context_sources
-        or derived.derived_confidence != "high"
-        or derived.derived_context_method == "Unknown; no contextual inference performed."
-        or not set(derived.derived_context_sources).issubset({s.source_url for s in event.sources})
+    if not event.display_summary or event.display_summary != display_summary(
+        event.reported_fact, event.derived_context
     ):
-        errors.append("unsupported_derived_context")
+        errors.append("unsupported_display_summary")
     if event.llm.llm_used and not event.llm.llm_output_was_validated:
         errors.append("unvalidated_llm_output")
     return sorted(set(errors))

@@ -1,0 +1,84 @@
+{
+  "context_notice": "Independent, non-governmental public-source research. Inclusion is not a finding of wrongdoing. Counts describe records in this tracker, not official totals, prevalence, compliance, risk or group behavior. Read the sources and preserve this context when sharing.",
+  "derived_context": {
+    "action_category": "other",
+    "derived_confidence": "unknown",
+    "derived_context_method": "Unknown; no contextual inference performed.",
+    "derived_context_sources": [],
+    "derived_geography": null,
+    "derived_menu_category": "unknown",
+    "derived_owner_category": "unknown"
+  },
+  "event_id": "WBFS-ce0e970c1361",
+  "history": [
+    {
+      "at": "2026-09-07T21:12:32.942437Z",
+      "note": "Initial bounded source review; publication date retained where event date was not explicit.",
+      "previous_record_sha256": null,
+      "status": "SOURCE VERIFIED"
+    }
+  ],
+  "is_fixture": false,
+  "llm": {
+    "llm_model": null,
+    "llm_output_was_validated": false,
+    "llm_pipeline_version": null,
+    "llm_provider": null,
+    "llm_task": null,
+    "llm_used": false
+  },
+  "pipeline_version": "0.1.0",
+  "record_created_at": "2026-09-07T21:12:32.942437Z",
+  "record_updated_at": "2026-09-07T21:12:32.942437Z",
+  "reported_fact": {
+    "area": "Tangra",
+    "district": null,
+    "establishment_name": "Big Boss",
+    "establishment_type": null,
+    "event_date": null,
+    "evidence": {
+      "area": {
+        "quote": "Tangra",
+        "source_url": "https://timesofindia.indiatimes.com/city/kolkata/kmc-mulls-action-against-eatery/articleshow/133744154.cms"
+      },
+      "establishment_name": {
+        "quote": "Big Boss",
+        "source_url": "https://timesofindia.indiatimes.com/city/kolkata/kmc-mulls-action-against-eatery/articleshow/133744154.cms"
+      },
+      "reported_observation": {
+        "quote": "food safety team wants proper action",
+        "source_url": "https://timesofindia.indiatimes.com/city/kolkata/kmc-mulls-action-against-eatery/articleshow/133744154.cms"
+      }
+    },
+    "formal_finding": null,
+    "legal_finding_status": "unknown",
+    "reported_action": null,
+    "reported_authority": null,
+    "reported_observation": "food safety team wants proper action",
+    "reported_quantity": null
+  },
+  "review": {
+    "all_fields_supported": true,
+    "note": "Initial bounded source review; publication date retained where event date was not explicit.",
+    "reviewed_at": "2026-09-07T21:12:32.942437Z",
+    "reviewer": "project-maintainer",
+    "source_context_checked": true
+  },
+  "sources": [
+    {
+      "archive_url": null,
+      "evidence_context": "Kolkata Municipal Corporation food safety team wants proper action against the owners of Big Boss, a Chinese restaurant in Tangra, for violating food safety standards.",
+      "evidence_quote": "food safety team wants proper action",
+      "retrieved_at": "2026-09-07T21:12:32.942437Z",
+      "source_date": "2026-09-03",
+      "source_publisher": "The Times of India",
+      "source_title": "KMC mulls action against eatery | Kolkata News - The Times of India",
+      "source_type": "news",
+      "source_url": "https://timesofindia.indiatimes.com/city/kolkata/kmc-mulls-action-against-eatery/articleshow/133744154.cms",
+      "text_sha256": "c18051e028333d660556afe462f16a1df32fc845304db24460ab1dad25b2ee38",
+      "tier": "B"
+    }
+  ],
+  "verification_notes": "Source exists and the displayed fields were manually checked against a retained exact context; this is not an independent finding.",
+  "verification_status": "SOURCE VERIFIED"
+}

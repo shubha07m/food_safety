@@ -1,6 +1,8 @@
 name: CI
 on:
   push:
+    branches:
+      - main
   pull_request:
 permissions:
   contents: read
@@ -33,6 +35,7 @@ jobs:
           python -m pip install --no-deps --no-build-isolation -e .
       - name: Lint, fixture tests and public data validation
         run: |
+          mkdir -p .cache
           ruff check .
           python -m pytest -q --basetemp=.cache/pytest
           node --test tests/site_data.test.mjs

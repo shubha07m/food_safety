@@ -1,34 +1,34 @@
 # Methodology
 
-Version 0.1.0. Private evaluation stage. Production starts with zero records. The preserved HTML prototype and synthetic test fixtures are not evidence.
+Version 0.2.0. Private evaluation stage. The repository contains a reviewed initial public-source sample. The preserved HTML prototype and synthetic test fixtures are not evidence.
 
 ## Unit of observation and scope
 
 A record describes one source-supported reported event, with a date and area confirmed before publication. West Bengal is the geographic scope, initially emphasizing Kolkata and nearby areas. Maintainers must check geographic relevance. An establishment may be unnamed. Multiple establishments in one article require separate, correctly attributed evidence; the deterministic extractor never assigns an article-wide quantity or action to individual businesses.
 
-Event date and publication date are distinct. Missing publication dates and quantities remain null. Dates must have explicit supporting ISO-date text in V1; sources using other date formats remain pending until a reviewed normalization adapter is implemented. This conservative limitation avoids invented dates.
+Event date and publication date are distinct. Missing publication dates and quantities remain null. Event dates require explicit supporting date evidence; a source publication date may be retained separately when the event date is not established. This conservative limitation avoids invented dates.
 
 ## Processing and review
 
 Configured curated article URLs → canonicalization → bounded robots-aware fetch → article-text extraction → candidate extraction → per-field evidence checks → sensitive-content checks → conservative association → source-policy checks → pending review or publication → aggregates → static site.
 
-V1 has no recursive crawler or search-engine scraping. Robots failure, rate policies not yet supported, missing evidence, inaccessible sources, suspicious text and uncertain attribution fail closed. Full article bodies exist only in memory during processing. An ordinary update makes unnamed observation candidates and keeps them pending.
+The pipeline has no recursive crawler or search-engine scraping. Robots failure, rate policies not yet supported, missing evidence, inaccessible sources, suspicious text and uncertain attribution fail closed. Full article bodies exist only in memory during processing. An ordinary update makes unnamed observation candidates and keeps them pending.
 
 To publish, a maintainer prepares a schema-valid record and explicitly attests to reading the original context and checking every displayed field. The review command freshly retrieves every source, checks content hashes, exact short evidence spans and source policy. That human decision is recorded. Automated substring checks establish textual support, not meaning: negation, dates, entity attribution, source corrections and formal findings require human review.
 
-A config switch and AUTO_PUBLISH environment gate both default false. Even when enabled, V1 candidate extraction cannot bypass the human-review requirement. Autonomous first publication is intentionally unavailable until a separately evaluated adapter and policy are introduced.
+A config switch and AUTO_PUBLISH environment gate both default false. Even when enabled, candidate extraction cannot bypass the human-review requirement. Autonomous first publication is intentionally unavailable until a separately evaluated adapter and policy are introduced.
 
 ## Source tiers and statuses
 
-A: official authority material. B: established identifiable news publishers with accessible articles. C: identifiable publications requiring stronger corroboration; V1 retains candidates for research but does not publish Tier C evidence. Discovery: snippets, aggregators, social media or other weak material; never fetched into the publication pipeline.
+A: official authority material. B: established identifiable news publishers with accessible articles. C: identifiable publications requiring stronger corroboration; the current policy retains candidates for research but does not publish Tier C evidence. Discovery: snippets, aggregators, social media or other weak material; never fetched into the publication pipeline.
 
-SOURCE VERIFIED: source existence, quoted support and context reviewed, not independent proof of the event. CROSS-SOURCE VERIFIED: independent publishers support the displayed observation; not proof of real-world truth. V1 review defaults to SOURCE VERIFIED even with multiple sources.
+SOURCE VERIFIED: source existence, quoted support and context reviewed, not independent proof of the event. CROSS-SOURCE VERIFIED: independent publishers support the displayed observation; not proof of real-world truth. Review defaults to SOURCE VERIFIED even with multiple sources.
 
 SINGLE SOURCE and PENDING REVIEW are not public acceptance states. SOURCE UPDATED, DISPUTED, SOURCE WITHDRAWN, SUPERSEDED and REJECTED are held out of public statistics. A failed later source check suspends the affected public record. Partial scans do not establish that every record was recently checked.
 
 ## Evidence, provenance and revisions
 
-Every non-null fact has a supporting source URL and exact short quote in reported_fact.evidence. Quotes must sit inside a retained context span that matches fetched text. The text hash records which extracted version was reviewed, without retaining a full copyrighted article. Retained maximal evidence spans total at most 25 words per canonical source across the public dataset. This is a conservative engineering budget, not a legal safe harbour.
+Every non-null fact has a supporting source URL and exact short quote in reported_fact.evidence. Quotes must sit inside a retained context span that matches fetched text. The text hash records which extracted version was reviewed, without retaining a full copyrighted article. An evidence quote is capped at 25 words; its necessary context is capped at 60 words; retained maximal contexts total at most 250 words per canonical source across the public dataset. These are conservative engineering budgets, not a legal safe harbour. When an article supplies only a publication date, the record labels it as such rather than inventing an event date.
 
 Source metadata records title, publisher, source type/tier, retrieval time, publication date if known, and optional archive link if independently available and appropriate. No archive submissions or full-page screenshots are created automatically.
 
@@ -36,9 +36,9 @@ Stable IDs survive corrections. Exact entity/date/area/observation/action/quanti
 
 ## Fact and context separation
 
-reported_fact and derived_context are different schema objects. Menu category (veg, non-veg, both, unknown), business format (independent, chain/group, mall/food court, market/vendor, unknown), action grouping and geographic normalization are contextual classifications. They are not official findings. Non-default context requires linked source evidence, an explicit method, high confidence and human context review. No inference from names, presumed ownership identity or locality is permitted.
+reported_fact and derived_context are different schema objects. Menu context, business format, establishment context, action grouping and geographic normalization are contextual classifications. They are not official findings. Automatically extracted contextual fields default to unknown or not reported. Non-default classifications require supporting evidence, an explicit allowed derivation method, confidence metadata and maintainer review. Menu and business-format classification cannot use names, cuisine guesses, surnames, neighbourhoods, religion or other social inference.
 
-V1 leaves all automatically extracted context unknown/other. There is no demographic classification, ranking, compliance score, risk estimate or opinion analysis.
+There is no demographic classification, ranking, compliance score, risk estimate or opinion analysis.
 
 ## Counts and interaction
 
@@ -54,4 +54,4 @@ Default extraction is deterministic. Live LLM calls require config enablement, -
 
 ## Limits and future work
 
-This project cannot establish legal compliance, food safety, official totals or completeness. Coverage is affected by language, paywalls, discoverability and source availability. Bengali localization is planned; client strings are centralized. Future evaluated work includes date normalization, reviewed structured extraction adapters, stronger entity resolution, multi-language review and opt-in official-bulletin text extraction. No large crawls, models or automatic publication are part of V1.
+This project cannot establish legal compliance, food safety, official totals or completeness. Coverage is affected by language, paywalls, discoverability and source availability. Bengali localization is planned; client strings are centralized. Future evaluated work includes date normalization, reviewed structured extraction adapters, stronger entity resolution, multi-language review and opt-in official-bulletin text extraction. No large crawls, models or automatic publication are part of the private evaluation build.

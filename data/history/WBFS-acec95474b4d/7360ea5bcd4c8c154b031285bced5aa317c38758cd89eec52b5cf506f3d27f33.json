@@ -1,0 +1,84 @@
+{
+  "context_notice": "Independent, non-governmental public-source research. Inclusion is not a finding of wrongdoing. Counts describe records in this tracker, not official totals, prevalence, compliance, risk or group behavior. Read the sources and preserve this context when sharing.",
+  "derived_context": {
+    "action_category": "other",
+    "derived_confidence": "unknown",
+    "derived_context_method": "Unknown; no contextual inference performed.",
+    "derived_context_sources": [],
+    "derived_geography": null,
+    "derived_menu_category": "unknown",
+    "derived_owner_category": "unknown"
+  },
+  "event_id": "WBFS-acec95474b4d",
+  "history": [
+    {
+      "at": "2026-09-07T21:12:32.942437Z",
+      "note": "Initial bounded source review; publication date retained where event date was not explicit.",
+      "previous_record_sha256": null,
+      "status": "SOURCE VERIFIED"
+    }
+  ],
+  "is_fixture": false,
+  "llm": {
+    "llm_model": null,
+    "llm_output_was_validated": false,
+    "llm_pipeline_version": null,
+    "llm_provider": null,
+    "llm_task": null,
+    "llm_used": false
+  },
+  "pipeline_version": "0.1.0",
+  "record_created_at": "2026-09-07T21:12:32.942437Z",
+  "record_updated_at": "2026-09-07T21:12:32.942437Z",
+  "reported_fact": {
+    "area": "Park Street",
+    "district": null,
+    "establishment_name": "Mocambo",
+    "establishment_type": null,
+    "event_date": null,
+    "evidence": {
+      "area": {
+        "quote": "Park Street",
+        "source_url": "https://timesofindia.indiatimes.com/city/kolkata/kmc-food-team-reaches-park-street-seizes-stale-items-from-eateries/articleshow/133774167.cms"
+      },
+      "establishment_name": {
+        "quote": "Mocambo",
+        "source_url": "https://timesofindia.indiatimes.com/city/kolkata/kmc-food-team-reaches-park-street-seizes-stale-items-from-eateries/articleshow/133774167.cms"
+      },
+      "reported_observation": {
+        "quote": "visited by KMC teams",
+        "source_url": "https://timesofindia.indiatimes.com/city/kolkata/kmc-food-team-reaches-park-street-seizes-stale-items-from-eateries/articleshow/133774167.cms"
+      }
+    },
+    "formal_finding": null,
+    "legal_finding_status": "unknown",
+    "reported_action": null,
+    "reported_authority": null,
+    "reported_observation": "visited by KMC teams",
+    "reported_quantity": null
+  },
+  "review": {
+    "all_fields_supported": true,
+    "note": "Initial bounded source review; publication date retained where event date was not explicit.",
+    "reviewed_at": "2026-09-07T21:12:32.942437Z",
+    "reviewer": "project-maintainer",
+    "source_context_checked": true
+  },
+  "sources": [
+    {
+      "archive_url": null,
+      "evidence_context": "Among the big names that were visited by KMC teams on Friday were Peter Cat, Mocambo, Oasis, Kareem’s and Arsalan in Park Street and its neighbouring areas.",
+      "evidence_quote": "visited by KMC teams",
+      "retrieved_at": "2026-09-07T21:12:32.942437Z",
+      "source_date": "2026-09-04",
+      "source_publisher": "The Times of India",
+      "source_title": "KMC food team reaches Park Street, seizes stale items from eateries | Kolkata News - The Times of India",
+      "source_type": "news",
+      "source_url": "https://timesofindia.indiatimes.com/city/kolkata/kmc-food-team-reaches-park-street-seizes-stale-items-from-eateries/articleshow/133774167.cms",
+      "text_sha256": "a9719c93e3f42bf9fcce863154e4ac5fce3243e773f0d36cf7bcc25827992034",
+      "tier": "B"
+    }
+  ],
+  "verification_notes": "Source exists and the displayed fields were manually checked against a retained exact context; this is not an independent finding.",
+  "verification_status": "SOURCE VERIFIED"
+}

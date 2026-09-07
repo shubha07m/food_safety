@@ -10,7 +10,7 @@ from urllib.robotparser import RobotFileParser
 
 from .safety import safe_url
 
-USER_AGENT = "WBFSEvidenceResearch/0.1 (limited public-source research)"
+USER_AGENT = "WBFSEvidenceResearch/0.2 (limited public-source research)"
 
 
 class FetchError(ValueError):
