@@ -1,0 +1,9 @@
+# Preserve the bundled prototype byte-for-byte and avoid unreadable/minified diffs.
+Wb-Food-Safety-Tracker.html -diff
+*.py text eol=lf
+*.js text eol=lf
+*.mjs text eol=lf
+*.md text eol=lf
+*.yml text eol=lf
+*.json text eol=lf
+*.csv text eol=lf
