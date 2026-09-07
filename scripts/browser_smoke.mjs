@@ -102,8 +102,8 @@ try {
   await command('Page.enable'); await command('Runtime.enable');
   await command('Emulation.setDeviceMetricsOverride', { width: 1440, height: 1000, deviceScaleFactor: 1, mobile: false });
   await command('Page.navigate', { url: 'http://127.0.0.1:8000/' });
-  await waitFor("document.getElementById('metric-events')?.textContent === '0'");
-  assert.equal(await evaluate("document.getElementById('empty-evidence').hidden"), false);
+  await waitFor(`document.getElementById('metric-events')?.textContent === '${original.record_count}'`);
+  assert.equal(await evaluate("document.getElementById('empty-evidence').hidden"), original.record_count > 0);
   assert.equal(await evaluate("document.querySelector('.status-strip').textContent.includes('Inclusion is not a finding of wrongdoing')"), true);
   await screenshot('zero-desktop');
   await command('Emulation.setDeviceMetricsOverride', { width: 390, height: 844, deviceScaleFactor: 1, mobile: true });
@@ -137,8 +137,8 @@ try {
   assert.equal(await evaluate("document.getElementById('record-detail').textContent.includes('SOURCE VERIFIED means')"), true);
   assert.equal(await evaluate("document.getElementById('record-detail').textContent.includes('Inclusion is not a finding of wrongdoing')"), true);
   assert.deepEqual(runtimeErrors, []);
-  assert.equal(JSON.parse(readFileSync(resolve(root, 'data/events.json'), 'utf8')).record_count, 0);
-  console.log('Browser smoke passed: desktop/mobile zero state, policy pages, fixture rendering, chart/search filters, source links, XSS text handling, stable detail URL; no runtime exceptions.');
+  assert.equal(JSON.parse(readFileSync(resolve(root, 'data/events.json'), 'utf8')).record_count, original.record_count);
+  console.log('Browser smoke passed: desktop/mobile dataset state, policy pages, fixture rendering, chart/search filters, source links, XSS text handling, stable detail URL; no runtime exceptions.');
   console.log('Screenshots: .cache/browser-smoke/{zero-desktop,zero-mobile,synthetic-filter}.png');
 } finally {
   if (socket?.readyState === WebSocket.OPEN) {
