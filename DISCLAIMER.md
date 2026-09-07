@@ -40,7 +40,7 @@ Meaningful historical changes are recorded through revision notes and prior-vers
 
 ## Automated assistance and rights
 
-Automated tools, including language models where enabled, may assist extraction. Model output is not evidence. Factual fields require supporting source material, deterministic checks and V1 maintainer context review. No model determines guilt, liability, food safety, community identity or wrongdoing.
+Automated tools, including language models where enabled, may assist extraction. Model output is not evidence. Factual fields require supporting source material, deterministic checks and maintainer context review. No model determines guilt, liability, food safety, community identity or wrongdoing.
 
 Links and minimal quotations do not transfer copyright. Third-party article content is not relicensed by this repository. No full article text is republished. See SOURCES.md and LICENSE.
 
