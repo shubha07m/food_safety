@@ -27,7 +27,7 @@ jobs:
         with:
           activate-environment: food
           python-version: '3.12'
-          auto-activate-base: false
+          auto-activate: false
       - name: Install pinned dependencies in food
         run: |
           python -c "import os; assert os.environ['CONDA_DEFAULT_ENV'] == 'food'"
