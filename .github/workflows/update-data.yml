@@ -1,0 +1,54 @@
+name: Review source update
+on:
+  workflow_dispatch:
+  # Enable only after source/policy review. Six-hour intended cadence:
+  # schedule:
+  #   - cron: '17 */6 * * *'
+permissions:
+  contents: read
+concurrency:
+  group: source-update
+  cancel-in-progress: false
+jobs:
+  candidates:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      AUTO_PUBLISH: 'false'
+      PIP_DISABLE_PIP_VERSION_CHECK: '1'
+    defaults:
+      run:
+        shell: bash -el {0}
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          persist-credentials: false
+      - uses: conda-incubator/setup-miniconda@fc2d68f6413eb2d87b895e92f8584b5b94a10167 # v3
+        with:
+          activate-environment: food
+          python-version: '3.12'
+          auto-activate-base: false
+      - name: Install lightweight dependencies
+        run: |
+          python -m pip install -r requirements-dev.lock
+          python -m pip install --no-deps --no-build-isolation -e .
+      - name: Limited source scan, no paid APIs
+        run: python -m food_safety.cli update --max-articles 3
+      - name: Check candidate output
+        run: |
+          ruff check .
+          python -m pytest -q --basetemp=.cache/pytest
+          python -m food_safety.cli validate
+          python -m food_safety.cli build
+      - name: Retain private review artifacts; never deploy
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: source-review-${{ github.run_id }}
+          path: |
+            data/*.json
+            data/*.csv
+            data/history/
+            data/runs/
+          retention-days: 7
+          if-no-files-found: error

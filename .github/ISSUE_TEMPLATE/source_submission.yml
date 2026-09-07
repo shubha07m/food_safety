@@ -1,0 +1,51 @@
+name: Suggest a source
+description: Suggest a specific accessible public source for maintainer review.
+title: "[Source] Publisher — reported event"
+body:
+  - type: markdown
+    attributes:
+      value: "Source suggestions are discovery leads. They are not accepted records and never publish automatically. Do not upload documents, screenshots or private allegations."
+  - type: input
+    id: url
+    attributes:
+      label: Public article or authority URL
+    validations:
+      required: true
+  - type: input
+    id: publisher
+    attributes:
+      label: Publisher
+    validations:
+      required: true
+  - type: input
+    id: publication_date
+    attributes:
+      label: Publication date
+      description: Use YYYY-MM-DD if known, otherwise write Unknown.
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: Neutral event description
+      description: Describe what the source reports, without conclusions about guilt or safety.
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Relevant evidence
+      description: A short span, at most 25 words. Do not paste the full article.
+    validations:
+      required: true
+  - type: checkboxes
+    id: acknowledgments
+    attributes:
+      label: Contribution requirements
+      options:
+        - label: This is an identifiable public source, not an anonymous allegation or unsupported screenshot.
+          required: true
+        - label: I have included no unsupported allegations, harassment, discriminatory content or unnecessary personal information.
+          required: true
+        - label: I understand that no submission automatically becomes a published record.
+          required: true
