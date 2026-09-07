@@ -1,0 +1,89 @@
+{
+  "actions": {
+    "inspection / visit only": 25,
+    "not reported": 3,
+    "other": 7
+  },
+  "areas": {
+    "Baduria": 1,
+    "Bentinck Street and Waterloo Street": 1,
+    "Bowbazar": 1,
+    "Dacres Lane": 4,
+    "Digha": 1,
+    "Dum Dum": 1,
+    "East Midnapore": 1,
+    "Gariahat": 1,
+    "Hooghly": 1,
+    "Jorabagan": 1,
+    "Kamalgazi": 1,
+    "Kolkata": 3,
+    "Lake Market": 1,
+    "Park Street": 5,
+    "Posta": 1,
+    "Shaktigarh": 1,
+    "Sonarpur": 1,
+    "South City Mall": 3,
+    "Tangra": 1,
+    "মধ্যমগ্রামের": 1,
+    "মধ‌্যমগ্রামের": 1,
+    "সেক্টর থ্রি-র": 1,
+    "সেক্টর ফাইভের আরডিবি মলের": 1,
+    "সোদপুরের": 1
+  },
+  "areas_count": 24,
+  "business_formats": {
+    "unknown": 35
+  },
+  "context_notice": "Independent, non-governmental public-source research. Inclusion is not a finding of wrongdoing. Counts describe records in this tracker, not official totals, prevalence, compliance, risk or group behavior. Read the sources and preserve this context when sharing.",
+  "coverage": {
+    "business_format": 0,
+    "cross_source": 0,
+    "establishment_context": 32,
+    "menu_context": 0,
+    "named_establishment": 25,
+    "reported_action": 20,
+    "reported_quantity": 1
+  },
+  "establishments": {
+    "hotel / hospitality": 2,
+    "mall / food court": 6,
+    "market / vendor": 3,
+    "restaurant / eatery": 18,
+    "sweet shop / bakery": 3,
+    "unknown": 3
+  },
+  "establishments_count": 25,
+  "generated_at": "2026-09-07T22:30:33.418410+00:00",
+  "map_coverage": {
+    "mapped_records": 23,
+    "precision": {
+      "city": 3,
+      "neighborhood": 16,
+      "not mapped": 12,
+      "street": 4
+    }
+  },
+  "menus": {
+    "unknown": 35
+  },
+  "pipeline_version": "0.2.0",
+  "publishers": {
+    "Business Today": 5,
+    "TV9 Bangla": 5,
+    "The Times of India": 25
+  },
+  "record_count": 35,
+  "schema_version": "1.1.0",
+  "sources_count": 7,
+  "timeline": {
+    "2026-09-03": 11,
+    "2026-09-04": 7,
+    "2026-09-05": 7,
+    "2026-09-06": 7,
+    "2026-09-07": 3
+  },
+  "total": 35,
+  "verification": {
+    "SOURCE VERIFIED": 35
+  }
+}
