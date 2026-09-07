@@ -4,6 +4,8 @@ Use the repository's Request a correction or Suggest a source Issue Form when re
 
 During private evaluation, only invited GitHub collaborators can access Issues. The correction flow is not publicly reachable yet. Before public launch, establish an accessible correction channel and review it with counsel. Do not promote the site while affected parties have no practical correction route. No public launch is enabled by this build.
 
+Any public intake route must require a source URL where applicable, prohibit arbitrary uploads and unsupported allegations, and never publish submissions automatically. It must remain a controlled manual-review channel rather than a public reporting or comment system.
+
 A correction should identify the record ID, disputed field, reason and a supporting public source URL. Optional context should avoid personal details. A source suggestion should provide URL, publisher, publication date if known, event description and a short relevant evidence span.
 
 Do not submit unsupported allegations, harassment, discriminatory content, unnecessary personal information or private documents. GitHub controls submission account data and infrastructure logs under its policies. Issue text may become visible if the repository later becomes public; keep all submissions suitable for public review. Do not post sensitive legal correspondence in public Issues.

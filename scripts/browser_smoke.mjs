@@ -114,7 +114,7 @@ try {
   await command('Emulation.setDeviceMetricsOverride', { width: 390, height: 844, deviceScaleFactor: 1, mobile: true });
   assert.equal(await evaluate('document.documentElement.scrollWidth <= window.innerWidth'), true);
   await screenshot('zero-mobile');
-  for (const page of ['disclaimer', 'methodology', 'corrections', 'data']) {
+  for (const page of ['disclaimer', 'methodology', 'corrections', 'data', 'contribute']) {
     const response = await fetch(`http://127.0.0.1:8000/${page}.html`);
     assert.equal(response.status, 200);
     assert.ok((await response.text()).includes('Inclusion is not a finding of wrongdoing'));

@@ -1,9 +1,8 @@
 name: Review source update
 on:
   workflow_dispatch:
-  # Enable only after source/policy review. Six-hour intended cadence:
-  # schedule:
-  #   - cron: '17 */6 * * *'
+  schedule:
+    - cron: '17 */6 * * *'
 permissions:
   contents: read
 concurrency:

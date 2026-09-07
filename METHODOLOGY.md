@@ -2,6 +2,10 @@
 
 Version 0.2.0. Private evaluation stage. The repository contains a reviewed initial public-source sample. The preserved HTML prototype and synthetic test fixtures are not evidence.
 
+## Coarse geographic context
+
+Where an unambiguous reported area can be independently located, the tracker may show a reviewed OpenStreetMap reference coordinate with an explicit precision label. These are area anchors, not establishment addresses, inspection locations or evidence of geographic prevalence. Ambiguous or district-only areas remain unmapped.
+
 ## Unit of observation and scope
 
 A record describes one source-supported reported event, with a date and area confirmed before publication. West Bengal is the geographic scope, initially emphasizing Kolkata and nearby areas. Maintainers must check geographic relevance. An establishment may be unnamed. Multiple establishments in one article require separate, correctly attributed evidence; the deterministic extractor never assigns an article-wide quantity or action to individual businesses.

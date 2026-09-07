@@ -1,5 +1,4 @@
-# Enable only after checking publisher terms, robots policy and a specific seed URL.
-# No source has been scanned or approved for initial publication.
+# Curated, bounded seeds only. Scheduler output remains pending until explicit review.
 sources:
   - name: Food Safety and Standards Authority of India
     domain: fssai.gov.in
@@ -45,3 +44,26 @@ sources:
     discovery_method: curated_urls
     urls:
       - https://www.uniindia.com/east-india/admin-wb-food-safety-06ca19/170711
+  - name: Indian Express Bangla
+    domain: bengali.indianexpress.com
+    tier: B
+    enabled: true
+    discovery_method: curated_urls
+    urls:
+      - https://bengali.indianexpress.com/west-bengal/kolkata-food-safety-drive-peter-cat-mocambo-stale-food-raids-restaurants-12494649
+      - https://bengali.indianexpress.com/west-bengal/kolkata-dacres-lane-food-safety-raid-stale-laddus-makha-sandesh-12498296
+  - name: The Telegraph India
+    domain: www.telegraphindia.com
+    tier: B
+    enabled: true
+    discovery_method: curated_urls
+    urls:
+      - https://www.telegraphindia.com/amp/my-kolkata/events/park-street-restaurants-raided-as-officials-find-stored-meat-expired-water-bottles-during-kolkata-food-safety-crackdown/cid/2178353
+      - https://www.telegraphindia.com/amp/west-bengal/kolkata/stale-laddus-makha-sandesh-thrown-out-during-raids-on-food-stalls-at-dacres-lane-prnt/cid/2178532
+  - name: Anandabazar
+    domain: www.anandabazar.com
+    tier: B
+    enabled: true
+    discovery_method: curated_urls
+    urls:
+      - https://www.anandabazar.com/amp/west-bengal/kolkata/kolkata-municipal-corporation-carried-out-surprise-inspections-on-restaurants-in-park-street-and-other-areas-as-part-of-a-statewide-food-safety-crackdown-prnt/cid/1710865

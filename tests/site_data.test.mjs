@@ -62,4 +62,6 @@ test('source-derived strings use safe DOM APIs and SVG charts are accessible', (
   assert.equal(/innerHTML|insertAdjacentHTML|document\.write|eval\(/.test(js), false);
   assert.ok(js.includes('textContent')); assert.ok(js.includes("setAttribute('tabindex', '0')"));
   assert.ok(html.includes('role="img"')); assert.ok(html.includes('aria-label="Reported records over time'));
+  assert.ok(js.includes('function donutChart')); assert.ok(js.includes('function mapChart'));
+  assert.ok(html.includes('id="chart-map"'));
 });

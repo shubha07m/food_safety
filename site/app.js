@@ -103,6 +103,60 @@ function timelineChart(entries) {
   svg.append(svgNode('text', { x: width / 2, y: 252, 'text-anchor': 'middle', class: 'axis-title' }, 'Source publication/event date used by the record'));
   container.append(svg);
 }
+function donutChart(container, entries, dimension, palette) {
+  container.replaceChildren();
+  if (!entries.length) return emptyChart(container);
+  const total = entries.reduce((sum, [, count]) => sum + count, 0);
+  const svg = svgNode('svg', { viewBox: '0 0 620 270', class: 'svg-donut', 'aria-hidden': 'true' });
+  const circumference = 2 * Math.PI * 72; let offset = 0;
+  entries.forEach(([label, count], index) => {
+    const length = total ? circumference * count / total : 0;
+    const group = svgNode('g', { class: state.filters[dimension] === label ? 'selected' : '' });
+    interactive(group, dimension, label, count);
+    group.append(svgNode('circle', { cx: 106, cy: 128, r: 72, fill: 'none', stroke: palette[index % palette.length], 'stroke-width': 28, 'stroke-dasharray': `${Math.max(0, length - 2)} ${circumference - Math.max(0, length - 2)}`, 'stroke-dashoffset': -offset, transform: 'rotate(-90 106 128)', class: 'donut-segment' }));
+    offset += length;
+    const y = 52 + index * 34;
+    group.append(svgNode('rect', { x: 222, y: y - 10, width: 10, height: 10, rx: 2, fill: palette[index % palette.length] }));
+    group.append(svgNode('text', { x: 243, y, class: 'svg-label' }, label));
+    group.append(svgNode('text', { x: 598, y, 'text-anchor': 'end', class: 'svg-count' }, `${count} · ${total ? Math.round(count / total * 100) : 0}%`));
+    svg.append(group);
+  });
+  svg.append(svgNode('text', { x: 106, y: 120, 'text-anchor': 'middle', class: 'donut-total' }, total));
+  svg.append(svgNode('text', { x: 106, y: 140, 'text-anchor': 'middle', class: 'axis-label' }, 'records'));
+  container.append(svg);
+}
+function mapChart(rows) {
+  const container = $('chart-map'); container.replaceChildren();
+  const mapped = rows.filter(row => Number.isFinite(row.derived_context.latitude) && Number.isFinite(row.derived_context.longitude));
+  $('map-coverage').textContent = `Map coverage: ${mapped.length} of ${rows.length} records have a reviewed coarse location anchor.`;
+  if (!mapped.length) return emptyChart(container);
+  const groups = new Map();
+  for (const row of mapped) {
+    const key = row.derived_context.normalized_area || row.reported_fact.area;
+    const current = groups.get(key) || { count: 0, lat: row.derived_context.latitude, lon: row.derived_context.longitude };
+    current.count += 1; groups.set(key, current);
+  }
+  const width = 920; const height = 410; const pad = 42;
+  const lats = [...groups.values()].map(point => point.lat); const lons = [...groups.values()].map(point => point.lon);
+  const minLat = Math.min(...lats) - .12; const maxLat = Math.max(...lats) + .12;
+  const minLon = Math.min(...lons) - .12; const maxLon = Math.max(...lons) + .12;
+  const x = lon => pad + (lon - minLon) / (maxLon - minLon || 1) * (width - pad * 2);
+  const y = lat => height - pad - (lat - minLat) / (maxLat - minLat || 1) * (height - pad * 2);
+  const svg = svgNode('svg', { viewBox: `0 0 ${width} ${height}`, class: 'svg-map', 'aria-hidden': 'true' });
+  for (let tick = 0; tick < 5; tick += 1) {
+    const gx = pad + tick * (width - pad * 2) / 4; const gy = pad + tick * (height - pad * 2) / 4;
+    svg.append(svgNode('line', { x1: gx, y1: pad, x2: gx, y2: height - pad, class: 'map-grid' }), svgNode('line', { x1: pad, y1: gy, x2: width - pad, y2: gy, class: 'map-grid' }));
+  }
+  for (const [area, point] of groups) {
+    const group = svgNode('g', { class: state.filters.areas === area ? 'selected' : '' });
+    interactive(group, 'areas', area, point.count);
+    group.append(svgNode('circle', { cx: x(point.lon), cy: y(point.lat), r: 7 + point.count * 2, class: 'map-point' }));
+    group.append(svgNode('text', { x: x(point.lon) + 11, y: y(point.lat) - 10, class: 'map-label' }, `${area} · ${point.count}`));
+    svg.append(group);
+  }
+  svg.append(svgNode('text', { x: pad, y: height - 10, class: 'axis-title' }, 'Reference coordinate plot based on reviewed OpenStreetMap area anchors'));
+  container.append(svg);
+}
 function coverage(stats) {
   const labels = {
     named_establishment: 'Named establishment', reported_action: 'Reported action',
@@ -139,12 +193,13 @@ function charts(stats) {
   document.querySelectorAll('.chart-notice').forEach(element => { element.textContent = t.chartNotice; });
   timelineChart(Object.entries(stats.timeline));
   horizontalChart($('chart-areas'), Object.entries(stats.areas).sort((a, b) => b[1] - a[1]), 'areas', 'blue');
-  horizontalChart($('chart-actions'), Object.entries(stats.actions).sort((a, b) => b[1] - a[1]), 'actions', 'coral');
-  horizontalChart($('chart-establishments'), Object.entries(stats.establishments).sort((a, b) => b[1] - a[1]), 'establishments', 'amber');
-  horizontalChart($('chart-publishers'), Object.entries(stats.publishers).sort((a, b) => b[1] - a[1]), 'publishers', 'green');
-  horizontalChart($('chart-verification'), Object.entries(stats.verification), 'verification', 'green');
-  horizontalChart($('chart-menus'), Object.entries(stats.menus), 'menus', 'amber');
-  horizontalChart($('chart-business_formats'), Object.entries(stats.business_formats), 'business_formats', 'blue');
+  mapChart(state.rows);
+  donutChart($('chart-actions'), Object.entries(stats.actions).sort((a, b) => b[1] - a[1]), 'actions', ['#bd624d', '#d58b73', '#a77422', '#426b7c']);
+  donutChart($('chart-establishments'), Object.entries(stats.establishments).sort((a, b) => b[1] - a[1]), 'establishments', ['#a77422', '#d9b96e', '#426b7c', '#839fa9', '#bd624d']);
+  donutChart($('chart-publishers'), Object.entries(stats.publishers).sort((a, b) => b[1] - a[1]), 'publishers', ['#174f3c', '#3d8271', '#426b7c', '#a77422']);
+  donutChart($('chart-verification'), Object.entries(stats.verification), 'verification', ['#174f3c', '#426b7c']);
+  donutChart($('chart-menus'), Object.entries(stats.menus), 'menus', ['#a77422', '#d9b96e', '#426b7c', '#839fa9']);
+  donutChart($('chart-business_formats'), Object.entries(stats.business_formats), 'business_formats', ['#426b7c', '#6f99aa', '#a77422']);
   coverage(stats); unknowns(stats);
 }
 function renderFilters() {

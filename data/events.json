@@ -1,6 +1,6 @@
 {
   "context_notice": "Independent, non-governmental public-source research. Inclusion is not a finding of wrongdoing. Counts describe records in this tracker, not official totals, prevalence, compliance, risk or group behavior. Read the sources and preserve this context when sharing.",
-  "generated_at": "2026-09-07T21:41:20.845808+00:00",
+  "generated_at": "2026-09-07T22:30:33.418410+00:00",
   "pipeline_version": "0.2.0",
   "record_count": 35,
   "records": [
@@ -27,6 +27,12 @@
         "establishment_context_method": "publisher_explicit",
         "establishment_context_reviewed": true,
         "establishment_context_source": "https://timesofindia.indiatimes.com/city/kolkata/kmc-food-team-reaches-park-street-seizes-stale-items-from-eateries/articleshow/133774167.cms",
+        "latitude": 22.5551591,
+        "location_method": "reviewed_openstreetmap_geocode",
+        "location_precision": "neighborhood",
+        "location_reviewed": true,
+        "location_source": "https://www.openstreetmap.org/",
+        "longitude": 88.3501171,
         "menu_context": "unknown",
         "menu_context_confidence": "unknown",
         "menu_context_method": null,
@@ -48,6 +54,12 @@
           "note": "V0.2 reviewed contextual enrichment; reported facts remain source-linked.",
           "previous_record_sha256": "c67eefe36cd147cfc29250e38cc8b989243ca0145536d99643b2eb9776bab8d8",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-07T22:30:33.418410Z",
+          "note": "Release-candidate coarse geographic anchor added; not an establishment address.",
+          "previous_record_sha256": "01d393d64c7662c44817ba8dbe94bbc2bf464dc740eef9d558f16445bf8b073b",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
@@ -61,7 +73,7 @@
       },
       "pipeline_version": "0.2.0",
       "record_created_at": "2026-09-07T21:12:32.942437Z",
-      "record_updated_at": "2026-09-07T21:41:20.845808Z",
+      "record_updated_at": "2026-09-07T22:30:33.418410Z",
       "reported_fact": {
         "area": "Park Street",
         "district": null,
@@ -145,6 +157,12 @@
         "establishment_context_method": "publisher_explicit",
         "establishment_context_reviewed": true,
         "establishment_context_source": "https://timesofindia.indiatimes.com/city/kolkata/kmc-food-inspectors-knock-on-mall-eatery-doors-discards-meat-in-a-central-kolkata-restaurant/articleshow/133844089.cms",
+        "latitude": 22.5015843,
+        "location_method": "reviewed_openstreetmap_geocode",
+        "location_precision": "neighborhood",
+        "location_reviewed": true,
+        "location_source": "https://www.openstreetmap.org/",
+        "longitude": 88.36171,
         "menu_context": "unknown",
         "menu_context_confidence": "unknown",
         "menu_context_method": null,
@@ -166,6 +184,12 @@
           "note": "V0.2 reviewed contextual enrichment; reported facts remain source-linked.",
           "previous_record_sha256": "7d93b66b6e2b716a608d0b45463868941bacffb092a98b0fe9cdc5034d712d55",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-07T22:30:33.418410Z",
+          "note": "Release-candidate coarse geographic anchor added; not an establishment address.",
+          "previous_record_sha256": "17d8559990bf3d2428d0aae07fe62760558f215c5bbd565da0ba4609b0cfe888",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
@@ -179,7 +203,7 @@
       },
       "pipeline_version": "0.2.0",
       "record_created_at": "2026-09-07T21:12:32.942437Z",
-      "record_updated_at": "2026-09-07T21:41:20.845808Z",
+      "record_updated_at": "2026-09-07T22:30:33.418410Z",
       "reported_fact": {
         "area": "South City Mall",
         "district": null,
@@ -255,6 +279,12 @@
         "establishment_context_method": "publisher_explicit",
         "establishment_context_reviewed": true,
         "establishment_context_source": "https://timesofindia.indiatimes.com/city/kolkata/kmc-food-inspectors-knock-on-mall-eatery-doors-discards-meat-in-a-central-kolkata-restaurant/articleshow/133844089.cms",
+        "latitude": 22.5015843,
+        "location_method": "reviewed_openstreetmap_geocode",
+        "location_precision": "neighborhood",
+        "location_reviewed": true,
+        "location_source": "https://www.openstreetmap.org/",
+        "longitude": 88.36171,
         "menu_context": "unknown",
         "menu_context_confidence": "unknown",
         "menu_context_method": null,
@@ -276,6 +306,12 @@
           "note": "V0.2 reviewed contextual enrichment; reported facts remain source-linked.",
           "previous_record_sha256": "7678ba38c91905f7388bb2a8af569edaf5522616bdc795c2d023321a9575fc62",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-07T22:30:33.418410Z",
+          "note": "Release-candidate coarse geographic anchor added; not an establishment address.",
+          "previous_record_sha256": "c1150f733ca160807878e0f8296639338e69600bf36d9d2a48d0b6f432ca4da6",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
@@ -289,7 +325,7 @@
       },
       "pipeline_version": "0.2.0",
       "record_created_at": "2026-09-07T21:12:32.942437Z",
-      "record_updated_at": "2026-09-07T21:41:20.845808Z",
+      "record_updated_at": "2026-09-07T22:30:33.418410Z",
       "reported_fact": {
         "area": "South City Mall",
         "district": null,
@@ -365,6 +401,12 @@
         "establishment_context_method": "publisher_explicit",
         "establishment_context_reviewed": true,
         "establishment_context_source": "https://timesofindia.indiatimes.com/city/kolkata/kmc-food-team-reaches-park-street-seizes-stale-items-from-eateries/articleshow/133774167.cms",
+        "latitude": 22.4441922,
+        "location_method": "reviewed_openstreetmap_geocode",
+        "location_precision": "city",
+        "location_reviewed": true,
+        "location_source": "https://www.openstreetmap.org/",
+        "longitude": 88.4325557,
         "menu_context": "unknown",
         "menu_context_confidence": "unknown",
         "menu_context_method": null,
@@ -386,6 +428,12 @@
           "note": "V0.2 reviewed contextual enrichment; reported facts remain source-linked.",
           "previous_record_sha256": "b75eee42f064db381f37e216835fbc1838f32947f4d5ce9fd914689b350e62b6",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-07T22:30:33.418410Z",
+          "note": "Release-candidate coarse geographic anchor added; not an establishment address.",
+          "previous_record_sha256": "2dbb928632f7c1f7034c9ce370804ff77f30d7b6bde083523bc857a777f4d973",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
@@ -399,7 +447,7 @@
       },
       "pipeline_version": "0.2.0",
       "record_created_at": "2026-09-07T21:12:32.942437Z",
-      "record_updated_at": "2026-09-07T21:41:20.845808Z",
+      "record_updated_at": "2026-09-07T22:30:33.418410Z",
       "reported_fact": {
         "area": "Sonarpur",
         "district": null,
@@ -475,6 +523,12 @@
         "establishment_context_method": "publisher_explicit",
         "establishment_context_reviewed": true,
         "establishment_context_source": "https://www.businesstoday.in/amp/india/story/bengal-fda-crackdown-40kg-rotten-meat-500kg-stale-chicken-and-prawns-seized-ahead-of-durga-puja-553132-2026-09-03",
+        "latitude": null,
+        "location_method": null,
+        "location_precision": null,
+        "location_reviewed": false,
+        "location_source": null,
+        "longitude": null,
         "menu_context": "unknown",
         "menu_context_confidence": "unknown",
         "menu_context_method": null,
@@ -581,6 +635,12 @@
         "establishment_context_method": "publisher_explicit",
         "establishment_context_reviewed": true,
         "establishment_context_source": "https://www.businesstoday.in/amp/india/story/bengal-fda-crackdown-40kg-rotten-meat-500kg-stale-chicken-and-prawns-seized-ahead-of-durga-puja-553132-2026-09-03",
+        "latitude": null,
+        "location_method": null,
+        "location_precision": null,
+        "location_reviewed": false,
+        "location_source": null,
+        "longitude": null,
         "menu_context": "unknown",
         "menu_context_confidence": "unknown",
         "menu_context_method": null,
@@ -687,6 +747,12 @@
         "establishment_context_method": "publisher_explicit",
         "establishment_context_reviewed": true,
         "establishment_context_source": "https://timesofindia.indiatimes.com/city/kolkata/kmc-food-team-reaches-park-street-seizes-stale-items-from-eateries/articleshow/133774167.cms",
+        "latitude": 22.4495236,
+        "location_method": "reviewed_openstreetmap_geocode",
+        "location_precision": "neighborhood",
+        "location_reviewed": true,
+        "location_source": "https://www.openstreetmap.org/",
+        "longitude": 88.3955392,
         "menu_context": "unknown",
         "menu_context_confidence": "unknown",
         "menu_context_method": null,
@@ -708,6 +774,12 @@
           "note": "V0.2 reviewed contextual enrichment; reported facts remain source-linked.",
           "previous_record_sha256": "99d44a84d8d9b1e1506b497a0d3a30065de9f4e3662cd63440ba2ac8444ab25b",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-07T22:30:33.418410Z",
+          "note": "Release-candidate coarse geographic anchor added; not an establishment address.",
+          "previous_record_sha256": "b00985c60377fddda5735ecd165f34bcbf185c68e93a1a4b531bf8f871d2967d",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
@@ -721,7 +793,7 @@
       },
       "pipeline_version": "0.2.0",
       "record_created_at": "2026-09-07T21:12:32.942437Z",
-      "record_updated_at": "2026-09-07T21:41:20.845808Z",
+      "record_updated_at": "2026-09-07T22:30:33.418410Z",
       "reported_fact": {
         "area": "Kamalgazi",
         "district": null,
@@ -797,6 +869,12 @@
         "establishment_context_method": "publisher_explicit",
         "establishment_context_reviewed": true,
         "establishment_context_source": "https://timesofindia.indiatimes.com/city/kolkata/kmc-cracks-whip-on-dacres-lane-eateries/articleshow/133811497.cms",
+        "latitude": 22.5669959,
+        "location_method": "reviewed_openstreetmap_geocode",
+        "location_precision": "street",
+        "location_reviewed": true,
+        "location_source": "https://www.openstreetmap.org/",
+        "longitude": 88.3496854,
         "menu_context": "unknown",
         "menu_context_confidence": "unknown",
         "menu_context_method": null,
@@ -818,6 +896,12 @@
           "note": "V0.2 reviewed contextual enrichment; reported facts remain source-linked.",
           "previous_record_sha256": "442bc8321e0f5e66bd811a4d3b28825fd7f3d97dc4dff8eda4500ee2fe0c1a76",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-07T22:30:33.418410Z",
+          "note": "Release-candidate coarse geographic anchor added; not an establishment address.",
+          "previous_record_sha256": "17e8c43d2ec34490d2f9c627622b2db540b4ef381c09545b0dcb450bd1784aac",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
@@ -831,7 +915,7 @@
       },
       "pipeline_version": "0.2.0",
       "record_created_at": "2026-09-07T21:12:32.942437Z",
-      "record_updated_at": "2026-09-07T21:41:20.845808Z",
+      "record_updated_at": "2026-09-07T22:30:33.418410Z",
       "reported_fact": {
         "area": "Dacres Lane",
         "district": null,
@@ -911,6 +995,12 @@
         "establishment_context_method": "publisher_explicit",
         "establishment_context_reviewed": true,
         "establishment_context_source": "https://timesofindia.indiatimes.com/city/kolkata/kmc-food-inspectors-knock-on-mall-eatery-doors-discards-meat-in-a-central-kolkata-restaurant/articleshow/133844089.cms",
+        "latitude": null,
+        "location_method": null,
+        "location_precision": null,
+        "location_reviewed": false,
+        "location_source": null,
+        "longitude": null,
         "menu_context": "unknown",
         "menu_context_confidence": "unknown",
         "menu_context_method": null,
@@ -1025,6 +1115,12 @@
         "establishment_context_method": "publisher_explicit",
         "establishment_context_reviewed": true,
         "establishment_context_source": "https://www.businesstoday.in/amp/india/story/bengal-fda-crackdown-40kg-rotten-meat-500kg-stale-chicken-and-prawns-seized-ahead-of-durga-puja-553132-2026-09-03",
+        "latitude": null,
+        "location_method": null,
+        "location_precision": null,
+        "location_reviewed": false,
+        "location_source": null,
+        "longitude": null,
         "menu_context": "unknown",
         "menu_context_confidence": "unknown",
         "menu_context_method": null,
@@ -1131,6 +1227,12 @@
         "establishment_context_method": "publisher_explicit",
         "establishment_context_reviewed": true,
         "establishment_context_source": "https://tv9bangla.com/kolkata/west-bengal-food-safety-drive-irregularities-found-at-1525-food-centres-licences-of-13-processing-units-cancelled-1343938.html",
+        "latitude": null,
+        "location_method": null,
+        "location_precision": null,
+        "location_reviewed": false,
+        "location_source": null,
+        "longitude": null,
         "menu_context": "unknown",
         "menu_context_confidence": "unknown",
         "menu_context_method": null,
@@ -1245,6 +1347,12 @@
         "establishment_context_method": "publisher_explicit",
         "establishment_context_reviewed": true,
         "establishment_context_source": "https://timesofindia.indiatimes.com/city/kolkata/kmc-food-inspectors-knock-on-mall-eatery-doors-discards-meat-in-a-central-kolkata-restaurant/articleshow/133844089.cms",
+        "latitude": null,
+        "location_method": null,
+        "location_precision": null,
+        "location_reviewed": false,
+        "location_source": null,
+        "longitude": null,
         "menu_context": "unknown",
         "menu_context_confidence": "unknown",
         "menu_context_method": null,
@@ -1359,6 +1467,12 @@
         "establishment_context_method": null,
         "establishment_context_reviewed": false,
         "establishment_context_source": null,
+        "latitude": 22.6211141,
+        "location_method": "reviewed_openstreetmap_geocode",
+        "location_precision": "neighborhood",
+        "location_reviewed": true,
+        "location_source": "https://www.openstreetmap.org/",
+        "longitude": 88.3928973,
         "menu_context": "unknown",
         "menu_context_confidence": "unknown",
         "menu_context_method": null,
@@ -1380,6 +1494,12 @@
           "note": "V0.2 reviewed contextual enrichment; reported facts remain source-linked.",
           "previous_record_sha256": "48c1407578b49d5305d0d4fd65c89dad6c83033b79bd98697c68b939d1d2f334",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-07T22:30:33.418410Z",
+          "note": "Release-candidate coarse geographic anchor added; not an establishment address.",
+          "previous_record_sha256": "e6b9e9060a5bf0f654556bf0ecbb9ac62a37dda91c3a0f79a0f7a9b17d242b7a",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
@@ -1393,7 +1513,7 @@
       },
       "pipeline_version": "0.2.0",
       "record_created_at": "2026-09-07T21:12:32.942437Z",
-      "record_updated_at": "2026-09-07T21:41:20.845808Z",
+      "record_updated_at": "2026-09-07T22:30:33.418410Z",
       "reported_fact": {
         "area": "Dum Dum",
         "district": null,
@@ -1469,6 +1589,12 @@
         "establishment_context_method": "publisher_explicit",
         "establishment_context_reviewed": true,
         "establishment_context_source": "https://timesofindia.indiatimes.com/city/kolkata/kmc-food-inspectors-knock-on-mall-eatery-doors-discards-meat-in-a-central-kolkata-restaurant/articleshow/133844089.cms",
+        "latitude": null,
+        "location_method": null,
+        "location_precision": null,
+        "location_reviewed": false,
+        "location_source": null,
+        "longitude": null,
         "menu_context": "unknown",
         "menu_context_confidence": "unknown",
         "menu_context_method": null,
@@ -1583,6 +1709,12 @@
         "establishment_context_method": "publisher_explicit",
         "establishment_context_reviewed": true,
         "establishment_context_source": "https://tv9bangla.com/kolkata/west-bengal-food-safety-drive-irregularities-found-at-1525-food-centres-licences-of-13-processing-units-cancelled-1343938.html",
+        "latitude": 22.5754543,
+        "location_method": "reviewed_openstreetmap_geocode",
+        "location_precision": "neighborhood",
+        "location_reviewed": true,
+        "location_source": "https://www.openstreetmap.org/",
+        "longitude": 88.4322569,
         "menu_context": "unknown",
         "menu_context_confidence": "unknown",
         "menu_context_method": null,
@@ -1604,6 +1736,12 @@
           "note": "V0.2 reviewed contextual enrichment; reported facts remain source-linked.",
           "previous_record_sha256": "f65c38c4725b919ad17accc2f4e48b42295189a6ef551aad711c2487f99c236b",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-07T22:30:33.418410Z",
+          "note": "Release-candidate coarse geographic anchor added; not an establishment address.",
+          "previous_record_sha256": "1c7edf4a545f9ad4c81e6d576405c4dc545f163847b82e24d692e6a0889ee03c",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
@@ -1617,7 +1755,7 @@
       },
       "pipeline_version": "0.2.0",
       "record_created_at": "2026-09-07T21:12:32.942437Z",
-      "record_updated_at": "2026-09-07T21:41:20.845808Z",
+      "record_updated_at": "2026-09-07T22:30:33.418410Z",
       "reported_fact": {
         "area": "সেক্টর ফাইভের আরডিবি মলের",
         "district": null,
@@ -1697,6 +1835,12 @@
         "establishment_context_method": "publisher_explicit",
         "establishment_context_reviewed": true,
         "establishment_context_source": "https://www.businesstoday.in/amp/india/story/bengal-fda-crackdown-40kg-rotten-meat-500kg-stale-chicken-and-prawns-seized-ahead-of-durga-puja-553132-2026-09-03",
+        "latitude": 21.623077,
+        "location_method": "reviewed_openstreetmap_geocode",
+        "location_precision": "city",
+        "location_reviewed": true,
+        "location_source": "https://www.openstreetmap.org/",
+        "longitude": 87.5082534,
         "menu_context": "unknown",
         "menu_context_confidence": "unknown",
         "menu_context_method": null,
@@ -1718,6 +1862,12 @@
           "note": "V0.2 reviewed contextual enrichment; reported facts remain source-linked.",
           "previous_record_sha256": "c173b8d80aca36ff73cab6d5310df5e7e4f316921f594d90a7814362294cf8ef",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-07T22:30:33.418410Z",
+          "note": "Release-candidate coarse geographic anchor added; not an establishment address.",
+          "previous_record_sha256": "c916df7151ec380cda054602326c61d72feeb79469705806b2dbadd62bc9a9a3",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
@@ -1731,7 +1881,7 @@
       },
       "pipeline_version": "0.2.0",
       "record_created_at": "2026-09-07T21:12:32.942437Z",
-      "record_updated_at": "2026-09-07T21:41:20.845808Z",
+      "record_updated_at": "2026-09-07T22:30:33.418410Z",
       "reported_fact": {
         "area": "Digha",
         "district": null,
@@ -1807,6 +1957,12 @@
         "establishment_context_method": "publisher_explicit",
         "establishment_context_reviewed": true,
         "establishment_context_source": "https://timesofindia.indiatimes.com/city/kolkata/kmc-food-inspectors-knock-on-mall-eatery-doors-discards-meat-in-a-central-kolkata-restaurant/articleshow/133844089.cms",
+        "latitude": null,
+        "location_method": null,
+        "location_precision": null,
+        "location_reviewed": false,
+        "location_source": null,
+        "longitude": null,
         "menu_context": "unknown",
         "menu_context_confidence": "unknown",
         "menu_context_method": null,
@@ -1921,6 +2077,12 @@
         "establishment_context_method": "publisher_explicit",
         "establishment_context_reviewed": true,
         "establishment_context_source": "https://timesofindia.indiatimes.com/city/kolkata/kmc-cracks-whip-on-dacres-lane-eateries/articleshow/133811497.cms",
+        "latitude": 22.5669959,
+        "location_method": "reviewed_openstreetmap_geocode",
+        "location_precision": "street",
+        "location_reviewed": true,
+        "location_source": "https://www.openstreetmap.org/",
+        "longitude": 88.3496854,
         "menu_context": "unknown",
         "menu_context_confidence": "unknown",
         "menu_context_method": null,
@@ -1942,6 +2104,12 @@
           "note": "V0.2 reviewed contextual enrichment; reported facts remain source-linked.",
           "previous_record_sha256": "679f2a4939cae6319967829e64d322c1e1fbad5ae98bc155e9cc6ffcbb9a3313",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-07T22:30:33.418410Z",
+          "note": "Release-candidate coarse geographic anchor added; not an establishment address.",
+          "previous_record_sha256": "64ddebf053f506a2744ded4c1d6ef2f0c8101d65eb7733adba11516a0990fd5c",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
@@ -1955,7 +2123,7 @@
       },
       "pipeline_version": "0.2.0",
       "record_created_at": "2026-09-07T21:12:32.942437Z",
-      "record_updated_at": "2026-09-07T21:41:20.845808Z",
+      "record_updated_at": "2026-09-07T22:30:33.418410Z",
       "reported_fact": {
         "area": "Dacres Lane",
         "district": null,
@@ -2035,6 +2203,12 @@
         "establishment_context_method": "publisher_explicit",
         "establishment_context_reviewed": true,
         "establishment_context_source": "https://tv9bangla.com/kolkata/west-bengal-food-safety-drive-irregularities-found-at-1525-food-centres-licences-of-13-processing-units-cancelled-1343938.html",
+        "latitude": null,
+        "location_method": null,
+        "location_precision": null,
+        "location_reviewed": false,
+        "location_source": null,
+        "longitude": null,
         "menu_context": "unknown",
         "menu_context_confidence": "unknown",
         "menu_context_method": null,
@@ -2149,6 +2323,12 @@
         "establishment_context_method": "publisher_explicit",
         "establishment_context_reviewed": true,
         "establishment_context_source": "https://www.businesstoday.in/amp/india/story/bengal-fda-crackdown-40kg-rotten-meat-500kg-stale-chicken-and-prawns-seized-ahead-of-durga-puja-553132-2026-09-03",
+        "latitude": 22.7797328,
+        "location_method": "reviewed_openstreetmap_geocode",
+        "location_precision": "city",
+        "location_reviewed": true,
+        "location_source": "https://www.openstreetmap.org/",
+        "longitude": 88.7925594,
         "menu_context": "unknown",
         "menu_context_confidence": "unknown",
         "menu_context_method": null,
@@ -2170,6 +2350,12 @@
           "note": "V0.2 reviewed contextual enrichment; reported facts remain source-linked.",
           "previous_record_sha256": "78d61d6c87af63a8a851d1bb9dc93f5d60a9d4d62feb4ac1d58c1bf74c8c4d37",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-07T22:30:33.418410Z",
+          "note": "Release-candidate coarse geographic anchor added; not an establishment address.",
+          "previous_record_sha256": "a6de4d774bcc31fdfa6479895aa68df3576871cb98f41d52192cb65f38380395",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
@@ -2183,7 +2369,7 @@
       },
       "pipeline_version": "0.2.0",
       "record_created_at": "2026-09-07T21:12:32.942437Z",
-      "record_updated_at": "2026-09-07T21:41:20.845808Z",
+      "record_updated_at": "2026-09-07T22:30:33.418410Z",
       "reported_fact": {
         "area": "Baduria",
         "district": null,
@@ -2263,6 +2449,12 @@
         "establishment_context_method": null,
         "establishment_context_reviewed": false,
         "establishment_context_source": null,
+        "latitude": 22.5903989,
+        "location_method": "reviewed_openstreetmap_geocode",
+        "location_precision": "neighborhood",
+        "location_reviewed": true,
+        "location_source": "https://www.openstreetmap.org/",
+        "longitude": 88.3571238,
         "menu_context": "unknown",
         "menu_context_confidence": "unknown",
         "menu_context_method": null,
@@ -2284,6 +2476,12 @@
           "note": "V0.2 reviewed contextual enrichment; reported facts remain source-linked.",
           "previous_record_sha256": "6bc43cafa9c5e945149184316474d5c73df9455da16c6cd4bf7c1568576410dd",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-07T22:30:33.418410Z",
+          "note": "Release-candidate coarse geographic anchor added; not an establishment address.",
+          "previous_record_sha256": "83c35c678553531f3c9666d107fb85245c21ea22a54aaad824ce841db9be0f12",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
@@ -2297,7 +2495,7 @@
       },
       "pipeline_version": "0.2.0",
       "record_created_at": "2026-09-07T21:12:32.942437Z",
-      "record_updated_at": "2026-09-07T21:41:20.845808Z",
+      "record_updated_at": "2026-09-07T22:30:33.418410Z",
       "reported_fact": {
         "area": "Jorabagan",
         "district": null,
@@ -2373,6 +2571,12 @@
         "establishment_context_method": "publisher_explicit",
         "establishment_context_reviewed": true,
         "establishment_context_source": "https://timesofindia.indiatimes.com/city/kolkata/kmc-food-team-reaches-park-street-seizes-stale-items-from-eateries/articleshow/133774167.cms",
+        "latitude": 22.5551591,
+        "location_method": "reviewed_openstreetmap_geocode",
+        "location_precision": "neighborhood",
+        "location_reviewed": true,
+        "location_source": "https://www.openstreetmap.org/",
+        "longitude": 88.3501171,
         "menu_context": "unknown",
         "menu_context_confidence": "unknown",
         "menu_context_method": null,
@@ -2394,6 +2598,12 @@
           "note": "V0.2 reviewed contextual enrichment; reported facts remain source-linked.",
           "previous_record_sha256": "7064e5f413d71573ea93ba8e3cd4d2408913b605d67efa5f8bb14b4453ef8e1f",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-07T22:30:33.418410Z",
+          "note": "Release-candidate coarse geographic anchor added; not an establishment address.",
+          "previous_record_sha256": "f92959427e91a3b3ddb183cd5759541d1b5d9d41c08895ea658549b10d4db713",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
@@ -2407,7 +2617,7 @@
       },
       "pipeline_version": "0.2.0",
       "record_created_at": "2026-09-07T21:12:32.942437Z",
-      "record_updated_at": "2026-09-07T21:41:20.845808Z",
+      "record_updated_at": "2026-09-07T22:30:33.418410Z",
       "reported_fact": {
         "area": "Park Street",
         "district": null,
@@ -2491,6 +2701,12 @@
         "establishment_context_method": "publisher_explicit",
         "establishment_context_reviewed": true,
         "establishment_context_source": "https://timesofindia.indiatimes.com/city/kolkata/kmc-cracks-whip-on-dacres-lane-eateries/articleshow/133811497.cms",
+        "latitude": 22.5669959,
+        "location_method": "reviewed_openstreetmap_geocode",
+        "location_precision": "street",
+        "location_reviewed": true,
+        "location_source": "https://www.openstreetmap.org/",
+        "longitude": 88.3496854,
         "menu_context": "unknown",
         "menu_context_confidence": "unknown",
         "menu_context_method": null,
@@ -2512,6 +2728,12 @@
           "note": "V0.2 reviewed contextual enrichment; reported facts remain source-linked.",
           "previous_record_sha256": "2268555b67e67e066710f088e2a73c47310ee2e6b793914a521e7b2fa0d80f9a",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-07T22:30:33.418410Z",
+          "note": "Release-candidate coarse geographic anchor added; not an establishment address.",
+          "previous_record_sha256": "20d1490d6f0afc47a80e1a9abf911764f224321c1789451353bbbfc8192aa3fb",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
@@ -2525,7 +2747,7 @@
       },
       "pipeline_version": "0.2.0",
       "record_created_at": "2026-09-07T21:12:32.942437Z",
-      "record_updated_at": "2026-09-07T21:41:20.845808Z",
+      "record_updated_at": "2026-09-07T22:30:33.418410Z",
       "reported_fact": {
         "area": "Dacres Lane",
         "district": null,
@@ -2605,6 +2827,12 @@
         "establishment_context_method": "publisher_explicit",
         "establishment_context_reviewed": true,
         "establishment_context_source": "https://timesofindia.indiatimes.com/city/kolkata/kmc-food-inspectors-knock-on-mall-eatery-doors-discards-meat-in-a-central-kolkata-restaurant/articleshow/133844089.cms",
+        "latitude": 22.5015843,
+        "location_method": "reviewed_openstreetmap_geocode",
+        "location_precision": "neighborhood",
+        "location_reviewed": true,
+        "location_source": "https://www.openstreetmap.org/",
+        "longitude": 88.36171,
         "menu_context": "unknown",
         "menu_context_confidence": "unknown",
         "menu_context_method": null,
@@ -2626,6 +2854,12 @@
           "note": "V0.2 reviewed contextual enrichment; reported facts remain source-linked.",
           "previous_record_sha256": "2d1cb67b73d297306908b46004a2af2dc0fa041563d7c8a30c23755d371911a4",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-07T22:30:33.418410Z",
+          "note": "Release-candidate coarse geographic anchor added; not an establishment address.",
+          "previous_record_sha256": "e4fe953fb303f09b900dafc111c6c79e880d9322c131587234426a70105e6187",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
@@ -2639,7 +2873,7 @@
       },
       "pipeline_version": "0.2.0",
       "record_created_at": "2026-09-07T21:12:32.942437Z",
-      "record_updated_at": "2026-09-07T21:41:20.845808Z",
+      "record_updated_at": "2026-09-07T22:30:33.418410Z",
       "reported_fact": {
         "area": "South City Mall",
         "district": null,
@@ -2715,6 +2949,12 @@
         "establishment_context_method": "publisher_explicit",
         "establishment_context_reviewed": true,
         "establishment_context_source": "https://timesofindia.indiatimes.com/city/kolkata/kmc-food-team-reaches-park-street-seizes-stale-items-from-eateries/articleshow/133774167.cms",
+        "latitude": 22.5551591,
+        "location_method": "reviewed_openstreetmap_geocode",
+        "location_precision": "neighborhood",
+        "location_reviewed": true,
+        "location_source": "https://www.openstreetmap.org/",
+        "longitude": 88.3501171,
         "menu_context": "unknown",
         "menu_context_confidence": "unknown",
         "menu_context_method": null,
@@ -2736,6 +2976,12 @@
           "note": "V0.2 reviewed contextual enrichment; reported facts remain source-linked.",
           "previous_record_sha256": "7360ea5bcd4c8c154b031285bced5aa317c38758cd89eec52b5cf506f3d27f33",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-07T22:30:33.418410Z",
+          "note": "Release-candidate coarse geographic anchor added; not an establishment address.",
+          "previous_record_sha256": "d030480185847c07958f9c5bd90ec6608799900e0650e9b84a91e6f0607a9a43",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
@@ -2749,7 +2995,7 @@
       },
       "pipeline_version": "0.2.0",
       "record_created_at": "2026-09-07T21:12:32.942437Z",
-      "record_updated_at": "2026-09-07T21:41:20.845808Z",
+      "record_updated_at": "2026-09-07T22:30:33.418410Z",
       "reported_fact": {
         "area": "Park Street",
         "district": null,
@@ -2833,6 +3079,12 @@
         "establishment_context_method": "publisher_explicit",
         "establishment_context_reviewed": true,
         "establishment_context_source": "https://timesofindia.indiatimes.com/city/kolkata/kmc-food-team-reaches-park-street-seizes-stale-items-from-eateries/articleshow/133774167.cms",
+        "latitude": 22.5551591,
+        "location_method": "reviewed_openstreetmap_geocode",
+        "location_precision": "neighborhood",
+        "location_reviewed": true,
+        "location_source": "https://www.openstreetmap.org/",
+        "longitude": 88.3501171,
         "menu_context": "unknown",
         "menu_context_confidence": "unknown",
         "menu_context_method": null,
@@ -2854,6 +3106,12 @@
           "note": "V0.2 reviewed contextual enrichment; reported facts remain source-linked.",
           "previous_record_sha256": "6e09cadd4283a1cad12580a10428e5d5dbca91b84bec2e5446e77234bd50a234",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-07T22:30:33.418410Z",
+          "note": "Release-candidate coarse geographic anchor added; not an establishment address.",
+          "previous_record_sha256": "56fa8959a6cd608b93545670f25c1b7649d7687fdff14ebee83ae6e8e5aa0e47",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
@@ -2867,7 +3125,7 @@
       },
       "pipeline_version": "0.2.0",
       "record_created_at": "2026-09-07T21:12:32.942437Z",
-      "record_updated_at": "2026-09-07T21:41:20.845808Z",
+      "record_updated_at": "2026-09-07T22:30:33.418410Z",
       "reported_fact": {
         "area": "Park Street",
         "district": null,
@@ -2951,6 +3209,12 @@
         "establishment_context_method": "publisher_explicit",
         "establishment_context_reviewed": true,
         "establishment_context_source": "https://tv9bangla.com/kolkata/west-bengal-food-safety-drive-irregularities-found-at-1525-food-centres-licences-of-13-processing-units-cancelled-1343938.html",
+        "latitude": null,
+        "location_method": null,
+        "location_precision": null,
+        "location_reviewed": false,
+        "location_source": null,
+        "longitude": null,
         "menu_context": "unknown",
         "menu_context_confidence": "unknown",
         "menu_context_method": null,
@@ -3065,6 +3329,12 @@
         "establishment_context_method": "publisher_explicit",
         "establishment_context_reviewed": true,
         "establishment_context_source": "https://timesofindia.indiatimes.com/city/kolkata/on-last-day-of-food-safety-drive-kmc-targets-fish-paneer-and-spice-hubs/articleshow/133893508.cms",
+        "latitude": 22.5197789,
+        "location_method": "reviewed_openstreetmap_geocode",
+        "location_precision": "neighborhood",
+        "location_reviewed": true,
+        "location_source": "https://www.openstreetmap.org/",
+        "longitude": 88.3654297,
         "menu_context": "unknown",
         "menu_context_confidence": "unknown",
         "menu_context_method": null,
@@ -3086,6 +3356,12 @@
           "note": "V0.2 reviewed contextual enrichment; reported facts remain source-linked.",
           "previous_record_sha256": "e6a638aca6f5a20527762f4ef1fc5d580135dc30b4aceab33d80cb5ebd456e66",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-07T22:30:33.418410Z",
+          "note": "Release-candidate coarse geographic anchor added; not an establishment address.",
+          "previous_record_sha256": "b23169f99b6c21a117fef1a6bbb5be01e50fb06ca7925e8c1170bb68bbe63293",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
@@ -3099,7 +3375,7 @@
       },
       "pipeline_version": "0.2.0",
       "record_created_at": "2026-09-07T21:12:32.942437Z",
-      "record_updated_at": "2026-09-07T21:41:20.845808Z",
+      "record_updated_at": "2026-09-07T22:30:33.418410Z",
       "reported_fact": {
         "area": "Gariahat",
         "district": null,
@@ -3179,6 +3455,12 @@
         "establishment_context_method": "publisher_explicit",
         "establishment_context_reviewed": true,
         "establishment_context_source": "https://timesofindia.indiatimes.com/city/kolkata/kmc-food-team-reaches-park-street-seizes-stale-items-from-eateries/articleshow/133774167.cms",
+        "latitude": 22.5551591,
+        "location_method": "reviewed_openstreetmap_geocode",
+        "location_precision": "neighborhood",
+        "location_reviewed": true,
+        "location_source": "https://www.openstreetmap.org/",
+        "longitude": 88.3501171,
         "menu_context": "unknown",
         "menu_context_confidence": "unknown",
         "menu_context_method": null,
@@ -3200,6 +3482,12 @@
           "note": "V0.2 reviewed contextual enrichment; reported facts remain source-linked.",
           "previous_record_sha256": "bdf5c745ab41de92d39262845f475437861fd3a383558884f613bd8e6d1911a2",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-07T22:30:33.418410Z",
+          "note": "Release-candidate coarse geographic anchor added; not an establishment address.",
+          "previous_record_sha256": "4c4ef28ed0a2fc15eaaa5ad6df9fbd76d4b4acf84d30961fb5344b25688b2d80",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
@@ -3213,7 +3501,7 @@
       },
       "pipeline_version": "0.2.0",
       "record_created_at": "2026-09-07T21:12:32.942437Z",
-      "record_updated_at": "2026-09-07T21:41:20.845808Z",
+      "record_updated_at": "2026-09-07T22:30:33.418410Z",
       "reported_fact": {
         "area": "Park Street",
         "district": null,
@@ -3297,6 +3585,12 @@
         "establishment_context_method": "publisher_explicit",
         "establishment_context_reviewed": true,
         "establishment_context_source": "https://timesofindia.indiatimes.com/city/kolkata/kmc-cracks-whip-on-dacres-lane-eateries/articleshow/133811497.cms",
+        "latitude": 22.5669959,
+        "location_method": "reviewed_openstreetmap_geocode",
+        "location_precision": "street",
+        "location_reviewed": true,
+        "location_source": "https://www.openstreetmap.org/",
+        "longitude": 88.3496854,
         "menu_context": "unknown",
         "menu_context_confidence": "unknown",
         "menu_context_method": null,
@@ -3318,6 +3612,12 @@
           "note": "V0.2 reviewed contextual enrichment; reported facts remain source-linked.",
           "previous_record_sha256": "ed1a6a7dfc1a9a0d3d7f4b952279f9a03cd26401bb097022705aa797fa30a8af",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-07T22:30:33.418410Z",
+          "note": "Release-candidate coarse geographic anchor added; not an establishment address.",
+          "previous_record_sha256": "04e4bc5b08d5c6d9282e8e0d944be0f23cb4247291692c4dcacce15a831e6361",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
@@ -3331,7 +3631,7 @@
       },
       "pipeline_version": "0.2.0",
       "record_created_at": "2026-09-07T21:12:32.942437Z",
-      "record_updated_at": "2026-09-07T21:41:20.845808Z",
+      "record_updated_at": "2026-09-07T22:30:33.418410Z",
       "reported_fact": {
         "area": "Dacres Lane",
         "district": null,
@@ -3411,6 +3711,12 @@
         "establishment_context_method": "publisher_explicit",
         "establishment_context_reviewed": true,
         "establishment_context_source": "https://timesofindia.indiatimes.com/city/kolkata/on-last-day-of-food-safety-drive-kmc-targets-fish-paneer-and-spice-hubs/articleshow/133893508.cms",
+        "latitude": 22.5704924,
+        "location_method": "reviewed_openstreetmap_geocode",
+        "location_precision": "neighborhood",
+        "location_reviewed": true,
+        "location_source": "https://www.openstreetmap.org/",
+        "longitude": 88.3615602,
         "menu_context": "unknown",
         "menu_context_confidence": "unknown",
         "menu_context_method": null,
@@ -3432,6 +3738,12 @@
           "note": "V0.2 reviewed contextual enrichment; reported facts remain source-linked.",
           "previous_record_sha256": "23d6243a92ebd21e01c52395b1b0ff1ab4b07b5bb1414bc00f86057e12630fe2",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-07T22:30:33.418410Z",
+          "note": "Release-candidate coarse geographic anchor added; not an establishment address.",
+          "previous_record_sha256": "cd9e4c98f22a4b183d9ef2954d55fdf68474563d840e5a17a1e55de6e2c8907a",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
@@ -3445,7 +3757,7 @@
       },
       "pipeline_version": "0.2.0",
       "record_created_at": "2026-09-07T21:12:32.942437Z",
-      "record_updated_at": "2026-09-07T21:41:20.845808Z",
+      "record_updated_at": "2026-09-07T22:30:33.418410Z",
       "reported_fact": {
         "area": "Bowbazar",
         "district": null,
@@ -3525,6 +3837,12 @@
         "establishment_context_method": "publisher_explicit",
         "establishment_context_reviewed": true,
         "establishment_context_source": "https://timesofindia.indiatimes.com/city/kolkata/kmc-mulls-action-against-eatery/articleshow/133744154.cms",
+        "latitude": 22.5565107,
+        "location_method": "reviewed_openstreetmap_geocode",
+        "location_precision": "neighborhood",
+        "location_reviewed": true,
+        "location_source": "https://www.openstreetmap.org/",
+        "longitude": 88.3795946,
         "menu_context": "unknown",
         "menu_context_confidence": "unknown",
         "menu_context_method": null,
@@ -3546,6 +3864,12 @@
           "note": "V0.2 reviewed contextual enrichment; reported facts remain source-linked.",
           "previous_record_sha256": "6b5d3c313a19238c35ecab63d411bb3f7bd5a1f739eb4299a88b838fa1d66bca",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-07T22:30:33.418410Z",
+          "note": "Release-candidate coarse geographic anchor added; not an establishment address.",
+          "previous_record_sha256": "7d566fa7ebc52ae1fc1afa6473537480d2986a7388d1a56b3b183650116aa902",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
@@ -3559,7 +3883,7 @@
       },
       "pipeline_version": "0.2.0",
       "record_created_at": "2026-09-07T21:12:32.942437Z",
-      "record_updated_at": "2026-09-07T21:41:20.845808Z",
+      "record_updated_at": "2026-09-07T22:30:33.418410Z",
       "reported_fact": {
         "area": "Tangra",
         "district": null,
@@ -3639,6 +3963,12 @@
         "establishment_context_method": "publisher_explicit",
         "establishment_context_reviewed": true,
         "establishment_context_source": "https://timesofindia.indiatimes.com/city/kolkata/on-last-day-of-food-safety-drive-kmc-targets-fish-paneer-and-spice-hubs/articleshow/133893508.cms",
+        "latitude": null,
+        "location_method": null,
+        "location_precision": null,
+        "location_reviewed": false,
+        "location_source": null,
+        "longitude": null,
         "menu_context": "unknown",
         "menu_context_confidence": "unknown",
         "menu_context_method": null,
@@ -3753,6 +4083,12 @@
         "establishment_context_method": null,
         "establishment_context_reviewed": false,
         "establishment_context_source": null,
+        "latitude": 22.5163786,
+        "location_method": "reviewed_openstreetmap_geocode",
+        "location_precision": "neighborhood",
+        "location_reviewed": true,
+        "location_source": "https://www.openstreetmap.org/",
+        "longitude": 88.3487233,
         "menu_context": "unknown",
         "menu_context_confidence": "unknown",
         "menu_context_method": null,
@@ -3774,6 +4110,12 @@
           "note": "V0.2 reviewed contextual enrichment; reported facts remain source-linked.",
           "previous_record_sha256": "bac3cc5cf0bc12dfa649fd5a256b1389b23ff59bec03a8fc4ac0c35206cdf98c",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-07T22:30:33.418410Z",
+          "note": "Release-candidate coarse geographic anchor added; not an establishment address.",
+          "previous_record_sha256": "8ed9ad30937aba7cdf7d7d92756c3662bf41666ecdf7814f371b63ab97e13be7",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
@@ -3787,7 +4129,7 @@
       },
       "pipeline_version": "0.2.0",
       "record_created_at": "2026-09-07T21:12:32.942437Z",
-      "record_updated_at": "2026-09-07T21:41:20.845808Z",
+      "record_updated_at": "2026-09-07T22:30:33.418410Z",
       "reported_fact": {
         "area": "Lake Market",
         "district": null,
@@ -3867,6 +4209,12 @@
         "establishment_context_method": "publisher_explicit",
         "establishment_context_reviewed": true,
         "establishment_context_source": "https://tv9bangla.com/kolkata/west-bengal-food-safety-drive-irregularities-found-at-1525-food-centres-licences-of-13-processing-units-cancelled-1343938.html",
+        "latitude": null,
+        "location_method": null,
+        "location_precision": null,
+        "location_reviewed": false,
+        "location_source": null,
+        "longitude": null,
         "menu_context": "unknown",
         "menu_context_confidence": "unknown",
         "menu_context_method": null,

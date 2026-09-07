@@ -62,6 +62,7 @@ MenuMethod = Literal[
     "reviewed_external_menu",
 ]
 BusinessFormat = Literal["independent", "chain_group", "unknown"]
+LocationPrecision = Literal["establishment", "street", "neighborhood", "city", "district"]
 
 
 class StrictModel(BaseModel):
@@ -127,6 +128,12 @@ class Facts(StrictModel):
 
 class DerivedContext(StrictModel):
     normalized_area: Text | None = None
+    latitude: float | None = Field(default=None, ge=-90, le=90)
+    longitude: float | None = Field(default=None, ge=-180, le=180)
+    location_precision: LocationPrecision | None = None
+    location_source: URL | None = None
+    location_method: Literal["reviewed_openstreetmap_geocode"] | None = None
+    location_reviewed: bool = False
     action_category: Action = "not reported"
     action_category_source: URL | None = None
     action_category_method: Literal["publisher_explicit", "reviewed_source_context"] | None = None
@@ -157,6 +164,25 @@ class DerivedContext(StrictModel):
 
     @model_validator(mode="after")
     def evidence_for_context(self):
+        has_location = self.latitude is not None or self.longitude is not None
+        if has_location and (
+            self.latitude is None
+            or self.longitude is None
+            or not self.location_precision
+            or not self.location_source
+            or not self.location_method
+            or not self.location_reviewed
+        ):
+            raise ValueError("location_context_requires_reviewed_source")
+        if not has_location and any(
+            [
+                self.location_precision,
+                self.location_source,
+                self.location_method,
+                self.location_reviewed,
+            ]
+        ):
+            raise ValueError("unknown_location_must_not_claim_precision")
         groups = [
             (
                 self.action_category != "not reported",

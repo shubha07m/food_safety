@@ -25,6 +25,8 @@ The authoritative executable schema is src/food_safety/models.py. Unknown fields
 | derived_context | Contextual metadata; never part of reported_fact |
 | display_summary | Deterministic neutral public copy generated only from validated structured fields |
 | normalized_area | Reviewed geographic normalization; never a fabricated coordinate |
+| latitude / longitude / location_precision | Optional reviewed coarse OpenStreetMap area anchor; never an establishment address or geographic-prevalence claim. |
+| location_source / location_method / location_reviewed | Required provenance for every coordinate; ambiguous and district-only locations remain unmapped. |
 | action_category | Reviewed grouping: inspection/visit only, sample collected, food discarded/destroyed, seizure reported, notice/advisory, lab result, multiple actions, not reported or other |
 | establishment_context | restaurant/eatery, chain/group, mall/food court, sweet shop/bakery, market/vendor, hotel/hospitality, other or unknown |
 | menu_context | veg_only, non_veg, mixed or unknown |

@@ -2,6 +2,8 @@
 
 Independent public-source research. **Not a government database. Inclusion is not a finding of wrongdoing.**
 
+**Public-beta release candidate.** No deployment is enabled by this repository.
+
 This private evaluation project structures publicly reported food-safety events in West Bengal, initially emphasizing Kolkata and nearby areas. Every published fact carries source evidence; every chart opens its contributing records. The current dataset is a reviewed initial real-source sample. The preserved [design prototype](Wb-Food-Safety-Tracker.html) is illustrative and is not a source dataset.
 
 Read [Disclaimer](DISCLAIMER.md), [Methodology](METHODOLOGY.md), [Corrections](CORRECTIONS.md) and [Privacy](PRIVACY.md) before using the data. The policy wording is a draft, not legal advice or legal immunity. India-qualified counsel should review it before broad public launch.
@@ -58,7 +60,7 @@ The input is capped at 12,000 characters, output at 250 tokens and 32 KiB, with 
 
 CI runs lint, fixtures, browser-data logic, schema validation, static build and a dependency audit in conda `food`. Action versions are pinned to commit SHAs; credentials are not persisted by checkout. Pull requests never run a crawler or access paid API keys.
 
-The source-update workflow is manual-only. A six-hour schedule is present as commented configuration. `auto_publish: false` and `AUTO_PUBLISH=false` are the defaults. The workflow produces review artifacts with seven-day retention; it does not commit or deploy. Enabling these switches alone cannot bypass human review. A production automation adapter and publication process need separate review.
+The source-update workflow supports maintainer-only manual dispatch and a bounded six-hour schedule. `auto_publish: false` and `AUTO_PUBLISH=false` are the defaults. The workflow produces review artifacts with seven-day retention; it does not commit or deploy. These switches cannot bypass human review.
 
 Deployment is prepared for [Cloudflare Pages or GitHub Pages](docs/DEPLOYMENT.md) but is not enabled. The repository must remain private during evaluation. Before changing visibility, inspect pending/history content and Issues: private audit material is not suitable for automatic public release. Establish a publicly accessible correction channel and obtain legal review before public promotion.
 
@@ -79,4 +81,4 @@ MIT applies to project-authored code/documentation; it does not relicense third-
 
 ## Next research step
 
-The current private evaluation dataset contains a reviewed initial real-source sample. The next research stage focuses on source diversification and independent cross-source verification before any public release. Larger ingestion, stronger date normalization, wider entity resolution and optional official-bulletin extraction remain future work.
+The release candidate contains a reviewed initial real-source sample. The next research stage focuses on source diversification and independent cross-source verification. Before public promotion, complete [the public release checklist](docs/PUBLIC_RELEASE_CHECKLIST.md) and run `scripts/release_public_beta.sh --confirm-public-release`; it validates but does not deploy unless the explicit Cloudflare option is used.

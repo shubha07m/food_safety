@@ -127,6 +127,15 @@ def aggregates(records):
         "business_formats": count(lambda r: r.derived_context.business_format),
         "publishers": count(lambda r: r.sources[0].source_publisher),
         "verification": count(lambda r: r.verification_status),
+        "map_coverage": {
+            "mapped_records": sum(
+                r.derived_context.latitude is not None and r.derived_context.longitude is not None
+                for r in records
+            ),
+            "precision": count(
+                lambda r: r.derived_context.location_precision or "not mapped"
+            ),
+        },
         "coverage": {
             "named_establishment": sum(bool(r.reported_fact.establishment_name) for r in records),
             "reported_action": sum(bool(r.reported_fact.reported_action) for r in records),
@@ -163,6 +172,9 @@ def csv_text(records, generated_at=""):
             "establishment_context",
             "menu_context",
             "business_format",
+            "latitude",
+            "longitude",
+            "location_precision",
             "source_urls",
             "verification_status",
             "context_notice",
@@ -188,6 +200,9 @@ def csv_text(records, generated_at=""):
             record.derived_context.establishment_context,
             record.derived_context.menu_context,
             record.derived_context.business_format,
+            record.derived_context.latitude,
+            record.derived_context.longitude,
+            record.derived_context.location_precision,
             " | ".join(s.source_url for s in record.sources),
             record.verification_status,
             CONTEXT,
@@ -245,6 +260,19 @@ def build(root):
         {**status, "published_count": counts["published"], "pending_count": counts["pending"]},
     )
     dump(site / "repository.json", {"url": counts["repository_url"]})
+    mapped = [
+        {
+            "event_id": r.event_id,
+            "area": r.derived_context.normalized_area or r.reported_fact.area,
+            "latitude": r.derived_context.latitude,
+            "longitude": r.derived_context.longitude,
+            "location_precision": r.derived_context.location_precision,
+            "location_source": r.derived_context.location_source,
+        }
+        for r in records
+        if r.derived_context.latitude is not None and r.derived_context.longitude is not None
+    ]
+    dump(site / "data/locations.json", {"record_count": len(mapped), "records": mapped})
     # Never deploy pending/rejected content or private record snapshots.
     retired = [
         {

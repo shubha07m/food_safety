@@ -6,7 +6,9 @@ Build in conda `food` with `python -m food_safety.cli validate` and `python -m f
 
 ## Cloudflare Pages
 
-After review, upload the already-built `site/` directory using the Pages dashboard's direct-upload option or configure a separately reviewed deployment job. There is no need for a server, database, framework build, cloud API or secret in the browser. The `_headers` file specifies CSP, HSTS, nosniff, no-referrer, Permissions-Policy and frame restrictions. Check the actual HTTPS responses on the chosen domain; preview and custom domains may have different settings. Do not consider a private repository an access control for an uploaded site.
+After explicit authorization, upload the already-built `site/` directory using the Pages dashboard's direct-upload option, or run `scripts/release_public_beta.sh --confirm-public-release --deploy-cloudflare` from a maintainer machine with Cloudflare authentication. There is no server, database, framework build, cloud API or secret in the browser. The `_headers` file specifies CSP, HSTS, nosniff, no-referrer, Permissions-Policy and frame restrictions. Check actual HTTPS responses on the chosen domain; preview and custom domains may differ. Do not consider a private repository an access control for an uploaded site.
+
+For Pages, use `site/` as the output directory; never deploy the repository root. Connect the private repository only if the account plan permits it and automatic public previews have been reviewed. Keep Cloudflare account credentials outside the repository. Use a preview first, verify `scripts/verify_public_output.py`, test correction and data-download links, then promote or roll back from the Pages dashboard.
 
 The build uses Python locally; uploading prebuilt static files avoids depending on a particular cloud Python/conda image. If Git integration is later enabled, choose an equivalent reviewed build environment and publish only the generated `site/` output. Disable automatic public previews until their access policy is reviewed.
 
