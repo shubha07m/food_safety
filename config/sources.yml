@@ -1,0 +1,15 @@
+# Enable only after checking publisher terms, robots policy and a specific seed URL.
+# No source has been scanned or approved for initial publication.
+sources:
+  - name: Food Safety and Standards Authority of India
+    domain: fssai.gov.in
+    tier: A
+    enabled: false
+    discovery_method: curated_urls
+    urls: []
+  - name: FSSAI (www host)
+    domain: www.fssai.gov.in
+    tier: A
+    enabled: false
+    discovery_method: curated_urls
+    urls: []

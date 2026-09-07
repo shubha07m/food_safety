@@ -1,0 +1,8 @@
+max_articles_per_run: 10
+max_pages_per_source: 5
+request_timeout_seconds: 15
+max_response_bytes: 524288
+max_llm_calls_per_run: 5
+llm_enabled: false
+auto_publish: false
+repository_url: https://github.com/shubha07m/food_safety

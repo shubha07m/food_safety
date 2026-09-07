@@ -1,0 +1,31 @@
+[build-system]
+requires = ["setuptools==80.9.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "food-safety"
+version = "0.1.0"
+description = "Independent public-source food safety evidence browser"
+requires-python = ">=3.12"
+dependencies = ["pydantic==2.11.7", "httpx==0.28.1", "beautifulsoup4==4.13.4", "PyYAML==6.0.2"]
+
+[project.optional-dependencies]
+dev = ["pytest==9.0.3", "ruff==0.12.9", "pip-audit==2.9.0"]
+
+[project.scripts]
+food-safety = "food_safety.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+extend-exclude = [".conda", ".cache", "build", "dist"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP"]
