@@ -1,8 +1,8 @@
 // Optional local verification with an already-installed Chrome. No npm dependencies/downloads.
-// Synthetic data is intercepted in browser memory only; production JSON stays empty.
+// Synthetic data is intercepted in browser memory only; production JSON is not modified.
 import assert from 'node:assert/strict';
 import { spawn } from 'node:child_process';
-import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
+import { existsSync, mkdirSync, mkdtempSync, readFileSync, writeFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 import { setTimeout as delay } from 'node:timers/promises';
 
@@ -11,12 +11,13 @@ const chrome = '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome';
 assert.ok(existsSync(chrome), 'This optional smoke test requires an already-installed Chrome.');
 const cache = resolve(root, '.cache/browser-smoke');
 mkdirSync(cache, { recursive: true });
+const profile = mkdtempSync(resolve(cache, 'profile-'));
 const processChrome = spawn(chrome, [
   '--headless=new', '--disable-gpu', '--no-first-run', '--no-default-browser-check',
   '--disable-background-networking', '--disable-component-update', '--disable-sync',
   '--disable-extensions', '--disable-breakpad', '--disable-crash-reporter',
   '--disable-domain-reliability', '--metrics-recording-only',
-  '--remote-debugging-port=0', `--user-data-dir=${cache}/profile`,
+  '--remote-debugging-port=0', `--user-data-dir=${profile}`,
   `--disk-cache-dir=${cache}/disk`, 'about:blank',
 ], { stdio: 'ignore', env: { ...process.env, TMPDIR: resolve(root, '.cache/tmp'),
   XDG_CACHE_HOME: cache, CHROME_CONFIG_HOME: cache } });
@@ -29,20 +30,25 @@ const original = JSON.parse(readFileSync(resolve(root, 'site/data/events.json'),
 const at = '2026-01-03T00:00:00Z';
 const makeRow = (id, area, name) => ({
   event_id: id, is_fixture: false, context_notice: original.context_notice,
+  display_summary: `Source reports an inspection involving ${name} in ${area}.`,
   reported_fact: { event_date: '2026-01-02', area, district: null,
     establishment_name: name, establishment_type: null,
     reported_observation: 'Synthetic inspection fixture.', reported_action: 'Samples collected.',
     reported_quantity: null, reported_authority: null, legal_finding_status: 'unknown', formal_finding: null,
     evidence: { reported_observation: { source_url: 'https://example.org/fixture', quote: 'Synthetic inspection fixture.' } } },
-  derived_context: { derived_menu_category: 'unknown', derived_owner_category: 'unknown',
-    derived_geography: null, action_category: 'other', derived_context_sources: [],
-    derived_context_method: 'Synthetic fixture only; no contextual inference.', derived_confidence: 'unknown' },
+  derived_context: { normalized_area: area, action_category: 'not reported',
+    action_category_source: null, action_category_method: null, action_category_confidence: 'unknown', action_category_reviewed: false,
+    establishment_context: 'unknown', establishment_context_source: null, establishment_context_method: null,
+    establishment_context_confidence: 'unknown', establishment_context_reviewed: false,
+    menu_context: 'unknown', menu_context_source: null, menu_context_method: null, menu_context_confidence: 'unknown', menu_context_reviewed: false,
+    business_format: 'unknown', business_format_source: null, business_format_method: null, business_format_confidence: 'unknown', business_format_reviewed: false,
+    derived_context_sources: [], derived_context_method: 'Synthetic fixture only; no contextual inference.', derived_confidence: 'unknown' },
   sources: [{ source_url: 'https://example.org/fixture', source_title: 'Synthetic browser fixture — not a real article',
     source_publisher: 'Synthetic publisher', source_date: null, source_type: 'official', tier: 'A',
     retrieved_at: at, evidence_quote: 'Synthetic inspection fixture.', evidence_context: 'Synthetic inspection fixture.', text_sha256: 'a'.repeat(64) }],
   verification_status: 'SOURCE VERIFIED', verification_notes: 'Synthetic test only.',
   review: { reviewer: 'fixture', reviewed_at: at, note: 'Synthetic browser test.', all_fields_supported: true, source_context_checked: true },
-  llm: { llm_used: false }, record_created_at: at, record_updated_at: at, pipeline_version: '0.1.0',
+  llm: { llm_used: false }, record_created_at: at, record_updated_at: at, pipeline_version: '0.2.0',
   history: [{ at, status: 'SOURCE VERIFIED', note: 'Synthetic browser fixture.' }],
 });
 const fixtureRows = [makeRow('WBFS-aaaaaaaaaaaa', 'Example Area', '<img src=x onerror=alert(1)>'), makeRow('WBFS-bbbbbbbbbbbb', 'Another Area', 'Synthetic Kitchen')];
@@ -73,7 +79,7 @@ async function screenshot(name) {
   writeFileSync(resolve(cache, name + '.png'), Buffer.from(result.data, 'base64'));
 }
 try {
-  const portFile = resolve(cache, 'profile/DevToolsActivePort');
+  const portFile = resolve(profile, 'DevToolsActivePort');
   for (let i = 0; i < 100 && !existsSync(portFile); i++) await delay(100);
   assert.ok(existsSync(portFile), 'Chrome did not expose its local debugging port.');
   const port = readFileSync(portFile, 'utf8').split('\n')[0];
@@ -101,8 +107,8 @@ try {
   await command('Page.enable'); await command('Runtime.enable');
   await command('Emulation.setDeviceMetricsOverride', { width: 1440, height: 1000, deviceScaleFactor: 1, mobile: false });
   await command('Page.navigate', { url: 'http://127.0.0.1:8000/' });
-  await waitFor("document.getElementById('metric-events')?.textContent === '0'");
-  assert.equal(await evaluate("document.getElementById('empty-evidence').hidden"), false);
+  await waitFor(`document.getElementById('metric-events')?.textContent === '${original.record_count}'`);
+  assert.equal(await evaluate("document.getElementById('empty-evidence').hidden"), original.record_count > 0);
   assert.equal(await evaluate("document.querySelector('.status-strip').textContent.includes('Inclusion is not a finding of wrongdoing')"), true);
   await screenshot('zero-desktop');
   await command('Emulation.setDeviceMetricsOverride', { width: 390, height: 844, deviceScaleFactor: 1, mobile: true });
@@ -120,10 +126,10 @@ try {
   await waitFor("document.getElementById('metric-events')?.textContent === '2'");
   assert.equal(await evaluate("document.querySelectorAll('#evidence-rows tr').length"), 2);
   assert.equal(await evaluate("document.querySelectorAll('#evidence-rows img').length"), 0);
-  await evaluate("document.querySelector('#chart-areas button').click()");
+  await evaluate("document.querySelector('#chart-areas g[role=button]').dispatchEvent(new MouseEvent('click'))");
   assert.equal(await evaluate("document.querySelectorAll('#evidence-rows tr').length"), 1);
   assert.equal(await evaluate("document.querySelector('#evidence-rows td:last-child a').rel"), 'noopener noreferrer');
-  assert.equal(await evaluate("document.getElementById('filter-explanation').textContent.includes('1 published records')"), true);
+  assert.equal(await evaluate("document.getElementById('filter-explanation').textContent.includes('Area')"), true);
   await evaluate("document.getElementById('clear-filter').click()");
   assert.equal(await evaluate("document.querySelectorAll('#evidence-rows tr').length"), 2);
   await evaluate("document.getElementById('search').value='Another Area'; document.getElementById('search').dispatchEvent(new Event('input'))");
@@ -136,8 +142,8 @@ try {
   assert.equal(await evaluate("document.getElementById('record-detail').textContent.includes('SOURCE VERIFIED means')"), true);
   assert.equal(await evaluate("document.getElementById('record-detail').textContent.includes('Inclusion is not a finding of wrongdoing')"), true);
   assert.deepEqual(runtimeErrors, []);
-  assert.equal(JSON.parse(readFileSync(resolve(root, 'data/events.json'), 'utf8')).record_count, 0);
-  console.log('Browser smoke passed: desktop/mobile zero state, policy pages, fixture rendering, chart/search filters, source links, XSS text handling, stable detail URL; no runtime exceptions.');
+  assert.equal(JSON.parse(readFileSync(resolve(root, 'data/events.json'), 'utf8')).record_count, original.record_count);
+  console.log('Browser smoke passed: desktop/mobile dataset state, policy pages, fixture rendering, chart/search filters, source links, XSS text handling, stable detail URL; no runtime exceptions.');
   console.log('Screenshots: .cache/browser-smoke/{zero-desktop,zero-mobile,synthetic-filter}.png');
 } finally {
   if (socket?.readyState === WebSocket.OPEN) {

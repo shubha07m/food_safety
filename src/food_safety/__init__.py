@@ -1,7 +1,7 @@
 """Independent public-source research; inclusion is not a finding of wrongdoing."""
 
-__version__ = "0.1.0"
-SCHEMA_VERSION = "1.0.0"
+__version__ = "0.2.0"
+SCHEMA_VERSION = "1.1.0"
 CONTEXT = (
     "Independent, non-governmental public-source research. Inclusion is not a finding of "
     "wrongdoing. Counts describe records in this tracker, not official totals, prevalence, "

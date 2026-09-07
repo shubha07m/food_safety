@@ -13,3 +13,35 @@ sources:
     enabled: false
     discovery_method: curated_urls
     urls: []
+  - name: The Times of India
+    domain: timesofindia.indiatimes.com
+    tier: B
+    enabled: true
+    discovery_method: curated_urls
+    urls:
+      - https://timesofindia.indiatimes.com/city/kolkata/kmc-food-team-reaches-park-street-seizes-stale-items-from-eateries/articleshow/133774167.cms
+      - https://timesofindia.indiatimes.com/city/kolkata/kmc-cracks-whip-on-dacres-lane-eateries/articleshow/133811497.cms
+      - https://timesofindia.indiatimes.com/city/kolkata/kmc-food-inspectors-knock-on-mall-eatery-doors-discards-meat-in-a-central-kolkata-restaurant/articleshow/133844089.cms
+      - https://timesofindia.indiatimes.com/city/kolkata/on-last-day-of-food-safety-drive-kmc-targets-fish-paneer-and-spice-hubs/articleshow/133893508.cms
+      - https://timesofindia.indiatimes.com/city/kolkata/kmc-mulls-action-against-eatery/articleshow/133744154.cms
+  - name: Business Today
+    domain: www.businesstoday.in
+    tier: B
+    enabled: true
+    discovery_method: curated_urls
+    urls:
+      - https://www.businesstoday.in/amp/india/story/bengal-fda-crackdown-40kg-rotten-meat-500kg-stale-chicken-and-prawns-seized-ahead-of-durga-puja-553132-2026-09-03
+  - name: TV9 Bangla
+    domain: tv9bangla.com
+    tier: B
+    enabled: true
+    discovery_method: curated_urls
+    urls:
+      - https://tv9bangla.com/kolkata/west-bengal-food-safety-drive-irregularities-found-at-1525-food-centres-licences-of-13-processing-units-cancelled-1343938.html
+  - name: UNI India
+    domain: www.uniindia.com
+    tier: B
+    enabled: true
+    discovery_method: curated_urls
+    urls:
+      - https://www.uniindia.com/east-india/admin-wb-food-safety-06ca19/170711

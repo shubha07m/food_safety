@@ -1,0 +1,84 @@
+{
+  "context_notice": "Independent, non-governmental public-source research. Inclusion is not a finding of wrongdoing. Counts describe records in this tracker, not official totals, prevalence, compliance, risk or group behavior. Read the sources and preserve this context when sharing.",
+  "derived_context": {
+    "action_category": "other",
+    "derived_confidence": "unknown",
+    "derived_context_method": "Unknown; no contextual inference performed.",
+    "derived_context_sources": [],
+    "derived_geography": null,
+    "derived_menu_category": "unknown",
+    "derived_owner_category": "unknown"
+  },
+  "event_id": "WBFS-1dce1dc6b528",
+  "history": [
+    {
+      "at": "2026-09-07T21:12:32.942437Z",
+      "note": "Initial bounded source review; publication date retained where event date was not explicit.",
+      "previous_record_sha256": null,
+      "status": "SOURCE VERIFIED"
+    }
+  ],
+  "is_fixture": false,
+  "llm": {
+    "llm_model": null,
+    "llm_output_was_validated": false,
+    "llm_pipeline_version": null,
+    "llm_provider": null,
+    "llm_task": null,
+    "llm_used": false
+  },
+  "pipeline_version": "0.1.0",
+  "record_created_at": "2026-09-07T21:12:32.942437Z",
+  "record_updated_at": "2026-09-07T21:12:32.942437Z",
+  "reported_fact": {
+    "area": "South City Mall",
+    "district": null,
+    "establishment_name": "Veneto",
+    "establishment_type": null,
+    "event_date": null,
+    "evidence": {
+      "area": {
+        "quote": "South City Mall",
+        "source_url": "https://timesofindia.indiatimes.com/city/kolkata/kmc-food-inspectors-knock-on-mall-eatery-doors-discards-meat-in-a-central-kolkata-restaurant/articleshow/133844089.cms"
+      },
+      "establishment_name": {
+        "quote": "Veneto",
+        "source_url": "https://timesofindia.indiatimes.com/city/kolkata/kmc-food-inspectors-knock-on-mall-eatery-doors-discards-meat-in-a-central-kolkata-restaurant/articleshow/133844089.cms"
+      },
+      "reported_observation": {
+        "quote": "inspection team suggested them",
+        "source_url": "https://timesofindia.indiatimes.com/city/kolkata/kmc-food-inspectors-knock-on-mall-eatery-doors-discards-meat-in-a-central-kolkata-restaurant/articleshow/133844089.cms"
+      }
+    },
+    "formal_finding": null,
+    "legal_finding_status": "unknown",
+    "reported_action": null,
+    "reported_authority": null,
+    "reported_observation": "inspection team suggested them",
+    "reported_quantity": null
+  },
+  "review": {
+    "all_fields_supported": true,
+    "note": "Initial bounded source review; publication date retained where event date was not explicit.",
+    "reviewed_at": "2026-09-07T21:12:32.942437Z",
+    "reviewer": "project-maintainer",
+    "source_context_checked": true
+  },
+  "sources": [
+    {
+      "archive_url": null,
+      "evidence_context": "Amit Bajoria, owner of Lord of the Rings, Warehouse Cafe and Veneto at the South City Mall, said the inspection team suggested them to keep the food for the staff in stainless steel containers instead of aluminium ones.",
+      "evidence_quote": "inspection team suggested them",
+      "retrieved_at": "2026-09-07T21:12:32.942437Z",
+      "source_date": "2026-09-06",
+      "source_publisher": "The Times of India",
+      "source_title": "KMC Food Inspectors Knock on Mall Eatery Doors, Discards Meat in a Central Kolkata restaurant | Kolkata News - The Times of India",
+      "source_type": "news",
+      "source_url": "https://timesofindia.indiatimes.com/city/kolkata/kmc-food-inspectors-knock-on-mall-eatery-doors-discards-meat-in-a-central-kolkata-restaurant/articleshow/133844089.cms",
+      "text_sha256": "5d6e2d85e0e3a699bcf132af7ccb10099a148a3044be804db8ffc0092514cc7f",
+      "tier": "B"
+    }
+  ],
+  "verification_notes": "Source exists and the displayed fields were manually checked against a retained exact context; this is not an independent finding.",
+  "verification_status": "SOURCE VERIFIED"
+}

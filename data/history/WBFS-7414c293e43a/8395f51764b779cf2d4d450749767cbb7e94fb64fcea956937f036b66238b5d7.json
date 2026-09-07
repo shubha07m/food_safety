@@ -1,0 +1,84 @@
+{
+  "context_notice": "Independent, non-governmental public-source research. Inclusion is not a finding of wrongdoing. Counts describe records in this tracker, not official totals, prevalence, compliance, risk or group behavior. Read the sources and preserve this context when sharing.",
+  "derived_context": {
+    "action_category": "other",
+    "derived_confidence": "unknown",
+    "derived_context_method": "Unknown; no contextual inference performed.",
+    "derived_context_sources": [],
+    "derived_geography": null,
+    "derived_menu_category": "unknown",
+    "derived_owner_category": "unknown"
+  },
+  "event_id": "WBFS-7414c293e43a",
+  "history": [
+    {
+      "at": "2026-09-07T21:12:32.942437Z",
+      "note": "Initial bounded source review; publication date retained where event date was not explicit.",
+      "previous_record_sha256": null,
+      "status": "SOURCE VERIFIED"
+    }
+  ],
+  "is_fixture": false,
+  "llm": {
+    "llm_model": null,
+    "llm_output_was_validated": false,
+    "llm_pipeline_version": null,
+    "llm_provider": null,
+    "llm_task": null,
+    "llm_used": false
+  },
+  "pipeline_version": "0.1.0",
+  "record_created_at": "2026-09-07T21:12:32.942437Z",
+  "record_updated_at": "2026-09-07T21:12:32.942437Z",
+  "reported_fact": {
+    "area": "মধ্যমগ্রামের",
+    "district": null,
+    "establishment_name": "রঙ দে বসন্তি ধাবা",
+    "establishment_type": null,
+    "event_date": null,
+    "evidence": {
+      "area": {
+        "quote": "মধ্যমগ্রামের",
+        "source_url": "https://tv9bangla.com/kolkata/west-bengal-food-safety-drive-irregularities-found-at-1525-food-centres-licences-of-13-processing-units-cancelled-1343938.html"
+      },
+      "establishment_name": {
+        "quote": "রঙ দে বসন্তি ধাবা",
+        "source_url": "https://tv9bangla.com/kolkata/west-bengal-food-safety-drive-irregularities-found-at-1525-food-centres-licences-of-13-processing-units-cancelled-1343938.html"
+      },
+      "reported_observation": {
+        "quote": "লাইসেন্স সাসপেন্ড করা হয়েছে",
+        "source_url": "https://tv9bangla.com/kolkata/west-bengal-food-safety-drive-irregularities-found-at-1525-food-centres-licences-of-13-processing-units-cancelled-1343938.html"
+      }
+    },
+    "formal_finding": null,
+    "legal_finding_status": "unknown",
+    "reported_action": null,
+    "reported_authority": null,
+    "reported_observation": "লাইসেন্স সাসপেন্ড করা হয়েছে",
+    "reported_quantity": null
+  },
+  "review": {
+    "all_fields_supported": true,
+    "note": "Initial bounded source review; publication date retained where event date was not explicit.",
+    "reviewed_at": "2026-09-07T21:12:32.942437Z",
+    "reviewer": "project-maintainer",
+    "source_context_checked": true
+  },
+  "sources": [
+    {
+      "archive_url": null,
+      "evidence_context": "৫টি রেস্তরাঁর লাইসেন্স সাসপেন্ড করা হয়েছে। সেই তালিকায় রয়েছে, মধ্যমগ্রামের রঙ দে বসন্তি ধাবা, সেক্টর ফাইভের আরডিবি মলের ‘অ‌্যাবসিলিউট বারবিকিউ নেশন’, মধ‌্যমগ্রামের জাস্ট বাঙালি, সোদপুরের ‘বারবিকিউ নেশন, সেক্টর থ্রি-র ‘চৌরাসিয়া চাটস’। ১৩টি ফুড প্রসেসিং ইউনিট বন্ধ করা হয়েছে। এর মধ্যে ৬টি জলের কারখানা বন্ধের নির্দেশ দেওয়া হয়েছে। কী বলেছেন স্বাস্থ্যমন্ত্রী? স্বাস্থ্যমন্ত্রী বলেন, “সময় দেওয়া হয়েছে ঠিক করে নেওয়ার। এরকম নয়",
+      "evidence_quote": "লাইসেন্স সাসপেন্ড করা হয়েছে",
+      "retrieved_at": "2026-09-07T21:12:32.942437Z",
+      "source_date": "2026-09-03",
+      "source_publisher": "TV9 Bangla",
+      "source_title": "Restaurants License Cancelled: খাবারে ফাংগাস, মিলেছে পোকা-মাকড়! ৫ নামী রেস্তরাঁর লাইসেন্স সাসপেন্ড, তালিকায় কোনগুলি? | West Bengal Food Safety Drive: Irregularities Found at 1,525 Food Centres, Licences of 13 Processing Units Cancelled | TV9 Bangla News",
+      "source_type": "news",
+      "source_url": "https://tv9bangla.com/kolkata/west-bengal-food-safety-drive-irregularities-found-at-1525-food-centres-licences-of-13-processing-units-cancelled-1343938.html",
+      "text_sha256": "bd73a55295215524ba6a733caf0a936200c14d5fd13cfbab4951871ebb992c1b",
+      "tier": "B"
+    }
+  ],
+  "verification_notes": "Source exists and the displayed fields were manually checked against a retained exact context; this is not an independent finding.",
+  "verification_status": "SOURCE VERIFIED"
+}

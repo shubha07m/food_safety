@@ -58,6 +58,10 @@ def record(fixture_html):
                 }
             ],
             "verification_status": "SOURCE VERIFIED",
+            "display_summary": (
+                "Source reports a source-reported food-safety event involving "
+                "Example Kitchen in Example Area."
+            ),
             "review": {
                 "reviewed_at": AT,
                 "reviewer": "fixture-reviewer",
