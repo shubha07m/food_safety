@@ -8,6 +8,7 @@ inside the selected source sentence.
 
 from datetime import date
 
+from food_safety.classify import display_summary
 from food_safety.config import ROOT, settings, sources
 from food_safety.dedupe import stable_id
 from food_safety.extract import article_text, text_hash
@@ -115,6 +116,8 @@ def main():
             "record_created_at": at.isoformat(), "record_updated_at": at.isoformat(),
             "history": [{"at": at.isoformat(), "status": "SOURCE VERIFIED", "note": "Initial bounded source review; publication date retained where event date was not explicit."}],
         }
+        draft = Event.model_validate(data)
+        data["display_summary"] = display_summary(draft.reported_fact, draft.derived_context)
         event = Event.model_validate(data)
         errors = publication_errors(event, policies, {url: text})
         if errors:

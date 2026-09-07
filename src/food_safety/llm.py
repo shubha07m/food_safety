@@ -90,4 +90,4 @@ class OpenAICompatible:
 
 class DisabledVLM:
     def extract_image(self, image_url):
-        raise ValueError("VLM disabled in V1; textual evidence and review required")
+        raise ValueError("VLM disabled; textual evidence and review required")

@@ -114,11 +114,34 @@ def aggregates(records):
             }
         ),
         "sources_count": len({s.source_url for r in records for s in r.sources}),
-        "timeline": count(lambda r: str(r.reported_fact.event_date or "Unknown")),
+        "timeline": count(
+            lambda r: str(
+                r.reported_fact.event_date
+                or next((s.source_date for s in r.sources if s.source_date), "Unknown")
+            )
+        ),
         "areas": count(lambda r: r.reported_fact.area or "Unknown"),
         "actions": count(lambda r: r.derived_context.action_category),
-        "owners": count(lambda r: r.derived_context.derived_owner_category),
-        "menus": count(lambda r: r.derived_context.derived_menu_category),
+        "establishments": count(lambda r: r.derived_context.establishment_context),
+        "menus": count(lambda r: r.derived_context.menu_context),
+        "business_formats": count(lambda r: r.derived_context.business_format),
+        "publishers": count(lambda r: r.sources[0].source_publisher),
+        "verification": count(lambda r: r.verification_status),
+        "coverage": {
+            "named_establishment": sum(bool(r.reported_fact.establishment_name) for r in records),
+            "reported_action": sum(bool(r.reported_fact.reported_action) for r in records),
+            "reported_quantity": sum(bool(r.reported_fact.reported_quantity) for r in records),
+            "establishment_context": sum(
+                r.derived_context.establishment_context != "unknown" for r in records
+            ),
+            "menu_context": sum(r.derived_context.menu_context != "unknown" for r in records),
+            "business_format": sum(
+                r.derived_context.business_format != "unknown" for r in records
+            ),
+            "cross_source": sum(
+                r.verification_status == "CROSS-SOURCE VERIFIED" for r in records
+            ),
+        },
     }
 
 
@@ -133,6 +156,13 @@ def csv_text(records, generated_at=""):
             "establishment_name",
             "reported_observation",
             "reported_action",
+            "reported_quantity",
+            "reported_authority",
+            "display_summary",
+            "action_category",
+            "establishment_context",
+            "menu_context",
+            "business_format",
             "source_urls",
             "verification_status",
             "context_notice",
@@ -151,6 +181,13 @@ def csv_text(records, generated_at=""):
             facts.establishment_name,
             facts.reported_observation,
             facts.reported_action,
+            facts.reported_quantity,
+            facts.reported_authority,
+            record.display_summary,
+            record.derived_context.action_category,
+            record.derived_context.establishment_context,
+            record.derived_context.menu_context,
+            record.derived_context.business_format,
             " | ".join(s.source_url for s in record.sources),
             record.verification_status,
             CONTEXT,

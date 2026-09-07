@@ -9,6 +9,7 @@ from urllib.parse import urlsplit
 import httpx
 
 from . import __version__
+from .classify import display_summary
 from .config import settings, sources
 from .dedupe import associate, same_event, stable_id
 from .extract import article_text, text_hash
@@ -60,6 +61,8 @@ def candidate(url, title, text, policy, fields, at, llm=None):
             "llm_pipeline_version": __version__,
             "llm_output_was_validated": False,
         }
+    draft = Event.model_validate(data)
+    data["display_summary"] = display_summary(draft.reported_fact, draft.derived_context)
     event = Event.model_validate(data)
     errors = evidence_errors(event, {url: text})
     if errors:
@@ -183,7 +186,7 @@ def update(root, max_articles=None, use_llm=False, max_llm_calls=None, fetcher=N
                 and os.getenv("AUTO_PUBLISH", "false").lower() == "true"
                 and not publication_errors(event, policies, {canonical: text})
             ):
-                # V1 candidates cannot satisfy human review. Reserved for reviewed adapters.
+                # Candidates cannot satisfy human review. Reserved for reviewed adapters.
                 events.append(event)
                 run["records_published"] += 1
             else:
