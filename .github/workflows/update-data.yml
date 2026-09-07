@@ -36,6 +36,7 @@ jobs:
         run: python -m food_safety.cli update --max-articles 3
       - name: Check candidate output
         run: |
+          mkdir -p .cache
           ruff check .
           python -m pytest -q --basetemp=.cache/pytest
           python -m food_safety.cli validate

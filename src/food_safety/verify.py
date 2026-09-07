@@ -18,7 +18,7 @@ def evidence_errors(event, texts=None):
         if not source:
             errors.append("unlinked_evidence")
             continue
-        if normalize(support.quote) not in normalize(source.evidence_context):
+        if support.quote not in source.evidence_context:
             errors.append("span_outside_context")
         quotes[source.source_url].add(support.quote)
     for field, value in facts.items():
@@ -47,7 +47,7 @@ def evidence_errors(event, texts=None):
         extra = [q for q in quotes[source.source_url] if q not in longest]
         if sum(len(q.split()) for q in [longest, *extra]) > 25:
             errors.append("quote_budget_exceeded")
-        if normalize(source.evidence_quote) not in normalize(source.evidence_context):
+        if source.evidence_quote not in source.evidence_context:
             errors.append("quote_outside_context")
         if claim_risks(source.evidence_context) or claim_risks(source.source_title):
             errors.append("claim_safety_review_required")
@@ -57,7 +57,7 @@ def evidence_errors(event, texts=None):
                 errors.append("source_unreachable")
             elif text_hash(text) != source.text_sha256:
                 errors.append("source_changed")
-            elif normalize(source.evidence_context) not in normalize(text):
+            elif source.evidence_context not in text:
                 errors.append("evidence_not_in_article")
     return sorted(set(errors))
 
