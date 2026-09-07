@@ -1,3 +1,5 @@
+import pytest
+
 from food_safety.extract import article_text
 from food_safety.models import Event
 from food_safety.verify import evidence_errors, publication_errors
@@ -41,8 +43,10 @@ def test_review_required(record, policy):
 
 
 def test_derived_needs_support(record, policy):
-    record.derived_context.derived_menu_category = "both"
-    assert "unsupported_derived_context" in publication_errors(record, [policy])
+    data = record.model_dump(mode="json")
+    data["derived_context"]["menu_context"] = "mixed"
+    with pytest.raises(ValueError):
+        Event.model_validate(data)
 
 
 def test_weak_source(record, policy):

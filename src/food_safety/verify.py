@@ -1,5 +1,6 @@
 from collections import defaultdict
 
+from .classify import display_summary
 from .extract import text_hash
 from .safety import claim_risks, normalize
 
@@ -96,20 +97,10 @@ def publication_errors(event, policies, texts=None, allow_fixtures=False):
                 source.evidence_context
             ):
                 errors.append("cross_source_support_required")
-    derived = event.derived_context
-    nondefault = (
-        derived.derived_menu_category != "unknown"
-        or derived.derived_owner_category != "unknown"
-        or derived.derived_geography is not None
-        or derived.action_category != "other"
-    )
-    if nondefault and (
-        not derived.derived_context_sources
-        or derived.derived_confidence != "high"
-        or derived.derived_context_method == "Unknown; no contextual inference performed."
-        or not set(derived.derived_context_sources).issubset({s.source_url for s in event.sources})
+    if not event.display_summary or event.display_summary != display_summary(
+        event.reported_fact, event.derived_context
     ):
-        errors.append("unsupported_derived_context")
+        errors.append("unsupported_display_summary")
     if event.llm.llm_used and not event.llm.llm_output_was_validated:
         errors.append("unvalidated_llm_output")
     return sorted(set(errors))

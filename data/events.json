@@ -1,26 +1,52 @@
 {
   "context_notice": "Independent, non-governmental public-source research. Inclusion is not a finding of wrongdoing. Counts describe records in this tracker, not official totals, prevalence, compliance, risk or group behavior. Read the sources and preserve this context when sharing.",
-  "generated_at": "2026-09-07T21:12:32.942437+00:00",
-  "pipeline_version": "0.1.0",
+  "generated_at": "2026-09-07T21:41:20.845808+00:00",
+  "pipeline_version": "0.2.0",
   "record_count": 35,
   "records": [
     {
       "context_notice": "Independent, non-governmental public-source research. Inclusion is not a finding of wrongdoing. Counts describe records in this tracker, not official totals, prevalence, compliance, risk or group behavior. Read the sources and preserve this context when sharing.",
       "derived_context": {
-        "action_category": "other",
-        "derived_confidence": "unknown",
-        "derived_context_method": "Unknown; no contextual inference performed.",
-        "derived_context_sources": [],
-        "derived_geography": null,
-        "derived_menu_category": "unknown",
-        "derived_owner_category": "unknown"
+        "action_category": "inspection / visit only",
+        "action_category_confidence": "high",
+        "action_category_method": "reviewed_source_context",
+        "action_category_reviewed": true,
+        "action_category_source": "https://timesofindia.indiatimes.com/city/kolkata/kmc-food-team-reaches-park-street-seizes-stale-items-from-eateries/articleshow/133774167.cms",
+        "business_format": "unknown",
+        "business_format_confidence": "unknown",
+        "business_format_method": null,
+        "business_format_reviewed": false,
+        "business_format_source": null,
+        "derived_confidence": "high",
+        "derived_context_method": "Maintainer-reviewed normalization and categories based only on explicit publisher wording retained with this record.",
+        "derived_context_sources": [
+          "https://timesofindia.indiatimes.com/city/kolkata/kmc-food-team-reaches-park-street-seizes-stale-items-from-eateries/articleshow/133774167.cms"
+        ],
+        "establishment_context": "restaurant / eatery",
+        "establishment_context_confidence": "high",
+        "establishment_context_method": "publisher_explicit",
+        "establishment_context_reviewed": true,
+        "establishment_context_source": "https://timesofindia.indiatimes.com/city/kolkata/kmc-food-team-reaches-park-street-seizes-stale-items-from-eateries/articleshow/133774167.cms",
+        "menu_context": "unknown",
+        "menu_context_confidence": "unknown",
+        "menu_context_method": null,
+        "menu_context_reviewed": false,
+        "menu_context_source": null,
+        "normalized_area": "Park Street"
       },
+      "display_summary": "Source reports an inspection or visit involving Kareem’s in Park Street.",
       "event_id": "WBFS-13cb858f9dfe",
       "history": [
         {
           "at": "2026-09-07T21:12:32.942437Z",
           "note": "Initial bounded source review; publication date retained where event date was not explicit.",
           "previous_record_sha256": null,
+          "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-07T21:41:20.845808Z",
+          "note": "V0.2 reviewed contextual enrichment; reported facts remain source-linked.",
+          "previous_record_sha256": "c67eefe36cd147cfc29250e38cc8b989243ca0145536d99643b2eb9776bab8d8",
           "status": "SOURCE VERIFIED"
         }
       ],
@@ -33,9 +59,9 @@
         "llm_task": null,
         "llm_used": false
       },
-      "pipeline_version": "0.1.0",
+      "pipeline_version": "0.2.0",
       "record_created_at": "2026-09-07T21:12:32.942437Z",
-      "record_updated_at": "2026-09-07T21:12:32.942437Z",
+      "record_updated_at": "2026-09-07T21:41:20.845808Z",
       "reported_fact": {
         "area": "Park Street",
         "district": null,
@@ -51,6 +77,14 @@
             "quote": "Kareem’s",
             "source_url": "https://timesofindia.indiatimes.com/city/kolkata/kmc-food-team-reaches-park-street-seizes-stale-items-from-eateries/articleshow/133774167.cms"
           },
+          "reported_action": {
+            "quote": "visited by KMC teams",
+            "source_url": "https://timesofindia.indiatimes.com/city/kolkata/kmc-food-team-reaches-park-street-seizes-stale-items-from-eateries/articleshow/133774167.cms"
+          },
+          "reported_authority": {
+            "quote": "KMC",
+            "source_url": "https://timesofindia.indiatimes.com/city/kolkata/kmc-food-team-reaches-park-street-seizes-stale-items-from-eateries/articleshow/133774167.cms"
+          },
           "reported_observation": {
             "quote": "visited by KMC teams",
             "source_url": "https://timesofindia.indiatimes.com/city/kolkata/kmc-food-team-reaches-park-street-seizes-stale-items-from-eateries/articleshow/133774167.cms"
@@ -58,8 +92,8 @@
         },
         "formal_finding": null,
         "legal_finding_status": "unknown",
-        "reported_action": null,
-        "reported_authority": null,
+        "reported_action": "visited by KMC teams",
+        "reported_authority": "KMC",
         "reported_observation": "visited by KMC teams",
         "reported_quantity": null
       },
@@ -91,20 +125,46 @@
     {
       "context_notice": "Independent, non-governmental public-source research. Inclusion is not a finding of wrongdoing. Counts describe records in this tracker, not official totals, prevalence, compliance, risk or group behavior. Read the sources and preserve this context when sharing.",
       "derived_context": {
-        "action_category": "other",
-        "derived_confidence": "unknown",
-        "derived_context_method": "Unknown; no contextual inference performed.",
-        "derived_context_sources": [],
-        "derived_geography": null,
-        "derived_menu_category": "unknown",
-        "derived_owner_category": "unknown"
+        "action_category": "inspection / visit only",
+        "action_category_confidence": "high",
+        "action_category_method": "reviewed_source_context",
+        "action_category_reviewed": true,
+        "action_category_source": "https://timesofindia.indiatimes.com/city/kolkata/kmc-food-inspectors-knock-on-mall-eatery-doors-discards-meat-in-a-central-kolkata-restaurant/articleshow/133844089.cms",
+        "business_format": "unknown",
+        "business_format_confidence": "unknown",
+        "business_format_method": null,
+        "business_format_reviewed": false,
+        "business_format_source": null,
+        "derived_confidence": "high",
+        "derived_context_method": "Maintainer-reviewed normalization and categories based only on explicit publisher wording retained with this record.",
+        "derived_context_sources": [
+          "https://timesofindia.indiatimes.com/city/kolkata/kmc-food-inspectors-knock-on-mall-eatery-doors-discards-meat-in-a-central-kolkata-restaurant/articleshow/133844089.cms"
+        ],
+        "establishment_context": "mall / food court",
+        "establishment_context_confidence": "high",
+        "establishment_context_method": "publisher_explicit",
+        "establishment_context_reviewed": true,
+        "establishment_context_source": "https://timesofindia.indiatimes.com/city/kolkata/kmc-food-inspectors-knock-on-mall-eatery-doors-discards-meat-in-a-central-kolkata-restaurant/articleshow/133844089.cms",
+        "menu_context": "unknown",
+        "menu_context_confidence": "unknown",
+        "menu_context_method": null,
+        "menu_context_reviewed": false,
+        "menu_context_source": null,
+        "normalized_area": "South City Mall"
       },
+      "display_summary": "Source reports an inspection or visit involving Warehouse Cafe in South City Mall.",
       "event_id": "WBFS-1a671ff0cb00",
       "history": [
         {
           "at": "2026-09-07T21:12:32.942437Z",
           "note": "Initial bounded source review; publication date retained where event date was not explicit.",
           "previous_record_sha256": null,
+          "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-07T21:41:20.845808Z",
+          "note": "V0.2 reviewed contextual enrichment; reported facts remain source-linked.",
+          "previous_record_sha256": "7d93b66b6e2b716a608d0b45463868941bacffb092a98b0fe9cdc5034d712d55",
           "status": "SOURCE VERIFIED"
         }
       ],
@@ -117,9 +177,9 @@
         "llm_task": null,
         "llm_used": false
       },
-      "pipeline_version": "0.1.0",
+      "pipeline_version": "0.2.0",
       "record_created_at": "2026-09-07T21:12:32.942437Z",
-      "record_updated_at": "2026-09-07T21:12:32.942437Z",
+      "record_updated_at": "2026-09-07T21:41:20.845808Z",
       "reported_fact": {
         "area": "South City Mall",
         "district": null,
@@ -175,20 +235,46 @@
     {
       "context_notice": "Independent, non-governmental public-source research. Inclusion is not a finding of wrongdoing. Counts describe records in this tracker, not official totals, prevalence, compliance, risk or group behavior. Read the sources and preserve this context when sharing.",
       "derived_context": {
-        "action_category": "other",
-        "derived_confidence": "unknown",
-        "derived_context_method": "Unknown; no contextual inference performed.",
-        "derived_context_sources": [],
-        "derived_geography": null,
-        "derived_menu_category": "unknown",
-        "derived_owner_category": "unknown"
+        "action_category": "inspection / visit only",
+        "action_category_confidence": "high",
+        "action_category_method": "reviewed_source_context",
+        "action_category_reviewed": true,
+        "action_category_source": "https://timesofindia.indiatimes.com/city/kolkata/kmc-food-inspectors-knock-on-mall-eatery-doors-discards-meat-in-a-central-kolkata-restaurant/articleshow/133844089.cms",
+        "business_format": "unknown",
+        "business_format_confidence": "unknown",
+        "business_format_method": null,
+        "business_format_reviewed": false,
+        "business_format_source": null,
+        "derived_confidence": "high",
+        "derived_context_method": "Maintainer-reviewed normalization and categories based only on explicit publisher wording retained with this record.",
+        "derived_context_sources": [
+          "https://timesofindia.indiatimes.com/city/kolkata/kmc-food-inspectors-knock-on-mall-eatery-doors-discards-meat-in-a-central-kolkata-restaurant/articleshow/133844089.cms"
+        ],
+        "establishment_context": "mall / food court",
+        "establishment_context_confidence": "high",
+        "establishment_context_method": "publisher_explicit",
+        "establishment_context_reviewed": true,
+        "establishment_context_source": "https://timesofindia.indiatimes.com/city/kolkata/kmc-food-inspectors-knock-on-mall-eatery-doors-discards-meat-in-a-central-kolkata-restaurant/articleshow/133844089.cms",
+        "menu_context": "unknown",
+        "menu_context_confidence": "unknown",
+        "menu_context_method": null,
+        "menu_context_reviewed": false,
+        "menu_context_source": null,
+        "normalized_area": "South City Mall"
       },
+      "display_summary": "Source reports an inspection or visit involving Veneto in South City Mall.",
       "event_id": "WBFS-1dce1dc6b528",
       "history": [
         {
           "at": "2026-09-07T21:12:32.942437Z",
           "note": "Initial bounded source review; publication date retained where event date was not explicit.",
           "previous_record_sha256": null,
+          "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-07T21:41:20.845808Z",
+          "note": "V0.2 reviewed contextual enrichment; reported facts remain source-linked.",
+          "previous_record_sha256": "7678ba38c91905f7388bb2a8af569edaf5522616bdc795c2d023321a9575fc62",
           "status": "SOURCE VERIFIED"
         }
       ],
@@ -201,9 +287,9 @@
         "llm_task": null,
         "llm_used": false
       },
-      "pipeline_version": "0.1.0",
+      "pipeline_version": "0.2.0",
       "record_created_at": "2026-09-07T21:12:32.942437Z",
-      "record_updated_at": "2026-09-07T21:12:32.942437Z",
+      "record_updated_at": "2026-09-07T21:41:20.845808Z",
       "reported_fact": {
         "area": "South City Mall",
         "district": null,
@@ -259,20 +345,46 @@
     {
       "context_notice": "Independent, non-governmental public-source research. Inclusion is not a finding of wrongdoing. Counts describe records in this tracker, not official totals, prevalence, compliance, risk or group behavior. Read the sources and preserve this context when sharing.",
       "derived_context": {
-        "action_category": "other",
-        "derived_confidence": "unknown",
-        "derived_context_method": "Unknown; no contextual inference performed.",
-        "derived_context_sources": [],
-        "derived_geography": null,
-        "derived_menu_category": "unknown",
-        "derived_owner_category": "unknown"
+        "action_category": "inspection / visit only",
+        "action_category_confidence": "high",
+        "action_category_method": "reviewed_source_context",
+        "action_category_reviewed": true,
+        "action_category_source": "https://timesofindia.indiatimes.com/city/kolkata/kmc-food-team-reaches-park-street-seizes-stale-items-from-eateries/articleshow/133774167.cms",
+        "business_format": "unknown",
+        "business_format_confidence": "unknown",
+        "business_format_method": null,
+        "business_format_reviewed": false,
+        "business_format_source": null,
+        "derived_confidence": "high",
+        "derived_context_method": "Maintainer-reviewed normalization and categories based only on explicit publisher wording retained with this record.",
+        "derived_context_sources": [
+          "https://timesofindia.indiatimes.com/city/kolkata/kmc-food-team-reaches-park-street-seizes-stale-items-from-eateries/articleshow/133774167.cms"
+        ],
+        "establishment_context": "restaurant / eatery",
+        "establishment_context_confidence": "high",
+        "establishment_context_method": "publisher_explicit",
+        "establishment_context_reviewed": true,
+        "establishment_context_source": "https://timesofindia.indiatimes.com/city/kolkata/kmc-food-team-reaches-park-street-seizes-stale-items-from-eateries/articleshow/133774167.cms",
+        "menu_context": "unknown",
+        "menu_context_confidence": "unknown",
+        "menu_context_method": null,
+        "menu_context_reviewed": false,
+        "menu_context_source": null,
+        "normalized_area": "Sonarpur"
       },
+      "display_summary": "Source reports an inspection or visit involving restaurant / eatery in Sonarpur.",
       "event_id": "WBFS-1e3ff92096f4",
       "history": [
         {
           "at": "2026-09-07T21:12:32.942437Z",
           "note": "Initial bounded source review; publication date retained where event date was not explicit.",
           "previous_record_sha256": null,
+          "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-07T21:41:20.845808Z",
+          "note": "V0.2 reviewed contextual enrichment; reported facts remain source-linked.",
+          "previous_record_sha256": "b75eee42f064db381f37e216835fbc1838f32947f4d5ce9fd914689b350e62b6",
           "status": "SOURCE VERIFIED"
         }
       ],
@@ -285,9 +397,9 @@
         "llm_task": null,
         "llm_used": false
       },
-      "pipeline_version": "0.1.0",
+      "pipeline_version": "0.2.0",
       "record_created_at": "2026-09-07T21:12:32.942437Z",
-      "record_updated_at": "2026-09-07T21:12:32.942437Z",
+      "record_updated_at": "2026-09-07T21:41:20.845808Z",
       "reported_fact": {
         "area": "Sonarpur",
         "district": null,
@@ -299,6 +411,10 @@
             "quote": "Sonarpur",
             "source_url": "https://timesofindia.indiatimes.com/city/kolkata/kmc-food-team-reaches-park-street-seizes-stale-items-from-eateries/articleshow/133774167.cms"
           },
+          "reported_action": {
+            "quote": "inspection was also carried out",
+            "source_url": "https://timesofindia.indiatimes.com/city/kolkata/kmc-food-team-reaches-park-street-seizes-stale-items-from-eateries/articleshow/133774167.cms"
+          },
           "reported_observation": {
             "quote": "inspection was also carried out",
             "source_url": "https://timesofindia.indiatimes.com/city/kolkata/kmc-food-team-reaches-park-street-seizes-stale-items-from-eateries/articleshow/133774167.cms"
@@ -306,7 +422,7 @@
         },
         "formal_finding": null,
         "legal_finding_status": "unknown",
-        "reported_action": null,
+        "reported_action": "inspection was also carried out",
         "reported_authority": null,
         "reported_observation": "inspection was also carried out",
         "reported_quantity": null
@@ -339,20 +455,46 @@
     {
       "context_notice": "Independent, non-governmental public-source research. Inclusion is not a finding of wrongdoing. Counts describe records in this tracker, not official totals, prevalence, compliance, risk or group behavior. Read the sources and preserve this context when sharing.",
       "derived_context": {
-        "action_category": "other",
-        "derived_confidence": "unknown",
-        "derived_context_method": "Unknown; no contextual inference performed.",
-        "derived_context_sources": [],
-        "derived_geography": null,
-        "derived_menu_category": "unknown",
-        "derived_owner_category": "unknown"
+        "action_category": "not reported",
+        "action_category_confidence": "unknown",
+        "action_category_method": null,
+        "action_category_reviewed": false,
+        "action_category_source": null,
+        "business_format": "unknown",
+        "business_format_confidence": "unknown",
+        "business_format_method": null,
+        "business_format_reviewed": false,
+        "business_format_source": null,
+        "derived_confidence": "high",
+        "derived_context_method": "Maintainer-reviewed normalization and categories based only on explicit publisher wording retained with this record.",
+        "derived_context_sources": [
+          "https://www.businesstoday.in/amp/india/story/bengal-fda-crackdown-40kg-rotten-meat-500kg-stale-chicken-and-prawns-seized-ahead-of-durga-puja-553132-2026-09-03"
+        ],
+        "establishment_context": "sweet shop / bakery",
+        "establishment_context_confidence": "high",
+        "establishment_context_method": "publisher_explicit",
+        "establishment_context_reviewed": true,
+        "establishment_context_source": "https://www.businesstoday.in/amp/india/story/bengal-fda-crackdown-40kg-rotten-meat-500kg-stale-chicken-and-prawns-seized-ahead-of-durga-puja-553132-2026-09-03",
+        "menu_context": "unknown",
+        "menu_context_confidence": "unknown",
+        "menu_context_method": null,
+        "menu_context_reviewed": false,
+        "menu_context_source": null,
+        "normalized_area": "Hooghly"
       },
+      "display_summary": "Source reports a source-reported food-safety event involving sweet shop / bakery in Hooghly.",
       "event_id": "WBFS-22a7207f8823",
       "history": [
         {
           "at": "2026-09-07T21:12:32.942437Z",
           "note": "Initial bounded source review; publication date retained where event date was not explicit.",
           "previous_record_sha256": null,
+          "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-07T21:41:20.845808Z",
+          "note": "V0.2 reviewed contextual enrichment; reported facts remain source-linked.",
+          "previous_record_sha256": "4a96f479f6ad015641ce23ce78712d7b4d2d48b92bcff764b774655cb2ab1670",
           "status": "SOURCE VERIFIED"
         }
       ],
@@ -365,9 +507,9 @@
         "llm_task": null,
         "llm_used": false
       },
-      "pipeline_version": "0.1.0",
+      "pipeline_version": "0.2.0",
       "record_created_at": "2026-09-07T21:12:32.942437Z",
-      "record_updated_at": "2026-09-07T21:12:32.942437Z",
+      "record_updated_at": "2026-09-07T21:41:20.845808Z",
       "reported_fact": {
         "area": "Hooghly",
         "district": null,
@@ -419,20 +561,46 @@
     {
       "context_notice": "Independent, non-governmental public-source research. Inclusion is not a finding of wrongdoing. Counts describe records in this tracker, not official totals, prevalence, compliance, risk or group behavior. Read the sources and preserve this context when sharing.",
       "derived_context": {
-        "action_category": "other",
-        "derived_confidence": "unknown",
-        "derived_context_method": "Unknown; no contextual inference performed.",
-        "derived_context_sources": [],
-        "derived_geography": null,
-        "derived_menu_category": "unknown",
-        "derived_owner_category": "unknown"
+        "action_category": "not reported",
+        "action_category_confidence": "unknown",
+        "action_category_method": null,
+        "action_category_reviewed": false,
+        "action_category_source": null,
+        "business_format": "unknown",
+        "business_format_confidence": "unknown",
+        "business_format_method": null,
+        "business_format_reviewed": false,
+        "business_format_source": null,
+        "derived_confidence": "high",
+        "derived_context_method": "Maintainer-reviewed normalization and categories based only on explicit publisher wording retained with this record.",
+        "derived_context_sources": [
+          "https://www.businesstoday.in/amp/india/story/bengal-fda-crackdown-40kg-rotten-meat-500kg-stale-chicken-and-prawns-seized-ahead-of-durga-puja-553132-2026-09-03"
+        ],
+        "establishment_context": "restaurant / eatery",
+        "establishment_context_confidence": "high",
+        "establishment_context_method": "publisher_explicit",
+        "establishment_context_reviewed": true,
+        "establishment_context_source": "https://www.businesstoday.in/amp/india/story/bengal-fda-crackdown-40kg-rotten-meat-500kg-stale-chicken-and-prawns-seized-ahead-of-durga-puja-553132-2026-09-03",
+        "menu_context": "unknown",
+        "menu_context_confidence": "unknown",
+        "menu_context_method": null,
+        "menu_context_reviewed": false,
+        "menu_context_source": null,
+        "normalized_area": "East Midnapore"
       },
+      "display_summary": "Source reports a source-reported food-safety event involving restaurant / eatery in East Midnapore.",
       "event_id": "WBFS-236ee7e08350",
       "history": [
         {
           "at": "2026-09-07T21:12:32.942437Z",
           "note": "Initial bounded source review; publication date retained where event date was not explicit.",
           "previous_record_sha256": null,
+          "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-07T21:41:20.845808Z",
+          "note": "V0.2 reviewed contextual enrichment; reported facts remain source-linked.",
+          "previous_record_sha256": "a4562d7fe5eab1071d82852094118545b959bbd500487d32ec773e63719ba305",
           "status": "SOURCE VERIFIED"
         }
       ],
@@ -445,9 +613,9 @@
         "llm_task": null,
         "llm_used": false
       },
-      "pipeline_version": "0.1.0",
+      "pipeline_version": "0.2.0",
       "record_created_at": "2026-09-07T21:12:32.942437Z",
-      "record_updated_at": "2026-09-07T21:12:32.942437Z",
+      "record_updated_at": "2026-09-07T21:41:20.845808Z",
       "reported_fact": {
         "area": "East Midnapore",
         "district": null,
@@ -499,20 +667,46 @@
     {
       "context_notice": "Independent, non-governmental public-source research. Inclusion is not a finding of wrongdoing. Counts describe records in this tracker, not official totals, prevalence, compliance, risk or group behavior. Read the sources and preserve this context when sharing.",
       "derived_context": {
-        "action_category": "other",
-        "derived_confidence": "unknown",
-        "derived_context_method": "Unknown; no contextual inference performed.",
-        "derived_context_sources": [],
-        "derived_geography": null,
-        "derived_menu_category": "unknown",
-        "derived_owner_category": "unknown"
+        "action_category": "inspection / visit only",
+        "action_category_confidence": "high",
+        "action_category_method": "reviewed_source_context",
+        "action_category_reviewed": true,
+        "action_category_source": "https://timesofindia.indiatimes.com/city/kolkata/kmc-food-team-reaches-park-street-seizes-stale-items-from-eateries/articleshow/133774167.cms",
+        "business_format": "unknown",
+        "business_format_confidence": "unknown",
+        "business_format_method": null,
+        "business_format_reviewed": false,
+        "business_format_source": null,
+        "derived_confidence": "high",
+        "derived_context_method": "Maintainer-reviewed normalization and categories based only on explicit publisher wording retained with this record.",
+        "derived_context_sources": [
+          "https://timesofindia.indiatimes.com/city/kolkata/kmc-food-team-reaches-park-street-seizes-stale-items-from-eateries/articleshow/133774167.cms"
+        ],
+        "establishment_context": "sweet shop / bakery",
+        "establishment_context_confidence": "high",
+        "establishment_context_method": "publisher_explicit",
+        "establishment_context_reviewed": true,
+        "establishment_context_source": "https://timesofindia.indiatimes.com/city/kolkata/kmc-food-team-reaches-park-street-seizes-stale-items-from-eateries/articleshow/133774167.cms",
+        "menu_context": "unknown",
+        "menu_context_confidence": "unknown",
+        "menu_context_method": null,
+        "menu_context_reviewed": false,
+        "menu_context_source": null,
+        "normalized_area": "Kamalgazi"
       },
+      "display_summary": "Source reports an inspection or visit involving sweet shop / bakery in Kamalgazi.",
       "event_id": "WBFS-2a87be3b1aee",
       "history": [
         {
           "at": "2026-09-07T21:12:32.942437Z",
           "note": "Initial bounded source review; publication date retained where event date was not explicit.",
           "previous_record_sha256": null,
+          "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-07T21:41:20.845808Z",
+          "note": "V0.2 reviewed contextual enrichment; reported facts remain source-linked.",
+          "previous_record_sha256": "99d44a84d8d9b1e1506b497a0d3a30065de9f4e3662cd63440ba2ac8444ab25b",
           "status": "SOURCE VERIFIED"
         }
       ],
@@ -525,9 +719,9 @@
         "llm_task": null,
         "llm_used": false
       },
-      "pipeline_version": "0.1.0",
+      "pipeline_version": "0.2.0",
       "record_created_at": "2026-09-07T21:12:32.942437Z",
-      "record_updated_at": "2026-09-07T21:12:32.942437Z",
+      "record_updated_at": "2026-09-07T21:41:20.845808Z",
       "reported_fact": {
         "area": "Kamalgazi",
         "district": null,
@@ -539,6 +733,10 @@
             "quote": "Kamalgazi",
             "source_url": "https://timesofindia.indiatimes.com/city/kolkata/kmc-food-team-reaches-park-street-seizes-stale-items-from-eateries/articleshow/133774167.cms"
           },
+          "reported_action": {
+            "quote": "inspection was also carried out",
+            "source_url": "https://timesofindia.indiatimes.com/city/kolkata/kmc-food-team-reaches-park-street-seizes-stale-items-from-eateries/articleshow/133774167.cms"
+          },
           "reported_observation": {
             "quote": "inspection was also carried out",
             "source_url": "https://timesofindia.indiatimes.com/city/kolkata/kmc-food-team-reaches-park-street-seizes-stale-items-from-eateries/articleshow/133774167.cms"
@@ -546,7 +744,7 @@
         },
         "formal_finding": null,
         "legal_finding_status": "unknown",
-        "reported_action": null,
+        "reported_action": "inspection was also carried out",
         "reported_authority": null,
         "reported_observation": "inspection was also carried out",
         "reported_quantity": null
@@ -579,20 +777,46 @@
     {
       "context_notice": "Independent, non-governmental public-source research. Inclusion is not a finding of wrongdoing. Counts describe records in this tracker, not official totals, prevalence, compliance, risk or group behavior. Read the sources and preserve this context when sharing.",
       "derived_context": {
-        "action_category": "other",
-        "derived_confidence": "unknown",
-        "derived_context_method": "Unknown; no contextual inference performed.",
-        "derived_context_sources": [],
-        "derived_geography": null,
-        "derived_menu_category": "unknown",
-        "derived_owner_category": "unknown"
+        "action_category": "inspection / visit only",
+        "action_category_confidence": "high",
+        "action_category_method": "reviewed_source_context",
+        "action_category_reviewed": true,
+        "action_category_source": "https://timesofindia.indiatimes.com/city/kolkata/kmc-cracks-whip-on-dacres-lane-eateries/articleshow/133811497.cms",
+        "business_format": "unknown",
+        "business_format_confidence": "unknown",
+        "business_format_method": null,
+        "business_format_reviewed": false,
+        "business_format_source": null,
+        "derived_confidence": "high",
+        "derived_context_method": "Maintainer-reviewed normalization and categories based only on explicit publisher wording retained with this record.",
+        "derived_context_sources": [
+          "https://timesofindia.indiatimes.com/city/kolkata/kmc-cracks-whip-on-dacres-lane-eateries/articleshow/133811497.cms"
+        ],
+        "establishment_context": "restaurant / eatery",
+        "establishment_context_confidence": "high",
+        "establishment_context_method": "publisher_explicit",
+        "establishment_context_reviewed": true,
+        "establishment_context_source": "https://timesofindia.indiatimes.com/city/kolkata/kmc-cracks-whip-on-dacres-lane-eateries/articleshow/133811497.cms",
+        "menu_context": "unknown",
+        "menu_context_confidence": "unknown",
+        "menu_context_method": null,
+        "menu_context_reviewed": false,
+        "menu_context_source": null,
+        "normalized_area": "Dacres Lane"
       },
+      "display_summary": "Source reports an inspection or visit involving Suruchi in Dacres Lane.",
       "event_id": "WBFS-2d6ba057efa8",
       "history": [
         {
           "at": "2026-09-07T21:12:32.942437Z",
           "note": "Initial bounded source review; publication date retained where event date was not explicit.",
           "previous_record_sha256": null,
+          "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-07T21:41:20.845808Z",
+          "note": "V0.2 reviewed contextual enrichment; reported facts remain source-linked.",
+          "previous_record_sha256": "442bc8321e0f5e66bd811a4d3b28825fd7f3d97dc4dff8eda4500ee2fe0c1a76",
           "status": "SOURCE VERIFIED"
         }
       ],
@@ -605,9 +829,9 @@
         "llm_task": null,
         "llm_used": false
       },
-      "pipeline_version": "0.1.0",
+      "pipeline_version": "0.2.0",
       "record_created_at": "2026-09-07T21:12:32.942437Z",
-      "record_updated_at": "2026-09-07T21:12:32.942437Z",
+      "record_updated_at": "2026-09-07T21:41:20.845808Z",
       "reported_fact": {
         "area": "Dacres Lane",
         "district": null,
@@ -623,6 +847,10 @@
             "quote": "Suruchi",
             "source_url": "https://timesofindia.indiatimes.com/city/kolkata/kmc-cracks-whip-on-dacres-lane-eateries/articleshow/133811497.cms"
           },
+          "reported_action": {
+            "quote": "the team visited",
+            "source_url": "https://timesofindia.indiatimes.com/city/kolkata/kmc-cracks-whip-on-dacres-lane-eateries/articleshow/133811497.cms"
+          },
           "reported_observation": {
             "quote": "the team visited",
             "source_url": "https://timesofindia.indiatimes.com/city/kolkata/kmc-cracks-whip-on-dacres-lane-eateries/articleshow/133811497.cms"
@@ -630,7 +858,7 @@
         },
         "formal_finding": null,
         "legal_finding_status": "unknown",
-        "reported_action": null,
+        "reported_action": "the team visited",
         "reported_authority": null,
         "reported_observation": "the team visited",
         "reported_quantity": null
@@ -663,20 +891,46 @@
     {
       "context_notice": "Independent, non-governmental public-source research. Inclusion is not a finding of wrongdoing. Counts describe records in this tracker, not official totals, prevalence, compliance, risk or group behavior. Read the sources and preserve this context when sharing.",
       "derived_context": {
-        "action_category": "other",
-        "derived_confidence": "unknown",
-        "derived_context_method": "Unknown; no contextual inference performed.",
-        "derived_context_sources": [],
-        "derived_geography": null,
-        "derived_menu_category": "unknown",
-        "derived_owner_category": "unknown"
+        "action_category": "inspection / visit only",
+        "action_category_confidence": "high",
+        "action_category_method": "reviewed_source_context",
+        "action_category_reviewed": true,
+        "action_category_source": "https://timesofindia.indiatimes.com/city/kolkata/kmc-food-inspectors-knock-on-mall-eatery-doors-discards-meat-in-a-central-kolkata-restaurant/articleshow/133844089.cms",
+        "business_format": "unknown",
+        "business_format_confidence": "unknown",
+        "business_format_method": null,
+        "business_format_reviewed": false,
+        "business_format_source": null,
+        "derived_confidence": "high",
+        "derived_context_method": "Maintainer-reviewed normalization and categories based only on explicit publisher wording retained with this record.",
+        "derived_context_sources": [
+          "https://timesofindia.indiatimes.com/city/kolkata/kmc-food-inspectors-knock-on-mall-eatery-doors-discards-meat-in-a-central-kolkata-restaurant/articleshow/133844089.cms"
+        ],
+        "establishment_context": "mall / food court",
+        "establishment_context_confidence": "high",
+        "establishment_context_method": "publisher_explicit",
+        "establishment_context_reviewed": true,
+        "establishment_context_source": "https://timesofindia.indiatimes.com/city/kolkata/kmc-food-inspectors-knock-on-mall-eatery-doors-discards-meat-in-a-central-kolkata-restaurant/articleshow/133844089.cms",
+        "menu_context": "unknown",
+        "menu_context_confidence": "unknown",
+        "menu_context_method": null,
+        "menu_context_reviewed": false,
+        "menu_context_source": null,
+        "normalized_area": "Kolkata"
       },
+      "display_summary": "Source reports an inspection or visit involving Metropolis at Hiland Park in Kolkata.",
       "event_id": "WBFS-323ec48706a8",
       "history": [
         {
           "at": "2026-09-07T21:12:32.942437Z",
           "note": "Initial bounded source review; publication date retained where event date was not explicit.",
           "previous_record_sha256": null,
+          "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-07T21:41:20.845808Z",
+          "note": "V0.2 reviewed contextual enrichment; reported facts remain source-linked.",
+          "previous_record_sha256": "9a2f1406056fabd6446b818c064e56fd0b414e9bf1d6c7aaaf44cfe50fd5fc4f",
           "status": "SOURCE VERIFIED"
         }
       ],
@@ -689,9 +943,9 @@
         "llm_task": null,
         "llm_used": false
       },
-      "pipeline_version": "0.1.0",
+      "pipeline_version": "0.2.0",
       "record_created_at": "2026-09-07T21:12:32.942437Z",
-      "record_updated_at": "2026-09-07T21:12:32.942437Z",
+      "record_updated_at": "2026-09-07T21:41:20.845808Z",
       "reported_fact": {
         "area": "Kolkata",
         "district": null,
@@ -707,6 +961,10 @@
             "quote": "Metropolis at Hiland Park",
             "source_url": "https://timesofindia.indiatimes.com/city/kolkata/kmc-food-inspectors-knock-on-mall-eatery-doors-discards-meat-in-a-central-kolkata-restaurant/articleshow/133844089.cms"
           },
+          "reported_authority": {
+            "quote": "Kolkata Municipal Corporation",
+            "source_url": "https://timesofindia.indiatimes.com/city/kolkata/kmc-food-inspectors-knock-on-mall-eatery-doors-discards-meat-in-a-central-kolkata-restaurant/articleshow/133844089.cms"
+          },
           "reported_observation": {
             "quote": "food safety drive reached",
             "source_url": "https://timesofindia.indiatimes.com/city/kolkata/kmc-food-inspectors-knock-on-mall-eatery-doors-discards-meat-in-a-central-kolkata-restaurant/articleshow/133844089.cms"
@@ -715,7 +973,7 @@
         "formal_finding": null,
         "legal_finding_status": "unknown",
         "reported_action": null,
-        "reported_authority": null,
+        "reported_authority": "Kolkata Municipal Corporation",
         "reported_observation": "food safety drive reached",
         "reported_quantity": null
       },
@@ -747,20 +1005,46 @@
     {
       "context_notice": "Independent, non-governmental public-source research. Inclusion is not a finding of wrongdoing. Counts describe records in this tracker, not official totals, prevalence, compliance, risk or group behavior. Read the sources and preserve this context when sharing.",
       "derived_context": {
-        "action_category": "other",
-        "derived_confidence": "unknown",
-        "derived_context_method": "Unknown; no contextual inference performed.",
-        "derived_context_sources": [],
-        "derived_geography": null,
-        "derived_menu_category": "unknown",
-        "derived_owner_category": "unknown"
+        "action_category": "not reported",
+        "action_category_confidence": "unknown",
+        "action_category_method": null,
+        "action_category_reviewed": false,
+        "action_category_source": null,
+        "business_format": "unknown",
+        "business_format_confidence": "unknown",
+        "business_format_method": null,
+        "business_format_reviewed": false,
+        "business_format_source": null,
+        "derived_confidence": "high",
+        "derived_context_method": "Maintainer-reviewed normalization and categories based only on explicit publisher wording retained with this record.",
+        "derived_context_sources": [
+          "https://www.businesstoday.in/amp/india/story/bengal-fda-crackdown-40kg-rotten-meat-500kg-stale-chicken-and-prawns-seized-ahead-of-durga-puja-553132-2026-09-03"
+        ],
+        "establishment_context": "sweet shop / bakery",
+        "establishment_context_confidence": "high",
+        "establishment_context_method": "publisher_explicit",
+        "establishment_context_reviewed": true,
+        "establishment_context_source": "https://www.businesstoday.in/amp/india/story/bengal-fda-crackdown-40kg-rotten-meat-500kg-stale-chicken-and-prawns-seized-ahead-of-durga-puja-553132-2026-09-03",
+        "menu_context": "unknown",
+        "menu_context_confidence": "unknown",
+        "menu_context_method": null,
+        "menu_context_reviewed": false,
+        "menu_context_source": null,
+        "normalized_area": "Shaktigarh"
       },
+      "display_summary": "Source reports a source-reported food-safety event involving sweet shop / bakery in Shaktigarh.",
       "event_id": "WBFS-34ad5ff406c7",
       "history": [
         {
           "at": "2026-09-07T21:12:32.942437Z",
           "note": "Initial bounded source review; publication date retained where event date was not explicit.",
           "previous_record_sha256": null,
+          "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-07T21:41:20.845808Z",
+          "note": "V0.2 reviewed contextual enrichment; reported facts remain source-linked.",
+          "previous_record_sha256": "62568188e1abfe8155bfac006f8abd18a6324ede7afac9336f7f7a733215349d",
           "status": "SOURCE VERIFIED"
         }
       ],
@@ -773,9 +1057,9 @@
         "llm_task": null,
         "llm_used": false
       },
-      "pipeline_version": "0.1.0",
+      "pipeline_version": "0.2.0",
       "record_created_at": "2026-09-07T21:12:32.942437Z",
-      "record_updated_at": "2026-09-07T21:12:32.942437Z",
+      "record_updated_at": "2026-09-07T21:41:20.845808Z",
       "reported_fact": {
         "area": "Shaktigarh",
         "district": null,
@@ -828,19 +1112,45 @@
       "context_notice": "Independent, non-governmental public-source research. Inclusion is not a finding of wrongdoing. Counts describe records in this tracker, not official totals, prevalence, compliance, risk or group behavior. Read the sources and preserve this context when sharing.",
       "derived_context": {
         "action_category": "other",
-        "derived_confidence": "unknown",
-        "derived_context_method": "Unknown; no contextual inference performed.",
-        "derived_context_sources": [],
-        "derived_geography": null,
-        "derived_menu_category": "unknown",
-        "derived_owner_category": "unknown"
+        "action_category_confidence": "high",
+        "action_category_method": "reviewed_source_context",
+        "action_category_reviewed": true,
+        "action_category_source": "https://tv9bangla.com/kolkata/west-bengal-food-safety-drive-irregularities-found-at-1525-food-centres-licences-of-13-processing-units-cancelled-1343938.html",
+        "business_format": "unknown",
+        "business_format_confidence": "unknown",
+        "business_format_method": null,
+        "business_format_reviewed": false,
+        "business_format_source": null,
+        "derived_confidence": "high",
+        "derived_context_method": "Maintainer-reviewed normalization and categories based only on explicit publisher wording retained with this record.",
+        "derived_context_sources": [
+          "https://tv9bangla.com/kolkata/west-bengal-food-safety-drive-irregularities-found-at-1525-food-centres-licences-of-13-processing-units-cancelled-1343938.html"
+        ],
+        "establishment_context": "restaurant / eatery",
+        "establishment_context_confidence": "high",
+        "establishment_context_method": "publisher_explicit",
+        "establishment_context_reviewed": true,
+        "establishment_context_source": "https://tv9bangla.com/kolkata/west-bengal-food-safety-drive-irregularities-found-at-1525-food-centres-licences-of-13-processing-units-cancelled-1343938.html",
+        "menu_context": "unknown",
+        "menu_context_confidence": "unknown",
+        "menu_context_method": null,
+        "menu_context_reviewed": false,
+        "menu_context_source": null,
+        "normalized_area": "Madhyamgram"
       },
+      "display_summary": "Source reports a source-reported action involving জাস্ট বাঙালি in মধ‌্যমগ্রামের.",
       "event_id": "WBFS-36131288fc72",
       "history": [
         {
           "at": "2026-09-07T21:12:32.942437Z",
           "note": "Initial bounded source review; publication date retained where event date was not explicit.",
           "previous_record_sha256": null,
+          "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-07T21:41:20.845808Z",
+          "note": "V0.2 reviewed contextual enrichment; reported facts remain source-linked.",
+          "previous_record_sha256": "ff70e9fa41017ff402d31c2148694e6351e0b2304e09bfe929d5890764e2afb9",
           "status": "SOURCE VERIFIED"
         }
       ],
@@ -853,9 +1163,9 @@
         "llm_task": null,
         "llm_used": false
       },
-      "pipeline_version": "0.1.0",
+      "pipeline_version": "0.2.0",
       "record_created_at": "2026-09-07T21:12:32.942437Z",
-      "record_updated_at": "2026-09-07T21:12:32.942437Z",
+      "record_updated_at": "2026-09-07T21:41:20.845808Z",
       "reported_fact": {
         "area": "মধ‌্যমগ্রামের",
         "district": null,
@@ -871,6 +1181,10 @@
             "quote": "জাস্ট বাঙালি",
             "source_url": "https://tv9bangla.com/kolkata/west-bengal-food-safety-drive-irregularities-found-at-1525-food-centres-licences-of-13-processing-units-cancelled-1343938.html"
           },
+          "reported_action": {
+            "quote": "লাইসেন্স সাসপেন্ড করা হয়েছে",
+            "source_url": "https://tv9bangla.com/kolkata/west-bengal-food-safety-drive-irregularities-found-at-1525-food-centres-licences-of-13-processing-units-cancelled-1343938.html"
+          },
           "reported_observation": {
             "quote": "লাইসেন্স সাসপেন্ড করা হয়েছে",
             "source_url": "https://tv9bangla.com/kolkata/west-bengal-food-safety-drive-irregularities-found-at-1525-food-centres-licences-of-13-processing-units-cancelled-1343938.html"
@@ -878,7 +1192,7 @@
         },
         "formal_finding": null,
         "legal_finding_status": "unknown",
-        "reported_action": null,
+        "reported_action": "লাইসেন্স সাসপেন্ড করা হয়েছে",
         "reported_authority": null,
         "reported_observation": "লাইসেন্স সাসপেন্ড করা হয়েছে",
         "reported_quantity": null
@@ -911,20 +1225,46 @@
     {
       "context_notice": "Independent, non-governmental public-source research. Inclusion is not a finding of wrongdoing. Counts describe records in this tracker, not official totals, prevalence, compliance, risk or group behavior. Read the sources and preserve this context when sharing.",
       "derived_context": {
-        "action_category": "other",
-        "derived_confidence": "unknown",
-        "derived_context_method": "Unknown; no contextual inference performed.",
-        "derived_context_sources": [],
-        "derived_geography": null,
-        "derived_menu_category": "unknown",
-        "derived_owner_category": "unknown"
+        "action_category": "inspection / visit only",
+        "action_category_confidence": "high",
+        "action_category_method": "reviewed_source_context",
+        "action_category_reviewed": true,
+        "action_category_source": "https://timesofindia.indiatimes.com/city/kolkata/kmc-food-inspectors-knock-on-mall-eatery-doors-discards-meat-in-a-central-kolkata-restaurant/articleshow/133844089.cms",
+        "business_format": "unknown",
+        "business_format_confidence": "unknown",
+        "business_format_method": null,
+        "business_format_reviewed": false,
+        "business_format_source": null,
+        "derived_confidence": "high",
+        "derived_context_method": "Maintainer-reviewed normalization and categories based only on explicit publisher wording retained with this record.",
+        "derived_context_sources": [
+          "https://timesofindia.indiatimes.com/city/kolkata/kmc-food-inspectors-knock-on-mall-eatery-doors-discards-meat-in-a-central-kolkata-restaurant/articleshow/133844089.cms"
+        ],
+        "establishment_context": "mall / food court",
+        "establishment_context_confidence": "high",
+        "establishment_context_method": "publisher_explicit",
+        "establishment_context_reviewed": true,
+        "establishment_context_source": "https://timesofindia.indiatimes.com/city/kolkata/kmc-food-inspectors-knock-on-mall-eatery-doors-discards-meat-in-a-central-kolkata-restaurant/articleshow/133844089.cms",
+        "menu_context": "unknown",
+        "menu_context_confidence": "unknown",
+        "menu_context_method": null,
+        "menu_context_reviewed": false,
+        "menu_context_source": null,
+        "normalized_area": "Kolkata"
       },
+      "display_summary": "Source reports an inspection or visit involving Acropolis in Kolkata.",
       "event_id": "WBFS-36dcf26562c9",
       "history": [
         {
           "at": "2026-09-07T21:12:32.942437Z",
           "note": "Initial bounded source review; publication date retained where event date was not explicit.",
           "previous_record_sha256": null,
+          "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-07T21:41:20.845808Z",
+          "note": "V0.2 reviewed contextual enrichment; reported facts remain source-linked.",
+          "previous_record_sha256": "3f941f320faf07a6b5ba40b00dbc4b967310f48e75f6eac2bd342ef356d66582",
           "status": "SOURCE VERIFIED"
         }
       ],
@@ -937,9 +1277,9 @@
         "llm_task": null,
         "llm_used": false
       },
-      "pipeline_version": "0.1.0",
+      "pipeline_version": "0.2.0",
       "record_created_at": "2026-09-07T21:12:32.942437Z",
-      "record_updated_at": "2026-09-07T21:12:32.942437Z",
+      "record_updated_at": "2026-09-07T21:41:20.845808Z",
       "reported_fact": {
         "area": "Kolkata",
         "district": null,
@@ -955,6 +1295,10 @@
             "quote": "Acropolis",
             "source_url": "https://timesofindia.indiatimes.com/city/kolkata/kmc-food-inspectors-knock-on-mall-eatery-doors-discards-meat-in-a-central-kolkata-restaurant/articleshow/133844089.cms"
           },
+          "reported_authority": {
+            "quote": "Kolkata Municipal Corporation",
+            "source_url": "https://timesofindia.indiatimes.com/city/kolkata/kmc-food-inspectors-knock-on-mall-eatery-doors-discards-meat-in-a-central-kolkata-restaurant/articleshow/133844089.cms"
+          },
           "reported_observation": {
             "quote": "food safety drive reached",
             "source_url": "https://timesofindia.indiatimes.com/city/kolkata/kmc-food-inspectors-knock-on-mall-eatery-doors-discards-meat-in-a-central-kolkata-restaurant/articleshow/133844089.cms"
@@ -963,7 +1307,7 @@
         "formal_finding": null,
         "legal_finding_status": "unknown",
         "reported_action": null,
-        "reported_authority": null,
+        "reported_authority": "Kolkata Municipal Corporation",
         "reported_observation": "food safety drive reached",
         "reported_quantity": null
       },
@@ -995,20 +1339,46 @@
     {
       "context_notice": "Independent, non-governmental public-source research. Inclusion is not a finding of wrongdoing. Counts describe records in this tracker, not official totals, prevalence, compliance, risk or group behavior. Read the sources and preserve this context when sharing.",
       "derived_context": {
-        "action_category": "other",
-        "derived_confidence": "unknown",
-        "derived_context_method": "Unknown; no contextual inference performed.",
-        "derived_context_sources": [],
-        "derived_geography": null,
-        "derived_menu_category": "unknown",
-        "derived_owner_category": "unknown"
+        "action_category": "inspection / visit only",
+        "action_category_confidence": "high",
+        "action_category_method": "reviewed_source_context",
+        "action_category_reviewed": true,
+        "action_category_source": "https://timesofindia.indiatimes.com/city/kolkata/kmc-cracks-whip-on-dacres-lane-eateries/articleshow/133811497.cms",
+        "business_format": "unknown",
+        "business_format_confidence": "unknown",
+        "business_format_method": null,
+        "business_format_reviewed": false,
+        "business_format_source": null,
+        "derived_confidence": "high",
+        "derived_context_method": "Maintainer-reviewed normalization and categories based only on explicit publisher wording retained with this record.",
+        "derived_context_sources": [
+          "https://timesofindia.indiatimes.com/city/kolkata/kmc-cracks-whip-on-dacres-lane-eateries/articleshow/133811497.cms"
+        ],
+        "establishment_context": "unknown",
+        "establishment_context_confidence": "unknown",
+        "establishment_context_method": null,
+        "establishment_context_reviewed": false,
+        "establishment_context_source": null,
+        "menu_context": "unknown",
+        "menu_context_confidence": "unknown",
+        "menu_context_method": null,
+        "menu_context_reviewed": false,
+        "menu_context_source": null,
+        "normalized_area": "Dum Dum"
       },
+      "display_summary": "Source reports an inspection or visit involving an unnamed establishment in Dum Dum.",
       "event_id": "WBFS-40c2c19539bf",
       "history": [
         {
           "at": "2026-09-07T21:12:32.942437Z",
           "note": "Initial bounded source review; publication date retained where event date was not explicit.",
           "previous_record_sha256": null,
+          "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-07T21:41:20.845808Z",
+          "note": "V0.2 reviewed contextual enrichment; reported facts remain source-linked.",
+          "previous_record_sha256": "48c1407578b49d5305d0d4fd65c89dad6c83033b79bd98697c68b939d1d2f334",
           "status": "SOURCE VERIFIED"
         }
       ],
@@ -1021,9 +1391,9 @@
         "llm_task": null,
         "llm_used": false
       },
-      "pipeline_version": "0.1.0",
+      "pipeline_version": "0.2.0",
       "record_created_at": "2026-09-07T21:12:32.942437Z",
-      "record_updated_at": "2026-09-07T21:12:32.942437Z",
+      "record_updated_at": "2026-09-07T21:41:20.845808Z",
       "reported_fact": {
         "area": "Dum Dum",
         "district": null,
@@ -1035,6 +1405,10 @@
             "quote": "Dum Dum",
             "source_url": "https://timesofindia.indiatimes.com/city/kolkata/kmc-cracks-whip-on-dacres-lane-eateries/articleshow/133811497.cms"
           },
+          "reported_authority": {
+            "quote": "KMC",
+            "source_url": "https://timesofindia.indiatimes.com/city/kolkata/kmc-cracks-whip-on-dacres-lane-eateries/articleshow/133811497.cms"
+          },
           "reported_observation": {
             "quote": "visited Lake Market",
             "source_url": "https://timesofindia.indiatimes.com/city/kolkata/kmc-cracks-whip-on-dacres-lane-eateries/articleshow/133811497.cms"
@@ -1043,7 +1417,7 @@
         "formal_finding": null,
         "legal_finding_status": "unknown",
         "reported_action": null,
-        "reported_authority": null,
+        "reported_authority": "KMC",
         "reported_observation": "visited Lake Market",
         "reported_quantity": null
       },
@@ -1075,20 +1449,46 @@
     {
       "context_notice": "Independent, non-governmental public-source research. Inclusion is not a finding of wrongdoing. Counts describe records in this tracker, not official totals, prevalence, compliance, risk or group behavior. Read the sources and preserve this context when sharing.",
       "derived_context": {
-        "action_category": "other",
-        "derived_confidence": "unknown",
-        "derived_context_method": "Unknown; no contextual inference performed.",
-        "derived_context_sources": [],
-        "derived_geography": null,
-        "derived_menu_category": "unknown",
-        "derived_owner_category": "unknown"
+        "action_category": "inspection / visit only",
+        "action_category_confidence": "high",
+        "action_category_method": "reviewed_source_context",
+        "action_category_reviewed": true,
+        "action_category_source": "https://timesofindia.indiatimes.com/city/kolkata/kmc-food-inspectors-knock-on-mall-eatery-doors-discards-meat-in-a-central-kolkata-restaurant/articleshow/133844089.cms",
+        "business_format": "unknown",
+        "business_format_confidence": "unknown",
+        "business_format_method": null,
+        "business_format_reviewed": false,
+        "business_format_source": null,
+        "derived_confidence": "high",
+        "derived_context_method": "Maintainer-reviewed normalization and categories based only on explicit publisher wording retained with this record.",
+        "derived_context_sources": [
+          "https://timesofindia.indiatimes.com/city/kolkata/kmc-food-inspectors-knock-on-mall-eatery-doors-discards-meat-in-a-central-kolkata-restaurant/articleshow/133844089.cms"
+        ],
+        "establishment_context": "mall / food court",
+        "establishment_context_confidence": "high",
+        "establishment_context_method": "publisher_explicit",
+        "establishment_context_reviewed": true,
+        "establishment_context_source": "https://timesofindia.indiatimes.com/city/kolkata/kmc-food-inspectors-knock-on-mall-eatery-doors-discards-meat-in-a-central-kolkata-restaurant/articleshow/133844089.cms",
+        "menu_context": "unknown",
+        "menu_context_confidence": "unknown",
+        "menu_context_method": null,
+        "menu_context_reviewed": false,
+        "menu_context_source": null,
+        "normalized_area": "Kolkata"
       },
+      "display_summary": "Source reports an inspection or visit involving South City in Kolkata.",
       "event_id": "WBFS-42d3961e2f90",
       "history": [
         {
           "at": "2026-09-07T21:12:32.942437Z",
           "note": "Initial bounded source review; publication date retained where event date was not explicit.",
           "previous_record_sha256": null,
+          "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-07T21:41:20.845808Z",
+          "note": "V0.2 reviewed contextual enrichment; reported facts remain source-linked.",
+          "previous_record_sha256": "af768b6beaa2654f404db5a9ce64632014da0d3040639ccae05dedf99f0855f4",
           "status": "SOURCE VERIFIED"
         }
       ],
@@ -1101,9 +1501,9 @@
         "llm_task": null,
         "llm_used": false
       },
-      "pipeline_version": "0.1.0",
+      "pipeline_version": "0.2.0",
       "record_created_at": "2026-09-07T21:12:32.942437Z",
-      "record_updated_at": "2026-09-07T21:12:32.942437Z",
+      "record_updated_at": "2026-09-07T21:41:20.845808Z",
       "reported_fact": {
         "area": "Kolkata",
         "district": null,
@@ -1119,6 +1519,10 @@
             "quote": "South City",
             "source_url": "https://timesofindia.indiatimes.com/city/kolkata/kmc-food-inspectors-knock-on-mall-eatery-doors-discards-meat-in-a-central-kolkata-restaurant/articleshow/133844089.cms"
           },
+          "reported_authority": {
+            "quote": "Kolkata Municipal Corporation",
+            "source_url": "https://timesofindia.indiatimes.com/city/kolkata/kmc-food-inspectors-knock-on-mall-eatery-doors-discards-meat-in-a-central-kolkata-restaurant/articleshow/133844089.cms"
+          },
           "reported_observation": {
             "quote": "food safety drive reached",
             "source_url": "https://timesofindia.indiatimes.com/city/kolkata/kmc-food-inspectors-knock-on-mall-eatery-doors-discards-meat-in-a-central-kolkata-restaurant/articleshow/133844089.cms"
@@ -1127,7 +1531,7 @@
         "formal_finding": null,
         "legal_finding_status": "unknown",
         "reported_action": null,
-        "reported_authority": null,
+        "reported_authority": "Kolkata Municipal Corporation",
         "reported_observation": "food safety drive reached",
         "reported_quantity": null
       },
@@ -1160,19 +1564,45 @@
       "context_notice": "Independent, non-governmental public-source research. Inclusion is not a finding of wrongdoing. Counts describe records in this tracker, not official totals, prevalence, compliance, risk or group behavior. Read the sources and preserve this context when sharing.",
       "derived_context": {
         "action_category": "other",
-        "derived_confidence": "unknown",
-        "derived_context_method": "Unknown; no contextual inference performed.",
-        "derived_context_sources": [],
-        "derived_geography": null,
-        "derived_menu_category": "unknown",
-        "derived_owner_category": "unknown"
+        "action_category_confidence": "high",
+        "action_category_method": "reviewed_source_context",
+        "action_category_reviewed": true,
+        "action_category_source": "https://tv9bangla.com/kolkata/west-bengal-food-safety-drive-irregularities-found-at-1525-food-centres-licences-of-13-processing-units-cancelled-1343938.html",
+        "business_format": "unknown",
+        "business_format_confidence": "unknown",
+        "business_format_method": null,
+        "business_format_reviewed": false,
+        "business_format_source": null,
+        "derived_confidence": "high",
+        "derived_context_method": "Maintainer-reviewed normalization and categories based only on explicit publisher wording retained with this record.",
+        "derived_context_sources": [
+          "https://tv9bangla.com/kolkata/west-bengal-food-safety-drive-irregularities-found-at-1525-food-centres-licences-of-13-processing-units-cancelled-1343938.html"
+        ],
+        "establishment_context": "restaurant / eatery",
+        "establishment_context_confidence": "high",
+        "establishment_context_method": "publisher_explicit",
+        "establishment_context_reviewed": true,
+        "establishment_context_source": "https://tv9bangla.com/kolkata/west-bengal-food-safety-drive-irregularities-found-at-1525-food-centres-licences-of-13-processing-units-cancelled-1343938.html",
+        "menu_context": "unknown",
+        "menu_context_confidence": "unknown",
+        "menu_context_method": null,
+        "menu_context_reviewed": false,
+        "menu_context_source": null,
+        "normalized_area": "Sector V"
       },
+      "display_summary": "Source reports a source-reported action involving অ‌্যাবসিলিউট বারবিকিউ নেশন in সেক্টর ফাইভের আরডিবি মলের.",
       "event_id": "WBFS-4fb1b9a7c233",
       "history": [
         {
           "at": "2026-09-07T21:12:32.942437Z",
           "note": "Initial bounded source review; publication date retained where event date was not explicit.",
           "previous_record_sha256": null,
+          "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-07T21:41:20.845808Z",
+          "note": "V0.2 reviewed contextual enrichment; reported facts remain source-linked.",
+          "previous_record_sha256": "f65c38c4725b919ad17accc2f4e48b42295189a6ef551aad711c2487f99c236b",
           "status": "SOURCE VERIFIED"
         }
       ],
@@ -1185,9 +1615,9 @@
         "llm_task": null,
         "llm_used": false
       },
-      "pipeline_version": "0.1.0",
+      "pipeline_version": "0.2.0",
       "record_created_at": "2026-09-07T21:12:32.942437Z",
-      "record_updated_at": "2026-09-07T21:12:32.942437Z",
+      "record_updated_at": "2026-09-07T21:41:20.845808Z",
       "reported_fact": {
         "area": "সেক্টর ফাইভের আরডিবি মলের",
         "district": null,
@@ -1203,6 +1633,10 @@
             "quote": "অ‌্যাবসিলিউট বারবিকিউ নেশন",
             "source_url": "https://tv9bangla.com/kolkata/west-bengal-food-safety-drive-irregularities-found-at-1525-food-centres-licences-of-13-processing-units-cancelled-1343938.html"
           },
+          "reported_action": {
+            "quote": "লাইসেন্স সাসপেন্ড করা হয়েছে",
+            "source_url": "https://tv9bangla.com/kolkata/west-bengal-food-safety-drive-irregularities-found-at-1525-food-centres-licences-of-13-processing-units-cancelled-1343938.html"
+          },
           "reported_observation": {
             "quote": "লাইসেন্স সাসপেন্ড করা হয়েছে",
             "source_url": "https://tv9bangla.com/kolkata/west-bengal-food-safety-drive-irregularities-found-at-1525-food-centres-licences-of-13-processing-units-cancelled-1343938.html"
@@ -1210,7 +1644,7 @@
         },
         "formal_finding": null,
         "legal_finding_status": "unknown",
-        "reported_action": null,
+        "reported_action": "লাইসেন্স সাসপেন্ড করা হয়েছে",
         "reported_authority": null,
         "reported_observation": "লাইসেন্স সাসপেন্ড করা হয়েছে",
         "reported_quantity": null
@@ -1243,20 +1677,46 @@
     {
       "context_notice": "Independent, non-governmental public-source research. Inclusion is not a finding of wrongdoing. Counts describe records in this tracker, not official totals, prevalence, compliance, risk or group behavior. Read the sources and preserve this context when sharing.",
       "derived_context": {
-        "action_category": "other",
-        "derived_confidence": "unknown",
-        "derived_context_method": "Unknown; no contextual inference performed.",
-        "derived_context_sources": [],
-        "derived_geography": null,
-        "derived_menu_category": "unknown",
-        "derived_owner_category": "unknown"
+        "action_category": "inspection / visit only",
+        "action_category_confidence": "high",
+        "action_category_method": "reviewed_source_context",
+        "action_category_reviewed": true,
+        "action_category_source": "https://www.businesstoday.in/amp/india/story/bengal-fda-crackdown-40kg-rotten-meat-500kg-stale-chicken-and-prawns-seized-ahead-of-durga-puja-553132-2026-09-03",
+        "business_format": "unknown",
+        "business_format_confidence": "unknown",
+        "business_format_method": null,
+        "business_format_reviewed": false,
+        "business_format_source": null,
+        "derived_confidence": "high",
+        "derived_context_method": "Maintainer-reviewed normalization and categories based only on explicit publisher wording retained with this record.",
+        "derived_context_sources": [
+          "https://www.businesstoday.in/amp/india/story/bengal-fda-crackdown-40kg-rotten-meat-500kg-stale-chicken-and-prawns-seized-ahead-of-durga-puja-553132-2026-09-03"
+        ],
+        "establishment_context": "hotel / hospitality",
+        "establishment_context_confidence": "high",
+        "establishment_context_method": "publisher_explicit",
+        "establishment_context_reviewed": true,
+        "establishment_context_source": "https://www.businesstoday.in/amp/india/story/bengal-fda-crackdown-40kg-rotten-meat-500kg-stale-chicken-and-prawns-seized-ahead-of-durga-puja-553132-2026-09-03",
+        "menu_context": "unknown",
+        "menu_context_confidence": "unknown",
+        "menu_context_method": null,
+        "menu_context_reviewed": false,
+        "menu_context_source": null,
+        "normalized_area": "Digha"
       },
+      "display_summary": "Source reports an inspection or visit involving hotel / hospitality in Digha.",
       "event_id": "WBFS-56d6626ee956",
       "history": [
         {
           "at": "2026-09-07T21:12:32.942437Z",
           "note": "Initial bounded source review; publication date retained where event date was not explicit.",
           "previous_record_sha256": null,
+          "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-07T21:41:20.845808Z",
+          "note": "V0.2 reviewed contextual enrichment; reported facts remain source-linked.",
+          "previous_record_sha256": "c173b8d80aca36ff73cab6d5310df5e7e4f316921f594d90a7814362294cf8ef",
           "status": "SOURCE VERIFIED"
         }
       ],
@@ -1269,9 +1729,9 @@
         "llm_task": null,
         "llm_used": false
       },
-      "pipeline_version": "0.1.0",
+      "pipeline_version": "0.2.0",
       "record_created_at": "2026-09-07T21:12:32.942437Z",
-      "record_updated_at": "2026-09-07T21:12:32.942437Z",
+      "record_updated_at": "2026-09-07T21:41:20.845808Z",
       "reported_fact": {
         "area": "Digha",
         "district": null,
@@ -1283,6 +1743,10 @@
             "quote": "Digha",
             "source_url": "https://www.businesstoday.in/amp/india/story/bengal-fda-crackdown-40kg-rotten-meat-500kg-stale-chicken-and-prawns-seized-ahead-of-durga-puja-553132-2026-09-03"
           },
+          "reported_action": {
+            "quote": "inspections of 20 hotels reportedly uncovered",
+            "source_url": "https://www.businesstoday.in/amp/india/story/bengal-fda-crackdown-40kg-rotten-meat-500kg-stale-chicken-and-prawns-seized-ahead-of-durga-puja-553132-2026-09-03"
+          },
           "reported_observation": {
             "quote": "inspections of 20 hotels reportedly uncovered",
             "source_url": "https://www.businesstoday.in/amp/india/story/bengal-fda-crackdown-40kg-rotten-meat-500kg-stale-chicken-and-prawns-seized-ahead-of-durga-puja-553132-2026-09-03"
@@ -1290,7 +1754,7 @@
         },
         "formal_finding": null,
         "legal_finding_status": "unknown",
-        "reported_action": null,
+        "reported_action": "inspections of 20 hotels reportedly uncovered",
         "reported_authority": null,
         "reported_observation": "inspections of 20 hotels reportedly uncovered",
         "reported_quantity": null
@@ -1323,20 +1787,46 @@
     {
       "context_notice": "Independent, non-governmental public-source research. Inclusion is not a finding of wrongdoing. Counts describe records in this tracker, not official totals, prevalence, compliance, risk or group behavior. Read the sources and preserve this context when sharing.",
       "derived_context": {
-        "action_category": "other",
-        "derived_confidence": "unknown",
-        "derived_context_method": "Unknown; no contextual inference performed.",
-        "derived_context_sources": [],
-        "derived_geography": null,
-        "derived_menu_category": "unknown",
-        "derived_owner_category": "unknown"
+        "action_category": "inspection / visit only",
+        "action_category_confidence": "high",
+        "action_category_method": "reviewed_source_context",
+        "action_category_reviewed": true,
+        "action_category_source": "https://timesofindia.indiatimes.com/city/kolkata/kmc-food-inspectors-knock-on-mall-eatery-doors-discards-meat-in-a-central-kolkata-restaurant/articleshow/133844089.cms",
+        "business_format": "unknown",
+        "business_format_confidence": "unknown",
+        "business_format_method": null,
+        "business_format_reviewed": false,
+        "business_format_source": null,
+        "derived_confidence": "high",
+        "derived_context_method": "Maintainer-reviewed normalization and categories based only on explicit publisher wording retained with this record.",
+        "derived_context_sources": [
+          "https://timesofindia.indiatimes.com/city/kolkata/kmc-food-inspectors-knock-on-mall-eatery-doors-discards-meat-in-a-central-kolkata-restaurant/articleshow/133844089.cms"
+        ],
+        "establishment_context": "hotel / hospitality",
+        "establishment_context_confidence": "high",
+        "establishment_context_method": "publisher_explicit",
+        "establishment_context_reviewed": true,
+        "establishment_context_source": "https://timesofindia.indiatimes.com/city/kolkata/kmc-food-inspectors-knock-on-mall-eatery-doors-discards-meat-in-a-central-kolkata-restaurant/articleshow/133844089.cms",
+        "menu_context": "unknown",
+        "menu_context_confidence": "unknown",
+        "menu_context_method": null,
+        "menu_context_reviewed": false,
+        "menu_context_source": null,
+        "normalized_area": "Bentinck Street and Waterloo Street"
       },
+      "display_summary": "Source reports an inspection or visit involving New Aliah Hotel in Bentinck Street and Waterloo Street.",
       "event_id": "WBFS-5b37a8259b91",
       "history": [
         {
           "at": "2026-09-07T21:12:32.942437Z",
           "note": "Initial bounded source review; publication date retained where event date was not explicit.",
           "previous_record_sha256": null,
+          "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-07T21:41:20.845808Z",
+          "note": "V0.2 reviewed contextual enrichment; reported facts remain source-linked.",
+          "previous_record_sha256": "60d6773bee00831a10b8cc9f2c2dcf37163e8ac10e199f77e6110266e5042d9d",
           "status": "SOURCE VERIFIED"
         }
       ],
@@ -1349,9 +1839,9 @@
         "llm_task": null,
         "llm_used": false
       },
-      "pipeline_version": "0.1.0",
+      "pipeline_version": "0.2.0",
       "record_created_at": "2026-09-07T21:12:32.942437Z",
-      "record_updated_at": "2026-09-07T21:12:32.942437Z",
+      "record_updated_at": "2026-09-07T21:41:20.845808Z",
       "reported_fact": {
         "area": "Bentinck Street and Waterloo Street",
         "district": null,
@@ -1367,6 +1857,10 @@
             "quote": "New Aliah Hotel",
             "source_url": "https://timesofindia.indiatimes.com/city/kolkata/kmc-food-inspectors-knock-on-mall-eatery-doors-discards-meat-in-a-central-kolkata-restaurant/articleshow/133844089.cms"
           },
+          "reported_action": {
+            "quote": "Inspection teams also visited",
+            "source_url": "https://timesofindia.indiatimes.com/city/kolkata/kmc-food-inspectors-knock-on-mall-eatery-doors-discards-meat-in-a-central-kolkata-restaurant/articleshow/133844089.cms"
+          },
           "reported_observation": {
             "quote": "Inspection teams also visited",
             "source_url": "https://timesofindia.indiatimes.com/city/kolkata/kmc-food-inspectors-knock-on-mall-eatery-doors-discards-meat-in-a-central-kolkata-restaurant/articleshow/133844089.cms"
@@ -1374,7 +1868,7 @@
         },
         "formal_finding": null,
         "legal_finding_status": "unknown",
-        "reported_action": null,
+        "reported_action": "Inspection teams also visited",
         "reported_authority": null,
         "reported_observation": "Inspection teams also visited",
         "reported_quantity": null
@@ -1407,20 +1901,46 @@
     {
       "context_notice": "Independent, non-governmental public-source research. Inclusion is not a finding of wrongdoing. Counts describe records in this tracker, not official totals, prevalence, compliance, risk or group behavior. Read the sources and preserve this context when sharing.",
       "derived_context": {
-        "action_category": "other",
-        "derived_confidence": "unknown",
-        "derived_context_method": "Unknown; no contextual inference performed.",
-        "derived_context_sources": [],
-        "derived_geography": null,
-        "derived_menu_category": "unknown",
-        "derived_owner_category": "unknown"
+        "action_category": "inspection / visit only",
+        "action_category_confidence": "high",
+        "action_category_method": "reviewed_source_context",
+        "action_category_reviewed": true,
+        "action_category_source": "https://timesofindia.indiatimes.com/city/kolkata/kmc-cracks-whip-on-dacres-lane-eateries/articleshow/133811497.cms",
+        "business_format": "unknown",
+        "business_format_confidence": "unknown",
+        "business_format_method": null,
+        "business_format_reviewed": false,
+        "business_format_source": null,
+        "derived_confidence": "high",
+        "derived_context_method": "Maintainer-reviewed normalization and categories based only on explicit publisher wording retained with this record.",
+        "derived_context_sources": [
+          "https://timesofindia.indiatimes.com/city/kolkata/kmc-cracks-whip-on-dacres-lane-eateries/articleshow/133811497.cms"
+        ],
+        "establishment_context": "restaurant / eatery",
+        "establishment_context_confidence": "high",
+        "establishment_context_method": "publisher_explicit",
+        "establishment_context_reviewed": true,
+        "establishment_context_source": "https://timesofindia.indiatimes.com/city/kolkata/kmc-cracks-whip-on-dacres-lane-eateries/articleshow/133811497.cms",
+        "menu_context": "unknown",
+        "menu_context_confidence": "unknown",
+        "menu_context_method": null,
+        "menu_context_reviewed": false,
+        "menu_context_source": null,
+        "normalized_area": "Dacres Lane"
       },
+      "display_summary": "Source reports an inspection or visit involving New Chittanjan in Dacres Lane.",
       "event_id": "WBFS-6de7dac309b3",
       "history": [
         {
           "at": "2026-09-07T21:12:32.942437Z",
           "note": "Initial bounded source review; publication date retained where event date was not explicit.",
           "previous_record_sha256": null,
+          "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-07T21:41:20.845808Z",
+          "note": "V0.2 reviewed contextual enrichment; reported facts remain source-linked.",
+          "previous_record_sha256": "679f2a4939cae6319967829e64d322c1e1fbad5ae98bc155e9cc6ffcbb9a3313",
           "status": "SOURCE VERIFIED"
         }
       ],
@@ -1433,9 +1953,9 @@
         "llm_task": null,
         "llm_used": false
       },
-      "pipeline_version": "0.1.0",
+      "pipeline_version": "0.2.0",
       "record_created_at": "2026-09-07T21:12:32.942437Z",
-      "record_updated_at": "2026-09-07T21:12:32.942437Z",
+      "record_updated_at": "2026-09-07T21:41:20.845808Z",
       "reported_fact": {
         "area": "Dacres Lane",
         "district": null,
@@ -1451,6 +1971,10 @@
             "quote": "New Chittanjan",
             "source_url": "https://timesofindia.indiatimes.com/city/kolkata/kmc-cracks-whip-on-dacres-lane-eateries/articleshow/133811497.cms"
           },
+          "reported_action": {
+            "quote": "the team visited",
+            "source_url": "https://timesofindia.indiatimes.com/city/kolkata/kmc-cracks-whip-on-dacres-lane-eateries/articleshow/133811497.cms"
+          },
           "reported_observation": {
             "quote": "the team visited",
             "source_url": "https://timesofindia.indiatimes.com/city/kolkata/kmc-cracks-whip-on-dacres-lane-eateries/articleshow/133811497.cms"
@@ -1458,7 +1982,7 @@
         },
         "formal_finding": null,
         "legal_finding_status": "unknown",
-        "reported_action": null,
+        "reported_action": "the team visited",
         "reported_authority": null,
         "reported_observation": "the team visited",
         "reported_quantity": null
@@ -1492,19 +2016,45 @@
       "context_notice": "Independent, non-governmental public-source research. Inclusion is not a finding of wrongdoing. Counts describe records in this tracker, not official totals, prevalence, compliance, risk or group behavior. Read the sources and preserve this context when sharing.",
       "derived_context": {
         "action_category": "other",
-        "derived_confidence": "unknown",
-        "derived_context_method": "Unknown; no contextual inference performed.",
-        "derived_context_sources": [],
-        "derived_geography": null,
-        "derived_menu_category": "unknown",
-        "derived_owner_category": "unknown"
+        "action_category_confidence": "high",
+        "action_category_method": "reviewed_source_context",
+        "action_category_reviewed": true,
+        "action_category_source": "https://tv9bangla.com/kolkata/west-bengal-food-safety-drive-irregularities-found-at-1525-food-centres-licences-of-13-processing-units-cancelled-1343938.html",
+        "business_format": "unknown",
+        "business_format_confidence": "unknown",
+        "business_format_method": null,
+        "business_format_reviewed": false,
+        "business_format_source": null,
+        "derived_confidence": "high",
+        "derived_context_method": "Maintainer-reviewed normalization and categories based only on explicit publisher wording retained with this record.",
+        "derived_context_sources": [
+          "https://tv9bangla.com/kolkata/west-bengal-food-safety-drive-irregularities-found-at-1525-food-centres-licences-of-13-processing-units-cancelled-1343938.html"
+        ],
+        "establishment_context": "restaurant / eatery",
+        "establishment_context_confidence": "high",
+        "establishment_context_method": "publisher_explicit",
+        "establishment_context_reviewed": true,
+        "establishment_context_source": "https://tv9bangla.com/kolkata/west-bengal-food-safety-drive-irregularities-found-at-1525-food-centres-licences-of-13-processing-units-cancelled-1343938.html",
+        "menu_context": "unknown",
+        "menu_context_confidence": "unknown",
+        "menu_context_method": null,
+        "menu_context_reviewed": false,
+        "menu_context_source": null,
+        "normalized_area": "Madhyamgram"
       },
+      "display_summary": "Source reports a source-reported action involving রঙ দে বসন্তি ধাবা in মধ্যমগ্রামের.",
       "event_id": "WBFS-7414c293e43a",
       "history": [
         {
           "at": "2026-09-07T21:12:32.942437Z",
           "note": "Initial bounded source review; publication date retained where event date was not explicit.",
           "previous_record_sha256": null,
+          "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-07T21:41:20.845808Z",
+          "note": "V0.2 reviewed contextual enrichment; reported facts remain source-linked.",
+          "previous_record_sha256": "8395f51764b779cf2d4d450749767cbb7e94fb64fcea956937f036b66238b5d7",
           "status": "SOURCE VERIFIED"
         }
       ],
@@ -1517,9 +2067,9 @@
         "llm_task": null,
         "llm_used": false
       },
-      "pipeline_version": "0.1.0",
+      "pipeline_version": "0.2.0",
       "record_created_at": "2026-09-07T21:12:32.942437Z",
-      "record_updated_at": "2026-09-07T21:12:32.942437Z",
+      "record_updated_at": "2026-09-07T21:41:20.845808Z",
       "reported_fact": {
         "area": "মধ্যমগ্রামের",
         "district": null,
@@ -1535,6 +2085,10 @@
             "quote": "রঙ দে বসন্তি ধাবা",
             "source_url": "https://tv9bangla.com/kolkata/west-bengal-food-safety-drive-irregularities-found-at-1525-food-centres-licences-of-13-processing-units-cancelled-1343938.html"
           },
+          "reported_action": {
+            "quote": "লাইসেন্স সাসপেন্ড করা হয়েছে",
+            "source_url": "https://tv9bangla.com/kolkata/west-bengal-food-safety-drive-irregularities-found-at-1525-food-centres-licences-of-13-processing-units-cancelled-1343938.html"
+          },
           "reported_observation": {
             "quote": "লাইসেন্স সাসপেন্ড করা হয়েছে",
             "source_url": "https://tv9bangla.com/kolkata/west-bengal-food-safety-drive-irregularities-found-at-1525-food-centres-licences-of-13-processing-units-cancelled-1343938.html"
@@ -1542,7 +2096,7 @@
         },
         "formal_finding": null,
         "legal_finding_status": "unknown",
-        "reported_action": null,
+        "reported_action": "লাইসেন্স সাসপেন্ড করা হয়েছে",
         "reported_authority": null,
         "reported_observation": "লাইসেন্স সাসপেন্ড করা হয়েছে",
         "reported_quantity": null
@@ -1576,19 +2130,45 @@
       "context_notice": "Independent, non-governmental public-source research. Inclusion is not a finding of wrongdoing. Counts describe records in this tracker, not official totals, prevalence, compliance, risk or group behavior. Read the sources and preserve this context when sharing.",
       "derived_context": {
         "action_category": "other",
-        "derived_confidence": "unknown",
-        "derived_context_method": "Unknown; no contextual inference performed.",
-        "derived_context_sources": [],
-        "derived_geography": null,
-        "derived_menu_category": "unknown",
-        "derived_owner_category": "unknown"
+        "action_category_confidence": "high",
+        "action_category_method": "reviewed_source_context",
+        "action_category_reviewed": true,
+        "action_category_source": "https://www.businesstoday.in/amp/india/story/bengal-fda-crackdown-40kg-rotten-meat-500kg-stale-chicken-and-prawns-seized-ahead-of-durga-puja-553132-2026-09-03",
+        "business_format": "unknown",
+        "business_format_confidence": "unknown",
+        "business_format_method": null,
+        "business_format_reviewed": false,
+        "business_format_source": null,
+        "derived_confidence": "high",
+        "derived_context_method": "Maintainer-reviewed normalization and categories based only on explicit publisher wording retained with this record.",
+        "derived_context_sources": [
+          "https://www.businesstoday.in/amp/india/story/bengal-fda-crackdown-40kg-rotten-meat-500kg-stale-chicken-and-prawns-seized-ahead-of-durga-puja-553132-2026-09-03"
+        ],
+        "establishment_context": "restaurant / eatery",
+        "establishment_context_confidence": "high",
+        "establishment_context_method": "publisher_explicit",
+        "establishment_context_reviewed": true,
+        "establishment_context_source": "https://www.businesstoday.in/amp/india/story/bengal-fda-crackdown-40kg-rotten-meat-500kg-stale-chicken-and-prawns-seized-ahead-of-durga-puja-553132-2026-09-03",
+        "menu_context": "unknown",
+        "menu_context_confidence": "unknown",
+        "menu_context_method": null,
+        "menu_context_reviewed": false,
+        "menu_context_source": null,
+        "normalized_area": "Baduria"
       },
+      "display_summary": "Source reports a source-reported action involving restaurant / eatery in Baduria.",
       "event_id": "WBFS-8a5df7f75276",
       "history": [
         {
           "at": "2026-09-07T21:12:32.942437Z",
           "note": "Initial bounded source review; publication date retained where event date was not explicit.",
           "previous_record_sha256": null,
+          "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-07T21:41:20.845808Z",
+          "note": "V0.2 reviewed contextual enrichment; reported facts remain source-linked.",
+          "previous_record_sha256": "78d61d6c87af63a8a851d1bb9dc93f5d60a9d4d62feb4ac1d58c1bf74c8c4d37",
           "status": "SOURCE VERIFIED"
         }
       ],
@@ -1601,9 +2181,9 @@
         "llm_task": null,
         "llm_used": false
       },
-      "pipeline_version": "0.1.0",
+      "pipeline_version": "0.2.0",
       "record_created_at": "2026-09-07T21:12:32.942437Z",
-      "record_updated_at": "2026-09-07T21:12:32.942437Z",
+      "record_updated_at": "2026-09-07T21:41:20.845808Z",
       "reported_fact": {
         "area": "Baduria",
         "district": null,
@@ -1615,17 +2195,25 @@
             "quote": "Baduria",
             "source_url": "https://www.businesstoday.in/amp/india/story/bengal-fda-crackdown-40kg-rotten-meat-500kg-stale-chicken-and-prawns-seized-ahead-of-durga-puja-553132-2026-09-03"
           },
+          "reported_action": {
+            "quote": "officials recovered around 40 kg",
+            "source_url": "https://www.businesstoday.in/amp/india/story/bengal-fda-crackdown-40kg-rotten-meat-500kg-stale-chicken-and-prawns-seized-ahead-of-durga-puja-553132-2026-09-03"
+          },
           "reported_observation": {
             "quote": "officials recovered around 40 kg",
+            "source_url": "https://www.businesstoday.in/amp/india/story/bengal-fda-crackdown-40kg-rotten-meat-500kg-stale-chicken-and-prawns-seized-ahead-of-durga-puja-553132-2026-09-03"
+          },
+          "reported_quantity": {
+            "quote": "around 40 kg",
             "source_url": "https://www.businesstoday.in/amp/india/story/bengal-fda-crackdown-40kg-rotten-meat-500kg-stale-chicken-and-prawns-seized-ahead-of-durga-puja-553132-2026-09-03"
           }
         },
         "formal_finding": null,
         "legal_finding_status": "unknown",
-        "reported_action": null,
+        "reported_action": "officials recovered around 40 kg",
         "reported_authority": null,
         "reported_observation": "officials recovered around 40 kg",
-        "reported_quantity": null
+        "reported_quantity": "around 40 kg"
       },
       "review": {
         "all_fields_supported": true,
@@ -1655,20 +2243,46 @@
     {
       "context_notice": "Independent, non-governmental public-source research. Inclusion is not a finding of wrongdoing. Counts describe records in this tracker, not official totals, prevalence, compliance, risk or group behavior. Read the sources and preserve this context when sharing.",
       "derived_context": {
-        "action_category": "other",
-        "derived_confidence": "unknown",
-        "derived_context_method": "Unknown; no contextual inference performed.",
-        "derived_context_sources": [],
-        "derived_geography": null,
-        "derived_menu_category": "unknown",
-        "derived_owner_category": "unknown"
+        "action_category": "inspection / visit only",
+        "action_category_confidence": "high",
+        "action_category_method": "reviewed_source_context",
+        "action_category_reviewed": true,
+        "action_category_source": "https://timesofindia.indiatimes.com/city/kolkata/kmc-cracks-whip-on-dacres-lane-eateries/articleshow/133811497.cms",
+        "business_format": "unknown",
+        "business_format_confidence": "unknown",
+        "business_format_method": null,
+        "business_format_reviewed": false,
+        "business_format_source": null,
+        "derived_confidence": "high",
+        "derived_context_method": "Maintainer-reviewed normalization and categories based only on explicit publisher wording retained with this record.",
+        "derived_context_sources": [
+          "https://timesofindia.indiatimes.com/city/kolkata/kmc-cracks-whip-on-dacres-lane-eateries/articleshow/133811497.cms"
+        ],
+        "establishment_context": "unknown",
+        "establishment_context_confidence": "unknown",
+        "establishment_context_method": null,
+        "establishment_context_reviewed": false,
+        "establishment_context_source": null,
+        "menu_context": "unknown",
+        "menu_context_confidence": "unknown",
+        "menu_context_method": null,
+        "menu_context_reviewed": false,
+        "menu_context_source": null,
+        "normalized_area": "Jorabagan"
       },
+      "display_summary": "Source reports an inspection or visit involving an unnamed establishment in Jorabagan.",
       "event_id": "WBFS-8e423a7f55e7",
       "history": [
         {
           "at": "2026-09-07T21:12:32.942437Z",
           "note": "Initial bounded source review; publication date retained where event date was not explicit.",
           "previous_record_sha256": null,
+          "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-07T21:41:20.845808Z",
+          "note": "V0.2 reviewed contextual enrichment; reported facts remain source-linked.",
+          "previous_record_sha256": "6bc43cafa9c5e945149184316474d5c73df9455da16c6cd4bf7c1568576410dd",
           "status": "SOURCE VERIFIED"
         }
       ],
@@ -1681,9 +2295,9 @@
         "llm_task": null,
         "llm_used": false
       },
-      "pipeline_version": "0.1.0",
+      "pipeline_version": "0.2.0",
       "record_created_at": "2026-09-07T21:12:32.942437Z",
-      "record_updated_at": "2026-09-07T21:12:32.942437Z",
+      "record_updated_at": "2026-09-07T21:41:20.845808Z",
       "reported_fact": {
         "area": "Jorabagan",
         "district": null,
@@ -1695,6 +2309,10 @@
             "quote": "Jorabagan",
             "source_url": "https://timesofindia.indiatimes.com/city/kolkata/kmc-cracks-whip-on-dacres-lane-eateries/articleshow/133811497.cms"
           },
+          "reported_authority": {
+            "quote": "KMC",
+            "source_url": "https://timesofindia.indiatimes.com/city/kolkata/kmc-cracks-whip-on-dacres-lane-eateries/articleshow/133811497.cms"
+          },
           "reported_observation": {
             "quote": "visited Lake Market",
             "source_url": "https://timesofindia.indiatimes.com/city/kolkata/kmc-cracks-whip-on-dacres-lane-eateries/articleshow/133811497.cms"
@@ -1703,7 +2321,7 @@
         "formal_finding": null,
         "legal_finding_status": "unknown",
         "reported_action": null,
-        "reported_authority": null,
+        "reported_authority": "KMC",
         "reported_observation": "visited Lake Market",
         "reported_quantity": null
       },
@@ -1735,20 +2353,46 @@
     {
       "context_notice": "Independent, non-governmental public-source research. Inclusion is not a finding of wrongdoing. Counts describe records in this tracker, not official totals, prevalence, compliance, risk or group behavior. Read the sources and preserve this context when sharing.",
       "derived_context": {
-        "action_category": "other",
-        "derived_confidence": "unknown",
-        "derived_context_method": "Unknown; no contextual inference performed.",
-        "derived_context_sources": [],
-        "derived_geography": null,
-        "derived_menu_category": "unknown",
-        "derived_owner_category": "unknown"
+        "action_category": "inspection / visit only",
+        "action_category_confidence": "high",
+        "action_category_method": "reviewed_source_context",
+        "action_category_reviewed": true,
+        "action_category_source": "https://timesofindia.indiatimes.com/city/kolkata/kmc-food-team-reaches-park-street-seizes-stale-items-from-eateries/articleshow/133774167.cms",
+        "business_format": "unknown",
+        "business_format_confidence": "unknown",
+        "business_format_method": null,
+        "business_format_reviewed": false,
+        "business_format_source": null,
+        "derived_confidence": "high",
+        "derived_context_method": "Maintainer-reviewed normalization and categories based only on explicit publisher wording retained with this record.",
+        "derived_context_sources": [
+          "https://timesofindia.indiatimes.com/city/kolkata/kmc-food-team-reaches-park-street-seizes-stale-items-from-eateries/articleshow/133774167.cms"
+        ],
+        "establishment_context": "restaurant / eatery",
+        "establishment_context_confidence": "high",
+        "establishment_context_method": "publisher_explicit",
+        "establishment_context_reviewed": true,
+        "establishment_context_source": "https://timesofindia.indiatimes.com/city/kolkata/kmc-food-team-reaches-park-street-seizes-stale-items-from-eateries/articleshow/133774167.cms",
+        "menu_context": "unknown",
+        "menu_context_confidence": "unknown",
+        "menu_context_method": null,
+        "menu_context_reviewed": false,
+        "menu_context_source": null,
+        "normalized_area": "Park Street"
       },
+      "display_summary": "Source reports an inspection or visit involving Peter Cat in Park Street.",
       "event_id": "WBFS-8f5630c1ed44",
       "history": [
         {
           "at": "2026-09-07T21:12:32.942437Z",
           "note": "Initial bounded source review; publication date retained where event date was not explicit.",
           "previous_record_sha256": null,
+          "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-07T21:41:20.845808Z",
+          "note": "V0.2 reviewed contextual enrichment; reported facts remain source-linked.",
+          "previous_record_sha256": "7064e5f413d71573ea93ba8e3cd4d2408913b605d67efa5f8bb14b4453ef8e1f",
           "status": "SOURCE VERIFIED"
         }
       ],
@@ -1761,9 +2405,9 @@
         "llm_task": null,
         "llm_used": false
       },
-      "pipeline_version": "0.1.0",
+      "pipeline_version": "0.2.0",
       "record_created_at": "2026-09-07T21:12:32.942437Z",
-      "record_updated_at": "2026-09-07T21:12:32.942437Z",
+      "record_updated_at": "2026-09-07T21:41:20.845808Z",
       "reported_fact": {
         "area": "Park Street",
         "district": null,
@@ -1779,6 +2423,14 @@
             "quote": "Peter Cat",
             "source_url": "https://timesofindia.indiatimes.com/city/kolkata/kmc-food-team-reaches-park-street-seizes-stale-items-from-eateries/articleshow/133774167.cms"
           },
+          "reported_action": {
+            "quote": "visited by KMC teams",
+            "source_url": "https://timesofindia.indiatimes.com/city/kolkata/kmc-food-team-reaches-park-street-seizes-stale-items-from-eateries/articleshow/133774167.cms"
+          },
+          "reported_authority": {
+            "quote": "KMC",
+            "source_url": "https://timesofindia.indiatimes.com/city/kolkata/kmc-food-team-reaches-park-street-seizes-stale-items-from-eateries/articleshow/133774167.cms"
+          },
           "reported_observation": {
             "quote": "visited by KMC teams",
             "source_url": "https://timesofindia.indiatimes.com/city/kolkata/kmc-food-team-reaches-park-street-seizes-stale-items-from-eateries/articleshow/133774167.cms"
@@ -1786,8 +2438,8 @@
         },
         "formal_finding": null,
         "legal_finding_status": "unknown",
-        "reported_action": null,
-        "reported_authority": null,
+        "reported_action": "visited by KMC teams",
+        "reported_authority": "KMC",
         "reported_observation": "visited by KMC teams",
         "reported_quantity": null
       },
@@ -1819,20 +2471,46 @@
     {
       "context_notice": "Independent, non-governmental public-source research. Inclusion is not a finding of wrongdoing. Counts describe records in this tracker, not official totals, prevalence, compliance, risk or group behavior. Read the sources and preserve this context when sharing.",
       "derived_context": {
-        "action_category": "other",
-        "derived_confidence": "unknown",
-        "derived_context_method": "Unknown; no contextual inference performed.",
-        "derived_context_sources": [],
-        "derived_geography": null,
-        "derived_menu_category": "unknown",
-        "derived_owner_category": "unknown"
+        "action_category": "inspection / visit only",
+        "action_category_confidence": "high",
+        "action_category_method": "reviewed_source_context",
+        "action_category_reviewed": true,
+        "action_category_source": "https://timesofindia.indiatimes.com/city/kolkata/kmc-cracks-whip-on-dacres-lane-eateries/articleshow/133811497.cms",
+        "business_format": "unknown",
+        "business_format_confidence": "unknown",
+        "business_format_method": null,
+        "business_format_reviewed": false,
+        "business_format_source": null,
+        "derived_confidence": "high",
+        "derived_context_method": "Maintainer-reviewed normalization and categories based only on explicit publisher wording retained with this record.",
+        "derived_context_sources": [
+          "https://timesofindia.indiatimes.com/city/kolkata/kmc-cracks-whip-on-dacres-lane-eateries/articleshow/133811497.cms"
+        ],
+        "establishment_context": "restaurant / eatery",
+        "establishment_context_confidence": "high",
+        "establishment_context_method": "publisher_explicit",
+        "establishment_context_reviewed": true,
+        "establishment_context_source": "https://timesofindia.indiatimes.com/city/kolkata/kmc-cracks-whip-on-dacres-lane-eateries/articleshow/133811497.cms",
+        "menu_context": "unknown",
+        "menu_context_confidence": "unknown",
+        "menu_context_method": null,
+        "menu_context_reviewed": false,
+        "menu_context_source": null,
+        "normalized_area": "Dacres Lane"
       },
+      "display_summary": "Source reports an inspection or visit involving Apanjan in Dacres Lane.",
       "event_id": "WBFS-9664baf9ee06",
       "history": [
         {
           "at": "2026-09-07T21:12:32.942437Z",
           "note": "Initial bounded source review; publication date retained where event date was not explicit.",
           "previous_record_sha256": null,
+          "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-07T21:41:20.845808Z",
+          "note": "V0.2 reviewed contextual enrichment; reported facts remain source-linked.",
+          "previous_record_sha256": "2268555b67e67e066710f088e2a73c47310ee2e6b793914a521e7b2fa0d80f9a",
           "status": "SOURCE VERIFIED"
         }
       ],
@@ -1845,9 +2523,9 @@
         "llm_task": null,
         "llm_used": false
       },
-      "pipeline_version": "0.1.0",
+      "pipeline_version": "0.2.0",
       "record_created_at": "2026-09-07T21:12:32.942437Z",
-      "record_updated_at": "2026-09-07T21:12:32.942437Z",
+      "record_updated_at": "2026-09-07T21:41:20.845808Z",
       "reported_fact": {
         "area": "Dacres Lane",
         "district": null,
@@ -1863,6 +2541,10 @@
             "quote": "Apanjan",
             "source_url": "https://timesofindia.indiatimes.com/city/kolkata/kmc-cracks-whip-on-dacres-lane-eateries/articleshow/133811497.cms"
           },
+          "reported_action": {
+            "quote": "the team visited",
+            "source_url": "https://timesofindia.indiatimes.com/city/kolkata/kmc-cracks-whip-on-dacres-lane-eateries/articleshow/133811497.cms"
+          },
           "reported_observation": {
             "quote": "the team visited",
             "source_url": "https://timesofindia.indiatimes.com/city/kolkata/kmc-cracks-whip-on-dacres-lane-eateries/articleshow/133811497.cms"
@@ -1870,7 +2552,7 @@
         },
         "formal_finding": null,
         "legal_finding_status": "unknown",
-        "reported_action": null,
+        "reported_action": "the team visited",
         "reported_authority": null,
         "reported_observation": "the team visited",
         "reported_quantity": null
@@ -1903,20 +2585,46 @@
     {
       "context_notice": "Independent, non-governmental public-source research. Inclusion is not a finding of wrongdoing. Counts describe records in this tracker, not official totals, prevalence, compliance, risk or group behavior. Read the sources and preserve this context when sharing.",
       "derived_context": {
-        "action_category": "other",
-        "derived_confidence": "unknown",
-        "derived_context_method": "Unknown; no contextual inference performed.",
-        "derived_context_sources": [],
-        "derived_geography": null,
-        "derived_menu_category": "unknown",
-        "derived_owner_category": "unknown"
+        "action_category": "inspection / visit only",
+        "action_category_confidence": "high",
+        "action_category_method": "reviewed_source_context",
+        "action_category_reviewed": true,
+        "action_category_source": "https://timesofindia.indiatimes.com/city/kolkata/kmc-food-inspectors-knock-on-mall-eatery-doors-discards-meat-in-a-central-kolkata-restaurant/articleshow/133844089.cms",
+        "business_format": "unknown",
+        "business_format_confidence": "unknown",
+        "business_format_method": null,
+        "business_format_reviewed": false,
+        "business_format_source": null,
+        "derived_confidence": "high",
+        "derived_context_method": "Maintainer-reviewed normalization and categories based only on explicit publisher wording retained with this record.",
+        "derived_context_sources": [
+          "https://timesofindia.indiatimes.com/city/kolkata/kmc-food-inspectors-knock-on-mall-eatery-doors-discards-meat-in-a-central-kolkata-restaurant/articleshow/133844089.cms"
+        ],
+        "establishment_context": "mall / food court",
+        "establishment_context_confidence": "high",
+        "establishment_context_method": "publisher_explicit",
+        "establishment_context_reviewed": true,
+        "establishment_context_source": "https://timesofindia.indiatimes.com/city/kolkata/kmc-food-inspectors-knock-on-mall-eatery-doors-discards-meat-in-a-central-kolkata-restaurant/articleshow/133844089.cms",
+        "menu_context": "unknown",
+        "menu_context_confidence": "unknown",
+        "menu_context_method": null,
+        "menu_context_reviewed": false,
+        "menu_context_source": null,
+        "normalized_area": "South City Mall"
       },
+      "display_summary": "Source reports an inspection or visit involving Lord of the Rings in South City Mall.",
       "event_id": "WBFS-a66bcab3fe68",
       "history": [
         {
           "at": "2026-09-07T21:12:32.942437Z",
           "note": "Initial bounded source review; publication date retained where event date was not explicit.",
           "previous_record_sha256": null,
+          "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-07T21:41:20.845808Z",
+          "note": "V0.2 reviewed contextual enrichment; reported facts remain source-linked.",
+          "previous_record_sha256": "2d1cb67b73d297306908b46004a2af2dc0fa041563d7c8a30c23755d371911a4",
           "status": "SOURCE VERIFIED"
         }
       ],
@@ -1929,9 +2637,9 @@
         "llm_task": null,
         "llm_used": false
       },
-      "pipeline_version": "0.1.0",
+      "pipeline_version": "0.2.0",
       "record_created_at": "2026-09-07T21:12:32.942437Z",
-      "record_updated_at": "2026-09-07T21:12:32.942437Z",
+      "record_updated_at": "2026-09-07T21:41:20.845808Z",
       "reported_fact": {
         "area": "South City Mall",
         "district": null,
@@ -1987,20 +2695,46 @@
     {
       "context_notice": "Independent, non-governmental public-source research. Inclusion is not a finding of wrongdoing. Counts describe records in this tracker, not official totals, prevalence, compliance, risk or group behavior. Read the sources and preserve this context when sharing.",
       "derived_context": {
-        "action_category": "other",
-        "derived_confidence": "unknown",
-        "derived_context_method": "Unknown; no contextual inference performed.",
-        "derived_context_sources": [],
-        "derived_geography": null,
-        "derived_menu_category": "unknown",
-        "derived_owner_category": "unknown"
+        "action_category": "inspection / visit only",
+        "action_category_confidence": "high",
+        "action_category_method": "reviewed_source_context",
+        "action_category_reviewed": true,
+        "action_category_source": "https://timesofindia.indiatimes.com/city/kolkata/kmc-food-team-reaches-park-street-seizes-stale-items-from-eateries/articleshow/133774167.cms",
+        "business_format": "unknown",
+        "business_format_confidence": "unknown",
+        "business_format_method": null,
+        "business_format_reviewed": false,
+        "business_format_source": null,
+        "derived_confidence": "high",
+        "derived_context_method": "Maintainer-reviewed normalization and categories based only on explicit publisher wording retained with this record.",
+        "derived_context_sources": [
+          "https://timesofindia.indiatimes.com/city/kolkata/kmc-food-team-reaches-park-street-seizes-stale-items-from-eateries/articleshow/133774167.cms"
+        ],
+        "establishment_context": "restaurant / eatery",
+        "establishment_context_confidence": "high",
+        "establishment_context_method": "publisher_explicit",
+        "establishment_context_reviewed": true,
+        "establishment_context_source": "https://timesofindia.indiatimes.com/city/kolkata/kmc-food-team-reaches-park-street-seizes-stale-items-from-eateries/articleshow/133774167.cms",
+        "menu_context": "unknown",
+        "menu_context_confidence": "unknown",
+        "menu_context_method": null,
+        "menu_context_reviewed": false,
+        "menu_context_source": null,
+        "normalized_area": "Park Street"
       },
+      "display_summary": "Source reports an inspection or visit involving Mocambo in Park Street.",
       "event_id": "WBFS-acec95474b4d",
       "history": [
         {
           "at": "2026-09-07T21:12:32.942437Z",
           "note": "Initial bounded source review; publication date retained where event date was not explicit.",
           "previous_record_sha256": null,
+          "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-07T21:41:20.845808Z",
+          "note": "V0.2 reviewed contextual enrichment; reported facts remain source-linked.",
+          "previous_record_sha256": "7360ea5bcd4c8c154b031285bced5aa317c38758cd89eec52b5cf506f3d27f33",
           "status": "SOURCE VERIFIED"
         }
       ],
@@ -2013,9 +2747,9 @@
         "llm_task": null,
         "llm_used": false
       },
-      "pipeline_version": "0.1.0",
+      "pipeline_version": "0.2.0",
       "record_created_at": "2026-09-07T21:12:32.942437Z",
-      "record_updated_at": "2026-09-07T21:12:32.942437Z",
+      "record_updated_at": "2026-09-07T21:41:20.845808Z",
       "reported_fact": {
         "area": "Park Street",
         "district": null,
@@ -2031,6 +2765,14 @@
             "quote": "Mocambo",
             "source_url": "https://timesofindia.indiatimes.com/city/kolkata/kmc-food-team-reaches-park-street-seizes-stale-items-from-eateries/articleshow/133774167.cms"
           },
+          "reported_action": {
+            "quote": "visited by KMC teams",
+            "source_url": "https://timesofindia.indiatimes.com/city/kolkata/kmc-food-team-reaches-park-street-seizes-stale-items-from-eateries/articleshow/133774167.cms"
+          },
+          "reported_authority": {
+            "quote": "KMC",
+            "source_url": "https://timesofindia.indiatimes.com/city/kolkata/kmc-food-team-reaches-park-street-seizes-stale-items-from-eateries/articleshow/133774167.cms"
+          },
           "reported_observation": {
             "quote": "visited by KMC teams",
             "source_url": "https://timesofindia.indiatimes.com/city/kolkata/kmc-food-team-reaches-park-street-seizes-stale-items-from-eateries/articleshow/133774167.cms"
@@ -2038,8 +2780,8 @@
         },
         "formal_finding": null,
         "legal_finding_status": "unknown",
-        "reported_action": null,
-        "reported_authority": null,
+        "reported_action": "visited by KMC teams",
+        "reported_authority": "KMC",
         "reported_observation": "visited by KMC teams",
         "reported_quantity": null
       },
@@ -2071,20 +2813,46 @@
     {
       "context_notice": "Independent, non-governmental public-source research. Inclusion is not a finding of wrongdoing. Counts describe records in this tracker, not official totals, prevalence, compliance, risk or group behavior. Read the sources and preserve this context when sharing.",
       "derived_context": {
-        "action_category": "other",
-        "derived_confidence": "unknown",
-        "derived_context_method": "Unknown; no contextual inference performed.",
-        "derived_context_sources": [],
-        "derived_geography": null,
-        "derived_menu_category": "unknown",
-        "derived_owner_category": "unknown"
+        "action_category": "inspection / visit only",
+        "action_category_confidence": "high",
+        "action_category_method": "reviewed_source_context",
+        "action_category_reviewed": true,
+        "action_category_source": "https://timesofindia.indiatimes.com/city/kolkata/kmc-food-team-reaches-park-street-seizes-stale-items-from-eateries/articleshow/133774167.cms",
+        "business_format": "unknown",
+        "business_format_confidence": "unknown",
+        "business_format_method": null,
+        "business_format_reviewed": false,
+        "business_format_source": null,
+        "derived_confidence": "high",
+        "derived_context_method": "Maintainer-reviewed normalization and categories based only on explicit publisher wording retained with this record.",
+        "derived_context_sources": [
+          "https://timesofindia.indiatimes.com/city/kolkata/kmc-food-team-reaches-park-street-seizes-stale-items-from-eateries/articleshow/133774167.cms"
+        ],
+        "establishment_context": "restaurant / eatery",
+        "establishment_context_confidence": "high",
+        "establishment_context_method": "publisher_explicit",
+        "establishment_context_reviewed": true,
+        "establishment_context_source": "https://timesofindia.indiatimes.com/city/kolkata/kmc-food-team-reaches-park-street-seizes-stale-items-from-eateries/articleshow/133774167.cms",
+        "menu_context": "unknown",
+        "menu_context_confidence": "unknown",
+        "menu_context_method": null,
+        "menu_context_reviewed": false,
+        "menu_context_source": null,
+        "normalized_area": "Park Street"
       },
+      "display_summary": "Source reports an inspection or visit involving Arsalan in Park Street.",
       "event_id": "WBFS-b370cb24cd67",
       "history": [
         {
           "at": "2026-09-07T21:12:32.942437Z",
           "note": "Initial bounded source review; publication date retained where event date was not explicit.",
           "previous_record_sha256": null,
+          "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-07T21:41:20.845808Z",
+          "note": "V0.2 reviewed contextual enrichment; reported facts remain source-linked.",
+          "previous_record_sha256": "6e09cadd4283a1cad12580a10428e5d5dbca91b84bec2e5446e77234bd50a234",
           "status": "SOURCE VERIFIED"
         }
       ],
@@ -2097,9 +2865,9 @@
         "llm_task": null,
         "llm_used": false
       },
-      "pipeline_version": "0.1.0",
+      "pipeline_version": "0.2.0",
       "record_created_at": "2026-09-07T21:12:32.942437Z",
-      "record_updated_at": "2026-09-07T21:12:32.942437Z",
+      "record_updated_at": "2026-09-07T21:41:20.845808Z",
       "reported_fact": {
         "area": "Park Street",
         "district": null,
@@ -2115,6 +2883,14 @@
             "quote": "Arsalan",
             "source_url": "https://timesofindia.indiatimes.com/city/kolkata/kmc-food-team-reaches-park-street-seizes-stale-items-from-eateries/articleshow/133774167.cms"
           },
+          "reported_action": {
+            "quote": "visited by KMC teams",
+            "source_url": "https://timesofindia.indiatimes.com/city/kolkata/kmc-food-team-reaches-park-street-seizes-stale-items-from-eateries/articleshow/133774167.cms"
+          },
+          "reported_authority": {
+            "quote": "KMC",
+            "source_url": "https://timesofindia.indiatimes.com/city/kolkata/kmc-food-team-reaches-park-street-seizes-stale-items-from-eateries/articleshow/133774167.cms"
+          },
           "reported_observation": {
             "quote": "visited by KMC teams",
             "source_url": "https://timesofindia.indiatimes.com/city/kolkata/kmc-food-team-reaches-park-street-seizes-stale-items-from-eateries/articleshow/133774167.cms"
@@ -2122,8 +2898,8 @@
         },
         "formal_finding": null,
         "legal_finding_status": "unknown",
-        "reported_action": null,
-        "reported_authority": null,
+        "reported_action": "visited by KMC teams",
+        "reported_authority": "KMC",
         "reported_observation": "visited by KMC teams",
         "reported_quantity": null
       },
@@ -2156,19 +2932,45 @@
       "context_notice": "Independent, non-governmental public-source research. Inclusion is not a finding of wrongdoing. Counts describe records in this tracker, not official totals, prevalence, compliance, risk or group behavior. Read the sources and preserve this context when sharing.",
       "derived_context": {
         "action_category": "other",
-        "derived_confidence": "unknown",
-        "derived_context_method": "Unknown; no contextual inference performed.",
-        "derived_context_sources": [],
-        "derived_geography": null,
-        "derived_menu_category": "unknown",
-        "derived_owner_category": "unknown"
+        "action_category_confidence": "high",
+        "action_category_method": "reviewed_source_context",
+        "action_category_reviewed": true,
+        "action_category_source": "https://tv9bangla.com/kolkata/west-bengal-food-safety-drive-irregularities-found-at-1525-food-centres-licences-of-13-processing-units-cancelled-1343938.html",
+        "business_format": "unknown",
+        "business_format_confidence": "unknown",
+        "business_format_method": null,
+        "business_format_reviewed": false,
+        "business_format_source": null,
+        "derived_confidence": "high",
+        "derived_context_method": "Maintainer-reviewed normalization and categories based only on explicit publisher wording retained with this record.",
+        "derived_context_sources": [
+          "https://tv9bangla.com/kolkata/west-bengal-food-safety-drive-irregularities-found-at-1525-food-centres-licences-of-13-processing-units-cancelled-1343938.html"
+        ],
+        "establishment_context": "restaurant / eatery",
+        "establishment_context_confidence": "high",
+        "establishment_context_method": "publisher_explicit",
+        "establishment_context_reviewed": true,
+        "establishment_context_source": "https://tv9bangla.com/kolkata/west-bengal-food-safety-drive-irregularities-found-at-1525-food-centres-licences-of-13-processing-units-cancelled-1343938.html",
+        "menu_context": "unknown",
+        "menu_context_confidence": "unknown",
+        "menu_context_method": null,
+        "menu_context_reviewed": false,
+        "menu_context_source": null,
+        "normalized_area": "Sodepur"
       },
+      "display_summary": "Source reports a source-reported action involving বারবিকিউ নেশন in সোদপুরের.",
       "event_id": "WBFS-b4cb5982e1de",
       "history": [
         {
           "at": "2026-09-07T21:12:32.942437Z",
           "note": "Initial bounded source review; publication date retained where event date was not explicit.",
           "previous_record_sha256": null,
+          "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-07T21:41:20.845808Z",
+          "note": "V0.2 reviewed contextual enrichment; reported facts remain source-linked.",
+          "previous_record_sha256": "c2a6d43a3f8424f03da23189522978a16b8132bdc140b05e1845c6252acde940",
           "status": "SOURCE VERIFIED"
         }
       ],
@@ -2181,9 +2983,9 @@
         "llm_task": null,
         "llm_used": false
       },
-      "pipeline_version": "0.1.0",
+      "pipeline_version": "0.2.0",
       "record_created_at": "2026-09-07T21:12:32.942437Z",
-      "record_updated_at": "2026-09-07T21:12:32.942437Z",
+      "record_updated_at": "2026-09-07T21:41:20.845808Z",
       "reported_fact": {
         "area": "সোদপুরের",
         "district": null,
@@ -2199,6 +3001,10 @@
             "quote": "বারবিকিউ নেশন",
             "source_url": "https://tv9bangla.com/kolkata/west-bengal-food-safety-drive-irregularities-found-at-1525-food-centres-licences-of-13-processing-units-cancelled-1343938.html"
           },
+          "reported_action": {
+            "quote": "লাইসেন্স সাসপেন্ড করা হয়েছে",
+            "source_url": "https://tv9bangla.com/kolkata/west-bengal-food-safety-drive-irregularities-found-at-1525-food-centres-licences-of-13-processing-units-cancelled-1343938.html"
+          },
           "reported_observation": {
             "quote": "লাইসেন্স সাসপেন্ড করা হয়েছে",
             "source_url": "https://tv9bangla.com/kolkata/west-bengal-food-safety-drive-irregularities-found-at-1525-food-centres-licences-of-13-processing-units-cancelled-1343938.html"
@@ -2206,7 +3012,7 @@
         },
         "formal_finding": null,
         "legal_finding_status": "unknown",
-        "reported_action": null,
+        "reported_action": "লাইসেন্স সাসপেন্ড করা হয়েছে",
         "reported_authority": null,
         "reported_observation": "লাইসেন্স সাসপেন্ড করা হয়েছে",
         "reported_quantity": null
@@ -2239,20 +3045,46 @@
     {
       "context_notice": "Independent, non-governmental public-source research. Inclusion is not a finding of wrongdoing. Counts describe records in this tracker, not official totals, prevalence, compliance, risk or group behavior. Read the sources and preserve this context when sharing.",
       "derived_context": {
-        "action_category": "other",
-        "derived_confidence": "unknown",
-        "derived_context_method": "Unknown; no contextual inference performed.",
-        "derived_context_sources": [],
-        "derived_geography": null,
-        "derived_menu_category": "unknown",
-        "derived_owner_category": "unknown"
+        "action_category": "inspection / visit only",
+        "action_category_confidence": "high",
+        "action_category_method": "reviewed_source_context",
+        "action_category_reviewed": true,
+        "action_category_source": "https://timesofindia.indiatimes.com/city/kolkata/on-last-day-of-food-safety-drive-kmc-targets-fish-paneer-and-spice-hubs/articleshow/133893508.cms",
+        "business_format": "unknown",
+        "business_format_confidence": "unknown",
+        "business_format_method": null,
+        "business_format_reviewed": false,
+        "business_format_source": null,
+        "derived_confidence": "high",
+        "derived_context_method": "Maintainer-reviewed normalization and categories based only on explicit publisher wording retained with this record.",
+        "derived_context_sources": [
+          "https://timesofindia.indiatimes.com/city/kolkata/on-last-day-of-food-safety-drive-kmc-targets-fish-paneer-and-spice-hubs/articleshow/133893508.cms"
+        ],
+        "establishment_context": "market / vendor",
+        "establishment_context_confidence": "high",
+        "establishment_context_method": "publisher_explicit",
+        "establishment_context_reviewed": true,
+        "establishment_context_source": "https://timesofindia.indiatimes.com/city/kolkata/on-last-day-of-food-safety-drive-kmc-targets-fish-paneer-and-spice-hubs/articleshow/133893508.cms",
+        "menu_context": "unknown",
+        "menu_context_confidence": "unknown",
+        "menu_context_method": null,
+        "menu_context_reviewed": false,
+        "menu_context_source": null,
+        "normalized_area": "Gariahat"
       },
+      "display_summary": "Source reports an inspection or visit involving fish market at Gariahat in Gariahat.",
       "event_id": "WBFS-bd37fd0fd837",
       "history": [
         {
           "at": "2026-09-07T21:12:32.942437Z",
           "note": "Initial bounded source review; publication date retained where event date was not explicit.",
           "previous_record_sha256": null,
+          "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-07T21:41:20.845808Z",
+          "note": "V0.2 reviewed contextual enrichment; reported facts remain source-linked.",
+          "previous_record_sha256": "e6a638aca6f5a20527762f4ef1fc5d580135dc30b4aceab33d80cb5ebd456e66",
           "status": "SOURCE VERIFIED"
         }
       ],
@@ -2265,9 +3097,9 @@
         "llm_task": null,
         "llm_used": false
       },
-      "pipeline_version": "0.1.0",
+      "pipeline_version": "0.2.0",
       "record_created_at": "2026-09-07T21:12:32.942437Z",
-      "record_updated_at": "2026-09-07T21:12:32.942437Z",
+      "record_updated_at": "2026-09-07T21:41:20.845808Z",
       "reported_fact": {
         "area": "Gariahat",
         "district": null,
@@ -2283,6 +3115,10 @@
             "quote": "fish market at Gariahat",
             "source_url": "https://timesofindia.indiatimes.com/city/kolkata/on-last-day-of-food-safety-drive-kmc-targets-fish-paneer-and-spice-hubs/articleshow/133893508.cms"
           },
+          "reported_authority": {
+            "quote": "Kolkata Municipal Corporation",
+            "source_url": "https://timesofindia.indiatimes.com/city/kolkata/on-last-day-of-food-safety-drive-kmc-targets-fish-paneer-and-spice-hubs/articleshow/133893508.cms"
+          },
           "reported_observation": {
             "quote": "food safety drive",
             "source_url": "https://timesofindia.indiatimes.com/city/kolkata/on-last-day-of-food-safety-drive-kmc-targets-fish-paneer-and-spice-hubs/articleshow/133893508.cms"
@@ -2291,7 +3127,7 @@
         "formal_finding": null,
         "legal_finding_status": "unknown",
         "reported_action": null,
-        "reported_authority": null,
+        "reported_authority": "Kolkata Municipal Corporation",
         "reported_observation": "food safety drive",
         "reported_quantity": null
       },
@@ -2323,20 +3159,46 @@
     {
       "context_notice": "Independent, non-governmental public-source research. Inclusion is not a finding of wrongdoing. Counts describe records in this tracker, not official totals, prevalence, compliance, risk or group behavior. Read the sources and preserve this context when sharing.",
       "derived_context": {
-        "action_category": "other",
-        "derived_confidence": "unknown",
-        "derived_context_method": "Unknown; no contextual inference performed.",
-        "derived_context_sources": [],
-        "derived_geography": null,
-        "derived_menu_category": "unknown",
-        "derived_owner_category": "unknown"
+        "action_category": "inspection / visit only",
+        "action_category_confidence": "high",
+        "action_category_method": "reviewed_source_context",
+        "action_category_reviewed": true,
+        "action_category_source": "https://timesofindia.indiatimes.com/city/kolkata/kmc-food-team-reaches-park-street-seizes-stale-items-from-eateries/articleshow/133774167.cms",
+        "business_format": "unknown",
+        "business_format_confidence": "unknown",
+        "business_format_method": null,
+        "business_format_reviewed": false,
+        "business_format_source": null,
+        "derived_confidence": "high",
+        "derived_context_method": "Maintainer-reviewed normalization and categories based only on explicit publisher wording retained with this record.",
+        "derived_context_sources": [
+          "https://timesofindia.indiatimes.com/city/kolkata/kmc-food-team-reaches-park-street-seizes-stale-items-from-eateries/articleshow/133774167.cms"
+        ],
+        "establishment_context": "restaurant / eatery",
+        "establishment_context_confidence": "high",
+        "establishment_context_method": "publisher_explicit",
+        "establishment_context_reviewed": true,
+        "establishment_context_source": "https://timesofindia.indiatimes.com/city/kolkata/kmc-food-team-reaches-park-street-seizes-stale-items-from-eateries/articleshow/133774167.cms",
+        "menu_context": "unknown",
+        "menu_context_confidence": "unknown",
+        "menu_context_method": null,
+        "menu_context_reviewed": false,
+        "menu_context_source": null,
+        "normalized_area": "Park Street"
       },
+      "display_summary": "Source reports an inspection or visit involving Oasis in Park Street.",
       "event_id": "WBFS-c33c2b4318e1",
       "history": [
         {
           "at": "2026-09-07T21:12:32.942437Z",
           "note": "Initial bounded source review; publication date retained where event date was not explicit.",
           "previous_record_sha256": null,
+          "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-07T21:41:20.845808Z",
+          "note": "V0.2 reviewed contextual enrichment; reported facts remain source-linked.",
+          "previous_record_sha256": "bdf5c745ab41de92d39262845f475437861fd3a383558884f613bd8e6d1911a2",
           "status": "SOURCE VERIFIED"
         }
       ],
@@ -2349,9 +3211,9 @@
         "llm_task": null,
         "llm_used": false
       },
-      "pipeline_version": "0.1.0",
+      "pipeline_version": "0.2.0",
       "record_created_at": "2026-09-07T21:12:32.942437Z",
-      "record_updated_at": "2026-09-07T21:12:32.942437Z",
+      "record_updated_at": "2026-09-07T21:41:20.845808Z",
       "reported_fact": {
         "area": "Park Street",
         "district": null,
@@ -2367,6 +3229,14 @@
             "quote": "Oasis",
             "source_url": "https://timesofindia.indiatimes.com/city/kolkata/kmc-food-team-reaches-park-street-seizes-stale-items-from-eateries/articleshow/133774167.cms"
           },
+          "reported_action": {
+            "quote": "visited by KMC teams",
+            "source_url": "https://timesofindia.indiatimes.com/city/kolkata/kmc-food-team-reaches-park-street-seizes-stale-items-from-eateries/articleshow/133774167.cms"
+          },
+          "reported_authority": {
+            "quote": "KMC",
+            "source_url": "https://timesofindia.indiatimes.com/city/kolkata/kmc-food-team-reaches-park-street-seizes-stale-items-from-eateries/articleshow/133774167.cms"
+          },
           "reported_observation": {
             "quote": "visited by KMC teams",
             "source_url": "https://timesofindia.indiatimes.com/city/kolkata/kmc-food-team-reaches-park-street-seizes-stale-items-from-eateries/articleshow/133774167.cms"
@@ -2374,8 +3244,8 @@
         },
         "formal_finding": null,
         "legal_finding_status": "unknown",
-        "reported_action": null,
-        "reported_authority": null,
+        "reported_action": "visited by KMC teams",
+        "reported_authority": "KMC",
         "reported_observation": "visited by KMC teams",
         "reported_quantity": null
       },
@@ -2407,20 +3277,46 @@
     {
       "context_notice": "Independent, non-governmental public-source research. Inclusion is not a finding of wrongdoing. Counts describe records in this tracker, not official totals, prevalence, compliance, risk or group behavior. Read the sources and preserve this context when sharing.",
       "derived_context": {
-        "action_category": "other",
-        "derived_confidence": "unknown",
-        "derived_context_method": "Unknown; no contextual inference performed.",
-        "derived_context_sources": [],
-        "derived_geography": null,
-        "derived_menu_category": "unknown",
-        "derived_owner_category": "unknown"
+        "action_category": "inspection / visit only",
+        "action_category_confidence": "high",
+        "action_category_method": "reviewed_source_context",
+        "action_category_reviewed": true,
+        "action_category_source": "https://timesofindia.indiatimes.com/city/kolkata/kmc-cracks-whip-on-dacres-lane-eateries/articleshow/133811497.cms",
+        "business_format": "unknown",
+        "business_format_confidence": "unknown",
+        "business_format_method": null,
+        "business_format_reviewed": false,
+        "business_format_source": null,
+        "derived_confidence": "high",
+        "derived_context_method": "Maintainer-reviewed normalization and categories based only on explicit publisher wording retained with this record.",
+        "derived_context_sources": [
+          "https://timesofindia.indiatimes.com/city/kolkata/kmc-cracks-whip-on-dacres-lane-eateries/articleshow/133811497.cms"
+        ],
+        "establishment_context": "restaurant / eatery",
+        "establishment_context_confidence": "high",
+        "establishment_context_method": "publisher_explicit",
+        "establishment_context_reviewed": true,
+        "establishment_context_source": "https://timesofindia.indiatimes.com/city/kolkata/kmc-cracks-whip-on-dacres-lane-eateries/articleshow/133811497.cms",
+        "menu_context": "unknown",
+        "menu_context_confidence": "unknown",
+        "menu_context_method": null,
+        "menu_context_reviewed": false,
+        "menu_context_source": null,
+        "normalized_area": "Dacres Lane"
       },
+      "display_summary": "Source reports an inspection or visit involving Sharma Sweets in Dacres Lane.",
       "event_id": "WBFS-c9641b8c4531",
       "history": [
         {
           "at": "2026-09-07T21:12:32.942437Z",
           "note": "Initial bounded source review; publication date retained where event date was not explicit.",
           "previous_record_sha256": null,
+          "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-07T21:41:20.845808Z",
+          "note": "V0.2 reviewed contextual enrichment; reported facts remain source-linked.",
+          "previous_record_sha256": "ed1a6a7dfc1a9a0d3d7f4b952279f9a03cd26401bb097022705aa797fa30a8af",
           "status": "SOURCE VERIFIED"
         }
       ],
@@ -2433,9 +3329,9 @@
         "llm_task": null,
         "llm_used": false
       },
-      "pipeline_version": "0.1.0",
+      "pipeline_version": "0.2.0",
       "record_created_at": "2026-09-07T21:12:32.942437Z",
-      "record_updated_at": "2026-09-07T21:12:32.942437Z",
+      "record_updated_at": "2026-09-07T21:41:20.845808Z",
       "reported_fact": {
         "area": "Dacres Lane",
         "district": null,
@@ -2451,6 +3347,10 @@
             "quote": "Sharma Sweets",
             "source_url": "https://timesofindia.indiatimes.com/city/kolkata/kmc-cracks-whip-on-dacres-lane-eateries/articleshow/133811497.cms"
           },
+          "reported_action": {
+            "quote": "the team visited",
+            "source_url": "https://timesofindia.indiatimes.com/city/kolkata/kmc-cracks-whip-on-dacres-lane-eateries/articleshow/133811497.cms"
+          },
           "reported_observation": {
             "quote": "the team visited",
             "source_url": "https://timesofindia.indiatimes.com/city/kolkata/kmc-cracks-whip-on-dacres-lane-eateries/articleshow/133811497.cms"
@@ -2458,7 +3358,7 @@
         },
         "formal_finding": null,
         "legal_finding_status": "unknown",
-        "reported_action": null,
+        "reported_action": "the team visited",
         "reported_authority": null,
         "reported_observation": "the team visited",
         "reported_quantity": null
@@ -2491,20 +3391,46 @@
     {
       "context_notice": "Independent, non-governmental public-source research. Inclusion is not a finding of wrongdoing. Counts describe records in this tracker, not official totals, prevalence, compliance, risk or group behavior. Read the sources and preserve this context when sharing.",
       "derived_context": {
-        "action_category": "other",
-        "derived_confidence": "unknown",
-        "derived_context_method": "Unknown; no contextual inference performed.",
-        "derived_context_sources": [],
-        "derived_geography": null,
-        "derived_menu_category": "unknown",
-        "derived_owner_category": "unknown"
+        "action_category": "inspection / visit only",
+        "action_category_confidence": "high",
+        "action_category_method": "reviewed_source_context",
+        "action_category_reviewed": true,
+        "action_category_source": "https://timesofindia.indiatimes.com/city/kolkata/on-last-day-of-food-safety-drive-kmc-targets-fish-paneer-and-spice-hubs/articleshow/133893508.cms",
+        "business_format": "unknown",
+        "business_format_confidence": "unknown",
+        "business_format_method": null,
+        "business_format_reviewed": false,
+        "business_format_source": null,
+        "derived_confidence": "high",
+        "derived_context_method": "Maintainer-reviewed normalization and categories based only on explicit publisher wording retained with this record.",
+        "derived_context_sources": [
+          "https://timesofindia.indiatimes.com/city/kolkata/on-last-day-of-food-safety-drive-kmc-targets-fish-paneer-and-spice-hubs/articleshow/133893508.cms"
+        ],
+        "establishment_context": "market / vendor",
+        "establishment_context_confidence": "high",
+        "establishment_context_method": "publisher_explicit",
+        "establishment_context_reviewed": true,
+        "establishment_context_source": "https://timesofindia.indiatimes.com/city/kolkata/on-last-day-of-food-safety-drive-kmc-targets-fish-paneer-and-spice-hubs/articleshow/133893508.cms",
+        "menu_context": "unknown",
+        "menu_context_confidence": "unknown",
+        "menu_context_method": null,
+        "menu_context_reviewed": false,
+        "menu_context_source": null,
+        "normalized_area": "Bowbazar"
       },
+      "display_summary": "Source reports an inspection or visit involving Chhana Patti in Bowbazar.",
       "event_id": "WBFS-ca4e617582a8",
       "history": [
         {
           "at": "2026-09-07T21:12:32.942437Z",
           "note": "Initial bounded source review; publication date retained where event date was not explicit.",
           "previous_record_sha256": null,
+          "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-07T21:41:20.845808Z",
+          "note": "V0.2 reviewed contextual enrichment; reported facts remain source-linked.",
+          "previous_record_sha256": "23d6243a92ebd21e01c52395b1b0ff1ab4b07b5bb1414bc00f86057e12630fe2",
           "status": "SOURCE VERIFIED"
         }
       ],
@@ -2517,9 +3443,9 @@
         "llm_task": null,
         "llm_used": false
       },
-      "pipeline_version": "0.1.0",
+      "pipeline_version": "0.2.0",
       "record_created_at": "2026-09-07T21:12:32.942437Z",
-      "record_updated_at": "2026-09-07T21:12:32.942437Z",
+      "record_updated_at": "2026-09-07T21:41:20.845808Z",
       "reported_fact": {
         "area": "Bowbazar",
         "district": null,
@@ -2535,6 +3461,10 @@
             "quote": "Chhana Patti",
             "source_url": "https://timesofindia.indiatimes.com/city/kolkata/on-last-day-of-food-safety-drive-kmc-targets-fish-paneer-and-spice-hubs/articleshow/133893508.cms"
           },
+          "reported_authority": {
+            "quote": "Kolkata Municipal Corporation",
+            "source_url": "https://timesofindia.indiatimes.com/city/kolkata/on-last-day-of-food-safety-drive-kmc-targets-fish-paneer-and-spice-hubs/articleshow/133893508.cms"
+          },
           "reported_observation": {
             "quote": "food safety drive",
             "source_url": "https://timesofindia.indiatimes.com/city/kolkata/on-last-day-of-food-safety-drive-kmc-targets-fish-paneer-and-spice-hubs/articleshow/133893508.cms"
@@ -2543,7 +3473,7 @@
         "formal_finding": null,
         "legal_finding_status": "unknown",
         "reported_action": null,
-        "reported_authority": null,
+        "reported_authority": "Kolkata Municipal Corporation",
         "reported_observation": "food safety drive",
         "reported_quantity": null
       },
@@ -2576,19 +3506,45 @@
       "context_notice": "Independent, non-governmental public-source research. Inclusion is not a finding of wrongdoing. Counts describe records in this tracker, not official totals, prevalence, compliance, risk or group behavior. Read the sources and preserve this context when sharing.",
       "derived_context": {
         "action_category": "other",
-        "derived_confidence": "unknown",
-        "derived_context_method": "Unknown; no contextual inference performed.",
-        "derived_context_sources": [],
-        "derived_geography": null,
-        "derived_menu_category": "unknown",
-        "derived_owner_category": "unknown"
+        "action_category_confidence": "high",
+        "action_category_method": "reviewed_source_context",
+        "action_category_reviewed": true,
+        "action_category_source": "https://timesofindia.indiatimes.com/city/kolkata/kmc-mulls-action-against-eatery/articleshow/133744154.cms",
+        "business_format": "unknown",
+        "business_format_confidence": "unknown",
+        "business_format_method": null,
+        "business_format_reviewed": false,
+        "business_format_source": null,
+        "derived_confidence": "high",
+        "derived_context_method": "Maintainer-reviewed normalization and categories based only on explicit publisher wording retained with this record.",
+        "derived_context_sources": [
+          "https://timesofindia.indiatimes.com/city/kolkata/kmc-mulls-action-against-eatery/articleshow/133744154.cms"
+        ],
+        "establishment_context": "restaurant / eatery",
+        "establishment_context_confidence": "high",
+        "establishment_context_method": "publisher_explicit",
+        "establishment_context_reviewed": true,
+        "establishment_context_source": "https://timesofindia.indiatimes.com/city/kolkata/kmc-mulls-action-against-eatery/articleshow/133744154.cms",
+        "menu_context": "unknown",
+        "menu_context_confidence": "unknown",
+        "menu_context_method": null,
+        "menu_context_reviewed": false,
+        "menu_context_source": null,
+        "normalized_area": "Tangra"
       },
+      "display_summary": "Source reports a source-reported action involving Big Boss in Tangra.",
       "event_id": "WBFS-ce0e970c1361",
       "history": [
         {
           "at": "2026-09-07T21:12:32.942437Z",
           "note": "Initial bounded source review; publication date retained where event date was not explicit.",
           "previous_record_sha256": null,
+          "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-07T21:41:20.845808Z",
+          "note": "V0.2 reviewed contextual enrichment; reported facts remain source-linked.",
+          "previous_record_sha256": "6b5d3c313a19238c35ecab63d411bb3f7bd5a1f739eb4299a88b838fa1d66bca",
           "status": "SOURCE VERIFIED"
         }
       ],
@@ -2601,9 +3557,9 @@
         "llm_task": null,
         "llm_used": false
       },
-      "pipeline_version": "0.1.0",
+      "pipeline_version": "0.2.0",
       "record_created_at": "2026-09-07T21:12:32.942437Z",
-      "record_updated_at": "2026-09-07T21:12:32.942437Z",
+      "record_updated_at": "2026-09-07T21:41:20.845808Z",
       "reported_fact": {
         "area": "Tangra",
         "district": null,
@@ -2619,6 +3575,10 @@
             "quote": "Big Boss",
             "source_url": "https://timesofindia.indiatimes.com/city/kolkata/kmc-mulls-action-against-eatery/articleshow/133744154.cms"
           },
+          "reported_authority": {
+            "quote": "Kolkata Municipal Corporation",
+            "source_url": "https://timesofindia.indiatimes.com/city/kolkata/kmc-mulls-action-against-eatery/articleshow/133744154.cms"
+          },
           "reported_observation": {
             "quote": "food safety team wants proper action",
             "source_url": "https://timesofindia.indiatimes.com/city/kolkata/kmc-mulls-action-against-eatery/articleshow/133744154.cms"
@@ -2627,7 +3587,7 @@
         "formal_finding": null,
         "legal_finding_status": "unknown",
         "reported_action": null,
-        "reported_authority": null,
+        "reported_authority": "Kolkata Municipal Corporation",
         "reported_observation": "food safety team wants proper action",
         "reported_quantity": null
       },
@@ -2659,20 +3619,46 @@
     {
       "context_notice": "Independent, non-governmental public-source research. Inclusion is not a finding of wrongdoing. Counts describe records in this tracker, not official totals, prevalence, compliance, risk or group behavior. Read the sources and preserve this context when sharing.",
       "derived_context": {
-        "action_category": "other",
-        "derived_confidence": "unknown",
-        "derived_context_method": "Unknown; no contextual inference performed.",
-        "derived_context_sources": [],
-        "derived_geography": null,
-        "derived_menu_category": "unknown",
-        "derived_owner_category": "unknown"
+        "action_category": "inspection / visit only",
+        "action_category_confidence": "high",
+        "action_category_method": "reviewed_source_context",
+        "action_category_reviewed": true,
+        "action_category_source": "https://timesofindia.indiatimes.com/city/kolkata/on-last-day-of-food-safety-drive-kmc-targets-fish-paneer-and-spice-hubs/articleshow/133893508.cms",
+        "business_format": "unknown",
+        "business_format_confidence": "unknown",
+        "business_format_method": null,
+        "business_format_reviewed": false,
+        "business_format_source": null,
+        "derived_confidence": "high",
+        "derived_context_method": "Maintainer-reviewed normalization and categories based only on explicit publisher wording retained with this record.",
+        "derived_context_sources": [
+          "https://timesofindia.indiatimes.com/city/kolkata/on-last-day-of-food-safety-drive-kmc-targets-fish-paneer-and-spice-hubs/articleshow/133893508.cms"
+        ],
+        "establishment_context": "market / vendor",
+        "establishment_context_confidence": "high",
+        "establishment_context_method": "publisher_explicit",
+        "establishment_context_reviewed": true,
+        "establishment_context_source": "https://timesofindia.indiatimes.com/city/kolkata/on-last-day-of-food-safety-drive-kmc-targets-fish-paneer-and-spice-hubs/articleshow/133893508.cms",
+        "menu_context": "unknown",
+        "menu_context_confidence": "unknown",
+        "menu_context_method": null,
+        "menu_context_reviewed": false,
+        "menu_context_source": null,
+        "normalized_area": "Posta"
       },
+      "display_summary": "Source reports an inspection or visit involving spice market at Posta in Posta.",
       "event_id": "WBFS-d7a89f9a34e8",
       "history": [
         {
           "at": "2026-09-07T21:12:32.942437Z",
           "note": "Initial bounded source review; publication date retained where event date was not explicit.",
           "previous_record_sha256": null,
+          "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-07T21:41:20.845808Z",
+          "note": "V0.2 reviewed contextual enrichment; reported facts remain source-linked.",
+          "previous_record_sha256": "6aff37bb93df6fb7af83bff3a964b84bc9d97f54552888c65999810562bec154",
           "status": "SOURCE VERIFIED"
         }
       ],
@@ -2685,9 +3671,9 @@
         "llm_task": null,
         "llm_used": false
       },
-      "pipeline_version": "0.1.0",
+      "pipeline_version": "0.2.0",
       "record_created_at": "2026-09-07T21:12:32.942437Z",
-      "record_updated_at": "2026-09-07T21:12:32.942437Z",
+      "record_updated_at": "2026-09-07T21:41:20.845808Z",
       "reported_fact": {
         "area": "Posta",
         "district": null,
@@ -2703,6 +3689,10 @@
             "quote": "spice market at Posta",
             "source_url": "https://timesofindia.indiatimes.com/city/kolkata/on-last-day-of-food-safety-drive-kmc-targets-fish-paneer-and-spice-hubs/articleshow/133893508.cms"
           },
+          "reported_authority": {
+            "quote": "Kolkata Municipal Corporation",
+            "source_url": "https://timesofindia.indiatimes.com/city/kolkata/on-last-day-of-food-safety-drive-kmc-targets-fish-paneer-and-spice-hubs/articleshow/133893508.cms"
+          },
           "reported_observation": {
             "quote": "food safety drive",
             "source_url": "https://timesofindia.indiatimes.com/city/kolkata/on-last-day-of-food-safety-drive-kmc-targets-fish-paneer-and-spice-hubs/articleshow/133893508.cms"
@@ -2711,7 +3701,7 @@
         "formal_finding": null,
         "legal_finding_status": "unknown",
         "reported_action": null,
-        "reported_authority": null,
+        "reported_authority": "Kolkata Municipal Corporation",
         "reported_observation": "food safety drive",
         "reported_quantity": null
       },
@@ -2743,20 +3733,46 @@
     {
       "context_notice": "Independent, non-governmental public-source research. Inclusion is not a finding of wrongdoing. Counts describe records in this tracker, not official totals, prevalence, compliance, risk or group behavior. Read the sources and preserve this context when sharing.",
       "derived_context": {
-        "action_category": "other",
-        "derived_confidence": "unknown",
-        "derived_context_method": "Unknown; no contextual inference performed.",
-        "derived_context_sources": [],
-        "derived_geography": null,
-        "derived_menu_category": "unknown",
-        "derived_owner_category": "unknown"
+        "action_category": "inspection / visit only",
+        "action_category_confidence": "high",
+        "action_category_method": "reviewed_source_context",
+        "action_category_reviewed": true,
+        "action_category_source": "https://timesofindia.indiatimes.com/city/kolkata/kmc-cracks-whip-on-dacres-lane-eateries/articleshow/133811497.cms",
+        "business_format": "unknown",
+        "business_format_confidence": "unknown",
+        "business_format_method": null,
+        "business_format_reviewed": false,
+        "business_format_source": null,
+        "derived_confidence": "high",
+        "derived_context_method": "Maintainer-reviewed normalization and categories based only on explicit publisher wording retained with this record.",
+        "derived_context_sources": [
+          "https://timesofindia.indiatimes.com/city/kolkata/kmc-cracks-whip-on-dacres-lane-eateries/articleshow/133811497.cms"
+        ],
+        "establishment_context": "unknown",
+        "establishment_context_confidence": "unknown",
+        "establishment_context_method": null,
+        "establishment_context_reviewed": false,
+        "establishment_context_source": null,
+        "menu_context": "unknown",
+        "menu_context_confidence": "unknown",
+        "menu_context_method": null,
+        "menu_context_reviewed": false,
+        "menu_context_source": null,
+        "normalized_area": "Lake Market"
       },
+      "display_summary": "Source reports an inspection or visit involving an unnamed establishment in Lake Market.",
       "event_id": "WBFS-f880c67a6f96",
       "history": [
         {
           "at": "2026-09-07T21:12:32.942437Z",
           "note": "Initial bounded source review; publication date retained where event date was not explicit.",
           "previous_record_sha256": null,
+          "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-07T21:41:20.845808Z",
+          "note": "V0.2 reviewed contextual enrichment; reported facts remain source-linked.",
+          "previous_record_sha256": "bac3cc5cf0bc12dfa649fd5a256b1389b23ff59bec03a8fc4ac0c35206cdf98c",
           "status": "SOURCE VERIFIED"
         }
       ],
@@ -2769,9 +3785,9 @@
         "llm_task": null,
         "llm_used": false
       },
-      "pipeline_version": "0.1.0",
+      "pipeline_version": "0.2.0",
       "record_created_at": "2026-09-07T21:12:32.942437Z",
-      "record_updated_at": "2026-09-07T21:12:32.942437Z",
+      "record_updated_at": "2026-09-07T21:41:20.845808Z",
       "reported_fact": {
         "area": "Lake Market",
         "district": null,
@@ -2783,6 +3799,14 @@
             "quote": "Lake Market",
             "source_url": "https://timesofindia.indiatimes.com/city/kolkata/kmc-cracks-whip-on-dacres-lane-eateries/articleshow/133811497.cms"
           },
+          "reported_action": {
+            "quote": "visited Lake Market",
+            "source_url": "https://timesofindia.indiatimes.com/city/kolkata/kmc-cracks-whip-on-dacres-lane-eateries/articleshow/133811497.cms"
+          },
+          "reported_authority": {
+            "quote": "KMC",
+            "source_url": "https://timesofindia.indiatimes.com/city/kolkata/kmc-cracks-whip-on-dacres-lane-eateries/articleshow/133811497.cms"
+          },
           "reported_observation": {
             "quote": "visited Lake Market",
             "source_url": "https://timesofindia.indiatimes.com/city/kolkata/kmc-cracks-whip-on-dacres-lane-eateries/articleshow/133811497.cms"
@@ -2790,8 +3814,8 @@
         },
         "formal_finding": null,
         "legal_finding_status": "unknown",
-        "reported_action": null,
-        "reported_authority": null,
+        "reported_action": "visited Lake Market",
+        "reported_authority": "KMC",
         "reported_observation": "visited Lake Market",
         "reported_quantity": null
       },
@@ -2824,19 +3848,45 @@
       "context_notice": "Independent, non-governmental public-source research. Inclusion is not a finding of wrongdoing. Counts describe records in this tracker, not official totals, prevalence, compliance, risk or group behavior. Read the sources and preserve this context when sharing.",
       "derived_context": {
         "action_category": "other",
-        "derived_confidence": "unknown",
-        "derived_context_method": "Unknown; no contextual inference performed.",
-        "derived_context_sources": [],
-        "derived_geography": null,
-        "derived_menu_category": "unknown",
-        "derived_owner_category": "unknown"
+        "action_category_confidence": "high",
+        "action_category_method": "reviewed_source_context",
+        "action_category_reviewed": true,
+        "action_category_source": "https://tv9bangla.com/kolkata/west-bengal-food-safety-drive-irregularities-found-at-1525-food-centres-licences-of-13-processing-units-cancelled-1343938.html",
+        "business_format": "unknown",
+        "business_format_confidence": "unknown",
+        "business_format_method": null,
+        "business_format_reviewed": false,
+        "business_format_source": null,
+        "derived_confidence": "high",
+        "derived_context_method": "Maintainer-reviewed normalization and categories based only on explicit publisher wording retained with this record.",
+        "derived_context_sources": [
+          "https://tv9bangla.com/kolkata/west-bengal-food-safety-drive-irregularities-found-at-1525-food-centres-licences-of-13-processing-units-cancelled-1343938.html"
+        ],
+        "establishment_context": "restaurant / eatery",
+        "establishment_context_confidence": "high",
+        "establishment_context_method": "publisher_explicit",
+        "establishment_context_reviewed": true,
+        "establishment_context_source": "https://tv9bangla.com/kolkata/west-bengal-food-safety-drive-irregularities-found-at-1525-food-centres-licences-of-13-processing-units-cancelled-1343938.html",
+        "menu_context": "unknown",
+        "menu_context_confidence": "unknown",
+        "menu_context_method": null,
+        "menu_context_reviewed": false,
+        "menu_context_source": null,
+        "normalized_area": "Sector III"
       },
+      "display_summary": "Source reports a source-reported action involving চৌরাসিয়া চাটস in সেক্টর থ্রি-র.",
       "event_id": "WBFS-fb6dd3f19af8",
       "history": [
         {
           "at": "2026-09-07T21:12:32.942437Z",
           "note": "Initial bounded source review; publication date retained where event date was not explicit.",
           "previous_record_sha256": null,
+          "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-07T21:41:20.845808Z",
+          "note": "V0.2 reviewed contextual enrichment; reported facts remain source-linked.",
+          "previous_record_sha256": "8076dca39ab2e93d1fc791f4ab23d57dbce6564e05e74145060eddc70cce5396",
           "status": "SOURCE VERIFIED"
         }
       ],
@@ -2849,9 +3899,9 @@
         "llm_task": null,
         "llm_used": false
       },
-      "pipeline_version": "0.1.0",
+      "pipeline_version": "0.2.0",
       "record_created_at": "2026-09-07T21:12:32.942437Z",
-      "record_updated_at": "2026-09-07T21:12:32.942437Z",
+      "record_updated_at": "2026-09-07T21:41:20.845808Z",
       "reported_fact": {
         "area": "সেক্টর থ্রি-র",
         "district": null,
@@ -2867,6 +3917,10 @@
             "quote": "চৌরাসিয়া চাটস",
             "source_url": "https://tv9bangla.com/kolkata/west-bengal-food-safety-drive-irregularities-found-at-1525-food-centres-licences-of-13-processing-units-cancelled-1343938.html"
           },
+          "reported_action": {
+            "quote": "লাইসেন্স সাসপেন্ড করা হয়েছে",
+            "source_url": "https://tv9bangla.com/kolkata/west-bengal-food-safety-drive-irregularities-found-at-1525-food-centres-licences-of-13-processing-units-cancelled-1343938.html"
+          },
           "reported_observation": {
             "quote": "লাইসেন্স সাসপেন্ড করা হয়েছে",
             "source_url": "https://tv9bangla.com/kolkata/west-bengal-food-safety-drive-irregularities-found-at-1525-food-centres-licences-of-13-processing-units-cancelled-1343938.html"
@@ -2874,7 +3928,7 @@
         },
         "formal_finding": null,
         "legal_finding_status": "unknown",
-        "reported_action": null,
+        "reported_action": "লাইসেন্স সাসপেন্ড করা হয়েছে",
         "reported_authority": null,
         "reported_observation": "লাইসেন্স সাসপেন্ড করা হয়েছে",
         "reported_quantity": null
@@ -2905,5 +3959,5 @@
       "verification_status": "SOURCE VERIFIED"
     }
   ],
-  "schema_version": "1.0.0"
+  "schema_version": "1.1.0"
 }
