@@ -22,6 +22,11 @@ def test_source_changed(record):
     assert "source_changed" in evidence_errors(record, {record.sources[0].source_url: "changed"})
 
 
+def test_quoted_span_preserves_exact_case(record):
+    record.sources[0].evidence_quote = record.sources[0].evidence_quote.upper()
+    assert "quote_outside_context" in evidence_errors(record)
+
+
 def test_source_unreachable(record):
     assert "source_unreachable" in evidence_errors(record, {})
 

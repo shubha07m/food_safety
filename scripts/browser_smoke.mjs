@@ -2,7 +2,7 @@
 // Synthetic data is intercepted in browser memory only; production JSON stays empty.
 import assert from 'node:assert/strict';
 import { spawn } from 'node:child_process';
-import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
+import { existsSync, mkdirSync, mkdtempSync, readFileSync, writeFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 import { setTimeout as delay } from 'node:timers/promises';
 
@@ -11,12 +11,13 @@ const chrome = '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome';
 assert.ok(existsSync(chrome), 'This optional smoke test requires an already-installed Chrome.');
 const cache = resolve(root, '.cache/browser-smoke');
 mkdirSync(cache, { recursive: true });
+const profile = mkdtempSync(resolve(cache, 'profile-'));
 const processChrome = spawn(chrome, [
   '--headless=new', '--disable-gpu', '--no-first-run', '--no-default-browser-check',
   '--disable-background-networking', '--disable-component-update', '--disable-sync',
   '--disable-extensions', '--disable-breakpad', '--disable-crash-reporter',
   '--disable-domain-reliability', '--metrics-recording-only',
-  '--remote-debugging-port=0', `--user-data-dir=${cache}/profile`,
+  '--remote-debugging-port=0', `--user-data-dir=${profile}`,
   `--disk-cache-dir=${cache}/disk`, 'about:blank',
 ], { stdio: 'ignore', env: { ...process.env, TMPDIR: resolve(root, '.cache/tmp'),
   XDG_CACHE_HOME: cache, CHROME_CONFIG_HOME: cache } });
@@ -73,7 +74,7 @@ async function screenshot(name) {
   writeFileSync(resolve(cache, name + '.png'), Buffer.from(result.data, 'base64'));
 }
 try {
-  const portFile = resolve(cache, 'profile/DevToolsActivePort');
+  const portFile = resolve(profile, 'DevToolsActivePort');
   for (let i = 0; i < 100 && !existsSync(portFile); i++) await delay(100);
   assert.ok(existsSync(portFile), 'Chrome did not expose its local debugging port.');
   const port = readFileSync(portFile, 'utf8').split('\n')[0];
