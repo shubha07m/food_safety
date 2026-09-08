@@ -120,3 +120,24 @@ def test_discovery_size_cap_does_not_raise_article_cap():
     assert cfg.max_response_bytes == 524288
     with pytest.raises(ValueError):
         Settings(max_discovery_response_bytes=1048577)
+
+
+def test_overlapping_candidate_is_not_published_or_given_a_public_tombstone(
+    project, policy, monkeypatch
+):
+    policy.urls = []
+    policy.discovery_pages = ["https://example.org/index"]
+    enable_policy(project, policy)
+    monkeypatch.setenv("AUTO_PUBLISH", "true")
+    update(project, fetcher=DiscoveryFixture())
+
+    class OtherArticle(DiscoveryFixture):
+        def article(self, url):
+            if url.endswith("/index"):
+                return url, '<a href="/other">Kolkata food safety inspection</a>'
+            return super().article(url)
+
+    update(project, fetcher=OtherArticle())
+    build(project)
+    assert json.loads((project / "site/data/events.json").read_text())["record_count"] == 1
+    assert json.loads((project / "site/data/retired.json").read_text())["record_count"] == 0

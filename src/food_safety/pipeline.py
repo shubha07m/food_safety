@@ -107,6 +107,7 @@ def update(root, max_articles=None, use_llm=False, max_llm_calls=None, fetcher=N
     )
     fetcher = fetcher or Fetcher(policies, cfg)
     events, pending = read_events(root, "events"), read_events(root, "pending")
+    initial_published_ids = {event.event_id for event in events}
     rejected = read_rejected(root)["records"]
     at = now()
     run = {
@@ -239,13 +240,14 @@ def update(root, max_articles=None, use_llm=False, max_llm_calls=None, fetcher=N
                 run["records_published"] += 1
             else:
                 if event.automatic_validation:
-                    event = transition(
-                        root,
-                        event,
-                        "PENDING REVIEW",
-                        "Automatic publication checks did not pass.",
-                        at,
+                    # This candidate was never published: do not create a public
+                    # retirement notice or a fictitious prior publication revision.
+                    draft = event.model_dump(mode="json")
+                    draft.update(verification_status="PENDING REVIEW", automatic_validation=None)
+                    draft["history"][-1].update(
+                        status="PENDING REVIEW", note="Automatic publication checks did not pass."
                     )
+                    event = Event.model_validate(draft)
                 pending.append(event)
                 run["records_pending"] += 1
                 reasons["human_review_required"] += 1
@@ -287,6 +289,9 @@ def update(root, max_articles=None, use_llm=False, max_llm_calls=None, fetcher=N
     )
     transaction(root, events, pending, rejected, at)
     status = dict(prior_status)
+    status["held_from_last_scan"] = run["records_pending"] + len(
+        initial_published_ids - {event.event_id for event in events}
+    )
     if os.getenv("GITHUB_ACTIONS") == "true":
         status["scheduled_refresh_hours"] = 2
     status.update(

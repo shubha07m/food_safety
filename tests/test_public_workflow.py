@@ -41,3 +41,16 @@ def test_private_local_artifacts_are_ignored():
     text = (ROOT / ".gitignore").read_text()
     for path in ["data/history/", "data/pending.json", "data/rejected.json", ".cache/", ".env"]:
         assert path in text
+
+
+def test_public_status_does_not_depend_on_private_queue_contents(project):
+    import json
+
+    from food_safety.build import build
+
+    path = project / "data/status.json"
+    status = json.loads(path.read_text())
+    status["held_from_last_scan"] = 6
+    path.write_text(json.dumps(status))
+    build(project)
+    assert json.loads((project / "site/status.json").read_text())["pending_count"] == 6

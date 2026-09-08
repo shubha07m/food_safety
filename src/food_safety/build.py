@@ -260,7 +260,11 @@ def build(root):
     status = json.loads((root / "data/status.json").read_text())
     dump(
         site / "status.json",
-        {**status, "published_count": counts["published"], "pending_count": counts["pending"]},
+        {
+            **status,
+            "published_count": counts["published"],
+            "pending_count": status.get("held_from_last_scan", 0),
+        },
     )
     dump(
         site / "repository.json",
