@@ -1,5 +1,6 @@
 """Synthetic network fixtures never enter the real research dataset."""
 
+import hashlib
 import json
 
 import pytest
@@ -82,3 +83,22 @@ def test_discovery_safe_links_and_xml(policy):
         policy,
         1,
     ) == ["https://example.org/new"]
+
+
+def test_suspended_only_run_does_not_claim_fresh_source_scan(project, policy):
+    enable_policy(project, policy)
+    before = json.loads((project / "data/status.json").read_text())
+    (project / "data/retired.json").write_text(
+        json.dumps(
+            {
+                "records": [
+                    {"source_url_sha256": [hashlib.sha256(policy.urls[0].encode()).hexdigest()]}
+                ]
+            }
+        )
+    )
+    run = update(project, fetcher=DiscoveryFixture())
+    after = json.loads((project / "data/status.json").read_text())
+    assert run["sources_scanned"] == 0
+    assert after.get("last_source_scan") == before.get("last_source_scan")
+    assert after.get("last_successful_update") == before.get("last_successful_update")

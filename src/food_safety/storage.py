@@ -47,7 +47,10 @@ def save_events(root, name, records, at):
         [r.model_dump(mode="json") for r in sorted(records, key=lambda r: r.event_id)], at
     )
     Dataset.model_validate(value)
-    dump(root / "data" / f"{name}.json", value)
+    path = root / "data" / f"{name}.json"
+    if path.exists() and json.loads(path.read_text()).get("records") == value["records"]:
+        return  # A scan is not a new dataset version when approved rows did not change.
+    dump(path, value)
 
 
 def transition(root, event, status, note, at, review=None):

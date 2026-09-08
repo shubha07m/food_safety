@@ -169,13 +169,14 @@ def update(root, max_articles=None, use_llm=False, max_llm_calls=None, fetcher=N
             break
         if domain_counts[policy.domain] >= cfg.max_pages_per_source:
             continue
+        if hashlib.sha256(url.encode()).hexdigest() in suspended:
+            reasons["suspended_source_requires_review"] += 1
+            run["urls_considered"] += 1
+            continue
         domain_counts[policy.domain] += 1
         scanned.add(policy.domain)
         run["urls_considered"] += 1
         try:
-            if hashlib.sha256(url.encode()).hexdigest() in suspended:
-                reasons["suspended_source_requires_review"] += 1
-                continue
             canonical, html = fetcher.article(url)
             title, text = article_text(html)
             matching = [
@@ -285,7 +286,7 @@ def update(root, max_articles=None, use_llm=False, max_llm_calls=None, fetcher=N
     status.update(
         last_attempt=run["ended_at"],
         last_run_result=(
-            "no_sources_enabled" if not scanned else "failed" if run["errors"] else "success"
+            "failed" if run["errors"] else "no_sources_checked" if not scanned else "success"
         ),
         scan_cursor=cursor + run["urls_considered"],
     )
