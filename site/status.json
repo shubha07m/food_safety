@@ -1,9 +1,10 @@
 {
-  "last_attempt": "2026-09-07T20:28:08.452274+00:00",
-  "last_run_result": "no_sources_enabled",
-  "last_source_scan": null,
+  "last_attempt": "2026-09-08T02:22:14.147091+00:00",
+  "last_run_result": "failed",
+  "last_source_scan": "2026-09-08T02:22:14.147091+00:00",
   "last_successful_update": null,
   "pending_count": 0,
   "published_count": 35,
-  "scan_cursor": 0
+  "scan_cursor": 6,
+  "scheduled_refresh_hours": 2
 }
