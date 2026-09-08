@@ -19,7 +19,7 @@ Use this checklist immediately before the explicit `--confirm-public-release` ac
 
 ## Security and hosting
 
-- [ ] Only `site/` is selected as the Cloudflare Pages output directory.
+- [ ] Only `site/` is selected as the Cloudflare Workers static assets directory.
 - [ ] Preview deployment passes header, CSP, mobile and keyboard checks.
 - [ ] HTTPS headers, including CSP, HSTS, nosniff, no-referrer and framing controls, are checked on the actual domain.
 - [ ] No secret, pending queue, rejected record, history archive or run artifact is publicly reachable.
@@ -29,6 +29,7 @@ Use this checklist immediately before the explicit `--confirm-public-release` ac
 
 - [ ] Disclaimer, correction route and volunteer callout are visible on desktop and mobile.
 - [ ] Chart filters, map points, data downloads and record details work.
-- [ ] Scheduled scan remains bounded and `AUTO_PUBLISH=false`.
-- [ ] Maintainers can access workflow-dispatch and review artifacts.
-- [ ] Rollback procedure is understood and a prior Pages deployment is available.
+- [ ] Two-hour scan remains bounded; automatic publication requires all validation gates.
+- [ ] Maintainers can access workflow-dispatch; private review artifacts are not uploaded.
+- [ ] Rollback procedure is understood and a prior Workers deployment is available.
+- [ ] Historical private Git material is resolved before repository visibility changes.

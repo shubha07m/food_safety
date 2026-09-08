@@ -38,8 +38,9 @@ jobs:
           mkdir -p .cache
           ruff check .
           python -m pytest -q --basetemp=.cache/pytest
-          node --test tests/site_data.test.mjs
+          node --test tests/*.test.mjs
           python -m food_safety.cli validate
           python -m food_safety.cli build
+          python scripts/verify_public_output.py
       - name: Audit installed dependencies
         run: python -m pip_audit --skip-editable --progress-spinner off --cache-dir .cache/audit

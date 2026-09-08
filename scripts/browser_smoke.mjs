@@ -72,11 +72,15 @@ async function waitFor(expression) {
     if (await evaluate(expression)) return;
     await delay(100);
   }
-  throw new Error(`Condition not reached: ${expression}`);
+  throw new Error(`Condition not reached: ${expression}; errors: ${JSON.stringify(runtimeErrors)}`);
 }
 async function screenshot(name) {
   const result = await command('Page.captureScreenshot', { format: 'png', captureBeyondViewport: true });
   writeFileSync(resolve(cache, name + '.png'), Buffer.from(result.data, 'base64'));
+}
+async function publicScreenshot(path) {
+  const result = await command('Page.captureScreenshot', { format: 'png', captureBeyondViewport: false });
+  writeFileSync(resolve(root, path), Buffer.from(result.data, 'base64'));
 }
 try {
   const portFile = resolve(profile, 'DevToolsActivePort');
@@ -95,6 +99,7 @@ try {
       if (message.error) pending.reject(new Error(message.error.message)); else pending.resolve(message.result);
     }
     if (message.method === 'Runtime.exceptionThrown') runtimeErrors.push(message.params.exceptionDetails.text);
+    if (message.method === 'Runtime.consoleAPICalled' && message.params.type === 'error') runtimeErrors.push(message.params.args.map(arg => arg.description || arg.value));
     if (message.method === 'Fetch.requestPaused') {
       const { requestId, request } = message.params;
       if (intercept && new URL(request.url).pathname === '/data/events.json') {
@@ -105,6 +110,27 @@ try {
     }
   };
   await command('Page.enable'); await command('Runtime.enable');
+  await command('Emulation.setDeviceMetricsOverride', { width: 1440, height: 1000, deviceScaleFactor: 1, mobile: false });
+  await command('Page.navigate', { url: 'http://127.0.0.1:8000/' });
+  await waitFor(`document.getElementById('metric-events')?.textContent === '${original.record_count}'`);
+  await publicScreenshot('docs/assets/dashboard_preview.png');
+  await evaluate("document.querySelector('.map-panel').scrollIntoView({block:'start'})");
+  await screenshot('map-desktop');
+  await evaluate("window.scrollTo(0,0)");
+  assert.equal(await evaluate("document.querySelectorAll('.basemap-outline').length"), 2);
+  assert.equal(await evaluate("document.querySelectorAll('#chart-map g[role=button]').length > 0"), true);
+  const originalQuote = original.records[0].sources[0].evidence_quote;
+  await command('Page.navigate', { url: `http://127.0.0.1:8000/?lang=bn&event=${original.records[0].event_id}` });
+  await waitFor("document.getElementById('record-detail')?.hidden === false");
+  assert.equal(await evaluate("document.documentElement.lang"), 'bn');
+  assert.equal(await evaluate("document.getElementById('patterns-heading').textContent"), 'প্রতিবেদনের তথ্যচিত্র');
+  assert.equal(await evaluate("document.querySelector('#record-detail blockquote').textContent"), originalQuote);
+  assert.equal(await evaluate("document.querySelector('.record-link').href.includes('lang=bn')"), true);
+  await screenshot('bengali-detail');
+  await command('Emulation.setDeviceMetricsOverride', { width: 1200, height: 630, deviceScaleFactor: 1, mobile: false });
+  await command('Page.navigate', { url: 'http://127.0.0.1:8000/assets/social-preview.svg' });
+  await waitFor("document.documentElement.tagName === 'svg'");
+  await publicScreenshot('site/assets/social-preview.png');
   await command('Emulation.setDeviceMetricsOverride', { width: 1440, height: 1000, deviceScaleFactor: 1, mobile: false });
   await command('Page.navigate', { url: 'http://127.0.0.1:8000/' });
   await waitFor(`document.getElementById('metric-events')?.textContent === '${original.record_count}'`);

@@ -1,4 +1,8 @@
 :root {
+  --teal: #3d8271;
+  --river: #426b7c;
+  --mint: #dbeae2;
+  --saffron: #e6c47c;
   --ink: #202a27;
   --paper: #f5f1e8;
   --paper-deep: #ebe4d7;
@@ -257,3 +261,31 @@ footer strong { font-size: 10px; color: var(--ink); }
   table { min-width: 0; font-size: 9px; }
   a { color: black; }
 }
+
+/* Calm categorical accents—not establishment safety or guilt signals. */
+body { font-family: system-ui, -apple-system, 'Nirmala UI', 'Bangla Sangam MN', sans-serif; }
+.language-toggle { display: flex; gap: .7rem; align-items: center; white-space: nowrap; }
+.language-toggle a { padding: .35rem .6rem; border: 1px solid var(--border); border-radius: 7px; }
+.language-toggle [aria-current] { background: var(--mint); color: var(--green); font-weight: 700; }
+.chart-panel { border-top: 3px solid var(--mint); }
+.chart-panel:nth-child(3n) { border-top-color: var(--saffron); }
+.chart-panel:nth-child(3n + 1) { border-top-color: #a8c8d3; }
+.button { transition: background-color .18s ease, box-shadow .18s ease; }
+.button:hover { box-shadow: 0 3px 0 #164c3c22; }
+.map-inset { fill: #edf4ef; stroke: #b3cbc2; }
+.basemap-outline { fill: #dbeae2; stroke: #426b7c; stroke-width: 1.1; }
+.map-region { fill: none; stroke: #a77422; stroke-width: 2; }
+.map-leader { stroke: #8b9d97; stroke-dasharray: 4 5; }
+.map-heading { fill: #164c3c; font-size: 18px; font-weight: 700; }
+.map-legend { display: flex; flex-wrap: wrap; gap: .5rem; margin: .8rem 0; }
+.map-key { font: inherit; color: #164c3c; background: #edf4ef; border: 1px solid #b3cbc2; border-radius: 7px; padding: .4rem .7rem; cursor: pointer; }
+.map-key[aria-pressed=true] { border: 2px solid #164c3c; background: #dbeae2; }
+.svg-map { background: #f8f7ef; border-radius: 14px; }
+#chart-map { max-height: none; }
+#chart-map svg { min-height: 0; }
+.svg-donut .svg-label { font-size: 13px; }
+.volunteer-note { border-left: 5px solid var(--teal); background: #edf4ef; }
+html[lang=bn] h1, html[lang=bn] h2, html[lang=bn] h3 { font-family: 'Bangla Sangam MN', 'Nirmala UI', system-ui, sans-serif; line-height: 1.45; }
+html[lang=bn] .eyebrow, html[lang=bn] .status-strip { letter-spacing: normal; }
+@media (max-width: 640px) { .masthead { flex-wrap: wrap; } .language-toggle { margin-top: .5rem; } .map-key { font-size: .85rem; } }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition: none !important; } }

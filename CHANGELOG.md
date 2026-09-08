@@ -1,5 +1,14 @@
 # Changelog
 
+## Public beta polish
+
+Live canonical domain, bounded two-hour refresh with explicit automatic-validation
+provenance, fail-closed source discovery, English/Bengali UI, local licensed West
+Bengal basemap, richer README, social preview and public-output auditing.
+Private local queues/snapshots are removed from future commits; historical Git
+material still requires a separate visibility review. No repository visibility
+change, model call, external map runtime or new dependency.
+
 ## 0.2.0 — Private evaluation
 
 - Added reviewed action, establishment and geographic context with field-level provenance.

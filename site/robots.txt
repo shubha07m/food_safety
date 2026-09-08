@@ -1,4 +1,5 @@
 User-agent: *
-Disallow: /
+Allow: /
+Disallow: /admin.html
 
-# Private evaluation build. Reassess only after a reviewed public launch.
+# Public beta. This file is not an access control mechanism.

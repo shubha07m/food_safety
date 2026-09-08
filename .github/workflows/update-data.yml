@@ -1,8 +1,8 @@
-name: Review source update
+name: Refresh Food Safety Data
 on:
   workflow_dispatch:
   schedule:
-    - cron: '17 */6 * * *'
+    - cron: '17 */2 * * *'
 permissions:
   contents: read
 concurrency:
@@ -10,10 +10,12 @@ concurrency:
   cancel-in-progress: false
 jobs:
   candidates:
+    permissions:
+      contents: write
     runs-on: ubuntu-latest
     timeout-minutes: 10
     env:
-      AUTO_PUBLISH: 'false'
+      AUTO_PUBLISH: 'true'
       PIP_DISABLE_PIP_VERSION_CHECK: '1'
     defaults:
       run:
@@ -21,6 +23,7 @@ jobs:
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
+          ref: main
           persist-credentials: false
       - uses: conda-incubator/setup-miniconda@8ee1f361103df19b6f8c8655fd3967a8ecb162d5 # v4.0.1
         with:
@@ -32,7 +35,11 @@ jobs:
           python -m pip install -r requirements-dev.lock
           python -m pip install --no-deps --no-build-isolation -e .
       - name: Limited source scan, no paid APIs
-        run: python -m food_safety.cli update --max-articles 3
+        run: |
+          result=0
+          python -m food_safety.cli update --max-articles 6 || result=$?
+          # Partial source failure (2) retains validated suspensions; fatal (1) stops.
+          test "$result" -eq 0 -o "$result" -eq 2
       - name: Check candidate output
         run: |
           mkdir -p .cache
@@ -40,15 +47,15 @@ jobs:
           python -m pytest -q --basetemp=.cache/pytest
           python -m food_safety.cli validate
           python -m food_safety.cli build
-      - name: Retain private review artifacts; never deploy
-        if: always()
-        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
-        with:
-          name: source-review-${{ github.run_id }}
-          path: |
-            data/*.json
-            data/*.csv
-            data/history/
-            data/runs/
-          retention-days: 7
-          if-no-files-found: error
+          node --test tests/*.test.mjs
+          python scripts/verify_public_output.py
+      - name: Commit approved artifacts only
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          git add data/events.json data/events.csv data/events.csv.metadata.json data/status.json data/retired.json site/
+          if git diff --cached --quiet; then exit 0; fi
+          git -c user.name='github-actions[bot]' -c user.email='41898282+github-actions[bot]@users.noreply.github.com' commit -m 'data: validated refresh [automated-refresh]'
+          git -c credential.helper='!f() { echo username=x-access-token; echo "password=$GH_TOKEN"; }; f' push origin HEAD:main
+          # No push trigger here, and GITHUB_TOKEN pushes do not trigger Actions.
+          # Cloudflare Git integration handles redeployment from main.

@@ -1,7 +1,15 @@
 import { safeExternal } from './data.mjs';
+import { translateStatic, language } from './locale.mjs';
+
+translateStatic();
+if (language === 'bn' && document.querySelector('main')) {
+  const note = document.createElement('aside'); note.className = 'notice';
+  note.textContent = 'স্বাধীন, শিক্ষামূলক, প্রকাশ্য উৎসভিত্তিক গবেষণা—সরকারি তথ্যভান্ডার নয়। অন্তর্ভুক্তি অনিয়মের সিদ্ধান্ত নয়। উৎস যাচাই মানে উৎসটি বক্তব্য সমর্থন করে; বাস্তব সত্য স্বাধীনভাবে প্রমাণ করা নয়। সংখ্যা সমস্ত পরিদর্শনের মোট হিসাব নয়। কোনো ধর্ম, জাতি, বর্ণ, সম্প্রদায় বা রাজনৈতিক পরিচয় অনুমান করা হয় না। প্রেক্ষাপটভিত্তিক বিভাগ সরকারি সিদ্ধান্ত নয়। মূল উৎস ও উদ্ধৃতি অপরিবর্তিত থাকে। নীতির পূর্ণ ইংরেজি পাঠও উপলব্ধ; বাংলা সারসংক্ষেপ আইনি পরামর্শ নয়।';
+  document.querySelector('main').prepend(note);
+}
 
 try {
-  const response = await fetch('repository.json', { credentials: 'omit' });
+  const response = await fetch(new URL('repository.json', import.meta.url), { credentials: 'omit' });
   if (!response.ok) throw new Error('Unavailable');
   const repository = (await response.json()).url;
   const safe = safeExternal(repository);

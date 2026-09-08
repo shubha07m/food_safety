@@ -1,19 +1,70 @@
 # West Bengal Food Safety Evidence Tracker
 
-Independent public-source research. **Not a government database. Inclusion is not a finding of wrongdoing.**
+![West Bengal Food Safety Evidence Tracker — Public Beta](docs/assets/readme_banner.svg)
 
-**Public-beta release candidate.** No deployment is enabled by this repository.
+[![CI](https://github.com/shubha07m/food_safety/actions/workflows/ci.yml/badge.svg)](https://github.com/shubha07m/food_safety/actions/workflows/ci.yml)
+**PUBLIC BETA · Python 3.12 · Static site · Cloudflare · MIT code · No tracking**
 
-This private evaluation project structures publicly reported food-safety events in West Bengal, initially emphasizing Kolkata and nearby areas. Every published fact carries source evidence; every chart opens its contributing records. The current dataset is a reviewed initial real-source sample. The preserved [design prototype](Wb-Food-Safety-Tracker.html) is illustrative and is not a source dataset.
+> Independent public-source research. **Not a government database. Inclusion is not a finding of wrongdoing.** Source verification means the cited source supports the displayed statement; it does not mean the project independently established the event as fact.
 
-Read [Disclaimer](DISCLAIMER.md), [Methodology](METHODOLOGY.md), [Corrections](CORRECTIONS.md) and [Privacy](PRIVACY.md) before using the data. The policy wording is a draft, not legal advice or legal immunity. India-qualified counsel should review it before broad public launch.
+### [Explore the live tracker →](https://foodsafety.nemoneek.com/)
+
+[বাংলায় দেখুন](https://foodsafety.nemoneek.com/?lang=bn) · [Methodology](METHODOLOGY.md) · [Disclaimer](DISCLAIMER.md) · [Data](https://foodsafety.nemoneek.com/data.html) · [Corrections](https://foodsafety.nemoneek.com/corrections.html) · [Contribute](CONTRIBUTING.md)
+
+## What this is
+
+A public-interest, educational and academic data-research project organizing publicly reported food-safety inspection events in West Bengal, initially Kolkata and nearby areas. Every published fact links to source evidence; every chart reveals the records behind its count.
+
+This is not a blacklist, safety rating, official total, accusation platform or opinion-building project. It does not infer social/community identity or recommend patronizing or avoiding any business. Unknown information is shown, not guessed.
+
+> ### 🤝 Help keep the tracker useful
+>
+> Volunteer maintainers are welcome for source review, Bengali/English coverage, data validation and open-data tooling. Evidence and safety standards apply to every contribution.
+>
+> **[Volunteer / Contribute →](CONTRIBUTING.md)** · No personal information is collected on this website.
+
+## Dashboard preview
+
+![Current dashboard: evidence metrics, geographic context and interactive charts](docs/assets/dashboard_preview.png)
+
+Native SVG charts, source-linked records, combined filters, field completeness and missingness. The local West Bengal basemap uses coarse reviewed area anchors—not establishment addresses, incident density or risk.
+
+## How it works
+
+![Public sources → bounded retrieval → evidence and safety validation → structured records → static Cloudflare dashboard](docs/assets/pipeline.svg)
+
+Public sources → bounded retrieval → exact evidence validation → safety checks and deduplication → structured record → interactive dashboard. Failed or ambiguous candidates do not become public records.
+
+## Current coverage
+
+The live dashboard computes its own totals from the [published JSON](https://foodsafety.nemoneek.com/data/events.json), with a matching [CSV export](https://foodsafety.nemoneek.com/data/events.csv). The initial sample is small and concentrated in a few publishers. Cross-source verification and contextual coverage remain limited. See [dataset quality](reports/v2_dataset_quality_report.md); its dated snapshot is not a live total.
+
+Counts describe indexed reporting, **not prevalence, compliance, authority activity or wrongdoing**. Prototype values and test fixtures never enter production data.
+
+## Automatic updates
+
+**Refresh Food Safety Data** is scheduled approximately every two hours (`17 */2 * * *`) and can be run manually in GitHub Actions. Schedules are best-effort, not a freshness guarantee.
+
+The workflow checks up to two configured discovery pages and six articles per run. It publishes only candidates passing the strict deterministic publication adapter and all source, evidence, schema and safety gates. The adapter currently handles a deliberately narrow explicit KMC food-safety inspection sentence; most complex reporting still needs review. No LLM is used. Ambiguity, uncertain overlap, changed sources and inaccessible sources fail closed.
+
+Only approved public artifacts are committed to `main`; Cloudflare Git integration redeploys `site/`. No change means no empty commit. The workflow has no push trigger, so its generated commits cannot recursively start another source scan. Failed scans never advance the last-successful timestamp. Maintainers periodically audit a few new records.
+
+Ordinary visitors have no refresh endpoint. Maintainers use **Actions → Refresh Food Safety Data → Run workflow**. [Short maintainer guide](docs/MAINTAINER_GUIDE.md).
+
+## Evidence standards
+
+`reported_fact` and `derived_context` are structurally separate. Exact short source spans support factual fields. Non-default contextual categories need evidence, method, confidence and maintainer review. `SOURCE VERIFIED` is about source support, not independently proven truth. Automatic validation has explicit provenance and never impersonates human review.
+
+[Data dictionary](DATA_DICTIONARY.md) · [Source policy](SOURCES.md) · [Methodology](METHODOLOGY.md) · [Corrections](CORRECTIONS.md)
+
+## Bengali support
+
+Use **EN | বাংলা** or [`?lang=bn`](https://foodsafety.nemoneek.com/?lang=bn). Navigation, principal dashboard labels, charts, filters and policy summaries have static Bengali translations. Full policies are also available in English. The original English/Bengali source quotations remain unchanged and clearly labeled; UI translations are not evidence. No translation API, external font or tracking cookie is used.
 
 ## Run locally
 
-Clone the repository, enter it, and create or reuse the repository-local environment:
-
 ```bash
-git clone <repository-url>
+git clone https://github.com/shubha07m/food_safety.git
 cd food_safety
 bash scripts/setup_food.sh
 conda activate "$(pwd)/.conda/envs/food"
@@ -21,64 +72,46 @@ python -m food_safety.cli build
 python -m http.server 8000 --bind 127.0.0.1 --directory site
 ```
 
-Open http://127.0.0.1:8000. Serve only `site/`, never the repository root. A rebuild copies validated public data and policy pages into the site. Local serving requires no cloud account, Node packages, API keys or external scripts.
-
-For a clean checkout, run `bash scripts/setup_food.sh` first. It creates/reuses the local food environment with Python 3.12 and installs the pinned dependencies. All environment, cache and temporary paths are inside the checkout. No base conda, global Python, shell profiles or global npm packages are modified. Existing global environments are not reused or changed. The separately supplied environment.yml describes the same environment for CI/tooling; the setup script also installs the full transitive dependency lock.
-
-## Maintainer commands
-
-```bash
-python -m food_safety.cli validate
-python -m food_safety.cli update --max-articles 3
-python -m food_safety.cli pending
-ruff check .
-python -m pytest -q --basetemp=.cache/pytest
-node --test tests/site_data.test.mjs
-```
-
-An optional local browser smoke test is available as `node scripts/browser_smoke.mjs` with the loopback server running. It uses the already-installed macOS Chrome, a project-local profile and in-memory synthetic records; it does not install a browser or alter production data. Screenshots stay in ignored `.cache/browser-smoke/`. This is not a CI browser farm.
-
-Source policies contain a small reviewed whitelist of seed articles. The update command remains bounded and fail-closed; it is not a broad crawler and cannot publish a new record without explicit review. Network requests are bounded at 10 articles, 5 articles per source, 15-second socket timeout, 512 KiB per response and 3 redirects; the default CLI scan requests at most 3 articles. DNS resolution is subject to OS behavior, as described in SECURITY.md.
-
-`data/events.json` holds published records; `pending.json` holds schema-valid review candidates; `rejected.json` holds content-free rejection identifiers/reasons. Only public records, aggregates, CSV, status and minimal suspended-record notices are copied to the site. `data/history/` is a private audit archive. Meaningful revisions preserve IDs, notes and previous-version hashes. A later failed or changed source check suspends affected published records. A failed scan returns a nonzero exit status without pretending freshness.
-
-To publish a candidate, edit a review copy inside `data/tmp/`, then run the explicit `review` command documented in [CORRECTIONS.md](CORRECTIONS.md). It freshly retrieves all supporting sources and requires source-context and field-support attestations. Read negation, dates, location, attribution and subsequent corrections in context. Never promote demo records. Exact-evidence rules deliberately leave ambiguous dates and attribution pending.
+An existing local `food` environment can be reused. Python execution and dependencies stay in that environment. For an explicitly bounded local refresh: `AUTO_PUBLISH=true python -m food_safety.cli update --max-articles 3`. This may suspend unavailable source records; inspect the resulting diff.
 
 ## Architecture
 
-Small Python package → bounded configured-source retrieval → exact evidence validation → sensitive/claim-safety checks → conservative association → review queues → deterministic public data → static HTML/CSS/JavaScript.
+| Component | Responsibility |
+| --- | --- |
+| `src/food_safety/` | Bounded retrieval, schemas, evidence validation, publication, exports |
+| `config/` | Explicit source whitelist and hard request limits |
+| `data/events.json` | Versioned approved research dataset |
+| `site/` | Only public deployment output; native JS/SVG, local assets |
+| `tests/` | Synthetic deterministic regression fixtures; no paid APIs |
+| `.github/workflows/` | CI and bounded two-hour refresh |
 
-The frontend uses no framework, third-party chart library, CDN, external font or runtime API. Native SVG charts, completeness panels and combined filters all derive from JSON rows and reveal their contributing evidence. Dynamic copy is centralized in `site/strings.mjs` where practical to support later Bengali localization. Stable `?event=WBFS-…` links separate reported facts, derived context, source evidence, verification, history and disclaimer.
+Private pending/rejected queues, local article downloads, source snapshots and browser profiles are excluded from future commits. Minimal suspension tombstones preserve stable record status without republishing held claims. Historical Git content must be audited separately before changing repository visibility.
 
-## LLM / VLM
+## Security and privacy
 
-Default: `no_llm`. The optional OpenAI-compatible API extractor is vendor-independent and only returns a short verbatim observation candidate. To enable live calls, explicitly set `llm_enabled: true`, provide the empty-placeholder variables described in `.env.example`, and pass `--use-llm --max-llm-calls 1`. No `.env` file is automatically loaded; export variables deliberately in your session or inject secrets through approved tooling. Keep keys out of Git and frontend assets.
+No public database, write API, accounts, comments, uploads, ad trackers, analytics or runtime third-party scripts. HTTPS, CSP, framing restrictions, safe link rendering, SSRF-aware retrieval and response caps remain in place. The map is locally bundled, with [attribution](site/assets/BASEMAP_LICENSE.md). Hosting providers may process operational logs under their own policies.
 
-The input is capped at 12,000 characters, output at 250 tokens and 32 KiB, with at most 5 calls per run. Calls are not retried automatically. Model output is untrusted, must match evidence and remains subject to context review. CI mocks all calls and has no model secrets. VLM is an explicit disabled interface; no OCR collections, image models, weights or face recognition are installed.
+[Security](SECURITY.md) · [Privacy](PRIVACY.md) · [Deployment](docs/DEPLOYMENT.md) · [Public repository audit](docs/PUBLIC_REPOSITORY_AUDIT.md)
 
-## Automation and deployment
-
-CI runs lint, fixtures, browser-data logic, schema validation, static build and a dependency audit in conda `food`. Action versions are pinned to commit SHAs; credentials are not persisted by checkout. Pull requests never run a crawler or access paid API keys.
-
-The source-update workflow supports maintainer-only manual dispatch and a bounded six-hour schedule. `auto_publish: false` and `AUTO_PUBLISH=false` are the defaults. The workflow produces review artifacts with seven-day retention; it does not commit or deploy. These switches cannot bypass human review.
-
-Deployment is prepared for [Cloudflare Pages or GitHub Pages](docs/DEPLOYMENT.md) but is not enabled. The repository must remain private during evaluation. Before changing visibility, inspect pending/history content and Issues: private audit material is not suitable for automatic public release. Establish a publicly accessible correction channel and obtain legal review before public promotion.
-
-## Repository and contributions
-
-See [CONTRIBUTING.md](CONTRIBUTING.md), [SECURITY.md](SECURITY.md), [DATA_DICTIONARY.md](DATA_DICTIONARY.md), [SOURCES.md](SOURCES.md), [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md) and [CHANGELOG.md](CHANGELOG.md).
-
-If private repository creation is unavailable, after authenticating GitHub run:
+## Validate changes
 
 ```bash
-gh repo create food_safety --private --source=. --remote=origin
-git push -u origin main
+ruff check .
+pytest --basetemp=.cache/pytest
+node --test tests/*.test.mjs
+python -m food_safety.cli validate
+python -m food_safety.cli build
+python scripts/verify_public_output.py
 ```
 
-No public deployment is implied by a push. Configure the verified GitHub repository URL in `config/pipeline.yml` so correction/source forms link to the correct repository. Private Issues are available only to collaborators.
+The optional browser smoke uses an already-installed Chrome; no browser bundle is downloaded. Paid LLM/VLM calls remain disabled. Source submissions and Issues never publish automatically.
 
-MIT applies to project-authored code/documentation; it does not relicense third-party article content. No blanket ownership/licensing claim is made over source facts or the compiled data. Preserve attribution and interpretation context when sharing.
+## Contributing and volunteer maintainers
 
-## Next research step
+Read [CONTRIBUTING.md](CONTRIBUTING.md) and the [Code of Conduct](CODE_OF_CONDUCT.md). Suggest a public source, request a correction, help audit evidence, improve Bengali wording or maintain the tooling. Controlled GitHub Issue Forms become publicly accessible when the maintainer makes the repository public. Until then, access requires a repository invitation.
 
-The release candidate contains a reviewed initial real-source sample. The next research stage focuses on source diversification and independent cross-source verification. Before public promotion, complete [the public release checklist](docs/PUBLIC_RELEASE_CHECKLIST.md) and run `scripts/release_public_beta.sh --confirm-public-release`; it validates but does not deploy unless the explicit Cloudflare option is used.
+## Disclaimer and licensing
+
+**Project policy wording is not legal advice. Independent legal review has not been completed.** This project does not promise legal immunity. Preserve source links and interpretation notices when sharing; third-party commentary does not represent the project. See the full [disclaimer](DISCLAIMER.md).
+
+Code is [MIT licensed](LICENSE). Third-party news content and geographic data are not relicensed by that license. Evidence excerpts retain their original rights; research data reuse must preserve attribution, limitations and applicable third-party rights.

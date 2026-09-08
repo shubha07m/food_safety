@@ -258,6 +258,12 @@ class Review(StrictModel):
     all_fields_supported: bool
 
 
+class AutomaticValidation(StrictModel):
+    method: Literal["explicit_inspection_sentence_v1"]
+    validated_at: AwareDatetime
+    pipeline_version: str
+
+
 class Event(StrictModel):
     event_id: Annotated[str, StringConstraints(pattern=r"^WBFS-[a-f0-9]{12}$")]
     reported_fact: Facts
@@ -268,6 +274,7 @@ class Event(StrictModel):
     display_summary: Text | None = None
     llm: LLMProvenance = Field(default_factory=LLMProvenance)
     review: Review | None = None
+    automatic_validation: AutomaticValidation | None = None
     record_created_at: AwareDatetime
     record_updated_at: AwareDatetime
     pipeline_version: str = __version__

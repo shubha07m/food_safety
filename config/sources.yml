@@ -1,4 +1,4 @@
-# Curated, bounded seeds only. Scheduler output remains pending until explicit review.
+# Bounded curated sources and index-page leads. Leads are never publication evidence.
 sources:
   - name: Food Safety and Standards Authority of India
     domain: fssai.gov.in
@@ -17,6 +17,8 @@ sources:
     tier: B
     enabled: true
     discovery_method: curated_urls
+    discovery_pages:
+      - https://timesofindia.indiatimes.com/city/kolkata
     urls:
       - https://timesofindia.indiatimes.com/city/kolkata/kmc-food-team-reaches-park-street-seizes-stale-items-from-eateries/articleshow/133774167.cms
       - https://timesofindia.indiatimes.com/city/kolkata/kmc-cracks-whip-on-dacres-lane-eateries/articleshow/133811497.cms
@@ -49,6 +51,8 @@ sources:
     tier: B
     enabled: true
     discovery_method: curated_urls
+    discovery_pages:
+      - https://bengali.indianexpress.com/west-bengal
     urls:
       - https://bengali.indianexpress.com/west-bengal/kolkata-food-safety-drive-peter-cat-mocambo-stale-food-raids-restaurants-12494649
       - https://bengali.indianexpress.com/west-bengal/kolkata-dacres-lane-food-safety-raid-stale-laddus-makha-sandesh-12498296

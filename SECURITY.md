@@ -10,7 +10,7 @@ Fetches require configured exact domains. DNS results are checked for global add
 
 Cloudflare _headers supplies CSP, frame-ancestors none, nosniff, no-referrer, restrictive permissions and HTTPS HSTS. The HTML also has a CSP meta fallback for local/GitHub Pages use. HSTS and frame-ancestors require actual HTTP response headers; GitHub Pages cannot apply _headers. Use Cloudflare or an appropriate front proxy if those controls are required. Confirm headers on the final custom domain. Local Python http.server is for loopback development only.
 
-Dependencies are pinned and CI includes one lightweight dependency audit. Dependabot proposes updates. Actions use immutable commit SHAs. CI has read-only contents permission and never receives model keys, runs a crawler, or consumes paid tokens on PRs. The update workflow is manual-only until a maintainer enables the commented 6-hour schedule. It uploads private review artifacts rather than committing/deploying automatically.
+Dependencies are pinned and CI includes a lightweight audit. Dependabot proposes updates. Actions use immutable SHAs. CI has read-only contents permission and never receives model keys, runs a crawler or consumes paid tokens on PRs. Refresh Food Safety Data runs approximately every two hours or by authenticated manual dispatch. Only that job has contents-write permission; it commits an explicit public-artifact allowlist after tests and validation. It does not upload private queues or snapshots. There is no push-triggered source scan or public refresh endpoint.
 
 ## Reporting
 
@@ -22,4 +22,4 @@ Keep .env and model secrets out of commits and frontend assets. Avoid logging ex
 
 An interrupted data transaction blocks validation and site build. Inspect data/.transaction.json and Git diffs, preserve any useful audit snapshots, restore the last reviewed coherent data set, then remove only that marker after review. Never automatically delete a marker or force a build through inconsistent data.
 
-A partial failed scan can suspend records and still generate a safe updated local site. CI update artifacts record the run failure and must not be treated as proof of freshness. No public deployment is performed by this repository's workflows.
+A partial failed scan can suspend records and still generate safe public changes. The last-successful timestamp does not advance on failure. Cloudflare Git integration deploys validated static artifacts from main. Review historical Git material and old Actions artifacts before changing repository visibility; deleting a current file does not erase prior commits.

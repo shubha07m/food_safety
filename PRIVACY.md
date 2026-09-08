@@ -4,7 +4,7 @@ V1 has no accounts, registration, comments, advertising, analytics, tracking pix
 
 Hosting providers may process IP addresses and operational request/security logs under their own policies. Following an external source or GitHub link sends the visitor to that provider, whose privacy practices apply. A no-referrer policy is configured to limit information sent on navigation.
 
-GitHub Issue Forms require GitHub access and may associate a submission with the contributor's account. Do not provide unnecessary personal information. During private evaluation, Issues are visible only to those with repository access. Reassess visibility and retained content before making anything public.
+GitHub Issue Forms require GitHub access and may associate a submission with the contributor's account. Do not provide unnecessary personal information. While the repository remains private, Issues require collaborator access; after a visibility change, they may be publicly readable. Reassess historical content before that change. The English/Bengali language choice uses a URL parameter only, with no tracking or persistent browser storage. The local basemap makes no external tile requests.
 
 The dataset rejects social-identity fields and unnecessary personal data. It does not infer religion, caste, ethnicity, politics, community, sexual orientation or nationality from names, menus or locations. Business names and coarse event areas may appear only with supporting public-source context. No owner family histories, private home addresses, employee details, phone lists or personal social-media data are collected.
 

@@ -2,7 +2,7 @@
 
 Use the repository's Request a correction or Suggest a source Issue Form when repository access is available. The website constructs links from the configured repository URL. No submitted Issue automatically changes a record or enters the dataset.
 
-During private evaluation, only invited GitHub collaborators can access Issues. The correction flow is not publicly reachable yet. Before public launch, establish an accessible correction channel and review it with counsel. Do not promote the site while affected parties have no practical correction route. No public launch is enabled by this build.
+The public beta is live at https://foodsafety.nemoneek.com/ . Correction, source-suggestion and volunteer routes point to shubha07m/food_safety. While that repository remains private, these forms require collaborator access; once the maintainer changes its visibility, they become public. This temporary access limitation is disclosed on the site. A publicly reachable correction route is necessary before further broad promotion; no unconfigured email address or form provider is invented.
 
 Any public intake route must require a source URL where applicable, prohibit arbitrary uploads and unsupported allegations, and never publish submissions automatically. It must remain a controlled manual-review channel rather than a public reporting or comment system.
 

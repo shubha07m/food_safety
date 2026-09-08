@@ -1,25 +1,27 @@
-# Deployment preparation — no public deployment enabled
+# Live deployment
 
-Keep the GitHub repository private during evaluation. Public hosting is a separate decision. A private GitHub repository does not automatically make a Pages website private. Do not attach this repository to an automatically publishing service until publication is explicitly authorized.
+Canonical public beta: https://foodsafety.nemoneek.com/
 
-Build in conda `food` with `python -m food_safety.cli validate` and `python -m food_safety.cli build`. The deployable output is exactly `site/`. Never deploy the repository root, `.env`, environments, pending/rejected queues or private history. The prototype is not part of the site output.
+Hosting: **Cloudflare Workers static assets**. The existing Git integration builds `main` and deploys only `site/`, never the repository root. Fallback: https://food-safety.shubha07m.workers.dev/
 
-## Cloudflare Pages
+The project does not store Cloudflare credentials, account IDs, domain verification values or GitHub tokens. The existing authorized Cloudflare integration owns deployment. Repository visibility is a separate maintainer action; no script changes it.
 
-After explicit authorization, upload the already-built `site/` directory using the Pages dashboard's direct-upload option, or run `scripts/release_public_beta.sh --confirm-public-release --deploy-cloudflare` from a maintainer machine with Cloudflare authentication. There is no server, database, framework build, cloud API or secret in the browser. The `_headers` file specifies CSP, HSTS, nosniff, no-referrer, Permissions-Policy and frame restrictions. Check actual HTTPS responses on the chosen domain; preview and custom domains may differ. Do not consider a private repository an access control for an uploaded site.
+## Build and deploy
 
-For Pages, use `site/` as the output directory; never deploy the repository root. Connect the private repository only if the account plan permits it and automatic public previews have been reviewed. Keep Cloudflare account credentials outside the repository. Use a preview first, verify `scripts/verify_public_output.py`, test correction and data-download links, then promote or roll back from the Pages dashboard.
+`site/` is a versioned, prevalidated static artifact. Cloudflare needs no Python build to serve it. Set the Workers Builds deployment command to `npx wrangler deploy` (Cloudflare-managed environment); the local `wrangler.jsonc` specifies `site/`. Do not install global tooling or expose any tokens in the frontend. The existing custom-domain association remains in the Cloudflare dashboard.
 
-The build uses Python locally; uploading prebuilt static files avoids depending on a particular cloud Python/conda image. If Git integration is later enabled, choose an equivalent reviewed build environment and publish only the generated `site/` output. Disable automatic public previews until their access policy is reviewed.
+GitHub CI checks code, data, tests and public output. The scheduled refresh runs every two hours and commits only validated public artifacts. Cloudflare Git integration observes changes to `main`. Its deployment status should be checked in the Cloudflare dashboard after any push; a successful GitHub push alone is not proof of deployment.
 
-## GitHub Pages fallback
+## Verification and rollback
 
-Once explicitly authorized, create a separate Pages deployment workflow that builds/validates in conda food, uploads only site/ to an official Pages artifact action, and deploys through a protected GitHub environment. This repository deliberately has no such active deployment workflow. Relative links support project subpaths.
+Run `python scripts/verify_public_output.py` before committing artifacts. On the live URL, verify HTTPS, CSP, `frame-ancestors 'none'`, HSTS, `X-Content-Type-Options`, referrer and permissions policies with `python scripts/check_deployment.py`. That bounded check does not log cookies or credentials.
 
-GitHub Pages does not apply Cloudflare's `_headers`. Meta CSP provides a partial fallback, but frame-ancestors and HSTS need host-level response headers. Use a suitable proxy/host if those controls are required. Confirm Pages availability for the account's private repository plan without changing repository visibility as a workaround.
+Cloudflare Workers static assets apply `site/_headers`. Domain-level security settings must not loosen them. Check English and `?lang=bn`, a record URL, data exports, correction links and the local map. No external map/font/translation request is needed.
 
-## Before broad public launch
+Rollback using Cloudflare deployment history to a previously validated version, then revert the corresponding generated-data commit if necessary. Do not force-push history as a routine rollback. Pause the refresh workflow during an accuracy incident and suspend disputed records using the documented CLI.
 
-Review the legal wording with India-qualified counsel; individually verify the small initial dataset; test the correction/suspension procedure; establish a correction channel accessible to affected parties; inspect all repository history and Issues before any visibility change; set branch protections and security reporting; inspect HTTPS/security headers; confirm no private files or model keys exist in the output; and update the evaluation status/robots policy only after authorization.
+## Operational caveats
 
-Do not enable schedule, AUTO_PUBLISH, repository visibility or public hosting merely because CI passes. No test establishes legal compliance or immunity.
+GitHub schedules are best-effort and may be delayed; public inactive repositories can have scheduled workflows disabled by GitHub. Watch occasional notifications. Only the last successful refresh timestamp signals success. A partial source failure can publish safe suspension changes while leaving the last-successful time unchanged.
+
+Main protection on this private repository requires an eligible GitHub plan. Until available, retain single-maintainer writes, least-privilege workflows, local pre-push checks, green CI and no force-push/deletion. Once public, configure required CI and PR checks before accepting broader contributions.

@@ -9,6 +9,7 @@ from urllib.parse import urlsplit
 import httpx
 
 from . import __version__
+from .automatic import feed_candidates, page_candidates, prepare_automatic
 from .classify import display_summary
 from .config import settings, sources
 from .dedupe import associate, same_event, stable_id
@@ -17,7 +18,7 @@ from .fetch import Fetcher
 from .llm import NoLLM, OpenAICompatible
 from .models import Event
 from .safety import claim_risks, safe_url
-from .storage import dump, now, read_events, transaction, transition
+from .storage import dump, now, read_events, read_rejected, transaction, transition
 from .verify import evidence_errors, publication_errors
 
 
@@ -103,7 +104,7 @@ def update(root, max_articles=None, use_llm=False, max_llm_calls=None, fetcher=N
     extractor = OpenAICompatible(calls) if use_llm else NoLLM()
     fetcher = fetcher or Fetcher(policies, cfg)
     events, pending = read_events(root, "events"), read_events(root, "pending")
-    rejected = json.loads((root / "data/rejected.json").read_text())["records"]
+    rejected = read_rejected(root)["records"]
     at = now()
     run = {
         "run_id": uuid.uuid4().hex,
@@ -119,7 +120,7 @@ def update(root, max_articles=None, use_llm=False, max_llm_calls=None, fetcher=N
     reasons, scanned = Counter(), set()
     prior_status = json.loads((root / "data/status.json").read_text())
     # Rotate through previous records as well as configured seeds to detect source changes.
-    seeds = list(discover(policies, limit, cfg.max_pages_per_source))
+    seeds = list(discover(policies, 100, cfg.max_pages_per_source))
     existing_urls = {url for _, url in seeds}
     for event in events:
         for source in event.sources:
@@ -133,7 +134,36 @@ def update(root, max_articles=None, use_llm=False, max_llm_calls=None, fetcher=N
     if seeds:
         offset = cursor % len(seeds)
         seeds = seeds[offset:] + seeds[:offset]
+    # At most two rotating configured feeds; feed snippets are discovery only.
+    feeds = [
+        (p, u, parser)
+        for p in policies
+        if p.enabled and p.tier in {"A", "B"}
+        for urls, parser in [(p.feed_urls, feed_candidates), (p.discovery_pages, page_candidates)]
+        for u in urls
+    ]
+    discovered = []
+    if feeds:
+        start = cursor % len(feeds)
+        for policy, feed, parser in (feeds[start:] + feeds[:start])[:2]:
+            try:
+                _, body = fetcher.article(feed)
+                discovered.extend((policy, u) for u in parser(body, policy, limit))
+            except (ValueError, OSError, httpx.HTTPError):
+                reasons["feed_unavailable"] += 1
+                run["errors"] += 1
+    # Reserve half the run for rechecking older sources; avoid feed starvation.
+    combined = discovered[: max(1, limit // 2)] + seeds
+    seen_urls = set()
+    seeds = []
+    for item in combined:
+        if item[1] not in seen_urls:
+            seeds.append(item)
+            seen_urls.add(item[1])
     domain_counts = Counter()
+    retired_path = root / "data/retired.json"
+    retired = json.loads(retired_path.read_text())["records"] if retired_path.exists() else []
+    suspended = {h for row in retired for h in row.get("source_url_sha256", [])}
     for policy, url in seeds:
         if run["urls_considered"] >= limit:
             break
@@ -143,6 +173,9 @@ def update(root, max_articles=None, use_llm=False, max_llm_calls=None, fetcher=N
         scanned.add(policy.domain)
         run["urls_considered"] += 1
         try:
+            if hashlib.sha256(url.encode()).hexdigest() in suspended:
+                reasons["suspended_source_requires_review"] += 1
+                continue
             canonical, html = fetcher.article(url)
             title, text = article_text(html)
             matching = [
@@ -175,6 +208,17 @@ def update(root, max_articles=None, use_llm=False, max_llm_calls=None, fetcher=N
                 at,
                 extractor if use_llm else None,
             )
+            if cfg.auto_publish and os.getenv("AUTO_PUBLISH", "false").lower() == "true":
+                event = prepare_automatic(event, html, text, at) or event
+            # Unnamed reports cannot reliably be merged. Overlapping area/date
+            # candidates stay pending rather than inflating inspection counts.
+            ambiguous_overlap = event.automatic_validation and any(
+                old.reported_fact.area == event.reported_fact.area
+                and old.sources[0].source_date
+                and event.sources[0].source_date
+                and abs((old.sources[0].source_date - event.sources[0].source_date).days) <= 7
+                for old in [*events, *pending]
+            )
             duplicate = next((e for e in [*events, *pending] if same_event(e, event)), None)
             if duplicate:
                 merged = associate(duplicate, event, at)
@@ -184,12 +228,20 @@ def update(root, max_articles=None, use_llm=False, max_llm_calls=None, fetcher=N
             elif (
                 cfg.auto_publish
                 and os.getenv("AUTO_PUBLISH", "false").lower() == "true"
+                and not ambiguous_overlap
                 and not publication_errors(event, policies, {canonical: text})
             ):
-                # Candidates cannot satisfy human review. Reserved for reviewed adapters.
                 events.append(event)
                 run["records_published"] += 1
             else:
+                if event.automatic_validation:
+                    event = transition(
+                        root,
+                        event,
+                        "PENDING REVIEW",
+                        "Automatic publication checks did not pass.",
+                        at,
+                    )
                 pending.append(event)
                 run["records_pending"] += 1
                 reasons["human_review_required"] += 1
@@ -228,6 +280,8 @@ def update(root, max_articles=None, use_llm=False, max_llm_calls=None, fetcher=N
     )
     transaction(root, events, pending, rejected, at)
     status = dict(prior_status)
+    if os.getenv("GITHUB_ACTIONS") == "true":
+        status["scheduled_refresh_hours"] = 2
     status.update(
         last_attempt=run["ended_at"],
         last_run_result=(
@@ -272,6 +326,7 @@ def review_record(root, record, reviewer, note, fetcher=None):
     data.update(
         verification_status=status,
         record_updated_at=at.isoformat(),
+        automatic_validation=None,
         review={
             "reviewed_at": at.isoformat(),
             "reviewer": reviewer,
@@ -293,6 +348,6 @@ def review_record(root, record, reviewer, note, fetcher=None):
         approved = Event.model_validate(data)
     pending = [e for e in pending if e.event_id != approved.event_id]
     events = [e for e in events if e.event_id != approved.event_id] + [approved]
-    rejected = json.loads((root / "data/rejected.json").read_text())["records"]
+    rejected = read_rejected(root)["records"]
     transaction(root, events, pending, rejected, at)
     return approved.event_id

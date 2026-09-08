@@ -1,4 +1,5 @@
 import csv
+import hashlib
 import io
 import json
 import re
@@ -8,10 +9,18 @@ from html import escape
 from . import CONTEXT, SCHEMA_VERSION, __version__
 from .config import settings, sources
 from .models import Dataset
-from .storage import dump, read_events
+from .storage import dump, read_events, read_rejected
 from .verify import evidence_errors, publication_errors
 
-POLICIES = ["DISCLAIMER", "METHODOLOGY", "CORRECTIONS", "PRIVACY", "SOURCES", "DATA_DICTIONARY"]
+POLICIES = [
+    "DISCLAIMER",
+    "METHODOLOGY",
+    "CORRECTIONS",
+    "PRIVACY",
+    "SOURCES",
+    "DATA_DICTIONARY",
+    "CONTRIBUTING",
+]
 
 
 def policy_html(text):
@@ -73,7 +82,7 @@ def validate(root):
     for event in pending:
         if evidence_errors(event):
             raise ValueError(event.event_id + ": invalid pending evidence")
-    rejected = json.loads((root / "data/rejected.json").read_text())
+    rejected = read_rejected(root)
     if set(rejected) != {
         "generated_at",
         "schema_version",
@@ -132,9 +141,7 @@ def aggregates(records):
                 r.derived_context.latitude is not None and r.derived_context.longitude is not None
                 for r in records
             ),
-            "precision": count(
-                lambda r: r.derived_context.location_precision or "not mapped"
-            ),
+            "precision": count(lambda r: r.derived_context.location_precision or "not mapped"),
         },
         "coverage": {
             "named_establishment": sum(bool(r.reported_fact.establishment_name) for r in records),
@@ -144,12 +151,8 @@ def aggregates(records):
                 r.derived_context.establishment_context != "unknown" for r in records
             ),
             "menu_context": sum(r.derived_context.menu_context != "unknown" for r in records),
-            "business_format": sum(
-                r.derived_context.business_format != "unknown" for r in records
-            ),
-            "cross_source": sum(
-                r.verification_status == "CROSS-SOURCE VERIFIED" for r in records
-            ),
+            "business_format": sum(r.derived_context.business_format != "unknown" for r in records),
+            "cross_source": sum(r.verification_status == "CROSS-SOURCE VERIFIED" for r in records),
         },
     }
 
@@ -259,7 +262,10 @@ def build(root):
         site / "status.json",
         {**status, "published_count": counts["published"], "pending_count": counts["pending"]},
     )
-    dump(site / "repository.json", {"url": counts["repository_url"]})
+    dump(
+        site / "repository.json",
+        {"url": counts["repository_url"], "site_url": settings(root).site_url},
+    )
     mapped = [
         {
             "event_id": r.event_id,
@@ -280,11 +286,22 @@ def build(root):
             "verification_status": r.verification_status,
             "record_updated_at": r.record_updated_at.isoformat(),
             "context_notice": CONTEXT,
+            "source_url_sha256": [
+                hashlib.sha256(s.source_url.encode()).hexdigest() for s in r.sources
+            ],
         }
         for r in read_events(root, "pending")
         if any(h.status in {"SOURCE VERIFIED", "CROSS-SOURCE VERIFIED"} for h in r.history)
     ]
-    dump(site / "data/retired.json", {**public, "record_count": len(retired), "records": retired})
+    retired_path = root / "data/retired.json"
+    previous = json.loads(retired_path.read_text())["records"] if retired_path.exists() else []
+    by_id = {r["event_id"]: r for r in [*previous, *retired]}
+    for record in records:
+        by_id.pop(record.event_id, None)
+    retired = list(by_id.values())
+    retirement_data = {**metadata, "record_count": len(retired), "records": retired}
+    dump(retired_path, retirement_data)
+    dump(site / "data/retired.json", retirement_data)
     for name in POLICIES:
         text = (root / f"{name}.md").read_text()
         target = site / "policies" / f"{name.lower()}.html"
@@ -294,7 +311,8 @@ def build(root):
             '<!doctype html><html lang="en"><head><meta charset="utf-8">'
             '<meta name="viewport" content="width=device-width,initial-scale=1">'
             f"<title>{title} · WB Food Safety Evidence Tracker</title>"
-            '<link rel="stylesheet" href="../styles.css"></head><body>'
+            '<link rel="stylesheet" href="../styles.css">'
+            '<script type="module" src="../pages.js"></script></head><body>'
             '<a class="skip-link" href="#content">Skip to content</a>'
             '<div class="status-strip">Independent public-source research tracker · '
             "Not a government database · Inclusion is not a finding of wrongdoing</div>"
@@ -304,7 +322,8 @@ def build(root):
             '<a href="../corrections.html#github">GitHub</a></nav>'
             f'<main id="content" class="policy"><h1>{title}</h1>'
             '<p class="notice">Project policy draft, not legal advice. India-qualified counsel '
-            "should review the final wording before broad public launch.</p>"
+            "should review the wording before broad public promotion. Independent legal review "
+            "has not been completed.</p>"
             f'<div class="policy-copy">{policy_html(text)}</div></main></body></html>\n'
         )
     return counts

@@ -20,7 +20,6 @@ logs/
 *.log
 data/tmp/
 data/runs/
-site/data/
-site/policies/
-site/repository.json
-site/status.json
+data/history/
+data/pending.json
+data/rejected.json

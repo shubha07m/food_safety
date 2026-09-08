@@ -6,7 +6,7 @@ from pathlib import Path
 from .build import build, validate
 from .config import ROOT
 from .pipeline import review_record, update
-from .storage import now, read_events, transaction, transition
+from .storage import now, read_events, read_rejected, transaction, transition
 
 
 def bounded(value):
@@ -72,7 +72,7 @@ def main():
             revised = transition(ROOT, old, args.status, args.note, at)
             events = [e for e in events if e.event_id != old.event_id]
             pending = [e for e in pending if e.event_id != old.event_id] + [revised]
-            rejected = json.loads((ROOT / "data/rejected.json").read_text())["records"]
+            rejected = read_rejected(ROOT)["records"]
             if args.status == "REJECTED":
                 rejected.append(
                     {

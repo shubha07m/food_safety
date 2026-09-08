@@ -96,7 +96,9 @@ export function validateDataset(data) {
   for (const row of data.records) {
     if (row.is_fixture || !/^WBFS-[a-f0-9]{12}$/.test(row.event_id) || ids.has(row.event_id)) throw new Error('Invalid public record');
     ids.add(row.event_id);
-    if (!row.context_notice || !row.display_summary || !row.reported_fact || !row.derived_context || !row.sources?.length || !row.review?.all_fields_supported || !row.review?.source_context_checked) throw new Error('Missing provenance');
+    const humanReviewed = row.review?.all_fields_supported && row.review?.source_context_checked;
+    const automaticallyValidated = row.automatic_validation?.method === 'explicit_inspection_sentence_v1' && row.automatic_validation?.validated_at;
+    if (!row.context_notice || !row.display_summary || !row.reported_fact || !row.derived_context || !row.sources?.length || !(humanReviewed || automaticallyValidated)) throw new Error('Missing provenance');
     if (!['SOURCE VERIFIED', 'CROSS-SOURCE VERIFIED'].includes(row.verification_status)) throw new Error('Non-public status');
     if (row.sources.some(source => !safeExternal(source.source_url))) throw new Error('Invalid source');
   }

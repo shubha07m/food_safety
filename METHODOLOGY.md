@@ -1,6 +1,6 @@
 # Methodology
 
-Version 0.2.0. Private evaluation stage. The repository contains a reviewed initial public-source sample. The preserved HTML prototype and synthetic test fixtures are not evidence.
+Public beta at https://foodsafety.nemoneek.com/ . The repository contains an initial public-source sample. The preserved HTML prototype and synthetic test fixtures are not evidence.
 
 ## Coarse geographic context
 
@@ -16,11 +16,11 @@ Event date and publication date are distinct. Missing publication dates and quan
 
 Configured curated article URLs → canonicalization → bounded robots-aware fetch → article-text extraction → candidate extraction → per-field evidence checks → sensitive-content checks → conservative association → source-policy checks → pending review or publication → aggregates → static site.
 
-The pipeline has no recursive crawler or search-engine scraping. Robots failure, rate policies not yet supported, missing evidence, inaccessible sources, suspicious text and uncertain attribution fail closed. Full article bodies exist only in memory during processing. An ordinary update makes unnamed observation candidates and keeps them pending.
+The pipeline has no recursive crawler or search-engine scraping. Two configured index pages per run can supply same-domain discovery links, never evidence. At most six articles are fetched by the scheduled workflow (hard ceiling ten). Robots failure, missing evidence, inaccessible sources, suspicious text and uncertain attribution fail closed. Article bodies exist only in memory during routine processing. Publisher RSS terms must permit the intended use; TOI RSS is not enabled.
 
-To publish, a maintainer prepares a schema-valid record and explicitly attests to reading the original context and checking every displayed field. The review command freshly retrieves every source, checks content hashes, exact short evidence spans and source policy. That human decision is recorded. Automated substring checks establish textual support, not meaning: negation, dates, entity attribution, source corrections and formal findings require human review.
+There are two publication paths. A maintainer may prepare a schema-valid record and explicitly attest to checking original context and every displayed field; the review command freshly checks sources. Separately, a narrow deterministic adapter can publish an explicit inspection sentence identifying KMC food-safety officials, an inspection/visit action and a whitelisted West Bengal locality. It requires exactly one matching sentence, explicit source publication-date metadata, exact per-field evidence, accessible Tier A/B source, no suspicious/negated/corrected text, valid schema and no unresolved overlapping area/date candidate. It does not assign establishment names, quantities, event dates, legal findings or derived context. Those absent fields stay unknown. Publication date is not event date. An unnamed group visit is one reported event, never a count of individual establishments.
 
-A config switch and AUTO_PUBLISH environment gate both default false. Even when enabled, candidate extraction cannot bypass the human-review requirement. Autonomous first publication is intentionally unavailable until a separately evaluated adapter and policy are introduced.
+The config enables the evaluated adapter; the scheduled workflow sets AUTO_PUBLISH=true. Local execution still requires this explicit environment opt-in. Every record must pass publication validation. Automatic records carry automatic_validation provenance, not a fabricated human-review attestation. Ambiguous candidates stay pending or are rejected. The adapter is intentionally narrow: there is no promise that every new article will yield a published record. Maintainers periodically audit new records. Complex attribution, negation, source corrections, menu/business context and legal findings require human review.
 
 ## Source tiers and statuses
 
@@ -58,4 +58,4 @@ Default extraction is deterministic. Live LLM calls require config enablement, -
 
 ## Limits and future work
 
-This project cannot establish legal compliance, food safety, official totals or completeness. Coverage is affected by language, paywalls, discoverability and source availability. Bengali localization is planned; client strings are centralized. Future evaluated work includes date normalization, reviewed structured extraction adapters, stronger entity resolution, multi-language review and opt-in official-bulletin text extraction. No large crawls, models or automatic publication are part of the private evaluation build.
+This project cannot establish legal compliance, food safety, official totals or completeness. Coverage is affected by language, paywalls, discoverability and source availability. English and Bengali share data and chart logic; ?lang=bn selects static Bengali UI and policy summaries. Original quoted source text is never translated in place. Translations support accessibility, not evidentiary claims. Full policy text remains available in English. No runtime translation service, paid model, broad crawler or tracking is used.

@@ -16,6 +16,8 @@ class SourcePolicy(StrictModel):
     enabled: bool = False
     discovery_method: Literal["curated_urls"] = "curated_urls"
     urls: list[URL] = Field(default_factory=list, max_length=20)
+    feed_urls: list[URL] = Field(default_factory=list, max_length=2)
+    discovery_pages: list[URL] = Field(default_factory=list, max_length=2)
 
     @field_validator("domain")
     @classmethod
@@ -39,6 +41,7 @@ class Settings(StrictModel):
     llm_enabled: bool = False
     auto_publish: bool = False
     repository_url: URL | None = None
+    site_url: URL = "https://foodsafety.nemoneek.com/"
 
 
 def settings(root=ROOT):

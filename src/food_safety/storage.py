@@ -32,7 +32,14 @@ def envelope(records, at):
 
 def read_events(root, name):
     path = root / "data" / f"{name}.json"
+    if name == "pending" and not path.exists():
+        return []
     return Dataset.model_validate_json(path.read_text()).records
+
+
+def read_rejected(root):
+    path = root / "data/rejected.json"
+    return json.loads(path.read_text()) if path.exists() else envelope([], now())
 
 
 def save_events(root, name, records, at):

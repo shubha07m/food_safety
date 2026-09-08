@@ -1,5 +1,11 @@
 # Data dictionary — schema 1.1.0
 
+Automatic records may carry `automatic_validation`: the evaluated deterministic
+adapter method, validation timestamp and pipeline version. This is separate from
+`review` and never means a maintainer read the source. Every automatically
+published field still needs exact source support and all publication gates.
+The public source-verification meaning is unchanged.
+
 The authoritative executable schema is src/food_safety/models.py. Unknown fields are rejected at every model boundary. Published and pending files use generated_at, schema_version, pipeline_version, record_count, context_notice and records. Rejected records retain only candidate_id, at and a controlled reason code; article content is discarded.
 
 | Field | Meaning |

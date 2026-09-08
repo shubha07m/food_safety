@@ -70,7 +70,10 @@ def publication_errors(event, policies, texts=None, allow_fixtures=False):
     if event.verification_status not in PUBLIC_STATUSES:
         errors.append("non_public_status")
     review = event.review
-    if not review or not review.all_fields_supported or not review.source_context_checked:
+    if event.automatic_validation:
+        from .automatic import automatic_errors
+        errors.extend(automatic_errors(event))
+    elif not review or not review.all_fields_supported or not review.source_context_checked:
         errors.append("human_context_review_required")
     # A source publication date is acceptable when the article does not identify
     # the calendar date of the reported event. The UI labels that distinction.

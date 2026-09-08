@@ -86,7 +86,10 @@ class Fetcher:
             if response.getheader("Content-Encoding", "identity") != "identity":
                 raise FetchError("compressed_response_rejected")
             content_type = response.getheader("Content-Type", "").split(";")[0].lower()
-            if content_type not in {"text/html", "text/plain", "application/xhtml+xml"}:
+            if content_type not in {
+                "text/html", "text/plain", "application/xhtml+xml", "application/rss+xml",
+                "application/atom+xml", "application/xml", "text/xml",
+            }:
                 raise FetchError("unsupported_content_type")
             limit = self.settings.max_response_bytes
             length = response.getheader("Content-Length")

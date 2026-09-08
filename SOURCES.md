@@ -1,6 +1,6 @@
 # Source policy and copyright
 
-The initial production dataset is empty. No prototype rows or URLs are treated as sources. config/sources.yml contains two disabled host entries for the same official publisher, FSSAI. These are configuration starting points, not a statement that relevant West Bengal articles have been validated.
+The public beta contains a small source-reviewed dataset. No prototype rows or URLs are evidence. config/sources.yml defines enabled news publishers and disabled official-source starting points; configured status is not proof of an article's relevance. The live source-composition chart is computed from published supporting sources.
 
 Source homepage: https://fssai.gov.in/
 Source policies: https://fssai.gov.in/cms/website-policies.php
@@ -15,4 +15,10 @@ Retain canonical URL, title, publisher, publication date if known, retrieval tim
 
 Do not republish full articles, bypass paywalls, evade robots restrictions, upload pages to archive services, or download image collections. Optional archive links must already be available and legally/technically appropriate. Third-party content remains subject to its respective rights; the repository's code license does not relicense it.
 
-Failures go to a pending/rejected path, not public data. V1 fetches text/html, text/plain and XHTML only. Compressed or image/PDF-only responses require later manual assessment. Robots retrieval failures fail closed.
+Failures go to a pending/rejected path, not public data. HTTP retrieval supports bounded HTML/plain text/XHTML and RSS/Atom XML. Compressed or image/PDF-only responses require manual assessment. Robots retrieval failures fail closed.
+
+## Bounded discovery
+
+The schedule checks at most two configured publisher index pages, extracts only same-domain relevant links, and follows at most six article URLs. Index titles/snippets never become evidence. There is no recursive following of article links. Feed parsing is supported but no RSS feed is currently enabled: the tested TOI feed terms restrict reuse, and the tested Indian Express Bangla feed returned HTML. Discovery indexes are the Kolkata city page and Indian Express Bangla West Bengal section. Publisher terms and robots rules still apply; an inaccessible index is reported, not bypassed.
+
+TOI RSS terms reviewed: https://timesofindia.indiatimes.com/rss.cms

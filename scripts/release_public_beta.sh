@@ -19,17 +19,18 @@ if [[ -n "$(git status --porcelain)" ]]; then
   exit 1
 fi
 
-python -m ruff check .
-python -m pytest -q --basetemp=.cache/pytest-release
-node --test tests/site_data.test.mjs
-python -m food_safety.cli validate
-python -m food_safety.cli build
-python scripts/verify_public_output.py
+food_python=.conda/envs/food/bin/python
+test -x "$food_python" || { echo "Project-local food environment is required."; exit 1; }
+"$food_python" -m ruff check .
+"$food_python" -m pytest -q --basetemp=.cache/pytest-release
+node --test tests/*.test.mjs
+"$food_python" -m food_safety.cli validate
+"$food_python" -m food_safety.cli build
+"$food_python" scripts/verify_public_output.py
 
 if [[ "$deploy" == true ]]; then
-  command -v wrangler >/dev/null || { echo "Cloudflare deployment requested but wrangler is unavailable."; exit 1; }
-  : "${CLOUDFLARE_ACCOUNT_ID:?Set CLOUDFLARE_ACCOUNT_ID for explicit deployment.}"
-  wrangler pages deploy site --project-name food-safety-evidence-tracker --branch main
+  echo "The live site deploys through the authorized Cloudflare Workers Git integration. Push validated artifacts to main; no local token or direct deployment is used."
+  exit 2
 else
-  echo "Release gates passed. No deployment was attempted. Use --deploy-cloudflare only after explicit authorization."
+  echo "Validation gates passed. No deployment or repository visibility change was attempted."
 fi

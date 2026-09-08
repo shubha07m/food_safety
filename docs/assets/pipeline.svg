@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 150" role="img" aria-label="Public sources to bounded retrieval, evidence and safety checks, structured records, static dashboard and Cloudflare">
+<rect width="1120" height="150" rx="12" fill="#f8f4e9"/>
+<g font-family="Arial,sans-serif" font-size="17" text-anchor="middle" fill="#164c3c">
+<text x="90" y="65">Public sources</text><text x="90" y="92" font-size="13">Allowed publishers</text><text x="205" y="74">→</text>
+<text x="310" y="65">Bounded retrieval</text><text x="310" y="92" font-size="13">No broad crawl</text><text x="415" y="74">→</text>
+<text x="535" y="65">Evidence + safety</text><text x="535" y="92" font-size="13">Validate · deduplicate</text><text x="655" y="74">→</text>
+<text x="770" y="65">Structured records</text><text x="770" y="92" font-size="13">Fail closed</text><text x="880" y="74">→</text>
+<text x="1000" y="65">Static dashboard</text><text x="1000" y="92" font-size="13">Cloudflare · no tracking</text></g></svg>

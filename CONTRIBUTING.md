@@ -2,7 +2,7 @@
 
 Read DISCLAIMER.md, METHODOLOGY.md and CODE_OF_CONDUCT.md first. Contributions organize public evidence; they must not express unsupported allegations or create reputational rankings.
 
-Use the controlled Issue Forms for public-source suggestions and corrections. During private evaluation this requires collaborator access. No Issue content automatically publishes. Forks and pull requests are welcome when repository access permits. Do not submit arbitrary file uploads, personal details, social-identity classifications, screenshots without public sources, or full copyrighted articles.
+Use the controlled Issue Forms for public-source suggestions and corrections. While the repository remains private this requires collaborator access; the same links work publicly after the maintainer changes visibility. No Issue content automatically publishes. Forks and pull requests are welcome when access permits. Do not submit arbitrary file uploads, personal details, social-identity classifications, screenshots without public sources or full copyrighted articles.
 
 For code: work in the food conda environment, keep all environments/caches inside this repository, keep changes focused, add meaningful regression coverage, run ruff, pytest and data validation. Fixtures must be explicitly synthetic and remain outside production display. Tests use no network or paid APIs.
 
@@ -12,4 +12,4 @@ Review commands require explicit source-context and all-fields attestations. A m
 
 Recommended repository settings before public work: protected main; required CI; pull-request reviews; CODEOWNERS where maintainers agree; restricted action permissions; no secrets on untrusted PRs; secret scanning and private vulnerability reports when available. Do not publish the repository or deploy the website merely to test the UI.
 
-Before enabling any schedule or automation, validate a small real-source sample, exercise corrections and consult India-qualified counsel on public wording and publication process.
+The public beta uses a bounded two-hour schedule with a narrowly scoped deterministic publication adapter. It does not replace review of complex claims or derived context. Volunteer maintainers can help with periodic source audits, Bengali wording and safe tooling. Independent India-qualified legal review has not been completed.
