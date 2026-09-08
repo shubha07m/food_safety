@@ -1,83 +1,62 @@
 {
   "actions": {
-    "inspection / visit only": 25,
+    "inspection / visit only": 1,
     "not reported": 3,
     "other": 2
   },
   "areas": {
     "Baduria": 1,
-    "Bentinck Street and Waterloo Street": 1,
-    "Bowbazar": 1,
-    "Dacres Lane": 4,
     "Digha": 1,
-    "Dum Dum": 1,
     "East Midnapore": 1,
-    "Gariahat": 1,
     "Hooghly": 1,
-    "Jorabagan": 1,
-    "Kamalgazi": 1,
-    "Kolkata": 3,
-    "Lake Market": 1,
-    "Park Street": 5,
-    "Posta": 1,
     "Shaktigarh": 1,
-    "Sonarpur": 1,
-    "South City Mall": 3,
     "Tangra": 1
   },
-  "areas_count": 19,
+  "areas_count": 6,
   "business_formats": {
-    "unknown": 30
+    "unknown": 6
   },
   "context_notice": "Independent, non-governmental public-source research. Inclusion is not a finding of wrongdoing. Counts describe records in this tracker, not official totals, prevalence, compliance, risk or group behavior. Read the sources and preserve this context when sharing.",
   "coverage": {
     "business_format": 0,
     "cross_source": 0,
-    "establishment_context": 27,
+    "establishment_context": 6,
     "menu_context": 0,
-    "named_establishment": 20,
-    "reported_action": 15,
+    "named_establishment": 1,
+    "reported_action": 2,
     "reported_quantity": 1
   },
   "establishments": {
-    "hotel / hospitality": 2,
-    "mall / food court": 6,
-    "market / vendor": 3,
-    "restaurant / eatery": 13,
-    "sweet shop / bakery": 3,
-    "unknown": 3
+    "hotel / hospitality": 1,
+    "restaurant / eatery": 3,
+    "sweet shop / bakery": 2
   },
-  "establishments_count": 20,
-  "generated_at": "2026-09-08T04:13:49.324739+00:00",
+  "establishments_count": 1,
+  "generated_at": "2026-09-08T19:28:19.767481+00:00",
   "map_coverage": {
-    "mapped_records": 22,
+    "mapped_records": 3,
     "precision": {
-      "city": 3,
-      "neighborhood": 15,
-      "not mapped": 8,
-      "street": 4
+      "city": 2,
+      "neighborhood": 1,
+      "not mapped": 3
     }
   },
   "menus": {
-    "unknown": 30
+    "unknown": 6
   },
   "pipeline_version": "0.2.0",
   "publishers": {
     "Business Today": 5,
-    "The Times of India": 25
+    "The Times of India": 1
   },
-  "record_count": 30,
+  "record_count": 6,
   "schema_version": "1.1.0",
-  "sources_count": 6,
+  "sources_count": 2,
   "timeline": {
-    "2026-09-03": 6,
-    "2026-09-04": 7,
-    "2026-09-05": 7,
-    "2026-09-06": 7,
-    "2026-09-07": 3
+    "2026-09-03": 6
   },
-  "total": 30,
+  "total": 6,
   "verification": {
-    "SOURCE VERIFIED": 30
+    "SOURCE VERIFIED": 6
   }
 }
