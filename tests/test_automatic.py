@@ -102,3 +102,21 @@ def test_suspended_only_run_does_not_claim_fresh_source_scan(project, policy):
     assert run["sources_scanned"] == 0
     assert after.get("last_source_scan") == before.get("last_source_scan")
     assert after.get("last_successful_update") == before.get("last_successful_update")
+
+
+def test_unsupported_new_candidate_is_skipped_not_network_failure(project, policy):
+    enable_policy(project, policy)
+    run = update(project, fetcher=DiscoveryFixture("<article>No relevant event.</article>"))
+    assert run["records_published"] == 0
+    assert run["records_rejected"] == 1
+    assert run["errors"] == 0
+
+
+def test_discovery_size_cap_does_not_raise_article_cap():
+    from food_safety.config import Settings
+
+    cfg = Settings()
+    assert cfg.max_discovery_response_bytes == 1048576
+    assert cfg.max_response_bytes == 524288
+    with pytest.raises(ValueError):
+        Settings(max_discovery_response_bytes=1048577)

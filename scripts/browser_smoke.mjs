@@ -79,6 +79,7 @@ async function screenshot(name) {
   writeFileSync(resolve(cache, name + '.png'), Buffer.from(result.data, 'base64'));
 }
 async function publicScreenshot(path) {
+  if (process.env.FOOD_UPDATE_PREVIEWS !== '1') return;
   const result = await command('Page.captureScreenshot', { format: 'png', captureBeyondViewport: false });
   writeFileSync(resolve(root, path), Buffer.from(result.data, 'base64'));
 }

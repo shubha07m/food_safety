@@ -37,6 +37,7 @@ class Settings(StrictModel):
     max_pages_per_source: int = Field(default=5, ge=1, le=5)
     request_timeout_seconds: int = Field(default=15, ge=1, le=30)
     max_response_bytes: int = Field(default=524288, ge=1024, le=1048576)
+    max_discovery_response_bytes: int = Field(default=1048576, ge=1024, le=1048576)
     max_llm_calls_per_run: int = Field(default=5, ge=0, le=5)
     llm_enabled: bool = False
     auto_publish: bool = False

@@ -106,6 +106,10 @@ python scripts/verify_public_output.py
 
 The optional browser smoke uses an already-installed Chrome; no browser bundle is downloaded. Paid LLM/VLM calls remain disabled. Source submissions and Issues never publish automatically.
 
+With the local server running, `node scripts/browser_smoke.mjs` checks the real and
+synthetic UI without modifying public assets. Set `FOOD_UPDATE_PREVIEWS=1` for an
+explicit refresh of the small README screenshot and social preview PNG.
+
 ## Contributing and volunteer maintainers
 
 Read [CONTRIBUTING.md](CONTRIBUTING.md) and the [Code of Conduct](CODE_OF_CONDUCT.md). Suggest a public source, request a correction, help audit evidence, improve Bengali wording or maintain the tooling. Controlled GitHub Issue Forms become publicly accessible when the maintainer makes the repository public. Until then, access requires a repository invitation.

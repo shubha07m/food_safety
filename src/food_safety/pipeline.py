@@ -14,7 +14,7 @@ from .classify import display_summary
 from .config import settings, sources
 from .dedupe import associate, same_event, stable_id
 from .extract import article_text, text_hash
-from .fetch import Fetcher
+from .fetch import Fetcher, FetchError
 from .llm import NoLLM, OpenAICompatible
 from .models import Event
 from .safety import claim_risks, safe_url
@@ -102,6 +102,9 @@ def update(root, max_articles=None, use_llm=False, max_llm_calls=None, fetcher=N
     if use_llm and not cfg.llm_enabled:
         raise ValueError("enable_llm_in_config_and_pass_use_llm")
     extractor = OpenAICompatible(calls) if use_llm else NoLLM()
+    discovery_fetcher = fetcher or Fetcher(
+        policies, cfg.model_copy(update={"max_response_bytes": cfg.max_discovery_response_bytes})
+    )
     fetcher = fetcher or Fetcher(policies, cfg)
     events, pending = read_events(root, "events"), read_events(root, "pending")
     rejected = read_rejected(root)["records"]
@@ -147,7 +150,7 @@ def update(root, max_articles=None, use_llm=False, max_llm_calls=None, fetcher=N
         start = cursor % len(feeds)
         for policy, feed, parser in (feeds[start:] + feeds[:start])[:2]:
             try:
-                _, body = fetcher.article(feed)
+                _, body = discovery_fetcher.article(feed)
                 discovered.extend((policy, u) for u in parser(body, policy, limit))
             except (ValueError, OSError, httpx.HTTPError):
                 reasons["feed_unavailable"] += 1
@@ -255,11 +258,14 @@ def update(root, max_articles=None, use_llm=False, max_llm_calls=None, fetcher=N
             httpx.HTTPError,
         ) as exc:
             # Do not persist untrusted article bodies, exception messages or identities.
-            reason = (
-                "candidate_rejected" if isinstance(exc, ValueError | KeyError) else "fetch_failed"
+            retrieval_failed = isinstance(
+                exc, (FetchError, OSError, httpx.HTTPError, http.client.HTTPException)
             )
+            reason = "fetch_failed" if retrieval_failed else "candidate_rejected"
             reasons[reason] += 1
-            run["errors"] += 1
+            affected_public = any(s.source_url == url for e in events for s in e.sources)
+            if retrieval_failed or affected_public:
+                run["errors"] += 1
             rejection_id = hashlib.sha256(url.encode()).hexdigest()[:16]
             rejected = [r for r in rejected if r["candidate_id"] != rejection_id]
             rejected.append({"candidate_id": rejection_id, "at": at.isoformat(), "reason": reason})

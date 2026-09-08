@@ -22,3 +22,9 @@ Failures go to a pending/rejected path, not public data. HTTP retrieval supports
 The schedule checks at most two configured publisher index pages, extracts only same-domain relevant links, and follows at most six article URLs. Index titles/snippets never become evidence. There is no recursive following of article links. Feed parsing is supported but no RSS feed is currently enabled: the tested TOI feed terms restrict reuse, and the tested Indian Express Bangla feed returned HTML. Discovery indexes are the Kolkata city page and Indian Express Bangla West Bengal section. Publisher terms and robots rules still apply; an inaccessible index is reported, not bypassed.
 
 TOI RSS terms reviewed: https://timesofindia.indiatimes.com/rss.cms
+
+Discovery index bodies have a separate 1 MiB ceiling; article bodies remain capped
+at 512 KiB. This accommodates the verified Kolkata index without changing evidence
+or network-safety rules. Normal unsupported candidates are rejected without
+marking a successfully completed source scan as a network failure. Source retrieval
+failures and invalidated existing public support still report operational failure.
