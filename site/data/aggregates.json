@@ -2,7 +2,7 @@
   "actions": {
     "inspection / visit only": 25,
     "not reported": 3,
-    "other": 7
+    "other": 2
   },
   "areas": {
     "Baduria": 1,
@@ -23,67 +23,61 @@
     "Shaktigarh": 1,
     "Sonarpur": 1,
     "South City Mall": 3,
-    "Tangra": 1,
-    "মধ্যমগ্রামের": 1,
-    "মধ‌্যমগ্রামের": 1,
-    "সেক্টর থ্রি-র": 1,
-    "সেক্টর ফাইভের আরডিবি মলের": 1,
-    "সোদপুরের": 1
+    "Tangra": 1
   },
-  "areas_count": 24,
+  "areas_count": 19,
   "business_formats": {
-    "unknown": 35
+    "unknown": 30
   },
   "context_notice": "Independent, non-governmental public-source research. Inclusion is not a finding of wrongdoing. Counts describe records in this tracker, not official totals, prevalence, compliance, risk or group behavior. Read the sources and preserve this context when sharing.",
   "coverage": {
     "business_format": 0,
     "cross_source": 0,
-    "establishment_context": 32,
+    "establishment_context": 27,
     "menu_context": 0,
-    "named_establishment": 25,
-    "reported_action": 20,
+    "named_establishment": 20,
+    "reported_action": 15,
     "reported_quantity": 1
   },
   "establishments": {
     "hotel / hospitality": 2,
     "mall / food court": 6,
     "market / vendor": 3,
-    "restaurant / eatery": 18,
+    "restaurant / eatery": 13,
     "sweet shop / bakery": 3,
     "unknown": 3
   },
-  "establishments_count": 25,
-  "generated_at": "2026-09-08T02:22:10.101853+00:00",
+  "establishments_count": 20,
+  "generated_at": "2026-09-08T04:13:49.324739+00:00",
   "map_coverage": {
-    "mapped_records": 23,
+    "mapped_records": 22,
     "precision": {
       "city": 3,
-      "neighborhood": 16,
-      "not mapped": 12,
+      "neighborhood": 15,
+      "not mapped": 8,
       "street": 4
     }
   },
   "menus": {
-    "unknown": 35
+    "unknown": 30
   },
   "pipeline_version": "0.2.0",
   "publishers": {
     "Business Today": 5,
-    "TV9 Bangla": 5,
     "The Times of India": 25
   },
-  "record_count": 35,
+  "record_count": 30,
   "schema_version": "1.1.0",
-  "sources_count": 7,
+  "sources_count": 6,
   "timeline": {
-    "2026-09-03": 11,
+    "2026-09-03": 6,
     "2026-09-04": 7,
     "2026-09-05": 7,
     "2026-09-06": 7,
     "2026-09-07": 3
   },
-  "total": 35,
+  "total": 30,
   "verification": {
-    "SOURCE VERIFIED": 35
+    "SOURCE VERIFIED": 30
   }
 }
