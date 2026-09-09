@@ -26,6 +26,9 @@ from .verify import evidence_errors, publication_errors
 
 def candidate(url, title, text, policy, fields, at, llm=None):
     observation = fields["reported_observation"]
+    evidence_language = (
+        "bn" if any("\u0980" <= character <= "\u09ff" for character in observation) else "en"
+    )
     data = {
         "event_id": stable_id(url, observation + "|" + (fields.get("establishment_name") or "")),
         "reported_fact": {
@@ -47,10 +50,10 @@ def candidate(url, title, text, policy, fields, at, llm=None):
                 "text_sha256": text_hash(text),
                 "evidence_quote": observation,
                 "evidence_context": observation,
-                "source_language": "bn" if any("\u0980" <= c <= "\u09ff" for c in text) else "en",
-                "evidence_language": "bn"
-                if any("\u0980" <= c <= "\u09ff" for c in observation)
-                else "en",
+                "source_language": (
+                    policy.language if policy.language in {"en", "bn"} else evidence_language
+                ),
+                "evidence_language": evidence_language,
             }
         ],
         "record_created_at": at.isoformat(),
@@ -282,7 +285,17 @@ def update(root, max_articles=None, use_llm=False, max_llm_calls=None, fetcher=N
                         for e in matching
                         if e.event_id != old.event_id
                     ]
-                    revised = lifecycle.recheck(root, old, url, title, text, checks, at, others)
+                    revised = lifecycle.recheck(
+                        root,
+                        old,
+                        url,
+                        title,
+                        text,
+                        checks,
+                        at,
+                        others,
+                        policy.language if policy.language in {"en", "bn"} else None,
+                    )
                     events = [e for e in events if e.event_id != old.event_id]
                     pending = [e for e in pending if e.event_id != old.event_id]
                     (events if revised.publication_status in lifecycle.ACTIVE else pending).append(

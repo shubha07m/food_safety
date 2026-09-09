@@ -5,6 +5,8 @@ import re
 import subprocess
 from pathlib import Path
 
+import yaml
+
 ROOT = Path(__file__).resolve().parents[1]
 MAX_BYTES = 64_000_000
 SECRET = re.compile(
@@ -16,7 +18,11 @@ SECRET = re.compile(
 PRIVATE_PREFIXES = ("data/history/", "data/tmp/", ".cache/", "logs/")
 PRIVATE_PATHS = {"data/pending.json", "data/rejected.json", ".env"}
 SUSPICIOUS_NAMES = re.compile(r"(?:conversation|chatgpt|codex|scratch|brainstorm)", re.I)
-SCAN_SOURCE_EXEMPT = {"scripts/audit_repository.py", "scripts/verify_public_output.py"}
+SCAN_SOURCE_EXEMPT = {
+    "scripts/audit_repository.py",
+    "scripts/verify_public_output.py",
+    "tests/test_public_repository.py",
+}
 ALLOWED_AUTHOR_DOMAINS = {"users.noreply.github.com"}
 
 
@@ -28,7 +34,7 @@ def reachable_blobs():
     paths = {}
     for line in git("rev-list", "--objects", "--all").splitlines():
         parts = line.decode(errors="replace").split(" ", 1)
-        if len(parts) == 2:
+        if len(parts) == 2 and parts[1] != "reports/public_repository_audit.json":
             paths[parts[0]] = parts[1]
     checks = git("cat-file", "--batch-check", data=("\n".join(paths) + "\n").encode())
     blobs, total = [], 0
@@ -53,6 +59,11 @@ def reachable_blobs():
 
 def audit():
     tracked = [path for path in git("ls-files", "-z").decode().split("\0") if path]
+    current_bodies = {
+        path: (ROOT / path).read_bytes()
+        for path in tracked
+        if (ROOT / path).is_file() and (ROOT / path).stat().st_size <= 2_000_000
+    }
     current_private = sorted(
         path
         for path in tracked
@@ -70,11 +81,20 @@ def audit():
             or SUSPICIOUS_NAMES.search(path)
         }
     )
-    secret_paths = sorted({path for path, body in blobs if SECRET.search(body)})
+    secret_paths = sorted(
+        {path for path, body in blobs if SECRET.search(body)}
+        | {path for path, body in current_bodies.items() if SECRET.search(body)}
+    )
     machine_paths = sorted(
         {
             path
             for path, body in blobs
+            if path not in SCAN_SOURCE_EXEMPT
+            and (b"/Users/" in body or b"/opt/homebrew/" in body)
+        }
+        | {
+            path
+            for path, body in current_bodies.items()
             if path not in SCAN_SOURCE_EXEMPT
             and (b"/Users/" in body or b"/opt/homebrew/" in body)
         }
@@ -83,8 +103,12 @@ def audit():
     public_author_emails = sorted(
         {email for email in authors if email.rsplit("@", 1)[-1] not in ALLOWED_AUTHOR_DOMAINS}
     )
+    remote = yaml.safe_load((ROOT / "config/public_repository.yml").read_text())
     result = {
-        "scope": "current tracked tree and all locally reachable refs; bounded pattern scan",
+        "scope": (
+            "current tracked tree contents and all locally reachable refs; "
+            "bounded pattern scan"
+        ),
         "tracked_files": len(tracked),
         "history_blobs_scanned": len(blobs),
         "history_bytes_scanned": byte_count,
@@ -93,8 +117,11 @@ def audit():
         "secret_pattern_paths": secret_paths,
         "historical_machine_path_files": machine_paths,
         "public_author_email_metadata": public_author_emails,
+        "github_pull_refs_cleared": bool(remote["github_pull_refs_cleared"]),
+        "affected_pull_refs": int(remote["affected_pull_refs"]),
+        "retained_actions_artifacts": int(remote["retained_actions_artifacts"]),
     }
-    result["ready_for_public_visibility"] = not any(
+    result["local_history_sanitized"] = not any(
         result[key]
         for key in [
             "current_private_paths",
@@ -103,6 +130,9 @@ def audit():
             "historical_machine_path_files",
             "public_author_email_metadata",
         ]
+    )
+    result["ready_for_public_visibility"] = (
+        result["local_history_sanitized"] and result["github_pull_refs_cleared"]
     )
     return result
 

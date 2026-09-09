@@ -1,43 +1,50 @@
 # Public repository audit
 
-Phase 1 update: develop now exists for human development; main remains production. The historical privacy blocker below remains unchanged. No history rewrite or visibility change was authorized. New source_checks diagnostics contain hashed source identifiers/timestamps and controlled codes, not private form responses. Earlier branch/artifact inventory below is a dated observation, not current branch inventory.
+Audit date: **2026-09-09**
 
-Latest bounded audit before Phase 1 commits scanned 359 locally available historical blobs (about 3.6 MB): zero known secret patterns, three historical machine-path files, and the same 94 private-artifact paths. This does not remove or resolve the historical visibility blocker.
+Repository visibility: **Private**
 
-The site is already public. Repository visibility remains a separate, explicit
-maintainer decision. This pass does not change it or rewrite shared Git history.
+Recommendation: **NOT READY FOR PUBLIC VISIBILITY — GitHub server-side pull-request refs must be purged and re-audited.**
 
-## Current-tree safeguards
+This is a current audit, not a development diary. Pattern scanning is one layer of review and does not prove that a repository contains no sensitive material.
 
-- Private `data/history/`, `data/pending.json`, `data/rejected.json`, caches,
-  downloads, browser profiles, environment files and local environments are ignored.
-- Public deployment is limited to `site/`. Its gate checks schema, dataset equality,
-  public statuses, forbidden paths, symlinks, extensions and common secret patterns.
-- Refresh commits are restricted to approved datasets, public tombstones, status and
-  `site/`. Private Actions review-artifact uploads have been removed.
-- Source material is limited to short attributed evidence spans; no full articles
-  are deployed. The original illustrative prototype remains a reference, not data.
+## Current tracked tree
 
-## Historical visibility blocker
+- No tracked `.env`, private pending/rejected queue, private record history, source dump, browser profile, cache or scratch/conversation path was found.
+- No known credential/private-key pattern or local workstation path was found in the current locally reachable history.
+- Public deployment remains limited to `site/`; its verifier rejects private paths, unsupported file types, symlinks and common secret patterns.
+- Short attributed evidence spans are retained. Full downloaded articles are not tracked or deployed.
+- Author/committer email metadata in the rewritten local refs uses the maintainer's GitHub noreply address.
 
-Private record snapshots were committed in earlier revisions, including `709a6b5`
-and `717083d`. The latest tree had 58 snapshot files plus two queues; the complete
-locally available history contains 94 distinct private-artifact paths. A bounded
-scan of 233 historical blobs (about 1.8 MB) found no known token/private-key
-patterns, but did find an older README with machine-specific paths. This is not
-a guarantee that historical content is suitable for public release.
-Removing these paths from the latest tree does **not** remove them
-from Git history, existing clones or prior GitHub Actions artifacts.
+The machine-readable result is [reports/public_repository_audit.json](../reports/public_repository_audit.json). The audit command intentionally fails closed while the server-side gate in `config/public_repository.yml` is false.
 
-Before making this repository public, explicitly resolve that history: either
-approve a coordinated history rewrite removing the private paths across all refs,
-or publish a clean-history export after reviewing its contents. Preserve a private
-backup first. Do not casually force-push an active repository. Review previous
-Actions artifacts/logs and Git commit author contact metadata before visibility
-changes. A regex secret scan is not a guarantee that no private material exists.
+## Local Git-history sanitation
 
-No repository-visibility change or destructive history rewrite is performed here.
-This is a publication decision, not a request for another feature-development phase.
+The prior history contained private record snapshots/queues, obsolete internal utilities, the illustrative prototype, machine-specific paths and a public author email. A deterministic rewrite removed those paths across local `main` and `develop`, replaced machine paths, and normalized public author metadata.
 
-GitHub Actions artifact inventory during this pass: no retained artifacts. The
-repository remained private, main was the only branch, and no open PRs were present.
+- Old `main`: `491185b4d688777c5c13fb633d578d83367c8b34`
+- Rewritten `main`: `ccae493e550e2b2d43be0031815912eb69ecdea3`
+- Old `develop`: `da6fe6012fb45b607c265d27c722f8da6015954e`
+- Rewritten `develop`: `1194f7509ebc6a87e9581c8eb271c544034ee3c4`
+- The production `site/` tree was byte-identical before and after the rewrite.
+
+A private recovery bundle exists only at `.cache/history-backup/food_safety-before-public-sanitize-2026-09-09.bundle`. It is ignored and must never be committed, uploaded or shared publicly.
+
+## GitHub server-side result
+
+The rewritten `main` and `develop` refs were force-updated using exact leases. GitHub Actions subsequently passed on both branches. The repository has no forks, no retained Actions artifacts and no Actions caches at the time of this audit; earlier run records were removed.
+
+Seven GitHub pull-request refs (`refs/pull/1/head` through `refs/pull/7/head`) remain server-managed and read-only. Each reaches pre-rewrite content: PR 1 and PR 2 each expose one removed private-artifact path; PRs 3–7 each reach 73 private-artifact path entries. An old commit remains retrievable through GitHub while those refs/cached views exist. Ordinary force-pushing cannot delete these refs.
+
+## Remaining blocker and owner action
+
+Contact GitHub Support and request removal/dereferencing of the affected pull-request refs and cached commit views, followed by server-side garbage collection, using GitHub's [sensitive-data removal guidance](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/removing-sensitive-data-from-a-repository). Provide the repository name, affected PR numbers 1–7, the first affected historical commit (`eaf803d8a494d94f0b3f20f6e9d647bc4ab13f20`), and explain that the repository is intentionally still private.
+
+After GitHub confirms completion:
+
+1. Verify that old commit and PR-ref objects are no longer retrievable.
+2. Re-run `python scripts/audit_repository.py` and a manual tree/history review.
+3. Set `github_pull_refs_cleared: true` only after that verification.
+4. Change visibility only after the audit reports no remaining blocker.
+
+If GitHub cannot purge the refs, the reliable alternative is a new clean-history repository and an explicit hosting-integration change. That alternative was not taken because it would disturb the existing production integration.

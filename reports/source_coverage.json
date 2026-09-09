@@ -4,15 +4,15 @@
     {
       "article_fetch_status": "not_attempted",
       "automatic_extraction_status": "not_attempted",
-      "automation": "bounded",
+      "automation": "manual_only",
       "candidate_urls_seen": 0,
-      "discovery_status": "pilot",
+      "discovery_status": "blocked",
       "domain": "fssai.gov.in",
       "failures": {},
       "fetched": 0,
       "language": "multilingual",
       "last_successful_discovery": null,
-      "manual_only_reason": null,
+      "manual_only_reason": "The reviewed press-release endpoint did not yield extractable source content; use submitted official URLs until a stable index is validated.",
       "mechanisms": [],
       "publisher": "Food Safety and Standards Authority of India",
       "records_produced": 0
@@ -20,15 +20,15 @@
     {
       "article_fetch_status": "not_attempted",
       "automatic_extraction_status": "not_attempted",
-      "automation": "bounded",
+      "automation": "manual_only",
       "candidate_urls_seen": 0,
-      "discovery_status": "pilot",
+      "discovery_status": "blocked",
       "domain": "www.fssai.gov.in",
       "failures": {},
       "fetched": 0,
       "language": "multilingual",
       "last_successful_discovery": null,
-      "manual_only_reason": null,
+      "manual_only_reason": "No stable bounded article or notice index has been validated for this host.",
       "mechanisms": [],
       "publisher": "FSSAI (www host)",
       "records_produced": 0
@@ -158,15 +158,15 @@
     {
       "article_fetch_status": "not_attempted",
       "automatic_extraction_status": "not_attempted",
-      "automation": "bounded",
+      "automation": "manual_only",
       "candidate_urls_seen": 0,
-      "discovery_status": "pilot",
+      "discovery_status": "blocked",
       "domain": "www.kmcgov.in",
       "failures": {},
       "fetched": 0,
       "language": "multilingual",
       "last_successful_discovery": null,
-      "manual_only_reason": null,
+      "manual_only_reason": "Normal HTTPS retrieval failed during the bounded access check; official URLs remain eligible as manually reviewed leads.",
       "mechanisms": [],
       "publisher": "Kolkata Municipal Corporation",
       "records_produced": 0
@@ -210,9 +210,9 @@
     {
       "article_fetch_status": "not_attempted",
       "automatic_extraction_status": "not_attempted",
-      "automation": "bounded",
+      "automation": "manual_only",
       "candidate_urls_seen": 2,
-      "discovery_status": "pilot",
+      "discovery_status": "blocked",
       "domain": "eisamay.com",
       "failures": {
         "content_too_large": 1
@@ -220,7 +220,7 @@
       "fetched": 0,
       "language": "bn",
       "last_successful_discovery": null,
-      "manual_only_reason": null,
+      "manual_only_reason": "The reviewed index produced oversized article responses beyond the configured safety cap; the crawler does not evade that limit.",
       "mechanisms": [
         "page"
       ],

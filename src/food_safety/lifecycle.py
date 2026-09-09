@@ -182,7 +182,9 @@ def support_decision(event, source, title, text, other_identities=()):
     return "supported_as_of"
 
 
-def recheck(root, event, url, title, text, checks, at, other_identities=()):
+def recheck(
+    root, event, url, title, text, checks, at, other_identities=(), source_language=None
+):
     if event.publication_status not in ACTIVE or event.reviewer_hold:
         return event
     source = next(s for s in event.sources if s.source_url == url)
@@ -203,7 +205,8 @@ def recheck(root, event, url, title, text, checks, at, other_identities=()):
     for s in data["sources"]:
         if s["source_url"] == url:
             s.update(text_sha256=text_hash(text), source_revision_id=text_hash(text))
-            s["source_language"] = "bn" if any("\u0980" <= c <= "\u09ff" for c in text) else "en"
+            if source_language in {"en", "bn"}:
+                s["source_language"] = source_language
             s["evidence_language"] = (
                 "bn" if any("\u0980" <= c <= "\u09ff" for c in s["evidence_quote"]) else "en"
             )

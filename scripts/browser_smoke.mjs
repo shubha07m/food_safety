@@ -112,7 +112,8 @@ try {
       } else await command('Fetch.continueRequest', { requestId });
     }
   };
-  await command('Page.enable'); await command('Runtime.enable');
+  await command('Page.enable'); await command('Runtime.enable'); await command('Network.enable');
+  await command('Network.setCacheDisabled', { cacheDisabled: true });
   await command('Emulation.setDeviceMetricsOverride', { width: 1440, height: 1000, deviceScaleFactor: 1, mobile: false });
   await command('Page.navigate', { url: 'http://127.0.0.1:8000/' });
   await waitFor(`document.getElementById('metric-events')?.textContent === '${original.record_count}'`);

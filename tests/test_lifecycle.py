@@ -167,12 +167,17 @@ def test_challenge_page_is_transport_warning(project, policy, record, monkeypatc
 
 
 def test_migration_is_idempotent(project, policy, record, monkeypatch):
+    policy.language = "en"
     existing(project, policy, record, monkeypatch)
+    raw = load(project, "events")
+    raw["records"][0]["sources"][0]["source_language"] = "bn"
+    (project / "data/events.json").write_text(json.dumps(raw))
     migrate(project)
     first = (project / "data/events.json").read_bytes()
     migrate(project)
     assert (project / "data/events.json").read_bytes() == first
     assert load(project, "events")["records"][0]["event_id"] == record.event_id
+    assert load(project, "events")["records"][0]["sources"][0]["source_language"] == "en"
 
 
 def test_restoration_not_new_publication(record):

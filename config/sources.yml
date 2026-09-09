@@ -5,18 +5,18 @@ sources:
     tier: A
     enabled: false
     language: multilingual
-    discovery_status: pilot
-    discovery_method: curated_urls
-    discovery_pages:
-      - https://fssai.gov.in/press-release
+    discovery_status: blocked
+    discovery_method: manual_only
+    manual_only_reason: The reviewed press-release endpoint did not yield extractable source content; use submitted official URLs until a stable index is validated.
     urls: []
   - name: FSSAI (www host)
     domain: www.fssai.gov.in
     tier: A
     enabled: false
     language: multilingual
-    discovery_status: pilot
-    discovery_method: curated_urls
+    discovery_status: blocked
+    discovery_method: manual_only
+    manual_only_reason: No stable bounded article or notice index has been validated for this host.
     urls: []
   - name: The Times of India
     domain: timesofindia.indiatimes.com
@@ -104,10 +104,9 @@ sources:
     tier: A
     enabled: false
     language: multilingual
-    discovery_status: pilot
-    discovery_method: curated_urls
-    discovery_pages:
-      - https://www.kmcgov.in/
+    discovery_status: blocked
+    discovery_method: manual_only
+    manual_only_reason: Normal HTTPS retrieval failed during the bounded access check; official URLs remain eligible as manually reviewed leads.
     urls: []
   - name: ABP Ananda
     domain: bengali.abplive.com
@@ -140,10 +139,9 @@ sources:
     tier: B
     enabled: true
     language: bn
-    discovery_method: bounded_indexes
-    discovery_status: pilot
-    discovery_pages:
-      - https://eisamay.com/west-bengal-news/kolkata-news
+    discovery_method: manual_only
+    discovery_status: blocked
+    manual_only_reason: The reviewed index produced oversized article responses beyond the configured safety cap; the crawler does not evade that limit.
     urls:
       - https://eisamay.com/west-bengal-news/kolkata-news/rotten-meat-in-famous-restaurant-china-town-food-safety-department-raids-across-district/200537670.cms
       - https://eisamay.com/west-bengal-news/howrah-news/raid-in-a-hotel-in-kona-on-sunday-fake-oil-selling-racket-is-also-got-caught-in-hooghly/200538849.cms

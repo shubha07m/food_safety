@@ -99,7 +99,7 @@ An existing local `food` environment can be reused. Python execution and depende
 | `tests/` | Synthetic deterministic regression fixtures; no paid APIs |
 | `.github/workflows/` | CI and bounded two-hour refresh |
 
-Private pending/rejected queues, local article downloads, source snapshots and browser profiles are excluded from future commits. Minimal suspension tombstones preserve stable record status without republishing held claims. Historical Git content must be audited separately before changing repository visibility.
+Private pending/rejected queues, local article downloads, source snapshots and browser profiles are excluded from commits. Minimal suspension tombstones preserve stable record status without republishing held claims. Local branch history has been sanitized; repository visibility remains private until GitHub removes retained server-side pull-request refs documented in the [current audit](docs/PUBLIC_REPOSITORY_AUDIT.md).
 
 ## Security and privacy
 

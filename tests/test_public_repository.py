@@ -1,6 +1,9 @@
+import runpy
 import subprocess
 
 from food_safety.config import ROOT
+
+audit = runpy.run_path(ROOT / "scripts/audit_repository.py")["audit"]
 
 
 def test_current_tree_excludes_private_and_obsolete_artifacts():
@@ -32,3 +35,11 @@ def test_no_tracked_environment_or_large_private_dump():
         path = ROOT / relative
         if path.is_file():
             assert path.stat().st_size < 2_000_000
+
+
+def test_public_audit_does_not_ignore_server_side_pull_refs():
+    result = audit()
+    assert result["local_history_sanitized"] is True
+    assert result["affected_pull_refs"] == 7
+    assert result["github_pull_refs_cleared"] is False
+    assert result["ready_for_public_visibility"] is False
