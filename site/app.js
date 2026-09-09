@@ -2,6 +2,7 @@ import { aggregate, dimensions, filterOptions, filterRows, recordDate, safeExter
 import { strings as t } from './strings.mjs';
 import { mappedRows, projection, geometryPath } from './geography.mjs';
 import { language, tr, translateStatic, localizedURL } from './locale.mjs';
+import { phase1, sourceWarning, copy as phaseCopy } from './phase1.mjs';
 
 translateStatic();
 
@@ -250,6 +251,7 @@ function renderRows() {
     for (const text of [dateText(recordDate(record)), facts.area || t.unknown]) tableRow.append(node('td', text));
     tableRow.append(name, node('td', record.display_summary), node('td', facts.reported_action || t.notReported), node('td', facts.reported_quantity || t.notReported));
     const status = node('td'); status.append(node('span', record.verification_status, 'badge'));
+    if (sourceWarning(record)) status.append(node('p', sourceWarning(record), 'source-warning'));
     const source = node('td'); for (const item of record.sources) source.append(external(`${item.source_publisher} ↗`, item.source_url));
     tableRow.append(status, source); $('evidence-rows').append(tableRow);
   }
@@ -265,13 +267,18 @@ function detail() {
   const record = state.rows.find(row => row.event_id === id);
   if (!record) {
     const retired = state.retired.find(row => row.event_id === id);
-    container.append(node('h2', 'Record unavailable'), node('p', retired ? `${retired.event_id} · ${retired.verification_status}. This record is suspended from public statistics.` : 'No published record is available at this address.'), node('p', t.context, 'notice'));
+    container.append(node('h2', 'Record unavailable'), node('p', retired ? `${retired.event_id} · ${retired.publication_status || retired.verification_status}. ${phaseCopy[language].nonActive}` : 'No published record is available at this address.'), node('p', t.context, 'notice'));
+    if (retired?.superseded_by && /^WBFS-[a-f0-9]{12}$/.test(retired.superseded_by)) {
+      const replacement = node('a', language === 'bn' ? 'পরিবর্তিত নথি দেখুন' : 'View replacement record');
+      replacement.href = localizedURL(`?event=${retired.superseded_by}`); container.append(replacement);
+    }
     return;
   }
   const facts = record.reported_fact; const context = record.derived_context;
   container.append(node('p', 'SOURCE-ATTRIBUTED RECORD', 'eyebrow'), node('h2', facts.establishment_name || 'Establishment unnamed'));
   const badges = node('div', null, 'detail-badges'); badges.append(node('span', record.verification_status, 'badge'), node('span', record.sources.length > 1 ? 'MULTI-SOURCE' : 'SINGLE SOURCE', 'badge neutral'));
   container.append(badges, node('p', record.display_summary, 'detail-summary'), node('p', t.context, 'notice'));
+  if (sourceWarning(record)) container.append(node('p', sourceWarning(record), 'source-warning'));
   const reported = detailSection(container, 'REPORTED FACTS', 'What the source supports');
   const fields = node('dl', null, 'detail-fields');
   const labels = { event_date: 'Event date', area: 'Reported area', district: 'Reported district', establishment_name: 'Establishment', establishment_type: 'Reported establishment type', reported_observation: 'Source-reported observation', reported_action: 'Reported action', reported_quantity: 'Reported quantity', reported_authority: 'Reported authority', legal_finding_status: 'Formal legal finding status', formal_finding: 'Source-reported formal finding' };
@@ -290,6 +297,7 @@ function detail() {
     card.append(external(source.source_title, source.source_url), node('p', `${source.source_publisher} · Tier ${source.tier} · Publication date: ${dateText(source.source_date)} · Retrieved: ${dateText(source.retrieved_at, true)}`), node('blockquote', source.evidence_quote), node('p', `Evidence context: ${source.evidence_context}`), node('small', `Extracted-text SHA-256: ${source.text_sha256}`)); evidenceSection.append(card);
   }
   const verification = detailSection(container, 'VERIFICATION', 'Review and provenance');
+  verification.append(node('p', phaseCopy[language].meaning), node('p', `${language === 'bn' ? 'শেষ তথ্য যাচাই' : 'Last evidence check'}: ${dateText(record.last_successful_evidence_check_at, true)}`));
   verification.append(node('p', t.sourceMeaning, 'record-notice'), node('p', record.verification_notes), node('p', `Created: ${dateText(record.record_created_at, true)} · Updated: ${dateText(record.record_updated_at, true)} · Pipeline ${record.pipeline_version}`));
   const historySection = detailSection(container, 'CHANGE HISTORY', 'Record revisions'); const history = node('ol', null, 'history');
   for (const revision of record.history) history.append(node('li', `${dateText(revision.at, true)} · ${revision.status} · ${revision.note}`)); historySection.append(history);
@@ -312,11 +320,11 @@ try {
   const menus = new Set(state.rows.filter(r => r.derived_context.menu_context !== 'unknown').map(r => r.reported_fact.establishment_name).filter(Boolean));
   $('menu-availability').textContent = language === 'bn' ? `নাম উল্লেখিত ${named.size}টি প্রতিষ্ঠানের মধ্যে ${menus.size}টির তথ্য রয়েছে` : `Available for ${menus.size} of ${named.size} named establishments`;
   $('last-update').textContent = status.last_successful_update ? dateText(status.last_successful_update, true) : t.notUpdated; $('last-scan').textContent = status.last_source_scan ? dateText(status.last_source_scan, true) : t.notScanned;
-  $('dataset-version').textContent = `${data.schema_version} / pipeline ${data.pipeline_version}`; $('run-status').textContent = `Last run result: ${status.last_run_result || 'not reported'}. Published: ${data.record_count}; held during last scan: ${status.pending_count ?? 'not reported'}.`;
+  $('dataset-version').textContent = `${data.schema_version} / pipeline ${data.pipeline_version}`; $('run-status').textContent = `Last run result: ${status.last_run_result || 'not reported'}. Active: ${data.record_count}.`;
   $('dataset-message').textContent = data.record_count ? (language === 'bn' ? `${data.record_count}টি উৎসসমর্থিত নথি। চিত্রে নির্বাচন করে সংশ্লিষ্ট মূল নথি দেখুন।` : `${data.record_count} source-supported records. Every chart selection reveals its contributing evidence.`) : t.noRecords;
-  if (language === 'bn') $('run-status').textContent = `শেষ পরীক্ষার ফল: ${status.last_run_result || 'উল্লেখ নেই'}। প্রকাশিত: ${data.record_count}; পর্যালোচনার অপেক্ষায়: ${status.pending_count ?? 'উল্লেখ নেই'}।`;
+  if (language === 'bn') $('run-status').textContent = `শেষ পরীক্ষার ফল: ${status.last_run_result || 'উল্লেখ নেই'}। সক্রিয়: ${data.record_count}।`;
   if (status.scheduled_refresh_hours === 2) $('run-status').append(document.createTextNode(language === 'bn' ? ' প্রায় প্রতি ২ ঘণ্টায় স্বয়ংক্রিয়ভাবে পরীক্ষা করা হয়।' : ' Automatically checked approximately every 2 hours.'));
-  renderAll(); detail();
+  renderAll(); detail(); await phase1();
   $('search').addEventListener('input', event => { state.query = event.target.value; renderRows(); });
   $('clear-filter').addEventListener('click', () => { state.filters = {}; state.query = ''; $('search').value = ''; renderAll(); });
 } catch (error) {

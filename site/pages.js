@@ -1,5 +1,6 @@
 import { safeExternal } from './data.mjs';
 import { translateStatic, language } from './locale.mjs';
+import { phase1 } from './phase1.mjs';
 
 translateStatic();
 if (language === 'bn' && document.querySelector('main')) {
@@ -32,3 +33,4 @@ try {
     }
   }
 } catch { /* The visible local correction instructions remain available. */ }
+await phase1();

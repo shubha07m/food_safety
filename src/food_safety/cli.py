@@ -11,15 +11,15 @@ from .storage import now, read_events, read_rejected, transaction, transition
 
 def bounded(value):
     number = int(value)
-    if not 1 <= number <= 10:
-        raise argparse.ArgumentTypeError("must be between 1 and 10")
+    if not 1 <= number <= 30:
+        raise argparse.ArgumentTypeError("must be between 1 and 30")
     return number
 
 
 def main():
     parser = argparse.ArgumentParser(description="Independent public-source evidence tracker")
     sub = parser.add_subparsers(dest="command", required=True)
-    for name in ["validate", "build", "pending"]:
+    for name in ["validate", "build", "pending", "migrate"]:
         sub.add_parser(name)
     scan = sub.add_parser("update")
     scan.add_argument("--max-articles", type=bounded, default=3)
@@ -31,6 +31,11 @@ def main():
     review.add_argument("--note", required=True)
     review.add_argument("--attest-source-context", action="store_true", required=True)
     review.add_argument("--attest-all-fields", action="store_true", required=True)
+    review.add_argument(
+        "--cross-source",
+        action="store_true",
+        help="Requires reviewed independent field-level associations",
+    )
     hold = sub.add_parser("hold", help="Suspend a record immediately; retain private history")
     hold.add_argument("event_id")
     hold.add_argument(
@@ -39,9 +44,15 @@ def main():
         default="DISPUTED",
     )
     hold.add_argument("--note", required=True)
+    hold.add_argument("--replacement-id", help="Required for SUPERSEDED; must already be active")
     args = parser.parse_args()
     try:
-        if args.command == "validate":
+        if args.command == "migrate":
+            from .migrate import migrate
+
+            migrate(ROOT)
+            result = {"migration": "complete"}
+        elif args.command == "validate":
             result = validate(ROOT)
         elif args.command == "build":
             result = build(ROOT)
@@ -61,7 +72,13 @@ def main():
             path = Path(args.file).resolve()
             if not path.is_relative_to(ROOT):
                 raise ValueError("review_file_must_be_inside_project")
-            result = review_record(ROOT, json.loads(path.read_text()), args.reviewer, args.note)
+            result = review_record(
+                ROOT,
+                json.loads(path.read_text()),
+                args.reviewer,
+                args.note,
+                cross_source=args.cross_source,
+            )
             build(ROOT)
         else:
             at = now()
@@ -70,6 +87,12 @@ def main():
             if old is None:
                 raise ValueError("unknown_event_id")
             revised = transition(ROOT, old, args.status, args.note, at)
+            if args.status == "SUPERSEDED":
+                if not any(
+                    e.event_id == args.replacement_id and e.event_id != old.event_id for e in events
+                ):
+                    raise ValueError("superseded_requires_active_replacement")
+                revised.superseded_by = args.replacement_id
             events = [e for e in events if e.event_id != old.event_id]
             pending = [e for e in pending if e.event_id != old.event_id] + [revised]
             rejected = read_rejected(ROOT)["records"]

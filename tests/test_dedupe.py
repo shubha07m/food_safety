@@ -11,6 +11,7 @@ def test_stable_id():
 
 def test_secondary_source_retained(record):
     second = record.model_copy(deep=True)
+    object.__setattr__(second.sources[0], "source_id", "")
     second.sources[0].source_url = "https://example.net/fixture"
     second.sources[0].source_publisher = "Second synthetic publisher"
     merged = associate(record, second, AT)

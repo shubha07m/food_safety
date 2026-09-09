@@ -1,0 +1,4 @@
+# Server-side visibility gate. Set true only after GitHub confirms PR refs/caches were purged.
+github_pull_refs_cleared: false
+affected_pull_refs: 7
+retained_actions_artifacts: 0

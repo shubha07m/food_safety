@@ -52,6 +52,8 @@ const makeRow = (id, area, name) => ({
   history: [{ at, status: 'SOURCE VERIFIED', note: 'Synthetic browser fixture.' }],
 });
 const fixtureRows = [makeRow('WBFS-aaaaaaaaaaaa', 'Example Area', '<img src=x onerror=alert(1)>'), makeRow('WBFS-bbbbbbbbbbbb', 'Another Area', 'Synthetic Kitchen')];
+fixtureRows[0].publication_status = 'active_with_warning';
+fixtureRows[0].last_successful_evidence_check_at = at;
 const fixtureData = { ...original, record_count: 2, records: fixtureRows };
 
 function command(method, params = {}) {
@@ -110,10 +112,13 @@ try {
       } else await command('Fetch.continueRequest', { requestId });
     }
   };
-  await command('Page.enable'); await command('Runtime.enable');
+  await command('Page.enable'); await command('Runtime.enable'); await command('Network.enable');
+  await command('Network.setCacheDisabled', { cacheDisabled: true });
   await command('Emulation.setDeviceMetricsOverride', { width: 1440, height: 1000, deviceScaleFactor: 1, mobile: false });
   await command('Page.navigate', { url: 'http://127.0.0.1:8000/' });
   await waitFor(`document.getElementById('metric-events')?.textContent === '${original.record_count}'`);
+  await waitFor("document.getElementById('lifecycle-summary') !== null");
+  assert.equal(await evaluate("document.getElementById('phase1-help').textContent.includes('Submission form coming shortly')"), true);
   await publicScreenshot('docs/assets/dashboard_preview.png');
   await evaluate("document.querySelector('.map-panel').scrollIntoView({block:'start'})");
   await screenshot('map-desktop');
@@ -126,6 +131,7 @@ try {
   assert.equal(await evaluate("document.documentElement.lang"), 'bn');
   assert.equal(await evaluate("document.getElementById('patterns-heading').textContent"), 'প্রতিবেদনের তথ্যচিত্র');
   assert.equal(await evaluate("document.querySelector('#record-detail blockquote').textContent"), originalQuote);
+  await waitFor("document.getElementById('phase1-help')?.textContent.includes('নথির উৎস কীভাবে যাচাই করা হয়')");
   assert.equal(await evaluate("document.querySelector('.record-link').href.includes('lang=bn')"), true);
   await screenshot('bengali-detail');
   await command('Emulation.setDeviceMetricsOverride', { width: 1200, height: 630, deviceScaleFactor: 1, mobile: false });
@@ -152,6 +158,7 @@ try {
   await command('Page.navigate', { url: 'http://127.0.0.1:8000/' });
   await waitFor("document.getElementById('metric-events')?.textContent === '2'");
   assert.equal(await evaluate("document.querySelectorAll('#evidence-rows tr').length"), 2);
+  assert.equal(await evaluate("document.querySelectorAll('#evidence-rows .source-warning').length"), 1);
   assert.equal(await evaluate("document.querySelectorAll('#evidence-rows img').length"), 0);
   await evaluate("document.querySelector('#chart-areas g[role=button]').dispatchEvent(new MouseEvent('click'))");
   assert.equal(await evaluate("document.querySelectorAll('#evidence-rows tr').length"), 1);

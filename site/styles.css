@@ -289,3 +289,10 @@ html[lang=bn] h1, html[lang=bn] h2, html[lang=bn] h3 { font-family: 'Bangla Sang
 html[lang=bn] .eyebrow, html[lang=bn] .status-strip { letter-spacing: normal; }
 @media (max-width: 640px) { .masthead { flex-wrap: wrap; } .language-toggle { margin-top: .5rem; } .map-key { font-size: .85rem; } }
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition: none !important; } }
+:root { --source-warning: #795619; }
+.phase1-panel { margin-block: 2rem; padding: 1.5rem; background: #edf3ee; border: 1px solid #c9d8ce; border-radius: 12px; }
+.phase1-panel details { margin-block: 1rem; }
+.phase1-panel summary { font-weight: 700; cursor: pointer; }
+.lifecycle-metrics { display: grid; grid-template-columns: repeat(auto-fit, minmax(145px, 1fr)); gap: 1rem; }
+.lifecycle-metrics dd { margin: .4rem 0; font-size: 1.8rem; font-weight: 700; }
+.source-warning { color: var(--source-warning); border-left: 3px solid currentColor; padding: .6rem; background: #fff6df; }

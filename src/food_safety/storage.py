@@ -64,6 +64,12 @@ def transition(root, event, status, note, at, review=None):
         record_updated_at=at.isoformat(),
         review=review,
     )
+    if status not in {"SOURCE VERIFIED", "CROSS-SOURCE VERIFIED"}:
+        data.update(
+            publication_status="superseded" if status == "SUPERSEDED" else "suspended",
+            evidence_support_status="withdrawn" if status == "SOURCE WITHDRAWN" else "needs_review",
+            reviewer_hold=True,
+        )
     data["history"] = [
         *previous["history"],
         {

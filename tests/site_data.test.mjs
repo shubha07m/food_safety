@@ -56,6 +56,18 @@ test('published fixture marker and invalid states fail closed', () => {
   assert.throws(() => validateDataset({ ...data, records: [{ ...rows[0], is_fixture: true }] }));
   assert.throws(() => validateDataset({ ...data, records: [{ ...rows[0], verification_status: 'DISPUTED' }] }));
 });
+test('current deterministic validation provenance is accepted', () => {
+  const automatic = {
+    ...rows[0],
+    review: null,
+    automatic_validation: {
+      method: 'explicit_inspection_sentence_v2',
+      validated_at: '2026-09-09T00:00:00Z',
+    },
+  };
+  const data = { schema_version: '1.2.0', record_count: 1, context_notice: 'Test', records: [automatic] };
+  assert.doesNotThrow(() => validateDataset(data));
+});
 test('source-derived strings use safe DOM APIs and SVG charts are accessible', () => {
   const js = readFileSync(new URL('../site/app.js', import.meta.url), 'utf8');
   const html = readFileSync(new URL('../site/index.html', import.meta.url), 'utf8');

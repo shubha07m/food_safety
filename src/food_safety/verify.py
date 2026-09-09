@@ -1,7 +1,6 @@
 from collections import defaultdict
 
 from .classify import display_summary
-from .extract import text_hash
 from .safety import claim_risks, normalize
 
 PUBLIC_STATUSES = {"SOURCE VERIFIED", "CROSS-SOURCE VERIFIED"}
@@ -56,8 +55,6 @@ def evidence_errors(event, texts=None):
             text = texts.get(source.source_url)
             if not text:
                 errors.append("source_unreachable")
-            elif text_hash(text) != source.text_sha256:
-                errors.append("source_changed")
             elif source.evidence_context not in text:
                 errors.append("evidence_not_in_article")
     return sorted(set(errors))
@@ -69,9 +66,18 @@ def publication_errors(event, policies, texts=None, allow_fixtures=False):
         errors.append("fixture_not_public")
     if event.verification_status not in PUBLIC_STATUSES:
         errors.append("non_public_status")
+    if event.publication_status not in {"active", "active_with_warning"} or event.reviewer_hold:
+        errors.append("non_active_publication")
+    if event.evidence_support_status != "supported_as_of" or not event.first_published_at:
+        errors.append("missing_publication_provenance")
+    if not event.last_successful_evidence_check_at:
+        errors.append("missing_evidence_check_date")
+    if event.publication_status == "active_with_warning" and not event.source_availability_reason:
+        errors.append("missing_source_warning_reason")
     review = event.review
     if event.automatic_validation:
         from .automatic import automatic_errors
+
         errors.extend(automatic_errors(event))
     elif not review or not review.all_fields_supported or not review.source_context_checked:
         errors.append("human_context_review_required")
@@ -93,13 +99,20 @@ def publication_errors(event, policies, texts=None, allow_fixtures=False):
         if source.source_type != ("official" if source.tier == "A" else "news"):
             errors.append("source_type_mismatch")
     if event.verification_status == "CROSS-SOURCE VERIFIED":
+        origins = [s.origin_source_id for s in event.sources if s.origin_source_id]
+        if len(origins) != len(set(origins)):
+            errors.append("shared_origin_not_independent")
         if len({s.source_publisher.casefold() for s in event.sources}) < 2:
             errors.append("independent_sources_required")
+        if any(s.source_relationship != "independent" for s in event.sources):
+            errors.append("source_independence_review_required")
+        associations = {a.source_url: a for a in event.reviewed_associations}
         for source in event.sources:
-            if normalize(event.reported_fact.reported_observation) not in normalize(
-                source.evidence_context
+            association = associations.get(source.source_url)
+            if not association or set(association.supported_fields) != set(
+                event.reported_fact.evidence
             ):
-                errors.append("cross_source_support_required")
+                errors.append("cross_source_field_review_required")
     if not event.display_summary or event.display_summary != display_summary(
         event.reported_fact, event.derived_context
     ):

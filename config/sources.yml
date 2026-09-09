@@ -4,19 +4,27 @@ sources:
     domain: fssai.gov.in
     tier: A
     enabled: false
-    discovery_method: curated_urls
+    language: multilingual
+    discovery_status: blocked
+    discovery_method: manual_only
+    manual_only_reason: The reviewed press-release endpoint did not yield extractable source content; use submitted official URLs until a stable index is validated.
     urls: []
   - name: FSSAI (www host)
     domain: www.fssai.gov.in
     tier: A
     enabled: false
-    discovery_method: curated_urls
+    language: multilingual
+    discovery_status: blocked
+    discovery_method: manual_only
+    manual_only_reason: No stable bounded article or notice index has been validated for this host.
     urls: []
   - name: The Times of India
     domain: timesofindia.indiatimes.com
     tier: B
     enabled: true
-    discovery_method: curated_urls
+    language: en
+    discovery_method: bounded_indexes
+    discovery_status: active
     discovery_pages:
       - https://timesofindia.indiatimes.com/city/kolkata
     urls:
@@ -29,6 +37,8 @@ sources:
     domain: www.businesstoday.in
     tier: B
     enabled: true
+    language: en
+    discovery_status: active
     discovery_method: curated_urls
     urls:
       - https://www.businesstoday.in/amp/india/story/bengal-fda-crackdown-40kg-rotten-meat-500kg-stale-chicken-and-prawns-seized-ahead-of-durga-puja-553132-2026-09-03
@@ -36,13 +46,20 @@ sources:
     domain: tv9bangla.com
     tier: B
     enabled: true
-    discovery_method: curated_urls
+    language: bn
+    discovery_method: bounded_indexes
+    discovery_status: active
+    discovery_pages:
+      - https://tv9bangla.com/kolkata
     urls:
       - https://tv9bangla.com/kolkata/west-bengal-food-safety-drive-irregularities-found-at-1525-food-centres-licences-of-13-processing-units-cancelled-1343938.html
+      - https://tv9bangla.com/kolkata/50-restaurants-license-cancelled-in-west-bengal-including-some-popular-restaurants-1345015.html
   - name: UNI India
     domain: www.uniindia.com
     tier: B
     enabled: true
+    language: en
+    discovery_status: pilot
     discovery_method: curated_urls
     urls:
       - https://www.uniindia.com/east-india/admin-wb-food-safety-06ca19/170711
@@ -50,17 +67,25 @@ sources:
     domain: bengali.indianexpress.com
     tier: B
     enabled: true
-    discovery_method: curated_urls
+    language: bn
+    discovery_method: bounded_indexes
+    discovery_status: active
     discovery_pages:
       - https://bengali.indianexpress.com/west-bengal
     urls:
       - https://bengali.indianexpress.com/west-bengal/kolkata-food-safety-drive-peter-cat-mocambo-stale-food-raids-restaurants-12494649
       - https://bengali.indianexpress.com/west-bengal/kolkata-dacres-lane-food-safety-raid-stale-laddus-makha-sandesh-12498296
+      - https://bengali.indianexpress.com/west-bengal/wb-food-safety-raid-rotten-meat-recovered-12482621
+      - https://bengali.indianexpress.com/west-bengal/food-safety-week-west-bengal-restaurant-raids-rotten-meat-consumer-protection-12483687
+      - https://bengali.indianexpress.com/west-bengal/digha-jagannath-temple-food-safety-dept-raid-9000992
   - name: The Telegraph India
     domain: www.telegraphindia.com
     tier: B
     enabled: true
-    discovery_method: curated_urls
+    language: en
+    discovery_status: blocked
+    discovery_method: manual_only
+    manual_only_reason: Repeated normal retrieval failures; no access-control bypass is attempted.
     urls:
       - https://www.telegraphindia.com/amp/my-kolkata/events/park-street-restaurants-raided-as-officials-find-stored-meat-expired-water-bottles-during-kolkata-food-safety-crackdown/cid/2178353
       - https://www.telegraphindia.com/amp/west-bengal/kolkata/stale-laddus-makha-sandesh-thrown-out-during-raids-on-food-stalls-at-dacres-lane-prnt/cid/2178532
@@ -68,6 +93,73 @@ sources:
     domain: www.anandabazar.com
     tier: B
     enabled: true
-    discovery_method: curated_urls
+    language: bn
+    discovery_method: manual_only
+    discovery_status: blocked
+    manual_only_reason: Normal bounded retrieval returned HTTP 403; no bypass is attempted.
     urls:
       - https://www.anandabazar.com/amp/west-bengal/kolkata/kolkata-municipal-corporation-carried-out-surprise-inspections-on-restaurants-in-park-street-and-other-areas-as-part-of-a-statewide-food-safety-crackdown-prnt/cid/1710865
+  - name: Kolkata Municipal Corporation
+    domain: www.kmcgov.in
+    tier: A
+    enabled: false
+    language: multilingual
+    discovery_status: blocked
+    discovery_method: manual_only
+    manual_only_reason: Normal HTTPS retrieval failed during the bounded access check; official URLs remain eligible as manually reviewed leads.
+    urls: []
+  - name: ABP Ananda
+    domain: bengali.abplive.com
+    tier: B
+    enabled: true
+    language: bn
+    discovery_method: bounded_indexes
+    discovery_status: pilot
+    discovery_pages:
+      - https://bengali.abplive.com/district
+    urls:
+      - https://bengali.abplive.com/district/food-safety-raid-on-south-city-mall-jadavpur-breaking-news-1191822
+      - https://bengali.abplive.com/district/rotten-meat-in-absolute-barbeque-s-storeroom-rang-de-basanti-dhaba-license-cancelled-raids-at-multiple-renowned-restaurants-1191753
+      - https://bengali.abplive.com/district/north-24-paraganas/food-safety-authority-raids-bongaoan-restaurant-asks-to-clear-shop-closing-it-1191576
+  - name: News18 Bangla
+    domain: bengali.news18.com
+    tier: B
+    enabled: true
+    language: bn
+    discovery_method: manual_only
+    discovery_status: blocked
+    manual_only_reason: Normal bounded retrieval returned HTTP 403; no bypass is attempted.
+    discovery_pages:
+      - https://bengali.news18.com/news/west-bengal/
+    urls:
+      - https://bengali.news18.com/news/south-bengal/food-department-conducts-raid-in-joynagar-to-verify-purity-of-joynagar-moa-l18-ank-local18-2489376.html
+      - https://bengali.news18.com/news/kolkata/kolkata-6-food-items-failed-in-quality-test-in-footpath-near-muchibazar-area-ank-2523374.html
+  - name: Ei Samay
+    domain: eisamay.com
+    tier: B
+    enabled: true
+    language: bn
+    discovery_method: manual_only
+    discovery_status: blocked
+    manual_only_reason: The reviewed index produced oversized article responses beyond the configured safety cap; the crawler does not evade that limit.
+    urls:
+      - https://eisamay.com/west-bengal-news/kolkata-news/rotten-meat-in-famous-restaurant-china-town-food-safety-department-raids-across-district/200537670.cms
+      - https://eisamay.com/west-bengal-news/howrah-news/raid-in-a-hotel-in-kona-on-sunday-fake-oil-selling-racket-is-also-got-caught-in-hooghly/200538849.cms
+  - name: Sangbad Pratidin
+    domain: m.sangbadpratidin.in
+    tier: B
+    enabled: true
+    language: bn
+    discovery_method: curated_urls
+    discovery_status: pilot
+    urls:
+      - https://m.sangbadpratidin.in/article/bengal/administration-seals-biryani-shop-in-bongaon-due-to-poor-food-quality/1230869
+  - name: Zee 24 Ghanta
+    domain: zeenews.india.com
+    tier: B
+    enabled: false
+    language: bn
+    discovery_method: manual_only
+    discovery_status: manual_only
+    manual_only_reason: No reliable bounded feed or index has been validated yet.
+    urls: []

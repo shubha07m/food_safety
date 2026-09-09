@@ -1,6 +1,70 @@
 {
-  "record_count": 3,
+  "record_count": 23,
   "records": [
+    {
+      "area": "Park Street",
+      "event_id": "WBFS-13cb858f9dfe",
+      "latitude": 22.5551591,
+      "location_precision": "neighborhood",
+      "location_source": "https://www.openstreetmap.org/",
+      "longitude": 88.3501171
+    },
+    {
+      "area": "South City Mall",
+      "event_id": "WBFS-1a671ff0cb00",
+      "latitude": 22.5015843,
+      "location_precision": "neighborhood",
+      "location_source": "https://www.openstreetmap.org/",
+      "longitude": 88.36171
+    },
+    {
+      "area": "South City Mall",
+      "event_id": "WBFS-1dce1dc6b528",
+      "latitude": 22.5015843,
+      "location_precision": "neighborhood",
+      "location_source": "https://www.openstreetmap.org/",
+      "longitude": 88.36171
+    },
+    {
+      "area": "Sonarpur",
+      "event_id": "WBFS-1e3ff92096f4",
+      "latitude": 22.4441922,
+      "location_precision": "city",
+      "location_source": "https://www.openstreetmap.org/",
+      "longitude": 88.4325557
+    },
+    {
+      "area": "Kamalgazi",
+      "event_id": "WBFS-2a87be3b1aee",
+      "latitude": 22.4495236,
+      "location_precision": "neighborhood",
+      "location_source": "https://www.openstreetmap.org/",
+      "longitude": 88.3955392
+    },
+    {
+      "area": "Dacres Lane",
+      "event_id": "WBFS-2d6ba057efa8",
+      "latitude": 22.5669959,
+      "location_precision": "street",
+      "location_source": "https://www.openstreetmap.org/",
+      "longitude": 88.3496854
+    },
+    {
+      "area": "Dum Dum",
+      "event_id": "WBFS-40c2c19539bf",
+      "latitude": 22.6211141,
+      "location_precision": "neighborhood",
+      "location_source": "https://www.openstreetmap.org/",
+      "longitude": 88.3928973
+    },
+    {
+      "area": "Sector V",
+      "event_id": "WBFS-4fb1b9a7c233",
+      "latitude": 22.5754543,
+      "location_precision": "neighborhood",
+      "location_source": "https://www.openstreetmap.org/",
+      "longitude": 88.4322569
+    },
     {
       "area": "Digha",
       "event_id": "WBFS-56d6626ee956",
@@ -8,6 +72,14 @@
       "location_precision": "city",
       "location_source": "https://www.openstreetmap.org/",
       "longitude": 87.5082534
+    },
+    {
+      "area": "Dacres Lane",
+      "event_id": "WBFS-6de7dac309b3",
+      "latitude": 22.5669959,
+      "location_precision": "street",
+      "location_source": "https://www.openstreetmap.org/",
+      "longitude": 88.3496854
     },
     {
       "area": "Baduria",
@@ -18,12 +90,100 @@
       "longitude": 88.7925594
     },
     {
+      "area": "Jorabagan",
+      "event_id": "WBFS-8e423a7f55e7",
+      "latitude": 22.5903989,
+      "location_precision": "neighborhood",
+      "location_source": "https://www.openstreetmap.org/",
+      "longitude": 88.3571238
+    },
+    {
+      "area": "Park Street",
+      "event_id": "WBFS-8f5630c1ed44",
+      "latitude": 22.5551591,
+      "location_precision": "neighborhood",
+      "location_source": "https://www.openstreetmap.org/",
+      "longitude": 88.3501171
+    },
+    {
+      "area": "Dacres Lane",
+      "event_id": "WBFS-9664baf9ee06",
+      "latitude": 22.5669959,
+      "location_precision": "street",
+      "location_source": "https://www.openstreetmap.org/",
+      "longitude": 88.3496854
+    },
+    {
+      "area": "South City Mall",
+      "event_id": "WBFS-a66bcab3fe68",
+      "latitude": 22.5015843,
+      "location_precision": "neighborhood",
+      "location_source": "https://www.openstreetmap.org/",
+      "longitude": 88.36171
+    },
+    {
+      "area": "Park Street",
+      "event_id": "WBFS-acec95474b4d",
+      "latitude": 22.5551591,
+      "location_precision": "neighborhood",
+      "location_source": "https://www.openstreetmap.org/",
+      "longitude": 88.3501171
+    },
+    {
+      "area": "Park Street",
+      "event_id": "WBFS-b370cb24cd67",
+      "latitude": 22.5551591,
+      "location_precision": "neighborhood",
+      "location_source": "https://www.openstreetmap.org/",
+      "longitude": 88.3501171
+    },
+    {
+      "area": "Gariahat",
+      "event_id": "WBFS-bd37fd0fd837",
+      "latitude": 22.5197789,
+      "location_precision": "neighborhood",
+      "location_source": "https://www.openstreetmap.org/",
+      "longitude": 88.3654297
+    },
+    {
+      "area": "Park Street",
+      "event_id": "WBFS-c33c2b4318e1",
+      "latitude": 22.5551591,
+      "location_precision": "neighborhood",
+      "location_source": "https://www.openstreetmap.org/",
+      "longitude": 88.3501171
+    },
+    {
+      "area": "Dacres Lane",
+      "event_id": "WBFS-c9641b8c4531",
+      "latitude": 22.5669959,
+      "location_precision": "street",
+      "location_source": "https://www.openstreetmap.org/",
+      "longitude": 88.3496854
+    },
+    {
+      "area": "Bowbazar",
+      "event_id": "WBFS-ca4e617582a8",
+      "latitude": 22.5704924,
+      "location_precision": "neighborhood",
+      "location_source": "https://www.openstreetmap.org/",
+      "longitude": 88.3615602
+    },
+    {
       "area": "Tangra",
       "event_id": "WBFS-ce0e970c1361",
       "latitude": 22.5565107,
       "location_precision": "neighborhood",
       "location_source": "https://www.openstreetmap.org/",
       "longitude": 88.3795946
+    },
+    {
+      "area": "Lake Market",
+      "event_id": "WBFS-f880c67a6f96",
+      "latitude": 22.5163786,
+      "location_precision": "neighborhood",
+      "location_source": "https://www.openstreetmap.org/",
+      "longitude": 88.3487233
     }
   ]
 }

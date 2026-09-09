@@ -1,0 +1,361 @@
+{
+  "checks": {
+    "SRC-15e0ca4c8a5c08ff93cf": {
+      "availability": "available",
+      "failures": 0,
+      "first_failure": null,
+      "last_attempt": "2026-09-09T23:09:01.232782+00:00",
+      "last_success": "2026-09-09T23:09:01.232782+00:00",
+      "next_retry": null,
+      "reason": null,
+      "review_due": false,
+      "source_id": "SRC-15e0ca4c8a5c08ff93cf"
+    },
+    "SRC-2558823ea88447502f30": {
+      "availability": "available",
+      "failures": 0,
+      "first_failure": null,
+      "last_attempt": "2026-09-09T23:11:25.626009+00:00",
+      "last_success": "2026-09-09T23:11:25.626009+00:00",
+      "next_retry": null,
+      "reason": null,
+      "review_due": false,
+      "source_id": "SRC-2558823ea88447502f30"
+    },
+    "SRC-292f8bddcb0dd02b35ca": {
+      "availability": "available",
+      "failures": 0,
+      "first_failure": null,
+      "last_attempt": "2026-09-09T23:11:25.626009+00:00",
+      "last_success": "2026-09-09T23:11:25.626009+00:00",
+      "next_retry": null,
+      "reason": null,
+      "review_due": false,
+      "source_id": "SRC-292f8bddcb0dd02b35ca"
+    },
+    "SRC-2dc72771eb00cd4f5f55": {
+      "availability": "available",
+      "failures": 0,
+      "first_failure": null,
+      "last_attempt": "2026-09-09T23:11:25.626009+00:00",
+      "last_success": "2026-09-09T23:11:25.626009+00:00",
+      "next_retry": null,
+      "reason": null,
+      "review_due": false,
+      "source_id": "SRC-2dc72771eb00cd4f5f55",
+      "supported_records": {
+        "WBFS-13cb858f9dfe": "2026-09-09T23:11:25.626009+00:00",
+        "WBFS-1e3ff92096f4": "2026-09-09T23:11:25.626009+00:00",
+        "WBFS-2a87be3b1aee": "2026-09-09T23:11:25.626009+00:00",
+        "WBFS-8f5630c1ed44": "2026-09-09T23:11:25.626009+00:00",
+        "WBFS-acec95474b4d": "2026-09-09T23:11:25.626009+00:00",
+        "WBFS-b370cb24cd67": "2026-09-09T23:11:25.626009+00:00",
+        "WBFS-c33c2b4318e1": "2026-09-09T23:11:25.626009+00:00"
+      }
+    },
+    "SRC-2e412a1322faf9bf8750": {
+      "availability": "unavailable",
+      "failures": 1,
+      "first_failure": "2026-09-09T23:05:56.944065+00:00",
+      "last_attempt": "2026-09-09T23:05:56.944065+00:00",
+      "next_retry": "2026-09-10T03:05:56.944065+00:00",
+      "reason": "content_too_large",
+      "review_due": false,
+      "source_id": "SRC-2e412a1322faf9bf8750"
+    },
+    "SRC-451551bef56a17be854d": {
+      "availability": "available",
+      "failures": 0,
+      "first_failure": null,
+      "last_attempt": "2026-09-09T23:11:25.626009+00:00",
+      "last_success": "2026-09-09T23:11:25.626009+00:00",
+      "next_retry": null,
+      "reason": null,
+      "review_due": false,
+      "source_id": "SRC-451551bef56a17be854d"
+    },
+    "SRC-4b6362da3df85f8c3873": {
+      "availability": "available",
+      "failures": 0,
+      "first_failure": null,
+      "last_attempt": "2026-09-09T23:11:25.626009+00:00",
+      "last_success": "2026-09-09T23:11:25.626009+00:00",
+      "next_retry": null,
+      "reason": null,
+      "review_due": false,
+      "source_id": "SRC-4b6362da3df85f8c3873"
+    },
+    "SRC-4c8cc315415119bda93f": {
+      "availability": "available",
+      "failures": 0,
+      "first_failure": null,
+      "last_attempt": "2026-09-09T23:07:47.845825+00:00",
+      "last_success": "2026-09-09T23:07:47.845825+00:00",
+      "next_retry": null,
+      "reason": null,
+      "review_due": false,
+      "source_id": "SRC-4c8cc315415119bda93f"
+    },
+    "SRC-584628a25a17403f5d40": {
+      "availability": "unavailable",
+      "failures": 1,
+      "first_failure": "2026-09-09T23:05:56.944065+00:00",
+      "last_attempt": "2026-09-09T23:05:56.944065+00:00",
+      "next_retry": "2026-09-10T03:05:56.944065+00:00",
+      "reason": "http_403",
+      "review_due": false,
+      "source_id": "SRC-584628a25a17403f5d40"
+    },
+    "SRC-59ccf829aa23f90d9dcd": {
+      "availability": "available",
+      "failures": 0,
+      "first_failure": null,
+      "last_attempt": "2026-09-09T23:11:25.626009+00:00",
+      "last_success": "2026-09-09T23:11:25.626009+00:00",
+      "next_retry": null,
+      "reason": null,
+      "review_due": false,
+      "source_id": "SRC-59ccf829aa23f90d9dcd",
+      "supported_records": {
+        "WBFS-2d6ba057efa8": "2026-09-09T23:11:25.626009+00:00",
+        "WBFS-40c2c19539bf": "2026-09-09T23:11:25.626009+00:00",
+        "WBFS-6de7dac309b3": "2026-09-09T23:11:25.626009+00:00",
+        "WBFS-8e423a7f55e7": "2026-09-09T23:11:25.626009+00:00",
+        "WBFS-9664baf9ee06": "2026-09-09T23:11:25.626009+00:00",
+        "WBFS-c9641b8c4531": "2026-09-09T23:11:25.626009+00:00",
+        "WBFS-f880c67a6f96": "2026-09-09T23:11:25.626009+00:00"
+      }
+    },
+    "SRC-5bb7de0a745da6920dbe": {
+      "availability": "available",
+      "failures": 0,
+      "first_failure": null,
+      "last_attempt": "2026-09-09T23:11:25.626009+00:00",
+      "last_success": "2026-09-09T23:11:25.626009+00:00",
+      "next_retry": null,
+      "reason": null,
+      "review_due": false,
+      "source_id": "SRC-5bb7de0a745da6920dbe"
+    },
+    "SRC-63889e081d16ae51a4c9": {
+      "availability": "available",
+      "failures": 0,
+      "first_failure": null,
+      "last_attempt": "2026-09-09T23:11:25.626009+00:00",
+      "last_success": "2026-09-09T23:11:25.626009+00:00",
+      "next_retry": null,
+      "reason": null,
+      "review_due": false,
+      "source_id": "SRC-63889e081d16ae51a4c9"
+    },
+    "SRC-793383253f504429c2fb": {
+      "availability": "unavailable",
+      "failures": 1,
+      "first_failure": "2026-09-09T23:09:01.232782+00:00",
+      "last_attempt": "2026-09-09T23:09:01.232782+00:00",
+      "next_retry": "2026-09-10T03:09:01.232782+00:00",
+      "reason": "content_too_large",
+      "review_due": false,
+      "source_id": "SRC-793383253f504429c2fb"
+    },
+    "SRC-81fa8b661606c4aa0245": {
+      "availability": "available",
+      "failures": 0,
+      "first_failure": null,
+      "last_attempt": "2026-09-09T23:11:25.626009+00:00",
+      "last_success": "2026-09-09T23:11:25.626009+00:00",
+      "next_retry": null,
+      "reason": null,
+      "review_due": false,
+      "source_id": "SRC-81fa8b661606c4aa0245"
+    },
+    "SRC-8f8f07c75d8f6bf2ee85": {
+      "availability": "available",
+      "failures": 0,
+      "first_failure": null,
+      "last_attempt": "2026-09-09T23:05:56.944065+00:00",
+      "last_success": "2026-09-09T23:05:56.944065+00:00",
+      "next_retry": null,
+      "reason": null,
+      "review_due": false,
+      "source_id": "SRC-8f8f07c75d8f6bf2ee85"
+    },
+    "SRC-95d69df5ac8c297ddf1a": {
+      "availability": "available",
+      "failures": 0,
+      "first_failure": null,
+      "last_attempt": "2026-09-09T22:27:35.798745+00:00",
+      "last_success": "2026-09-09T22:27:35.798745+00:00",
+      "next_retry": null,
+      "reason": null,
+      "review_due": false,
+      "source_id": "SRC-95d69df5ac8c297ddf1a",
+      "supported_records": {
+        "WBFS-22a7207f8823": "2026-09-09T22:27:35.798745+00:00",
+        "WBFS-236ee7e08350": "2026-09-09T22:27:35.798745+00:00",
+        "WBFS-34ad5ff406c7": "2026-09-09T22:27:35.798745+00:00",
+        "WBFS-56d6626ee956": "2026-09-09T22:27:35.798745+00:00",
+        "WBFS-8a5df7f75276": "2026-09-09T22:27:35.798745+00:00"
+      }
+    },
+    "SRC-9725f02d157f97e5ef0e": {
+      "availability": "available",
+      "failures": 0,
+      "first_failure": null,
+      "last_attempt": "2026-09-09T23:11:25.626009+00:00",
+      "last_success": "2026-09-09T23:11:25.626009+00:00",
+      "next_retry": null,
+      "reason": null,
+      "review_due": false,
+      "source_id": "SRC-9725f02d157f97e5ef0e",
+      "supported_records": {
+        "WBFS-1a671ff0cb00": "2026-09-09T23:11:25.626009+00:00",
+        "WBFS-1dce1dc6b528": "2026-09-09T23:11:25.626009+00:00",
+        "WBFS-323ec48706a8": "2026-09-09T23:11:25.626009+00:00",
+        "WBFS-36dcf26562c9": "2026-09-09T23:11:25.626009+00:00",
+        "WBFS-42d3961e2f90": "2026-09-09T23:11:25.626009+00:00",
+        "WBFS-5b37a8259b91": "2026-09-09T23:11:25.626009+00:00",
+        "WBFS-a66bcab3fe68": "2026-09-09T23:11:25.626009+00:00"
+      }
+    },
+    "SRC-b7202b06fe707b37481a": {
+      "availability": "available",
+      "failures": 0,
+      "first_failure": null,
+      "last_attempt": "2026-09-09T22:27:35.798745+00:00",
+      "last_success": "2026-09-09T22:27:35.798745+00:00",
+      "next_retry": null,
+      "reason": null,
+      "review_due": false,
+      "source_id": "SRC-b7202b06fe707b37481a",
+      "supported_records": {
+        "WBFS-36131288fc72": "2026-09-09T22:27:35.798745+00:00",
+        "WBFS-4fb1b9a7c233": "2026-09-09T22:27:35.798745+00:00",
+        "WBFS-7414c293e43a": "2026-09-09T22:27:35.798745+00:00",
+        "WBFS-b4cb5982e1de": "2026-09-09T22:27:35.798745+00:00",
+        "WBFS-fb6dd3f19af8": "2026-09-09T22:27:35.798745+00:00"
+      }
+    },
+    "SRC-bd22c7b43e5f07f4c4bd": {
+      "availability": "unavailable",
+      "failures": 1,
+      "first_failure": "2026-09-09T23:05:56.944065+00:00",
+      "last_attempt": "2026-09-09T23:05:56.944065+00:00",
+      "next_retry": "2026-09-10T03:05:56.944065+00:00",
+      "reason": "http_403",
+      "review_due": false,
+      "source_id": "SRC-bd22c7b43e5f07f4c4bd"
+    },
+    "SRC-c0c755b9956e51c39485": {
+      "availability": "available",
+      "failures": 0,
+      "first_failure": null,
+      "last_attempt": "2026-09-09T23:11:25.626009+00:00",
+      "last_success": "2026-09-09T23:11:25.626009+00:00",
+      "next_retry": null,
+      "reason": null,
+      "review_due": false,
+      "source_id": "SRC-c0c755b9956e51c39485",
+      "supported_records": {
+        "WBFS-bd37fd0fd837": "2026-09-09T23:11:25.626009+00:00",
+        "WBFS-ca4e617582a8": "2026-09-09T23:11:25.626009+00:00",
+        "WBFS-d7a89f9a34e8": "2026-09-09T23:11:25.626009+00:00"
+      }
+    },
+    "SRC-c8093dbe1ffe89b313e5": {
+      "availability": "available",
+      "failures": 0,
+      "first_failure": null,
+      "last_attempt": "2026-09-09T23:11:25.626009+00:00",
+      "last_success": "2026-09-09T23:11:25.626009+00:00",
+      "next_retry": null,
+      "reason": null,
+      "review_due": false,
+      "source_id": "SRC-c8093dbe1ffe89b313e5"
+    },
+    "SRC-c899caa09075ad06cf7d": {
+      "availability": "available",
+      "failures": 0,
+      "first_failure": null,
+      "last_attempt": "2026-09-09T23:11:25.626009+00:00",
+      "last_success": "2026-09-09T23:11:25.626009+00:00",
+      "next_retry": null,
+      "reason": null,
+      "review_due": false,
+      "source_id": "SRC-c899caa09075ad06cf7d"
+    },
+    "SRC-d3650994e2a5867e428a": {
+      "availability": "available",
+      "failures": 0,
+      "first_failure": null,
+      "last_attempt": "2026-09-09T23:11:25.626009+00:00",
+      "last_success": "2026-09-09T23:11:25.626009+00:00",
+      "next_retry": null,
+      "reason": null,
+      "review_due": false,
+      "source_id": "SRC-d3650994e2a5867e428a"
+    },
+    "SRC-d6378f0c47771bf00367": {
+      "availability": "available",
+      "failures": 0,
+      "first_failure": null,
+      "last_attempt": "2026-09-09T22:27:35.798745+00:00",
+      "last_success": "2026-09-09T22:27:35.798745+00:00",
+      "next_retry": null,
+      "reason": null,
+      "review_due": false,
+      "source_id": "SRC-d6378f0c47771bf00367",
+      "supported_records": {
+        "WBFS-ce0e970c1361": "2026-09-09T22:27:35.798745+00:00"
+      }
+    },
+    "SRC-e23f6c26a3e4ca21957e": {
+      "availability": "available",
+      "failures": 0,
+      "first_failure": null,
+      "last_attempt": "2026-09-09T23:11:25.626009+00:00",
+      "last_success": "2026-09-09T23:11:25.626009+00:00",
+      "next_retry": null,
+      "reason": null,
+      "review_due": false,
+      "source_id": "SRC-e23f6c26a3e4ca21957e"
+    },
+    "SRC-e87d663f402e07c046a3": {
+      "availability": "available",
+      "failures": 0,
+      "first_failure": null,
+      "last_attempt": "2026-09-09T23:11:25.626009+00:00",
+      "last_success": "2026-09-09T23:11:25.626009+00:00",
+      "next_retry": null,
+      "reason": null,
+      "review_due": false,
+      "source_id": "SRC-e87d663f402e07c046a3"
+    },
+    "SRC-ec927a8e41ae096ec69b": {
+      "availability": "unavailable",
+      "failures": 1,
+      "first_failure": "2026-09-09T23:05:56.944065+00:00",
+      "last_attempt": "2026-09-09T23:05:56.944065+00:00",
+      "next_retry": "2026-09-10T03:05:56.944065+00:00",
+      "reason": "http_403",
+      "review_due": false,
+      "source_id": "SRC-ec927a8e41ae096ec69b"
+    },
+    "SRC-f128005f7c3b20ab473f": {
+      "availability": "unavailable",
+      "failures": 1,
+      "first_failure": "2026-09-09T23:05:56.944065+00:00",
+      "last_attempt": "2026-09-09T23:05:56.944065+00:00",
+      "next_retry": "2026-09-10T03:05:56.944065+00:00",
+      "reason": "http_403",
+      "review_due": false,
+      "source_id": "SRC-f128005f7c3b20ab473f"
+    }
+  },
+  "context_notice": "Independent, non-governmental public-source research. Inclusion is not a finding of wrongdoing. Counts describe records in this tracker, not official totals, prevalence, compliance, risk or group behavior. Read the sources and preserve this context when sharing.",
+  "generated_at": "2026-09-09T23:11:25.626009+00:00",
+  "pipeline_version": "0.3.0",
+  "record_count": 0,
+  "records": [],
+  "schema_version": "1.2.0"
+}

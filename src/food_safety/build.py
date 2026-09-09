@@ -4,11 +4,13 @@ import io
 import json
 import re
 from collections import Counter, defaultdict
+from datetime import datetime, timedelta
 from html import escape
+from urllib.parse import urlsplit
 
 from . import CONTEXT, SCHEMA_VERSION, __version__
 from .config import settings, sources
-from .models import Dataset
+from .models import ComplianceDocument, Dataset
 from .storage import dump, read_events, read_rejected
 from .verify import evidence_errors, publication_errors
 
@@ -63,6 +65,22 @@ def validate(root):
     if (root / "data/.transaction.json").exists():
         raise ValueError("unfinished_data_transaction")
     cfg, policies = settings(root), sources(root)
+    documents = root / "data/compliance.json"
+    if documents.exists():
+        raw = json.loads(documents.read_text())
+        if raw["record_count"] != len(raw["records"]):
+            raise ValueError("document_count_mismatch")
+        for row in raw["records"]:
+            document = ComplianceDocument.model_validate(row)
+            if document.publication_status != "active":
+                raise ValueError("only_reviewed_active_documents_exported")
+            if not any(
+                p.enabled
+                and p.domain == urlsplit(document.source.source_url).hostname
+                and p.tier == document.source.tier
+                for p in policies
+            ):
+                raise ValueError("document_source_not_permitted")
     events, pending = read_events(root, "events"), read_events(root, "pending")
     ids = [e.event_id for e in [*events, *pending]]
     if len(ids) != len(set(ids)):
@@ -185,6 +203,12 @@ def csv_text(records, generated_at=""):
             "schema_version",
             "pipeline_version",
             "record_count",
+            "publication_status",
+            "source_availability",
+            "source_availability_reason",
+            "evidence_support_status",
+            "last_successful_evidence_check_at",
+            "first_published_at",
         ]
     )
     for record in records:
@@ -213,6 +237,12 @@ def csv_text(records, generated_at=""):
             SCHEMA_VERSION,
             __version__,
             len(records),
+            record.publication_status,
+            record.source_availability,
+            record.source_availability_reason,
+            record.evidence_support_status,
+            record.last_successful_evidence_check_at,
+            record.first_published_at,
         ]
         # Prevent spreadsheet formulas, including leading whitespace/control characters.
         writer.writerow(
@@ -226,6 +256,34 @@ def csv_text(records, generated_at=""):
             ]
         )
     return output.getvalue()
+
+
+def lifecycle_counts(records, retired, at):
+    active_ids = {r.event_id for r in records}
+    inactive = {r["event_id"]: r for r in retired if r["event_id"] not in active_ids}
+    states = Counter(r.publication_status for r in records)
+    states.update(r.get("publication_status", "needs_review") for r in inactive.values())
+    first = {r.event_id: r.first_published_at for r in records}
+    for key, row in inactive.items():
+        first[key] = (
+            datetime.fromisoformat(row["first_published_at"])
+            if row.get("first_published_at")
+            else None
+        )
+    clock = datetime.fromisoformat(at)
+    return {
+        "as_of": at,
+        "active": len(active_ids),
+        "ever_published": len(active_ids | set(inactive)),
+        "non_active": len(inactive),
+        "states": dict(sorted(states.items())),
+        "new_last_7_days": sum(
+            value is not None and clock - timedelta(days=7) <= value <= clock
+            for value in first.values()
+        ),
+        "unknown_first_publication": sum(value is None for value in first.values()),
+        "context_notice": CONTEXT,
+    }
 
 
 def build(root):
@@ -263,12 +321,16 @@ def build(root):
         {
             **status,
             "published_count": counts["published"],
-            "pending_count": status.get("held_from_last_scan", 0),
+            "held_from_last_scan": status.get("held_from_last_scan", 0),
         },
     )
     dump(
         site / "repository.json",
-        {"url": counts["repository_url"], "site_url": settings(root).site_url},
+        {
+            "url": counts["repository_url"],
+            "site_url": settings(root).site_url,
+            "community_submission_url": settings(root).community_submission_url,
+        },
     )
     mapped = [
         {
@@ -289,6 +351,12 @@ def build(root):
             "event_id": r.event_id,
             "verification_status": r.verification_status,
             "record_updated_at": r.record_updated_at.isoformat(),
+            "publication_status": r.publication_status,
+            "superseded_by": r.superseded_by,
+            "first_published_at": r.first_published_at.isoformat()
+            if r.first_published_at
+            else None,
+            "source_availability_reason": r.source_availability_reason,
             "context_notice": CONTEXT,
             "source_url_sha256": [
                 hashlib.sha256(s.source_url.encode()).hexdigest() for s in r.sources
@@ -306,6 +374,13 @@ def build(root):
     retirement_data = {**metadata, "record_count": len(retired), "records": retired}
     dump(retired_path, retirement_data)
     dump(site / "data/retired.json", retirement_data)
+    dump(
+        site / "data/lifecycle.json",
+        lifecycle_counts(records, retired, status.get("last_attempt") or public["generated_at"]),
+    )
+    document_path = root / "data/compliance.json"
+    if document_path.exists():
+        dump(site / "data/compliance.json", json.loads(document_path.read_text()))
     for name in POLICIES:
         text = (root / f"{name}.md").read_text()
         target = site / "policies" / f"{name.lower()}.html"

@@ -1,5 +1,7 @@
 # Security policy
 
+The project keeps static deployment. Community intake is an outbound link to a validated HTTPS Google Forms URL, never an embedded public write endpoint. Submitted URLs must separately pass publisher admission and SSRF controls. The optional local CSV importer retains only an allowed source URL and submission type; no raw form response, contact, or reviewer note is public. Retry-After and host failure limits prevent aggressive retries; no anti-bot/TLS bypass is allowed. A source warning never relaxes new-record admission. develop cannot dispatch production ingestion; hosting remains unchanged.
+
 The public site is static HTML/CSS/JavaScript and generated public JSON. There is no public admin endpoint, database write API, login, executable submission content, comments, arbitrary upload or SQL backend. Only the site/ directory may be deployed, after review. Never serve the repository root: it contains private pending/history/configuration.
 
 ## Safeguards
@@ -14,7 +16,7 @@ Dependencies are pinned and CI includes a lightweight audit. Dependabot proposes
 
 ## Reporting
 
-Do not put credentials, exploit details or private data in public Issues. Enable GitHub private vulnerability reporting before a public launch, or coordinate privately with a repository maintainer during private evaluation. No separate security mailbox has been configured; do not invent one. Acknowledge reports as capacity permits and publish a minimal advisory when appropriate.
+Do not put credentials, exploit details or private data in public Issues. Use GitHub private vulnerability reporting when available, or coordinate privately with a repository maintainer. No separate security mailbox has been configured; do not invent one. Acknowledge reports as capacity permits and publish a minimal advisory when appropriate.
 
 ## Maintainer operations
 
@@ -22,4 +24,4 @@ Keep .env and model secrets out of commits and frontend assets. Avoid logging ex
 
 An interrupted data transaction blocks validation and site build. Inspect data/.transaction.json and Git diffs, preserve any useful audit snapshots, restore the last reviewed coherent data set, then remove only that marker after review. Never automatically delete a marker or force a build through inconsistent data.
 
-A partial failed scan can suspend records and still generate safe public changes. The last-successful timestamp does not advance on failure. Cloudflare Git integration deploys validated static artifacts from main. Review historical Git material and old Actions artifacts before changing repository visibility; deleting a current file does not erase prior commits.
+A partial failed scan can add source-availability warnings or eventually archive prolonged unverifiability; transport failure alone does not semantically suspend evidence. The last-successful timestamp does not advance on failure. Cloudflare Git integration deploys validated static artifacts from main.

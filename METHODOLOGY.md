@@ -14,15 +14,42 @@ Event date and publication date are distinct. Missing publication dates and quan
 
 ## Processing and review
 
-Configured curated article URLs → canonicalization → bounded robots-aware fetch → article-text extraction → candidate extraction → per-field evidence checks → sensitive-content checks → conservative association → source-policy checks → pending review or publication → aggregates → static site.
+Bounded publisher indexes, feeds, configured sitemaps, curated URLs, optional permitted search API results and approved community leads → canonicalization → bounded robots-aware fetch → article-text extraction → candidate extraction → per-field evidence checks → sensitive-content checks → conservative association → source-policy checks → pending review or publication → aggregates → static site.
 
-The pipeline has no recursive crawler or search-engine scraping. Two configured index pages per run can supply same-domain discovery links, never evidence. At most six articles are fetched by the scheduled workflow (hard ceiling ten). Robots failure, missing evidence, inaccessible sources, suspicious text and uncertain attribution fail closed. Article bodies exist only in memory during routine processing. Publisher RSS terms must permit the intended use; TOI RSS is not enabled.
+The pipeline has no recursive crawler or search-result HTML scraping. A run may discover up to 80 unique URLs and process at most 20 new/due articles (hard ceiling 30), with separate new-discovery and source-revalidation budgets. Discovery pages, feeds, sitemaps and search results are never evidence. New-record admission fails closed on retrieval failure, missing evidence, suspicious extracted fields or uncertain attribution. Existing records follow the bounded-continuity policy below. Article bodies exist only in memory during routine processing.
 
-There are two publication paths. A maintainer may prepare a schema-valid record and explicitly attest to checking original context and every displayed field; the review command freshly checks sources. Separately, a narrow deterministic adapter can publish an explicit inspection sentence identifying KMC food-safety officials, an inspection/visit action and a whitelisted West Bengal locality. It requires exactly one matching sentence, explicit source publication-date metadata, exact per-field evidence, accessible Tier A/B source, no suspicious/negated/corrected text, valid schema and no unresolved overlapping area/date candidate. It does not assign establishment names, quantities, event dates, legal findings or derived context. Those absent fields stay unknown. Publication date is not event date. An unnamed group visit is one reported event, never a count of individual establishments.
+There are two publication paths. A maintainer may prepare a schema-valid record and explicitly attest to checking original context and every displayed field; the review command freshly checks sources. Separately, narrow deterministic English/Bengali adapters can publish explicit inspection statements containing a supported authority, action and reviewed West Bengal locality. Structured page metadata must establish the source publication date. Exact per-field evidence, an accessible Tier A/B source, safe surrounding context, valid schema and no unresolved duplicate are required. Explicit aggregate quantities create one operation-level record, never the stated number of establishments. Explicitly named establishments may create linked establishment records only when the same bounded span associates each name with the action. Missing values remain unknown. Publication date is not event date.
 
 The config enables the evaluated adapter; the scheduled workflow sets AUTO_PUBLISH=true. Local execution still requires this explicit environment opt-in. Every record must pass publication validation. Automatic records carry automatic_validation provenance, not a fabricated human-review attestation. Ambiguous candidates stay pending or are rejected. The adapter is intentionally narrow: there is no promise that every new article will yield a published record. Maintainers periodically audit new records. Complex attribution, negation, source corrections, menu/business context and legal findings require human review.
 
-## Source tiers and statuses
+## Evidence lifecycle — version 2
+
+Transport failure changes availability. Material uncertainty changes review status. Evidence failure changes publication eligibility. Prolonged unverifiability changes active visibility, not historical truth.
+
+New records need accessible permitted sources, source identity, exact field evidence, date/location support, safe attribution and deduplication. Publication remains strict. English and Bengali deterministic adapters accept only narrowly supported structures; Bengali original text is never replaced by translated evidence.
+
+Source availability (available/unavailable/removed/unknown), evidence support (supported_as_of/needs_review/unsupported/withdrawn), and publication status are separate. SOURCE VERIFIED means the source supported the statement at the recorded check time, not independent proof. A warning retains prior support and its date; no "likely supported" label is used.
+
+| Observation | Publication outcome |
+| --- | --- |
+| Timeout, 403, DNS, robots or technical extraction failure | active_with_warning; preserve dated evidence |
+| Full-page hash changes, retained context and identity still valid | active; retain revision provenance |
+| Relevant correction, meaning or entity relationship uncertain | needs_review; exclude from active analytics |
+| Article explicitly withdrawn | suspended; minimal public status only |
+| No adequate evidence revalidation for 30 days | archived_unverifiable; not disproved |
+| Technical warning resolves with unchanged valid support | automatic active restoration, same ID and first publication |
+| Semantic hold or suspension | human review required; retrieval alone never restores |
+| Reviewed corrected replacement | superseded with explicit replacement relationship |
+
+One canonical URL is checked once per run for its dependent records. Source checks retain bounded reason codes, failure count, attempt/success times and retry eligibility, not article bodies. Retries back off 4, 12 and 24 hours, then daily through day seven and weekly thereafter. Retry-After can lengthen these intervals. Three failures over seven days flag review. Two host failures open a per-run circuit breaker. Missed runs do not refresh timestamps. Thirty-day expiry is measured from the last successful adequate evidence check, including a stalled scheduler.
+
+Evidence decisions are record-specific: a clearly scoped correction affects its named record; unscoped corrections conservatively hold dependent records. Retaining an exact quote is insufficient if nearby new negation changes its meaning. Missing context or changed title/identity requires review, not automatic accusations. Full hashes remain provenance rather than sole suspension triggers. A known source redirect requires reassessment; arbitrary redirects are never trusted as a new identity.
+
+Ever published counts unique prior publications, including active and non-active records. Active includes active_with_warning. Restored records are not new publications. New in seven days uses first_published_at. Suspended/archive pages retain minimal ID/status/history metadata, not disputed claims. No community backlog is shown without a durable queue. Public exports include warning, availability and verification-date fields.
+
+Reviewed cross-source associations link each displayed field to a short source span and explicit event-match/independence attestations. Independent paraphrases may have different wording, but are never fuzzy auto-merged. Distinct publisher names alone do not prove independence. An unreviewed additional association does not replace an existing accepted record. Complex semantic decisions still need a maintainer.
+
+## Source tier interpretation
 
 A: official authority material. B: established identifiable news publishers with accessible articles. C: identifiable publications requiring stronger corroboration; the current policy retains candidates for research but does not publish Tier C evidence. Discovery: snippets, aggregators, social media or other weak material; never fetched into the publication pipeline.
 

@@ -16,7 +16,7 @@ def test_refresh_is_two_hour_bounded_and_has_no_push_loop():
     assert job["env"]["AUTO_PUBLISH"] == "true"
     assert job["permissions"] == {"contents": "write"}
     steps = "\n".join(step.get("run", "") for step in job["steps"])
-    assert "--max-articles 6" in steps
+    assert "--max-articles 20" in steps
     assert "verify_public_output.py" in steps
     assert "git diff --cached --quiet" in steps
     assert "git add ." not in steps
@@ -53,4 +53,5 @@ def test_public_status_does_not_depend_on_private_queue_contents(project):
     status["held_from_last_scan"] = 6
     path.write_text(json.dumps(status))
     build(project)
-    assert json.loads((project / "site/status.json").read_text())["pending_count"] == 6
+    assert json.loads((project / "site/status.json").read_text())["held_from_last_scan"] == 6
+    assert "pending_count" not in json.loads((project / "site/status.json").read_text())
