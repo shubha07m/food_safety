@@ -14,10 +14,16 @@ class SourcePolicy(StrictModel):
     domain: str
     tier: Literal["A", "B", "C", "discovery"]
     enabled: bool = False
-    discovery_method: Literal["curated_urls"] = "curated_urls"
+    language: Literal["en", "bn", "multilingual", "und"] = "und"
+    discovery_method: Literal["curated_urls", "bounded_indexes", "manual_only"] = (
+        "curated_urls"
+    )
+    discovery_status: Literal["active", "pilot", "manual_only", "blocked"] = "pilot"
+    manual_only_reason: str | None = None
     urls: list[URL] = Field(default_factory=list, max_length=20)
-    feed_urls: list[URL] = Field(default_factory=list, max_length=2)
-    discovery_pages: list[URL] = Field(default_factory=list, max_length=2)
+    feed_urls: list[URL] = Field(default_factory=list, max_length=5)
+    sitemap_urls: list[URL] = Field(default_factory=list, max_length=5)
+    discovery_pages: list[URL] = Field(default_factory=list, max_length=5)
 
     @field_validator("domain")
     @classmethod
@@ -33,8 +39,12 @@ class SourcePolicy(StrictModel):
 
 
 class Settings(StrictModel):
-    max_articles_per_run: int = Field(default=10, ge=1, le=10)
-    max_pages_per_source: int = Field(default=5, ge=1, le=5)
+    max_articles_per_run: int = Field(default=20, ge=1, le=30)
+    max_new_articles_per_run: int = Field(default=15, ge=1, le=25)
+    max_rechecks_per_run: int = Field(default=5, ge=1, le=15)
+    max_discovery_candidates_per_run: int = Field(default=80, ge=10, le=100)
+    max_discovery_endpoints_per_run: int = Field(default=8, ge=1, le=15)
+    max_pages_per_source: int = Field(default=5, ge=1, le=8)
     request_timeout_seconds: int = Field(default=15, ge=1, le=30)
     max_response_bytes: int = Field(default=524288, ge=1024, le=1048576)
     max_discovery_response_bytes: int = Field(default=1048576, ge=1024, le=1048576)
@@ -46,6 +56,8 @@ class Settings(StrictModel):
     community_submission_url: URL | None = None
     repository_url: URL | None = None
     site_url: URL = "https://foodsafety.nemoneek.com/"
+    search_provider: Literal["none", "brave"] = "none"
+    max_search_queries_per_run: int = Field(default=4, ge=0, le=6)
 
     @field_validator("community_submission_url")
     @classmethod

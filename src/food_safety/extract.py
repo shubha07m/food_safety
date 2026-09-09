@@ -24,8 +24,6 @@ def text_hash(text):
 
 def deterministic_extract(text):
     """Generate an unnamed candidate only; never guess date, location or establishments."""
-    if claim_risks(text):
-        raise ValueError("suspicious_or_sensitive_content")
     if re.search(r"\b(corrected|correction|withdrawn|retracted|clarification)\b", text, re.I):
         raise ValueError("source_update_requires_review")
     for sentence in re.split(r"(?<=[.!?।])\s+", text):
@@ -35,5 +33,7 @@ def deterministic_extract(text):
             sentence,
             re.I,
         ):
+            if claim_risks(sentence):
+                continue
             return {"reported_observation": sentence}
     raise ValueError("no_bounded_evidence_span")

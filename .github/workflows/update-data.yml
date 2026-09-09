@@ -38,7 +38,7 @@ jobs:
       - name: Limited source scan, no paid APIs
         run: |
           result=0
-          python -m food_safety.cli update --max-articles 6 || result=$?
+          python -m food_safety.cli update --max-articles 20 || result=$?
           # Partial source failure (2) retains validated suspensions; fatal (1) stops.
           test "$result" -eq 0 -o "$result" -eq 2
       - name: Check candidate output

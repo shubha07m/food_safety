@@ -16,7 +16,7 @@ def test_refresh_is_two_hour_bounded_and_has_no_push_loop():
     assert job["env"]["AUTO_PUBLISH"] == "true"
     assert job["permissions"] == {"contents": "write"}
     steps = "\n".join(step.get("run", "") for step in job["steps"])
-    assert "--max-articles 6" in steps
+    assert "--max-articles 20" in steps
     assert "verify_public_output.py" in steps
     assert "git diff --cached --quiet" in steps
     assert "git add ." not in steps

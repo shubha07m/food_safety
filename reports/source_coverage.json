@@ -1,0 +1,265 @@
+{
+  "generated_at": "2026-09-09T23:11:25.626009+00:00",
+  "publishers": [
+    {
+      "article_fetch_status": "not_attempted",
+      "automatic_extraction_status": "not_attempted",
+      "automation": "bounded",
+      "candidate_urls_seen": 0,
+      "discovery_status": "pilot",
+      "domain": "fssai.gov.in",
+      "failures": {},
+      "fetched": 0,
+      "language": "multilingual",
+      "last_successful_discovery": null,
+      "manual_only_reason": null,
+      "mechanisms": [],
+      "publisher": "Food Safety and Standards Authority of India",
+      "records_produced": 0
+    },
+    {
+      "article_fetch_status": "not_attempted",
+      "automatic_extraction_status": "not_attempted",
+      "automation": "bounded",
+      "candidate_urls_seen": 0,
+      "discovery_status": "pilot",
+      "domain": "www.fssai.gov.in",
+      "failures": {},
+      "fetched": 0,
+      "language": "multilingual",
+      "last_successful_discovery": null,
+      "manual_only_reason": null,
+      "mechanisms": [],
+      "publisher": "FSSAI (www host)",
+      "records_produced": 0
+    },
+    {
+      "article_fetch_status": "accessible",
+      "automatic_extraction_status": "not_attempted",
+      "automation": "bounded",
+      "candidate_urls_seen": 1,
+      "discovery_status": "active",
+      "domain": "timesofindia.indiatimes.com",
+      "failures": {
+        "candidate_rejected": 1
+      },
+      "fetched": 5,
+      "language": "en",
+      "last_successful_discovery": "2026-09-09T23:11:25.626009+00:00",
+      "manual_only_reason": null,
+      "mechanisms": [
+        "page"
+      ],
+      "publisher": "The Times of India",
+      "records_produced": 0
+    },
+    {
+      "article_fetch_status": "not_attempted",
+      "automatic_extraction_status": "not_attempted",
+      "automation": "bounded",
+      "candidate_urls_seen": 0,
+      "discovery_status": "active",
+      "domain": "www.businesstoday.in",
+      "failures": {},
+      "fetched": 0,
+      "language": "en",
+      "last_successful_discovery": null,
+      "manual_only_reason": null,
+      "mechanisms": [],
+      "publisher": "Business Today",
+      "records_produced": 0
+    },
+    {
+      "article_fetch_status": "accessible",
+      "automatic_extraction_status": "review_candidate_only",
+      "automation": "bounded",
+      "candidate_urls_seen": 3,
+      "discovery_status": "active",
+      "domain": "tv9bangla.com",
+      "failures": {
+        "candidate_rejected": 2
+      },
+      "fetched": 3,
+      "language": "bn",
+      "last_successful_discovery": "2026-09-09T23:11:25.626009+00:00",
+      "manual_only_reason": null,
+      "mechanisms": [
+        "page"
+      ],
+      "publisher": "TV9 Bangla",
+      "records_produced": 1
+    },
+    {
+      "article_fetch_status": "accessible",
+      "automatic_extraction_status": "review_candidate_only",
+      "automation": "bounded",
+      "candidate_urls_seen": 1,
+      "discovery_status": "pilot",
+      "domain": "www.uniindia.com",
+      "failures": {},
+      "fetched": 1,
+      "language": "en",
+      "last_successful_discovery": null,
+      "manual_only_reason": null,
+      "mechanisms": [],
+      "publisher": "UNI India",
+      "records_produced": 1
+    },
+    {
+      "article_fetch_status": "accessible",
+      "automatic_extraction_status": "review_candidate_only",
+      "automation": "bounded",
+      "candidate_urls_seen": 5,
+      "discovery_status": "active",
+      "domain": "bengali.indianexpress.com",
+      "failures": {},
+      "fetched": 5,
+      "language": "bn",
+      "last_successful_discovery": "2026-09-09T23:11:25.626009+00:00",
+      "manual_only_reason": null,
+      "mechanisms": [
+        "page"
+      ],
+      "publisher": "Indian Express Bangla",
+      "records_produced": 5
+    },
+    {
+      "article_fetch_status": "not_attempted",
+      "automatic_extraction_status": "not_attempted",
+      "automation": "manual_only",
+      "candidate_urls_seen": 0,
+      "discovery_status": "blocked",
+      "domain": "www.telegraphindia.com",
+      "failures": {},
+      "fetched": 0,
+      "language": "en",
+      "last_successful_discovery": null,
+      "manual_only_reason": "Repeated normal retrieval failures; no access-control bypass is attempted.",
+      "mechanisms": [],
+      "publisher": "The Telegraph India",
+      "records_produced": 0
+    },
+    {
+      "article_fetch_status": "not_attempted",
+      "automatic_extraction_status": "not_attempted",
+      "automation": "manual_only",
+      "candidate_urls_seen": 0,
+      "discovery_status": "blocked",
+      "domain": "www.anandabazar.com",
+      "failures": {},
+      "fetched": 0,
+      "language": "bn",
+      "last_successful_discovery": null,
+      "manual_only_reason": "Normal bounded retrieval returned HTTP 403; no bypass is attempted.",
+      "mechanisms": [],
+      "publisher": "Anandabazar",
+      "records_produced": 0
+    },
+    {
+      "article_fetch_status": "not_attempted",
+      "automatic_extraction_status": "not_attempted",
+      "automation": "bounded",
+      "candidate_urls_seen": 0,
+      "discovery_status": "pilot",
+      "domain": "www.kmcgov.in",
+      "failures": {},
+      "fetched": 0,
+      "language": "multilingual",
+      "last_successful_discovery": null,
+      "manual_only_reason": null,
+      "mechanisms": [],
+      "publisher": "Kolkata Municipal Corporation",
+      "records_produced": 0
+    },
+    {
+      "article_fetch_status": "accessible",
+      "automatic_extraction_status": "review_candidate_only",
+      "automation": "bounded",
+      "candidate_urls_seen": 4,
+      "discovery_status": "pilot",
+      "domain": "bengali.abplive.com",
+      "failures": {
+        "candidate_rejected": 1
+      },
+      "fetched": 2,
+      "language": "bn",
+      "last_successful_discovery": "2026-09-09T23:11:25.626009+00:00",
+      "manual_only_reason": null,
+      "mechanisms": [
+        "page"
+      ],
+      "publisher": "ABP Ananda",
+      "records_produced": 1
+    },
+    {
+      "article_fetch_status": "not_attempted",
+      "automatic_extraction_status": "not_attempted",
+      "automation": "manual_only",
+      "candidate_urls_seen": 0,
+      "discovery_status": "blocked",
+      "domain": "bengali.news18.com",
+      "failures": {},
+      "fetched": 0,
+      "language": "bn",
+      "last_successful_discovery": null,
+      "manual_only_reason": "Normal bounded retrieval returned HTTP 403; no bypass is attempted.",
+      "mechanisms": [],
+      "publisher": "News18 Bangla",
+      "records_produced": 0
+    },
+    {
+      "article_fetch_status": "not_attempted",
+      "automatic_extraction_status": "not_attempted",
+      "automation": "bounded",
+      "candidate_urls_seen": 2,
+      "discovery_status": "pilot",
+      "domain": "eisamay.com",
+      "failures": {
+        "content_too_large": 1
+      },
+      "fetched": 0,
+      "language": "bn",
+      "last_successful_discovery": null,
+      "manual_only_reason": null,
+      "mechanisms": [
+        "page"
+      ],
+      "publisher": "Ei Samay",
+      "records_produced": 0
+    },
+    {
+      "article_fetch_status": "not_attempted",
+      "automatic_extraction_status": "not_attempted",
+      "automation": "bounded",
+      "candidate_urls_seen": 1,
+      "discovery_status": "pilot",
+      "domain": "m.sangbadpratidin.in",
+      "failures": {
+        "candidate_rejected": 1
+      },
+      "fetched": 0,
+      "language": "bn",
+      "last_successful_discovery": null,
+      "manual_only_reason": null,
+      "mechanisms": [],
+      "publisher": "Sangbad Pratidin",
+      "records_produced": 0
+    },
+    {
+      "article_fetch_status": "not_attempted",
+      "automatic_extraction_status": "not_attempted",
+      "automation": "manual_only",
+      "candidate_urls_seen": 0,
+      "discovery_status": "manual_only",
+      "domain": "zeenews.india.com",
+      "failures": {},
+      "fetched": 0,
+      "language": "bn",
+      "last_successful_discovery": null,
+      "manual_only_reason": "No reliable bounded feed or index has been validated yet.",
+      "mechanisms": [],
+      "publisher": "Zee 24 Ghanta",
+      "records_produced": 0
+    }
+  ]
+}

@@ -1,6 +1,6 @@
 # Live deployment
 
-Phase 1 on develop is not a production release. Keep the existing main-to-Cloudflare integration unchanged. Reconcile bot-generated production data before any owner-approved merge; see MAINTAINER_GUIDE.md. No new backend, map provider, domain or deployment infrastructure is required.
+Keep the existing main-to-Cloudflare integration unchanged. Reconcile bot-generated production data before any owner-approved develop-to-main merge; see MAINTAINER_GUIDE.md. No new backend, map provider, domain or deployment infrastructure is required.
 
 Canonical public beta: https://foodsafety.nemoneek.com/
 

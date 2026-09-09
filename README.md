@@ -4,8 +4,6 @@ Independent food-information research for West Bengal.
 
 Current module: **Food Safety & Inspection Evidence** (West Bengal Food Safety Evidence Tracker).
 
-This `develop` branch contains Phase 1 changes awaiting owner approval. The live site continues to deploy production `main`; branch data is not a claim about current production totals.
-
 ![West Bengal Food Safety Evidence Tracker — Public Beta](docs/assets/readme_banner.svg)
 
 [![CI](https://github.com/shubha07m/food_safety/actions/workflows/ci.yml/badge.svg)](https://github.com/shubha07m/food_safety/actions/workflows/ci.yml)
@@ -51,7 +49,9 @@ Counts describe indexed reporting, **not prevalence, compliance, authority activ
 
 **Refresh Food Safety Data** is scheduled approximately every two hours (`17 */2 * * *`) and can be run manually in GitHub Actions. Schedules are best-effort, not a freshness guarantee.
 
-The workflow checks up to two configured discovery pages and six articles per run, reserving capacity for discovery and maintenance. New English/Bengali candidates require explicit supported inspection statements and all source, schema and safety gates. Ambiguous new records never publish. Previously published records receive dated access warnings for technical failures, not automatic evidence-failure suspensions. Semantic uncertainty leaves active analytics; 30 days without adequate revalidation leads to an unverifiable archive. Restoration preserves first-publication history. See [the detailed lifecycle](METHODOLOGY.md).
+The workflow draws from bounded publisher indexes, RSS/Atom feeds, configured sitemaps, curated URLs and approved community leads. It can discover up to 80 unique URLs and processes at most 20 new/due articles per run, with separate discovery and revalidation budgets and per-host circuit breaking. An optional Brave Search API adapter is disabled unless a maintainer explicitly configures it. New English/Bengali candidates require explicit supported inspection statements and all source, schema and safety gates. Ambiguous new records never publish. See the current [source coverage report](reports/source_coverage.md).
+
+Previously published records receive dated access warnings for technical failures, not automatic evidence-failure suspensions. Semantic uncertainty leaves active analytics; 30 days without adequate revalidation leads to an unverifiable archive. Restoration preserves first-publication history. See [the detailed lifecycle](METHODOLOGY.md).
 
 Public metrics distinguish Active, Ever published, warning and non-active states. These overlap and must not be added together. Private-response community intake is prepared through a configurable Google Form; no fake form URL or community queue count is displayed. A URL-only **Licensing & Compliance Documents** schema is a manually reviewed pilot with no published documents or quality endorsements. Language, source/revision IDs and field support prepare future research without adding AI, embeddings or a database.
 
@@ -71,9 +71,9 @@ Use **EN | বাংলা** or [`?lang=bn`](https://foodsafety.nemoneek.com/?la
 
 Narrow Bengali ingestion now recognizes explicit authority/location/inspection constructions. It is not general Bengali language understanding: negation, ambiguous entities and unsupported structures remain pending. Discovery is bounded and publisher access restrictions are respected.
 
-© 2026 Shubhabrata Mukherjee · The Bengal FoodPath. Independent public-interest data project. Project code is MIT-licensed where stated. Third-party content and trademarks remain subject to their respective rights.
+Created and maintained by **Shubhabrata Mukherjee** ([@shubha07m](https://github.com/shubha07m)).
 
-Repository publication still requires the separate [historical privacy cleanup](docs/PUBLIC_REPOSITORY_AUDIT.md). This task does not change repository visibility.
+© 2026 Shubhabrata Mukherjee · The Bengal FoodPath. Independent public-interest data project. Project code is MIT-licensed where stated. Third-party content and trademarks remain subject to their respective rights.
 
 ## Run locally
 
@@ -86,7 +86,7 @@ python -m food_safety.cli build
 python -m http.server 8000 --bind 127.0.0.1 --directory site
 ```
 
-An existing local `food` environment can be reused. Python execution and dependencies stay in that environment. For an explicitly bounded local refresh: `AUTO_PUBLISH=true python -m food_safety.cli update --max-articles 3`. This may suspend unavailable source records; inspect the resulting diff.
+An existing local `food` environment can be reused. Python execution and dependencies stay in that environment. For an explicitly bounded local refresh: `AUTO_PUBLISH=true python -m food_safety.cli update --max-articles 3`. Transport failures create warnings rather than evidence suspensions; inspect every resulting diff.
 
 ## Architecture
 
@@ -133,3 +133,7 @@ Read [CONTRIBUTING.md](CONTRIBUTING.md) and the [Code of Conduct](CODE_OF_CONDUC
 **Project policy wording is not legal advice. Independent legal review has not been completed.** This project does not promise legal immunity. Preserve source links and interpretation notices when sharing; third-party commentary does not represent the project. See the full [disclaimer](DISCLAIMER.md).
 
 Code is [MIT licensed](LICENSE). Third-party news content and geographic data are not relicensed by that license. Evidence excerpts retain their original rights; research data reuse must preserve attribution, limitations and applicable third-party rights.
+
+## Professional independence
+
+The Bengal FoodPath is a personal, independent project created and maintained by Shubhabrata Mukherjee. It is not affiliated with, sponsored by, endorsed by, or produced on behalf of Lawrence Berkeley National Laboratory (Berkeley Lab), the University of California, the U.S. Department of Energy, or any current or former employer or professional affiliation of the maintainer. The views, data curation, software, analysis, and project decisions are solely those of the project maintainer and contributors, as stated, and do not represent those organizations. Third-party source content and trademarks remain subject to their respective rights.

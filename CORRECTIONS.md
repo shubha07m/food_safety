@@ -2,7 +2,7 @@
 
 Use the private-response Google Form linked by the website when configured. The maintainer must create it and set community_submission_url; until then the site says the form is coming shortly. No submission automatically changes a record or enters the dataset. GitHub Issues remain for project/tooling discussion, not primary evidence intake.
 
-The public beta is live at https://foodsafety.nemoneek.com/ . On develop, Google Form integration awaits the owner's actual responder URL and release approval. No unconfigured email address or form URL is invented. Private form responses are not published or exported by this repository.
+The public beta is live at https://foodsafety.nemoneek.com/ . Google Form integration remains hidden until the maintainer supplies the real responder URL. No unconfigured email address or form URL is invented. Private form responses are not published or exported by this repository.
 
 Any public intake route must require a source URL where applicable, prohibit arbitrary uploads and unsupported allegations, and never publish submissions automatically. It must remain a controlled manual-review channel rather than a public reporting or comment system.
 

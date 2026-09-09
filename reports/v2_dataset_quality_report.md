@@ -1,7 +1,7 @@
 # V0.2 dataset quality report
 
 Generated from the 35 published records in schema 1.1.0. Counts describe this
-private evaluation sample, not official totals, prevalence, compliance, risk,
+reviewed public-beta sample, not official totals, prevalence, compliance, risk,
 wrongdoing or publisher quality.
 
 ## Coverage

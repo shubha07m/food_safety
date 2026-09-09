@@ -1,8 +1,8 @@
 {
   "context_notice": "Independent, non-governmental public-source research. Inclusion is not a finding of wrongdoing. Counts describe records in this tracker, not official totals, prevalence, compliance, risk or group behavior. Read the sources and preserve this context when sharing.",
-  "generated_at": "2026-09-09T22:34:58.129902+00:00",
+  "generated_at": "2026-09-09T23:11:25.626009+00:00",
   "pipeline_version": "0.3.0",
-  "record_count": 35,
+  "record_count": 38,
   "records": [
     {
       "automatic_validation": null,
@@ -84,26 +84,56 @@
           "note": "Bounded recovery of prior reviewed publication under evidence lifecycle v2.",
           "previous_record_sha256": "92a2ef8a4720ba29ed15227ac08987d8e825e576a3d7a048df21f543a4ca91f4",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-09T23:05:56.944065Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "0b839f9ab7d460209ef845f36311d0e5c512f54f651cce380169e05e8cdfe61f",
+          "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-09T23:07:47.845825Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "6fec6184eef4935eff9635ab50b63b0412ff0162642daa1f1f40256b0605a991",
+          "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-09T23:09:01.232782Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "975a709bcd82a352c26b836a23ea0588ba920344750ae8e421abb11ee65128b7",
+          "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-09T23:11:25.626009Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "0a5d5f96ef8395de1c4fbab10f98f5c491c6b93b1acf5886b3da24174b58dea2",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-09-09T22:27:35.798745Z",
-      "last_successful_evidence_check_at": "2026-09-09T22:27:35.798745Z",
+      "last_source_checked_at": "2026-09-09T23:11:25.626009Z",
+      "last_successful_evidence_check_at": "2026-09-09T23:11:25.626009Z",
       "llm": {
+        "fields_proposed": [],
         "llm_model": null,
         "llm_output_was_validated": false,
         "llm_pipeline_version": null,
         "llm_provider": null,
         "llm_task": null,
-        "llm_used": false
+        "llm_task_version": null,
+        "llm_used": false,
+        "llm_used_at": null,
+        "source_revision_id": null,
+        "validation_result": "not_used"
       },
       "location_id": null,
-      "pipeline_version": "0.2.0",
+      "pipeline_version": "0.3.0",
       "publication_status": "active",
       "record_class": "inspection_evidence",
       "record_created_at": "2026-09-07T21:12:32.942437Z",
       "record_scope": "unknown",
-      "record_updated_at": "2026-09-09T22:27:35.798745Z",
+      "record_updated_at": "2026-09-09T23:11:25.626009Z",
+      "related_record_ids": [],
       "reported_fact": {
         "area": "Park Street",
         "district": null,
@@ -154,7 +184,7 @@
         {
           "archive_url": null,
           "evidence_context": "Among the big names that were visited by KMC teams on Friday were Peter Cat, Mocambo, Oasis, Kareem’s and Arsalan in Park Street and its neighbouring areas.",
-          "evidence_language": "und",
+          "evidence_language": "en",
           "evidence_locator": null,
           "evidence_quote": "visited by KMC teams",
           "evidence_span_hash": "8438147a3456b91970bee111de307a93a7a24617940e01658498bffcee5255cf",
@@ -162,7 +192,7 @@
           "retrieved_at": "2026-09-07T21:12:32.942437Z",
           "source_date": "2026-09-04",
           "source_id": "SRC-2dc72771eb00cd4f5f55",
-          "source_language": "und",
+          "source_language": "bn",
           "source_publisher": "The Times of India",
           "source_relationship": "unknown",
           "source_revision_id": "a9719c93e3f42bf9fcce863154e4ac5fce3243e773f0d36cf7bcc25827992034",
@@ -176,7 +206,154 @@
       "superseded_by": null,
       "validator_id": "field_evidence_validation",
       "validator_version": "2",
-      "verification_notes": "Bounded recovery of prior reviewed publication under evidence lifecycle v2.",
+      "verification_notes": "Supporting source context revalidated; original evidence retained.",
+      "verification_status": "SOURCE VERIFIED"
+    },
+    {
+      "automatic_validation": {
+        "method": "explicit_inspection_sentence_v2",
+        "pipeline_version": "0.3.0",
+        "validated_at": "2026-09-09T23:11:25.626009Z"
+      },
+      "context_notice": "Independent, non-governmental public-source research. Inclusion is not a finding of wrongdoing. Counts describe records in this tracker, not official totals, prevalence, compliance, risk or group behavior. Read the sources and preserve this context when sharing.",
+      "derived_context": {
+        "action_category": "not reported",
+        "action_category_confidence": "unknown",
+        "action_category_method": null,
+        "action_category_reviewed": false,
+        "action_category_source": null,
+        "business_format": "unknown",
+        "business_format_confidence": "unknown",
+        "business_format_method": null,
+        "business_format_reviewed": false,
+        "business_format_source": null,
+        "derived_confidence": "unknown",
+        "derived_context_method": "Unknown; no contextual inference performed.",
+        "derived_context_sources": [],
+        "establishment_context": "unknown",
+        "establishment_context_confidence": "unknown",
+        "establishment_context_method": null,
+        "establishment_context_reviewed": false,
+        "establishment_context_source": null,
+        "latitude": null,
+        "location_method": null,
+        "location_precision": null,
+        "location_reviewed": false,
+        "location_source": null,
+        "longitude": null,
+        "menu_context": "unknown",
+        "menu_context_confidence": "unknown",
+        "menu_context_method": null,
+        "menu_context_reviewed": false,
+        "menu_context_source": null,
+        "normalized_area": null
+      },
+      "display_summary": "Source reports a source-reported food-safety event involving an unnamed establishment in ডেকার্স লেন.",
+      "establishment_id": null,
+      "event_id": "WBFS-1724bbaec9d9",
+      "evidence_support_status": "supported_as_of",
+      "extractor_id": "explicit_inspection_sentence",
+      "extractor_version": "2",
+      "first_published_at": "2026-09-09T23:11:25.626009Z",
+      "history": [
+        {
+          "at": "2026-09-09T23:11:25.626009Z",
+          "note": "Deterministic inspection and source validation passed.",
+          "previous_record_sha256": null,
+          "status": "SOURCE VERIFIED"
+        }
+      ],
+      "is_fixture": false,
+      "last_source_checked_at": "2026-09-09T23:11:25.626009Z",
+      "last_successful_evidence_check_at": "2026-09-09T23:11:25.626009Z",
+      "llm": {
+        "fields_proposed": [],
+        "llm_model": null,
+        "llm_output_was_validated": false,
+        "llm_pipeline_version": null,
+        "llm_provider": null,
+        "llm_task": null,
+        "llm_task_version": null,
+        "llm_used": false,
+        "llm_used_at": null,
+        "source_revision_id": null,
+        "validation_result": "not_used"
+      },
+      "location_id": null,
+      "pipeline_version": "0.3.0",
+      "publication_status": "active",
+      "record_class": "inspection_evidence",
+      "record_created_at": "2026-09-09T23:11:25.626009Z",
+      "record_scope": "area_operation",
+      "record_updated_at": "2026-09-09T23:11:25.626009Z",
+      "related_record_ids": [],
+      "reported_fact": {
+        "area": "ডেকার্স লেন",
+        "district": null,
+        "establishment_name": null,
+        "establishment_type": null,
+        "event_date": null,
+        "evidence": {
+          "area": {
+            "quote": "কলকাতা পুরসভার স্বাস্থ্য দফতরের একটি দল ডেকার্স লেনের দুই পাশের অন্তত ১৩টি দোকান থেকে বিভিন্ন খাদ্যসামগ্রীর নমুনা সংগ্রহ করে।",
+            "source_url": "https://bengali.indianexpress.com/west-bengal/kolkata-dacres-lane-food-safety-raid-stale-laddus-makha-sandesh-12498296"
+          },
+          "reported_action": {
+            "quote": "কলকাতা পুরসভার স্বাস্থ্য দফতরের একটি দল ডেকার্স লেনের দুই পাশের অন্তত ১৩টি দোকান থেকে বিভিন্ন খাদ্যসামগ্রীর নমুনা সংগ্রহ করে।",
+            "source_url": "https://bengali.indianexpress.com/west-bengal/kolkata-dacres-lane-food-safety-raid-stale-laddus-makha-sandesh-12498296"
+          },
+          "reported_authority": {
+            "quote": "কলকাতা পুরসভার স্বাস্থ্য দফতরের একটি দল ডেকার্স লেনের দুই পাশের অন্তত ১৩টি দোকান থেকে বিভিন্ন খাদ্যসামগ্রীর নমুনা সংগ্রহ করে।",
+            "source_url": "https://bengali.indianexpress.com/west-bengal/kolkata-dacres-lane-food-safety-raid-stale-laddus-makha-sandesh-12498296"
+          },
+          "reported_observation": {
+            "quote": "কলকাতা পুরসভার স্বাস্থ্য দফতরের একটি দল ডেকার্স লেনের দুই পাশের অন্তত ১৩টি দোকান থেকে বিভিন্ন খাদ্যসামগ্রীর নমুনা সংগ্রহ করে।",
+            "source_url": "https://bengali.indianexpress.com/west-bengal/kolkata-dacres-lane-food-safety-raid-stale-laddus-makha-sandesh-12498296"
+          },
+          "reported_quantity": {
+            "quote": "কলকাতা পুরসভার স্বাস্থ্য দফতরের একটি দল ডেকার্স লেনের দুই পাশের অন্তত ১৩টি দোকান থেকে বিভিন্ন খাদ্যসামগ্রীর নমুনা সংগ্রহ করে।",
+            "source_url": "https://bengali.indianexpress.com/west-bengal/kolkata-dacres-lane-food-safety-raid-stale-laddus-makha-sandesh-12498296"
+          }
+        },
+        "formal_finding": null,
+        "legal_finding_status": "unknown",
+        "reported_action": "নমুনা সংগ্রহ করে",
+        "reported_authority": "কলকাতা পুরসভার স্বাস্থ্য দফতরের একটি দল",
+        "reported_observation": "কলকাতা পুরসভার স্বাস্থ্য দফতরের একটি দল ডেকার্স লেনের দুই পাশের অন্তত ১৩টি দোকান থেকে বিভিন্ন খাদ্যসামগ্রীর নমুনা সংগ্রহ করে।",
+        "reported_quantity": "১৩টি"
+      },
+      "review": null,
+      "reviewed_associations": [],
+      "reviewer_hold": false,
+      "source_availability": "available",
+      "source_availability_reason": null,
+      "sources": [
+        {
+          "archive_url": null,
+          "evidence_context": "কলকাতা পুরসভার স্বাস্থ্য দফতরের একটি দল ডেকার্স লেনের দুই পাশের অন্তত ১৩টি দোকান থেকে বিভিন্ন খাদ্যসামগ্রীর নমুনা সংগ্রহ করে।",
+          "evidence_language": "bn",
+          "evidence_locator": null,
+          "evidence_quote": "কলকাতা পুরসভার স্বাস্থ্য দফতরের একটি দল ডেকার্স লেনের দুই পাশের অন্তত ১৩টি দোকান থেকে বিভিন্ন খাদ্যসামগ্রীর নমুনা সংগ্রহ করে।",
+          "evidence_span_hash": "36823ccd0839f5e551ebfddb2da2b28f541a6bb924a9e6315fb67866c96eec89",
+          "origin_source_id": null,
+          "retrieved_at": "2026-09-09T23:11:25.626009Z",
+          "source_date": "2026-09-06",
+          "source_id": "SRC-c8093dbe1ffe89b313e5",
+          "source_language": "bn",
+          "source_publisher": "Indian Express Bangla",
+          "source_relationship": "unknown",
+          "source_revision_id": "36c1a7979262bb69f08340d26c3a7422ca8ea430eec0140aaae50b767308adba",
+          "source_title": "ডেকার্স লেনের জনপ্রিয় দোকানের খাবারে এসব কী? অভিযান চালিয়ে পিলে চমকালেন ফুড সেফটি আধিকারিকরা",
+          "source_type": "news",
+          "source_url": "https://bengali.indianexpress.com/west-bengal/kolkata-dacres-lane-food-safety-raid-stale-laddus-makha-sandesh-12498296",
+          "text_sha256": "36c1a7979262bb69f08340d26c3a7422ca8ea430eec0140aaae50b767308adba",
+          "tier": "B"
+        }
+      ],
+      "superseded_by": null,
+      "validator_id": "field_evidence_validation",
+      "validator_version": "2",
+      "verification_notes": "Automatic exact-source inspection adapter; no human review is claimed. Publication date is used; event date is not established.",
       "verification_status": "SOURCE VERIFIED"
     },
     {
@@ -259,26 +436,56 @@
           "note": "Bounded recovery of prior reviewed publication under evidence lifecycle v2.",
           "previous_record_sha256": "39872cc497c95d65e9418d6310c2c7bf02518ce8d3c2c46f68fe17133b0ee1e4",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-09T23:05:56.944065Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "5592095022b26411e349abe6d20ba3328ebfd34edb75abbbd6b2a145b0bc10aa",
+          "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-09T23:07:47.845825Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "4fcc3d93e2c41f34c15fe884437d2ea3a7bfd0ef595d840b12e79cd7b418b8e1",
+          "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-09T23:09:01.232782Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "2bb1034fa76a67885d4ffed9315b33c6e98b1c2bbf9afcf3a80edb9ae9bad4b0",
+          "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-09T23:11:25.626009Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "348ad8977b5acdc68a70b52f1a1ed8d83fecb6a985e69db67fb9a3b19ff85059",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-09-09T22:27:35.798745Z",
-      "last_successful_evidence_check_at": "2026-09-09T22:27:35.798745Z",
+      "last_source_checked_at": "2026-09-09T23:11:25.626009Z",
+      "last_successful_evidence_check_at": "2026-09-09T23:11:25.626009Z",
       "llm": {
+        "fields_proposed": [],
         "llm_model": null,
         "llm_output_was_validated": false,
         "llm_pipeline_version": null,
         "llm_provider": null,
         "llm_task": null,
-        "llm_used": false
+        "llm_task_version": null,
+        "llm_used": false,
+        "llm_used_at": null,
+        "source_revision_id": null,
+        "validation_result": "not_used"
       },
       "location_id": null,
-      "pipeline_version": "0.2.0",
+      "pipeline_version": "0.3.0",
       "publication_status": "active",
       "record_class": "inspection_evidence",
       "record_created_at": "2026-09-07T21:12:32.942437Z",
       "record_scope": "unknown",
-      "record_updated_at": "2026-09-09T22:27:35.798745Z",
+      "record_updated_at": "2026-09-09T23:11:25.626009Z",
+      "related_record_ids": [],
       "reported_fact": {
         "area": "South City Mall",
         "district": null,
@@ -321,7 +528,7 @@
         {
           "archive_url": null,
           "evidence_context": "Amit Bajoria, owner of Lord of the Rings, Warehouse Cafe and Veneto at the South City Mall, said the inspection team suggested them to keep the food for the staff in stainless steel containers instead of aluminium ones.",
-          "evidence_language": "und",
+          "evidence_language": "en",
           "evidence_locator": null,
           "evidence_quote": "inspection team suggested them",
           "evidence_span_hash": "e6241d836599cf978d7703937d02f004b79129bd735d8905a54a0354bb803539",
@@ -329,7 +536,7 @@
           "retrieved_at": "2026-09-07T21:12:32.942437Z",
           "source_date": "2026-09-06",
           "source_id": "SRC-9725f02d157f97e5ef0e",
-          "source_language": "und",
+          "source_language": "bn",
           "source_publisher": "The Times of India",
           "source_relationship": "unknown",
           "source_revision_id": "5d6e2d85e0e3a699bcf132af7ccb10099a148a3044be804db8ffc0092514cc7f",
@@ -343,7 +550,7 @@
       "superseded_by": null,
       "validator_id": "field_evidence_validation",
       "validator_version": "2",
-      "verification_notes": "Bounded recovery of prior reviewed publication under evidence lifecycle v2.",
+      "verification_notes": "Supporting source context revalidated; original evidence retained.",
       "verification_status": "SOURCE VERIFIED"
     },
     {
@@ -426,26 +633,56 @@
           "note": "Bounded recovery of prior reviewed publication under evidence lifecycle v2.",
           "previous_record_sha256": "9917cc67f80489f56d2423b6282a4da28a7486cdaa4a5f03150e22bfdb0c1d86",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-09T23:05:56.944065Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "847b04354f9edaa29c3124422a2106ddf082fe329668e042724bb72d53ea49ab",
+          "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-09T23:07:47.845825Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "b18c4cd97be75ac887943fcf424f026dee11f133d61a9177d3d2ff2f4345932e",
+          "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-09T23:09:01.232782Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "f3b60899ebd5a2a3110196041de921c5bb640cca480e1a88d9ce269a6329835e",
+          "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-09T23:11:25.626009Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "4986fcef9b5f91762f9d76566911c16976a5f7d8bbdc60bbbe69f4cae7322188",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-09-09T22:27:35.798745Z",
-      "last_successful_evidence_check_at": "2026-09-09T22:27:35.798745Z",
+      "last_source_checked_at": "2026-09-09T23:11:25.626009Z",
+      "last_successful_evidence_check_at": "2026-09-09T23:11:25.626009Z",
       "llm": {
+        "fields_proposed": [],
         "llm_model": null,
         "llm_output_was_validated": false,
         "llm_pipeline_version": null,
         "llm_provider": null,
         "llm_task": null,
-        "llm_used": false
+        "llm_task_version": null,
+        "llm_used": false,
+        "llm_used_at": null,
+        "source_revision_id": null,
+        "validation_result": "not_used"
       },
       "location_id": null,
-      "pipeline_version": "0.2.0",
+      "pipeline_version": "0.3.0",
       "publication_status": "active",
       "record_class": "inspection_evidence",
       "record_created_at": "2026-09-07T21:12:32.942437Z",
       "record_scope": "unknown",
-      "record_updated_at": "2026-09-09T22:27:35.798745Z",
+      "record_updated_at": "2026-09-09T23:11:25.626009Z",
+      "related_record_ids": [],
       "reported_fact": {
         "area": "South City Mall",
         "district": null,
@@ -488,7 +725,7 @@
         {
           "archive_url": null,
           "evidence_context": "Amit Bajoria, owner of Lord of the Rings, Warehouse Cafe and Veneto at the South City Mall, said the inspection team suggested them to keep the food for the staff in stainless steel containers instead of aluminium ones.",
-          "evidence_language": "und",
+          "evidence_language": "en",
           "evidence_locator": null,
           "evidence_quote": "inspection team suggested them",
           "evidence_span_hash": "e6241d836599cf978d7703937d02f004b79129bd735d8905a54a0354bb803539",
@@ -496,7 +733,7 @@
           "retrieved_at": "2026-09-07T21:12:32.942437Z",
           "source_date": "2026-09-06",
           "source_id": "SRC-9725f02d157f97e5ef0e",
-          "source_language": "und",
+          "source_language": "bn",
           "source_publisher": "The Times of India",
           "source_relationship": "unknown",
           "source_revision_id": "5d6e2d85e0e3a699bcf132af7ccb10099a148a3044be804db8ffc0092514cc7f",
@@ -510,7 +747,7 @@
       "superseded_by": null,
       "validator_id": "field_evidence_validation",
       "validator_version": "2",
-      "verification_notes": "Bounded recovery of prior reviewed publication under evidence lifecycle v2.",
+      "verification_notes": "Supporting source context revalidated; original evidence retained.",
       "verification_status": "SOURCE VERIFIED"
     },
     {
@@ -593,26 +830,56 @@
           "note": "Bounded recovery of prior reviewed publication under evidence lifecycle v2.",
           "previous_record_sha256": "833b176ce3cd320c16c3253c743b7e6612155398dc445e1dc1658004eaa2d6c6",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-09T23:05:56.944065Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "ebf203d6e76287d49bccd7007afda625b47073f42090c47e6c5f1a428f19cdcd",
+          "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-09T23:07:47.845825Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "e6e14bae9ae8f72578458c91f32475876bfa4f4e2088a12f5a8407c58e880a17",
+          "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-09T23:09:01.232782Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "ada01301679635203603c916cbc2dba87c809bcb86d0ae2cd16940b6ad2153c0",
+          "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-09T23:11:25.626009Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "cf7d2e27f29af5c3368568c01454823ad17452cab12a7b175765cc34dd543778",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-09-09T22:27:35.798745Z",
-      "last_successful_evidence_check_at": "2026-09-09T22:27:35.798745Z",
+      "last_source_checked_at": "2026-09-09T23:11:25.626009Z",
+      "last_successful_evidence_check_at": "2026-09-09T23:11:25.626009Z",
       "llm": {
+        "fields_proposed": [],
         "llm_model": null,
         "llm_output_was_validated": false,
         "llm_pipeline_version": null,
         "llm_provider": null,
         "llm_task": null,
-        "llm_used": false
+        "llm_task_version": null,
+        "llm_used": false,
+        "llm_used_at": null,
+        "source_revision_id": null,
+        "validation_result": "not_used"
       },
       "location_id": null,
-      "pipeline_version": "0.2.0",
+      "pipeline_version": "0.3.0",
       "publication_status": "active",
       "record_class": "inspection_evidence",
       "record_created_at": "2026-09-07T21:12:32.942437Z",
       "record_scope": "unknown",
-      "record_updated_at": "2026-09-09T22:27:35.798745Z",
+      "record_updated_at": "2026-09-09T23:11:25.626009Z",
+      "related_record_ids": [],
       "reported_fact": {
         "area": "Sonarpur",
         "district": null,
@@ -655,7 +922,7 @@
         {
           "archive_url": null,
           "evidence_context": "A similar inspection was also carried out in the Kamalgazi and Sonarpur areas where a sweet shop and a restaurant came under the inspectors’ scanner for “violating” food safety and fire safety norms.",
-          "evidence_language": "und",
+          "evidence_language": "en",
           "evidence_locator": null,
           "evidence_quote": "inspection was also carried out",
           "evidence_span_hash": "acf07023749cd34e68bf39afd12ef83827f23c4966c7b8994296fd9d6901a66e",
@@ -663,7 +930,7 @@
           "retrieved_at": "2026-09-07T21:12:32.942437Z",
           "source_date": "2026-09-04",
           "source_id": "SRC-2dc72771eb00cd4f5f55",
-          "source_language": "und",
+          "source_language": "bn",
           "source_publisher": "The Times of India",
           "source_relationship": "unknown",
           "source_revision_id": "a9719c93e3f42bf9fcce863154e4ac5fce3243e773f0d36cf7bcc25827992034",
@@ -677,7 +944,7 @@
       "superseded_by": null,
       "validator_id": "field_evidence_validation",
       "validator_version": "2",
-      "verification_notes": "Bounded recovery of prior reviewed publication under evidence lifecycle v2.",
+      "verification_notes": "Supporting source context revalidated; original evidence retained.",
       "verification_status": "SOURCE VERIFIED"
     },
     {
@@ -754,12 +1021,17 @@
       "last_source_checked_at": "2026-09-09T22:27:35.798745Z",
       "last_successful_evidence_check_at": "2026-09-09T22:27:35.798745Z",
       "llm": {
+        "fields_proposed": [],
         "llm_model": null,
         "llm_output_was_validated": false,
         "llm_pipeline_version": null,
         "llm_provider": null,
         "llm_task": null,
-        "llm_used": false
+        "llm_task_version": null,
+        "llm_used": false,
+        "llm_used_at": null,
+        "source_revision_id": null,
+        "validation_result": "not_used"
       },
       "location_id": null,
       "pipeline_version": "0.2.0",
@@ -768,6 +1040,7 @@
       "record_created_at": "2026-09-07T21:12:32.942437Z",
       "record_scope": "unknown",
       "record_updated_at": "2026-09-09T22:27:35.798745Z",
+      "related_record_ids": [],
       "reported_fact": {
         "area": "Hooghly",
         "district": null,
@@ -905,12 +1178,17 @@
       "last_source_checked_at": "2026-09-09T22:27:35.798745Z",
       "last_successful_evidence_check_at": "2026-09-09T22:27:35.798745Z",
       "llm": {
+        "fields_proposed": [],
         "llm_model": null,
         "llm_output_was_validated": false,
         "llm_pipeline_version": null,
         "llm_provider": null,
         "llm_task": null,
-        "llm_used": false
+        "llm_task_version": null,
+        "llm_used": false,
+        "llm_used_at": null,
+        "source_revision_id": null,
+        "validation_result": "not_used"
       },
       "location_id": null,
       "pipeline_version": "0.2.0",
@@ -919,6 +1197,7 @@
       "record_created_at": "2026-09-07T21:12:32.942437Z",
       "record_scope": "unknown",
       "record_updated_at": "2026-09-09T22:27:35.798745Z",
+      "related_record_ids": [],
       "reported_fact": {
         "area": "East Midnapore",
         "district": null,
@@ -1062,26 +1341,56 @@
           "note": "Bounded recovery of prior reviewed publication under evidence lifecycle v2.",
           "previous_record_sha256": "8ca134c384c165649952b8f40225432bf8eb0ad77dcf32e6b3bf9a35c3aeeabb",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-09T23:05:56.944065Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "9d7e89fd5954bebc587f7ec13766ed3707a2730548ed1060637cc205bb13a202",
+          "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-09T23:07:47.845825Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "79b6bbcaa8b9cc5cc40d44ea9c1c0aff3563884447b18ba14efc91d3d66db5ab",
+          "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-09T23:09:01.232782Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "b8eaabe11123fd2da0e4b99e08379694d0ec3a51129daa8255dad2ec34d14f98",
+          "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-09T23:11:25.626009Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "574a3580b09d985b710ffd9d397ef42f621e885e6d13f1e78317018d20c2c5ed",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-09-09T22:27:35.798745Z",
-      "last_successful_evidence_check_at": "2026-09-09T22:27:35.798745Z",
+      "last_source_checked_at": "2026-09-09T23:11:25.626009Z",
+      "last_successful_evidence_check_at": "2026-09-09T23:11:25.626009Z",
       "llm": {
+        "fields_proposed": [],
         "llm_model": null,
         "llm_output_was_validated": false,
         "llm_pipeline_version": null,
         "llm_provider": null,
         "llm_task": null,
-        "llm_used": false
+        "llm_task_version": null,
+        "llm_used": false,
+        "llm_used_at": null,
+        "source_revision_id": null,
+        "validation_result": "not_used"
       },
       "location_id": null,
-      "pipeline_version": "0.2.0",
+      "pipeline_version": "0.3.0",
       "publication_status": "active",
       "record_class": "inspection_evidence",
       "record_created_at": "2026-09-07T21:12:32.942437Z",
       "record_scope": "unknown",
-      "record_updated_at": "2026-09-09T22:27:35.798745Z",
+      "record_updated_at": "2026-09-09T23:11:25.626009Z",
+      "related_record_ids": [],
       "reported_fact": {
         "area": "Kamalgazi",
         "district": null,
@@ -1124,7 +1433,7 @@
         {
           "archive_url": null,
           "evidence_context": "A similar inspection was also carried out in the Kamalgazi and Sonarpur areas where a sweet shop and a restaurant came under the inspectors’ scanner for “violating” food safety and fire safety norms.",
-          "evidence_language": "und",
+          "evidence_language": "en",
           "evidence_locator": null,
           "evidence_quote": "inspection was also carried out",
           "evidence_span_hash": "acf07023749cd34e68bf39afd12ef83827f23c4966c7b8994296fd9d6901a66e",
@@ -1132,7 +1441,7 @@
           "retrieved_at": "2026-09-07T21:12:32.942437Z",
           "source_date": "2026-09-04",
           "source_id": "SRC-2dc72771eb00cd4f5f55",
-          "source_language": "und",
+          "source_language": "bn",
           "source_publisher": "The Times of India",
           "source_relationship": "unknown",
           "source_revision_id": "a9719c93e3f42bf9fcce863154e4ac5fce3243e773f0d36cf7bcc25827992034",
@@ -1146,7 +1455,7 @@
       "superseded_by": null,
       "validator_id": "field_evidence_validation",
       "validator_version": "2",
-      "verification_notes": "Bounded recovery of prior reviewed publication under evidence lifecycle v2.",
+      "verification_notes": "Supporting source context revalidated; original evidence retained.",
       "verification_status": "SOURCE VERIFIED"
     },
     {
@@ -1229,26 +1538,56 @@
           "note": "Bounded recovery of prior reviewed publication under evidence lifecycle v2.",
           "previous_record_sha256": "d9c22119ad45350c3b38e26408690581a7f14e9dea1641d0b2eee7bfb882972a",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-09T23:05:56.944065Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "93c0babd3674d3be1c259b2ad7e6d66f827d58014d192f036a2ed63dea147f3c",
+          "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-09T23:07:47.845825Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "ab4c9daa87a91e4b8624fea893b3a24e6c5ef712daaf2947c031e35be296a188",
+          "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-09T23:09:01.232782Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "f669a477968d997967939687dd663184b6b059ee7f57e03636ecccac5588c8fd",
+          "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-09T23:11:25.626009Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "c9e38d102c85effcd673ccaf836434a30cefdfb6825b8c630c7a7e7f12971110",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-09-09T22:27:35.798745Z",
-      "last_successful_evidence_check_at": "2026-09-09T22:27:35.798745Z",
+      "last_source_checked_at": "2026-09-09T23:11:25.626009Z",
+      "last_successful_evidence_check_at": "2026-09-09T23:11:25.626009Z",
       "llm": {
+        "fields_proposed": [],
         "llm_model": null,
         "llm_output_was_validated": false,
         "llm_pipeline_version": null,
         "llm_provider": null,
         "llm_task": null,
-        "llm_used": false
+        "llm_task_version": null,
+        "llm_used": false,
+        "llm_used_at": null,
+        "source_revision_id": null,
+        "validation_result": "not_used"
       },
       "location_id": null,
-      "pipeline_version": "0.2.0",
+      "pipeline_version": "0.3.0",
       "publication_status": "active",
       "record_class": "inspection_evidence",
       "record_created_at": "2026-09-07T21:12:32.942437Z",
       "record_scope": "unknown",
-      "record_updated_at": "2026-09-09T22:27:35.798745Z",
+      "record_updated_at": "2026-09-09T23:11:25.626009Z",
+      "related_record_ids": [],
       "reported_fact": {
         "area": "Dacres Lane",
         "district": null,
@@ -1295,7 +1634,7 @@
         {
           "archive_url": null,
           "evidence_context": "At Dacres Lane, the team visited Apanjan, Sharma Sweets, New Chittanjan (Chitto-da) and Suruchi, all popular joints feeding hundreds of people every day.",
-          "evidence_language": "und",
+          "evidence_language": "en",
           "evidence_locator": null,
           "evidence_quote": "the team visited",
           "evidence_span_hash": "7b6f8450443853e49626bd399a019f36ee48da22f1e5a20e65710cf050c73456",
@@ -1303,7 +1642,7 @@
           "retrieved_at": "2026-09-07T21:12:32.942437Z",
           "source_date": "2026-09-05",
           "source_id": "SRC-59ccf829aa23f90d9dcd",
-          "source_language": "und",
+          "source_language": "bn",
           "source_publisher": "The Times of India",
           "source_relationship": "unknown",
           "source_revision_id": "a0ba1381b13004800b9454f6884f44bbfe1d61f60da8f95642dcc35d70891f43",
@@ -1317,7 +1656,7 @@
       "superseded_by": null,
       "validator_id": "field_evidence_validation",
       "validator_version": "2",
-      "verification_notes": "Bounded recovery of prior reviewed publication under evidence lifecycle v2.",
+      "verification_notes": "Supporting source context revalidated; original evidence retained.",
       "verification_status": "SOURCE VERIFIED"
     },
     {
@@ -1394,26 +1733,56 @@
           "note": "Bounded recovery of prior reviewed publication under evidence lifecycle v2.",
           "previous_record_sha256": "0d18e257b0296d75ccbe0786a7bd3df9828412fc9ecd3d00e36e0928b42de28a",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-09T23:05:56.944065Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "d3af8fe58292d32fc795ac5cdd66afae1f3cbe0ee4c6dedfa8024c7c643433f4",
+          "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-09T23:07:47.845825Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "fbf36e5b027d9fdc99fffdaf3eff86320b8a28feab718e2fb5e480a22406f72d",
+          "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-09T23:09:01.232782Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "ef8dbccb6b765b9ab3a85ac08c941cd84890156819296796202da03c3bca57c8",
+          "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-09T23:11:25.626009Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "fd7e1bb4ce8c262096ed089224d9d6dfffc8e3dcff69f0b1531d9e116579db3a",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-09-09T22:27:35.798745Z",
-      "last_successful_evidence_check_at": "2026-09-09T22:27:35.798745Z",
+      "last_source_checked_at": "2026-09-09T23:11:25.626009Z",
+      "last_successful_evidence_check_at": "2026-09-09T23:11:25.626009Z",
       "llm": {
+        "fields_proposed": [],
         "llm_model": null,
         "llm_output_was_validated": false,
         "llm_pipeline_version": null,
         "llm_provider": null,
         "llm_task": null,
-        "llm_used": false
+        "llm_task_version": null,
+        "llm_used": false,
+        "llm_used_at": null,
+        "source_revision_id": null,
+        "validation_result": "not_used"
       },
       "location_id": null,
-      "pipeline_version": "0.2.0",
+      "pipeline_version": "0.3.0",
       "publication_status": "active",
       "record_class": "inspection_evidence",
       "record_created_at": "2026-09-07T21:12:32.942437Z",
       "record_scope": "unknown",
-      "record_updated_at": "2026-09-09T22:27:35.798745Z",
+      "record_updated_at": "2026-09-09T23:11:25.626009Z",
+      "related_record_ids": [],
       "reported_fact": {
         "area": "Kolkata",
         "district": null,
@@ -1460,7 +1829,7 @@
         {
           "archive_url": null,
           "evidence_context": "The Kolkata Municipal Corporation’s food safety drive reached the food courts and restaurants in some of the city’s top malls — South City, Acropolis and Metropolis at Hiland Park — on Sunday.",
-          "evidence_language": "und",
+          "evidence_language": "en",
           "evidence_locator": null,
           "evidence_quote": "food safety drive reached",
           "evidence_span_hash": "8aa11d88047ffe7df4b1b7c1e5ce3989f3be19c41da2b1259fb9a71c1f8fc7cc",
@@ -1468,7 +1837,7 @@
           "retrieved_at": "2026-09-07T21:12:32.942437Z",
           "source_date": "2026-09-06",
           "source_id": "SRC-9725f02d157f97e5ef0e",
-          "source_language": "und",
+          "source_language": "bn",
           "source_publisher": "The Times of India",
           "source_relationship": "unknown",
           "source_revision_id": "5d6e2d85e0e3a699bcf132af7ccb10099a148a3044be804db8ffc0092514cc7f",
@@ -1482,7 +1851,7 @@
       "superseded_by": null,
       "validator_id": "field_evidence_validation",
       "validator_version": "2",
-      "verification_notes": "Bounded recovery of prior reviewed publication under evidence lifecycle v2.",
+      "verification_notes": "Supporting source context revalidated; original evidence retained.",
       "verification_status": "SOURCE VERIFIED"
     },
     {
@@ -1559,12 +1928,17 @@
       "last_source_checked_at": "2026-09-09T22:27:35.798745Z",
       "last_successful_evidence_check_at": "2026-09-09T22:27:35.798745Z",
       "llm": {
+        "fields_proposed": [],
         "llm_model": null,
         "llm_output_was_validated": false,
         "llm_pipeline_version": null,
         "llm_provider": null,
         "llm_task": null,
-        "llm_used": false
+        "llm_task_version": null,
+        "llm_used": false,
+        "llm_used_at": null,
+        "source_revision_id": null,
+        "validation_result": "not_used"
       },
       "location_id": null,
       "pipeline_version": "0.2.0",
@@ -1573,6 +1947,7 @@
       "record_created_at": "2026-09-07T21:12:32.942437Z",
       "record_scope": "unknown",
       "record_updated_at": "2026-09-09T22:27:35.798745Z",
+      "related_record_ids": [],
       "reported_fact": {
         "area": "Shaktigarh",
         "district": null,
@@ -1716,12 +2091,17 @@
       "last_source_checked_at": "2026-09-09T22:27:35.798745Z",
       "last_successful_evidence_check_at": "2026-09-09T22:27:35.798745Z",
       "llm": {
+        "fields_proposed": [],
         "llm_model": null,
         "llm_output_was_validated": false,
         "llm_pipeline_version": null,
         "llm_provider": null,
         "llm_task": null,
-        "llm_used": false
+        "llm_task_version": null,
+        "llm_used": false,
+        "llm_used_at": null,
+        "source_revision_id": null,
+        "validation_result": "not_used"
       },
       "location_id": null,
       "pipeline_version": "0.2.0",
@@ -1730,6 +2110,7 @@
       "record_created_at": "2026-09-07T21:12:32.942437Z",
       "record_scope": "unknown",
       "record_updated_at": "2026-09-09T22:27:35.798745Z",
+      "related_record_ids": [],
       "reported_fact": {
         "area": "মধ‌্যমগ্রামের",
         "district": null,
@@ -1875,26 +2256,56 @@
           "note": "Bounded recovery of prior reviewed publication under evidence lifecycle v2.",
           "previous_record_sha256": "5433fe6ca9ed0d1bc71f77a7d9306616685d681b82ee850b6fab8f1543323aef",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-09T23:05:56.944065Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "8483474e71219bb2c5d2fe5a42b36506dbc4454f0e3d543cc87cdc078fa3eaa7",
+          "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-09T23:07:47.845825Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "62e591d282f9e15cd35593decdb16ee67d66b1a1fb56b51e892856d7f1f9cbe1",
+          "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-09T23:09:01.232782Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "e51d0ad6fb7a22f55c69c638623a5ad9f96d30a27bd106e4c86bd33b09b24c19",
+          "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-09T23:11:25.626009Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "e656e96a244188be2cb2a1802c79c4b0ac14653426e7ce9978065115550ea537",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-09-09T22:27:35.798745Z",
-      "last_successful_evidence_check_at": "2026-09-09T22:27:35.798745Z",
+      "last_source_checked_at": "2026-09-09T23:11:25.626009Z",
+      "last_successful_evidence_check_at": "2026-09-09T23:11:25.626009Z",
       "llm": {
+        "fields_proposed": [],
         "llm_model": null,
         "llm_output_was_validated": false,
         "llm_pipeline_version": null,
         "llm_provider": null,
         "llm_task": null,
-        "llm_used": false
+        "llm_task_version": null,
+        "llm_used": false,
+        "llm_used_at": null,
+        "source_revision_id": null,
+        "validation_result": "not_used"
       },
       "location_id": null,
-      "pipeline_version": "0.2.0",
+      "pipeline_version": "0.3.0",
       "publication_status": "active",
       "record_class": "inspection_evidence",
       "record_created_at": "2026-09-07T21:12:32.942437Z",
       "record_scope": "unknown",
-      "record_updated_at": "2026-09-09T22:27:35.798745Z",
+      "record_updated_at": "2026-09-09T23:11:25.626009Z",
+      "related_record_ids": [],
       "reported_fact": {
         "area": "Kolkata",
         "district": null,
@@ -1941,7 +2352,7 @@
         {
           "archive_url": null,
           "evidence_context": "The Kolkata Municipal Corporation’s food safety drive reached the food courts and restaurants in some of the city’s top malls — South City, Acropolis and Metropolis at Hiland Park — on Sunday.",
-          "evidence_language": "und",
+          "evidence_language": "en",
           "evidence_locator": null,
           "evidence_quote": "food safety drive reached",
           "evidence_span_hash": "8aa11d88047ffe7df4b1b7c1e5ce3989f3be19c41da2b1259fb9a71c1f8fc7cc",
@@ -1949,7 +2360,7 @@
           "retrieved_at": "2026-09-07T21:12:32.942437Z",
           "source_date": "2026-09-06",
           "source_id": "SRC-9725f02d157f97e5ef0e",
-          "source_language": "und",
+          "source_language": "bn",
           "source_publisher": "The Times of India",
           "source_relationship": "unknown",
           "source_revision_id": "5d6e2d85e0e3a699bcf132af7ccb10099a148a3044be804db8ffc0092514cc7f",
@@ -1963,7 +2374,7 @@
       "superseded_by": null,
       "validator_id": "field_evidence_validation",
       "validator_version": "2",
-      "verification_notes": "Bounded recovery of prior reviewed publication under evidence lifecycle v2.",
+      "verification_notes": "Supporting source context revalidated; original evidence retained.",
       "verification_status": "SOURCE VERIFIED"
     },
     {
@@ -2046,26 +2457,56 @@
           "note": "Bounded recovery of prior reviewed publication under evidence lifecycle v2.",
           "previous_record_sha256": "43f3dbb1dd278f47c2c212cc4d0b2107a1a70bbf8173ef2091b3acc8aad7e8c1",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-09T23:05:56.944065Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "493cdcd9caa6d35bd7b3d3b9d2e834a6ff41e27c4d358d5539356a3a507bbd3d",
+          "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-09T23:07:47.845825Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "799ea02cd57c091ba1f859e2d68e120e0d99256778d0246ce4d50f5414bd8dc9",
+          "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-09T23:09:01.232782Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "b626c1b52fee1e813c5627c19d6b385b881c0427cf8565c9369fdc958011342c",
+          "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-09T23:11:25.626009Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "9ae9fdaa529a08c4c198e7976ea30f32813794da624d965ffde475263d098792",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-09-09T22:27:35.798745Z",
-      "last_successful_evidence_check_at": "2026-09-09T22:27:35.798745Z",
+      "last_source_checked_at": "2026-09-09T23:11:25.626009Z",
+      "last_successful_evidence_check_at": "2026-09-09T23:11:25.626009Z",
       "llm": {
+        "fields_proposed": [],
         "llm_model": null,
         "llm_output_was_validated": false,
         "llm_pipeline_version": null,
         "llm_provider": null,
         "llm_task": null,
-        "llm_used": false
+        "llm_task_version": null,
+        "llm_used": false,
+        "llm_used_at": null,
+        "source_revision_id": null,
+        "validation_result": "not_used"
       },
       "location_id": null,
-      "pipeline_version": "0.2.0",
+      "pipeline_version": "0.3.0",
       "publication_status": "active",
       "record_class": "inspection_evidence",
       "record_created_at": "2026-09-07T21:12:32.942437Z",
       "record_scope": "unknown",
-      "record_updated_at": "2026-09-09T22:27:35.798745Z",
+      "record_updated_at": "2026-09-09T23:11:25.626009Z",
+      "related_record_ids": [],
       "reported_fact": {
         "area": "Dum Dum",
         "district": null,
@@ -2108,7 +2549,7 @@
         {
           "archive_url": null,
           "evidence_context": "Separate teams of KMC and the state health department also visited Lake Market, Jorabagan and Dum Dum on Saturday.",
-          "evidence_language": "und",
+          "evidence_language": "en",
           "evidence_locator": null,
           "evidence_quote": "visited Lake Market",
           "evidence_span_hash": "2bf7613a8c619600c2a2546593140c2ceb14e8774a606920a27dc6d61f2402bf",
@@ -2116,7 +2557,7 @@
           "retrieved_at": "2026-09-07T21:12:32.942437Z",
           "source_date": "2026-09-05",
           "source_id": "SRC-59ccf829aa23f90d9dcd",
-          "source_language": "und",
+          "source_language": "bn",
           "source_publisher": "The Times of India",
           "source_relationship": "unknown",
           "source_revision_id": "a0ba1381b13004800b9454f6884f44bbfe1d61f60da8f95642dcc35d70891f43",
@@ -2130,7 +2571,7 @@
       "superseded_by": null,
       "validator_id": "field_evidence_validation",
       "validator_version": "2",
-      "verification_notes": "Bounded recovery of prior reviewed publication under evidence lifecycle v2.",
+      "verification_notes": "Supporting source context revalidated; original evidence retained.",
       "verification_status": "SOURCE VERIFIED"
     },
     {
@@ -2207,26 +2648,56 @@
           "note": "Bounded recovery of prior reviewed publication under evidence lifecycle v2.",
           "previous_record_sha256": "f01dd14d772d7ca881b822c2f45aa407a544dee7a420b51352c2c309b4c739c4",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-09T23:05:56.944065Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "1ecd342b4e702701ac038bf580a8a6e44cad8affe01e76b152bb11e2ea5a9fa6",
+          "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-09T23:07:47.845825Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "3e514c05582ed695458f7b9984aade41b6bd5e66ff9815f7759bbe03986f36aa",
+          "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-09T23:09:01.232782Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "a1714ec2c589d39fe863914544e7ac403ff7d85c50a79a42e574bc4151df2c04",
+          "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-09T23:11:25.626009Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "5ce1b275443b7a3ed1601b3278328a3160e22094f47658480ec3d254a9b3e2b0",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-09-09T22:27:35.798745Z",
-      "last_successful_evidence_check_at": "2026-09-09T22:27:35.798745Z",
+      "last_source_checked_at": "2026-09-09T23:11:25.626009Z",
+      "last_successful_evidence_check_at": "2026-09-09T23:11:25.626009Z",
       "llm": {
+        "fields_proposed": [],
         "llm_model": null,
         "llm_output_was_validated": false,
         "llm_pipeline_version": null,
         "llm_provider": null,
         "llm_task": null,
-        "llm_used": false
+        "llm_task_version": null,
+        "llm_used": false,
+        "llm_used_at": null,
+        "source_revision_id": null,
+        "validation_result": "not_used"
       },
       "location_id": null,
-      "pipeline_version": "0.2.0",
+      "pipeline_version": "0.3.0",
       "publication_status": "active",
       "record_class": "inspection_evidence",
       "record_created_at": "2026-09-07T21:12:32.942437Z",
       "record_scope": "unknown",
-      "record_updated_at": "2026-09-09T22:27:35.798745Z",
+      "record_updated_at": "2026-09-09T23:11:25.626009Z",
+      "related_record_ids": [],
       "reported_fact": {
         "area": "Kolkata",
         "district": null,
@@ -2273,7 +2744,7 @@
         {
           "archive_url": null,
           "evidence_context": "The Kolkata Municipal Corporation’s food safety drive reached the food courts and restaurants in some of the city’s top malls — South City, Acropolis and Metropolis at Hiland Park — on Sunday.",
-          "evidence_language": "und",
+          "evidence_language": "en",
           "evidence_locator": null,
           "evidence_quote": "food safety drive reached",
           "evidence_span_hash": "8aa11d88047ffe7df4b1b7c1e5ce3989f3be19c41da2b1259fb9a71c1f8fc7cc",
@@ -2281,7 +2752,7 @@
           "retrieved_at": "2026-09-07T21:12:32.942437Z",
           "source_date": "2026-09-06",
           "source_id": "SRC-9725f02d157f97e5ef0e",
-          "source_language": "und",
+          "source_language": "bn",
           "source_publisher": "The Times of India",
           "source_relationship": "unknown",
           "source_revision_id": "5d6e2d85e0e3a699bcf132af7ccb10099a148a3044be804db8ffc0092514cc7f",
@@ -2295,7 +2766,7 @@
       "superseded_by": null,
       "validator_id": "field_evidence_validation",
       "validator_version": "2",
-      "verification_notes": "Bounded recovery of prior reviewed publication under evidence lifecycle v2.",
+      "verification_notes": "Supporting source context revalidated; original evidence retained.",
       "verification_status": "SOURCE VERIFIED"
     },
     {
@@ -2384,12 +2855,17 @@
       "last_source_checked_at": "2026-09-09T22:27:35.798745Z",
       "last_successful_evidence_check_at": "2026-09-09T22:27:35.798745Z",
       "llm": {
+        "fields_proposed": [],
         "llm_model": null,
         "llm_output_was_validated": false,
         "llm_pipeline_version": null,
         "llm_provider": null,
         "llm_task": null,
-        "llm_used": false
+        "llm_task_version": null,
+        "llm_used": false,
+        "llm_used_at": null,
+        "source_revision_id": null,
+        "validation_result": "not_used"
       },
       "location_id": null,
       "pipeline_version": "0.2.0",
@@ -2398,6 +2874,7 @@
       "record_created_at": "2026-09-07T21:12:32.942437Z",
       "record_scope": "unknown",
       "record_updated_at": "2026-09-09T22:27:35.798745Z",
+      "related_record_ids": [],
       "reported_fact": {
         "area": "সেক্টর ফাইভের আরডিবি মলের",
         "district": null,
@@ -2549,12 +3026,17 @@
       "last_source_checked_at": "2026-09-09T22:27:35.798745Z",
       "last_successful_evidence_check_at": "2026-09-09T22:27:35.798745Z",
       "llm": {
+        "fields_proposed": [],
         "llm_model": null,
         "llm_output_was_validated": false,
         "llm_pipeline_version": null,
         "llm_provider": null,
         "llm_task": null,
-        "llm_used": false
+        "llm_task_version": null,
+        "llm_used": false,
+        "llm_used_at": null,
+        "source_revision_id": null,
+        "validation_result": "not_used"
       },
       "location_id": null,
       "pipeline_version": "0.2.0",
@@ -2563,6 +3045,7 @@
       "record_created_at": "2026-09-07T21:12:32.942437Z",
       "record_scope": "unknown",
       "record_updated_at": "2026-09-09T22:27:35.798745Z",
+      "related_record_ids": [],
       "reported_fact": {
         "area": "Digha",
         "district": null,
@@ -2704,26 +3187,56 @@
           "note": "Bounded recovery of prior reviewed publication under evidence lifecycle v2.",
           "previous_record_sha256": "d22971339ef285c0bdf3fb480403ff9138ed139a3bca62524e9d7239e4ff622f",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-09T23:05:56.944065Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "b0419576ca1c5a2d60724d26527d0da124194a266437662e6e6804b560df1ac0",
+          "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-09T23:07:47.845825Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "4cdafa45fd872a7051dc90d271ce3e0558eb8b7ce2a82ffd5e7bd01d09f6c20a",
+          "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-09T23:09:01.232782Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "71ae3a92ed3c2dc535ca1d506345b3fde8e3f9f74a9beb463a1dbd1b2064351f",
+          "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-09T23:11:25.626009Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "dacb4244c17b44ebbb2fde8fcbed9dbf9c0a5172ce75338377242c7a1270d15a",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-09-09T22:27:35.798745Z",
-      "last_successful_evidence_check_at": "2026-09-09T22:27:35.798745Z",
+      "last_source_checked_at": "2026-09-09T23:11:25.626009Z",
+      "last_successful_evidence_check_at": "2026-09-09T23:11:25.626009Z",
       "llm": {
+        "fields_proposed": [],
         "llm_model": null,
         "llm_output_was_validated": false,
         "llm_pipeline_version": null,
         "llm_provider": null,
         "llm_task": null,
-        "llm_used": false
+        "llm_task_version": null,
+        "llm_used": false,
+        "llm_used_at": null,
+        "source_revision_id": null,
+        "validation_result": "not_used"
       },
       "location_id": null,
-      "pipeline_version": "0.2.0",
+      "pipeline_version": "0.3.0",
       "publication_status": "active",
       "record_class": "inspection_evidence",
       "record_created_at": "2026-09-07T21:12:32.942437Z",
       "record_scope": "unknown",
-      "record_updated_at": "2026-09-09T22:27:35.798745Z",
+      "record_updated_at": "2026-09-09T23:11:25.626009Z",
+      "related_record_ids": [],
       "reported_fact": {
         "area": "Bentinck Street and Waterloo Street",
         "district": null,
@@ -2770,7 +3283,7 @@
         {
           "archive_url": null,
           "evidence_context": "Inspection teams also visited multiple restaurants in Bentinck Street and Waterloo Street including the popular New Aliah Hotel that serves Mughlai and north Indian delicacies.",
-          "evidence_language": "und",
+          "evidence_language": "en",
           "evidence_locator": null,
           "evidence_quote": "Inspection teams also visited",
           "evidence_span_hash": "fa0adf231a47a334c02464584b996b794f3f9bf95ec795c80f6766a3256c797f",
@@ -2778,7 +3291,7 @@
           "retrieved_at": "2026-09-07T21:12:32.942437Z",
           "source_date": "2026-09-06",
           "source_id": "SRC-9725f02d157f97e5ef0e",
-          "source_language": "und",
+          "source_language": "bn",
           "source_publisher": "The Times of India",
           "source_relationship": "unknown",
           "source_revision_id": "5d6e2d85e0e3a699bcf132af7ccb10099a148a3044be804db8ffc0092514cc7f",
@@ -2792,7 +3305,150 @@
       "superseded_by": null,
       "validator_id": "field_evidence_validation",
       "validator_version": "2",
-      "verification_notes": "Bounded recovery of prior reviewed publication under evidence lifecycle v2.",
+      "verification_notes": "Supporting source context revalidated; original evidence retained.",
+      "verification_status": "SOURCE VERIFIED"
+    },
+    {
+      "automatic_validation": {
+        "method": "explicit_inspection_sentence_v2",
+        "pipeline_version": "0.3.0",
+        "validated_at": "2026-09-09T23:09:01.232782Z"
+      },
+      "context_notice": "Independent, non-governmental public-source research. Inclusion is not a finding of wrongdoing. Counts describe records in this tracker, not official totals, prevalence, compliance, risk or group behavior. Read the sources and preserve this context when sharing.",
+      "derived_context": {
+        "action_category": "not reported",
+        "action_category_confidence": "unknown",
+        "action_category_method": null,
+        "action_category_reviewed": false,
+        "action_category_source": null,
+        "business_format": "unknown",
+        "business_format_confidence": "unknown",
+        "business_format_method": null,
+        "business_format_reviewed": false,
+        "business_format_source": null,
+        "derived_confidence": "unknown",
+        "derived_context_method": "Unknown; no contextual inference performed.",
+        "derived_context_sources": [],
+        "establishment_context": "unknown",
+        "establishment_context_confidence": "unknown",
+        "establishment_context_method": null,
+        "establishment_context_reviewed": false,
+        "establishment_context_source": null,
+        "latitude": null,
+        "location_method": null,
+        "location_precision": null,
+        "location_reviewed": false,
+        "location_source": null,
+        "longitude": null,
+        "menu_context": "unknown",
+        "menu_context_confidence": "unknown",
+        "menu_context_method": null,
+        "menu_context_reviewed": false,
+        "menu_context_source": null,
+        "normalized_area": null
+      },
+      "display_summary": "Source reports a source-reported food-safety event involving an unnamed establishment in কলকাতা.",
+      "establishment_id": null,
+      "event_id": "WBFS-5d8f54ec5d53",
+      "evidence_support_status": "supported_as_of",
+      "extractor_id": "explicit_inspection_sentence",
+      "extractor_version": "2",
+      "first_published_at": "2026-09-09T23:09:01.232782Z",
+      "history": [
+        {
+          "at": "2026-09-09T23:09:01.232782Z",
+          "note": "Deterministic inspection and source validation passed.",
+          "previous_record_sha256": null,
+          "status": "SOURCE VERIFIED"
+        }
+      ],
+      "is_fixture": false,
+      "last_source_checked_at": "2026-09-09T23:09:01.232782Z",
+      "last_successful_evidence_check_at": "2026-09-09T23:09:01.232782Z",
+      "llm": {
+        "fields_proposed": [],
+        "llm_model": null,
+        "llm_output_was_validated": false,
+        "llm_pipeline_version": null,
+        "llm_provider": null,
+        "llm_task": null,
+        "llm_task_version": null,
+        "llm_used": false,
+        "llm_used_at": null,
+        "source_revision_id": null,
+        "validation_result": "not_used"
+      },
+      "location_id": null,
+      "pipeline_version": "0.3.0",
+      "publication_status": "active",
+      "record_class": "inspection_evidence",
+      "record_created_at": "2026-09-09T23:09:01.232782Z",
+      "record_scope": "area_operation",
+      "record_updated_at": "2026-09-09T23:09:01.232782Z",
+      "related_record_ids": [],
+      "reported_fact": {
+        "area": "কলকাতা",
+        "district": null,
+        "establishment_name": null,
+        "establishment_type": null,
+        "event_date": null,
+        "evidence": {
+          "area": {
+            "quote": "কলকাতা: রবিবার সকালে শহর কলকাতার একের পর এক রেস্তোরাঁয় অভিযান চালাচ্ছে খাদ্য সুরক্ষা দফতর।",
+            "source_url": "https://bengali.abplive.com/district/food-safety-raid-on-south-city-mall-jadavpur-breaking-news-1191822"
+          },
+          "reported_action": {
+            "quote": "কলকাতা: রবিবার সকালে শহর কলকাতার একের পর এক রেস্তোরাঁয় অভিযান চালাচ্ছে খাদ্য সুরক্ষা দফতর।",
+            "source_url": "https://bengali.abplive.com/district/food-safety-raid-on-south-city-mall-jadavpur-breaking-news-1191822"
+          },
+          "reported_authority": {
+            "quote": "কলকাতা: রবিবার সকালে শহর কলকাতার একের পর এক রেস্তোরাঁয় অভিযান চালাচ্ছে খাদ্য সুরক্ষা দফতর।",
+            "source_url": "https://bengali.abplive.com/district/food-safety-raid-on-south-city-mall-jadavpur-breaking-news-1191822"
+          },
+          "reported_observation": {
+            "quote": "কলকাতা: রবিবার সকালে শহর কলকাতার একের পর এক রেস্তোরাঁয় অভিযান চালাচ্ছে খাদ্য সুরক্ষা দফতর।",
+            "source_url": "https://bengali.abplive.com/district/food-safety-raid-on-south-city-mall-jadavpur-breaking-news-1191822"
+          }
+        },
+        "formal_finding": null,
+        "legal_finding_status": "unknown",
+        "reported_action": "অভিযান চালাচ্ছে",
+        "reported_authority": "খাদ্য সুরক্ষা দফতর",
+        "reported_observation": "কলকাতা: রবিবার সকালে শহর কলকাতার একের পর এক রেস্তোরাঁয় অভিযান চালাচ্ছে খাদ্য সুরক্ষা দফতর।",
+        "reported_quantity": null
+      },
+      "review": null,
+      "reviewed_associations": [],
+      "reviewer_hold": false,
+      "source_availability": "available",
+      "source_availability_reason": null,
+      "sources": [
+        {
+          "archive_url": null,
+          "evidence_context": "কলকাতা: রবিবার সকালে শহর কলকাতার একের পর এক রেস্তোরাঁয় অভিযান চালাচ্ছে খাদ্য সুরক্ষা দফতর।",
+          "evidence_language": "bn",
+          "evidence_locator": null,
+          "evidence_quote": "কলকাতা: রবিবার সকালে শহর কলকাতার একের পর এক রেস্তোরাঁয় অভিযান চালাচ্ছে খাদ্য সুরক্ষা দফতর।",
+          "evidence_span_hash": "da506a948af807c9dadfbdd25b9305ca5f199400cc1e994a46bd1b1654cfe8d2",
+          "origin_source_id": null,
+          "retrieved_at": "2026-09-09T23:09:01.232782Z",
+          "source_date": "2026-09-06",
+          "source_id": "SRC-15e0ca4c8a5c08ff93cf",
+          "source_language": "bn",
+          "source_publisher": "ABP Ananda",
+          "source_relationship": "unknown",
+          "source_revision_id": "77d3808da0f0efe5891288dfed4a297d3895cc5bac5aebb89437736a2c5cf8c5",
+          "source_title": "Food Safety Raid: এবার সাউথ সিথি মলের রেস্তোরাঁতেও হানা",
+          "source_type": "news",
+          "source_url": "https://bengali.abplive.com/district/food-safety-raid-on-south-city-mall-jadavpur-breaking-news-1191822",
+          "text_sha256": "77d3808da0f0efe5891288dfed4a297d3895cc5bac5aebb89437736a2c5cf8c5",
+          "tier": "B"
+        }
+      ],
+      "superseded_by": null,
+      "validator_id": "field_evidence_validation",
+      "validator_version": "2",
+      "verification_notes": "Automatic exact-source inspection adapter; no human review is claimed. Publication date is used; event date is not established.",
       "verification_status": "SOURCE VERIFIED"
     },
     {
@@ -2875,26 +3531,56 @@
           "note": "Bounded recovery of prior reviewed publication under evidence lifecycle v2.",
           "previous_record_sha256": "be7aef894cbc25ca40852a1dd168e2807e597dcab32db50ea48e14fcdeedaca9",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-09T23:05:56.944065Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "4d47ecaab8d46ac4f197b0befecf648f2a1516199774b5eeb4b46e1bf580ee23",
+          "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-09T23:07:47.845825Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "ee0c7e724502b59af53c09a5a41a99e75fa42682486a7799e9042dc9507e5103",
+          "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-09T23:09:01.232782Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "e293840f9452a9680f75ba2c375118ef2e6df8afdc71b548747b915e988392bc",
+          "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-09T23:11:25.626009Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "6232b73083f317a4947bdd8a017fdd6a52a76c5fe2f24e89a6a9f70f3f581cbe",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-09-09T22:27:35.798745Z",
-      "last_successful_evidence_check_at": "2026-09-09T22:27:35.798745Z",
+      "last_source_checked_at": "2026-09-09T23:11:25.626009Z",
+      "last_successful_evidence_check_at": "2026-09-09T23:11:25.626009Z",
       "llm": {
+        "fields_proposed": [],
         "llm_model": null,
         "llm_output_was_validated": false,
         "llm_pipeline_version": null,
         "llm_provider": null,
         "llm_task": null,
-        "llm_used": false
+        "llm_task_version": null,
+        "llm_used": false,
+        "llm_used_at": null,
+        "source_revision_id": null,
+        "validation_result": "not_used"
       },
       "location_id": null,
-      "pipeline_version": "0.2.0",
+      "pipeline_version": "0.3.0",
       "publication_status": "active",
       "record_class": "inspection_evidence",
       "record_created_at": "2026-09-07T21:12:32.942437Z",
       "record_scope": "unknown",
-      "record_updated_at": "2026-09-09T22:27:35.798745Z",
+      "record_updated_at": "2026-09-09T23:11:25.626009Z",
+      "related_record_ids": [],
       "reported_fact": {
         "area": "Dacres Lane",
         "district": null,
@@ -2941,7 +3627,7 @@
         {
           "archive_url": null,
           "evidence_context": "At Dacres Lane, the team visited Apanjan, Sharma Sweets, New Chittanjan (Chitto-da) and Suruchi, all popular joints feeding hundreds of people every day.",
-          "evidence_language": "und",
+          "evidence_language": "en",
           "evidence_locator": null,
           "evidence_quote": "the team visited",
           "evidence_span_hash": "7b6f8450443853e49626bd399a019f36ee48da22f1e5a20e65710cf050c73456",
@@ -2949,7 +3635,7 @@
           "retrieved_at": "2026-09-07T21:12:32.942437Z",
           "source_date": "2026-09-05",
           "source_id": "SRC-59ccf829aa23f90d9dcd",
-          "source_language": "und",
+          "source_language": "bn",
           "source_publisher": "The Times of India",
           "source_relationship": "unknown",
           "source_revision_id": "a0ba1381b13004800b9454f6884f44bbfe1d61f60da8f95642dcc35d70891f43",
@@ -2963,7 +3649,7 @@
       "superseded_by": null,
       "validator_id": "field_evidence_validation",
       "validator_version": "2",
-      "verification_notes": "Bounded recovery of prior reviewed publication under evidence lifecycle v2.",
+      "verification_notes": "Supporting source context revalidated; original evidence retained.",
       "verification_status": "SOURCE VERIFIED"
     },
     {
@@ -3046,12 +3732,17 @@
       "last_source_checked_at": "2026-09-09T22:27:35.798745Z",
       "last_successful_evidence_check_at": "2026-09-09T22:27:35.798745Z",
       "llm": {
+        "fields_proposed": [],
         "llm_model": null,
         "llm_output_was_validated": false,
         "llm_pipeline_version": null,
         "llm_provider": null,
         "llm_task": null,
-        "llm_used": false
+        "llm_task_version": null,
+        "llm_used": false,
+        "llm_used_at": null,
+        "source_revision_id": null,
+        "validation_result": "not_used"
       },
       "location_id": null,
       "pipeline_version": "0.2.0",
@@ -3060,6 +3751,7 @@
       "record_created_at": "2026-09-07T21:12:32.942437Z",
       "record_scope": "unknown",
       "record_updated_at": "2026-09-09T22:27:35.798745Z",
+      "related_record_ids": [],
       "reported_fact": {
         "area": "মধ্যমগ্রামের",
         "district": null,
@@ -3211,12 +3903,17 @@
       "last_source_checked_at": "2026-09-09T22:27:35.798745Z",
       "last_successful_evidence_check_at": "2026-09-09T22:27:35.798745Z",
       "llm": {
+        "fields_proposed": [],
         "llm_model": null,
         "llm_output_was_validated": false,
         "llm_pipeline_version": null,
         "llm_provider": null,
         "llm_task": null,
-        "llm_used": false
+        "llm_task_version": null,
+        "llm_used": false,
+        "llm_used_at": null,
+        "source_revision_id": null,
+        "validation_result": "not_used"
       },
       "location_id": null,
       "pipeline_version": "0.2.0",
@@ -3225,6 +3922,7 @@
       "record_created_at": "2026-09-07T21:12:32.942437Z",
       "record_scope": "unknown",
       "record_updated_at": "2026-09-09T22:27:35.798745Z",
+      "related_record_ids": [],
       "reported_fact": {
         "area": "Baduria",
         "district": null,
@@ -3376,26 +4074,56 @@
           "note": "Bounded recovery of prior reviewed publication under evidence lifecycle v2.",
           "previous_record_sha256": "6d245c17eaaba61a204c9a34e4f743e1ecf008e47b1b0d565560ebd29947acf8",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-09T23:05:56.944065Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "8d7329bb9c51514f72946e8f74572313dc42db32117786c94d31fe34c5a070e9",
+          "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-09T23:07:47.845825Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "1c2044015546ab1414b68f64f78d69ffa4f17a33566f6ccd65cae0e81956e17a",
+          "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-09T23:09:01.232782Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "bc3bfd8db7855e95f204fd0f40f441c08260bf32b7ad313ae6c953b86c6a06af",
+          "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-09T23:11:25.626009Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "b7b024596a6bed3247d91007000bf6d12722f50e7a9f68adea93451dda40ff46",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-09-09T22:27:35.798745Z",
-      "last_successful_evidence_check_at": "2026-09-09T22:27:35.798745Z",
+      "last_source_checked_at": "2026-09-09T23:11:25.626009Z",
+      "last_successful_evidence_check_at": "2026-09-09T23:11:25.626009Z",
       "llm": {
+        "fields_proposed": [],
         "llm_model": null,
         "llm_output_was_validated": false,
         "llm_pipeline_version": null,
         "llm_provider": null,
         "llm_task": null,
-        "llm_used": false
+        "llm_task_version": null,
+        "llm_used": false,
+        "llm_used_at": null,
+        "source_revision_id": null,
+        "validation_result": "not_used"
       },
       "location_id": null,
-      "pipeline_version": "0.2.0",
+      "pipeline_version": "0.3.0",
       "publication_status": "active",
       "record_class": "inspection_evidence",
       "record_created_at": "2026-09-07T21:12:32.942437Z",
       "record_scope": "unknown",
-      "record_updated_at": "2026-09-09T22:27:35.798745Z",
+      "record_updated_at": "2026-09-09T23:11:25.626009Z",
+      "related_record_ids": [],
       "reported_fact": {
         "area": "Jorabagan",
         "district": null,
@@ -3438,7 +4166,7 @@
         {
           "archive_url": null,
           "evidence_context": "Separate teams of KMC and the state health department also visited Lake Market, Jorabagan and Dum Dum on Saturday.",
-          "evidence_language": "und",
+          "evidence_language": "en",
           "evidence_locator": null,
           "evidence_quote": "visited Lake Market",
           "evidence_span_hash": "2bf7613a8c619600c2a2546593140c2ceb14e8774a606920a27dc6d61f2402bf",
@@ -3446,7 +4174,7 @@
           "retrieved_at": "2026-09-07T21:12:32.942437Z",
           "source_date": "2026-09-05",
           "source_id": "SRC-59ccf829aa23f90d9dcd",
-          "source_language": "und",
+          "source_language": "bn",
           "source_publisher": "The Times of India",
           "source_relationship": "unknown",
           "source_revision_id": "a0ba1381b13004800b9454f6884f44bbfe1d61f60da8f95642dcc35d70891f43",
@@ -3460,7 +4188,7 @@
       "superseded_by": null,
       "validator_id": "field_evidence_validation",
       "validator_version": "2",
-      "verification_notes": "Bounded recovery of prior reviewed publication under evidence lifecycle v2.",
+      "verification_notes": "Supporting source context revalidated; original evidence retained.",
       "verification_status": "SOURCE VERIFIED"
     },
     {
@@ -3543,26 +4271,56 @@
           "note": "Bounded recovery of prior reviewed publication under evidence lifecycle v2.",
           "previous_record_sha256": "5d1541d554e02c6ec2d93b690ebddde3610f2cb6cd345a7d5cb443cd159ded78",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-09T23:05:56.944065Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "f674f37fd57e7b58205cfec96fe55b050d42bbae330a35c2261f9ec90d21ac00",
+          "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-09T23:07:47.845825Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "9cbd5eb84adf0769159cab7a79b950d1690d09e45dd700a04e397040d660e714",
+          "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-09T23:09:01.232782Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "a828d7bf383add91931ba8e49c4a6b16b68f5cf623844ae808b5849cd3af4720",
+          "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-09T23:11:25.626009Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "c351fad4f72b749ea6a091c25bfb4a3d7e193ff3a10bb053013d276a60632f94",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-09-09T22:27:35.798745Z",
-      "last_successful_evidence_check_at": "2026-09-09T22:27:35.798745Z",
+      "last_source_checked_at": "2026-09-09T23:11:25.626009Z",
+      "last_successful_evidence_check_at": "2026-09-09T23:11:25.626009Z",
       "llm": {
+        "fields_proposed": [],
         "llm_model": null,
         "llm_output_was_validated": false,
         "llm_pipeline_version": null,
         "llm_provider": null,
         "llm_task": null,
-        "llm_used": false
+        "llm_task_version": null,
+        "llm_used": false,
+        "llm_used_at": null,
+        "source_revision_id": null,
+        "validation_result": "not_used"
       },
       "location_id": null,
-      "pipeline_version": "0.2.0",
+      "pipeline_version": "0.3.0",
       "publication_status": "active",
       "record_class": "inspection_evidence",
       "record_created_at": "2026-09-07T21:12:32.942437Z",
       "record_scope": "unknown",
-      "record_updated_at": "2026-09-09T22:27:35.798745Z",
+      "record_updated_at": "2026-09-09T23:11:25.626009Z",
+      "related_record_ids": [],
       "reported_fact": {
         "area": "Park Street",
         "district": null,
@@ -3613,7 +4371,7 @@
         {
           "archive_url": null,
           "evidence_context": "Among the big names that were visited by KMC teams on Friday were Peter Cat, Mocambo, Oasis, Kareem’s and Arsalan in Park Street and its neighbouring areas.",
-          "evidence_language": "und",
+          "evidence_language": "en",
           "evidence_locator": null,
           "evidence_quote": "visited by KMC teams",
           "evidence_span_hash": "8438147a3456b91970bee111de307a93a7a24617940e01658498bffcee5255cf",
@@ -3621,7 +4379,7 @@
           "retrieved_at": "2026-09-07T21:12:32.942437Z",
           "source_date": "2026-09-04",
           "source_id": "SRC-2dc72771eb00cd4f5f55",
-          "source_language": "und",
+          "source_language": "bn",
           "source_publisher": "The Times of India",
           "source_relationship": "unknown",
           "source_revision_id": "a9719c93e3f42bf9fcce863154e4ac5fce3243e773f0d36cf7bcc25827992034",
@@ -3635,7 +4393,7 @@
       "superseded_by": null,
       "validator_id": "field_evidence_validation",
       "validator_version": "2",
-      "verification_notes": "Bounded recovery of prior reviewed publication under evidence lifecycle v2.",
+      "verification_notes": "Supporting source context revalidated; original evidence retained.",
       "verification_status": "SOURCE VERIFIED"
     },
     {
@@ -3718,26 +4476,56 @@
           "note": "Bounded recovery of prior reviewed publication under evidence lifecycle v2.",
           "previous_record_sha256": "cb00c93e229c83bb5845488a73251287ec9cc90c0cf0b5f180c7cc6ebdcb6a62",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-09T23:05:56.944065Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "7f4a08eccc395374d3d416260da000fdfbe0c8ef885579346d517d016b15112a",
+          "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-09T23:07:47.845825Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "6d65714a1752d32902d68f158b339d4f304481e102abe947f1c05145a8d0fdab",
+          "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-09T23:09:01.232782Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "ba7c2cc1add64a55fa5e6a178707bce8ead16e667759161d22de99932475cba3",
+          "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-09T23:11:25.626009Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "e1ce7efa94581265580a51c4828995a36c70eeba88252e74cb0491d4a6f0c2da",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-09-09T22:27:35.798745Z",
-      "last_successful_evidence_check_at": "2026-09-09T22:27:35.798745Z",
+      "last_source_checked_at": "2026-09-09T23:11:25.626009Z",
+      "last_successful_evidence_check_at": "2026-09-09T23:11:25.626009Z",
       "llm": {
+        "fields_proposed": [],
         "llm_model": null,
         "llm_output_was_validated": false,
         "llm_pipeline_version": null,
         "llm_provider": null,
         "llm_task": null,
-        "llm_used": false
+        "llm_task_version": null,
+        "llm_used": false,
+        "llm_used_at": null,
+        "source_revision_id": null,
+        "validation_result": "not_used"
       },
       "location_id": null,
-      "pipeline_version": "0.2.0",
+      "pipeline_version": "0.3.0",
       "publication_status": "active",
       "record_class": "inspection_evidence",
       "record_created_at": "2026-09-07T21:12:32.942437Z",
       "record_scope": "unknown",
-      "record_updated_at": "2026-09-09T22:27:35.798745Z",
+      "record_updated_at": "2026-09-09T23:11:25.626009Z",
+      "related_record_ids": [],
       "reported_fact": {
         "area": "Dacres Lane",
         "district": null,
@@ -3784,7 +4572,7 @@
         {
           "archive_url": null,
           "evidence_context": "At Dacres Lane, the team visited Apanjan, Sharma Sweets, New Chittanjan (Chitto-da) and Suruchi, all popular joints feeding hundreds of people every day.",
-          "evidence_language": "und",
+          "evidence_language": "en",
           "evidence_locator": null,
           "evidence_quote": "the team visited",
           "evidence_span_hash": "7b6f8450443853e49626bd399a019f36ee48da22f1e5a20e65710cf050c73456",
@@ -3792,7 +4580,7 @@
           "retrieved_at": "2026-09-07T21:12:32.942437Z",
           "source_date": "2026-09-05",
           "source_id": "SRC-59ccf829aa23f90d9dcd",
-          "source_language": "und",
+          "source_language": "bn",
           "source_publisher": "The Times of India",
           "source_relationship": "unknown",
           "source_revision_id": "a0ba1381b13004800b9454f6884f44bbfe1d61f60da8f95642dcc35d70891f43",
@@ -3806,7 +4594,7 @@
       "superseded_by": null,
       "validator_id": "field_evidence_validation",
       "validator_version": "2",
-      "verification_notes": "Bounded recovery of prior reviewed publication under evidence lifecycle v2.",
+      "verification_notes": "Supporting source context revalidated; original evidence retained.",
       "verification_status": "SOURCE VERIFIED"
     },
     {
@@ -3889,26 +4677,56 @@
           "note": "Bounded recovery of prior reviewed publication under evidence lifecycle v2.",
           "previous_record_sha256": "84653e3a051594325c07033b63b3a9819d1b8a841a53d511c3b258dde3f9fd30",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-09T23:05:56.944065Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "cb5860dde88b6f009e1aaa0fe987fe8e0145ed41f5e7ab13c6adbc4f4e7e2040",
+          "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-09T23:07:47.845825Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "6c3fde0366d0151feafb39ce5b44560bf345f41619e373449ac78ac1aea277b0",
+          "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-09T23:09:01.232782Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "3d772f993f86d008b4dd3826ade26fc75af7d9dac7a6227b3cf9888c3a185148",
+          "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-09T23:11:25.626009Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "c0da510aba48aa772ce646ff827f9d075b48fc579b02d6288b1919db304b33fa",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-09-09T22:27:35.798745Z",
-      "last_successful_evidence_check_at": "2026-09-09T22:27:35.798745Z",
+      "last_source_checked_at": "2026-09-09T23:11:25.626009Z",
+      "last_successful_evidence_check_at": "2026-09-09T23:11:25.626009Z",
       "llm": {
+        "fields_proposed": [],
         "llm_model": null,
         "llm_output_was_validated": false,
         "llm_pipeline_version": null,
         "llm_provider": null,
         "llm_task": null,
-        "llm_used": false
+        "llm_task_version": null,
+        "llm_used": false,
+        "llm_used_at": null,
+        "source_revision_id": null,
+        "validation_result": "not_used"
       },
       "location_id": null,
-      "pipeline_version": "0.2.0",
+      "pipeline_version": "0.3.0",
       "publication_status": "active",
       "record_class": "inspection_evidence",
       "record_created_at": "2026-09-07T21:12:32.942437Z",
       "record_scope": "unknown",
-      "record_updated_at": "2026-09-09T22:27:35.798745Z",
+      "record_updated_at": "2026-09-09T23:11:25.626009Z",
+      "related_record_ids": [],
       "reported_fact": {
         "area": "South City Mall",
         "district": null,
@@ -3951,7 +4769,7 @@
         {
           "archive_url": null,
           "evidence_context": "Amit Bajoria, owner of Lord of the Rings, Warehouse Cafe and Veneto at the South City Mall, said the inspection team suggested them to keep the food for the staff in stainless steel containers instead of aluminium ones.",
-          "evidence_language": "und",
+          "evidence_language": "en",
           "evidence_locator": null,
           "evidence_quote": "inspection team suggested them",
           "evidence_span_hash": "e6241d836599cf978d7703937d02f004b79129bd735d8905a54a0354bb803539",
@@ -3959,7 +4777,7 @@
           "retrieved_at": "2026-09-07T21:12:32.942437Z",
           "source_date": "2026-09-06",
           "source_id": "SRC-9725f02d157f97e5ef0e",
-          "source_language": "und",
+          "source_language": "bn",
           "source_publisher": "The Times of India",
           "source_relationship": "unknown",
           "source_revision_id": "5d6e2d85e0e3a699bcf132af7ccb10099a148a3044be804db8ffc0092514cc7f",
@@ -3973,7 +4791,150 @@
       "superseded_by": null,
       "validator_id": "field_evidence_validation",
       "validator_version": "2",
-      "verification_notes": "Bounded recovery of prior reviewed publication under evidence lifecycle v2.",
+      "verification_notes": "Supporting source context revalidated; original evidence retained.",
+      "verification_status": "SOURCE VERIFIED"
+    },
+    {
+      "automatic_validation": {
+        "method": "explicit_inspection_sentence_v2",
+        "pipeline_version": "0.3.0",
+        "validated_at": "2026-09-09T23:11:25.626009Z"
+      },
+      "context_notice": "Independent, non-governmental public-source research. Inclusion is not a finding of wrongdoing. Counts describe records in this tracker, not official totals, prevalence, compliance, risk or group behavior. Read the sources and preserve this context when sharing.",
+      "derived_context": {
+        "action_category": "not reported",
+        "action_category_confidence": "unknown",
+        "action_category_method": null,
+        "action_category_reviewed": false,
+        "action_category_source": null,
+        "business_format": "unknown",
+        "business_format_confidence": "unknown",
+        "business_format_method": null,
+        "business_format_reviewed": false,
+        "business_format_source": null,
+        "derived_confidence": "unknown",
+        "derived_context_method": "Unknown; no contextual inference performed.",
+        "derived_context_sources": [],
+        "establishment_context": "unknown",
+        "establishment_context_confidence": "unknown",
+        "establishment_context_method": null,
+        "establishment_context_reviewed": false,
+        "establishment_context_source": null,
+        "latitude": null,
+        "location_method": null,
+        "location_precision": null,
+        "location_reviewed": false,
+        "location_source": null,
+        "longitude": null,
+        "menu_context": "unknown",
+        "menu_context_confidence": "unknown",
+        "menu_context_method": null,
+        "menu_context_reviewed": false,
+        "menu_context_source": null,
+        "normalized_area": null
+      },
+      "display_summary": "Source reports a source-reported food-safety event involving an unnamed establishment in পার্ক স্ট্রিট.",
+      "establishment_id": null,
+      "event_id": "WBFS-a86bc6f2f6a4",
+      "evidence_support_status": "supported_as_of",
+      "extractor_id": "explicit_inspection_sentence",
+      "extractor_version": "2",
+      "first_published_at": "2026-09-09T23:11:25.626009Z",
+      "history": [
+        {
+          "at": "2026-09-09T23:11:25.626009Z",
+          "note": "Deterministic inspection and source validation passed.",
+          "previous_record_sha256": null,
+          "status": "SOURCE VERIFIED"
+        }
+      ],
+      "is_fixture": false,
+      "last_source_checked_at": "2026-09-09T23:11:25.626009Z",
+      "last_successful_evidence_check_at": "2026-09-09T23:11:25.626009Z",
+      "llm": {
+        "fields_proposed": [],
+        "llm_model": null,
+        "llm_output_was_validated": false,
+        "llm_pipeline_version": null,
+        "llm_provider": null,
+        "llm_task": null,
+        "llm_task_version": null,
+        "llm_used": false,
+        "llm_used_at": null,
+        "source_revision_id": null,
+        "validation_result": "not_used"
+      },
+      "location_id": null,
+      "pipeline_version": "0.3.0",
+      "publication_status": "active",
+      "record_class": "inspection_evidence",
+      "record_created_at": "2026-09-09T23:11:25.626009Z",
+      "record_scope": "area_operation",
+      "record_updated_at": "2026-09-09T23:11:25.626009Z",
+      "related_record_ids": [],
+      "reported_fact": {
+        "area": "পার্ক স্ট্রিট",
+        "district": null,
+        "establishment_name": null,
+        "establishment_type": null,
+        "event_date": null,
+        "evidence": {
+          "area": {
+            "quote": "শুক্রবার পার্ক স্ট্রিট ও সংলগ্ন এলাকার একাধিক জনপ্রিয় রেস্তোরাঁয় আচমকা পরিদর্শনে যান কলকাতা পুরসভার (KMC) স্বাস্থ্য দফতরের আধিকারিকরা।",
+            "source_url": "https://bengali.indianexpress.com/west-bengal/kolkata-food-safety-drive-peter-cat-mocambo-stale-food-raids-restaurants-12494649"
+          },
+          "reported_action": {
+            "quote": "শুক্রবার পার্ক স্ট্রিট ও সংলগ্ন এলাকার একাধিক জনপ্রিয় রেস্তোরাঁয় আচমকা পরিদর্শনে যান কলকাতা পুরসভার (KMC) স্বাস্থ্য দফতরের আধিকারিকরা।",
+            "source_url": "https://bengali.indianexpress.com/west-bengal/kolkata-food-safety-drive-peter-cat-mocambo-stale-food-raids-restaurants-12494649"
+          },
+          "reported_authority": {
+            "quote": "শুক্রবার পার্ক স্ট্রিট ও সংলগ্ন এলাকার একাধিক জনপ্রিয় রেস্তোরাঁয় আচমকা পরিদর্শনে যান কলকাতা পুরসভার (KMC) স্বাস্থ্য দফতরের আধিকারিকরা।",
+            "source_url": "https://bengali.indianexpress.com/west-bengal/kolkata-food-safety-drive-peter-cat-mocambo-stale-food-raids-restaurants-12494649"
+          },
+          "reported_observation": {
+            "quote": "শুক্রবার পার্ক স্ট্রিট ও সংলগ্ন এলাকার একাধিক জনপ্রিয় রেস্তোরাঁয় আচমকা পরিদর্শনে যান কলকাতা পুরসভার (KMC) স্বাস্থ্য দফতরের আধিকারিকরা।",
+            "source_url": "https://bengali.indianexpress.com/west-bengal/kolkata-food-safety-drive-peter-cat-mocambo-stale-food-raids-restaurants-12494649"
+          }
+        },
+        "formal_finding": null,
+        "legal_finding_status": "unknown",
+        "reported_action": "পরিদর্শনে যান",
+        "reported_authority": "কলকাতা পুরসভার (KMC) স্বাস্থ্য দফতরের আধিকারিকরা",
+        "reported_observation": "শুক্রবার পার্ক স্ট্রিট ও সংলগ্ন এলাকার একাধিক জনপ্রিয় রেস্তোরাঁয় আচমকা পরিদর্শনে যান কলকাতা পুরসভার (KMC) স্বাস্থ্য দফতরের আধিকারিকরা।",
+        "reported_quantity": null
+      },
+      "review": null,
+      "reviewed_associations": [],
+      "reviewer_hold": false,
+      "source_availability": "available",
+      "source_availability_reason": null,
+      "sources": [
+        {
+          "archive_url": null,
+          "evidence_context": "শুক্রবার পার্ক স্ট্রিট ও সংলগ্ন এলাকার একাধিক জনপ্রিয় রেস্তোরাঁয় আচমকা পরিদর্শনে যান কলকাতা পুরসভার (KMC) স্বাস্থ্য দফতরের আধিকারিকরা।",
+          "evidence_language": "bn",
+          "evidence_locator": null,
+          "evidence_quote": "শুক্রবার পার্ক স্ট্রিট ও সংলগ্ন এলাকার একাধিক জনপ্রিয় রেস্তোরাঁয় আচমকা পরিদর্শনে যান কলকাতা পুরসভার (KMC) স্বাস্থ্য দফতরের আধিকারিকরা।",
+          "evidence_span_hash": "2538f93e7d916f85df990d156455bea2fbd93bdbc250f16f0cd679bfe9dd41af",
+          "origin_source_id": null,
+          "retrieved_at": "2026-09-09T23:11:25.626009Z",
+          "source_date": "2026-09-05",
+          "source_id": "SRC-e87d663f402e07c046a3",
+          "source_language": "bn",
+          "source_publisher": "Indian Express Bangla",
+          "source_relationship": "unknown",
+          "source_revision_id": "17a0c428eca599f192b774dcc75b6ea3566dba4d6438c2fee1a733865735658d",
+          "source_title": "Peter Cat থেকে Mocambo ২৩০০-এর বেশি রেস্তোরাঁয় হানা , পুজোর আগে বাসি-পচা খাবারের রমরমা, চোখ কপালে আধিকারিকদের",
+          "source_type": "news",
+          "source_url": "https://bengali.indianexpress.com/west-bengal/kolkata-food-safety-drive-peter-cat-mocambo-stale-food-raids-restaurants-12494649",
+          "text_sha256": "17a0c428eca599f192b774dcc75b6ea3566dba4d6438c2fee1a733865735658d",
+          "tier": "B"
+        }
+      ],
+      "superseded_by": null,
+      "validator_id": "field_evidence_validation",
+      "validator_version": "2",
+      "verification_notes": "Automatic exact-source inspection adapter; no human review is claimed. Publication date is used; event date is not established.",
       "verification_status": "SOURCE VERIFIED"
     },
     {
@@ -4056,26 +5017,56 @@
           "note": "Bounded recovery of prior reviewed publication under evidence lifecycle v2.",
           "previous_record_sha256": "e65f4f9843332939b2153977a08a0a78b06112974739b02db4429ab0a157ff0f",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-09T23:05:56.944065Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "5b6328c51e26521f9c6214f48f5f5efbc7e9aa711d44fa0901978e35d8716e9d",
+          "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-09T23:07:47.845825Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "4fe363a60e7989e4dac0992287174e78b82d72f53989b5ed787cce621d7a534e",
+          "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-09T23:09:01.232782Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "a220a258fa5edb4351cda1d83956ab150c19dfeedbe808d7608b092b9e86ab90",
+          "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-09T23:11:25.626009Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "9bab224101999e2844ad6ce54572d0778a4d8c8650600c105d9ff7ff0c81a17f",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-09-09T22:27:35.798745Z",
-      "last_successful_evidence_check_at": "2026-09-09T22:27:35.798745Z",
+      "last_source_checked_at": "2026-09-09T23:11:25.626009Z",
+      "last_successful_evidence_check_at": "2026-09-09T23:11:25.626009Z",
       "llm": {
+        "fields_proposed": [],
         "llm_model": null,
         "llm_output_was_validated": false,
         "llm_pipeline_version": null,
         "llm_provider": null,
         "llm_task": null,
-        "llm_used": false
+        "llm_task_version": null,
+        "llm_used": false,
+        "llm_used_at": null,
+        "source_revision_id": null,
+        "validation_result": "not_used"
       },
       "location_id": null,
-      "pipeline_version": "0.2.0",
+      "pipeline_version": "0.3.0",
       "publication_status": "active",
       "record_class": "inspection_evidence",
       "record_created_at": "2026-09-07T21:12:32.942437Z",
       "record_scope": "unknown",
-      "record_updated_at": "2026-09-09T22:27:35.798745Z",
+      "record_updated_at": "2026-09-09T23:11:25.626009Z",
+      "related_record_ids": [],
       "reported_fact": {
         "area": "Park Street",
         "district": null,
@@ -4126,7 +5117,7 @@
         {
           "archive_url": null,
           "evidence_context": "Among the big names that were visited by KMC teams on Friday were Peter Cat, Mocambo, Oasis, Kareem’s and Arsalan in Park Street and its neighbouring areas.",
-          "evidence_language": "und",
+          "evidence_language": "en",
           "evidence_locator": null,
           "evidence_quote": "visited by KMC teams",
           "evidence_span_hash": "8438147a3456b91970bee111de307a93a7a24617940e01658498bffcee5255cf",
@@ -4134,7 +5125,7 @@
           "retrieved_at": "2026-09-07T21:12:32.942437Z",
           "source_date": "2026-09-04",
           "source_id": "SRC-2dc72771eb00cd4f5f55",
-          "source_language": "und",
+          "source_language": "bn",
           "source_publisher": "The Times of India",
           "source_relationship": "unknown",
           "source_revision_id": "a9719c93e3f42bf9fcce863154e4ac5fce3243e773f0d36cf7bcc25827992034",
@@ -4148,7 +5139,7 @@
       "superseded_by": null,
       "validator_id": "field_evidence_validation",
       "validator_version": "2",
-      "verification_notes": "Bounded recovery of prior reviewed publication under evidence lifecycle v2.",
+      "verification_notes": "Supporting source context revalidated; original evidence retained.",
       "verification_status": "SOURCE VERIFIED"
     },
     {
@@ -4231,26 +5222,56 @@
           "note": "Bounded recovery of prior reviewed publication under evidence lifecycle v2.",
           "previous_record_sha256": "95438e617ac7469b3adb648eb8f2c5d2d117f1c739ac8af4db0962a4a0df1c53",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-09T23:05:56.944065Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "af425cdd7135e3dcb4a1bd12e9c6c2b62b61895848d6d30c921b784920166b15",
+          "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-09T23:07:47.845825Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "025469ff4f5b55025adbf6dd28c9d4b7d072689ee044c89bf9738ff70025789c",
+          "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-09T23:09:01.232782Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "1050542c24f56b1b79418c3bd9eecb81c4bf18d2e76c416dd2b25d5f554a2d03",
+          "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-09T23:11:25.626009Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "c09dd5215804d01e2374e42bb8c464c1cde2f5173aa5207578e6d4923d338736",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-09-09T22:27:35.798745Z",
-      "last_successful_evidence_check_at": "2026-09-09T22:27:35.798745Z",
+      "last_source_checked_at": "2026-09-09T23:11:25.626009Z",
+      "last_successful_evidence_check_at": "2026-09-09T23:11:25.626009Z",
       "llm": {
+        "fields_proposed": [],
         "llm_model": null,
         "llm_output_was_validated": false,
         "llm_pipeline_version": null,
         "llm_provider": null,
         "llm_task": null,
-        "llm_used": false
+        "llm_task_version": null,
+        "llm_used": false,
+        "llm_used_at": null,
+        "source_revision_id": null,
+        "validation_result": "not_used"
       },
       "location_id": null,
-      "pipeline_version": "0.2.0",
+      "pipeline_version": "0.3.0",
       "publication_status": "active",
       "record_class": "inspection_evidence",
       "record_created_at": "2026-09-07T21:12:32.942437Z",
       "record_scope": "unknown",
-      "record_updated_at": "2026-09-09T22:27:35.798745Z",
+      "record_updated_at": "2026-09-09T23:11:25.626009Z",
+      "related_record_ids": [],
       "reported_fact": {
         "area": "Park Street",
         "district": null,
@@ -4301,7 +5322,7 @@
         {
           "archive_url": null,
           "evidence_context": "Among the big names that were visited by KMC teams on Friday were Peter Cat, Mocambo, Oasis, Kareem’s and Arsalan in Park Street and its neighbouring areas.",
-          "evidence_language": "und",
+          "evidence_language": "en",
           "evidence_locator": null,
           "evidence_quote": "visited by KMC teams",
           "evidence_span_hash": "8438147a3456b91970bee111de307a93a7a24617940e01658498bffcee5255cf",
@@ -4309,7 +5330,7 @@
           "retrieved_at": "2026-09-07T21:12:32.942437Z",
           "source_date": "2026-09-04",
           "source_id": "SRC-2dc72771eb00cd4f5f55",
-          "source_language": "und",
+          "source_language": "bn",
           "source_publisher": "The Times of India",
           "source_relationship": "unknown",
           "source_revision_id": "a9719c93e3f42bf9fcce863154e4ac5fce3243e773f0d36cf7bcc25827992034",
@@ -4323,7 +5344,7 @@
       "superseded_by": null,
       "validator_id": "field_evidence_validation",
       "validator_version": "2",
-      "verification_notes": "Bounded recovery of prior reviewed publication under evidence lifecycle v2.",
+      "verification_notes": "Supporting source context revalidated; original evidence retained.",
       "verification_status": "SOURCE VERIFIED"
     },
     {
@@ -4406,12 +5427,17 @@
       "last_source_checked_at": "2026-09-09T22:27:35.798745Z",
       "last_successful_evidence_check_at": "2026-09-09T22:27:35.798745Z",
       "llm": {
+        "fields_proposed": [],
         "llm_model": null,
         "llm_output_was_validated": false,
         "llm_pipeline_version": null,
         "llm_provider": null,
         "llm_task": null,
-        "llm_used": false
+        "llm_task_version": null,
+        "llm_used": false,
+        "llm_used_at": null,
+        "source_revision_id": null,
+        "validation_result": "not_used"
       },
       "location_id": null,
       "pipeline_version": "0.2.0",
@@ -4420,6 +5446,7 @@
       "record_created_at": "2026-09-07T21:12:32.942437Z",
       "record_scope": "unknown",
       "record_updated_at": "2026-09-09T22:27:35.798745Z",
+      "related_record_ids": [],
       "reported_fact": {
         "area": "সোদপুরের",
         "district": null,
@@ -4571,26 +5598,56 @@
           "note": "Bounded recovery of prior reviewed publication under evidence lifecycle v2.",
           "previous_record_sha256": "3eb1cb92c8f84a0849acda06cda85398ba7e6a798658822b7f42c32b7c2d705e",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-09T23:05:56.944065Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "86b4f7989491dc2d0455d42e628e1b4bf705d2a39a1f28a79a994e42c90de9d6",
+          "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-09T23:07:47.845825Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "5967c5ed7fd006dde0a325b5dbc1b3cb0100b461ddf7f9f664e695e1b8af830b",
+          "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-09T23:09:01.232782Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "c5b4cd8105782c3152a1256b84e8aefb6e4130fa2873cdf11d9e9a1c9dab6696",
+          "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-09T23:11:25.626009Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "6f0e1f9af716bb824f2e1415b1d2ef567e16b31be41d6f8cf359c225d2fadb8a",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-09-09T22:27:35.798745Z",
-      "last_successful_evidence_check_at": "2026-09-09T22:27:35.798745Z",
+      "last_source_checked_at": "2026-09-09T23:11:25.626009Z",
+      "last_successful_evidence_check_at": "2026-09-09T23:11:25.626009Z",
       "llm": {
+        "fields_proposed": [],
         "llm_model": null,
         "llm_output_was_validated": false,
         "llm_pipeline_version": null,
         "llm_provider": null,
         "llm_task": null,
-        "llm_used": false
+        "llm_task_version": null,
+        "llm_used": false,
+        "llm_used_at": null,
+        "source_revision_id": null,
+        "validation_result": "not_used"
       },
       "location_id": null,
-      "pipeline_version": "0.2.0",
+      "pipeline_version": "0.3.0",
       "publication_status": "active",
       "record_class": "inspection_evidence",
       "record_created_at": "2026-09-07T21:12:32.942437Z",
       "record_scope": "unknown",
-      "record_updated_at": "2026-09-09T22:27:35.798745Z",
+      "record_updated_at": "2026-09-09T23:11:25.626009Z",
+      "related_record_ids": [],
       "reported_fact": {
         "area": "Gariahat",
         "district": null,
@@ -4637,7 +5694,7 @@
         {
           "archive_url": null,
           "evidence_context": "The fish market at Gariahat, the spice market at Posta and Chhana Patti in Bowbazar were the final stops as Kolkata Municipal Corporation wrapped up its week-long food safety drive on Monday Kolkata : The fish market at Gariahat, the spice market at Posta and Chhana Patti in Bowbazar were the final stops as Kolkata Municipal Corporation wrapped up its",
-          "evidence_language": "und",
+          "evidence_language": "en",
           "evidence_locator": null,
           "evidence_quote": "food safety drive",
           "evidence_span_hash": "eb6cc4656ada7195829a278eaca38269002b84d0069d0abff91f55389d9f2c5f",
@@ -4645,7 +5702,7 @@
           "retrieved_at": "2026-09-07T21:12:32.942437Z",
           "source_date": "2026-09-07",
           "source_id": "SRC-c0c755b9956e51c39485",
-          "source_language": "und",
+          "source_language": "bn",
           "source_publisher": "The Times of India",
           "source_relationship": "unknown",
           "source_revision_id": "b3f9f3f4ae769a3aa7865e9e37418e5dacbb49fe12896013cec7b5c5a5424913",
@@ -4659,7 +5716,7 @@
       "superseded_by": null,
       "validator_id": "field_evidence_validation",
       "validator_version": "2",
-      "verification_notes": "Bounded recovery of prior reviewed publication under evidence lifecycle v2.",
+      "verification_notes": "Supporting source context revalidated; original evidence retained.",
       "verification_status": "SOURCE VERIFIED"
     },
     {
@@ -4742,26 +5799,56 @@
           "note": "Bounded recovery of prior reviewed publication under evidence lifecycle v2.",
           "previous_record_sha256": "d012a8605e801d8144920c6dd00b0a7ec6e61265b38f0627f59aa2eebc36f272",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-09T23:05:56.944065Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "9e6eafad894f90309c953473a0e72dc03dae978f859700406e86e15ff034ba94",
+          "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-09T23:07:47.845825Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "4fc7ae4487526f0f80c27f67764c2f52cfc440910e932e2b23d05a06ed8c4255",
+          "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-09T23:09:01.232782Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "d4270995baf63702b794d8414d63ccf334f589e73d4bac9134ce108d293c9b49",
+          "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-09T23:11:25.626009Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "c7f7ed84567c64ba838248feb980bbe04551c66602691c6ae6614719494bb199",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-09-09T22:27:35.798745Z",
-      "last_successful_evidence_check_at": "2026-09-09T22:27:35.798745Z",
+      "last_source_checked_at": "2026-09-09T23:11:25.626009Z",
+      "last_successful_evidence_check_at": "2026-09-09T23:11:25.626009Z",
       "llm": {
+        "fields_proposed": [],
         "llm_model": null,
         "llm_output_was_validated": false,
         "llm_pipeline_version": null,
         "llm_provider": null,
         "llm_task": null,
-        "llm_used": false
+        "llm_task_version": null,
+        "llm_used": false,
+        "llm_used_at": null,
+        "source_revision_id": null,
+        "validation_result": "not_used"
       },
       "location_id": null,
-      "pipeline_version": "0.2.0",
+      "pipeline_version": "0.3.0",
       "publication_status": "active",
       "record_class": "inspection_evidence",
       "record_created_at": "2026-09-07T21:12:32.942437Z",
       "record_scope": "unknown",
-      "record_updated_at": "2026-09-09T22:27:35.798745Z",
+      "record_updated_at": "2026-09-09T23:11:25.626009Z",
+      "related_record_ids": [],
       "reported_fact": {
         "area": "Park Street",
         "district": null,
@@ -4812,7 +5899,7 @@
         {
           "archive_url": null,
           "evidence_context": "Among the big names that were visited by KMC teams on Friday were Peter Cat, Mocambo, Oasis, Kareem’s and Arsalan in Park Street and its neighbouring areas.",
-          "evidence_language": "und",
+          "evidence_language": "en",
           "evidence_locator": null,
           "evidence_quote": "visited by KMC teams",
           "evidence_span_hash": "8438147a3456b91970bee111de307a93a7a24617940e01658498bffcee5255cf",
@@ -4820,7 +5907,7 @@
           "retrieved_at": "2026-09-07T21:12:32.942437Z",
           "source_date": "2026-09-04",
           "source_id": "SRC-2dc72771eb00cd4f5f55",
-          "source_language": "und",
+          "source_language": "bn",
           "source_publisher": "The Times of India",
           "source_relationship": "unknown",
           "source_revision_id": "a9719c93e3f42bf9fcce863154e4ac5fce3243e773f0d36cf7bcc25827992034",
@@ -4834,7 +5921,7 @@
       "superseded_by": null,
       "validator_id": "field_evidence_validation",
       "validator_version": "2",
-      "verification_notes": "Bounded recovery of prior reviewed publication under evidence lifecycle v2.",
+      "verification_notes": "Supporting source context revalidated; original evidence retained.",
       "verification_status": "SOURCE VERIFIED"
     },
     {
@@ -4917,26 +6004,56 @@
           "note": "Bounded recovery of prior reviewed publication under evidence lifecycle v2.",
           "previous_record_sha256": "9ff7d3df0940aa0f610103f2767bf6a5d2ee55910856b949001047e96bb0961e",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-09T23:05:56.944065Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "817ebb89c2b15c35ba98f0e66a2bfa133cca93eba275fda585dc95f2f6817f47",
+          "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-09T23:07:47.845825Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "1d8d3264872b17054ffc63724c673563a860138f2fa3354cc6dd4fbec686562f",
+          "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-09T23:09:01.232782Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "ac2d77ab41600b07daf18097c4f8395c53425b0af4730263380339475fcd54b4",
+          "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-09T23:11:25.626009Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "6da604d37dfa131af305952993cb426579e2a3935a475f227ae9397798d81ee7",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-09-09T22:27:35.798745Z",
-      "last_successful_evidence_check_at": "2026-09-09T22:27:35.798745Z",
+      "last_source_checked_at": "2026-09-09T23:11:25.626009Z",
+      "last_successful_evidence_check_at": "2026-09-09T23:11:25.626009Z",
       "llm": {
+        "fields_proposed": [],
         "llm_model": null,
         "llm_output_was_validated": false,
         "llm_pipeline_version": null,
         "llm_provider": null,
         "llm_task": null,
-        "llm_used": false
+        "llm_task_version": null,
+        "llm_used": false,
+        "llm_used_at": null,
+        "source_revision_id": null,
+        "validation_result": "not_used"
       },
       "location_id": null,
-      "pipeline_version": "0.2.0",
+      "pipeline_version": "0.3.0",
       "publication_status": "active",
       "record_class": "inspection_evidence",
       "record_created_at": "2026-09-07T21:12:32.942437Z",
       "record_scope": "unknown",
-      "record_updated_at": "2026-09-09T22:27:35.798745Z",
+      "record_updated_at": "2026-09-09T23:11:25.626009Z",
+      "related_record_ids": [],
       "reported_fact": {
         "area": "Dacres Lane",
         "district": null,
@@ -4983,7 +6100,7 @@
         {
           "archive_url": null,
           "evidence_context": "At Dacres Lane, the team visited Apanjan, Sharma Sweets, New Chittanjan (Chitto-da) and Suruchi, all popular joints feeding hundreds of people every day.",
-          "evidence_language": "und",
+          "evidence_language": "en",
           "evidence_locator": null,
           "evidence_quote": "the team visited",
           "evidence_span_hash": "7b6f8450443853e49626bd399a019f36ee48da22f1e5a20e65710cf050c73456",
@@ -4991,7 +6108,7 @@
           "retrieved_at": "2026-09-07T21:12:32.942437Z",
           "source_date": "2026-09-05",
           "source_id": "SRC-59ccf829aa23f90d9dcd",
-          "source_language": "und",
+          "source_language": "bn",
           "source_publisher": "The Times of India",
           "source_relationship": "unknown",
           "source_revision_id": "a0ba1381b13004800b9454f6884f44bbfe1d61f60da8f95642dcc35d70891f43",
@@ -5005,7 +6122,7 @@
       "superseded_by": null,
       "validator_id": "field_evidence_validation",
       "validator_version": "2",
-      "verification_notes": "Bounded recovery of prior reviewed publication under evidence lifecycle v2.",
+      "verification_notes": "Supporting source context revalidated; original evidence retained.",
       "verification_status": "SOURCE VERIFIED"
     },
     {
@@ -5088,26 +6205,56 @@
           "note": "Bounded recovery of prior reviewed publication under evidence lifecycle v2.",
           "previous_record_sha256": "92ce9b2dbb9abe21972983ce602919e727eeeb95aa3271e16b6765a671083a8e",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-09T23:05:56.944065Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "37281e81b4ebd5ccd78866850a5b04ff96950e99edbfadd29b50cb008ee136ac",
+          "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-09T23:07:47.845825Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "ea9353b4784aac343d4174f18247484d2450b0c0c50fd357d75c76522f29f950",
+          "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-09T23:09:01.232782Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "97ad7cc50fdfe0e6ba5d097daac74eb10f4e5f3f0461a6ad4a5d707aed4ef1e0",
+          "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-09T23:11:25.626009Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "9fc50ecd634c60bd1de7678779a55d4f9e636a900cde69cfff560943c83ef880",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-09-09T22:27:35.798745Z",
-      "last_successful_evidence_check_at": "2026-09-09T22:27:35.798745Z",
+      "last_source_checked_at": "2026-09-09T23:11:25.626009Z",
+      "last_successful_evidence_check_at": "2026-09-09T23:11:25.626009Z",
       "llm": {
+        "fields_proposed": [],
         "llm_model": null,
         "llm_output_was_validated": false,
         "llm_pipeline_version": null,
         "llm_provider": null,
         "llm_task": null,
-        "llm_used": false
+        "llm_task_version": null,
+        "llm_used": false,
+        "llm_used_at": null,
+        "source_revision_id": null,
+        "validation_result": "not_used"
       },
       "location_id": null,
-      "pipeline_version": "0.2.0",
+      "pipeline_version": "0.3.0",
       "publication_status": "active",
       "record_class": "inspection_evidence",
       "record_created_at": "2026-09-07T21:12:32.942437Z",
       "record_scope": "unknown",
-      "record_updated_at": "2026-09-09T22:27:35.798745Z",
+      "record_updated_at": "2026-09-09T23:11:25.626009Z",
+      "related_record_ids": [],
       "reported_fact": {
         "area": "Bowbazar",
         "district": null,
@@ -5154,7 +6301,7 @@
         {
           "archive_url": null,
           "evidence_context": "The fish market at Gariahat, the spice market at Posta and Chhana Patti in Bowbazar were the final stops as Kolkata Municipal Corporation wrapped up its week-long food safety drive on Monday Kolkata : The fish market at Gariahat, the spice market at Posta and Chhana Patti in Bowbazar were the final stops as Kolkata Municipal Corporation wrapped up its",
-          "evidence_language": "und",
+          "evidence_language": "en",
           "evidence_locator": null,
           "evidence_quote": "food safety drive",
           "evidence_span_hash": "eb6cc4656ada7195829a278eaca38269002b84d0069d0abff91f55389d9f2c5f",
@@ -5162,7 +6309,7 @@
           "retrieved_at": "2026-09-07T21:12:32.942437Z",
           "source_date": "2026-09-07",
           "source_id": "SRC-c0c755b9956e51c39485",
-          "source_language": "und",
+          "source_language": "bn",
           "source_publisher": "The Times of India",
           "source_relationship": "unknown",
           "source_revision_id": "b3f9f3f4ae769a3aa7865e9e37418e5dacbb49fe12896013cec7b5c5a5424913",
@@ -5176,7 +6323,7 @@
       "superseded_by": null,
       "validator_id": "field_evidence_validation",
       "validator_version": "2",
-      "verification_notes": "Bounded recovery of prior reviewed publication under evidence lifecycle v2.",
+      "verification_notes": "Supporting source context revalidated; original evidence retained.",
       "verification_status": "SOURCE VERIFIED"
     },
     {
@@ -5259,12 +6406,17 @@
       "last_source_checked_at": "2026-09-09T22:27:35.798745Z",
       "last_successful_evidence_check_at": "2026-09-09T22:27:35.798745Z",
       "llm": {
+        "fields_proposed": [],
         "llm_model": null,
         "llm_output_was_validated": false,
         "llm_pipeline_version": null,
         "llm_provider": null,
         "llm_task": null,
-        "llm_used": false
+        "llm_task_version": null,
+        "llm_used": false,
+        "llm_used_at": null,
+        "source_revision_id": null,
+        "validation_result": "not_used"
       },
       "location_id": null,
       "pipeline_version": "0.2.0",
@@ -5273,6 +6425,7 @@
       "record_created_at": "2026-09-07T21:12:32.942437Z",
       "record_scope": "unknown",
       "record_updated_at": "2026-09-09T22:27:35.798745Z",
+      "related_record_ids": [],
       "reported_fact": {
         "area": "Tangra",
         "district": null,
@@ -5418,26 +6571,56 @@
           "note": "Bounded recovery of prior reviewed publication under evidence lifecycle v2.",
           "previous_record_sha256": "797c787b819d2ae04a78555876ae1ceee266561c35b686143c42716d33df1e5e",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-09T23:05:56.944065Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "fb9977774ba1c68fdff5417c950bfa063f788518c357f57e0b5f50d9563721a1",
+          "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-09T23:07:47.845825Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "c4a26b8948e375b7ba324c18ce7ac17ad9bebf6269123f0e5d53fadd9ad9edf4",
+          "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-09T23:09:01.232782Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "648795da30d7f2eea70c7a134b152ea3e11733537703c747ebb1ca70523f61c0",
+          "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-09T23:11:25.626009Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "968d9df3f33293994cb501f593d60bf81294c45999c6f50c7781985745ae6ba0",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-09-09T22:27:35.798745Z",
-      "last_successful_evidence_check_at": "2026-09-09T22:27:35.798745Z",
+      "last_source_checked_at": "2026-09-09T23:11:25.626009Z",
+      "last_successful_evidence_check_at": "2026-09-09T23:11:25.626009Z",
       "llm": {
+        "fields_proposed": [],
         "llm_model": null,
         "llm_output_was_validated": false,
         "llm_pipeline_version": null,
         "llm_provider": null,
         "llm_task": null,
-        "llm_used": false
+        "llm_task_version": null,
+        "llm_used": false,
+        "llm_used_at": null,
+        "source_revision_id": null,
+        "validation_result": "not_used"
       },
       "location_id": null,
-      "pipeline_version": "0.2.0",
+      "pipeline_version": "0.3.0",
       "publication_status": "active",
       "record_class": "inspection_evidence",
       "record_created_at": "2026-09-07T21:12:32.942437Z",
       "record_scope": "unknown",
-      "record_updated_at": "2026-09-09T22:27:35.798745Z",
+      "record_updated_at": "2026-09-09T23:11:25.626009Z",
+      "related_record_ids": [],
       "reported_fact": {
         "area": "Posta",
         "district": null,
@@ -5484,7 +6667,7 @@
         {
           "archive_url": null,
           "evidence_context": "The fish market at Gariahat, the spice market at Posta and Chhana Patti in Bowbazar were the final stops as Kolkata Municipal Corporation wrapped up its week-long food safety drive on Monday Kolkata : The fish market at Gariahat, the spice market at Posta and Chhana Patti in Bowbazar were the final stops as Kolkata Municipal Corporation wrapped up its",
-          "evidence_language": "und",
+          "evidence_language": "en",
           "evidence_locator": null,
           "evidence_quote": "food safety drive",
           "evidence_span_hash": "eb6cc4656ada7195829a278eaca38269002b84d0069d0abff91f55389d9f2c5f",
@@ -5492,7 +6675,7 @@
           "retrieved_at": "2026-09-07T21:12:32.942437Z",
           "source_date": "2026-09-07",
           "source_id": "SRC-c0c755b9956e51c39485",
-          "source_language": "und",
+          "source_language": "bn",
           "source_publisher": "The Times of India",
           "source_relationship": "unknown",
           "source_revision_id": "b3f9f3f4ae769a3aa7865e9e37418e5dacbb49fe12896013cec7b5c5a5424913",
@@ -5506,7 +6689,7 @@
       "superseded_by": null,
       "validator_id": "field_evidence_validation",
       "validator_version": "2",
-      "verification_notes": "Bounded recovery of prior reviewed publication under evidence lifecycle v2.",
+      "verification_notes": "Supporting source context revalidated; original evidence retained.",
       "verification_status": "SOURCE VERIFIED"
     },
     {
@@ -5589,26 +6772,56 @@
           "note": "Bounded recovery of prior reviewed publication under evidence lifecycle v2.",
           "previous_record_sha256": "0d23257dcef26a1efaba89723cc416c542c46d2532ac8acd62d58f3ef4fe2405",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-09T23:05:56.944065Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "1740597357cdb0b92e96e788a193000d80a1f4dddb28cd48ab74abdb658d564a",
+          "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-09T23:07:47.845825Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "54b29b5a32818e01a8262964995615a68a87f7197bcbd06a509d0c2e4b584c73",
+          "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-09T23:09:01.232782Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "c91163f8660a1e3fccddf2d756ef69c63c57dda91b7b001ffb6e7e4fd22ed32d",
+          "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-09T23:11:25.626009Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "7a3f814c2af5654d425dd5278801dd244fef7c8925296adfb80e3550ceb0b3f3",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-09-09T22:27:35.798745Z",
-      "last_successful_evidence_check_at": "2026-09-09T22:27:35.798745Z",
+      "last_source_checked_at": "2026-09-09T23:11:25.626009Z",
+      "last_successful_evidence_check_at": "2026-09-09T23:11:25.626009Z",
       "llm": {
+        "fields_proposed": [],
         "llm_model": null,
         "llm_output_was_validated": false,
         "llm_pipeline_version": null,
         "llm_provider": null,
         "llm_task": null,
-        "llm_used": false
+        "llm_task_version": null,
+        "llm_used": false,
+        "llm_used_at": null,
+        "source_revision_id": null,
+        "validation_result": "not_used"
       },
       "location_id": null,
-      "pipeline_version": "0.2.0",
+      "pipeline_version": "0.3.0",
       "publication_status": "active",
       "record_class": "inspection_evidence",
       "record_created_at": "2026-09-07T21:12:32.942437Z",
       "record_scope": "unknown",
-      "record_updated_at": "2026-09-09T22:27:35.798745Z",
+      "record_updated_at": "2026-09-09T23:11:25.626009Z",
+      "related_record_ids": [],
       "reported_fact": {
         "area": "Lake Market",
         "district": null,
@@ -5655,7 +6868,7 @@
         {
           "archive_url": null,
           "evidence_context": "Separate teams of KMC and the state health department also visited Lake Market, Jorabagan and Dum Dum on Saturday.",
-          "evidence_language": "und",
+          "evidence_language": "en",
           "evidence_locator": null,
           "evidence_quote": "visited Lake Market",
           "evidence_span_hash": "2bf7613a8c619600c2a2546593140c2ceb14e8774a606920a27dc6d61f2402bf",
@@ -5663,7 +6876,7 @@
           "retrieved_at": "2026-09-07T21:12:32.942437Z",
           "source_date": "2026-09-05",
           "source_id": "SRC-59ccf829aa23f90d9dcd",
-          "source_language": "und",
+          "source_language": "bn",
           "source_publisher": "The Times of India",
           "source_relationship": "unknown",
           "source_revision_id": "a0ba1381b13004800b9454f6884f44bbfe1d61f60da8f95642dcc35d70891f43",
@@ -5677,7 +6890,7 @@
       "superseded_by": null,
       "validator_id": "field_evidence_validation",
       "validator_version": "2",
-      "verification_notes": "Bounded recovery of prior reviewed publication under evidence lifecycle v2.",
+      "verification_notes": "Supporting source context revalidated; original evidence retained.",
       "verification_status": "SOURCE VERIFIED"
     },
     {
@@ -5760,12 +6973,17 @@
       "last_source_checked_at": "2026-09-09T22:27:35.798745Z",
       "last_successful_evidence_check_at": "2026-09-09T22:27:35.798745Z",
       "llm": {
+        "fields_proposed": [],
         "llm_model": null,
         "llm_output_was_validated": false,
         "llm_pipeline_version": null,
         "llm_provider": null,
         "llm_task": null,
-        "llm_used": false
+        "llm_task_version": null,
+        "llm_used": false,
+        "llm_used_at": null,
+        "source_revision_id": null,
+        "validation_result": "not_used"
       },
       "location_id": null,
       "pipeline_version": "0.2.0",
@@ -5774,6 +6992,7 @@
       "record_created_at": "2026-09-07T21:12:32.942437Z",
       "record_scope": "unknown",
       "record_updated_at": "2026-09-09T22:27:35.798745Z",
+      "related_record_ids": [],
       "reported_fact": {
         "area": "সেক্টর থ্রি-র",
         "district": null,

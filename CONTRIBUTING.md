@@ -12,6 +12,6 @@ For data: provide exact minimal evidence per factual field, canonical URLs, sour
 
 Review commands require explicit source-context and all-fields attestations. A maintainer must check geographic scope, source terms, title/date, quote context including negation, entity/action/quantity relationships, later corrections, sensitive data and derived categories. The model and matching code cannot replace this review.
 
-Recommended repository settings before public work: protected main; required CI; pull-request reviews; CODEOWNERS where maintainers agree; restricted action permissions; no secrets on untrusted PRs; secret scanning and private vulnerability reports when available. Do not publish the repository or deploy the website merely to test the UI.
+Recommended repository settings: protected main; required CI; pull-request reviews; CODEOWNERS where maintainers agree; restricted action permissions; no secrets on untrusted PRs; secret scanning and private vulnerability reports when available. Do not deploy the website merely to test a pull request.
 
 The public beta uses a bounded two-hour schedule with a narrowly scoped deterministic publication adapter. It does not replace review of complex claims or derived context. Volunteer maintainers can help with periodic source audits, Bengali wording and safe tooling. Independent India-qualified legal review has not been completed.

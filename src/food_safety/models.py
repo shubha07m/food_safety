@@ -263,13 +263,33 @@ class LLMProvenance(StrictModel):
     llm_task: Text | None = None
     llm_pipeline_version: Text | None = None
     llm_output_was_validated: bool = False
+    llm_task_version: Text | None = None
+    llm_used_at: AwareDatetime | None = None
+    source_revision_id: str | None = None
+    fields_proposed: list[Text] = Field(default_factory=list, max_length=20)
+    validation_result: Literal["not_used", "pending", "passed", "failed"] = "not_used"
 
     @model_validator(mode="after")
     def complete_provenance(self):
         if self.llm_used and not all(
-            [self.llm_provider, self.llm_model, self.llm_task, self.llm_pipeline_version]
+            [
+                self.llm_provider,
+                self.llm_model,
+                self.llm_task,
+                self.llm_pipeline_version,
+                self.llm_task_version,
+                self.llm_used_at,
+                self.source_revision_id,
+                self.fields_proposed,
+            ]
         ):
             raise ValueError("incomplete_llm_provenance")
+        if self.llm_used and self.validation_result == "not_used":
+            raise ValueError("missing_llm_validation_result")
+        if not self.llm_used and (
+            self.fields_proposed or self.validation_result != "not_used" or self.llm_used_at
+        ):
+            raise ValueError("unused_llm_must_not_claim_provenance")
         return self
 
 
@@ -289,7 +309,7 @@ class Review(StrictModel):
 
 
 class AutomaticValidation(StrictModel):
-    method: Literal["explicit_inspection_sentence_v1"]
+    method: Literal["explicit_inspection_sentence_v1", "explicit_inspection_sentence_v2"]
     validated_at: AwareDatetime
     pipeline_version: str
 
@@ -308,8 +328,16 @@ class Event(StrictModel):
     reviewed_associations: list[ReviewedAssociation] = Field(default_factory=list, max_length=5)
     record_class: Literal["inspection_evidence"] = "inspection_evidence"
     record_scope: Literal[
-        "establishment_event", "area_operation", "aggregate_report", "unknown"
+        "establishment_event",
+        "area_operation",
+        "district_operation",
+        "statewide_operation",
+        "aggregate_report",
+        "unknown",
     ] = "unknown"
+    related_record_ids: list[Annotated[str, StringConstraints(pattern=r"^WBFS-[a-f0-9]{12}$")]] = (
+        Field(default_factory=list, max_length=25)
+    )
     establishment_id: Text | None = None
     location_id: Text | None = None
     first_published_at: AwareDatetime | None = None

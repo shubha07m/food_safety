@@ -27,13 +27,13 @@ Settings: no file-upload questions; no email collection; no public response summ
 
 Publish the responder form and provide the **responder URL**, either forms.gle/... or docs.google.com/forms/d/e/.../viewform. Do not provide an edit URL or response Sheet URL. Set community_submission_url in config/pipeline.yml, build and test on develop, then request release approval. Without it, the site says "Submission form coming shortly" and shows no invented queue count.
 
-In the private Sheet, track pending / approved-for-processing / rejected and a neutral reason. Approval admits a source to normal validation, not publication. Review publisher identity, terms, public URL and exact allowed host before retrieval. Use the existing local review command for validated candidates; no automatic form import, public endpoint or backend is added.
+In the private Sheet, track pending / approved-for-processing / rejected and a neutral reason. Approval admits a source to normal validation, not publication. Review publisher identity, terms, public URL and exact allowed host before retrieval. Export approved rows to `data/tmp/approved_form_responses.csv`, then run `python scripts/import_community_leads.py data/tmp/approved_form_responses.csv`. The importer retains only source URL and submission type in an ignored local queue; it does not retain contact or note fields. No public endpoint or backend is added.
 
 ## Lifecycle operations
 
 Transport failures warn/retry rather than use hold. Inspect persisted data/source_checks.json review_due signals and minimal archived status after the 30-day revalidation deadline. Clear a semantic hold only with fresh source checks and explicit human attestations. Private pending bodies are not retained by scheduled runners; minimal tombstones and source diagnostics are. To review a prior published record, recover its last approved Git revision locally and preserve the later tombstone/history transition. Never publish private snapshots.
 
-Run `python -m food_safety.cli migrate` for the additive schema upgrade, then validate/build. The capped develop-only recovery script is a one-off audit of legacy holds, not scheduled blanket reinstatement. Never apply it to new semantic holds without reviewing eligibility.
+Run `python -m food_safety.cli migrate` after an announced additive schema upgrade, then validate/build. Never restore semantic holds without reviewing eligibility.
 
 **Manual refresh:** GitHub → Actions → **Refresh Food Safety Data** → Run workflow. Only authorized repository collaborators can dispatch it. There is no public refresh button or token.
 

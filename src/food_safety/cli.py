@@ -11,8 +11,8 @@ from .storage import now, read_events, read_rejected, transaction, transition
 
 def bounded(value):
     number = int(value)
-    if not 1 <= number <= 10:
-        raise argparse.ArgumentTypeError("must be between 1 and 10")
+    if not 1 <= number <= 30:
+        raise argparse.ArgumentTypeError("must be between 1 and 30")
     return number
 
 

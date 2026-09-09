@@ -1,10 +1,10 @@
 {
-  "held_from_last_scan": 1,
-  "last_attempt": "2026-09-09T22:27:35.798745+00:00",
-  "last_run_result": "recovery_audit",
-  "last_source_scan": "2026-09-09T22:27:35.798745+00:00",
+  "held_from_last_scan": 6,
+  "last_attempt": "2026-09-09T23:11:35.308719+00:00",
+  "last_run_result": "failed",
+  "last_source_scan": "2026-09-09T23:11:35.308719+00:00",
   "last_successful_update": "2026-09-09T21:00:35.572552+00:00",
-  "published_count": 35,
-  "scan_cursor": 60,
+  "published_count": 38,
+  "scan_cursor": 134,
   "scheduled_refresh_hours": 2
 }

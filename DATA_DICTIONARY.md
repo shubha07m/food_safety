@@ -1,12 +1,13 @@
 # Data dictionary — schema 1.2.0
 
-## Additive Phase 1 provenance and lifecycle
+## Provenance and lifecycle
 
 Existing IDs and original evidence are preserved by `python -m food_safety.cli migrate`. First publication is derived from the earliest accepted history entry, never a restoration date. Legacy tombstones lacking that timestamp remain explicitly unknown until audited.
 
 | Field | Meaning |
 | --- | --- |
-| record_class / record_scope | inspection_evidence; establishment_event, area_operation, aggregate_report or unknown |
+| record_class / record_scope | inspection_evidence; establishment_event, area_operation, district_operation, statewide_operation, aggregate_report or unknown |
+| related_record_ids | Explicit links among operation/aggregate and individually supported records from the same reporting; never manufactured rows |
 | first_published_at | First passed publication, immutable across restoration |
 | last_source_checked_at | Latest attempt, not necessarily success |
 | last_successful_evidence_check_at | Last adequate field-support check; determines 30-day active expiry |
@@ -67,7 +68,7 @@ The authoritative executable schema is src/food_safety/models.py. Unknown fields
 | business_format | independent, chain_group or unknown; distinct from establishment type and personal ownership identity |
 | business-format provenance | Source, allowed method, confidence and reviewed flag; names and cuisine are not evidence |
 | contextual provenance | Every non-default action or establishment classification also carries linked evidence provenance and maintainer review |
-| llm | llm_used, llm_provider, llm_model, llm_task, llm_pipeline_version, llm_output_was_validated |
+| llm | Provider/model/task/version, use time, source revision, proposed fields and validation outcome; model output never bypasses evidence validation |
 | review | Maintainer handle, timestamp, neutral note and explicit context/field attestations |
 | record_created_at / record_updated_at | Timezone-aware record lifecycle timestamps |
 | pipeline_version | Extractor/validator version |
