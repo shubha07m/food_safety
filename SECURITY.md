@@ -1,5 +1,7 @@
 # Security policy
 
+Phase 1 keeps static deployment. Community intake is an outbound link to a validated HTTPS Google Forms URL, never an embedded public write endpoint. Submitted URLs must separately pass publisher admission and SSRF controls. No raw form response/contact/internal review note is exported. Retry-After and host failure limits prevent aggressive retries; no anti-bot/TLS bypass is allowed. A source warning never relaxes new-record admission. develop cannot dispatch production ingestion; hosting remains unchanged.
+
 The public site is static HTML/CSS/JavaScript and generated public JSON. There is no public admin endpoint, database write API, login, executable submission content, comments, arbitrary upload or SQL backend. Only the site/ directory may be deployed, after review. Never serve the repository root: it contains private pending/history/configuration.
 
 ## Safeguards

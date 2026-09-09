@@ -28,9 +28,10 @@ def deterministic_extract(text):
         raise ValueError("suspicious_or_sensitive_content")
     if re.search(r"\b(corrected|correction|withdrawn|retracted|clarification)\b", text, re.I):
         raise ValueError("source_update_requires_review")
-    for sentence in re.split(r"(?<=[.!?])\s+", text):
+    for sentence in re.split(r"(?<=[.!?।])\s+", text):
         if 3 <= len(sentence.split()) <= 25 and re.search(
-            r"\b(inspect\w*|samples? collected|collected samples?|seized|notice issued)\b",
+            r"\b(inspect\w*|samples? collected|collected samples?|seized|notice issued)\b"
+            r"|পরিদর্শন|অভিযান|নমুনা সংগ্রহ",
             sentence,
             re.I,
         ):

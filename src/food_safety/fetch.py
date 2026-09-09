@@ -5,6 +5,8 @@ import ipaddress
 import socket
 import ssl
 import time
+from datetime import UTC, datetime, timedelta
+from email.utils import parsedate_to_datetime
 from urllib.parse import urljoin, urlsplit
 from urllib.robotparser import RobotFileParser
 
@@ -82,13 +84,29 @@ class Fetcher:
                     self.allowed(target)
                 return self.raw(target, redirects + 1, check_redirect_robots)
             if response.status != 200:
-                raise FetchError(f"http_{response.status}")
+                error = FetchError(f"http_{response.status}")
+                raw_retry = response.getheader("Retry-After")
+                if raw_retry:
+                    try:
+                        error.retry_after = (
+                            (datetime.now(UTC) + timedelta(seconds=int(raw_retry)))
+                            if raw_retry.isdigit()
+                            else parsedate_to_datetime(raw_retry)
+                        )
+                    except (ValueError, TypeError, OverflowError):
+                        pass
+                raise error
             if response.getheader("Content-Encoding", "identity") != "identity":
                 raise FetchError("compressed_response_rejected")
             content_type = response.getheader("Content-Type", "").split(";")[0].lower()
             if content_type not in {
-                "text/html", "text/plain", "application/xhtml+xml", "application/rss+xml",
-                "application/atom+xml", "application/xml", "text/xml",
+                "text/html",
+                "text/plain",
+                "application/xhtml+xml",
+                "application/rss+xml",
+                "application/atom+xml",
+                "application/xml",
+                "text/xml",
             }:
                 raise FetchError("unsupported_content_type")
             limit = self.settings.max_response_bytes

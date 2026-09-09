@@ -10,6 +10,7 @@ concurrency:
   cancel-in-progress: false
 jobs:
   candidates:
+    if: github.ref == 'refs/heads/main'
     permissions:
       contents: write
     runs-on: ubuntu-latest
@@ -53,7 +54,7 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          git add data/events.json data/events.csv data/events.csv.metadata.json data/status.json data/retired.json site/
+          git add data/events.json data/events.csv data/events.csv.metadata.json data/status.json data/retired.json data/source_checks.json site/
           if git diff --cached --quiet; then exit 0; fi
           git -c user.name='github-actions[bot]' -c user.email='41898282+github-actions[bot]@users.noreply.github.com' commit -m 'data: validated refresh [automated-refresh]'
           git -c credential.helper='!f() { echo username=x-access-token; echo "password=$GH_TOKEN"; }; f' push origin HEAD:main

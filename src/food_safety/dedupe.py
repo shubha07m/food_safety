@@ -1,6 +1,22 @@
 import hashlib
+import unicodedata
 
 from .safety import normalize
+
+
+def area_key(value):
+    """Reviewed bilingual locality aliases for overlap detection, not inferred geography."""
+    aliases = {
+        "কলকাতা": "Kolkata",
+        "পার্ক স্ট্রিট": "Park Street",
+        "ডেকার্স লেন": "Dacres Lane",
+        "সোনারপুর": "Sonarpur",
+        "কামালগাজি": "Kamalgazi",
+        "দিঘা": "Digha",
+        "বাদুড়িয়া": "Baduria",
+    }
+    text = unicodedata.normalize("NFC", value or "")
+    return normalize(aliases.get(text, text))
 
 
 def stable_id(url, observation):

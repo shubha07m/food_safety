@@ -53,4 +53,5 @@ def test_public_status_does_not_depend_on_private_queue_contents(project):
     status["held_from_last_scan"] = 6
     path.write_text(json.dumps(status))
     build(project)
-    assert json.loads((project / "site/status.json").read_text())["pending_count"] == 6
+    assert json.loads((project / "site/status.json").read_text())["held_from_last_scan"] == 6
+    assert "pending_count" not in json.loads((project / "site/status.json").read_text())

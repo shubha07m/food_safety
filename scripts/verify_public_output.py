@@ -50,6 +50,8 @@ def main() -> None:
         "aggregates.json",
         "locations.json",
         "retired.json",
+        "lifecycle.json",
+        "compliance.json",
     }
     for path in SITE.rglob("*"):
         if path.is_symlink():

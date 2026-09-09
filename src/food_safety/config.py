@@ -41,8 +41,29 @@ class Settings(StrictModel):
     max_llm_calls_per_run: int = Field(default=5, ge=0, le=5)
     llm_enabled: bool = False
     auto_publish: bool = False
+    archive_after_days: int = Field(default=30, ge=7, le=90)
+    review_after_days: int = Field(default=7, ge=1, le=30)
+    community_submission_url: URL | None = None
     repository_url: URL | None = None
     site_url: URL = "https://foodsafety.nemoneek.com/"
+
+    @field_validator("community_submission_url")
+    @classmethod
+    def google_form_only(cls, value):
+        from urllib.parse import urlsplit
+
+        if value:
+            parsed = urlsplit(value)
+            if parsed.scheme != "https" or not (
+                (parsed.hostname == "forms.gle" and len(parsed.path) > 5)
+                or (
+                    parsed.hostname == "docs.google.com"
+                    and parsed.path.startswith("/forms/d/e/")
+                    and parsed.path.endswith("/viewform")
+                )
+            ):
+                raise ValueError("expected_published_google_form_url")
+        return value
 
 
 def settings(root=ROOT):

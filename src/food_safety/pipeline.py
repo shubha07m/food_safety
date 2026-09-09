@@ -8,12 +8,12 @@ from urllib.parse import urlsplit
 
 import httpx
 
-from . import __version__
+from . import __version__, lifecycle
 from .automatic import feed_candidates, page_candidates, prepare_automatic
 from .classify import display_summary
 from .config import settings, sources
-from .dedupe import associate, same_event, stable_id
-from .extract import article_text, text_hash
+from .dedupe import area_key, associate, same_event, stable_id
+from .extract import text_hash
 from .fetch import Fetcher, FetchError
 from .llm import NoLLM, OpenAICompatible
 from .models import Event
@@ -41,6 +41,10 @@ def candidate(url, title, text, policy, fields, at, llm=None):
                 "text_sha256": text_hash(text),
                 "evidence_quote": observation,
                 "evidence_context": observation,
+                "source_language": "bn" if any("\u0980" <= c <= "\u09ff" for c in text) else "en",
+                "evidence_language": "bn"
+                if any("\u0980" <= c <= "\u09ff" for c in observation)
+                else "en",
             }
         ],
         "record_created_at": at.isoformat(),
@@ -110,6 +114,7 @@ def update(root, max_articles=None, use_llm=False, max_llm_calls=None, fetcher=N
     initial_published_ids = {event.event_id for event in events}
     rejected = read_rejected(root)["records"]
     at = now()
+    checks = lifecycle.load_checks(root)
     run = {
         "run_id": uuid.uuid4().hex,
         "started_at": at.isoformat(),
@@ -157,7 +162,12 @@ def update(root, max_articles=None, use_llm=False, max_llm_calls=None, fetcher=N
                 reasons["feed_unavailable"] += 1
                 run["errors"] += 1
     # Reserve half the run for rechecking older sources; avoid feed starvation.
-    combined = discovered[: max(1, limit // 2)] + seeds
+    known = {s.source_url for e in events for s in e.sources}
+    maintenance = [item for item in seeds if item[1] in known]
+    new = [item for item in [*discovered, *seeds] if item[1] not in known]
+    combined = (
+        new[: max(1, limit // 2)] + maintenance[: max(1, limit - limit // 2)] + new + maintenance
+    )
     seen_urls = set()
     seeds = []
     for item in combined:
@@ -168,10 +178,17 @@ def update(root, max_articles=None, use_llm=False, max_llm_calls=None, fetcher=N
     retired_path = root / "data/retired.json"
     retired = json.loads(retired_path.read_text())["records"] if retired_path.exists() else []
     suspended = {h for row in retired for h in row.get("source_url_sha256", [])}
+    host_failures = Counter()
     for policy, url in seeds:
         if run["urls_considered"] >= limit:
             break
         if domain_counts[policy.domain] >= cfg.max_pages_per_source:
+            continue
+        if host_failures[policy.domain] >= 2:
+            reasons["host_circuit_open"] += 1
+            continue
+        if not lifecycle.due(checks, url, at):
+            reasons["retry_not_due"] += 1
             continue
         if hashlib.sha256(url.encode()).hexdigest() in suspended:
             reasons["suspended_source_requires_review"] += 1
@@ -182,24 +199,28 @@ def update(root, max_articles=None, use_llm=False, max_llm_calls=None, fetcher=N
         run["urls_considered"] += 1
         try:
             canonical, html = fetcher.article(url)
-            title, text = article_text(html)
+            if canonical != url:
+                raise ValueError("unexpected_redirect")
+            title, text = lifecycle.checked_document(html)
+            lifecycle.availability(checks, url, at)
             matching = [
                 e for e in [*events, *pending] if any(s.source_url == url for s in e.sources)
             ]
             if matching:
                 for old in matching:
-                    source = next(s for s in old.sources if s.source_url == url)
-                    if source.text_sha256 != text_hash(text) or canonical != url:
-                        revised = transition(
-                            root,
-                            old,
-                            "SOURCE UPDATED",
-                            "Source changed; factual fields suspended for review.",
-                            at,
-                        )
+                    if old.first_published_at:
+                        others = [
+                            e.reported_fact.establishment_name or e.reported_fact.area
+                            for e in matching
+                            if e.event_id != old.event_id
+                        ]
+                        revised = lifecycle.recheck(root, old, url, title, text, checks, at, others)
                         events = [e for e in events if e.event_id != old.event_id]
-                        pending = [e for e in pending if e.event_id != old.event_id] + [revised]
-                        reasons["source_changed"] += 1
+                        pending = [e for e in pending if e.event_id != old.event_id]
+                        (
+                            events if revised.publication_status in lifecycle.ACTIVE else pending
+                        ).append(revised)
+                        reasons[revised.publication_status] += 1
                 continue
             if claim_risks(text):
                 raise ValueError("suspicious_or_sensitive_content")
@@ -218,7 +239,7 @@ def update(root, max_articles=None, use_llm=False, max_llm_calls=None, fetcher=N
             # Unnamed reports cannot reliably be merged. Overlapping area/date
             # candidates stay pending rather than inflating inspection counts.
             ambiguous_overlap = event.automatic_validation and any(
-                old.reported_fact.area == event.reported_fact.area
+                area_key(old.reported_fact.area) == area_key(event.reported_fact.area)
                 and old.sources[0].source_date
                 and event.sources[0].source_date
                 and abs((old.sources[0].source_date - event.sources[0].source_date).days) <= 7
@@ -227,8 +248,9 @@ def update(root, max_articles=None, use_llm=False, max_llm_calls=None, fetcher=N
             duplicate = next((e for e in [*events, *pending] if same_event(e, event)), None)
             if duplicate:
                 merged = associate(duplicate, event, at)
-                events = [e for e in events if e.event_id != duplicate.event_id]
-                pending = [e for e in pending if e.event_id != duplicate.event_id] + [merged]
+                if duplicate.event_id not in {e.event_id for e in events}:
+                    pending = [e for e in pending if e.event_id != duplicate.event_id] + [merged]
+                # Existing validated publication is not replaced by an unreviewed association.
                 reasons["associated_requires_review"] += 1
             elif (
                 cfg.auto_publish
@@ -237,13 +259,20 @@ def update(root, max_articles=None, use_llm=False, max_llm_calls=None, fetcher=N
                 and not publication_errors(event, policies, {canonical: text})
             ):
                 events.append(event)
+                event.first_published_at = event.first_published_at or at
                 run["records_published"] += 1
             else:
                 if event.automatic_validation:
                     # This candidate was never published: do not create a public
                     # retirement notice or a fictitious prior publication revision.
                     draft = event.model_dump(mode="json")
-                    draft.update(verification_status="PENDING REVIEW", automatic_validation=None)
+                    draft.update(
+                        verification_status="PENDING REVIEW",
+                        automatic_validation=None,
+                        publication_status="needs_review",
+                        evidence_support_status="needs_review",
+                        first_published_at=None,
+                    )
                     draft["history"][-1].update(
                         status="PENDING REVIEW", note="Automatic publication checks did not pass."
                     )
@@ -264,6 +293,12 @@ def update(root, max_articles=None, use_llm=False, max_llm_calls=None, fetcher=N
                 exc, (FetchError, OSError, httpx.HTTPError, http.client.HTTPException)
             )
             reason = "fetch_failed" if retrieval_failed else "candidate_rejected"
+            matching_public = [e for e in events if any(s.source_url == url for s in e.sources)]
+            if retrieval_failed or matching_public:
+                lifecycle.availability(
+                    checks, url, at, exc, getattr(exc, "retry_after", None), cfg.review_after_days
+                )
+                host_failures[policy.domain] += 1
             reasons[reason] += 1
             affected_public = any(s.source_url == url for e in events for s in e.sources)
             if retrieval_failed or affected_public:
@@ -275,17 +310,24 @@ def update(root, max_articles=None, use_llm=False, max_llm_calls=None, fetcher=N
             for old in list(events):
                 if any(source.source_url == url for source in old.sources):
                     events.remove(old)
-                    pending.append(
-                        transition(
-                            root,
-                            old,
-                            "PENDING REVIEW",
-                            "Source check failed; record suspended for review.",
-                            at,
-                        )
+                    revised = lifecycle.technical_failure(
+                        root, old, url, checks, at, cfg.archive_after_days
                     )
+                    (events if revised.publication_status in lifecycle.ACTIVE else pending).append(
+                        revised
+                    )
+    for event in list(events):
+        revised = lifecycle.expire(root, event, checks, at, cfg.archive_after_days)
+        if revised.publication_status not in lifecycle.ACTIVE:
+            events.remove(event)
+            pending.append(revised)
+    lifecycle.save_checks(root, checks, at)
     run.update(
-        ended_at=now().isoformat(), sources_scanned=len(scanned), reason_counts=dict(reasons)
+        ended_at=now().isoformat(),
+        sources_scanned=len(scanned),
+        reason_counts=dict(reasons),
+        host_failures=dict(host_failures),
+        review_due_sources=sum(bool(c.get("review_due")) for c in checks.values()),
     )
     transaction(root, events, pending, rejected, at)
     status = dict(prior_status)
@@ -310,7 +352,7 @@ def update(root, max_articles=None, use_llm=False, max_llm_calls=None, fetcher=N
     return run
 
 
-def review_record(root, record, reviewer, note, fetcher=None):
+def review_record(root, record, reviewer, note, fetcher=None, cross_source=False):
     """Explicit maintainer attestation, with a fresh fetch of all supporting sources."""
     from .build import validate
 
@@ -322,6 +364,8 @@ def review_record(root, record, reviewer, note, fetcher=None):
     if any(e.event_id != event.event_id and same_event(e, event) for e in [*pending, *events]):
         raise ValueError("existing_event_requires_source_association_and_existing_id")
     if old:
+        if event.first_published_at != old.first_published_at:
+            raise ValueError("preserve_first_publication_date")
         if event.record_created_at != old.record_created_at or event.history != old.history:
             raise ValueError("preserve_existing_history_and_creation_date")
     fetcher = fetcher or Fetcher(policies, cfg)
@@ -330,9 +374,11 @@ def review_record(root, record, reviewer, note, fetcher=None):
         canonical, html = fetcher.article(source.source_url)
         if canonical != source.source_url:
             raise ValueError("review_canonical_source_url")
-        _, texts[canonical] = article_text(html)
+        title, texts[canonical] = lifecycle.checked_document(html)
+        if title != source.source_title:
+            raise ValueError("review_source_identity_changed")
     data = event.model_dump(mode="json")
-    status = "SOURCE VERIFIED"
+    status = "CROSS-SOURCE VERIFIED" if cross_source else "SOURCE VERIFIED"
     for source in data["sources"]:
         source["retrieved_at"] = at.isoformat()
     data.update(
@@ -346,6 +392,14 @@ def review_record(root, record, reviewer, note, fetcher=None):
             "source_context_checked": True,
             "all_fields_supported": True,
         },
+        publication_status="active",
+        evidence_support_status="supported_as_of",
+        first_published_at=data.get("first_published_at") or at.isoformat(),
+        last_successful_evidence_check_at=at.isoformat(),
+        last_source_checked_at=at.isoformat(),
+        source_availability="available",
+        source_availability_reason=None,
+        reviewer_hold=False,
     )
     data["history"].append({"at": at.isoformat(), "status": status, "note": note})
     if data["llm"]["llm_used"]:

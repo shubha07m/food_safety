@@ -35,6 +35,16 @@ PATTERN = re.compile(
     rf"(?P<area>{'|'.join(AREAS)})(?:, (?:Kolkata|West Bengal))?\.",
     re.I,
 )
+BN_AREAS = "কলকাতা|পার্ক স্ট্রিট|ডেকার্স লেন|সোনারপুর|কামালগাজি|দিঘা|বাদুড়িয়া"
+BN_PATTERN = re.compile(
+    rf"(?P<authority>কলকাতা পুরসভার খাদ্য সুরক্ষা আধিকারিকরা|খাদ্য সুরক্ষা দফতরের আধিকারিকরা) "
+    rf"(?P<area>{BN_AREAS})(?:য়|য়|ে| এলাকায়| এলাকায়) "
+    r"(?:রেস্তোরাঁ|রেস্তরাঁ|খাবারের দোকান) (?P<action>পরিদর্শন করেছেন|পরিদর্শন করেন)[।.]"
+)
+BN_VISIT = re.compile(
+    rf"(?:শুক্রবার )?(?P<area>{BN_AREAS}) ও সংলগ্ন এলাকার একাধিক জনপ্রিয় রেস্তোরাঁয় "
+    r"আচমকা (?P<action>পরিদর্শনে যান) (?P<authority>কলকাতা পুরসভার \(KMC\) স্বাস্থ্য দফতরের আধিকারিকরা)[।.]"
+)
 BLOCKED = re.compile(
     r"\b(?:not|never|denied|alleged|reportedly|may|might|would|will|planned|"
     r"correction|corrected|withdrawn|retracted|clarification|disputed)\b",
@@ -43,7 +53,11 @@ BLOCKED = re.compile(
 
 
 def supported_fields(sentence):
-    match = PATTERN.fullmatch(sentence)
+    match = (
+        PATTERN.fullmatch(sentence)
+        or BN_PATTERN.fullmatch(sentence)
+        or BN_VISIT.fullmatch(sentence)
+    )
     if not match:
         return None
     return {
@@ -58,7 +72,9 @@ def prepare_automatic(event, html, text, at):
     """Return an eligible record or None; never set a human-review attestation."""
     if BLOCKED.search(text) or claim_risks(text) or event.llm.llm_used:
         return None
-    matches = [s for s in re.split(r"(?<=[.!?])\s+", text) if supported_fields(s)]
+    if re.search("অস্বীকার|সংশোধনী|প্রত্যাহার|ঘটেনি", text):
+        return None
+    matches = [s for s in re.split(r"(?<=[.!?।])\s+", text) if supported_fields(s)]
     if len(matches) != 1:
         return None
     soup = BeautifulSoup(html, "html.parser")
@@ -83,8 +99,20 @@ def prepare_automatic(event, html, text, at):
         source_date=published.isoformat(),
         evidence_quote=matches[0],
         evidence_context=matches[0],
+        evidence_span_hash="",
     )
     data["verification_status"] = "SOURCE VERIFIED"
+    data.update(
+        publication_status="active",
+        evidence_support_status="supported_as_of",
+        source_availability="available",
+        first_published_at=at.isoformat(),
+        last_successful_evidence_check_at=at.isoformat(),
+        last_source_checked_at=at.isoformat(),
+        extractor_id="explicit_inspection_sentence",
+        extractor_version="2",
+        record_scope="area_operation",
+    )
     data["verification_notes"] = (
         "Automatic exact-source inspection adapter; no human review is claimed. "
         "Publication date is used; event date is not established."
@@ -144,7 +172,7 @@ def feed_candidates(body, policy, limit):
         if item.tag.rsplit("}", 1)[-1] not in {"item", "entry"}:
             continue
         text = " ".join(item.itertext())
-        if not re.search(r"food.{0,30}(safety|inspect)|খাদ্য.{0,20}(সুরক্ষা|নিরাপত্তা)", text, re.I):
+        if not relevant_lead(text):
             continue
         for child in item:
             if child.tag.rsplit("}", 1)[-1] != "link":
@@ -169,7 +197,7 @@ def page_candidates(body, policy, limit):
     result = []
     for anchor in BeautifulSoup(body, "html.parser").find_all("a", href=True)[:1000]:
         label = anchor.get_text(" ", strip=True) + " " + anchor["href"]
-        if not re.search(r"food[-\s].{0,35}(safety|inspect)|খাদ্য.{0,20}(সুরক্ষা|নিরাপত্তা)", label, re.I):
+        if not relevant_lead(label):
             continue
         try:
             url = safe_url(urljoin(f"https://{policy.domain}/", anchor["href"]))
@@ -180,3 +208,14 @@ def page_candidates(body, policy, limit):
         if len(result) >= limit:
             break
     return result
+
+
+def relevant_lead(text):
+    return bool(
+        re.search(
+            r"food[-\s].{0,35}(safety|inspect)|খাদ্য.{0,20}(সুরক্ষা|নিরাপত্তা|ভেজাল)"
+            r"|রেস্তোরাঁ.{0,30}(পরিদর্শন|অভিযান)|বাসি[- ]পচা",
+            text,
+            re.I,
+        )
+    )

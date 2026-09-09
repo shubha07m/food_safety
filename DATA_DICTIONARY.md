@@ -1,4 +1,31 @@
-# Data dictionary — schema 1.1.0
+# Data dictionary — schema 1.2.0
+
+## Additive Phase 1 provenance and lifecycle
+
+Existing IDs and original evidence are preserved by `python -m food_safety.cli migrate`. First publication is derived from the earliest accepted history entry, never a restoration date. Legacy tombstones lacking that timestamp remain explicitly unknown until audited.
+
+| Field | Meaning |
+| --- | --- |
+| record_class / record_scope | inspection_evidence; establishment_event, area_operation, aggregate_report or unknown |
+| first_published_at | First passed publication, immutable across restoration |
+| last_source_checked_at | Latest attempt, not necessarily success |
+| last_successful_evidence_check_at | Last adequate field-support check; determines 30-day active expiry |
+| source_availability / reason | Transport state and bounded reason; no inference that reporting is false |
+| evidence_support_status | supported_as_of, needs_review, unsupported, withdrawn |
+| publication_status | active, active_with_warning, needs_review, archived_unverifiable, suspended, superseded |
+| reviewer_hold | Prevents automatic semantic restoration |
+| source_id / source_revision_id | Deterministic URL identity and extracted-text revision hash |
+| source_language / evidence_language | en, bn or und; original quoted text preserved |
+| evidence_span_hash / evidence_locator | Quote digest and optional locator; not full article storage |
+| extractor / validator IDs and versions | Processing provenance, not model confidence |
+| establishment_id / location_id | Optional reviewed identifiers, never inferred social identity |
+| source_relationship / reviewed_associations | Independent, syndicated, republication or unknown; reviewed per-field alternative support |
+
+`data/source_checks.json` persists minimal hashed source IDs, attempts, availability/reasons, retry times and supported-record check times across runners. It contains no article bodies or private submission content. Public lifecycle totals are generated in site/data/lifecycle.json; archived/suspended records appear only as minimal tombstones.
+
+## Licensing & Compliance Documents pilot
+
+ComplianceDocument is a separate URL-only model, not an inspection or quality score. It includes document identity/type, establishment/area, issuer/date, optional validity dates, scope, source metadata/original evidence, reported document status, issuer-check status, publication state, supported fields, review time and related/superseding IDs. Source URL/language/ID/retrieval time/original quote/hash are reused through the nested Source object rather than duplicated. Optional submission ID/time exclude contact details and internal reviewer notes. Only manually reviewed active documents may be exported. No real documents are currently published; no uploads or automatic business-submission publication exist.
 
 Automatic records may carry `automatic_validation`: the evaluated deterministic
 adapter method, validation timestamp and pipeline version. This is separate from

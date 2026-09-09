@@ -1,4 +1,10 @@
-# West Bengal Food Safety Evidence Tracker
+# The Bengal FoodPath
+
+Independent food-information research for West Bengal.
+
+Current module: **Food Safety & Inspection Evidence** (West Bengal Food Safety Evidence Tracker).
+
+This `develop` branch contains Phase 1 changes awaiting owner approval. The live site continues to deploy production `main`; branch data is not a claim about current production totals.
 
 ![West Bengal Food Safety Evidence Tracker — Public Beta](docs/assets/readme_banner.svg)
 
@@ -45,7 +51,9 @@ Counts describe indexed reporting, **not prevalence, compliance, authority activ
 
 **Refresh Food Safety Data** is scheduled approximately every two hours (`17 */2 * * *`) and can be run manually in GitHub Actions. Schedules are best-effort, not a freshness guarantee.
 
-The workflow checks up to two configured discovery pages and six articles per run. It publishes only candidates passing the strict deterministic publication adapter and all source, evidence, schema and safety gates. The adapter currently handles a deliberately narrow explicit KMC food-safety inspection sentence; most complex reporting still needs review. No LLM is used. Ambiguity, uncertain overlap, changed sources and inaccessible sources fail closed.
+The workflow checks up to two configured discovery pages and six articles per run, reserving capacity for discovery and maintenance. New English/Bengali candidates require explicit supported inspection statements and all source, schema and safety gates. Ambiguous new records never publish. Previously published records receive dated access warnings for technical failures, not automatic evidence-failure suspensions. Semantic uncertainty leaves active analytics; 30 days without adequate revalidation leads to an unverifiable archive. Restoration preserves first-publication history. See [the detailed lifecycle](METHODOLOGY.md).
+
+Public metrics distinguish Active, Ever published, warning and non-active states. These overlap and must not be added together. Private-response community intake is prepared through a configurable Google Form; no fake form URL or community queue count is displayed. A URL-only **Licensing & Compliance Documents** schema is a manually reviewed pilot with no published documents or quality endorsements. Language, source/revision IDs and field support prepare future research without adding AI, embeddings or a database.
 
 Only approved public artifacts are committed to `main`; Cloudflare Git integration redeploys `site/`. No change means no empty commit. The workflow has no push trigger, so its generated commits cannot recursively start another source scan. Failed scans never advance the last-successful timestamp. Maintainers periodically audit a few new records.
 
@@ -60,6 +68,12 @@ Ordinary visitors have no refresh endpoint. Maintainers use **Actions → Refres
 ## Bengali support
 
 Use **EN | বাংলা** or [`?lang=bn`](https://foodsafety.nemoneek.com/?lang=bn). Navigation, principal dashboard labels, charts, filters and policy summaries have static Bengali translations. Full policies are also available in English. The original English/Bengali source quotations remain unchanged and clearly labeled; UI translations are not evidence. No translation API, external font or tracking cookie is used.
+
+Narrow Bengali ingestion now recognizes explicit authority/location/inspection constructions. It is not general Bengali language understanding: negation, ambiguous entities and unsupported structures remain pending. Discovery is bounded and publisher access restrictions are respected.
+
+© 2026 Shubhabrata Mukherjee · The Bengal FoodPath. Independent public-interest data project. Project code is MIT-licensed where stated. Third-party content and trademarks remain subject to their respective rights.
+
+Repository publication still requires the separate [historical privacy cleanup](docs/PUBLIC_REPOSITORY_AUDIT.md). This task does not change repository visibility.
 
 ## Run locally
 

@@ -141,3 +141,5 @@ def test_overlapping_candidate_is_not_published_or_given_a_public_tombstone(
     build(project)
     assert json.loads((project / "site/data/events.json").read_text())["record_count"] == 1
     assert json.loads((project / "site/data/retired.json").read_text())["record_count"] == 0
+    held = json.loads((project / "data/pending.json").read_text())["records"]
+    assert all(row["first_published_at"] is None for row in held)

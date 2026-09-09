@@ -1,8 +1,8 @@
 # Corrections, disputes and source suggestions
 
-Use the repository's Request a correction or Suggest a source Issue Form when repository access is available. The website constructs links from the configured repository URL. No submitted Issue automatically changes a record or enters the dataset.
+Use the private-response Google Form linked by the website when configured. The maintainer must create it and set community_submission_url; until then the site says the form is coming shortly. No submission automatically changes a record or enters the dataset. GitHub Issues remain for project/tooling discussion, not primary evidence intake.
 
-The public beta is live at https://foodsafety.nemoneek.com/ . Correction, source-suggestion and volunteer routes point to shubha07m/food_safety. While that repository remains private, these forms require collaborator access; once the maintainer changes its visibility, they become public. This temporary access limitation is disclosed on the site. A publicly reachable correction route is necessary before further broad promotion; no unconfigured email address or form provider is invented.
+The public beta is live at https://foodsafety.nemoneek.com/ . On develop, Google Form integration awaits the owner's actual responder URL and release approval. No unconfigured email address or form URL is invented. Private form responses are not published or exported by this repository.
 
 Any public intake route must require a source URL where applicable, prohibit arbitrary uploads and unsupported allegations, and never publish submissions automatically. It must remain a controlled manual-review channel rather than a public reporting or comment system.
 
@@ -11,6 +11,8 @@ A correction should identify the record ID, disputed field, reason and a support
 Do not submit unsupported allegations, harassment, discriminatory content, unnecessary personal information or private documents. GitHub controls submission account data and infrastructure logs under its policies. Issue text may become visible if the repository later becomes public; keep all submissions suitable for public review. Do not post sensitive legal correspondence in public Issues.
 
 ## Maintainer procedure
+
+An ordinary transport failure uses a dated source warning and bounded retries, not the hold command. Use a semantic hold for credible uncertainty, correction or harm. See METHODOLOGY.md for retry/archive thresholds and restoration. Before processing a submitted URL, admit its exact host through the source policy after review; never fetch arbitrary form input. Keep contact and internal reviewer notes outside public datasets.
 
 1. Acknowledge and triage as capacity allows; no guaranteed response time is promised.
 2. Suspend potentially inaccurate or harmful records promptly with the hold command. Do not wait for a final conclusion to reduce exposure.

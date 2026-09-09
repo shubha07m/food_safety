@@ -1,5 +1,9 @@
 # Public repository audit
 
+Phase 1 update: develop now exists for human development; main remains production. The historical privacy blocker below remains unchanged. No history rewrite or visibility change was authorized. New source_checks diagnostics contain hashed source identifiers/timestamps and controlled codes, not private form responses. Earlier branch/artifact inventory below is a dated observation, not current branch inventory.
+
+Latest bounded audit before Phase 1 commits scanned 359 locally available historical blobs (about 3.6 MB): zero known secret patterns, three historical machine-path files, and the same 94 private-artifact paths. This does not remove or resolve the historical visibility blocker.
+
 The site is already public. Repository visibility remains a separate, explicit
 maintainer decision. This pass does not change it or rewrite shared Git history.
 

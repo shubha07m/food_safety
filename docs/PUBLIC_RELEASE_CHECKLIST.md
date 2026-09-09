@@ -33,3 +33,11 @@ Use this checklist immediately before the explicit `--confirm-public-release` ac
 - [ ] Maintainers can access workflow-dispatch; private review artifacts are not uploaded.
 - [ ] Rollback procedure is understood and a prior Workers deployment is available.
 - [ ] Historical private Git material is resolved before repository visibility changes.
+# Phase 1 develop-to-main approval gates
+
+- [ ] Owner explicitly approved merge; Cloudflare configuration unchanged.
+- [ ] Latest production bot commits reconciled and migrated; no stale-data overwrite.
+- [ ] Recovery report reviewed; no semantic holds silently restored.
+- [ ] Google Form responder URL tested; response Sheet private, no uploads/email collection/public summaries.
+- [ ] English/Bengali warnings and lifecycle totals checked.
+- [ ] Historical privacy cleanup remains required before repository visibility changes.

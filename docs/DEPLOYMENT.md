@@ -1,5 +1,7 @@
 # Live deployment
 
+Phase 1 on develop is not a production release. Keep the existing main-to-Cloudflare integration unchanged. Reconcile bot-generated production data before any owner-approved merge; see MAINTAINER_GUIDE.md. No new backend, map provider, domain or deployment infrastructure is required.
+
 Canonical public beta: https://foodsafety.nemoneek.com/
 
 Hosting: **Cloudflare Workers static assets**. The existing Git integration builds `main` and deploys only `site/`, never the repository root. Fallback: https://food-safety.shubha07m.workers.dev/

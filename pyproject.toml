@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "food-safety"
-version = "0.2.0"
+version = "0.3.0"
 description = "Independent public-source food safety evidence browser"
 requires-python = ">=3.12"
 dependencies = ["pydantic==2.13.5", "httpx==0.28.1", "beautifulsoup4==4.15.0", "PyYAML==6.0.3"]

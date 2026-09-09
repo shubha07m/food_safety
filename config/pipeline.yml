@@ -6,4 +6,7 @@ max_discovery_response_bytes: 1048576
 max_llm_calls_per_run: 5
 llm_enabled: false
 auto_publish: true
+archive_after_days: 30
+review_after_days: 7
+community_submission_url: null
 repository_url: https://github.com/shubha07m/food_safety

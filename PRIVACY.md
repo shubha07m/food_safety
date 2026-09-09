@@ -1,5 +1,7 @@
 # Privacy
 
+Optional community intake links to an owner-configured Google Form with private responses. Google processes submitted material under its own policies. No form is embedded or fetched by the public dashboard. The proposed form requests no uploads or email addresses and exposes no response summaries. The owner must restrict editor access, review responses and remove unnecessary information; raw responses must never be committed to Git. Submissions do not publish automatically. See the maintainer guide for setup.
+
 V1 has no accounts, registration, comments, advertising, analytics, tracking pixels, newsletters, profiling or application cookies. The static site has no public write API or submission database. It does not collect visitor form input. Search and chart filtering happen locally in the browser.
 
 Hosting providers may process IP addresses and operational request/security logs under their own policies. Following an external source or GitHub link sends the visitor to that provider, whose privacy practices apply. A no-referrer policy is configured to limit information sent on navigation.

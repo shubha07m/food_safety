@@ -1,3 +1,4 @@
+import hashlib
 from datetime import date
 from typing import Annotated, Literal
 
@@ -63,6 +64,14 @@ MenuMethod = Literal[
 ]
 BusinessFormat = Literal["independent", "chain_group", "unknown"]
 LocationPrecision = Literal["establishment", "street", "neighborhood", "city", "district"]
+PublicationStatus = Literal[
+    "active",
+    "active_with_warning",
+    "needs_review",
+    "archived_unverifiable",
+    "suspended",
+    "superseded",
+]
 
 
 class StrictModel(BaseModel):
@@ -76,6 +85,16 @@ class StrictModel(BaseModel):
 
 
 class Source(StrictModel):
+    source_id: str = ""
+    source_revision_id: str = ""
+    source_language: Literal["en", "bn", "und"] = "und"
+    source_relationship: Literal["independent", "syndicated", "republication", "unknown"] = (
+        "unknown"
+    )
+    origin_source_id: str | None = None
+    evidence_span_hash: str = ""
+    evidence_language: Literal["en", "bn", "und"] = "und"
+    evidence_locator: Text | None = None
     source_url: URL
     source_title: Text
     source_publisher: Text
@@ -87,6 +106,19 @@ class Source(StrictModel):
     evidence_quote: Text
     evidence_context: Text
     archive_url: URL | None = None
+
+    @model_validator(mode="after")
+    def identifiers(self):
+        expected = {
+            "source_id": "SRC-" + hashlib.sha256(self.source_url.encode()).hexdigest()[:20],
+            "source_revision_id": self.text_sha256,
+            "evidence_span_hash": hashlib.sha256(self.evidence_quote.encode()).hexdigest(),
+        }
+        for key, value in expected.items():
+            if getattr(self, key) and getattr(self, key) != value:
+                raise ValueError("source_provenance_mismatch")
+            object.__setattr__(self, key, value)
+        return self
 
     @field_validator("evidence_quote")
     @classmethod
@@ -141,9 +173,9 @@ class DerivedContext(StrictModel):
     action_category_reviewed: bool = False
     establishment_context: EstablishmentContext = "unknown"
     establishment_context_source: URL | None = None
-    establishment_context_method: Literal[
-        "publisher_explicit", "reviewed_source_context"
-    ] | None = None
+    establishment_context_method: (
+        Literal["publisher_explicit", "reviewed_source_context"] | None
+    ) = None
     establishment_context_confidence: Confidence = "unknown"
     establishment_context_reviewed: bool = False
     menu_context: MenuContext = "unknown"
@@ -153,9 +185,10 @@ class DerivedContext(StrictModel):
     menu_context_reviewed: bool = False
     business_format: BusinessFormat = "unknown"
     business_format_source: URL | None = None
-    business_format_method: Literal[
-        "publisher_explicit", "official_establishment_website", "reviewed_external_source"
-    ] | None = None
+    business_format_method: (
+        Literal["publisher_explicit", "official_establishment_website", "reviewed_external_source"]
+        | None
+    ) = None
     business_format_confidence: Confidence = "unknown"
     business_format_reviewed: bool = False
     derived_context_sources: list[URL] = Field(default_factory=list, max_length=5)
@@ -215,10 +248,7 @@ class DerivedContext(StrictModel):
         ]
         for active, source, method, confidence, reviewed in groups:
             if active and (
-                not source
-                or not method
-                or confidence not in {"medium", "high"}
-                or not reviewed
+                not source or not method or confidence not in {"medium", "high"} or not reviewed
             ):
                 raise ValueError("context_classification_requires_reviewed_evidence")
             if not active and (source or method or confidence != "unknown" or reviewed):
@@ -264,7 +294,38 @@ class AutomaticValidation(StrictModel):
     pipeline_version: str
 
 
+class ReviewedAssociation(StrictModel):
+    source_url: URL
+    relationship: Literal["independent", "syndicated", "republication", "unknown"]
+    reviewed_at: AwareDatetime
+    reviewer: Text
+    event_match_checked: Literal[True]
+    supported_fields: dict[str, Support]
+
+
 class Event(StrictModel):
+    superseded_by: Annotated[str, StringConstraints(pattern=r"^WBFS-[a-f0-9]{12}$")] | None = None
+    reviewed_associations: list[ReviewedAssociation] = Field(default_factory=list, max_length=5)
+    record_class: Literal["inspection_evidence"] = "inspection_evidence"
+    record_scope: Literal[
+        "establishment_event", "area_operation", "aggregate_report", "unknown"
+    ] = "unknown"
+    establishment_id: Text | None = None
+    location_id: Text | None = None
+    first_published_at: AwareDatetime | None = None
+    last_source_checked_at: AwareDatetime | None = None
+    last_successful_evidence_check_at: AwareDatetime | None = None
+    source_availability: Literal["available", "unavailable", "removed", "unknown"] = "unknown"
+    source_availability_reason: Text | None = None
+    evidence_support_status: Literal[
+        "supported_as_of", "needs_review", "unsupported", "withdrawn"
+    ] = "needs_review"
+    publication_status: PublicationStatus = "needs_review"
+    reviewer_hold: bool = False
+    extractor_id: Text = "legacy_reviewed_extraction"
+    extractor_version: Text = "1"
+    validator_id: Text = "field_evidence_validation"
+    validator_version: Text = "2"
     event_id: Annotated[str, StringConstraints(pattern=r"^WBFS-[a-f0-9]{12}$")]
     reported_fact: Facts
     derived_context: DerivedContext = Field(default_factory=DerivedContext)
@@ -282,6 +343,27 @@ class Event(StrictModel):
     is_fixture: bool = False
     context_notice: Literal[CONTEXT] = CONTEXT
 
+    @model_validator(mode="before")
+    @classmethod
+    def legacy_lifecycle(cls, raw):
+        if not isinstance(raw, dict) or "publication_status" in raw:
+            return raw
+        data = dict(raw)
+        accepted = [
+            h["at"]
+            for h in data.get("history", [])
+            if h.get("status") in {"SOURCE VERIFIED", "CROSS-SOURCE VERIFIED"}
+        ]
+        current = data.get("verification_status") in {"SOURCE VERIFIED", "CROSS-SOURCE VERIFIED"}
+        data.update(
+            first_published_at=accepted[0] if accepted else None,
+            publication_status="active" if current else "needs_review",
+            evidence_support_status="supported_as_of" if current else "needs_review",
+            source_availability="available" if current else "unknown",
+            last_successful_evidence_check_at=accepted[-1] if accepted else None,
+        )
+        return data
+
     @model_validator(mode="after")
     def consistency(self):
         if len({s.source_url for s in self.sources}) != len(self.sources):
@@ -293,6 +375,19 @@ class Event(StrictModel):
         if self.history[-1].at != self.record_updated_at:
             raise ValueError("history_timestamp_mismatch")
         linked = {source.source_url for source in self.sources}
+        for association in self.reviewed_associations:
+            if association.source_url not in linked:
+                raise ValueError("unlinked_source_association")
+            source = next(s for s in self.sources if s.source_url == association.source_url)
+            if source.source_relationship != association.relationship:
+                raise ValueError("association_relationship_mismatch")
+            for field, support in association.supported_fields.items():
+                if (
+                    field not in self.reported_fact.evidence
+                    or support.source_url != source.source_url
+                    or support.quote not in source.evidence_context
+                ):
+                    raise ValueError("unsupported_association_field")
         context = self.derived_context
         claimed = {
             context.action_category_source,
@@ -320,4 +415,69 @@ class Dataset(StrictModel):
             raise ValueError("record_count_mismatch")
         if len({r.event_id for r in self.records}) != self.record_count:
             raise ValueError("duplicate_event_id")
+        return self
+
+
+class ComplianceDocument(StrictModel):
+    """URL-only pilot. No automatic publication or submitter contacts in this model."""
+
+    record_id: Annotated[str, StringConstraints(pattern=r"^BFPC-[a-f0-9]{12}$")]
+    record_class: Literal["licensing_compliance_document"] = "licensing_compliance_document"
+    establishment_id: Text | None = None
+    establishment_name: Text
+    area: Text
+    evidence_type: Literal[
+        "licence",
+        "compliance_certificate",
+        "official_clearance",
+        "regulatory_document",
+        "corrective_action",
+    ]
+    issuer: Text
+    document_date: date
+    valid_from: date | None = None
+    valid_until: date | None = None
+    scope: Text
+    source: Source
+    document_status_as_reported: Text
+    issuer_check_status: Literal["not_checked", "source_checked", "issuer_confirmed"] = (
+        "not_checked"
+    )
+    publication_status: PublicationStatus = "needs_review"
+    submission_id: Text | None = None
+    submission_timestamp: AwareDatetime | None = None
+    reviewed_at: AwareDatetime | None = None
+    supported_fields: dict[str, Support]
+    related_record_ids: list[Text] = Field(default_factory=list, max_length=10)
+    supersedes: Text | None = None
+    related_inspection_record: Text | None = None
+
+    @model_validator(mode="after")
+    def document_support(self):
+        if self.valid_from and self.valid_until and self.valid_until < self.valid_from:
+            raise ValueError("invalid_validity_period")
+        if self.publication_status in {"active", "active_with_warning"}:
+            if not self.reviewed_at or self.issuer_check_status == "not_checked":
+                raise ValueError("document_requires_manual_review")
+            for field in [
+                "establishment_name",
+                "area",
+                "issuer",
+                "document_date",
+                "scope",
+                "document_status_as_reported",
+                "valid_from",
+                "valid_until",
+            ]:
+                value = getattr(self, field)
+                if value is None:
+                    continue
+                support = self.supported_fields.get(field)
+                if (
+                    not support
+                    or support.source_url != self.source.source_url
+                    or support.quote not in self.source.evidence_context
+                    or str(value) not in support.quote
+                ):
+                    raise ValueError("unsupported_document_field")
         return self

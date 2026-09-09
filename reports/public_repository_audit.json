@@ -1,10 +1,12 @@
 {
   "scope": "all locally available Git refs; known token/key patterns only",
-  "objects_scanned": 233,
-  "bytes_scanned": 1798358,
+  "objects_scanned": 359,
+  "bytes_scanned": 3604564,
   "secret_pattern_paths": [],
   "historical_machine_path_files": [
-    "README.md"
+    "README.md",
+    "scripts/audit_repository.py",
+    "scripts/verify_public_output.py"
   ],
   "historical_private_artifact_paths": [
     "data/history/WBFS-13cb858f9dfe",

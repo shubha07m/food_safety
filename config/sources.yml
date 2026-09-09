@@ -5,6 +5,8 @@ sources:
     tier: A
     enabled: false
     discovery_method: curated_urls
+    discovery_pages:
+      - https://fssai.gov.in/press-release
     urls: []
   - name: FSSAI (www host)
     domain: www.fssai.gov.in
@@ -37,6 +39,8 @@ sources:
     tier: B
     enabled: true
     discovery_method: curated_urls
+    discovery_pages:
+      - https://tv9bangla.com/kolkata
     urls:
       - https://tv9bangla.com/kolkata/west-bengal-food-safety-drive-irregularities-found-at-1525-food-centres-licences-of-13-processing-units-cancelled-1343938.html
   - name: UNI India
@@ -71,3 +75,11 @@ sources:
     discovery_method: curated_urls
     urls:
       - https://www.anandabazar.com/amp/west-bengal/kolkata/kolkata-municipal-corporation-carried-out-surprise-inspections-on-restaurants-in-park-street-and-other-areas-as-part-of-a-statewide-food-safety-crackdown-prnt/cid/1710865
+  - name: Kolkata Municipal Corporation
+    domain: www.kmcgov.in
+    tier: A
+    enabled: false
+    discovery_method: curated_urls
+    discovery_pages:
+      - https://www.kmcgov.in/
+    urls: []

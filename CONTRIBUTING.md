@@ -1,5 +1,7 @@
 # Contributing
 
+Human implementation work belongs on develop. main is production and receives bounded scheduled data updates. No develop-to-main merge or production release occurs without owner approval. Before release, synchronize current production data using the maintainer procedure; never replace newer production artifacts with stale branch data. Community source/correction intake uses the configured private-response Google Form, not public Issues. GitHub remains appropriate for code contributions and non-sensitive tooling discussion.
+
 Read DISCLAIMER.md, METHODOLOGY.md and CODE_OF_CONDUCT.md first. Contributions organize public evidence; they must not express unsupported allegations or create reputational rankings.
 
 Use the controlled Issue Forms for public-source suggestions and corrections. While the repository remains private this requires collaborator access; the same links work publicly after the maintainer changes visibility. No Issue content automatically publishes. Forks and pull requests are welcome when access permits. Do not submit arbitrary file uploads, personal details, social-identity classifications, screenshots without public sources or full copyrighted articles.
