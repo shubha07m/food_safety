@@ -18,8 +18,8 @@ from .discovery import BraveSearch, feed_candidates, page_candidates, sitemap_ca
 from .extract import text_hash
 from .fetch import Fetcher, FetchError
 from .llm import NoLLM
-from .llm_admission import guarded_drafts
-from .llm_shadow import ShadowRunner
+from .llm_publish import publishable_drafts
+from .llm_runner import LLMRunner
 from .models import Event
 from .safety import safe_url
 from .storage import dump, now, read_events, read_rejected, transaction, transition
@@ -126,7 +126,7 @@ def update(
     if calls < 0 or calls > cfg.max_llm_calls_per_run:
         raise ValueError("llm_limit_out_of_range")
     extractor = NoLLM()
-    shadow = ShadowRunner(root, cfg, use_llm, calls, llm_extractor)
+    llm_runner = LLMRunner(root, cfg, use_llm, calls, llm_extractor)
     discovery_fetcher = fetcher or Fetcher(
         policies, cfg.model_copy(update={"max_response_bytes": cfg.max_discovery_response_bytes})
     )
@@ -275,7 +275,7 @@ def update(
             lifecycle.availability(checks, url, at)
             # Private side path runs even for known sources or deterministic successes.
             # It contains all model failures and cannot change source/publication state.
-            model_report = shadow.observe(html, url, policy.language, automatic_matches(text))
+            model_report = llm_runner.observe(html, url, policy.language, automatic_matches(text))
             coverage[policy.name]["fetched"] += 1
             coverage[policy.name]["article_fetch_status"] = "accessible"
             matching = [
@@ -306,14 +306,13 @@ def update(
                         revised
                     )
                     reasons[revised.publication_status] += 1
-                if not (cfg.llm_mode == "guarded" and cfg.publish_from_llm):
-                    continue
+                continue
             # A held candidate may be deterministically reconsidered when an adapter improves.
             # Its old unreviewed extraction is replaced, never silently promoted.
             if matching and not published_matching:
                 pending = [e for e in pending if e not in matching]
             canonical_policy = next(p for p in policies if p.domain == urlsplit(canonical).hostname)
-            auto_enabled = cfg.auto_publish and os.getenv("AUTO_PUBLISH", "false").lower() == "true"
+            auto_enabled = cfg.auto_publish and os.getenv("AUTO_PUBLISH", "true").lower() == "true"
             matches = automatic_matches(text) if auto_enabled and not published_matching else []
             drafts = []
             if matches:
@@ -322,7 +321,7 @@ def update(
                     drafts.append(prepare_automatic(draft, html, text, at, match) or draft)
             # Model/queue exceptions are never source failures or lifecycle transitions.
             try:
-                assisted = guarded_drafts(
+                assisted = publishable_drafts(
                     root,
                     cfg,
                     model_report,
@@ -448,9 +447,8 @@ def update(
             pending.append(revised)
     lifecycle.save_checks(root, checks, at)
     run.update(
-        llm_calls=shadow.calls,
-        llm_status_counts=dict(shadow.counts),
-        llm_reserved_list_cost_usd=shadow.reserved_spend,
+        llm_calls=llm_runner.calls,
+        llm_status_counts=dict(llm_runner.counts),
         ended_at=now().isoformat(),
         sources_scanned=len(scanned),
         reason_counts=dict(reasons),

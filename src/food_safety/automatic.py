@@ -37,10 +37,7 @@ PATTERN = re.compile(
     rf"(?P<area>{'|'.join(AREAS)})(?:, (?:Kolkata|West Bengal))?\.",
     re.I,
 )
-BN_AREAS = (
-    "কলকাতা|পার্ক স্ট্রিট|ডেকার্স লেন|সোনারপুর|কামালগাজি|দিঘা|বাদুড়িয়া|"
-    "বনগাঁ|বকখালি|জয়নগর|জয়নগর|মুচিবাজার|নাগেরবাজার"
-)
+BN_AREAS = "কলকাতা|পার্ক স্ট্রিট|ডেকার্স লেন|সোনারপুর|কামালগাজি|দিঘা|বাদুড়িয়া|বনগাঁ|বকখালি|জয়নগর|জয়নগর|মুচিবাজার|নাগেরবাজার"
 BN_PATTERN = re.compile(
     rf"(?P<authority>কলকাতা পুরসভার খাদ্য সুরক্ষা আধিকারিকরা|খাদ্য সুরক্ষা দফতরের আধিকারিকরা) "
     rf"(?P<area>{BN_AREAS})(?:য়|য়|ে| এলাকায়| এলাকায়) "
@@ -164,9 +161,7 @@ def prepare_automatic(event, html, text, at, selected=None):
     soup = BeautifulSoup(html, "html.parser")
     meta = soup.find(
         "meta",
-        attrs={
-            "property": re.compile(r"^(?:article:published_time|datePublished)$", re.I)
-        },
+        attrs={"property": re.compile(r"^(?:article:published_time|datePublished)$", re.I)},
     ) or soup.find(
         "meta", attrs={"name": re.compile(r"^(?:article:published_time|datePublished)$", re.I)}
     )
@@ -226,6 +221,32 @@ def prepare_automatic(event, html, text, at, selected=None):
 
 
 def automatic_errors(event):
+    if event.llm.llm_used:
+        from .documents import mapped_text
+        from .models import DerivedContext
+
+        proof = (
+            event.automatic_validation.extraction_evidence if event.automatic_validation else None
+        )
+        if (
+            not event.automatic_validation
+            or event.automatic_validation.method != "source_grounded_candidate_v1"
+            or not proof
+            or not event.llm.llm_output_was_validated
+            or event.llm.validation_result != "passed"
+            or event.llm.source_revision_id != proof.source_revision_id
+            or proof.end - proof.start != len(proof.original_quote)
+            or mapped_text(proof.original_quote, True)[0]
+            != mapped_text(event.reported_fact.reported_observation, True)[0]
+            or len(event.sources) != 1
+        ):
+            return ["invalid_llm_grounding_provenance"]
+        if event.derived_context != DerivedContext() or not event.sources[0].source_date:
+            return ["automatic_context_or_date_invalid"]
+        if event.sources[0].source_date > event.automatic_validation.validated_at.date():
+            return ["automatic_future_date"]
+        return []
+
     proposals = automatic_matches(event.reported_fact.reported_observation)
     facts = event.reported_fact.model_dump(exclude={"evidence"})
     fields = next(
@@ -233,7 +254,6 @@ def automatic_errors(event):
             fields
             for _, fields, scope in proposals
             if all(facts.get(key) == value for key, value in fields.items())
-            and (not event.llm.llm_used or scope == event.record_scope)
         ),
         None,
     )
@@ -249,21 +269,7 @@ def automatic_errors(event):
         return ["automatic_extra_claim"]
     if facts["legal_finding_status"] != "unknown":
         return ["automatic_extra_claim"]
-    if event.llm.llm_used:
-        from .documents import mapped_text
-
-        proof = event.automatic_validation.extraction_evidence
-        if (
-            event.automatic_validation.method != "source_grounded_candidate_v1"
-            or not proof or not event.llm.llm_output_was_validated
-            or event.llm.validation_result != "passed"
-            or event.llm.source_revision_id != proof.source_revision_id
-            or proof.end - proof.start != len(proof.original_quote)
-            or mapped_text(proof.original_quote, True)[0]
-            != mapped_text(event.reported_fact.reported_observation, True)[0]
-        ):
-            return ["invalid_llm_grounding_provenance"]
-    elif event.automatic_validation.method == "source_grounded_candidate_v1":
+    if event.automatic_validation.method == "source_grounded_candidate_v1":
         return ["missing_llm_provenance"]
     from .models import DerivedContext
 

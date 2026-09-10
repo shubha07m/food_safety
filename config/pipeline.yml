@@ -9,14 +9,12 @@ max_response_bytes: 1048576
 max_discovery_response_bytes: 1048576
 max_llm_calls_per_run: 5
 llm_enabled: true
-llm_mode: shadow
-publish_from_llm: false
+publish_from_llm: true
 llm_provider: gemini
-llm_model: gemini-2.5-flash-lite
+llm_model: gemini-3.5-flash-lite
 llm_max_input_chars: 24000
 llm_max_output_tokens: 4096
 llm_max_candidates: 12
-llm_max_spend_usd: 0.05
 llm_input_usd_per_million: 0.10
 llm_output_usd_per_million: 0.40
 auto_publish: true

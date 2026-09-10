@@ -94,7 +94,7 @@ An existing local `food` environment can be reused. Python execution and depende
 
 The language model proposes structured candidate records from source documents. Candidates that satisfy all source-grounding, schema, semantic, and safety checks may be published automatically. Ambiguous or higher-risk cases are held for human review; invalid claims are rejected. Unsupported optional fields can be omitted without discarding supported core facts.
 
-Deterministic extraction remains active alongside the bounded multilingual extractor. **This branch defaults to shadow evaluation:** model candidates do not yet affect publication. The guarded automatic-publication path is implemented, but promotion awaits the real-article evaluation described in [LLM extraction and evaluation](docs/LLM_EXTRACTION.md). Missing credentials or model failures leave deterministic ingestion and existing source lifecycle states unaffected.
+Deterministic extraction remains active alongside the bounded multilingual extractor. LLM-derived candidates may publish only after the same source-grounding, semantic, safety and publication gates as every other candidate; ambiguous candidates remain private exceptions. Missing credentials or model failures leave deterministic ingestion and existing source lifecycle states unaffected. Use [LLM extraction and diagnostics](docs/LLM_EXTRACTION.md) for bounded testing.
 
 Original source evidence remains authoritative. There is no chatbot, public Q&A, model training, fine-tuning or autonomous source-independent factual generation. Model assistance is not a trust score or a marketing claim.
 

@@ -28,15 +28,11 @@ def main():
     llm.add_argument("--use-llm", dest="use_llm", action="store_true")
     llm.add_argument("--no-llm", dest="use_llm", action="store_false")
     scan.set_defaults(use_llm=None)
-    corpus = sub.add_parser(
-        "llm-prepare", help="Fetch bounded known articles into private evaluation"
+    diagnostic = sub.add_parser(
+        "llm-test", help="Run a bounded private extractor diagnostic; no publication"
     )
-    corpus.add_argument("--max-articles", type=bounded, default=30)
-    evaluation = sub.add_parser(
-        "llm-evaluate", help="Evaluate frozen private articles; no source fetch"
-    )
-    evaluation.add_argument("--max-articles", type=bounded, default=30)
-    evaluation.add_argument("--use-llm", action="store_true", help="Permit bounded model calls")
+    diagnostic.add_argument("--max-articles", type=bounded, default=3)
+    diagnostic.add_argument("--use-llm", action="store_true", help="Permit bounded model calls")
     review = sub.add_parser("review", help="Publish a reviewed record after fresh source checks")
     review.add_argument("--file", required=True)
     review.add_argument("--reviewer", required=True)
@@ -59,14 +55,10 @@ def main():
     hold.add_argument("--replacement-id", help="Required for SUPERSEDED; must already be active")
     args = parser.parse_args()
     try:
-        if args.command in {"llm-prepare", "llm-evaluate"}:
-            from .evaluation import evaluate_corpus, prepare_corpus
+        if args.command == "llm-test":
+            from .llm_diagnostic import test_cached_articles
 
-            result = (
-                prepare_corpus(ROOT, args.max_articles)
-                if args.command == "llm-prepare"
-                else evaluate_corpus(ROOT, args.max_articles, args.use_llm)
-            )
+            result = test_cached_articles(ROOT, args.max_articles, args.use_llm)
         elif args.command == "migrate":
             from .migrate import migrate
 

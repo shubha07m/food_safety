@@ -83,7 +83,7 @@ def test_ambiguous_articles_not_attributed(name):
     assert set(fields) == {"reported_observation"}
 
 
-def test_llm_shadow_default_without_credentials(project, policy, fixture_html):
+def test_llm_default_without_credentials(project, policy, fixture_html):
     enable_policy(project, policy)
     result = update(project, use_llm=True, fetcher=FakeFetcher(fixture_html))
     assert result["llm_calls"] == 0

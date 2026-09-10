@@ -37,7 +37,53 @@ class StructuredExtractor(Protocol):
 
 
 class ModelFailure(Exception):
-    """Controlled reason only; never retain provider errors, credentials or source bodies."""
+    """Controlled diagnostics; never retain credentials or source bodies."""
+
+    def __init__(self, code, diagnostic=None):
+        self.code = code
+        self.diagnostic = diagnostic
+        super().__init__(code)
+
+
+def provider_schema(document):
+    definitions = document.get("$defs", {})
+
+    def convert(value):
+        if isinstance(value, list):
+            return [convert(item) for item in value]
+        if not isinstance(value, dict):
+            return value
+        if value.get("$ref"):
+            return convert(definitions[value["$ref"].rsplit("/", 1)[-1]])
+        any_of = value.get("anyOf")
+        if any_of and len(any_of) == 2 and any(item.get("type") == "null" for item in any_of):
+            result = convert(next(item for item in any_of if item.get("type") != "null"))
+            result["nullable"] = True
+            return result
+        # Gemini's response schema is a deliberately smaller OpenAPI subset.
+        allowed = ("type", "format", "enum", "description", "required", "items")
+        result = {
+            key: convert(value[key]) for key in allowed if key in value and key != "properties"
+        }
+        if "properties" in value:
+            result["properties"] = {
+                name: convert(item) for name, item in value["properties"].items()
+            }
+        return result
+
+    return convert(document)
+
+
+def provider_diagnostic(status, body):
+    """Keep a small provider-side reason without retaining API keys or source text."""
+    try:
+        error = json.loads(body).get("error", {})
+        code = str(error.get("status") or error.get("code") or "unknown").lower()
+        message = " ".join(str(error.get("message") or "").split())[:180]
+    except (TypeError, ValueError):
+        code, message = "unparseable", ""
+    message = message.replace("GEMINI_API_KEY", "credential")
+    return f"http_{status}_{code}", message or None
 
 
 class GeminiExtractor:
@@ -74,7 +120,7 @@ class GeminiExtractor:
                 "temperature": 0,
                 "maxOutputTokens": limits.llm_max_output_tokens,
                 "responseMimeType": "application/json",
-                "responseJsonSchema": candidate_schema,
+                "responseJsonSchema": provider_schema(candidate_schema),
             },
         }
         client = self.client or httpx.Client(timeout=20, follow_redirects=False, trust_env=False)
@@ -87,13 +133,14 @@ class GeminiExtractor:
                 headers={"x-goog-api-key": key},
                 json=payload,
             ) as response:
-                if response.status_code != 200:
-                    raise ModelFailure("provider_http_error")
                 body = bytearray()
                 for chunk in response.iter_bytes():
                     body.extend(chunk)
                     if len(body) > 131072:
                         raise ModelFailure("response_too_large")
+                if response.status_code != 200:
+                    code, diagnostic = provider_diagnostic(response.status_code, bytes(body))
+                    raise ModelFailure("provider_" + code, diagnostic)
             raw = json.loads(body)
             choices = raw.get("candidates", [])
             if not choices or raw.get("promptFeedback", {}).get("blockReason"):

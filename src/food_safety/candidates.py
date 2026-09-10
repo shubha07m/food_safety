@@ -7,7 +7,6 @@ from typing import Annotated, Literal
 
 from pydantic import BaseModel, ConfigDict, Field, StringConstraints, ValidationError
 
-from .automatic import automatic_matches
 from .documents import mapped_text, resolve_quote
 from .safety import claim_risks, reject_sensitive_fields
 
@@ -20,6 +19,7 @@ Scope = Literal[
     "statewide_operation",
     "aggregate_report",
 ]
+SpanId = Annotated[str, StringConstraints(pattern=r"^[SP][A-Za-z0-9_-]{1,20}$")]
 
 
 class CandidateModel(BaseModel):
@@ -27,16 +27,14 @@ class CandidateModel(BaseModel):
 
 
 class EvidenceProposal(CandidateModel):
-    span_id: Annotated[str, StringConstraints(pattern=r"^S[0-9]{1,3}$")]
+    span_id: Annotated[str, StringConstraints(pattern=r"^[SP][A-Za-z0-9_-]{1,20}$")]
     passage_id: Annotated[str, StringConstraints(pattern=r"^P[0-9]{3,5}$")]
     original_quote: Annotated[str, StringConstraints(min_length=1, max_length=1200)]
 
 
 class SupportedValue(CandidateModel):
     raw_value: Short
-    evidence_span_ids: list[Annotated[str, StringConstraints(pattern=r"^S[0-9]{1,3}$")]] = Field(
-        min_length=1, max_length=3
-    )
+    evidence_span_ids: list[SpanId] = Field(min_length=1, max_length=3)
 
 
 class Quantity(SupportedValue):
@@ -172,20 +170,25 @@ def validate_candidate(record, document, deterministic=()):
     ):
         reasons.append("document_correction_requires_review")
     if record.event_date_expression is not None:
-        reasons.append("event_date_requires_review")
+        omitted.append("event_date_expression_requires_normalization")
     if record.relationships:
         reasons.append("relationship_requires_review")
         if any(key not in spans for r in record.relationships for key in r.evidence_span_ids):
             reasons.append("unsupported:relationship_evidence")
-    matches = automatic_matches(cited)
-    raw_fields = {k: v["raw_value"] for k, v in fields.items() if "." not in k}
-    explicit = any(
-        scope == record.record_scope
-        and all(values.get(k) == v for k, v in raw_fields.items() if k != "event_date_expression")
-        and all(action.raw_value == values.get("reported_action") for action in record.actions)
-        for _, values, scope in matches
-    )
-    if not explicit:
+    required = ["area", "reported_authority", "reported_observation"]
+    if record.record_scope == "establishment_event":
+        required.append("establishment_name")
+    core_values = [fields[name]["raw_value"] for name in required if name in fields]
+    core_values.extend(value.raw_value for value in record.actions)
+    relation_spans = [
+        span
+        for span in spans.values()
+        if all(
+            mapped_text(value, True)[0] in mapped_text(span["original_quote"], True)[0]
+            for value in core_values
+        )
+    ]
+    if not relation_spans:
         reasons.append("entity_action_relationship_requires_review")
     if any(name.startswith("quantities.") for name in fields):
         reasons.append("quantity_association_requires_review")

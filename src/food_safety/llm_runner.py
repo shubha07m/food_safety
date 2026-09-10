@@ -1,4 +1,4 @@
-"""Private-only shadow side path. Never changes Event or source lifecycle state."""
+"""Bounded LLM extraction side path. It never changes source lifecycle state."""
 
 import hashlib
 import json
@@ -12,14 +12,14 @@ from .storage import dump, now
 from .structured_llm import PROMPT, GeminiExtractor, ModelFailure
 
 
-class ShadowRunner:
+class LLMRunner:
     def __init__(self, root, cfg, enabled=None, max_calls=None, extractor=None):
         self.root, self.cfg = root, cfg
         configured = os.getenv("LLM_ENABLED", str(cfg.llm_enabled)).lower() == "true"
         self.enabled = configured if enabled is None else configured and enabled
         self.extractor = extractor or GeminiExtractor(cfg.llm_model)
         self.max_calls = min(cfg.max_llm_calls_per_run, max_calls if max_calls is not None else 5)
-        self.calls, self.reserved_spend = 0, 0.0
+        self.calls = 0
         self.counts = Counter()
 
     def observe(self, html, url, language, deterministic=()):
@@ -31,10 +31,12 @@ class ShadowRunner:
         try:
             result = self._observe(document, deterministic)
         except ModelFailure as exc:
-            result = {"status": str(exc), "publication_eligible": False}
+            result = {"status": exc.code, "publication_eligible": False}
+            if exc.diagnostic:
+                result["provider_diagnostic"] = exc.diagnostic
         except Exception:
             result = {
-                "status": "shadow_validation_or_storage_failure",
+                "status": "llm_processing_failure",
                 "publication_eligible": False,
             }
         self.counts[result["status"]] += 1
@@ -69,7 +71,7 @@ class ShadowRunner:
             "candidate_limit": self.cfg.llm_max_candidates,
         }
         cache_key = hashlib.sha256(json.dumps(identity, sort_keys=True).encode()).hexdigest()
-        private = self.root / ".cache/llm_eval"
+        private = self.root / ".cache/llm"
         path = private / "responses" / f"{cache_key}.json"
         cached = json.loads(path.read_text()) if path.exists() else None
         cached_at = cached.get("at") if cached else None
@@ -79,18 +81,7 @@ class ShadowRunner:
         else:
             if self.calls >= self.max_calls:
                 raise ModelFailure("call_budget_exhausted")
-            # UTF-8 bytes conservatively upper-bound input token count, including schema/prompt.
-            prompt_bytes = len(
-                (document.model_dump_json() + json.dumps(candidate_schema) + PROMPT).encode(),
-            )
-            bound = (
-                prompt_bytes * self.cfg.llm_input_usd_per_million
-                + self.cfg.llm_max_output_tokens * self.cfg.llm_output_usd_per_million
-            ) / 1e6
-            if self.reserved_spend + bound > self.cfg.llm_max_spend_usd:
-                raise ModelFailure("spend_budget_exhausted")
             self.calls += 1
-            self.reserved_spend += bound
             started = time.monotonic()
             reply = self.extractor.extract(document, candidate_schema, TASK_VERSION, self.cfg)
             latency = time.monotonic() - started
@@ -123,8 +114,7 @@ class ShadowRunner:
             "at": at,
             "completion_status": status,
             "status": "evaluated",
-            "mode": self.cfg.llm_mode,
-            "publication_eligible": self.cfg.llm_mode == "guarded" and self.cfg.publish_from_llm,
+            "publication_eligible": self.cfg.publish_from_llm,
             "usage": usage,
             "estimated_current_call_cost_usd": 0 if cached else usage["estimated_list_cost_usd"],
             "latency_seconds": latency,
