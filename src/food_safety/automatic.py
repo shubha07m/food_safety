@@ -231,8 +231,9 @@ def automatic_errors(event):
     fields = next(
         (
             fields
-            for _, fields, _ in proposals
+            for _, fields, scope in proposals
             if all(facts.get(key) == value for key, value in fields.items())
+            and (not event.llm.llm_used or scope == event.record_scope)
         ),
         None,
     )
@@ -246,8 +247,24 @@ def automatic_errors(event):
         if key not in fields and key != "legal_finding_status"
     ):
         return ["automatic_extra_claim"]
-    if facts["legal_finding_status"] != "unknown" or event.llm.llm_used:
+    if facts["legal_finding_status"] != "unknown":
         return ["automatic_extra_claim"]
+    if event.llm.llm_used:
+        from .documents import mapped_text
+
+        proof = event.automatic_validation.extraction_evidence
+        if (
+            event.automatic_validation.method != "source_grounded_candidate_v1"
+            or not proof or not event.llm.llm_output_was_validated
+            or event.llm.validation_result != "passed"
+            or event.llm.source_revision_id != proof.source_revision_id
+            or proof.end - proof.start != len(proof.original_quote)
+            or mapped_text(proof.original_quote, True)[0]
+            != mapped_text(event.reported_fact.reported_observation, True)[0]
+        ):
+            return ["invalid_llm_grounding_provenance"]
+    elif event.automatic_validation.method == "source_grounded_candidate_v1":
+        return ["missing_llm_provenance"]
     from .models import DerivedContext
 
     if event.derived_context != DerivedContext() or not event.sources[0].source_date:

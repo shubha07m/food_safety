@@ -35,13 +35,17 @@ jobs:
         run: |
           python -m pip install -r requirements-dev.lock
           python -m pip install --no-deps --no-build-isolation -e .
-      - name: Limited source scan, no paid APIs
+      - name: Limited source scan and optional private shadow extraction
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
         run: |
           result=0
           python -m food_safety.cli update --max-articles 20 || result=$?
           # Partial source failure (2) retains validated suspensions; fatal (1) stops.
           test "$result" -eq 0 -o "$result" -eq 2
       - name: Check candidate output
+        env:
+          LLM_ENABLED: 'false'
         run: |
           mkdir -p .cache
           ruff check .

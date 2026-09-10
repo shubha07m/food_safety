@@ -11,7 +11,7 @@ ROOT = Path(__file__).resolve().parents[1]
 MAX_BYTES = 64_000_000
 SECRET = re.compile(
     rb"BEGIN [A-Z ]*PRIVATE KEY|github_pat_[A-Za-z0-9_]{30,}|"
-    rb"gh[pousr]_[A-Za-z0-9]{30,}|sk-[A-Za-z0-9]{30,}|"
+    rb"gh[pousr]_[A-Za-z0-9]{30,}|sk-[A-Za-z0-9]{30,}|AIza[A-Za-z0-9_-]{35}|"
     rb"(?:api[_-]?key|secret|token)\s*[:=]\s*['\"][A-Za-z0-9_./+-]{20,}",
     re.I,
 )

@@ -14,6 +14,13 @@ AT = datetime(2026, 1, 3, tzinfo=UTC)
 URL = "https://example.org/fixture"
 
 
+@pytest.fixture(autouse=True)
+def no_live_model_credentials(monkeypatch):
+    """Unit tests never consume an accidentally configured hosted-model credential."""
+    monkeypatch.delenv("GEMINI_API_KEY", raising=False)
+    monkeypatch.delenv("LLM_ENABLED", raising=False)
+
+
 @pytest.fixture
 def fixture_html():
     return (Path(__file__).parent / "fixtures/inspection.html").read_text()

@@ -17,7 +17,9 @@ from .dedupe import area_key, associate, same_event, stable_id
 from .discovery import BraveSearch, feed_candidates, page_candidates, sitemap_candidates
 from .extract import text_hash
 from .fetch import Fetcher, FetchError
-from .llm import NoLLM, OpenAICompatible
+from .llm import NoLLM
+from .llm_admission import guarded_drafts
+from .llm_shadow import ShadowRunner
 from .models import Event
 from .safety import safe_url
 from .storage import dump, now, read_events, read_rejected, transaction, transition
@@ -110,7 +112,9 @@ def discover(policies, limit, per_source):
             yield policy, url
 
 
-def update(root, max_articles=None, use_llm=False, max_llm_calls=None, fetcher=None):
+def update(
+    root, max_articles=None, use_llm=None, max_llm_calls=None, fetcher=None, llm_extractor=None
+):
     from .build import validate
 
     validate(root)
@@ -121,9 +125,8 @@ def update(root, max_articles=None, use_llm=False, max_llm_calls=None, fetcher=N
     calls = cfg.max_llm_calls_per_run if max_llm_calls is None else max_llm_calls
     if calls < 0 or calls > cfg.max_llm_calls_per_run:
         raise ValueError("llm_limit_out_of_range")
-    if use_llm and not cfg.llm_enabled:
-        raise ValueError("enable_llm_in_config_and_pass_use_llm")
-    extractor = OpenAICompatible(calls) if use_llm else NoLLM()
+    extractor = NoLLM()
+    shadow = ShadowRunner(root, cfg, use_llm, calls, llm_extractor)
     discovery_fetcher = fetcher or Fetcher(
         policies, cfg.model_copy(update={"max_response_bytes": cfg.max_discovery_response_bytes})
     )
@@ -166,9 +169,7 @@ def update(root, max_articles=None, use_llm=False, max_llm_calls=None, fetcher=N
     }
     prior_status = json.loads((root / "data/status.json").read_text())
     # Rotate through previous records as well as configured seeds to detect source changes.
-    seeds = list(
-        discover(policies, cfg.max_discovery_candidates_per_run, cfg.max_pages_per_source)
-    )
+    seeds = list(discover(policies, cfg.max_discovery_candidates_per_run, cfg.max_pages_per_source))
     existing_urls = {url for _, url in seeds}
     for event in events:
         for source in event.sources:
@@ -272,6 +273,9 @@ def update(root, max_articles=None, use_llm=False, max_llm_calls=None, fetcher=N
                 raise ValueError("unexpected_redirect")
             title, text = lifecycle.checked_document(html)
             lifecycle.availability(checks, url, at)
+            # Private side path runs even for known sources or deterministic successes.
+            # It contains all model failures and cannot change source/publication state.
+            model_report = shadow.observe(html, url, policy.language, automatic_matches(text))
             coverage[policy.name]["fetched"] += 1
             coverage[policy.name]["article_fetch_status"] = "accessible"
             matching = [
@@ -302,22 +306,39 @@ def update(root, max_articles=None, use_llm=False, max_llm_calls=None, fetcher=N
                         revised
                     )
                     reasons[revised.publication_status] += 1
-                continue
+                if not (cfg.llm_mode == "guarded" and cfg.publish_from_llm):
+                    continue
             # A held candidate may be deterministically reconsidered when an adapter improves.
             # Its old unreviewed extraction is replaced, never silently promoted.
-            if matching:
+            if matching and not published_matching:
                 pending = [e for e in pending if e not in matching]
             canonical_policy = next(p for p in policies if p.domain == urlsplit(canonical).hostname)
-            auto_enabled = (
-                cfg.auto_publish and os.getenv("AUTO_PUBLISH", "false").lower() == "true"
-            )
-            matches = automatic_matches(text) if auto_enabled else []
+            auto_enabled = cfg.auto_publish and os.getenv("AUTO_PUBLISH", "false").lower() == "true"
+            matches = automatic_matches(text) if auto_enabled and not published_matching else []
             drafts = []
             if matches:
                 for match in matches:
                     draft = candidate(canonical, title, text, canonical_policy, match[1], at)
                     drafts.append(prepare_automatic(draft, html, text, at, match) or draft)
-            else:
+            # Model/queue exceptions are never source failures or lifecycle transitions.
+            try:
+                assisted = guarded_drafts(
+                    root,
+                    cfg,
+                    model_report,
+                    html,
+                    canonical,
+                    title,
+                    text,
+                    canonical_policy,
+                    policies,
+                    at,
+                )
+                ids = {draft.event_id for draft in drafts} | {e.event_id for e in events + pending}
+                drafts.extend(draft for draft in assisted if draft.event_id not in ids)
+            except Exception:
+                reasons["llm_policy_processing_failed"] += 1
+            if not drafts and not published_matching:
                 drafts.append(
                     candidate(
                         canonical,
@@ -326,7 +347,6 @@ def update(root, max_articles=None, use_llm=False, max_llm_calls=None, fetcher=N
                         canonical_policy,
                         extractor.extract(text),
                         at,
-                        extractor if use_llm else None,
                     )
                 )
             coverage[policy.name]["records_produced"] += len(drafts)
@@ -338,8 +358,8 @@ def update(root, max_articles=None, use_llm=False, max_llm_calls=None, fetcher=N
                 for draft in drafts:
                     draft.related_record_ids = [value for value in ids if value != draft.event_id]
             for event in drafts:
-            # Unnamed reports cannot reliably be merged. Overlapping area/date
-            # candidates stay pending rather than inflating inspection counts.
+                # Unnamed reports cannot reliably be merged. Overlapping area/date
+                # candidates stay pending rather than inflating inspection counts.
                 ambiguous_overlap = event.automatic_validation and any(
                     not event.reported_fact.establishment_name
                     and not old.reported_fact.establishment_name
@@ -354,12 +374,14 @@ def update(root, max_articles=None, use_llm=False, max_llm_calls=None, fetcher=N
                 if duplicate:
                     merged = associate(duplicate, event, at)
                     if duplicate.event_id not in {e.event_id for e in events}:
-                        pending = [
-                            e for e in pending if e.event_id != duplicate.event_id
-                        ] + [merged]
+                        pending = [e for e in pending if e.event_id != duplicate.event_id] + [
+                            merged
+                        ]
                     reasons["associated_requires_review"] += 1
-                elif auto_enabled and not ambiguous_overlap and not publication_errors(
-                    event, policies, {canonical: text}
+                elif (
+                    auto_enabled
+                    and not ambiguous_overlap
+                    and not publication_errors(event, policies, {canonical: text})
                 ):
                     events.append(event)
                     event.first_published_at = event.first_published_at or at
@@ -426,6 +448,9 @@ def update(root, max_articles=None, use_llm=False, max_llm_calls=None, fetcher=N
             pending.append(revised)
     lifecycle.save_checks(root, checks, at)
     run.update(
+        llm_calls=shadow.calls,
+        llm_status_counts=dict(shadow.counts),
+        llm_reserved_list_cost_usd=shadow.reserved_spend,
         ended_at=now().isoformat(),
         sources_scanned=len(scanned),
         reason_counts=dict(reasons),

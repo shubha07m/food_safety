@@ -308,10 +308,24 @@ class Review(StrictModel):
     all_fields_supported: bool
 
 
+class ExtractionEvidence(StrictModel):
+    source_revision_id: Annotated[str, StringConstraints(pattern=r"^[a-f0-9]{64}$")]
+    passage_id: Annotated[str, StringConstraints(pattern=r"^P[0-9]{3,5}$")]
+    original_quote: Text
+    start: int = Field(ge=0)
+    end: int = Field(gt=0)
+    match_method: Literal["exact", "nfc", "whitespace"]
+
+
 class AutomaticValidation(StrictModel):
-    method: Literal["explicit_inspection_sentence_v1", "explicit_inspection_sentence_v2"]
+    method: Literal[
+        "explicit_inspection_sentence_v1",
+        "explicit_inspection_sentence_v2",
+        "source_grounded_candidate_v1",
+    ]
     validated_at: AwareDatetime
     pipeline_version: str
+    extraction_evidence: ExtractionEvidence | None = None
 
 
 class ReviewedAssociation(StrictModel):

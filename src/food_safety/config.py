@@ -49,7 +49,17 @@ class Settings(StrictModel):
     max_response_bytes: int = Field(default=524288, ge=1024, le=1048576)
     max_discovery_response_bytes: int = Field(default=1048576, ge=1024, le=1048576)
     max_llm_calls_per_run: int = Field(default=5, ge=0, le=5)
-    llm_enabled: bool = False
+    llm_enabled: bool = True
+    llm_mode: Literal["shadow", "guarded"] = "shadow"
+    publish_from_llm: bool = False
+    llm_provider: Literal["gemini"] = "gemini"
+    llm_model: str = Field(default="gemini-2.5-flash-lite", pattern=r"^[a-z0-9.-]+$")
+    llm_max_input_chars: int = Field(default=24000, ge=1000, le=60000)
+    llm_max_output_tokens: int = Field(default=4096, ge=256, le=8192)
+    llm_max_candidates: int = Field(default=12, ge=1, le=12)
+    llm_max_spend_usd: float = Field(default=0.05, ge=0, le=1)
+    llm_input_usd_per_million: float = Field(default=0.10, ge=0)
+    llm_output_usd_per_million: float = Field(default=0.40, ge=0)
     auto_publish: bool = False
     archive_after_days: int = Field(default=30, ge=7, le=90)
     review_after_days: int = Field(default=7, ge=1, le=30)

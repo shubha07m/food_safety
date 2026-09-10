@@ -16,6 +16,7 @@ jobs:
     timeout-minutes: 10
     env:
       AUTO_PUBLISH: 'false'
+      LLM_ENABLED: 'false'
       PIP_DISABLE_PIP_VERSION_CHECK: '1'
     defaults:
       run:

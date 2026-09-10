@@ -58,7 +58,17 @@ def main() -> None:
             present.append("symlink in public output")
         if any(
             part.startswith(".")
-            or part in {"history", "pending", "rejected", "runs", "node_modules", "__pycache__"}
+            or part
+            in {
+                "history",
+                "pending",
+                "rejected",
+                "runs",
+                "node_modules",
+                "__pycache__",
+                "llm_eval",
+                "corpus",
+            }
             for part in path.relative_to(SITE).parts
         ):
             present.append("private path in public output")
@@ -88,7 +98,7 @@ def main() -> None:
             text = path.read_text()
             if re.search(
                 r"/Users/|BEGIN .*PRIVATE KEY|github_pat_[A-Za-z0-9_]{30,}"
-                r"|gh[pousr]_[A-Za-z0-9]{30,}|sk-[A-Za-z0-9]{30,}",
+                r"|gh[pousr]_[A-Za-z0-9]{30,}|sk-[A-Za-z0-9]{30,}|AIza[A-Za-z0-9_-]{35}",
                 text,
             ):
                 present.append("private path or secret pattern")
