@@ -1,8 +1,22 @@
 {
   "context_notice": "Independent, non-governmental public-source research. Inclusion is not a finding of wrongdoing. Counts describe records in this tracker, not official totals, prevalence, compliance, risk or group behavior. Read the sources and preserve this context when sharing.",
-  "generated_at": "2026-09-09T23:11:25.626009+00:00",
+  "generated_at": "2026-09-10T04:39:32.448783+00:00",
   "pipeline_version": "0.3.0",
-  "record_count": 0,
-  "records": [],
+  "record_count": 1,
+  "records": [
+    {
+      "context_notice": "Independent, non-governmental public-source research. Inclusion is not a finding of wrongdoing. Counts describe records in this tracker, not official totals, prevalence, compliance, risk or group behavior. Read the sources and preserve this context when sharing.",
+      "event_id": "WBFS-a86bc6f2f6a4",
+      "first_published_at": "2026-09-09T23:11:25.626009+00:00",
+      "publication_status": "needs_review",
+      "record_updated_at": "2026-09-10T04:39:32.448783+00:00",
+      "source_availability_reason": null,
+      "source_url_sha256": [
+        "e87d663f402e07c046a319a2603b0cccd8f7ff5953fd7ac7792d764917f3a997"
+      ],
+      "superseded_by": null,
+      "verification_status": "PENDING REVIEW"
+    }
+  ],
   "schema_version": "1.2.0"
 }

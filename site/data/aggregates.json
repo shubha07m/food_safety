@@ -26,7 +26,7 @@
     "Tangra": 1,
     "কলকাতা": 1,
     "ডেকার্স লেন": 1,
-    "পার্ক স্ট্রিট": 1,
+    "বীরভূমের": 1,
     "মধ্যমগ্রামের": 1,
     "মধ‌্যমগ্রামের": 1,
     "সেক্টর থ্রি-র": 1,
@@ -56,7 +56,7 @@
     "unknown": 6
   },
   "establishments_count": 25,
-  "generated_at": "2026-09-09T23:11:25.626009+00:00",
+  "generated_at": "2026-09-10T04:39:32.448783+00:00",
   "map_coverage": {
     "mapped_records": 23,
     "precision": {
@@ -71,9 +71,9 @@
   },
   "pipeline_version": "0.3.0",
   "publishers": {
-    "ABP Ananda": 1,
+    "ABP Ananda": 2,
     "Business Today": 5,
-    "Indian Express Bangla": 2,
+    "Indian Express Bangla": 1,
     "TV9 Bangla": 5,
     "The Times of India": 25
   },
@@ -83,9 +83,10 @@
   "timeline": {
     "2026-09-03": 11,
     "2026-09-04": 7,
-    "2026-09-05": 8,
+    "2026-09-05": 7,
     "2026-09-06": 9,
-    "2026-09-07": 3
+    "2026-09-07": 3,
+    "2026-09-09": 1
   },
   "total": 38,
   "verification": {
