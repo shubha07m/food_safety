@@ -1,5 +1,11 @@
 # Security policy
 
+## Structured extraction boundary
+
+Article text is untrusted data, including prompt-like instructions. The extractor has no tools, browser session, publication permission or configurable destination supplied by article text. The hosted adapter uses a fixed HTTPS endpoint, a header-held credential, bounded input/output, a 20-second timeout, no redirects and no automatic retries. Provider errors are reduced to controlled codes; article bodies and credentials are not logged. A schema-valid answer still needs independent span, semantic, source and publication validation. Source lifecycle checks do not consume model output.
+
+Shadow/evaluation/exception artifacts stay under ignored `.cache/llm_eval/`; do not upload them as GitHub artifacts or include them in deployments. Tests remove live credentials. No model token or runtime inference is present in the static frontend. Provider billing limits remain an owner responsibility; local spend estimates are not a billing guarantee.
+
 The project keeps static deployment. Community intake is an outbound link to a validated HTTPS Google Forms URL, never an embedded public write endpoint. Submitted URLs must separately pass publisher admission and SSRF controls. The optional local CSV importer retains only an allowed source URL and submission type; no raw form response, contact, or reviewer note is public. Retry-After and host failure limits prevent aggressive retries; no anti-bot/TLS bypass is allowed. A source warning never relaxes new-record admission. develop cannot dispatch production ingestion; hosting remains unchanged.
 
 The public site is static HTML/CSS/JavaScript and generated public JSON. There is no public admin endpoint, database write API, login, executable submission content, comments, arbitrary upload or SQL backend. Only the site/ directory may be deployed, after review. Never serve the repository root: it contains private pending/history/configuration.

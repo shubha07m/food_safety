@@ -53,6 +53,10 @@ h1 { font: 400 clamp(48px, 5.7vw, 82px)/1.02 var(--serif); letter-spacing: -3px;
 h1 em { color: var(--green); font-weight: 400; }
 .dek { font-size: 17px; line-height: 1.85; max-width: 570px; color: var(--muted); margin-bottom: 30px; }
 .hero-links { display: flex; gap: 26px; align-items: center; flex-wrap: wrap; }
+.brand-tagline { font-size: clamp(21px, 2.2vw, 30px); line-height: 1.4; color: var(--green); max-width: 650px; }
+.module-title { font-size: 18px; font-weight: 600; margin-bottom: 20px; }
+#record-title { font-size: clamp(30px, 4vw, 46px); letter-spacing: -1px; }
+[hidden] { display: none !important; }
 .button { display: inline-flex; align-items: center; justify-content: center; gap: 25px; text-decoration: none; padding: 12px 19px; font-size: 12px; font-weight: 700; border: 1px solid var(--green); border-radius: 8px; }
 .primary { background: var(--green); color: #fff; box-shadow: 0 8px 20px rgb(23 79 60 / 16%); }
 .primary:hover { color: #fff; background: #103d2e; }

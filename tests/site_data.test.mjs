@@ -18,6 +18,17 @@ const rows = [
   fixture('WBFS-cccccccccccc', 'Example Area', { derived_context: { menu_context: 'mixed', business_format: 'chain_group' }, verification_status: 'CROSS-SOURCE VERIFIED' }),
 ];
 
+test('model-assisted automatic records require grounding provenance, not just a method label', () => {
+  const row = fixture('WBFS-dddddddddddd', 'Example Area');
+  row.review = null;
+  row.automatic_validation = { method: 'source_grounded_candidate_v1', validated_at: '2026-01-03' };
+  const data = { schema_version: '1.2.0', record_count: 1, records: [row], context_notice: 'Test only' };
+  assert.throws(() => validateDataset(data), /grounding provenance/);
+  row.llm = { llm_used: true, llm_output_was_validated: true, validation_result: 'passed', source_revision_id: 'a'.repeat(64) };
+  row.automatic_validation.extraction_evidence = { source_revision_id: 'a'.repeat(64) };
+  assert.equal(validateDataset(data).record_count, 1);
+});
+
 test('chart totals and filters agree with source rows', () => {
   const stats = aggregate(rows);
   for (const dimension of ['timeline', 'areas', 'actions', 'establishments', 'verification', 'menus', 'business_formats']) {

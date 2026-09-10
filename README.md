@@ -90,6 +90,14 @@ An existing local `food` environment can be reused. Python execution and depende
 
 ## Architecture
 
+### Structured extraction, with independent publication checks
+
+The language model proposes structured candidate records from source documents. Candidates that satisfy all source-grounding, schema, semantic, and safety checks may be published automatically. Ambiguous or higher-risk cases are held for human review; invalid claims are rejected. Unsupported optional fields can be omitted without discarding supported core facts.
+
+Deterministic extraction remains active alongside the bounded multilingual extractor. **This branch defaults to shadow evaluation:** model candidates do not yet affect publication. The guarded automatic-publication path is implemented, but promotion awaits the real-article evaluation described in [LLM extraction and evaluation](docs/LLM_EXTRACTION.md). Missing credentials or model failures leave deterministic ingestion and existing source lifecycle states unaffected.
+
+Original source evidence remains authoritative. There is no chatbot, public Q&A, model training, fine-tuning or autonomous source-independent factual generation. Model assistance is not a trust score or a marketing claim.
+
 | Component | Responsibility |
 | --- | --- |
 | `src/food_safety/` | Bounded retrieval, schemas, evidence validation, publication, exports |
@@ -118,7 +126,7 @@ python -m food_safety.cli build
 python scripts/verify_public_output.py
 ```
 
-The optional browser smoke uses an already-installed Chrome; no browser bundle is downloaded. Paid LLM/VLM calls remain disabled. Source submissions and Issues never publish automatically.
+The optional browser smoke uses an already-installed Chrome; no browser bundle is downloaded. Tests mock model responses and never consume paid API tokens. VLM remains disabled. Source submissions and Issues never publish automatically.
 
 With the local server running, `node scripts/browser_smoke.mjs` checks the real and
 synthetic UI without modifying public assets. Set `FOOD_UPDATE_PREVIEWS=1` for an

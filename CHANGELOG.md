@@ -1,5 +1,12 @@
 # Changelog
 
+## Structured extraction and record navigation — 2026-09-09 (develop)
+
+- Added passage-aware multilingual model candidates, exact/NFC/whitespace evidence resolution, field-level decisions and a guarded automatic-publication path using independent semantic/publication checks. Human review is for exceptions; default runtime remains shadow pending real evaluation.
+- Added one provisional lightweight Gemini adapter, bounded calls/costs, private revision caching/evaluation and model-failure isolation. No live model calls, training or new dependencies.
+- Made The Bengal FoodPath the primary heading, retained the tracker/module identity, and isolated English/Bengali record-detail routes from dashboard content.
+- Updated extraction/privacy disclosures; public dataset and production infrastructure remain unchanged.
+
 ## Discovery and public-repository audit — 2026-09-09
 
 - Broadened bounded discovery across publisher pages, feeds, sitemaps, optional configured search and locally approved community-source leads while retaining strict publication gates.

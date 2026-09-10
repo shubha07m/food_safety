@@ -3,8 +3,10 @@ import { strings as t } from './strings.mjs';
 import { mappedRows, projection, geometryPath } from './geography.mjs';
 import { language, tr, translateStatic, localizedURL } from './locale.mjs';
 import { phase1, sourceWarning, copy as phaseCopy } from './phase1.mjs';
+import { applyRoute } from './routes.mjs';
 
 translateStatic();
+const isRecordRoute = applyRoute(document, location.search);
 
 const $ = id => document.getElementById(id);
 const SVG = 'http://www.w3.org/2000/svg';
@@ -261,13 +263,14 @@ function detailSection(container, label, title) {
   section.append(node('p', label, 'eyebrow'), node('h3', title)); container.append(section); return section;
 }
 function detail() {
-  const id = new URLSearchParams(location.search).get('event'); if (!id) return;
+  const id = new URLSearchParams(location.search).get('event'); if (!isRecordRoute) return;
   const container = $('record-detail'); container.hidden = false;
-  const back = node('a', '← All published records', 'text-link'); back.href = localizedURL('index.html'); container.append(back);
+  const back = node('a', '← All published records', 'text-link'); back.href = localizedURL('index.html'); back.id = 'back-to-tracker'; container.append(back);
   const record = state.rows.find(row => row.event_id === id);
   if (!record) {
     const retired = state.retired.find(row => row.event_id === id);
-    container.append(node('h2', 'Record unavailable'), node('p', retired ? `${retired.event_id} · ${retired.publication_status || retired.verification_status}. ${phaseCopy[language].nonActive}` : 'No published record is available at this address.'), node('p', t.context, 'notice'));
+    const heading = node('h1', 'Record unavailable'); heading.id = 'record-title';
+    container.append(heading, node('p', retired ? `${retired.event_id} · ${retired.publication_status || retired.verification_status}. ${phaseCopy[language].nonActive}` : 'No published record is available at this address.'), node('p', t.context, 'notice'));
     if (retired?.superseded_by && /^WBFS-[a-f0-9]{12}$/.test(retired.superseded_by)) {
       const replacement = node('a', language === 'bn' ? 'পরিবর্তিত নথি দেখুন' : 'View replacement record');
       replacement.href = localizedURL(`?event=${retired.superseded_by}`); container.append(replacement);
@@ -275,7 +278,8 @@ function detail() {
     return;
   }
   const facts = record.reported_fact; const context = record.derived_context;
-  container.append(node('p', 'SOURCE-ATTRIBUTED RECORD', 'eyebrow'), node('h2', facts.establishment_name || 'Establishment unnamed'));
+  const heading = node('h1', facts.establishment_name || 'Establishment unnamed'); heading.id = 'record-title';
+  container.append(node('p', 'SOURCE-ATTRIBUTED RECORD', 'eyebrow'), heading);
   const badges = node('div', null, 'detail-badges'); badges.append(node('span', record.verification_status, 'badge'), node('span', record.sources.length > 1 ? 'MULTI-SOURCE' : 'SINGLE SOURCE', 'badge neutral'));
   container.append(badges, node('p', record.display_summary, 'detail-summary'), node('p', t.context, 'notice'));
   if (sourceWarning(record)) container.append(node('p', sourceWarning(record), 'source-warning'));
@@ -297,6 +301,14 @@ function detail() {
     card.append(external(source.source_title, source.source_url), node('p', `${source.source_publisher} · Tier ${source.tier} · Publication date: ${dateText(source.source_date)} · Retrieved: ${dateText(source.retrieved_at, true)}`), node('blockquote', source.evidence_quote), node('p', `Evidence context: ${source.evidence_context}`), node('small', `Extracted-text SHA-256: ${source.text_sha256}`)); evidenceSection.append(card);
   }
   const verification = detailSection(container, 'VERIFICATION', 'Review and provenance');
+  if (record.llm?.llm_used) {
+    verification.append(node('p', language === 'bn' ? 'উৎস থেকে তথ্য সাজাতে ভাষা মডেলের সহায়তা নেওয়া হয়েছে; প্রকাশিত তথ্য স্বাধীনভাবে উৎসের সঙ্গে মিলিয়ে যাচাই করা হয়েছে।' : 'Language-model assistance was used for structured extraction; published fields passed independent source-grounding checks.'));
+    verification.append(node('small', `${record.llm.llm_provider} · ${record.llm.llm_model} · ${record.llm.llm_task_version}`));
+    const proof = record.automatic_validation?.extraction_evidence;
+    if (proof) {
+      verification.append(node('h4', 'Original source text'), node('blockquote', proof.original_quote), node('small', `${proof.passage_id} · ${proof.source_revision_id}`));
+    }
+  }
   verification.append(node('p', phaseCopy[language].meaning), node('p', `${language === 'bn' ? 'শেষ তথ্য যাচাই' : 'Last evidence check'}: ${dateText(record.last_successful_evidence_check_at, true)}`));
   verification.append(node('p', t.sourceMeaning, 'record-notice'), node('p', record.verification_notes), node('p', `Created: ${dateText(record.record_created_at, true)} · Updated: ${dateText(record.record_updated_at, true)} · Pipeline ${record.pipeline_version}`));
   const historySection = detailSection(container, 'CHANGE HISTORY', 'Record revisions'); const history = node('ol', null, 'history');
@@ -324,11 +336,17 @@ try {
   $('dataset-message').textContent = data.record_count ? (language === 'bn' ? `${data.record_count}টি উৎসসমর্থিত নথি। চিত্রে নির্বাচন করে সংশ্লিষ্ট মূল নথি দেখুন।` : `${data.record_count} source-supported records. Every chart selection reveals its contributing evidence.`) : t.noRecords;
   if (language === 'bn') $('run-status').textContent = `শেষ পরীক্ষার ফল: ${status.last_run_result || 'উল্লেখ নেই'}। সক্রিয়: ${data.record_count}।`;
   if (status.scheduled_refresh_hours === 2) $('run-status').append(document.createTextNode(language === 'bn' ? ' প্রায় প্রতি ২ ঘণ্টায় স্বয়ংক্রিয়ভাবে পরীক্ষা করা হয়।' : ' Automatically checked approximately every 2 hours.'));
-  renderAll(); detail(); await phase1();
+  if (isRecordRoute) detail(); else renderAll();
+  await phase1();
   $('search').addEventListener('input', event => { state.query = event.target.value; renderRows(); });
   $('clear-filter').addEventListener('click', () => { state.filters = {}; state.query = ''; $('search').value = ''; renderAll(); });
 } catch (error) {
   console.error('Dashboard initialization failed', error);
+  if (isRecordRoute) {
+    $('record-detail').replaceChildren(node('p', t.loadError, 'notice'));
+    const back = node('a', '← All published records'); back.href = localizedURL('index.html');
+    $('record-detail').append(back);
+  }
   $('dataset-message').textContent = t.loadError; $('dataset-message').classList.add('notice');
   $('last-update').textContent = 'Status unavailable'; $('last-scan').textContent = 'Status unavailable'; $('dataset-version').textContent = 'Unavailable'; $('run-status').textContent = 'Could not confirm pipeline status.';
   $('search').disabled = true; $('clear-filter').disabled = true;

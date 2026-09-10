@@ -97,7 +97,8 @@ export function validateDataset(data) {
     if (row.is_fixture || !/^WBFS-[a-f0-9]{12}$/.test(row.event_id) || ids.has(row.event_id)) throw new Error('Invalid public record');
     ids.add(row.event_id);
     const humanReviewed = row.review?.all_fields_supported && row.review?.source_context_checked;
-    const automaticallyValidated = ['explicit_inspection_sentence_v1', 'explicit_inspection_sentence_v2'].includes(row.automatic_validation?.method) && row.automatic_validation?.validated_at;
+    const automaticallyValidated = ['explicit_inspection_sentence_v1', 'explicit_inspection_sentence_v2', 'source_grounded_candidate_v1'].includes(row.automatic_validation?.method) && row.automatic_validation?.validated_at;
+    if (row.automatic_validation?.method === 'source_grounded_candidate_v1' && (!row.llm?.llm_used || !row.llm.llm_output_was_validated || row.llm.validation_result !== 'passed' || !row.automatic_validation.extraction_evidence || row.llm.source_revision_id !== row.automatic_validation.extraction_evidence.source_revision_id)) throw new Error('Missing model grounding provenance');
     if (!row.context_notice || !row.display_summary || !row.reported_fact || !row.derived_context || !row.sources?.length || !(humanReviewed || automaticallyValidated)) throw new Error('Missing provenance');
     if (!['SOURCE VERIFIED', 'CROSS-SOURCE VERIFIED'].includes(row.verification_status)) throw new Error('Non-public status');
     if (data.schema_version === '1.2.0' && row.publication_status && !['active', 'active_with_warning'].includes(row.publication_status)) throw new Error('Non-active record');
