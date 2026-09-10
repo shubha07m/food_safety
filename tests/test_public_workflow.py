@@ -14,6 +14,10 @@ def test_refresh_is_two_hour_bounded_and_has_no_push_loop():
     assert workflow["on"]["schedule"][0]["cron"] == "17 */2 * * *"
     job = workflow["jobs"]["candidates"]
     assert job["env"]["AUTO_PUBLISH"] == "true"
+    assert any(
+        step.get("env", {}).get("GEMINI_API_KEY") == "${{ secrets.GEMINI_API_KEY }}"
+        for step in job["steps"]
+    )
     assert job["permissions"] == {"contents": "write"}
     steps = "\n".join(step.get("run", "") for step in job["steps"])
     assert "--max-articles 20" in steps

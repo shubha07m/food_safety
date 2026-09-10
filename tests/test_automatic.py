@@ -4,7 +4,7 @@ import hashlib
 import json
 
 import pytest
-from conftest import AT, enable_policy
+from conftest import AT, FixtureLLM, enable_policy, model_candidate, model_payload
 
 from food_safety.automatic import feed_candidates, page_candidates
 from food_safety.build import build
@@ -14,6 +14,13 @@ from food_safety.storage import save_events
 HTML = """<head><title>Food safety inspection report</title>
 <meta property="article:published_time" content="2026-01-02T12:00:00Z"></head>
 <article>KMC food safety officials inspected restaurants in Kolkata.</article>"""
+TEXT = "KMC food safety officials inspected restaurants in Kolkata."
+
+
+def extractor(text=TEXT):
+    return FixtureLLM(
+        model_payload(model_candidate(text, "Kolkata", "KMC food safety officials", "inspected"))
+    )
 
 
 class DiscoveryFixture:
@@ -41,7 +48,9 @@ def test_discovered_new_record_automatically_publishes_and_builds(
         record.is_fixture = False
         save_events(project, "events", [record], AT)
     before = json.loads((project / "data/events.json").read_text())["record_count"]
-    run = update(project, fetcher=DiscoveryFixture(previous=fixture_html))
+    run = update(
+        project, fetcher=DiscoveryFixture(previous=fixture_html), llm_extractor=extractor()
+    )
     assert run["records_published"] == 1
     build(project)
     public = json.loads((project / "site/data/events.json").read_text())
@@ -49,7 +58,10 @@ def test_discovered_new_record_automatically_publishes_and_builds(
     automatic = next(r for r in public["records"] if r.get("automatic_validation"))
     assert automatic["review"] is None
     assert (
-        update(project, fetcher=DiscoveryFixture(previous=fixture_html))["records_published"] == 0
+        update(project, fetcher=DiscoveryFixture(previous=fixture_html), llm_extractor=extractor())[
+            "records_published"
+        ]
+        == 0
     )
 
 
@@ -68,7 +80,11 @@ def test_ambiguous_discovered_record_never_publishes(project, policy, monkeypatc
     policy.discovery_pages = ["https://example.org/index"]
     enable_policy(project, policy)
     monkeypatch.setenv("AUTO_PUBLISH", "true")
-    update(project, fetcher=DiscoveryFixture(body))
+    update(
+        project,
+        fetcher=DiscoveryFixture(body),
+        llm_extractor=FixtureLLM('{"completion_status":"no_event","candidates":[]}'),
+    )
     build(project)
     assert json.loads((project / "site/data/events.json").read_text())["record_count"] == 0
 
@@ -108,7 +124,7 @@ def test_unsupported_new_candidate_is_skipped_not_network_failure(project, polic
     enable_policy(project, policy)
     run = update(project, fetcher=DiscoveryFixture("<article>No relevant event.</article>"))
     assert run["records_published"] == 0
-    assert run["records_rejected"] == 1
+    assert run["records_rejected"] == 0
     assert run["errors"] == 0
 
 
@@ -129,7 +145,7 @@ def test_overlapping_candidate_is_not_published_or_given_a_public_tombstone(
     policy.discovery_pages = ["https://example.org/index"]
     enable_policy(project, policy)
     monkeypatch.setenv("AUTO_PUBLISH", "true")
-    update(project, fetcher=DiscoveryFixture())
+    update(project, fetcher=DiscoveryFixture(), llm_extractor=extractor())
 
     class OtherArticle(DiscoveryFixture):
         def article(self, url):
@@ -137,9 +153,9 @@ def test_overlapping_candidate_is_not_published_or_given_a_public_tombstone(
                 return url, '<a href="/other">Kolkata food safety inspection</a>'
             return super().article(url)
 
-    update(project, fetcher=OtherArticle())
+    update(project, fetcher=OtherArticle(), llm_extractor=extractor())
     build(project)
+    # A potentially overlapping unnamed operation is skipped, not inflated or queued.
     assert json.loads((project / "site/data/events.json").read_text())["record_count"] == 1
     assert json.loads((project / "site/data/retired.json").read_text())["record_count"] == 0
-    held = json.loads((project / "data/pending.json").read_text())["records"]
-    assert all(row["first_published_at"] is None for row in held)
+    assert json.loads((project / "data/pending.json").read_text())["record_count"] == 0

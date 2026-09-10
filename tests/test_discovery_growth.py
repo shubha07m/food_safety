@@ -2,7 +2,7 @@ import csv
 import json
 
 import httpx
-from conftest import enable_policy
+from conftest import FixtureLLM, enable_policy, model_candidate, model_payload
 
 from food_safety.community import import_approved_csv
 from food_safety.discovery import BraveSearch, page_candidates, sitemap_candidates
@@ -40,9 +40,9 @@ def test_sitemap_and_bengali_index_discovery(policy):
         "খাদ্য সুরক্ষা কলকাতা অভিযান</news:title></news:news></url></urlset>"
     )
     assert sitemap_candidates(body, policy, 5) == ["https://example.org/report"]
-    assert page_candidates(
-        '<a href="/bn">খাদ্য সুরক্ষা কলকাতা অভিযান</a>', policy, 5
-    ) == ["https://example.org/bn"]
+    assert page_candidates('<a href="/bn">খাদ্য সুরক্ষা কলকাতা অভিযান</a>', policy, 5) == [
+        "https://example.org/bn"
+    ]
 
 
 def test_duplicate_discovery_url_fetched_once(project, policy, monkeypatch):
@@ -50,16 +50,12 @@ def test_duplicate_discovery_url_fetched_once(project, policy, monkeypatch):
     policy.discovery_pages = ["https://example.org/index"]
     enable_policy(project, policy)
     monkeypatch.setenv("AUTO_PUBLISH", "true")
-    fetcher = MultiFetcher(
-        _html("KMC food safety officials inspected restaurants in Kolkata.")
-    )
+    fetcher = MultiFetcher(_html("KMC food safety officials inspected restaurants in Kolkata."))
     update(project, fetcher=fetcher)
     assert fetcher.calls.count("https://example.org/new") == 1
 
 
-def test_aggregate_and_named_events_are_separate_and_linked(
-    project, policy, monkeypatch
-):
+def test_aggregate_and_named_events_are_separate_and_linked(project, policy, monkeypatch):
     policy.urls = []
     policy.discovery_pages = ["https://example.org/index"]
     enable_policy(project, policy)
@@ -68,7 +64,38 @@ def test_aggregate_and_named_events_are_separate_and_linked(
         "KMC food safety officials inspected 120 establishments across West Bengal. "
         "KMC food safety officials visited Alpha Cafe and Beta Cafe in Kolkata."
     )
-    update(project, fetcher=MultiFetcher(body))
+    aggregate = "KMC food safety officials inspected 120 establishments across West Bengal."
+    named = "KMC food safety officials visited Alpha Cafe and Beta Cafe in Kolkata."
+    candidates = [
+        model_candidate(
+            aggregate,
+            "West Bengal",
+            "KMC food safety officials",
+            "inspected",
+            scope="statewide_operation",
+        ),
+        model_candidate(
+            named,
+            "Kolkata",
+            "KMC food safety officials",
+            "visited",
+            candidate_id="C2",
+            scope="establishment_event",
+            name="Alpha Cafe",
+        ),
+        model_candidate(
+            named,
+            "Kolkata",
+            "KMC food safety officials",
+            "visited",
+            candidate_id="C3",
+            scope="establishment_event",
+            name="Beta Cafe",
+        ),
+    ]
+    update(
+        project, fetcher=MultiFetcher(body), llm_extractor=FixtureLLM(model_payload(*candidates))
+    )
     rows = json.loads((project / "data/events.json").read_text())["records"]
     assert {row["record_scope"] for row in rows} == {
         "statewide_operation",
@@ -83,10 +110,14 @@ def test_blocked_source_does_not_stop_other_candidate(project, policy, monkeypat
     policy.discovery_pages = ["https://example.org/index"]
     enable_policy(project, policy)
     monkeypatch.setenv("AUTO_PUBLISH", "true")
+    text = "KMC food safety officials inspected restaurants in Kolkata."
     update(
         project,
-        fetcher=MultiFetcher(
-            _html("KMC food safety officials inspected restaurants in Kolkata.")
+        fetcher=MultiFetcher(_html(text)),
+        llm_extractor=FixtureLLM(
+            model_payload(
+                model_candidate(text, "Kolkata", "KMC food safety officials", "inspected")
+            )
         ),
     )
     assert json.loads((project / "data/events.json").read_text())["record_count"] == 1

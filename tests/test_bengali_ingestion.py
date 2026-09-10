@@ -1,5 +1,5 @@
 import pytest
-from conftest import FakeFetcher, enable_policy, load
+from conftest import FakeFetcher, FixtureLLM, enable_policy, load, model_candidate, model_payload
 
 from food_safety.dedupe import area_key
 from food_safety.pipeline import update
@@ -23,7 +23,19 @@ def test_bengali_admission(project, policy, monkeypatch, ambiguous):
         + sentence
         + "</article>"
     )
-    update(project, fetcher=FakeFetcher(html))
+    payload = (
+        '{"completion_status":"no_event","candidates":[]}'
+        if ambiguous
+        else model_payload(
+            model_candidate(
+                SENTENCE,
+                "পার্ক স্ট্রিট",
+                "কলকাতা পুরসভার খাদ্য সুরক্ষা আধিকারিকরা",
+                "পরিদর্শন করেছেন",
+            )
+        )
+    )
+    update(project, fetcher=FakeFetcher(html), llm_extractor=FixtureLLM(payload))
     data = load(project, "events")
     assert data["record_count"] == (0 if ambiguous else 1)
     if not ambiguous:

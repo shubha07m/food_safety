@@ -9,9 +9,49 @@ from food_safety.config import ROOT, SourcePolicy
 from food_safety.extract import article_text, text_hash
 from food_safety.models import Event
 from food_safety.storage import dump, envelope
+from food_safety.structured_llm import ModelReply
 
 AT = datetime(2026, 1, 3, tzinfo=UTC)
 URL = "https://example.org/fixture"
+
+
+def model_candidate(
+    text, area, authority, action, candidate_id="C1", scope="area_operation", name=None
+):
+    def value(raw):
+        return {"raw_value": raw, "evidence_span_ids": ["S1"]}
+
+    return {
+        "candidate_id": candidate_id,
+        "record_scope": scope,
+        "evidence_spans": [{"span_id": "S1", "passage_id": "P001", "original_quote": text}],
+        "establishment_name": value(name) if name else None,
+        "area": value(area),
+        "reported_authority": value(authority),
+        "reported_observation": value(text),
+        "actions": [value(action)],
+        "event_date_expression": None,
+        "quantities": [],
+        "relationships": [],
+    }
+
+
+def model_payload(*candidates):
+    return json.dumps(
+        {"completion_status": "complete", "candidates": candidates}, ensure_ascii=False
+    )
+
+
+class FixtureLLM:
+    available = True
+
+    def __init__(self, payload):
+        self.payload = payload
+        self.calls = 0
+
+    def extract(self, document_revision, candidate_schema, task_version, limits):
+        self.calls += 1
+        return ModelReply(self.payload, "fixture-model", 10, 10)
 
 
 @pytest.fixture(autouse=True)

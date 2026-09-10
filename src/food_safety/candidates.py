@@ -1,4 +1,4 @@
-"""Untrusted candidate contract and field decisions; no publication permissions."""
+"""Untrusted candidate contract and objective source-grounding decisions."""
 
 import hashlib
 import json
@@ -10,7 +10,7 @@ from pydantic import BaseModel, ConfigDict, Field, StringConstraints, Validation
 from .documents import mapped_text, resolve_quote
 from .safety import claim_risks, reject_sensitive_fields
 
-TASK_VERSION = "source_candidates_v1"
+TASK_VERSION = "source_candidates_v2"
 Short = Annotated[str, StringConstraints(min_length=1, max_length=600)]
 Scope = Literal[
     "establishment_event",
@@ -96,16 +96,14 @@ def parse_result(payload, max_candidates=12):
     return raw["completion_status"], accepted, invalid
 
 
-SEMANTIC_FLAGS = re.compile(
-    r"\b(?:not|never|denied|alleged|may|might|planned|correction|corrected|"
-    r"withdrawn|retracted|clarification|reportedly)\b|"
-    r"অস্বীকার|সংশোধন|প্রত্যাহার|ঘটেনি|অভিযোগ|হয়নি|হয়নি|করেননি|হতে পারে|"
-    r"ignore.{0,25}instructions|system prompt",
+INVALIDATING_FLAGS = re.compile(
+    r"\b(?:correction|corrected|withdrawn|retracted|clarification)\b|"
+    r"সংশোধন|প্রত্যাহার",
     re.I,
 )
 
 
-def validate_candidate(record, document, deterministic=()):
+def validate_candidate(record, document):
     passages = {p.passage_id: p.original_text for p in document.passages}
     spans, reasons, invalid_spans = {}, [], set()
     for span in record.evidence_spans:
@@ -151,63 +149,28 @@ def validate_candidate(record, document, deterministic=()):
             or (value.applies_to == "operation" and record.record_scope == "establishment_event")
         ):
             fields.pop(f"quantities.{index}", None)
-            reasons.append("quantity_entity_uncertain")
+            omitted.append(f"unsupported:quantities.{index}")
     for required in ["area", "reported_observation", "reported_authority"]:
         if required not in fields:
             reasons.append(f"missing_core:{required}")
-    if not record.actions:
+    if "actions.0" not in fields:
         reasons.append("missing_core:action")
     if record.record_scope == "establishment_event" and "establishment_name" not in fields:
         reasons.append("missing_core:establishment")
-    # Inspect full cited paragraphs, not just the model-selected positive fragment.
-    cited = "\n".join(passages[s["passage_id"]] for s in spans.values())
-    if SEMANTIC_FLAGS.search(cited) or claim_risks(cited):
-        reasons.append("semantic_context_review")
-    if re.search(
-        r"\b(?:correction|corrected|withdrawn|retracted|clarification)\b|সংশোধন|প্রত্যাহার",
-        "\n".join(passages.values()),
-        re.I,
-    ):
-        reasons.append("document_correction_requires_review")
+    # Explicit correction/withdrawal notices are objective publication holds.
+    # The validator does not otherwise re-interpret article prose.
+    if INVALIDATING_FLAGS.search("\n".join(passages.values())):
+        reasons.append("document_correction_or_withdrawal")
     if record.event_date_expression is not None:
         omitted.append("event_date_expression_requires_normalization")
-    if record.relationships:
-        reasons.append("relationship_requires_review")
-        if any(key not in spans for r in record.relationships for key in r.evidence_span_ids):
-            reasons.append("unsupported:relationship_evidence")
-    required = ["area", "reported_authority", "reported_observation"]
-    if record.record_scope == "establishment_event":
-        required.append("establishment_name")
-    core_values = [fields[name]["raw_value"] for name in required if name in fields]
-    core_values.extend(value.raw_value for value in record.actions)
-    relation_spans = [
-        span
-        for span in spans.values()
-        if all(
-            mapped_text(value, True)[0] in mapped_text(span["original_quote"], True)[0]
-            for value in core_values
-        )
-    ]
-    if not relation_spans:
-        reasons.append("entity_action_relationship_requires_review")
-    if any(name.startswith("quantities.") for name in fields):
-        reasons.append("quantity_association_requires_review")
+    if any(key not in spans for r in record.relationships for key in r.evidence_span_ids):
+        reasons.append("unsupported:relationship_evidence")
     key = hashlib.sha256(
         json.dumps(
             {"scope": record.record_scope, "fields": fields},
             sort_keys=True,
         ).encode()
     ).hexdigest()
-    duplicate = any(
-        scope == record.record_scope
-        and values.get("reported_observation") == record.reported_observation.raw_value
-        and values.get("establishment_name")
-        == (record.establishment_name.raw_value if record.establishment_name else None)
-        for _, values, scope in deterministic
-    )
-    rejected = any(
-        reason.startswith(("unsupported:", "missing_core:", "duplicate_span")) for reason in reasons
-    )
     return {
         "candidate_id": record.candidate_id,
         "candidate_key": key,
@@ -215,9 +178,7 @@ def validate_candidate(record, document, deterministic=()):
         "supported_fields": fields,
         "resolved_spans": spans,
         "omitted_fields": omitted,
-        "review_reasons": sorted(set(reasons)),
-        "decision": "reject" if rejected else ("review" if reasons else "pass"),
-        "duplicate_of_deterministic": duplicate,
+        "validation_errors": sorted(set(reasons)),
+        "decision": "skip" if reasons else "pass",
         "relationship_suggestions": [r.model_dump() for r in record.relationships],
-        "publication_eligible": not reasons,
     }

@@ -3,7 +3,7 @@ export const language = new URLSearchParams(globalThis.location?.search || '').g
 export const bn = {
   'THE BENGAL': 'দ্য বেঙ্গল', 'FOODPATH': 'ফুডপাথ',
   'THE BENGAL FOODPATH': 'দ্য বেঙ্গল ফুডপাথ',
-  'The language model proposes structured candidate records from source documents. Candidates passing all source-grounding, schema, semantic and safety checks may publish automatically; ambiguous cases require human review. Credentials and strict usage limits are required. Original source evidence remains authoritative. There is no chatbot, model training, VLM or face recognition.': 'ভাষা মডেল উৎসের নথি থেকে তথ্য সাজিয়ে সম্ভাব্য রেকর্ড প্রস্তাব করে। উৎসসমর্থন, তথ্যের কাঠামো, অর্থ ও নিরাপত্তার সমস্ত যাচাই পেরোলে স্বয়ংক্রিয় প্রকাশ সম্ভব; অস্পষ্ট ক্ষেত্রে মানুষের পর্যালোচনা লাগে। অনুমোদিত অ্যাক্সেস ও কঠোর ব্যবহারসীমা প্রয়োজন। মূল উৎসের উদ্ধৃতিই প্রামাণ্য। কোনো চ্যাটবট, মডেল প্রশিক্ষণ, ভিএলএম বা মুখ শনাক্তকরণ নেই।',
+  'The Bengal FoodPath uses a bounded language model to extract structured candidate records from public source documents. Published records must pass schema, source, exact evidence-grounding, safety, date, duplicate and publication checks; unsupported candidates are not published.': 'দ্য বেঙ্গল ফুডপাথ প্রকাশ্য উৎসের নথি থেকে কাঠামোবদ্ধ সম্ভাব্য রেকর্ড তৈরিতে সীমিত ব্যবহারের ভাষা মডেল ব্যবহার করে। প্রকাশিত রেকর্ডকে কাঠামো, উৎস, হুবহু প্রমাণ, নিরাপত্তা, তারিখ, নকল ও প্রকাশনার সব যাচাই পেরোতে হয়; অসমর্থিত রেকর্ড প্রকাশিত হয় না।',
   'Independent food-information research for West Bengal': 'পশ্চিমবঙ্গের খাদ্যসংক্রান্ত তথ্য নিয়ে স্বাধীন গবেষণা',
   'Food Safety & Inspection Evidence': 'খাদ্য সুরক্ষা ও পরিদর্শনের উৎসভিত্তিক নথি',
   'Methodology': 'পদ্ধতি', 'Disclaimer': 'দায়-সীমা ও ব্যাখ্যা', 'Corrections': 'সংশোধন',

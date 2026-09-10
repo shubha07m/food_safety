@@ -53,7 +53,7 @@ The workflow draws from bounded publisher indexes, RSS/Atom feeds, configured si
 
 Previously published records receive dated access warnings for technical failures, not automatic evidence-failure suspensions. Semantic uncertainty leaves active analytics; 30 days without adequate revalidation leads to an unverifiable archive. Restoration preserves first-publication history. See [the detailed lifecycle](METHODOLOGY.md).
 
-Public metrics distinguish Active, Ever published, warning and non-active states. These overlap and must not be added together. Private-response community intake is prepared through a configurable Google Form; no fake form URL or community queue count is displayed. A URL-only **Licensing & Compliance Documents** schema is a manually reviewed pilot with no published documents or quality endorsements. Language, source/revision IDs and field support prepare future research without adding AI, embeddings or a database.
+Public metrics distinguish Active, Ever published, warning and non-active states. These overlap and must not be added together. Private-response community intake is prepared through a configurable Google Form; no fake form URL or community queue count is displayed. A URL-only **Licensing & Compliance Documents** schema is a manually reviewed pilot with no published documents or quality endorsements. Language, source/revision IDs and field support preserve future research compatibility without embeddings or a database.
 
 Only approved public artifacts are committed to `main`; Cloudflare Git integration redeploys `site/`. No change means no empty commit. The workflow has no push trigger, so its generated commits cannot recursively start another source scan. Failed scans never advance the last-successful timestamp. Maintainers periodically audit a few new records.
 
@@ -69,7 +69,7 @@ Ordinary visitors have no refresh endpoint. Maintainers use **Actions → Refres
 
 Use **EN | বাংলা** or [`?lang=bn`](https://foodsafety.nemoneek.com/?lang=bn). Navigation, principal dashboard labels, charts, filters and policy summaries have static Bengali translations. Full policies are also available in English. The original English/Bengali source quotations remain unchanged and clearly labeled; UI translations are not evidence. No translation API, external font or tracking cookie is used.
 
-Narrow Bengali ingestion now recognizes explicit authority/location/inspection constructions. It is not general Bengali language understanding: negation, ambiguous entities and unsupported structures remain pending. Discovery is bounded and publisher access restrictions are respected.
+The bounded multilingual extractor supports Bengali, English and mixed-language source passages while preserving original-language quotations. Ambiguous entities, unsupported facts and ungrounded quotations are skipped. Discovery remains bounded and publisher access restrictions are respected.
 
 Created and maintained by **Shubhabrata Mukherjee** ([@shubha07m](https://github.com/shubha07m)).
 
@@ -90,11 +90,11 @@ An existing local `food` environment can be reused. Python execution and depende
 
 ## Architecture
 
-### Structured extraction, with independent publication checks
+### LLM extraction, with source-grounded publication checks
 
-The language model proposes structured candidate records from source documents. Candidates that satisfy all source-grounding, schema, semantic, and safety checks may be published automatically. Ambiguous or higher-risk cases are held for human review; invalid claims are rejected. Unsupported optional fields can be omitted without discarding supported core facts.
+The language model restructures fetched source documents into candidate records. Candidates that satisfy schema, exact evidence-grounding, source, duplicate, safety and publication checks may be published automatically. Ambiguous or unsupported candidates are skipped. Unsupported optional fields can be omitted without discarding supported core facts.
 
-Deterministic extraction remains active alongside the bounded multilingual extractor. LLM-derived candidates may publish only after the same source-grounding, semantic, safety and publication gates as every other candidate; ambiguous candidates remain private exceptions. Missing credentials or model failures leave deterministic ingestion and existing source lifecycle states unaffected. Use [LLM extraction and diagnostics](docs/LLM_EXTRACTION.md) for bounded testing.
+The LLM is the normal article-interpretation layer; the application verifies its structured output rather than asking the former phrase grammar to interpret the prose again. Missing credentials or model failures skip new extraction for that run and leave existing records and source lifecycle states unaffected. Use [LLM extraction and diagnostics](docs/LLM_EXTRACTION.md) for bounded testing.
 
 Original source evidence remains authoritative. There is no chatbot, public Q&A, model training, fine-tuning or autonomous source-independent factual generation. Model assistance is not a trust score or a marketing claim.
 

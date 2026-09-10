@@ -236,12 +236,14 @@ def automatic_errors(event):
             or event.llm.validation_result != "passed"
             or event.llm.source_revision_id != proof.source_revision_id
             or proof.end - proof.start != len(proof.original_quote)
-            or mapped_text(proof.original_quote, True)[0]
-            != mapped_text(event.reported_fact.reported_observation, True)[0]
+            or mapped_text(event.reported_fact.reported_observation, True)[0]
+            not in mapped_text(proof.original_quote, True)[0]
             or len(event.sources) != 1
         ):
             return ["invalid_llm_grounding_provenance"]
-        if event.derived_context != DerivedContext() or not event.sources[0].source_date:
+        if event.derived_context != DerivedContext() or not (
+            event.sources[0].source_date or event.reported_fact.event_date
+        ):
             return ["automatic_context_or_date_invalid"]
         if event.sources[0].source_date > event.automatic_validation.validated_at.date():
             return ["automatic_future_date"]

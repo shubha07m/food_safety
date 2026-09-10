@@ -9,15 +9,13 @@ from urllib.parse import urlsplit
 import httpx
 
 from . import __version__, lifecycle
-from .automatic import automatic_matches, prepare_automatic
 from .classify import display_summary
 from .community import load_leads
 from .config import settings, sources
-from .dedupe import area_key, associate, same_event, stable_id
+from .dedupe import area_key, same_event, stable_id
 from .discovery import BraveSearch, feed_candidates, page_candidates, sitemap_candidates
 from .extract import text_hash
 from .fetch import Fetcher, FetchError
-from .llm import NoLLM
 from .llm_publish import publishable_drafts
 from .llm_runner import LLMRunner
 from .models import Event
@@ -26,7 +24,7 @@ from .storage import dump, now, read_events, read_rejected, transaction, transit
 from .verify import evidence_errors, publication_errors
 
 
-def candidate(url, title, text, policy, fields, at, llm=None):
+def candidate(url, title, text, policy, fields, at, llm=None, validate_evidence=True):
     observation = fields["reported_observation"]
     evidence_language = (
         "bn" if any("\u0980" <= character <= "\u09ff" for character in observation) else "en"
@@ -64,7 +62,7 @@ def candidate(url, title, text, policy, fields, at, llm=None):
             {
                 "at": at.isoformat(),
                 "status": "PENDING REVIEW",
-                "note": "Candidate extracted; source context and event scope need review.",
+                "note": "Candidate extracted; publication validation is not yet complete.",
             }
         ],
     }
@@ -85,7 +83,7 @@ def candidate(url, title, text, policy, fields, at, llm=None):
     draft = Event.model_validate(data)
     data["display_summary"] = display_summary(draft.reported_fact, draft.derived_context)
     event = Event.model_validate(data)
-    errors = evidence_errors(event, {url: text})
+    errors = evidence_errors(event, {url: text}) if validate_evidence else []
     if errors:
         raise ValueError("evidence_validation_failed")
     return event
@@ -125,7 +123,6 @@ def update(
     calls = cfg.max_llm_calls_per_run if max_llm_calls is None else max_llm_calls
     if calls < 0 or calls > cfg.max_llm_calls_per_run:
         raise ValueError("llm_limit_out_of_range")
-    extractor = NoLLM()
     llm_runner = LLMRunner(root, cfg, use_llm, calls, llm_extractor)
     discovery_fetcher = fetcher or Fetcher(
         policies, cfg.model_copy(update={"max_response_bytes": cfg.max_discovery_response_bytes})
@@ -273,9 +270,6 @@ def update(
                 raise ValueError("unexpected_redirect")
             title, text = lifecycle.checked_document(html)
             lifecycle.availability(checks, url, at)
-            # Private side path runs even for known sources or deterministic successes.
-            # It contains all model failures and cannot change source/publication state.
-            model_report = llm_runner.observe(html, url, policy.language, automatic_matches(text))
             coverage[policy.name]["fetched"] += 1
             coverage[policy.name]["article_fetch_status"] = "accessible"
             matching = [
@@ -307,22 +301,12 @@ def update(
                     )
                     reasons[revised.publication_status] += 1
                 continue
-            # A held candidate may be deterministically reconsidered when an adapter improves.
-            # Its old unreviewed extraction is replaced, never silently promoted.
-            if matching and not published_matching:
-                pending = [e for e in pending if e not in matching]
             canonical_policy = next(p for p in policies if p.domain == urlsplit(canonical).hostname)
             auto_enabled = cfg.auto_publish and os.getenv("AUTO_PUBLISH", "true").lower() == "true"
-            matches = automatic_matches(text) if auto_enabled and not published_matching else []
+            model_report = llm_runner.observe(html, url, policy.language)
             drafts = []
-            if matches:
-                for match in matches:
-                    draft = candidate(canonical, title, text, canonical_policy, match[1], at)
-                    drafts.append(prepare_automatic(draft, html, text, at, match) or draft)
-            # Model/queue exceptions are never source failures or lifecycle transitions.
             try:
                 assisted = publishable_drafts(
-                    root,
                     cfg,
                     model_report,
                     html,
@@ -333,32 +317,20 @@ def update(
                     policies,
                     at,
                 )
-                ids = {draft.event_id for draft in drafts} | {e.event_id for e in events + pending}
+                ids = {e.event_id for e in events + pending}
                 drafts.extend(draft for draft in assisted if draft.event_id not in ids)
+                for row in model_report.get("candidates", []):
+                    for error in row.get("publication_errors", []):
+                        reasons[f"llm_skip:{error}"] += 1
             except Exception:
                 reasons["llm_policy_processing_failed"] += 1
-            if not drafts and not published_matching:
-                drafts.append(
-                    candidate(
-                        canonical,
-                        title,
-                        text,
-                        canonical_policy,
-                        extractor.extract(text),
-                        at,
-                    )
-                )
             coverage[policy.name]["records_produced"] += len(drafts)
-            coverage[policy.name]["automatic_extraction_status"] = (
-                "supported_adapter_match" if matches else "review_candidate_only"
-            )
+            coverage[policy.name]["automatic_extraction_status"] = model_report.get("status")
             if len(drafts) > 1:
                 ids = [draft.event_id for draft in drafts]
                 for draft in drafts:
                     draft.related_record_ids = [value for value in ids if value != draft.event_id]
             for event in drafts:
-                # Unnamed reports cannot reliably be merged. Overlapping area/date
-                # candidates stay pending rather than inflating inspection counts.
                 ambiguous_overlap = event.automatic_validation and any(
                     not event.reported_fact.establishment_name
                     and not old.reported_fact.establishment_name
@@ -371,38 +343,16 @@ def update(
                 )
                 duplicate = next((e for e in [*events, *pending] if same_event(e, event)), None)
                 if duplicate:
-                    merged = associate(duplicate, event, at)
-                    if duplicate.event_id not in {e.event_id for e in events}:
-                        pending = [e for e in pending if e.event_id != duplicate.event_id] + [
-                            merged
-                        ]
-                    reasons["associated_requires_review"] += 1
-                elif (
-                    auto_enabled
-                    and not ambiguous_overlap
-                    and not publication_errors(event, policies, {canonical: text})
-                ):
+                    reasons["duplicate_skipped"] += 1
+                elif ambiguous_overlap:
+                    reasons["ambiguous_duplicate_skipped"] += 1
+                elif auto_enabled and not publication_errors(event, policies, {canonical: text}):
                     events.append(event)
                     event.first_published_at = event.first_published_at or at
                     run["records_published"] += 1
                 else:
-                    if event.automatic_validation:
-                        data = event.model_dump(mode="json")
-                        data.update(
-                            verification_status="PENDING REVIEW",
-                            automatic_validation=None,
-                            publication_status="needs_review",
-                            evidence_support_status="needs_review",
-                            first_published_at=None,
-                        )
-                        data["history"][-1].update(
-                            status="PENDING REVIEW",
-                            note="Automatic publication checks did not pass.",
-                        )
-                        event = Event.model_validate(data)
-                    pending.append(event)
-                    run["records_pending"] += 1
-                    reasons["human_review_required"] += 1
+                    run["records_rejected"] += 1
+                    reasons["llm_candidate_skipped"] += 1
         except (
             ValueError,
             OSError,

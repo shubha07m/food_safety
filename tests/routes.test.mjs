@@ -28,5 +28,5 @@ test('brand and bilingual disclosure preserve tracker identity without blanket n
   assert.doesNotMatch(policy, /LLM calls are disabled by default/);
   const copy = readFileSync(new URL('../site/phase1.mjs', import.meta.url), 'utf8');
   assert.match(copy, /may publish automatically/);
-  assert.match(copy, /স্বয়ংক্রিয়ভাবে প্রকাশযোগ্য/);
+  assert.match(copy, /স্বয়ংক্রিয়ভাবে প্রকাশিত হতে পারে/);
 });

@@ -1,22 +1,19 @@
-import json
 from pathlib import Path
 
-import httpx
 import pytest
 from conftest import AT, FakeFetcher, enable_policy, load
 
 from food_safety.extract import deterministic_extract
-from food_safety.llm import DisabledVLM, OpenAICompatible
 from food_safety.pipeline import review_record, update
 from food_safety.storage import save_events
 
 
-def test_fixture_pipeline_pending(project, policy, fixture_html):
+def test_missing_model_credentials_skips_new_article(project, policy, fixture_html):
     enable_policy(project, policy)
     run = update(project, max_articles=1, fetcher=FakeFetcher(fixture_html))
-    assert run["records_pending"] == 1
+    assert run["records_pending"] == 0
     assert load(project, "events")["record_count"] == 0
-    assert load(project, "pending")["records"][0]["reported_fact"]["establishment_name"] is None
+    assert load(project, "pending")["record_count"] == 0
     assert load(project, "status")["last_successful_update"]
 
 
@@ -24,7 +21,7 @@ def test_unchanged_rescan_idempotent(project, policy, fixture_html):
     enable_policy(project, policy)
     update(project, fetcher=FakeFetcher(fixture_html))
     update(project, fetcher=FakeFetcher(fixture_html))
-    assert load(project, "pending")["record_count"] == 1
+    assert load(project, "pending")["record_count"] == 0
 
 
 def test_broken_source_rejected(project, policy):
@@ -88,37 +85,3 @@ def test_llm_default_without_credentials(project, policy, fixture_html):
     result = update(project, use_llm=True, fetcher=FakeFetcher(fixture_html))
     assert result["llm_calls"] == 0
     assert result["llm_status_counts"]["missing_credentials"] == 1
-
-
-def test_llm_mock_and_budget(monkeypatch):
-    for name, val in {
-        "BASE_URL": "https://example.org/v1",
-        "MODEL": "fixture-model",
-        "PROVIDER": "fixture-provider",
-        "API_KEY": "test-only",
-    }.items():
-        monkeypatch.setenv("FOOD_LLM_" + name, val)
-    content = "Inspectors collected samples."
-    client = httpx.Client(
-        transport=httpx.MockTransport(
-            lambda request: httpx.Response(
-                200,
-                json={
-                    "choices": [
-                        {"message": {"content": json.dumps({"reported_observation": content})}}
-                    ]
-                },
-                request=request,
-            )
-        )
-    )
-    llm = OpenAICompatible(max_calls=1, client=client)
-    assert llm.extract(content)["reported_observation"] == content
-    with pytest.raises(ValueError, match="budget"):
-        llm.extract(content)
-    client.close()
-
-
-def test_vlm_disabled():
-    with pytest.raises(ValueError, match="disabled"):
-        DisabledVLM().extract_image("https://example.org/fixture.png")

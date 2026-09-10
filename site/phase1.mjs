@@ -4,7 +4,7 @@ import { safeExternal } from './data.mjs';
 export const copy = {
   en: {
     heading: 'How record verification works',
-    extraction: 'A bounded language model can propose structured records from source documents. Fully source-grounded, policy-safe candidates may publish automatically; ambiguous cases require review and unsupported candidates are rejected. Original evidence remains authoritative. This is not a chatbot.',
+    extraction: 'A bounded language model extracts structured candidates from source documents. Candidates passing schema, exact evidence-grounding, source, safety, date, duplicate and publication checks may publish automatically; all others are skipped. Original evidence remains authoritative. This is not a chatbot.',
     policy: 'New records are published only when a permitted source clearly supports the displayed information. After publication, a source outage or technical page change may produce a dated warning while we retry—not a finding that the report was false. Materially uncertain, corrected or withdrawn evidence leaves active results. Records that cannot be revalidated for 30 days move to an unverifiable archive. Historical status is retained rather than silently deleted.',
     meaning: 'Source verification means the cited source supported the displayed statement at the recorded verification time. It is not an independent finding of fact.',
     lifecycle: 'Publication history', active: 'Active records', ever: 'Ever published', warning: 'Active with source warning', inactive: 'Non-active records', recent: 'First published in the last 7 days',
@@ -20,7 +20,7 @@ export const copy = {
   },
   bn: {
     heading: 'নথির উৎস কীভাবে যাচাই করা হয়',
-    extraction: 'সীমিত ব্যবহারের একটি ভাষা মডেল উৎসের নথি থেকে তথ্য সাজিয়ে সম্ভাব্য রেকর্ড প্রস্তাব করতে পারে। উৎস, তথ্যের সম্পর্ক ও নিরাপত্তার সমস্ত যাচাই পেরোলে রেকর্ড স্বয়ংক্রিয়ভাবে প্রকাশযোগ্য; অস্পষ্ট ক্ষেত্রে মানুষের পর্যালোচনা লাগে এবং অসমর্থিত রেকর্ড বাতিল হয়। মূল উৎসের উদ্ধৃতিই প্রামাণ্য। এটি চ্যাটবট নয়।',
+    extraction: 'সীমিত ব্যবহারের একটি ভাষা মডেল উৎসের নথি থেকে কাঠামোবদ্ধ সম্ভাব্য রেকর্ড তৈরি করে। কাঠামো, হুবহু উৎস-প্রমাণ, উৎস, নিরাপত্তা, তারিখ, নকল ও প্রকাশনার সব যাচাই পেরোলে রেকর্ড স্বয়ংক্রিয়ভাবে প্রকাশিত হতে পারে; অন্যগুলি বাদ যায়। মূল উৎসের উদ্ধৃতিই প্রামাণ্য। এটি চ্যাটবট নয়।',
     policy: 'অনুমোদিত উৎস প্রদর্শিত তথ্যকে স্পষ্টভাবে সমর্থন করলেই নতুন নথি প্রকাশিত হয়। প্রকাশের পরে উৎসে প্রবেশের সমস্যা বা ওয়েবপেজের প্রযুক্তিগত পরিবর্তন হলে তারিখসহ সতর্কতা দেখিয়ে আবার পরীক্ষা করা হয়—প্রতিবেদন মিথ্যা বলা হয় না। তথ্যের অর্থ নিয়ে গুরুত্বপূর্ণ অনিশ্চয়তা, সংশোধন বা প্রত্যাহার থাকলে নথি সক্রিয় ফলাফল থেকে সরানো হয়। ৩০ দিন ধরে পুনরায় যাচাই করা না গেলে নথি যাচাই-অসম্ভব সংরক্ষণে যায়। নথি নিঃশব্দে মুছে না দিয়ে তার অবস্থার ইতিহাস রাখা হয়।',
     meaning: 'উৎস যাচাই মানে নির্দিষ্ট যাচাইয়ের সময় উৎসটি প্রদর্শিত বক্তব্য সমর্থন করেছিল। বাস্তব ঘটনা স্বাধীনভাবে প্রমাণ করা হয়েছে—এমন নয়।',
     lifecycle: 'প্রকাশের ইতিহাস', active: 'সক্রিয় নথি', ever: 'এখনও পর্যন্ত প্রকাশিত', warning: 'উৎস-সতর্কতাসহ সক্রিয়', inactive: 'সক্রিয় ফলাফলের বাইরে', recent: 'গত ৭ দিনে প্রথম প্রকাশিত',

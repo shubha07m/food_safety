@@ -15,9 +15,7 @@ class SourcePolicy(StrictModel):
     tier: Literal["A", "B", "C", "discovery"]
     enabled: bool = False
     language: Literal["en", "bn", "multilingual", "und"] = "und"
-    discovery_method: Literal["curated_urls", "bounded_indexes", "manual_only"] = (
-        "curated_urls"
-    )
+    discovery_method: Literal["curated_urls", "bounded_indexes", "manual_only"] = "curated_urls"
     discovery_status: Literal["active", "pilot", "manual_only", "blocked"] = "pilot"
     manual_only_reason: str | None = None
     urls: list[URL] = Field(default_factory=list, max_length=20)
@@ -58,7 +56,7 @@ class Settings(StrictModel):
     llm_max_candidates: int = Field(default=12, ge=1, le=12)
     llm_input_usd_per_million: float = Field(default=0.10, ge=0)
     llm_output_usd_per_million: float = Field(default=0.40, ge=0)
-    auto_publish: bool = False
+    auto_publish: bool = True
     archive_after_days: int = Field(default=30, ge=7, le=90)
     review_after_days: int = Field(default=7, ge=1, le=30)
     community_submission_url: URL | None = None

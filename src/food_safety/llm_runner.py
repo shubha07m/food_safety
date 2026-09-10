@@ -1,4 +1,4 @@
-"""Bounded LLM extraction side path. It never changes source lifecycle state."""
+"""Bounded LLM extraction path. Model failures never change source lifecycle state."""
 
 import hashlib
 import json
@@ -22,27 +22,24 @@ class LLMRunner:
         self.calls = 0
         self.counts = Counter()
 
-    def observe(self, html, url, language, deterministic=()):
-        return self.observe_document(lambda: freeze_document(html, url, language), deterministic)
+    def observe(self, html, url, language):
+        return self.observe_document(lambda: freeze_document(html, url, language))
 
-    def observe_document(self, document, deterministic=()):
-        """Accept a frozen revision (or lazy parser) for repeatable offline evaluations."""
+    def observe_document(self, document):
+        """Accept a frozen revision (or lazy parser) for repeatable diagnostics."""
         # All failures are contained here, including private disk/cache failures.
         try:
-            result = self._observe(document, deterministic)
+            result = self._observe(document)
         except ModelFailure as exc:
-            result = {"status": exc.code, "publication_eligible": False}
+            result = {"status": exc.code}
             if exc.diagnostic:
                 result["provider_diagnostic"] = exc.diagnostic
         except Exception:
-            result = {
-                "status": "llm_processing_failure",
-                "publication_eligible": False,
-            }
+            result = {"status": "llm_processing_failure"}
         self.counts[result["status"]] += 1
         return result
 
-    def _observe(self, document, deterministic):
+    def _observe(self, document):
         if not self.enabled:
             return {"status": "disabled"}
         if not getattr(self.extractor, "available", True):
@@ -61,8 +58,8 @@ class LLMRunner:
             "source_language": document.source_language,
             "parser_version": document.parser_version,
             "schema_hash": schema_hash,
-            "validator_id": "field_grounding_and_explicit_relationships",
-            "validator_version": "1",
+            "validator_id": "objective_source_grounding",
+            "validator_version": "2",
             "task_version": TASK_VERSION,
             "prompt_hash": hashlib.sha256(PROMPT.encode()).hexdigest(),
             "provider": self.cfg.llm_provider,
@@ -103,7 +100,7 @@ class LLMRunner:
             raise ModelFailure("incomplete_response")
         results, seen = [], set()
         for candidate in candidates:
-            result = validate_candidate(candidate, document, deterministic)
+            result = validate_candidate(candidate, document)
             if result["candidate_key"] in seen:
                 continue
             seen.add(result["candidate_key"])
@@ -114,7 +111,6 @@ class LLMRunner:
             "at": at,
             "completion_status": status,
             "status": "evaluated",
-            "publication_eligible": self.cfg.publish_from_llm,
             "usage": usage,
             "estimated_current_call_cost_usd": 0 if cached else usage["estimated_list_cost_usd"],
             "latency_seconds": latency,

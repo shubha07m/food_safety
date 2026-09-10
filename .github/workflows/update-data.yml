@@ -35,7 +35,7 @@ jobs:
         run: |
           python -m pip install -r requirements-dev.lock
           python -m pip install --no-deps --no-build-isolation -e .
-      - name: Limited source scan and optional private shadow extraction
+      - name: Limited source scan and validated LLM extraction
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
         run: |

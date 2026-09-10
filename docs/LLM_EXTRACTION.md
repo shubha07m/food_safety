@@ -1,6 +1,6 @@
 # Structured extraction
 
-The language model proposes structured candidate records from fetched source documents. Python validates schema, evidence spans, meaning, safety and duplicates. Fully validated candidates may publish automatically; ambiguous candidates enter a private exception queue and unsupported candidates are rejected. Human review is only for exceptions.
+The language model converts fetched source documents into structured candidate records. Python validates schema, evidence spans, source provenance, safety, dates, duplicates and publication policy. Fully validated candidates may publish automatically; ambiguous or unsupported candidates are skipped. There is no LLM review queue or promotion stage.
 
 ## Configuration
 
@@ -11,13 +11,13 @@ llm_provider: gemini
 llm_model: gemini-3.5-flash-lite
 ```
 
-Set `LLM_ENABLED=false` or use `update --no-llm` to run deterministic extraction only. Missing `GEMINI_API_KEY`, model timeouts, refusals and malformed output do not affect source lifecycle or existing records. The normal update command invokes the model automatically when credentials are present.
+Set `LLM_ENABLED=false` or use `update --no-llm` to disable new-article interpretation. Missing `GEMINI_API_KEY`, model timeouts, refusals and malformed output do not affect source lifecycle or existing records; they simply produce no new model-derived record for that source. The normal update command invokes the model automatically when credentials are present.
 
 Limits are five calls/run, 24,000 passage characters/article, 4,096 output tokens, 12 candidates/article, 128 KiB response and a 20-second timeout. Revision/model/task/schema/prompt-aware caching prevents resending unchanged source revisions. Cache entries are revalidated before use. No automatic provider retry or fallback is hidden.
 
 ## Evidence boundary
 
-The model sees ordered frozen passages and may return multiple scoped candidates with verbatim quotes and passage IDs. The application resolves quotes exactly, with NFC and whitespace-normalized fallback mapped to the original text. Fuzzy similarity and translation are never evidence. Model output cannot set publication state, source tier or review attestations. Optional unsupported fields may be omitted; unsupported core meaning is reviewed or rejected. Aggregate counts remain operation records and never fabricate establishments.
+The model sees ordered frozen passages and may return multiple scoped candidates with verbatim quotes and passage IDs. The application resolves quotes exactly, with NFC and whitespace-normalized fallback mapped to the original text. Fuzzy similarity and translation are never evidence. Model output cannot set publication state, source tier or review attestations. Optional unsupported fields may be omitted; unsupported core fields skip the candidate. Aggregate counts remain operation records and never fabricate establishments.
 
 Article text is untrusted data. The prompt treats instructions inside it as data, uses no tools, and cannot alter destinations or policy. Published model-assisted records carry source revision, evidence locator and model provenance. There is no chatbot, public Q&A, training, fine-tuning, VLM/OCR or vector database.
 

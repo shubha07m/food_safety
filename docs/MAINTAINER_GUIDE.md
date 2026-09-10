@@ -31,7 +31,7 @@ In the private Sheet, track pending / approved-for-processing / rejected and a n
 
 ## Bounded model extraction
 
-Default configuration enables the extractor and publication from it; credentials are required for live calls. Clean model candidates still pass the same deterministic gates, while ambiguous/invalid results are private exceptions or rejected. Missing credentials and model errors never suspend sources. See [setup and diagnostics](LLM_EXTRACTION.md). Tests never call live models. Normal model access needs only an Actions secret or local environment variable, never a Cloudflare/frontend token.
+Default configuration enables the extractor and publication from it; credentials are required for live calls. Clean model candidates still pass the same objective validation gates, while ambiguous or unsupported results are skipped. There is no LLM review queue. Missing credentials and model errors never suspend sources. See [setup and diagnostics](LLM_EXTRACTION.md). Tests never call live models. Normal model access needs only an Actions secret or local environment variable, never a Cloudflare/frontend token.
 
 ## Lifecycle operations
 

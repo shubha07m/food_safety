@@ -8,7 +8,7 @@ import unicodedata
 from bs4 import BeautifulSoup, Comment, NavigableString
 from pydantic import BaseModel, ConfigDict, Field
 
-PARSER_VERSION = "passages_v2"
+PARSER_VERSION = "passages_v3"
 
 
 class Passage(BaseModel):
@@ -32,7 +32,27 @@ class DocumentRevision(BaseModel):
 def freeze_document(html, url, language="und"):
     soup = BeautifulSoup(html, "html.parser")
     title = soup.title.get_text(" ", strip=True) if soup.title else "Untitled source"
-    for element in soup(["script", "style", "nav", "footer", "header", "iframe", "form"]):
+    for element in soup(
+        [
+            "script",
+            "style",
+            "nav",
+            "footer",
+            "header",
+            "aside",
+            "iframe",
+            "form",
+            "noscript",
+            "svg",
+            "button",
+            "select",
+        ]
+    ):
+        element.decompose()
+    for element in soup.select(
+        "[role='navigation'], [aria-label*='breadcrumb' i], "
+        "[class*='related' i], [class*='recommend' i], [class*='share' i]"
+    ):
         element.decompose()
     content = soup.find("article") or soup.find("main") or soup.body or soup
     # Preserve loose div/span body text too: many publishers do not use <p>.

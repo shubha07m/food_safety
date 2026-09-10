@@ -4,7 +4,7 @@
 
 Candidate records are separate from public Event objects. They carry bounded supported raw values, passage-ID/quote evidence proposals, explicit nulls, record scope and untrusted relationship suggestions. Application-resolved spans retain original Unicode text, passage-local code-point offsets and the frozen revision hash. Normalized matching views are not original evidence. Model-controlled publication/review/tier fields are prohibited.
 
-Policy decisions are pass / review / reject. A passing model-assisted candidate may proceed through the ordinary publication gate automatically; no separate promotion step is required. Optional unsupported fields are omitted; unsupported required fields reject, while uncertain relationships require review. A model failure has no effect on source availability.
+Model-extraction decisions are pass or skip. A passing candidate may proceed through the ordinary publication gate automatically; no promotion or LLM review queue exists. Optional unsupported fields are omitted; unsupported required fields skip the candidate. A model failure has no effect on source availability.
 
 Automatic method source_grounded_candidate_v1 adds a short original extraction_evidence locator to automatic_validation. LLM provenance retains provider, returned model version, task version, source revision, proposed fields, timestamp and validation result. Existing reviewed/deterministic records do not retrospectively claim model use. Full frozen documents, raw responses and evaluation labels remain private and are not public schema fields.
 
@@ -36,8 +36,9 @@ Existing IDs and original evidence are preserved by `python -m food_safety.cli m
 
 ComplianceDocument is a separate URL-only model, not an inspection or quality score. It includes document identity/type, establishment/area, issuer/date, optional validity dates, scope, source metadata/original evidence, reported document status, issuer-check status, publication state, supported fields, review time and related/superseding IDs. Source URL/language/ID/retrieval time/original quote/hash are reused through the nested Source object rather than duplicated. Optional submission ID/time exclude contact details and internal reviewer notes. Only manually reviewed active documents may be exported. No real documents are currently published; no uploads or automatic business-submission publication exist.
 
-Automatic records may carry `automatic_validation`: the evaluated deterministic
-adapter method, validation timestamp and pipeline version. This is separate from
+Automatic records may carry `automatic_validation`: the objective validation
+method, validation timestamp, pipeline version and (for model-assisted records) a
+short original evidence locator. This is separate from
 `review` and never means a maintainer read the source. Every automatically
 published field still needs exact source support and all publication gates.
 The public source-verification meaning is unchanged.
