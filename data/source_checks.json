@@ -1,5 +1,16 @@
 {
   "checks": {
+    "SRC-0f6b0e11266a849611e9": {
+      "availability": "available",
+      "failures": 0,
+      "first_failure": null,
+      "last_attempt": "2026-09-11T16:27:14.451761+00:00",
+      "last_success": "2026-09-11T16:27:14.451761+00:00",
+      "next_retry": null,
+      "reason": null,
+      "review_due": false,
+      "source_id": "SRC-0f6b0e11266a849611e9"
+    },
     "SRC-15e0ca4c8a5c08ff93cf": {
       "availability": "available",
       "failures": 0,
@@ -29,8 +40,8 @@
       "availability": "available",
       "failures": 0,
       "first_failure": null,
-      "last_attempt": "2026-09-11T11:18:01.816017+00:00",
-      "last_success": "2026-09-11T11:18:01.816017+00:00",
+      "last_attempt": "2026-09-11T20:57:21.525612+00:00",
+      "last_success": "2026-09-11T20:57:21.525612+00:00",
       "next_retry": null,
       "reason": null,
       "review_due": false,
@@ -119,28 +130,28 @@
       "availability": "available",
       "failures": 0,
       "first_failure": null,
-      "last_attempt": "2026-09-11T00:09:16.296804+00:00",
-      "last_success": "2026-09-11T00:09:16.296804+00:00",
+      "last_attempt": "2026-09-11T20:57:21.525612+00:00",
+      "last_success": "2026-09-11T20:57:21.525612+00:00",
       "next_retry": null,
       "reason": null,
       "review_due": false,
       "source_id": "SRC-59ccf829aa23f90d9dcd",
       "supported_records": {
-        "WBFS-2d6ba057efa8": "2026-09-11T00:09:16.296804+00:00",
-        "WBFS-40c2c19539bf": "2026-09-11T00:09:16.296804+00:00",
-        "WBFS-6de7dac309b3": "2026-09-11T00:09:16.296804+00:00",
-        "WBFS-8e423a7f55e7": "2026-09-11T00:09:16.296804+00:00",
-        "WBFS-9664baf9ee06": "2026-09-11T00:09:16.296804+00:00",
-        "WBFS-c9641b8c4531": "2026-09-11T00:09:16.296804+00:00",
-        "WBFS-f880c67a6f96": "2026-09-11T00:09:16.296804+00:00"
+        "WBFS-2d6ba057efa8": "2026-09-11T20:57:21.525612+00:00",
+        "WBFS-40c2c19539bf": "2026-09-11T20:57:21.525612+00:00",
+        "WBFS-6de7dac309b3": "2026-09-11T20:57:21.525612+00:00",
+        "WBFS-8e423a7f55e7": "2026-09-11T20:57:21.525612+00:00",
+        "WBFS-9664baf9ee06": "2026-09-11T20:57:21.525612+00:00",
+        "WBFS-c9641b8c4531": "2026-09-11T20:57:21.525612+00:00",
+        "WBFS-f880c67a6f96": "2026-09-11T20:57:21.525612+00:00"
       }
     },
     "SRC-5bb7de0a745da6920dbe": {
       "availability": "available",
       "failures": 0,
       "first_failure": null,
-      "last_attempt": "2026-09-11T11:18:01.816017+00:00",
-      "last_success": "2026-09-11T11:18:01.816017+00:00",
+      "last_attempt": "2026-09-11T16:27:14.451761+00:00",
+      "last_success": "2026-09-11T16:27:14.451761+00:00",
       "next_retry": null,
       "reason": null,
       "review_due": false,
@@ -161,8 +172,8 @@
       "availability": "available",
       "failures": 0,
       "first_failure": null,
-      "last_attempt": "2026-09-11T11:18:01.816017+00:00",
-      "last_success": "2026-09-11T11:18:01.816017+00:00",
+      "last_attempt": "2026-09-11T16:27:14.451761+00:00",
+      "last_success": "2026-09-11T16:27:14.451761+00:00",
       "next_retry": null,
       "reason": null,
       "review_due": false,
@@ -208,38 +219,38 @@
       "availability": "available",
       "failures": 0,
       "first_failure": null,
-      "last_attempt": "2026-09-10T11:16:41.248741+00:00",
-      "last_success": "2026-09-10T11:16:41.248741+00:00",
+      "last_attempt": "2026-09-11T20:57:21.525612+00:00",
+      "last_success": "2026-09-11T20:57:21.525612+00:00",
       "next_retry": null,
       "reason": null,
       "review_due": false,
       "source_id": "SRC-95d69df5ac8c297ddf1a",
       "supported_records": {
-        "WBFS-22a7207f8823": "2026-09-10T11:16:41.248741+00:00",
-        "WBFS-236ee7e08350": "2026-09-10T11:16:41.248741+00:00",
-        "WBFS-34ad5ff406c7": "2026-09-10T11:16:41.248741+00:00",
-        "WBFS-56d6626ee956": "2026-09-10T11:16:41.248741+00:00",
-        "WBFS-8a5df7f75276": "2026-09-10T11:16:41.248741+00:00"
+        "WBFS-22a7207f8823": "2026-09-11T20:57:21.525612+00:00",
+        "WBFS-236ee7e08350": "2026-09-11T20:57:21.525612+00:00",
+        "WBFS-34ad5ff406c7": "2026-09-11T20:57:21.525612+00:00",
+        "WBFS-56d6626ee956": "2026-09-11T20:57:21.525612+00:00",
+        "WBFS-8a5df7f75276": "2026-09-11T20:57:21.525612+00:00"
       }
     },
     "SRC-9725f02d157f97e5ef0e": {
       "availability": "available",
       "failures": 0,
       "first_failure": null,
-      "last_attempt": "2026-09-11T00:09:16.296804+00:00",
-      "last_success": "2026-09-11T00:09:16.296804+00:00",
+      "last_attempt": "2026-09-11T20:57:21.525612+00:00",
+      "last_success": "2026-09-11T20:57:21.525612+00:00",
       "next_retry": null,
       "reason": null,
       "review_due": false,
       "source_id": "SRC-9725f02d157f97e5ef0e",
       "supported_records": {
-        "WBFS-1a671ff0cb00": "2026-09-11T00:09:16.296804+00:00",
-        "WBFS-1dce1dc6b528": "2026-09-11T00:09:16.296804+00:00",
-        "WBFS-323ec48706a8": "2026-09-11T00:09:16.296804+00:00",
-        "WBFS-36dcf26562c9": "2026-09-11T00:09:16.296804+00:00",
-        "WBFS-42d3961e2f90": "2026-09-11T00:09:16.296804+00:00",
-        "WBFS-5b37a8259b91": "2026-09-11T00:09:16.296804+00:00",
-        "WBFS-a66bcab3fe68": "2026-09-11T00:09:16.296804+00:00"
+        "WBFS-1a671ff0cb00": "2026-09-11T20:57:21.525612+00:00",
+        "WBFS-1dce1dc6b528": "2026-09-11T20:57:21.525612+00:00",
+        "WBFS-323ec48706a8": "2026-09-11T20:57:21.525612+00:00",
+        "WBFS-36dcf26562c9": "2026-09-11T20:57:21.525612+00:00",
+        "WBFS-42d3961e2f90": "2026-09-11T20:57:21.525612+00:00",
+        "WBFS-5b37a8259b91": "2026-09-11T20:57:21.525612+00:00",
+        "WBFS-a66bcab3fe68": "2026-09-11T20:57:21.525612+00:00"
       }
     },
     "SRC-9e7dd9071d706ed5c426": {
@@ -279,18 +290,18 @@
       "availability": "available",
       "failures": 0,
       "first_failure": null,
-      "last_attempt": "2026-09-09T22:27:35.798745+00:00",
-      "last_success": "2026-09-09T22:27:35.798745+00:00",
+      "last_attempt": "2026-09-11T16:27:14.451761+00:00",
+      "last_success": "2026-09-11T16:27:14.451761+00:00",
       "next_retry": null,
       "reason": null,
       "review_due": false,
       "source_id": "SRC-b7202b06fe707b37481a",
       "supported_records": {
-        "WBFS-36131288fc72": "2026-09-09T22:27:35.798745+00:00",
-        "WBFS-4fb1b9a7c233": "2026-09-09T22:27:35.798745+00:00",
-        "WBFS-7414c293e43a": "2026-09-09T22:27:35.798745+00:00",
-        "WBFS-b4cb5982e1de": "2026-09-09T22:27:35.798745+00:00",
-        "WBFS-fb6dd3f19af8": "2026-09-09T22:27:35.798745+00:00"
+        "WBFS-36131288fc72": "2026-09-11T16:27:14.451761+00:00",
+        "WBFS-4fb1b9a7c233": "2026-09-11T16:27:14.451761+00:00",
+        "WBFS-7414c293e43a": "2026-09-11T16:27:14.451761+00:00",
+        "WBFS-b4cb5982e1de": "2026-09-11T16:27:14.451761+00:00",
+        "WBFS-fb6dd3f19af8": "2026-09-11T16:27:14.451761+00:00"
       }
     },
     "SRC-bd22c7b43e5f07f4c4bd": {
@@ -307,16 +318,16 @@
       "availability": "available",
       "failures": 0,
       "first_failure": null,
-      "last_attempt": "2026-09-10T16:23:15.551464+00:00",
-      "last_success": "2026-09-10T16:23:15.551464+00:00",
+      "last_attempt": "2026-09-11T20:57:21.525612+00:00",
+      "last_success": "2026-09-11T20:57:21.525612+00:00",
       "next_retry": null,
       "reason": null,
       "review_due": false,
       "source_id": "SRC-c0c755b9956e51c39485",
       "supported_records": {
-        "WBFS-bd37fd0fd837": "2026-09-10T16:23:15.551464+00:00",
-        "WBFS-ca4e617582a8": "2026-09-10T16:23:15.551464+00:00",
-        "WBFS-d7a89f9a34e8": "2026-09-10T16:23:15.551464+00:00"
+        "WBFS-bd37fd0fd837": "2026-09-11T20:57:21.525612+00:00",
+        "WBFS-ca4e617582a8": "2026-09-11T20:57:21.525612+00:00",
+        "WBFS-d7a89f9a34e8": "2026-09-11T20:57:21.525612+00:00"
       }
     },
     "SRC-c8093dbe1ffe89b313e5": {
@@ -351,8 +362,8 @@
       "availability": "available",
       "failures": 0,
       "first_failure": null,
-      "last_attempt": "2026-09-11T11:18:01.816017+00:00",
-      "last_success": "2026-09-11T11:18:01.816017+00:00",
+      "last_attempt": "2026-09-11T20:57:21.525612+00:00",
+      "last_success": "2026-09-11T20:57:21.525612+00:00",
       "next_retry": null,
       "reason": null,
       "review_due": false,
@@ -362,14 +373,14 @@
       "availability": "available",
       "failures": 0,
       "first_failure": null,
-      "last_attempt": "2026-09-10T11:16:41.248741+00:00",
-      "last_success": "2026-09-10T11:16:41.248741+00:00",
+      "last_attempt": "2026-09-11T20:57:21.525612+00:00",
+      "last_success": "2026-09-11T20:57:21.525612+00:00",
       "next_retry": null,
       "reason": null,
       "review_due": false,
       "source_id": "SRC-d6378f0c47771bf00367",
       "supported_records": {
-        "WBFS-ce0e970c1361": "2026-09-10T11:16:41.248741+00:00"
+        "WBFS-ce0e970c1361": "2026-09-11T20:57:21.525612+00:00"
       }
     },
     "SRC-e23f6c26a3e4ca21957e": {
@@ -416,7 +427,7 @@
     }
   },
   "context_notice": "Independent, non-governmental public-source research. Inclusion is not a finding of wrongdoing. Counts describe records in this tracker, not official totals, prevalence, compliance, risk or group behavior. Read the sources and preserve this context when sharing.",
-  "generated_at": "2026-09-11T11:18:01.816017+00:00",
+  "generated_at": "2026-09-11T20:57:21.525612+00:00",
   "pipeline_version": "0.3.0",
   "record_count": 0,
   "records": [],
