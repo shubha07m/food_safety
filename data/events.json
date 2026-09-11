@@ -1,8 +1,8 @@
 {
   "context_notice": "Independent, non-governmental public-source research. Inclusion is not a finding of wrongdoing. Counts describe records in this tracker, not official totals, prevalence, compliance, risk or group behavior. Read the sources and preserve this context when sharing.",
-  "generated_at": "2026-09-11T04:37:44.799127+00:00",
+  "generated_at": "2026-09-11T11:18:01.816017+00:00",
   "pipeline_version": "0.3.0",
-  "record_count": 42,
+  "record_count": 43,
   "records": [
     {
       "automatic_validation": null,
@@ -298,11 +298,17 @@
           "note": "Supporting source context revalidated; original evidence retained.",
           "previous_record_sha256": "fdb272fe7c50a1ac1548d9474f9071b76bc25c2bf5d6accc40a0256bceb53619",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-11T11:18:01.816017Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "05ad89d9cb3814aece0b29b5aae0a8e60344bc9c209a78d7e3841dbca845518e",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-09-10T04:39:32.448783Z",
-      "last_successful_evidence_check_at": "2026-09-10T04:39:32.448783Z",
+      "last_source_checked_at": "2026-09-11T11:18:01.816017Z",
+      "last_successful_evidence_check_at": "2026-09-11T11:18:01.816017Z",
       "llm": {
         "fields_proposed": [],
         "llm_model": null,
@@ -322,7 +328,7 @@
       "record_class": "inspection_evidence",
       "record_created_at": "2026-09-09T23:11:25.626009Z",
       "record_scope": "area_operation",
-      "record_updated_at": "2026-09-10T04:39:32.448783Z",
+      "record_updated_at": "2026-09-11T11:18:01.816017Z",
       "related_record_ids": [],
       "reported_fact": {
         "area": "ডেকার্স লেন",
@@ -396,6 +402,172 @@
     {
       "automatic_validation": {
         "extraction_evidence": {
+          "end": 229,
+          "match_method": "exact",
+          "original_quote": "এর আগে বাদুড়িয়ার একটি রেস্তোরাঁয় হানা দিয়ে প্রায় ৪০ কেজি পচা মুরগি ও পাঁঠার মাংস উদ্ধার করেন আধিকারিকরা। দোকান কর্তৃপক্ষকে ২৪ ঘণ্টার মধ্যে কারণ দর্শানোর নোটিশ দেওয়া হয়েছে, অন্যথায় রেস্তোরাঁটি সিল করে দেওয়ার হুঁশিয়ারি দেওয়া হয়েছে।",
+          "passage_id": "P017",
+          "source_revision_id": "f23ca40552ae8082c42ba1fc7b0c4d5380073f33aa6a6fef89e3b70269630514",
+          "start": 0
+        },
+        "method": "source_grounded_candidate_v1",
+        "pipeline_version": "0.3.0",
+        "validated_at": "2026-09-11T11:18:01.816017Z"
+      },
+      "context_notice": "Independent, non-governmental public-source research. Inclusion is not a finding of wrongdoing. Counts describe records in this tracker, not official totals, prevalence, compliance, risk or group behavior. Read the sources and preserve this context when sharing.",
+      "derived_context": {
+        "action_category": "not reported",
+        "action_category_confidence": "unknown",
+        "action_category_method": null,
+        "action_category_reviewed": false,
+        "action_category_source": null,
+        "business_format": "unknown",
+        "business_format_confidence": "unknown",
+        "business_format_method": null,
+        "business_format_reviewed": false,
+        "business_format_source": null,
+        "derived_confidence": "unknown",
+        "derived_context_method": "Unknown; no contextual inference performed.",
+        "derived_context_sources": [],
+        "establishment_context": "unknown",
+        "establishment_context_confidence": "unknown",
+        "establishment_context_method": null,
+        "establishment_context_reviewed": false,
+        "establishment_context_source": null,
+        "latitude": null,
+        "location_method": null,
+        "location_precision": null,
+        "location_reviewed": false,
+        "location_source": null,
+        "longitude": null,
+        "menu_context": "unknown",
+        "menu_context_confidence": "unknown",
+        "menu_context_method": null,
+        "menu_context_reviewed": false,
+        "menu_context_source": null,
+        "normalized_area": null
+      },
+      "display_summary": "Source reports a source-reported food-safety event involving বাদুড়িয়ার একটি রেস্তোরাঁ in বাদুড়িয়া.",
+      "establishment_id": null,
+      "event_id": "WBFS-18d0aa99be3b",
+      "evidence_support_status": "supported_as_of",
+      "extractor_id": "source_grounded_candidate",
+      "extractor_version": "1",
+      "first_published_at": "2026-09-11T11:18:01.816017Z",
+      "history": [
+        {
+          "at": "2026-09-11T11:18:01.816017Z",
+          "note": "Source-grounded LLM candidate auto-published after deterministic validation.",
+          "previous_record_sha256": null,
+          "status": "SOURCE VERIFIED"
+        }
+      ],
+      "is_fixture": false,
+      "last_source_checked_at": "2026-09-11T11:18:01.816017Z",
+      "last_successful_evidence_check_at": "2026-09-11T11:18:01.816017Z",
+      "llm": {
+        "fields_proposed": [
+          "area",
+          "establishment_name",
+          "reported_action",
+          "reported_authority",
+          "reported_observation",
+          "reported_quantity"
+        ],
+        "llm_model": "gemini-3.5-flash-lite",
+        "llm_output_was_validated": true,
+        "llm_pipeline_version": "0.3.0",
+        "llm_provider": "gemini",
+        "llm_task": "structured source extraction",
+        "llm_task_version": "source_candidates_v2",
+        "llm_used": true,
+        "llm_used_at": "2026-09-11T11:18:18.721832Z",
+        "source_revision_id": "f23ca40552ae8082c42ba1fc7b0c4d5380073f33aa6a6fef89e3b70269630514",
+        "validation_result": "passed"
+      },
+      "location_id": null,
+      "pipeline_version": "0.3.0",
+      "publication_status": "active",
+      "record_class": "inspection_evidence",
+      "record_created_at": "2026-09-11T11:18:01.816017Z",
+      "record_scope": "establishment_event",
+      "record_updated_at": "2026-09-11T11:18:01.816017Z",
+      "related_record_ids": [],
+      "reported_fact": {
+        "area": "বাদুড়িয়া",
+        "district": null,
+        "establishment_name": "বাদুড়িয়ার একটি রেস্তোরাঁ",
+        "establishment_type": null,
+        "event_date": null,
+        "evidence": {
+          "area": {
+            "quote": "এর আগে বাদুড়িয়ার একটি রেস্তোরাঁয় হানা দিয়ে প্রায় ৪০ কেজি পচা মুরগি ও পাঁঠার মাংস উদ্ধার করেন আধিকারিকরা। দোকান কর্তৃপক্ষকে ২৪ ঘণ্টার মধ্যে কারণ দর্শানোর নোটিশ দেওয়া হয়েছে, অন্যথায় রেস্তোরাঁটি সিল করে দেওয়ার হুঁশিয়ারি দেওয়া হয়েছে।",
+            "source_url": "https://bengali.indianexpress.com/west-bengal/wb-food-safety-raid-rotten-meat-recovered-12482621"
+          },
+          "establishment_name": {
+            "quote": "এর আগে বাদুড়িয়ার একটি রেস্তোরাঁয় হানা দিয়ে প্রায় ৪০ কেজি পচা মুরগি ও পাঁঠার মাংস উদ্ধার করেন আধিকারিকরা। দোকান কর্তৃপক্ষকে ২৪ ঘণ্টার মধ্যে কারণ দর্শানোর নোটিশ দেওয়া হয়েছে, অন্যথায় রেস্তোরাঁটি সিল করে দেওয়ার হুঁশিয়ারি দেওয়া হয়েছে।",
+            "source_url": "https://bengali.indianexpress.com/west-bengal/wb-food-safety-raid-rotten-meat-recovered-12482621"
+          },
+          "reported_action": {
+            "quote": "এর আগে বাদুড়িয়ার একটি রেস্তোরাঁয় হানা দিয়ে প্রায় ৪০ কেজি পচা মুরগি ও পাঁঠার মাংস উদ্ধার করেন আধিকারিকরা। দোকান কর্তৃপক্ষকে ২৪ ঘণ্টার মধ্যে কারণ দর্শানোর নোটিশ দেওয়া হয়েছে, অন্যথায় রেস্তোরাঁটি সিল করে দেওয়ার হুঁশিয়ারি দেওয়া হয়েছে।",
+            "source_url": "https://bengali.indianexpress.com/west-bengal/wb-food-safety-raid-rotten-meat-recovered-12482621"
+          },
+          "reported_authority": {
+            "quote": "এর আগে বাদুড়িয়ার একটি রেস্তোরাঁয় হানা দিয়ে প্রায় ৪০ কেজি পচা মুরগি ও পাঁঠার মাংস উদ্ধার করেন আধিকারিকরা। দোকান কর্তৃপক্ষকে ২৪ ঘণ্টার মধ্যে কারণ দর্শানোর নোটিশ দেওয়া হয়েছে, অন্যথায় রেস্তোরাঁটি সিল করে দেওয়ার হুঁশিয়ারি দেওয়া হয়েছে।",
+            "source_url": "https://bengali.indianexpress.com/west-bengal/wb-food-safety-raid-rotten-meat-recovered-12482621"
+          },
+          "reported_observation": {
+            "quote": "এর আগে বাদুড়িয়ার একটি রেস্তোরাঁয় হানা দিয়ে প্রায় ৪০ কেজি পচা মুরগি ও পাঁঠার মাংস উদ্ধার করেন আধিকারিকরা। দোকান কর্তৃপক্ষকে ২৪ ঘণ্টার মধ্যে কারণ দর্শানোর নোটিশ দেওয়া হয়েছে, অন্যথায় রেস্তোরাঁটি সিল করে দেওয়ার হুঁশিয়ারি দেওয়া হয়েছে।",
+            "source_url": "https://bengali.indianexpress.com/west-bengal/wb-food-safety-raid-rotten-meat-recovered-12482621"
+          },
+          "reported_quantity": {
+            "quote": "এর আগে বাদুড়িয়ার একটি রেস্তোরাঁয় হানা দিয়ে প্রায় ৪০ কেজি পচা মুরগি ও পাঁঠার মাংস উদ্ধার করেন আধিকারিকরা। দোকান কর্তৃপক্ষকে ২৪ ঘণ্টার মধ্যে কারণ দর্শানোর নোটিশ দেওয়া হয়েছে, অন্যথায় রেস্তোরাঁটি সিল করে দেওয়ার হুঁশিয়ারি দেওয়া হয়েছে।",
+            "source_url": "https://bengali.indianexpress.com/west-bengal/wb-food-safety-raid-rotten-meat-recovered-12482621"
+          }
+        },
+        "formal_finding": null,
+        "legal_finding_status": "unknown",
+        "reported_action": "দোকান কর্তৃপক্ষকে ২৪ ঘণ্টার মধ্যে কারণ দর্শানোর নোটিশ দেওয়া হয়েছে",
+        "reported_authority": "আধিকারিকরা",
+        "reported_observation": "প্রায় ৪০ কেজি পচা মুরগি ও পাঁঠার মাংস উদ্ধার করেন",
+        "reported_quantity": "৪০ কেজি"
+      },
+      "review": null,
+      "reviewed_associations": [],
+      "reviewer_hold": false,
+      "source_availability": "available",
+      "source_availability_reason": null,
+      "sources": [
+        {
+          "archive_url": null,
+          "evidence_context": "এর আগে বাদুড়িয়ার একটি রেস্তোরাঁয় হানা দিয়ে প্রায় ৪০ কেজি পচা মুরগি ও পাঁঠার মাংস উদ্ধার করেন আধিকারিকরা। দোকান কর্তৃপক্ষকে ২৪ ঘণ্টার মধ্যে কারণ দর্শানোর নোটিশ দেওয়া হয়েছে, অন্যথায় রেস্তোরাঁটি সিল করে দেওয়ার হুঁশিয়ারি দেওয়া হয়েছে।",
+          "evidence_language": "bn",
+          "evidence_locator": null,
+          "evidence_quote": "প্রায় ৪০ কেজি পচা মুরগি ও পাঁঠার মাংস উদ্ধার করেন",
+          "evidence_span_hash": "4dcbb2a367b0ba5c72ea00c0cb5f5d48143bcab6ad5894c8cbfbf66325583849",
+          "origin_source_id": null,
+          "retrieved_at": "2026-09-11T11:18:01.816017Z",
+          "source_date": "2026-09-02",
+          "source_id": "SRC-4b6362da3df85f8c3873",
+          "source_language": "bn",
+          "source_publisher": "Indian Express Bangla",
+          "source_relationship": "unknown",
+          "source_revision_id": "35102f3539c0613234f6171700cf224ad9299f890a51d6d6bc1dce95acd54b3c",
+          "source_title": "ফ্রিজ খুলতেই থরে থরে সাজানো পচা মাংস-মাছ, ভিয়েনঘরে জমে বাসী পনির! রাজ্যজুড়ে খাদ্য দপ্তরের 'মেগা অভিযানে' চরম চাঞ্চল্য",
+          "source_type": "news",
+          "source_url": "https://bengali.indianexpress.com/west-bengal/wb-food-safety-raid-rotten-meat-recovered-12482621",
+          "text_sha256": "35102f3539c0613234f6171700cf224ad9299f890a51d6d6bc1dce95acd54b3c",
+          "tier": "B"
+        }
+      ],
+      "superseded_by": null,
+      "validator_id": "objective_source_grounding",
+      "validator_version": "2",
+      "verification_notes": "LLM-assisted candidate; objective source-grounding and publication checks passed. Source verification is not an independent finding of fact.",
+      "verification_status": "SOURCE VERIFIED"
+    },
+    {
+      "automatic_validation": {
+        "extraction_evidence": {
           "end": 231,
           "match_method": "exact",
           "original_quote": "বুধবার ট্যাংরার বিগবস রেস্তোরাঁয় অভিযান চালান পুরসভার আধিকারিকরা। সেখানে অস্বাস্থ্যকর পরিবেশে বিপুল পরিমাণ মাছ-মাংস সংরক্ষণ করে রাখা হয়েছিল বলে অভিযোগ। অভিযান চালিয়ে প্রায় ৫০০ কেজি মাংস উদ্ধার করা হয়।",
@@ -453,11 +625,17 @@
           "note": "Source-grounded LLM candidate auto-published after deterministic validation.",
           "previous_record_sha256": null,
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-11T11:18:01.816017Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "02463c874ce66cc864f600593eefa59f6c4d3794807c9602a5291157de6c7ecd",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-09-11T04:37:44.799127Z",
-      "last_successful_evidence_check_at": "2026-09-11T04:37:44.799127Z",
+      "last_source_checked_at": "2026-09-11T11:18:01.816017Z",
+      "last_successful_evidence_check_at": "2026-09-11T11:18:01.816017Z",
       "llm": {
         "fields_proposed": [
           "area",
@@ -484,7 +662,7 @@
       "record_class": "inspection_evidence",
       "record_created_at": "2026-09-11T04:37:44.799127Z",
       "record_scope": "establishment_event",
-      "record_updated_at": "2026-09-11T04:37:44.799127Z",
+      "record_updated_at": "2026-09-11T11:18:01.816017Z",
       "related_record_ids": [],
       "reported_fact": {
         "area": "ট্যাংরার",
@@ -556,7 +734,7 @@
       "superseded_by": null,
       "validator_id": "objective_source_grounding",
       "validator_version": "2",
-      "verification_notes": "LLM-assisted candidate; objective source-grounding and publication checks passed. Source verification is not an independent finding of fact.",
+      "verification_notes": "Supporting source context revalidated; original evidence retained.",
       "verification_status": "SOURCE VERIFIED"
     },
     {
@@ -3870,11 +4048,17 @@
           "note": "Supporting source context revalidated; original evidence retained.",
           "previous_record_sha256": "663ce57e8d1d9dc29e0067f26bc46bdde6626d9237b15552190feb03e6605c2d",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-11T11:18:01.816017Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "6a82101f1a4c06c67e3382115881f5c0ca887af5faac554d37eedd1ff87896f0",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-09-11T04:37:44.799127Z",
-      "last_successful_evidence_check_at": "2026-09-11T04:37:44.799127Z",
+      "last_source_checked_at": "2026-09-11T11:18:01.816017Z",
+      "last_successful_evidence_check_at": "2026-09-11T11:18:01.816017Z",
       "llm": {
         "fields_proposed": [],
         "llm_model": null,
@@ -3894,7 +4078,7 @@
       "record_class": "inspection_evidence",
       "record_created_at": "2026-09-09T23:09:01.232782Z",
       "record_scope": "area_operation",
-      "record_updated_at": "2026-09-11T04:37:44.799127Z",
+      "record_updated_at": "2026-09-11T11:18:01.816017Z",
       "related_record_ids": [],
       "reported_fact": {
         "area": "কলকাতা",
@@ -4027,11 +4211,17 @@
           "note": "Supporting source context revalidated; original evidence retained.",
           "previous_record_sha256": "7bf5ed04ce20903e7bc889e99a672ec96d8728b253af4be77907210ac191b885",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-11T11:18:01.816017Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "b4889866e11f84b71782574ed136bb69d0619ff316e393cbcb77e96c9e53b771",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-09-11T04:37:44.799127Z",
-      "last_successful_evidence_check_at": "2026-09-11T04:37:44.799127Z",
+      "last_source_checked_at": "2026-09-11T11:18:01.816017Z",
+      "last_successful_evidence_check_at": "2026-09-11T11:18:01.816017Z",
       "llm": {
         "fields_proposed": [
           "area",
@@ -4056,7 +4246,7 @@
       "record_class": "inspection_evidence",
       "record_created_at": "2026-09-11T00:09:16.296804Z",
       "record_scope": "area_operation",
-      "record_updated_at": "2026-09-11T04:37:44.799127Z",
+      "record_updated_at": "2026-09-11T11:18:01.816017Z",
       "related_record_ids": [
         "WBFS-c391d02b3d97"
       ],
@@ -4422,11 +4612,17 @@
           "note": "Supporting source context revalidated; original evidence retained.",
           "previous_record_sha256": "8e7c0463f672ed34ae1581910cb7603acf4ce8d32d2938c87dc73fad292b5883",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-11T11:18:01.816017Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "b261f40a87614733d2d7b7cb8eb0f29d31640533f5ed0b350ec79625ed748d31",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-09-11T04:37:44.799127Z",
-      "last_successful_evidence_check_at": "2026-09-11T04:37:44.799127Z",
+      "last_source_checked_at": "2026-09-11T11:18:01.816017Z",
+      "last_successful_evidence_check_at": "2026-09-11T11:18:01.816017Z",
       "llm": {
         "fields_proposed": [
           "area",
@@ -4452,7 +4648,7 @@
       "record_class": "inspection_evidence",
       "record_created_at": "2026-09-11T00:09:16.296804Z",
       "record_scope": "establishment_event",
-      "record_updated_at": "2026-09-11T04:37:44.799127Z",
+      "record_updated_at": "2026-09-11T11:18:01.816017Z",
       "related_record_ids": [],
       "reported_fact": {
         "area": "মধ্যমগ্রামের স্টার মলে",
@@ -4509,11 +4705,11 @@
           "source_language": "bn",
           "source_publisher": "ABP Ananda",
           "source_relationship": "unknown",
-          "source_revision_id": "2f6fb855ea3a1e506fbf7189a4ed9291052e26ead46fff2c7f0248cb8aece20f",
+          "source_revision_id": "66850e06931a01be85b28d328e5139a0f7edff5613e525fbaa45a621ebb06125",
           "source_title": "Food Safety: অ্যাবসোলিউট বারবেকিউ -এর স্টোররুমে পচা মাংস, লাইসেন্স বাতিল রং দে বাসন্তি ধাবার, একাধিক নামী রেস্তরাঁয় শনিবার অভিযান | Rotten meat in Absolute Barbeque's storeroom Rang De Basanti Dhaba license cancelled raids at multiple renowned restaurants",
           "source_type": "news",
           "source_url": "https://bengali.abplive.com/district/rotten-meat-in-absolute-barbeque-s-storeroom-rang-de-basanti-dhaba-license-cancelled-raids-at-multiple-renowned-restaurants-1191753",
-          "text_sha256": "2f6fb855ea3a1e506fbf7189a4ed9291052e26ead46fff2c7f0248cb8aece20f",
+          "text_sha256": "66850e06931a01be85b28d328e5139a0f7edff5613e525fbaa45a621ebb06125",
           "tier": "B"
         }
       ],
@@ -7114,11 +7310,17 @@
           "note": "Supporting source context revalidated; original evidence retained.",
           "previous_record_sha256": "78077ef34a11118d8a0bf13cadd1dd5b9ff18f9e5f14bf09046ec3616f1d9c89",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-11T11:18:01.816017Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "606ca3a2fd3b95d5d5133bb8f3c2ebc9288e3b289d5bc127df44c6879dd1e7e3",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-09-11T04:37:44.799127Z",
-      "last_successful_evidence_check_at": "2026-09-11T04:37:44.799127Z",
+      "last_source_checked_at": "2026-09-11T11:18:01.816017Z",
+      "last_successful_evidence_check_at": "2026-09-11T11:18:01.816017Z",
       "llm": {
         "fields_proposed": [
           "area",
@@ -7143,7 +7345,7 @@
       "record_class": "inspection_evidence",
       "record_created_at": "2026-09-11T00:09:16.296804Z",
       "record_scope": "area_operation",
-      "record_updated_at": "2026-09-11T04:37:44.799127Z",
+      "record_updated_at": "2026-09-11T11:18:01.816017Z",
       "related_record_ids": [
         "WBFS-5ee36b93256b"
       ],

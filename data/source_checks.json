@@ -4,14 +4,14 @@
       "availability": "available",
       "failures": 0,
       "first_failure": null,
-      "last_attempt": "2026-09-11T04:37:44.799127+00:00",
-      "last_success": "2026-09-11T04:37:44.799127+00:00",
+      "last_attempt": "2026-09-11T11:18:01.816017+00:00",
+      "last_success": "2026-09-11T11:18:01.816017+00:00",
       "next_retry": null,
       "reason": null,
       "review_due": false,
       "source_id": "SRC-15e0ca4c8a5c08ff93cf",
       "supported_records": {
-        "WBFS-5d8f54ec5d53": "2026-09-11T04:37:44.799127+00:00"
+        "WBFS-5d8f54ec5d53": "2026-09-11T11:18:01.816017+00:00"
       }
     },
     "SRC-2558823ea88447502f30": {
@@ -29,8 +29,8 @@
       "availability": "available",
       "failures": 0,
       "first_failure": null,
-      "last_attempt": "2026-09-11T04:37:44.799127+00:00",
-      "last_success": "2026-09-11T04:37:44.799127+00:00",
+      "last_attempt": "2026-09-11T11:18:01.816017+00:00",
+      "last_success": "2026-09-11T11:18:01.816017+00:00",
       "next_retry": null,
       "reason": null,
       "review_due": false,
@@ -84,8 +84,8 @@
       "availability": "available",
       "failures": 0,
       "first_failure": null,
-      "last_attempt": "2026-09-11T04:37:44.799127+00:00",
-      "last_success": "2026-09-11T04:37:44.799127+00:00",
+      "last_attempt": "2026-09-11T11:18:01.816017+00:00",
+      "last_success": "2026-09-11T11:18:01.816017+00:00",
       "next_retry": null,
       "reason": null,
       "review_due": false,
@@ -95,14 +95,14 @@
       "availability": "available",
       "failures": 0,
       "first_failure": null,
-      "last_attempt": "2026-09-11T04:37:44.799127+00:00",
-      "last_success": "2026-09-11T04:37:44.799127+00:00",
+      "last_attempt": "2026-09-11T11:18:01.816017+00:00",
+      "last_success": "2026-09-11T11:18:01.816017+00:00",
       "next_retry": null,
       "reason": null,
       "review_due": false,
       "source_id": "SRC-4c8cc315415119bda93f",
       "supported_records": {
-        "WBFS-7198af017d10": "2026-09-11T04:37:44.799127+00:00"
+        "WBFS-7198af017d10": "2026-09-11T11:18:01.816017+00:00"
       }
     },
     "SRC-584628a25a17403f5d40": {
@@ -139,8 +139,8 @@
       "availability": "available",
       "failures": 0,
       "first_failure": null,
-      "last_attempt": "2026-09-11T04:37:44.799127+00:00",
-      "last_success": "2026-09-11T04:37:44.799127+00:00",
+      "last_attempt": "2026-09-11T11:18:01.816017+00:00",
+      "last_success": "2026-09-11T11:18:01.816017+00:00",
       "next_retry": null,
       "reason": null,
       "review_due": false,
@@ -161,8 +161,8 @@
       "availability": "available",
       "failures": 0,
       "first_failure": null,
-      "last_attempt": "2026-09-11T04:37:44.799127+00:00",
-      "last_success": "2026-09-11T04:37:44.799127+00:00",
+      "last_attempt": "2026-09-11T11:18:01.816017+00:00",
+      "last_success": "2026-09-11T11:18:01.816017+00:00",
       "next_retry": null,
       "reason": null,
       "review_due": false,
@@ -182,8 +182,8 @@
       "availability": "available",
       "failures": 0,
       "first_failure": null,
-      "last_attempt": "2026-09-11T04:37:44.799127+00:00",
-      "last_success": "2026-09-11T04:37:44.799127+00:00",
+      "last_attempt": "2026-09-11T11:18:01.816017+00:00",
+      "last_success": "2026-09-11T11:18:01.816017+00:00",
       "next_retry": null,
       "reason": null,
       "review_due": false,
@@ -193,15 +193,15 @@
       "availability": "available",
       "failures": 0,
       "first_failure": null,
-      "last_attempt": "2026-09-11T04:37:44.799127+00:00",
-      "last_success": "2026-09-11T04:37:44.799127+00:00",
+      "last_attempt": "2026-09-11T11:18:01.816017+00:00",
+      "last_success": "2026-09-11T11:18:01.816017+00:00",
       "next_retry": null,
       "reason": null,
       "review_due": false,
       "source_id": "SRC-8f8f07c75d8f6bf2ee85",
       "supported_records": {
-        "WBFS-5ee36b93256b": "2026-09-11T04:37:44.799127+00:00",
-        "WBFS-c391d02b3d97": "2026-09-11T04:37:44.799127+00:00"
+        "WBFS-5ee36b93256b": "2026-09-11T11:18:01.816017+00:00",
+        "WBFS-c391d02b3d97": "2026-09-11T11:18:01.816017+00:00"
       }
     },
     "SRC-95d69df5ac8c297ddf1a": {
@@ -323,33 +323,36 @@
       "availability": "available",
       "failures": 0,
       "first_failure": null,
-      "last_attempt": "2026-09-10T04:39:32.448783+00:00",
-      "last_success": "2026-09-10T04:39:32.448783+00:00",
+      "last_attempt": "2026-09-11T11:18:01.816017+00:00",
+      "last_success": "2026-09-11T11:18:01.816017+00:00",
       "next_retry": null,
       "reason": null,
       "review_due": false,
       "source_id": "SRC-c8093dbe1ffe89b313e5",
       "supported_records": {
-        "WBFS-1724bbaec9d9": "2026-09-10T04:39:32.448783+00:00"
+        "WBFS-1724bbaec9d9": "2026-09-11T11:18:01.816017+00:00"
       }
     },
     "SRC-c899caa09075ad06cf7d": {
       "availability": "available",
       "failures": 0,
       "first_failure": null,
-      "last_attempt": "2026-09-11T04:37:44.799127+00:00",
-      "last_success": "2026-09-11T04:37:44.799127+00:00",
+      "last_attempt": "2026-09-11T11:18:01.816017+00:00",
+      "last_success": "2026-09-11T11:18:01.816017+00:00",
       "next_retry": null,
       "reason": null,
       "review_due": false,
-      "source_id": "SRC-c899caa09075ad06cf7d"
+      "source_id": "SRC-c899caa09075ad06cf7d",
+      "supported_records": {
+        "WBFS-19b3f49fe9a5": "2026-09-11T11:18:01.816017+00:00"
+      }
     },
     "SRC-d3650994e2a5867e428a": {
       "availability": "available",
       "failures": 0,
       "first_failure": null,
-      "last_attempt": "2026-09-11T04:37:44.799127+00:00",
-      "last_success": "2026-09-11T04:37:44.799127+00:00",
+      "last_attempt": "2026-09-11T11:18:01.816017+00:00",
+      "last_success": "2026-09-11T11:18:01.816017+00:00",
       "next_retry": null,
       "reason": null,
       "review_due": false,
@@ -413,7 +416,7 @@
     }
   },
   "context_notice": "Independent, non-governmental public-source research. Inclusion is not a finding of wrongdoing. Counts describe records in this tracker, not official totals, prevalence, compliance, risk or group behavior. Read the sources and preserve this context when sharing.",
-  "generated_at": "2026-09-11T04:37:44.799127+00:00",
+  "generated_at": "2026-09-11T11:18:01.816017+00:00",
   "pipeline_version": "0.3.0",
   "record_count": 0,
   "records": [],
