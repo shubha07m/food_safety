@@ -1,7 +1,7 @@
 {
   "actions": {
     "inspection / visit only": 25,
-    "not reported": 9,
+    "not reported": 10,
     "other": 7
   },
   "areas": {
@@ -26,6 +26,7 @@
     "Tangra": 1,
     "কলকাতা": 1,
     "কাকদ্বীপ মহকুমার নামখানা ও জুমাইনস্করহাট এলাকা": 1,
+    "ট্যাংরার": 1,
     "ডেকার্স লেন": 1,
     "বকখালি": 1,
     "বীরভূমের": 1,
@@ -36,9 +37,9 @@
     "সেক্টর ফাইভের আরডিবি মলের": 1,
     "সোদপুরের": 1
   },
-  "areas_count": 30,
+  "areas_count": 31,
   "business_formats": {
-    "unknown": 41
+    "unknown": 42
   },
   "context_notice": "Independent, non-governmental public-source research. Inclusion is not a finding of wrongdoing. Counts describe records in this tracker, not official totals, prevalence, compliance, risk or group behavior. Read the sources and preserve this context when sharing.",
   "coverage": {
@@ -46,9 +47,9 @@
     "cross_source": 0,
     "establishment_context": 32,
     "menu_context": 0,
-    "named_establishment": 26,
-    "reported_action": 26,
-    "reported_quantity": 2
+    "named_establishment": 27,
+    "reported_action": 27,
+    "reported_quantity": 3
   },
   "establishments": {
     "hotel / hospitality": 2,
@@ -56,34 +57,35 @@
     "market / vendor": 3,
     "restaurant / eatery": 18,
     "sweet shop / bakery": 3,
-    "unknown": 9
+    "unknown": 10
   },
-  "establishments_count": 26,
-  "generated_at": "2026-09-11T00:09:16.296804+00:00",
+  "establishments_count": 27,
+  "generated_at": "2026-09-11T04:37:44.799127+00:00",
   "map_coverage": {
     "mapped_records": 23,
     "precision": {
       "city": 3,
       "neighborhood": 16,
-      "not mapped": 18,
+      "not mapped": 19,
       "street": 4
     }
   },
   "menus": {
-    "unknown": 41
+    "unknown": 42
   },
   "pipeline_version": "0.3.0",
   "publishers": {
     "ABP Ananda": 5,
     "Business Today": 5,
-    "Indian Express Bangla": 1,
+    "Indian Express Bangla": 2,
     "TV9 Bangla": 5,
     "The Times of India": 25
   },
-  "record_count": 41,
+  "record_count": 42,
   "schema_version": "1.2.0",
-  "sources_count": 12,
+  "sources_count": 13,
   "timeline": {
+    "2026-09-02": 1,
     "2026-09-03": 11,
     "2026-09-04": 9,
     "2026-09-05": 8,
@@ -91,8 +93,8 @@
     "2026-09-07": 3,
     "2026-09-09": 1
   },
-  "total": 41,
+  "total": 42,
   "verification": {
-    "SOURCE VERIFIED": 41
+    "SOURCE VERIFIED": 42
   }
 }

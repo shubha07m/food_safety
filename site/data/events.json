@@ -1,8 +1,8 @@
 {
   "context_notice": "Independent, non-governmental public-source research. Inclusion is not a finding of wrongdoing. Counts describe records in this tracker, not official totals, prevalence, compliance, risk or group behavior. Read the sources and preserve this context when sharing.",
-  "generated_at": "2026-09-11T00:09:16.296804+00:00",
+  "generated_at": "2026-09-11T04:37:44.799127+00:00",
   "pipeline_version": "0.3.0",
-  "record_count": 41,
+  "record_count": 42,
   "records": [
     {
       "automatic_validation": null,
@@ -132,11 +132,17 @@
           "note": "Supporting source context revalidated; original evidence retained.",
           "previous_record_sha256": "68caee4840f6a0fe9517fe319bb9c74d4af15d5b1bbd223e7b224349ca29f644",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-11T04:37:44.799127Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "3d878893d3a6ba47f0feaf7f962d11c5d868507557111ebde9991003109450d6",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-09-11T00:09:16.296804Z",
-      "last_successful_evidence_check_at": "2026-09-11T00:09:16.296804Z",
+      "last_source_checked_at": "2026-09-11T04:37:44.799127Z",
+      "last_successful_evidence_check_at": "2026-09-11T04:37:44.799127Z",
       "llm": {
         "fields_proposed": [],
         "llm_model": null,
@@ -156,7 +162,7 @@
       "record_class": "inspection_evidence",
       "record_created_at": "2026-09-07T21:12:32.942437Z",
       "record_scope": "unknown",
-      "record_updated_at": "2026-09-11T00:09:16.296804Z",
+      "record_updated_at": "2026-09-11T04:37:44.799127Z",
       "related_record_ids": [],
       "reported_fact": {
         "area": "Park Street",
@@ -385,6 +391,172 @@
       "validator_id": "field_evidence_validation",
       "validator_version": "2",
       "verification_notes": "Supporting source context revalidated; original evidence retained.",
+      "verification_status": "SOURCE VERIFIED"
+    },
+    {
+      "automatic_validation": {
+        "extraction_evidence": {
+          "end": 231,
+          "match_method": "exact",
+          "original_quote": "বুধবার ট্যাংরার বিগবস রেস্তোরাঁয় অভিযান চালান পুরসভার আধিকারিকরা। সেখানে অস্বাস্থ্যকর পরিবেশে বিপুল পরিমাণ মাছ-মাংস সংরক্ষণ করে রাখা হয়েছিল বলে অভিযোগ। অভিযান চালিয়ে প্রায় ৫০০ কেজি মাংস উদ্ধার করা হয়।",
+          "passage_id": "P016",
+          "source_revision_id": "29c1cea979e51cfda4e334d87f5bed81c2f2090c9cdbc7aa0e311b28deec67b3",
+          "start": 31
+        },
+        "method": "source_grounded_candidate_v1",
+        "pipeline_version": "0.3.0",
+        "validated_at": "2026-09-11T04:37:44.799127Z"
+      },
+      "context_notice": "Independent, non-governmental public-source research. Inclusion is not a finding of wrongdoing. Counts describe records in this tracker, not official totals, prevalence, compliance, risk or group behavior. Read the sources and preserve this context when sharing.",
+      "derived_context": {
+        "action_category": "not reported",
+        "action_category_confidence": "unknown",
+        "action_category_method": null,
+        "action_category_reviewed": false,
+        "action_category_source": null,
+        "business_format": "unknown",
+        "business_format_confidence": "unknown",
+        "business_format_method": null,
+        "business_format_reviewed": false,
+        "business_format_source": null,
+        "derived_confidence": "unknown",
+        "derived_context_method": "Unknown; no contextual inference performed.",
+        "derived_context_sources": [],
+        "establishment_context": "unknown",
+        "establishment_context_confidence": "unknown",
+        "establishment_context_method": null,
+        "establishment_context_reviewed": false,
+        "establishment_context_source": null,
+        "latitude": null,
+        "location_method": null,
+        "location_precision": null,
+        "location_reviewed": false,
+        "location_source": null,
+        "longitude": null,
+        "menu_context": "unknown",
+        "menu_context_confidence": "unknown",
+        "menu_context_method": null,
+        "menu_context_reviewed": false,
+        "menu_context_source": null,
+        "normalized_area": null
+      },
+      "display_summary": "Source reports a source-reported food-safety event involving বিগবস রেস্তোরাঁয় in ট্যাংরার.",
+      "establishment_id": null,
+      "event_id": "WBFS-19b3f49fe9a5",
+      "evidence_support_status": "supported_as_of",
+      "extractor_id": "source_grounded_candidate",
+      "extractor_version": "1",
+      "first_published_at": "2026-09-11T04:37:44.799127Z",
+      "history": [
+        {
+          "at": "2026-09-11T04:37:44.799127Z",
+          "note": "Source-grounded LLM candidate auto-published after deterministic validation.",
+          "previous_record_sha256": null,
+          "status": "SOURCE VERIFIED"
+        }
+      ],
+      "is_fixture": false,
+      "last_source_checked_at": "2026-09-11T04:37:44.799127Z",
+      "last_successful_evidence_check_at": "2026-09-11T04:37:44.799127Z",
+      "llm": {
+        "fields_proposed": [
+          "area",
+          "establishment_name",
+          "reported_action",
+          "reported_authority",
+          "reported_observation",
+          "reported_quantity"
+        ],
+        "llm_model": "gemini-3.5-flash-lite",
+        "llm_output_was_validated": true,
+        "llm_pipeline_version": "0.3.0",
+        "llm_provider": "gemini",
+        "llm_task": "structured source extraction",
+        "llm_task_version": "source_candidates_v2",
+        "llm_used": true,
+        "llm_used_at": "2026-09-11T04:38:03.659116Z",
+        "source_revision_id": "29c1cea979e51cfda4e334d87f5bed81c2f2090c9cdbc7aa0e311b28deec67b3",
+        "validation_result": "passed"
+      },
+      "location_id": null,
+      "pipeline_version": "0.3.0",
+      "publication_status": "active",
+      "record_class": "inspection_evidence",
+      "record_created_at": "2026-09-11T04:37:44.799127Z",
+      "record_scope": "establishment_event",
+      "record_updated_at": "2026-09-11T04:37:44.799127Z",
+      "related_record_ids": [],
+      "reported_fact": {
+        "area": "ট্যাংরার",
+        "district": null,
+        "establishment_name": "বিগবস রেস্তোরাঁয়",
+        "establishment_type": null,
+        "event_date": null,
+        "evidence": {
+          "area": {
+            "quote": "বুধবার ট্যাংরার বিগবস রেস্তোরাঁয় অভিযান চালান পুরসভার আধিকারিকরা। সেখানে অস্বাস্থ্যকর পরিবেশে বিপুল পরিমাণ মাছ-মাংস সংরক্ষণ করে রাখা হয়েছিল বলে অভিযোগ। অভিযান চালিয়ে প্রায় ৫০০ কেজি মাংস উদ্ধার করা হয়।",
+            "source_url": "https://bengali.indianexpress.com/west-bengal/food-safety-week-west-bengal-restaurant-raids-rotten-meat-consumer-protection-12483687"
+          },
+          "establishment_name": {
+            "quote": "বুধবার ট্যাংরার বিগবস রেস্তোরাঁয় অভিযান চালান পুরসভার আধিকারিকরা। সেখানে অস্বাস্থ্যকর পরিবেশে বিপুল পরিমাণ মাছ-মাংস সংরক্ষণ করে রাখা হয়েছিল বলে অভিযোগ। অভিযান চালিয়ে প্রায় ৫০০ কেজি মাংস উদ্ধার করা হয়।",
+            "source_url": "https://bengali.indianexpress.com/west-bengal/food-safety-week-west-bengal-restaurant-raids-rotten-meat-consumer-protection-12483687"
+          },
+          "reported_action": {
+            "quote": "বুধবার ট্যাংরার বিগবস রেস্তোরাঁয় অভিযান চালান পুরসভার আধিকারিকরা। সেখানে অস্বাস্থ্যকর পরিবেশে বিপুল পরিমাণ মাছ-মাংস সংরক্ষণ করে রাখা হয়েছিল বলে অভিযোগ। অভিযান চালিয়ে প্রায় ৫০০ কেজি মাংস উদ্ধার করা হয়।",
+            "source_url": "https://bengali.indianexpress.com/west-bengal/food-safety-week-west-bengal-restaurant-raids-rotten-meat-consumer-protection-12483687"
+          },
+          "reported_authority": {
+            "quote": "বুধবার ট্যাংরার বিগবস রেস্তোরাঁয় অভিযান চালান পুরসভার আধিকারিকরা। সেখানে অস্বাস্থ্যকর পরিবেশে বিপুল পরিমাণ মাছ-মাংস সংরক্ষণ করে রাখা হয়েছিল বলে অভিযোগ। অভিযান চালিয়ে প্রায় ৫০০ কেজি মাংস উদ্ধার করা হয়।",
+            "source_url": "https://bengali.indianexpress.com/west-bengal/food-safety-week-west-bengal-restaurant-raids-rotten-meat-consumer-protection-12483687"
+          },
+          "reported_observation": {
+            "quote": "বুধবার ট্যাংরার বিগবস রেস্তোরাঁয় অভিযান চালান পুরসভার আধিকারিকরা। সেখানে অস্বাস্থ্যকর পরিবেশে বিপুল পরিমাণ মাছ-মাংস সংরক্ষণ করে রাখা হয়েছিল বলে অভিযোগ। অভিযান চালিয়ে প্রায় ৫০০ কেজি মাংস উদ্ধার করা হয়।",
+            "source_url": "https://bengali.indianexpress.com/west-bengal/food-safety-week-west-bengal-restaurant-raids-rotten-meat-consumer-protection-12483687"
+          },
+          "reported_quantity": {
+            "quote": "বুধবার ট্যাংরার বিগবস রেস্তোরাঁয় অভিযান চালান পুরসভার আধিকারিকরা। সেখানে অস্বাস্থ্যকর পরিবেশে বিপুল পরিমাণ মাছ-মাংস সংরক্ষণ করে রাখা হয়েছিল বলে অভিযোগ। অভিযান চালিয়ে প্রায় ৫০০ কেজি মাংস উদ্ধার করা হয়।",
+            "source_url": "https://bengali.indianexpress.com/west-bengal/food-safety-week-west-bengal-restaurant-raids-rotten-meat-consumer-protection-12483687"
+          }
+        },
+        "formal_finding": null,
+        "legal_finding_status": "unknown",
+        "reported_action": "অভিযান চালান",
+        "reported_authority": "পুরসভার আধিকারিকরা",
+        "reported_observation": "অস্বাস্থ্যকর পরিবেশে বিপুল পরিমাণ মাছ-মাংস সংরক্ষণ করে রাখা হয়েছিল",
+        "reported_quantity": "প্রায় ৫০০ কেজি"
+      },
+      "review": null,
+      "reviewed_associations": [],
+      "reviewer_hold": false,
+      "source_availability": "available",
+      "source_availability_reason": null,
+      "sources": [
+        {
+          "archive_url": null,
+          "evidence_context": "বুধবার ট্যাংরার বিগবস রেস্তোরাঁয় অভিযান চালান পুরসভার আধিকারিকরা। সেখানে অস্বাস্থ্যকর পরিবেশে বিপুল পরিমাণ মাছ-মাংস সংরক্ষণ করে রাখা হয়েছিল বলে অভিযোগ। অভিযান চালিয়ে প্রায় ৫০০ কেজি মাংস উদ্ধার করা হয়।",
+          "evidence_language": "bn",
+          "evidence_locator": null,
+          "evidence_quote": "অস্বাস্থ্যকর পরিবেশে বিপুল পরিমাণ মাছ-মাংস সংরক্ষণ করে রাখা হয়েছিল",
+          "evidence_span_hash": "e855286b6f98967171dc0a3011253b1478d024b51def2cdd3895bd71d895fd2d",
+          "origin_source_id": null,
+          "retrieved_at": "2026-09-11T04:37:44.799127Z",
+          "source_date": "2026-09-02",
+          "source_id": "SRC-c899caa09075ad06cf7d",
+          "source_language": "bn",
+          "source_publisher": "Indian Express Bangla",
+          "source_relationship": "unknown",
+          "source_revision_id": "c1def79d759a7a94230816d0dad5e2e5d1dc3f724a66f7f20624f77675a15fe5",
+          "source_title": "খাবারে ভেজাল রুখতে জিরো টলারেন্স! শুভেন্দুর বার্তার পরই নামী রেস্তোরাঁয় অভিযান, উদ্ধার ৫০০ কেজি মাংস-চিংড়ি, মিলল পোড়া তেল",
+          "source_type": "news",
+          "source_url": "https://bengali.indianexpress.com/west-bengal/food-safety-week-west-bengal-restaurant-raids-rotten-meat-consumer-protection-12483687",
+          "text_sha256": "c1def79d759a7a94230816d0dad5e2e5d1dc3f724a66f7f20624f77675a15fe5",
+          "tier": "B"
+        }
+      ],
+      "superseded_by": null,
+      "validator_id": "objective_source_grounding",
+      "validator_version": "2",
+      "verification_notes": "LLM-assisted candidate; objective source-grounding and publication checks passed. Source verification is not an independent finding of fact.",
       "verification_status": "SOURCE VERIFIED"
     },
     {
@@ -957,11 +1129,17 @@
           "note": "Supporting source context revalidated; original evidence retained.",
           "previous_record_sha256": "0adbe3a6bc007f076b933400df48a7a001f73c6d30be42a97c85b9ee5b18e8f0",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-11T04:37:44.799127Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "41f4e6d4e41e3ab74c37535a1753f0e87429ee3c1e35fac80cf4a11ba3ad2377",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-09-11T00:09:16.296804Z",
-      "last_successful_evidence_check_at": "2026-09-11T00:09:16.296804Z",
+      "last_source_checked_at": "2026-09-11T04:37:44.799127Z",
+      "last_successful_evidence_check_at": "2026-09-11T04:37:44.799127Z",
       "llm": {
         "fields_proposed": [],
         "llm_model": null,
@@ -981,7 +1159,7 @@
       "record_class": "inspection_evidence",
       "record_created_at": "2026-09-07T21:12:32.942437Z",
       "record_scope": "unknown",
-      "record_updated_at": "2026-09-11T00:09:16.296804Z",
+      "record_updated_at": "2026-09-11T04:37:44.799127Z",
       "related_record_ids": [],
       "reported_fact": {
         "area": "Sonarpur",
@@ -1504,11 +1682,17 @@
           "note": "Supporting source context revalidated; original evidence retained.",
           "previous_record_sha256": "204dde3b7f165809626621f1eb59dc64f8ac4413c0498fa71080b34c63822c1f",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-11T04:37:44.799127Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "e3d927d35354aa1170a2287d96150b65a907846b71d542e9184400f68a689e3a",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-09-11T00:09:16.296804Z",
-      "last_successful_evidence_check_at": "2026-09-11T00:09:16.296804Z",
+      "last_source_checked_at": "2026-09-11T04:37:44.799127Z",
+      "last_successful_evidence_check_at": "2026-09-11T04:37:44.799127Z",
       "llm": {
         "fields_proposed": [],
         "llm_model": null,
@@ -1528,7 +1712,7 @@
       "record_class": "inspection_evidence",
       "record_created_at": "2026-09-07T21:12:32.942437Z",
       "record_scope": "unknown",
-      "record_updated_at": "2026-09-11T00:09:16.296804Z",
+      "record_updated_at": "2026-09-11T04:37:44.799127Z",
       "related_record_ids": [],
       "reported_fact": {
         "area": "Kamalgazi",
@@ -3680,11 +3864,17 @@
           "note": "Supporting source context revalidated; original evidence retained.",
           "previous_record_sha256": "ca99e71841ca827f2b4414f79190b018cecebe0345b4da4214947875e1a23199",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-11T04:37:44.799127Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "663ce57e8d1d9dc29e0067f26bc46bdde6626d9237b15552190feb03e6605c2d",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-09-11T00:09:16.296804Z",
-      "last_successful_evidence_check_at": "2026-09-11T00:09:16.296804Z",
+      "last_source_checked_at": "2026-09-11T04:37:44.799127Z",
+      "last_successful_evidence_check_at": "2026-09-11T04:37:44.799127Z",
       "llm": {
         "fields_proposed": [],
         "llm_model": null,
@@ -3704,7 +3894,7 @@
       "record_class": "inspection_evidence",
       "record_created_at": "2026-09-09T23:09:01.232782Z",
       "record_scope": "area_operation",
-      "record_updated_at": "2026-09-11T00:09:16.296804Z",
+      "record_updated_at": "2026-09-11T04:37:44.799127Z",
       "related_record_ids": [],
       "reported_fact": {
         "area": "কলকাতা",
@@ -3831,11 +4021,17 @@
           "note": "Source-grounded LLM candidate auto-published after deterministic validation.",
           "previous_record_sha256": null,
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-11T04:37:44.799127Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "7bf5ed04ce20903e7bc889e99a672ec96d8728b253af4be77907210ac191b885",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-09-11T00:09:16.296804Z",
-      "last_successful_evidence_check_at": "2026-09-11T00:09:16.296804Z",
+      "last_source_checked_at": "2026-09-11T04:37:44.799127Z",
+      "last_successful_evidence_check_at": "2026-09-11T04:37:44.799127Z",
       "llm": {
         "fields_proposed": [
           "area",
@@ -3860,7 +4056,7 @@
       "record_class": "inspection_evidence",
       "record_created_at": "2026-09-11T00:09:16.296804Z",
       "record_scope": "area_operation",
-      "record_updated_at": "2026-09-11T00:09:16.296804Z",
+      "record_updated_at": "2026-09-11T04:37:44.799127Z",
       "related_record_ids": [
         "WBFS-c391d02b3d97"
       ],
@@ -3926,7 +4122,7 @@
       "superseded_by": null,
       "validator_id": "objective_source_grounding",
       "validator_version": "2",
-      "verification_notes": "LLM-assisted candidate; objective source-grounding and publication checks passed. Source verification is not an independent finding of fact.",
+      "verification_notes": "Supporting source context revalidated; original evidence retained.",
       "verification_status": "SOURCE VERIFIED"
     },
     {
@@ -4220,11 +4416,17 @@
           "note": "Source-grounded LLM candidate auto-published after deterministic validation.",
           "previous_record_sha256": null,
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-11T04:37:44.799127Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "8e7c0463f672ed34ae1581910cb7603acf4ce8d32d2938c87dc73fad292b5883",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-09-11T00:09:16.296804Z",
-      "last_successful_evidence_check_at": "2026-09-11T00:09:16.296804Z",
+      "last_source_checked_at": "2026-09-11T04:37:44.799127Z",
+      "last_successful_evidence_check_at": "2026-09-11T04:37:44.799127Z",
       "llm": {
         "fields_proposed": [
           "area",
@@ -4250,7 +4452,7 @@
       "record_class": "inspection_evidence",
       "record_created_at": "2026-09-11T00:09:16.296804Z",
       "record_scope": "establishment_event",
-      "record_updated_at": "2026-09-11T00:09:16.296804Z",
+      "record_updated_at": "2026-09-11T04:37:44.799127Z",
       "related_record_ids": [],
       "reported_fact": {
         "area": "মধ্যমগ্রামের স্টার মলে",
@@ -4318,7 +4520,7 @@
       "superseded_by": null,
       "validator_id": "objective_source_grounding",
       "validator_version": "2",
-      "verification_notes": "LLM-assisted candidate; objective source-grounding and publication checks passed. Source verification is not an independent finding of fact.",
+      "verification_notes": "Supporting source context revalidated; original evidence retained.",
       "verification_status": "SOURCE VERIFIED"
     },
     {
@@ -4741,11 +4943,17 @@
           "note": "Supporting source context revalidated; original evidence retained.",
           "previous_record_sha256": "b3c97056fcd3dd53cf0fd21be0006f3908f55f4678f72dbf0a0a27c36638a39b",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-11T04:37:44.799127Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "00188c808d61105018869e629d73a75803c9fee973739c24a4938be5a2fdcdde",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-09-11T00:09:16.296804Z",
-      "last_successful_evidence_check_at": "2026-09-11T00:09:16.296804Z",
+      "last_source_checked_at": "2026-09-11T04:37:44.799127Z",
+      "last_successful_evidence_check_at": "2026-09-11T04:37:44.799127Z",
       "llm": {
         "fields_proposed": [
           "area",
@@ -4770,7 +4978,7 @@
       "record_class": "inspection_evidence",
       "record_created_at": "2026-09-10T04:39:32.448783Z",
       "record_scope": "district_operation",
-      "record_updated_at": "2026-09-11T00:09:16.296804Z",
+      "record_updated_at": "2026-09-11T04:37:44.799127Z",
       "related_record_ids": [],
       "reported_fact": {
         "area": "বীরভূমের",
@@ -5192,11 +5400,17 @@
           "note": "Supporting source context revalidated; original evidence retained.",
           "previous_record_sha256": "5f5ac6a7b72b5a36bb0dd078d962b244f61a84d3e4fe8729d801c3e9848f1a0e",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-11T04:37:44.799127Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "8e6396bc9edd795da53e2b67d89172457b6f9fff743557df08575629a7358d71",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-09-11T00:09:16.296804Z",
-      "last_successful_evidence_check_at": "2026-09-11T00:09:16.296804Z",
+      "last_source_checked_at": "2026-09-11T04:37:44.799127Z",
+      "last_successful_evidence_check_at": "2026-09-11T04:37:44.799127Z",
       "llm": {
         "fields_proposed": [],
         "llm_model": null,
@@ -5216,7 +5430,7 @@
       "record_class": "inspection_evidence",
       "record_created_at": "2026-09-07T21:12:32.942437Z",
       "record_scope": "unknown",
-      "record_updated_at": "2026-09-11T00:09:16.296804Z",
+      "record_updated_at": "2026-09-11T04:37:44.799127Z",
       "related_record_ids": [],
       "reported_fact": {
         "area": "Park Street",
@@ -5873,11 +6087,17 @@
           "note": "Supporting source context revalidated; original evidence retained.",
           "previous_record_sha256": "c8d497eb620ed86c362ba3e7b803e1399e151a380fc04eb969fe931846453eb5",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-11T04:37:44.799127Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "7f25b4d7aee7ab128c4bc85e7792127ce8166dcf721d0c6d8a804e2605eaa38f",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-09-11T00:09:16.296804Z",
-      "last_successful_evidence_check_at": "2026-09-11T00:09:16.296804Z",
+      "last_source_checked_at": "2026-09-11T04:37:44.799127Z",
+      "last_successful_evidence_check_at": "2026-09-11T04:37:44.799127Z",
       "llm": {
         "fields_proposed": [],
         "llm_model": null,
@@ -5897,7 +6117,7 @@
       "record_class": "inspection_evidence",
       "record_created_at": "2026-09-07T21:12:32.942437Z",
       "record_scope": "unknown",
-      "record_updated_at": "2026-09-11T00:09:16.296804Z",
+      "record_updated_at": "2026-09-11T04:37:44.799127Z",
       "related_record_ids": [],
       "reported_fact": {
         "area": "Park Street",
@@ -6102,11 +6322,17 @@
           "note": "Supporting source context revalidated; original evidence retained.",
           "previous_record_sha256": "e9b98073976d08656475a47b21d9cd4ed3840841926ffc3d03f255fc832218cf",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-11T04:37:44.799127Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "aab2826fca339f01d15464e48961d701f518d36c01d022352c6a08d5d16638be",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-09-11T00:09:16.296804Z",
-      "last_successful_evidence_check_at": "2026-09-11T00:09:16.296804Z",
+      "last_source_checked_at": "2026-09-11T04:37:44.799127Z",
+      "last_successful_evidence_check_at": "2026-09-11T04:37:44.799127Z",
       "llm": {
         "fields_proposed": [],
         "llm_model": null,
@@ -6126,7 +6352,7 @@
       "record_class": "inspection_evidence",
       "record_created_at": "2026-09-07T21:12:32.942437Z",
       "record_scope": "unknown",
-      "record_updated_at": "2026-09-11T00:09:16.296804Z",
+      "record_updated_at": "2026-09-11T04:37:44.799127Z",
       "related_record_ids": [],
       "reported_fact": {
         "area": "Park Street",
@@ -6715,11 +6941,17 @@
           "note": "Supporting source context revalidated; original evidence retained.",
           "previous_record_sha256": "40161e066208ba3e0cd5930a89e6d11532024cb9f27703c68a176091fd9fcbf2",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-11T04:37:44.799127Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "f1c8034c4b9d75d38a021e7612941997d9f2f7aa8e1ea8e4545e2c390190377d",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-09-11T00:09:16.296804Z",
-      "last_successful_evidence_check_at": "2026-09-11T00:09:16.296804Z",
+      "last_source_checked_at": "2026-09-11T04:37:44.799127Z",
+      "last_successful_evidence_check_at": "2026-09-11T04:37:44.799127Z",
       "llm": {
         "fields_proposed": [],
         "llm_model": null,
@@ -6739,7 +6971,7 @@
       "record_class": "inspection_evidence",
       "record_created_at": "2026-09-07T21:12:32.942437Z",
       "record_scope": "unknown",
-      "record_updated_at": "2026-09-11T00:09:16.296804Z",
+      "record_updated_at": "2026-09-11T04:37:44.799127Z",
       "related_record_ids": [],
       "reported_fact": {
         "area": "Park Street",
@@ -6876,11 +7108,17 @@
           "note": "Source-grounded LLM candidate auto-published after deterministic validation.",
           "previous_record_sha256": null,
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-11T04:37:44.799127Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "78077ef34a11118d8a0bf13cadd1dd5b9ff18f9e5f14bf09046ec3616f1d9c89",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-09-11T00:09:16.296804Z",
-      "last_successful_evidence_check_at": "2026-09-11T00:09:16.296804Z",
+      "last_source_checked_at": "2026-09-11T04:37:44.799127Z",
+      "last_successful_evidence_check_at": "2026-09-11T04:37:44.799127Z",
       "llm": {
         "fields_proposed": [
           "area",
@@ -6905,7 +7143,7 @@
       "record_class": "inspection_evidence",
       "record_created_at": "2026-09-11T00:09:16.296804Z",
       "record_scope": "area_operation",
-      "record_updated_at": "2026-09-11T00:09:16.296804Z",
+      "record_updated_at": "2026-09-11T04:37:44.799127Z",
       "related_record_ids": [
         "WBFS-5ee36b93256b"
       ],
@@ -6971,7 +7209,7 @@
       "superseded_by": null,
       "validator_id": "objective_source_grounding",
       "validator_version": "2",
-      "verification_notes": "LLM-assisted candidate; objective source-grounding and publication checks passed. Source verification is not an independent finding of fact.",
+      "verification_notes": "Supporting source context revalidated; original evidence retained.",
       "verification_status": "SOURCE VERIFIED"
     },
     {
