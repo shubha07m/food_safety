@@ -32,7 +32,7 @@ Use this checklist immediately before the explicit `--confirm-public-release` ac
 - [ ] Two-hour scan remains bounded; automatic publication requires all validation gates.
 - [ ] Maintainers can access workflow-dispatch; private review artifacts are not uploaded.
 - [ ] Rollback procedure is understood and a prior Workers deployment is available.
-- [ ] GitHub Support has purged retained pull-request refs/cached objects, `github_pull_refs_cleared` was set only after verification, and the public-repository audit passes.
+- [ ] The public-repository audit reports `local_history_sanitized` and `audit_passed` as true; retained GitHub pull refs remain disclosed, and no pull-ref sensitive-content finding is present.
 # Develop-to-main approval gates
 
 - [ ] Owner explicitly approved merge; Cloudflare configuration unchanged.
@@ -40,4 +40,4 @@ Use this checklist immediately before the explicit `--confirm-public-release` ac
 - [ ] Recovery report reviewed; no semantic holds silently restored.
 - [ ] Google Form responder URL tested; response Sheet private, no uploads/email collection/public summaries.
 - [ ] English/Bengali warnings and lifecycle totals checked.
-- [ ] Rewritten branches and GitHub's server-side retained refs have both passed the current privacy audit before any visibility change.
+- [ ] Controlled branch/tag history passes the current privacy audit; any locally available GitHub pull refs have no sensitive-content finding.
