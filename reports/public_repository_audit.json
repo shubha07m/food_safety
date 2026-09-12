@@ -1,16 +1,31 @@
 {
-  "affected_pull_refs": 7,
+  "affected_pull_refs": 8,
+  "audit_passed": true,
+  "controlled_refs_scanned": [
+    "refs/heads/develop",
+    "refs/heads/list",
+    "refs/heads/main"
+  ],
   "current_private_paths": [],
   "github_pull_refs_cleared": false,
   "historical_machine_path_files": [],
   "historical_private_paths": [],
-  "history_blobs_scanned": 422,
-  "history_bytes_scanned": 4918811,
+  "history_blobs_scanned": 604,
+  "history_bytes_scanned": 10146583,
   "local_history_sanitized": true,
-  "public_author_email_metadata": [],
-  "ready_for_public_visibility": false,
+  "local_pull_refs_detected": [],
+  "public_author_email_metadata": [
+    "shubha07m@gmail.com"
+  ],
+  "pull_ref_history_blobs_scanned": 0,
+  "pull_ref_history_bytes_scanned": 0,
+  "pull_ref_machine_path_files": [],
+  "pull_ref_private_paths": [],
+  "pull_ref_secret_pattern_paths": [],
+  "pull_ref_sensitive_content_found": false,
+  "ready_for_public_visibility": true,
   "retained_actions_artifacts": 0,
-  "scope": "current tracked tree contents and all locally reachable refs; bounded pattern scan",
+  "scope": "current tracked tree and controlled refs/heads plus refs/tags; GitHub-managed refs/pull scanned and reported separately when locally available",
   "secret_pattern_paths": [],
-  "tracked_files": 142
+  "tracked_files": 152
 }

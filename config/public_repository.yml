@@ -1,4 +1,4 @@
-# Server-side visibility gate. Set true only after GitHub confirms PR refs/caches were purged.
+# GitHub-managed pull refs are reported as server-side contribution metadata.
 github_pull_refs_cleared: false
-affected_pull_refs: 7
+affected_pull_refs: 8
 retained_actions_artifacts: 0
