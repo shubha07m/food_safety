@@ -91,7 +91,7 @@ def main() -> None:
                 ".md",
                 ".txt",
             }
-            and path.name != "_headers"
+            and path.name not in {"_headers", "sitemap.xml"}
         ):
             present.append("unexpected public asset type")
         if path.suffix != ".png":
