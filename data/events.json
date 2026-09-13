@@ -1,8 +1,8 @@
 {
   "context_notice": "Independent, non-governmental public-source research. Inclusion is not a finding of wrongdoing. Counts describe records in this tracker, not official totals, prevalence, compliance, risk or group behavior. Read the sources and preserve this context when sharing.",
-  "generated_at": "2026-09-13T04:44:48.597181+00:00",
+  "generated_at": "2026-09-13T11:48:42.474489+00:00",
   "pipeline_version": "0.3.0",
-  "record_count": 45,
+  "record_count": 46,
   "records": [
     {
       "automatic_validation": null,
@@ -2413,6 +2413,167 @@
       "verification_status": "SOURCE VERIFIED"
     },
     {
+      "automatic_validation": {
+        "extraction_evidence": {
+          "end": 487,
+          "match_method": "exact",
+          "original_quote": "Between September 1 and 3, officials inspected 2,337 establishments across the state and detected major irregularities at 2,056 locations.",
+          "passage_id": "P004",
+          "source_revision_id": "1df7093ae4c3a006bde8681508bf8ca3d6a2f4811c654b4de90e1f103f8de819",
+          "start": 349
+        },
+        "method": "source_grounded_candidate_v1",
+        "pipeline_version": "0.3.0",
+        "validated_at": "2026-09-13T11:48:42.474489Z"
+      },
+      "context_notice": "Independent, non-governmental public-source research. Inclusion is not a finding of wrongdoing. Counts describe records in this tracker, not official totals, prevalence, compliance, risk or group behavior. Read the sources and preserve this context when sharing.",
+      "derived_context": {
+        "action_category": "not reported",
+        "action_category_confidence": "unknown",
+        "action_category_method": null,
+        "action_category_reviewed": false,
+        "action_category_source": null,
+        "business_format": "unknown",
+        "business_format_confidence": "unknown",
+        "business_format_method": null,
+        "business_format_reviewed": false,
+        "business_format_source": null,
+        "derived_confidence": "unknown",
+        "derived_context_method": "Unknown; no contextual inference performed.",
+        "derived_context_sources": [],
+        "establishment_context": "unknown",
+        "establishment_context_confidence": "unknown",
+        "establishment_context_method": null,
+        "establishment_context_reviewed": false,
+        "establishment_context_source": null,
+        "latitude": null,
+        "location_method": null,
+        "location_precision": null,
+        "location_reviewed": false,
+        "location_source": null,
+        "longitude": null,
+        "menu_context": "unknown",
+        "menu_context_confidence": "unknown",
+        "menu_context_method": null,
+        "menu_context_reviewed": false,
+        "menu_context_source": null,
+        "normalized_area": null
+      },
+      "display_summary": "Source reports a source-reported food-safety event involving an unnamed establishment in across the state.",
+      "establishment_id": null,
+      "event_id": "WBFS-2ffa6a10e141",
+      "evidence_support_status": "supported_as_of",
+      "extractor_id": "source_grounded_candidate",
+      "extractor_version": "1",
+      "first_published_at": "2026-09-13T11:48:42.474489Z",
+      "history": [
+        {
+          "at": "2026-09-13T11:48:42.474489Z",
+          "note": "Source-grounded LLM candidate auto-published after deterministic validation.",
+          "previous_record_sha256": null,
+          "status": "SOURCE VERIFIED"
+        }
+      ],
+      "is_fixture": false,
+      "last_source_checked_at": "2026-09-13T11:48:42.474489Z",
+      "last_successful_evidence_check_at": "2026-09-13T11:48:42.474489Z",
+      "llm": {
+        "fields_proposed": [
+          "area",
+          "reported_action",
+          "reported_authority",
+          "reported_observation",
+          "reported_quantity"
+        ],
+        "llm_model": "gemini-3.5-flash-lite",
+        "llm_output_was_validated": true,
+        "llm_pipeline_version": "0.3.0",
+        "llm_provider": "gemini",
+        "llm_task": "structured source extraction",
+        "llm_task_version": "source_candidates_v2",
+        "llm_used": true,
+        "llm_used_at": "2026-09-13T11:49:03.545101Z",
+        "source_revision_id": "1df7093ae4c3a006bde8681508bf8ca3d6a2f4811c654b4de90e1f103f8de819",
+        "validation_result": "passed"
+      },
+      "location_id": null,
+      "pipeline_version": "0.3.0",
+      "publication_status": "active",
+      "record_class": "inspection_evidence",
+      "record_created_at": "2026-09-13T11:48:42.474489Z",
+      "record_scope": "statewide_operation",
+      "record_updated_at": "2026-09-13T11:48:42.474489Z",
+      "related_record_ids": [],
+      "reported_fact": {
+        "area": "across the state",
+        "district": null,
+        "establishment_name": null,
+        "establishment_type": null,
+        "event_date": null,
+        "evidence": {
+          "area": {
+            "quote": "Between September 1 and 3, officials inspected 2,337 establishments across the state and detected major irregularities at 2,056 locations.",
+            "source_url": "https://www.uniindia.com/east-india/admin-wb-food-safety-06ca19/170711"
+          },
+          "reported_action": {
+            "quote": "Between September 1 and 3, officials inspected 2,337 establishments across the state and detected major irregularities at 2,056 locations.",
+            "source_url": "https://www.uniindia.com/east-india/admin-wb-food-safety-06ca19/170711"
+          },
+          "reported_authority": {
+            "quote": "Between September 1 and 3, officials inspected 2,337 establishments across the state and detected major irregularities at 2,056 locations.",
+            "source_url": "https://www.uniindia.com/east-india/admin-wb-food-safety-06ca19/170711"
+          },
+          "reported_observation": {
+            "quote": "Between September 1 and 3, officials inspected 2,337 establishments across the state and detected major irregularities at 2,056 locations.",
+            "source_url": "https://www.uniindia.com/east-india/admin-wb-food-safety-06ca19/170711"
+          },
+          "reported_quantity": {
+            "quote": "Between September 1 and 3, officials inspected 2,337 establishments across the state and detected major irregularities at 2,056 locations.",
+            "source_url": "https://www.uniindia.com/east-india/admin-wb-food-safety-06ca19/170711"
+          }
+        },
+        "formal_finding": null,
+        "legal_finding_status": "unknown",
+        "reported_action": "inspected",
+        "reported_authority": "officials",
+        "reported_observation": "detected major irregularities at 2,056 locations",
+        "reported_quantity": "2,337"
+      },
+      "review": null,
+      "reviewed_associations": [],
+      "reviewer_hold": false,
+      "source_availability": "available",
+      "source_availability_reason": null,
+      "sources": [
+        {
+          "archive_url": null,
+          "evidence_context": "Between September 1 and 3, officials inspected 2,337 establishments across the state and detected major irregularities at 2,056 locations.",
+          "evidence_language": "en",
+          "evidence_locator": null,
+          "evidence_quote": "detected major irregularities at 2,056 locations",
+          "evidence_span_hash": "c408e0fa0e1bcbcf1f915df749f16bdc6d160245d1d0b8814b16ba1e05647099",
+          "origin_source_id": null,
+          "retrieved_at": "2026-09-13T11:48:42.474489Z",
+          "source_date": "2026-09-06",
+          "source_id": "SRC-d3650994e2a5867e428a",
+          "source_language": "en",
+          "source_publisher": "UNI India",
+          "source_relationship": "unknown",
+          "source_revision_id": "656caf2898810fe01f03c66433b1e60e0595d563ce79cb87fe148c733dcaa077",
+          "source_title": "Food safety drive intensified across Bengal ahe… | UNI India",
+          "source_type": "news",
+          "source_url": "https://www.uniindia.com/east-india/admin-wb-food-safety-06ca19/170711",
+          "text_sha256": "656caf2898810fe01f03c66433b1e60e0595d563ce79cb87fe148c733dcaa077",
+          "tier": "B"
+        }
+      ],
+      "superseded_by": null,
+      "validator_id": "objective_source_grounding",
+      "validator_version": "2",
+      "verification_notes": "LLM-assisted candidate; objective source-grounding and publication checks passed. Source verification is not an independent finding of fact.",
+      "verification_status": "SOURCE VERIFIED"
+    },
+    {
       "automatic_validation": null,
       "context_notice": "Independent, non-governmental public-source research. Inclusion is not a finding of wrongdoing. Counts describe records in this tracker, not official totals, prevalence, compliance, risk or group behavior. Read the sources and preserve this context when sharing.",
       "derived_context": {
@@ -4474,11 +4635,17 @@
           "note": "Supporting source context revalidated; original evidence retained.",
           "previous_record_sha256": "5adec51f416773cef0e197d2a12527207e15eb8b71778a54b0a3f05692fe17b2",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-13T11:48:42.474489Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "8fe017bc00e2bee36180caed31dd8ad606f57fa544b1b1d233801dc71048667a",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-09-12T15:30:34.437299Z",
-      "last_successful_evidence_check_at": "2026-09-12T15:30:34.437299Z",
+      "last_source_checked_at": "2026-09-13T11:48:42.474489Z",
+      "last_successful_evidence_check_at": "2026-09-13T11:48:42.474489Z",
       "llm": {
         "fields_proposed": [],
         "llm_model": null,
@@ -4498,7 +4665,7 @@
       "record_class": "inspection_evidence",
       "record_created_at": "2026-09-09T23:09:01.232782Z",
       "record_scope": "area_operation",
-      "record_updated_at": "2026-09-12T15:30:34.437299Z",
+      "record_updated_at": "2026-09-13T11:48:42.474489Z",
       "related_record_ids": [],
       "reported_fact": {
         "area": "কলকাতা",
@@ -4643,11 +4810,17 @@
           "note": "Supporting source context revalidated; original evidence retained.",
           "previous_record_sha256": "f759709f7453e09ef88eef36b053ab5ee8981bf1fa27a3b6b0d4c43aa4465c99",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-13T11:48:42.474489Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "ce32bff24c24789faaedfb139a1df15e02be078c7003d82d4d7a42e3e2714ed2",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-09-13T00:02:13.293397Z",
-      "last_successful_evidence_check_at": "2026-09-13T00:02:13.293397Z",
+      "last_source_checked_at": "2026-09-13T11:48:42.474489Z",
+      "last_successful_evidence_check_at": "2026-09-13T11:48:42.474489Z",
       "llm": {
         "fields_proposed": [
           "area",
@@ -4672,7 +4845,7 @@
       "record_class": "inspection_evidence",
       "record_created_at": "2026-09-11T00:09:16.296804Z",
       "record_scope": "area_operation",
-      "record_updated_at": "2026-09-13T00:02:13.293397Z",
+      "record_updated_at": "2026-09-13T11:48:42.474489Z",
       "related_record_ids": [
         "WBFS-c391d02b3d97"
       ],
@@ -5068,11 +5241,17 @@
           "note": "Supporting source context revalidated; original evidence retained.",
           "previous_record_sha256": "3b41348f9a8f840b78372cc63b43fec296c1a06ffc381da423c1749b297b3706",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-13T11:48:42.474489Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "2d14802735d8ded2cbb53478bcb86e09ca35a3a5036e32efd690e814413c9a7b",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-09-13T00:02:13.293397Z",
-      "last_successful_evidence_check_at": "2026-09-13T00:02:13.293397Z",
+      "last_source_checked_at": "2026-09-13T11:48:42.474489Z",
+      "last_successful_evidence_check_at": "2026-09-13T11:48:42.474489Z",
       "llm": {
         "fields_proposed": [
           "area",
@@ -5098,7 +5277,7 @@
       "record_class": "inspection_evidence",
       "record_created_at": "2026-09-11T00:09:16.296804Z",
       "record_scope": "establishment_event",
-      "record_updated_at": "2026-09-13T00:02:13.293397Z",
+      "record_updated_at": "2026-09-13T11:48:42.474489Z",
       "related_record_ids": [],
       "reported_fact": {
         "area": "মধ্যমগ্রামের স্টার মলে",
@@ -5625,11 +5804,17 @@
           "note": "Supporting source context revalidated; original evidence retained.",
           "previous_record_sha256": "a3bc852787d75d5eaff88411269b87c7144372b53f5a3d5e684738c79a1d46bc",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-13T11:48:42.474489Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "d636902a044e5aaa23ba9f9b7b977e4aae1b5b9be4d9580ca03233b846a240d3",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-09-13T00:02:13.293397Z",
-      "last_successful_evidence_check_at": "2026-09-13T00:02:13.293397Z",
+      "last_source_checked_at": "2026-09-13T11:48:42.474489Z",
+      "last_successful_evidence_check_at": "2026-09-13T11:48:42.474489Z",
       "llm": {
         "fields_proposed": [
           "area",
@@ -5655,7 +5840,7 @@
       "record_class": "inspection_evidence",
       "record_created_at": "2026-09-11T16:27:14.451761Z",
       "record_scope": "establishment_event",
-      "record_updated_at": "2026-09-13T00:02:13.293397Z",
+      "record_updated_at": "2026-09-13T11:48:42.474489Z",
       "related_record_ids": [],
       "reported_fact": {
         "area": "লেকটাউনের",
@@ -5712,11 +5897,11 @@
           "source_language": "bn",
           "source_publisher": "TV9 Bangla",
           "source_relationship": "unknown",
-          "source_revision_id": "e23c9cbba3f3c6704d2589bf5c0bc5d8a01717d5faae207f9468d7814ff0e467",
+          "source_revision_id": "f865c4c06b0f556947e7ee30f1677617570e7029b60874f190a37f9fd7aabea6",
           "source_title": "Kolkata Restaurant Raid: কলকাতার নামী বিরিয়ানির দোকানের রান্নাঘরে ভনভন করছে মাছি! তল্লাশিতে আর কী কী মিলল? | Kolkata Food Safety Raid: Popular Lake Town Biryani Restaurant Inspected, Flies Found in Kitchen; Food Samples Sent for Testing | TV9 Bangla News",
           "source_type": "news",
           "source_url": "https://tv9bangla.com/kolkata/kolkata-food-safety-raid-popular-lake-town-biryani-restaurant-inspected-flies-found-in-kitchen-food-samples-sent-for-testing-1345756.html",
-          "text_sha256": "e23c9cbba3f3c6704d2589bf5c0bc5d8a01717d5faae207f9468d7814ff0e467",
+          "text_sha256": "f865c4c06b0f556947e7ee30f1677617570e7029b60874f190a37f9fd7aabea6",
           "tier": "B"
         }
       ],
@@ -7683,11 +7868,17 @@
           "note": "Supporting source context revalidated; original evidence retained.",
           "previous_record_sha256": "ebd5e50e3235ed2dba4352600ae9cf9282ff83d3decdd890c4ca0132f1efdf7e",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-13T11:48:42.474489Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "c3ac980663ba7a1559eec73abb38108b2e2dd86d0757499f9a87827bf003104c",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-09-12T22:16:17.224902Z",
-      "last_successful_evidence_check_at": "2026-09-12T22:16:17.224902Z",
+      "last_source_checked_at": "2026-09-13T11:48:42.474489Z",
+      "last_successful_evidence_check_at": "2026-09-13T11:48:42.474489Z",
       "llm": {
         "fields_proposed": [
           "area",
@@ -7713,7 +7904,7 @@
       "record_class": "inspection_evidence",
       "record_created_at": "2026-09-11T16:27:14.451761Z",
       "record_scope": "district_operation",
-      "record_updated_at": "2026-09-12T22:16:17.224902Z",
+      "record_updated_at": "2026-09-13T11:48:42.474489Z",
       "related_record_ids": [],
       "reported_fact": {
         "area": "পূর্ব মেদিনীপুর",
@@ -8346,11 +8537,17 @@
           "note": "Supporting source context revalidated; original evidence retained.",
           "previous_record_sha256": "5c118ddb42d9aedf0d30c076960581db547d1399f9592ea770e254ea232d92fb",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-13T11:48:42.474489Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "15d9b03607c36674041504984d580975d2aad5747b5449336ab4d32c250e03b5",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-09-13T00:02:13.293397Z",
-      "last_successful_evidence_check_at": "2026-09-13T00:02:13.293397Z",
+      "last_source_checked_at": "2026-09-13T11:48:42.474489Z",
+      "last_successful_evidence_check_at": "2026-09-13T11:48:42.474489Z",
       "llm": {
         "fields_proposed": [
           "area",
@@ -8375,7 +8572,7 @@
       "record_class": "inspection_evidence",
       "record_created_at": "2026-09-11T00:09:16.296804Z",
       "record_scope": "area_operation",
-      "record_updated_at": "2026-09-13T00:02:13.293397Z",
+      "record_updated_at": "2026-09-13T11:48:42.474489Z",
       "related_record_ids": [
         "WBFS-5ee36b93256b"
       ],
