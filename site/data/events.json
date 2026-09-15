@@ -1,8 +1,8 @@
 {
   "context_notice": "Independent, non-governmental public-source research. Inclusion is not a finding of wrongdoing. Counts describe records in this tracker, not official totals, prevalence, compliance, risk or group behavior. Read the sources and preserve this context when sharing.",
-  "generated_at": "2026-09-15T04:52:14.875484+00:00",
+  "generated_at": "2026-09-15T11:42:24.512042+00:00",
   "pipeline_version": "0.3.0",
-  "record_count": 46,
+  "record_count": 47,
   "records": [
     {
       "automatic_validation": null,
@@ -370,11 +370,17 @@
           "note": "Supporting source context revalidated; original evidence retained.",
           "previous_record_sha256": "ceae5b7832326ada1c81acb4db040480e5a76732328be34750e72494cf3f1f09",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-15T11:42:24.512042Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "fcf705d87333f324dd1523ba46e8723a790c03303147f82492dad432585ff050",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-09-14T04:53:09.948033Z",
-      "last_successful_evidence_check_at": "2026-09-14T04:53:09.948033Z",
+      "last_source_checked_at": "2026-09-15T11:42:24.512042Z",
+      "last_successful_evidence_check_at": "2026-09-15T11:42:24.512042Z",
       "llm": {
         "fields_proposed": [],
         "llm_model": null,
@@ -394,7 +400,7 @@
       "record_class": "inspection_evidence",
       "record_created_at": "2026-09-09T23:11:25.626009Z",
       "record_scope": "area_operation",
-      "record_updated_at": "2026-09-14T04:53:09.948033Z",
+      "record_updated_at": "2026-09-15T11:42:24.512042Z",
       "related_record_ids": [],
       "reported_fact": {
         "area": "ডেকার্স লেন",
@@ -567,11 +573,17 @@
           "note": "Supporting source context revalidated; original evidence retained.",
           "previous_record_sha256": "79286ac2d73970dbfdc98188147602f641f93ca171649657ddc0cee4e4e34f8a",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-15T11:42:24.512042Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "bfe3ba483b1aa615a9560465f92da29f7dd4fd9bba2481eea28bf8046471e371",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-09-14T23:07:56.567251Z",
-      "last_successful_evidence_check_at": "2026-09-14T23:07:56.567251Z",
+      "last_source_checked_at": "2026-09-15T11:42:24.512042Z",
+      "last_successful_evidence_check_at": "2026-09-15T11:42:24.512042Z",
       "llm": {
         "fields_proposed": [
           "area",
@@ -598,7 +610,7 @@
       "record_class": "inspection_evidence",
       "record_created_at": "2026-09-11T11:18:01.816017Z",
       "record_scope": "establishment_event",
-      "record_updated_at": "2026-09-14T23:07:56.567251Z",
+      "record_updated_at": "2026-09-15T11:42:24.512042Z",
       "related_record_ids": [],
       "reported_fact": {
         "area": "বাদুড়িয়া",
@@ -775,11 +787,17 @@
           "note": "Supporting source context revalidated; original evidence retained.",
           "previous_record_sha256": "0d91de72bd9a4d26caee794103971159d66fa3025211ff4f5664418e5854ad44",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-15T11:42:24.512042Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "561e6327a5ac979e02eb6cfcb507fdca9dc3732435b4c1d040a21d7fd4134c06",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-09-14T23:07:56.567251Z",
-      "last_successful_evidence_check_at": "2026-09-14T23:07:56.567251Z",
+      "last_source_checked_at": "2026-09-15T11:42:24.512042Z",
+      "last_successful_evidence_check_at": "2026-09-15T11:42:24.512042Z",
       "llm": {
         "fields_proposed": [
           "area",
@@ -806,7 +824,7 @@
       "record_class": "inspection_evidence",
       "record_created_at": "2026-09-11T04:37:44.799127Z",
       "record_scope": "establishment_event",
-      "record_updated_at": "2026-09-14T23:07:56.567251Z",
+      "record_updated_at": "2026-09-15T11:42:24.512042Z",
       "related_record_ids": [],
       "reported_fact": {
         "area": "ট্যাংরার",
@@ -2646,11 +2664,17 @@
           "note": "Supporting source context revalidated; original evidence retained.",
           "previous_record_sha256": "9bf0be74a776a5524e91a164ce7f209407e4cfb8b7234dba98e958cf042a2e3a",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-15T11:42:24.512042Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "0479681c6340cfe7fff5a4f3a4415dd352f96bcce7ec8c84631c3770179a41b9",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-09-14T19:21:08.237156Z",
-      "last_successful_evidence_check_at": "2026-09-14T19:21:08.237156Z",
+      "last_source_checked_at": "2026-09-15T11:42:24.512042Z",
+      "last_successful_evidence_check_at": "2026-09-15T11:42:24.512042Z",
       "llm": {
         "fields_proposed": [
           "area",
@@ -2676,7 +2700,7 @@
       "record_class": "inspection_evidence",
       "record_created_at": "2026-09-13T11:48:42.474489Z",
       "record_scope": "statewide_operation",
-      "record_updated_at": "2026-09-14T19:21:08.237156Z",
+      "record_updated_at": "2026-09-15T11:42:24.512042Z",
       "related_record_ids": [],
       "reported_fact": {
         "area": "across the state",
@@ -8372,11 +8396,17 @@
           "note": "Supporting source context revalidated; original evidence retained.",
           "previous_record_sha256": "06f4bb0c44f5ad360ec71f3c3b9857de41e05a9551f4f4d438c62fcd557109b1",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-15T11:42:24.512042Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "e79b4f4e985935cb047a6c14a7663e9aa555bf4e5af838a0569f334c29498a1e",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-09-14T23:07:56.567251Z",
-      "last_successful_evidence_check_at": "2026-09-14T23:07:56.567251Z",
+      "last_source_checked_at": "2026-09-15T11:42:24.512042Z",
+      "last_successful_evidence_check_at": "2026-09-15T11:42:24.512042Z",
       "llm": {
         "fields_proposed": [
           "area",
@@ -8402,7 +8432,7 @@
       "record_class": "inspection_evidence",
       "record_created_at": "2026-09-11T16:27:14.451761Z",
       "record_scope": "district_operation",
-      "record_updated_at": "2026-09-14T23:07:56.567251Z",
+      "record_updated_at": "2026-09-15T11:42:24.512042Z",
       "related_record_ids": [],
       "reported_fact": {
         "area": "পূর্ব মেদিনীপুর",
@@ -10157,6 +10187,167 @@
       "validator_id": "field_evidence_validation",
       "validator_version": "2",
       "verification_notes": "Supporting source context revalidated; original evidence retained.",
+      "verification_status": "SOURCE VERIFIED"
+    },
+    {
+      "automatic_validation": {
+        "extraction_evidence": {
+          "end": 202,
+          "match_method": "exact",
+          "original_quote": "পশ্চিম বর্ধমানের দুর্গাপুরের বেনাচিতি বাজারে বেকারি সংস্থার বিরুদ্ধে গুরুতর অভিযোগ উঠতেই দ্রুত অ্যাকশন নিল পুলিশ। সাময়িকভাবে বন্ধ করা হল দোকানের ঝাঁপ।",
+          "passage_id": "P012",
+          "source_revision_id": "cd6f8c578c0a5d0763855edd8bb198012e5d944d4c5861d2b92f26d1a5e5675e",
+          "start": 52
+        },
+        "method": "source_grounded_candidate_v1",
+        "pipeline_version": "0.3.0",
+        "validated_at": "2026-09-15T11:42:24.512042Z"
+      },
+      "context_notice": "Independent, non-governmental public-source research. Inclusion is not a finding of wrongdoing. Counts describe records in this tracker, not official totals, prevalence, compliance, risk or group behavior. Read the sources and preserve this context when sharing.",
+      "derived_context": {
+        "action_category": "not reported",
+        "action_category_confidence": "unknown",
+        "action_category_method": null,
+        "action_category_reviewed": false,
+        "action_category_source": null,
+        "business_format": "unknown",
+        "business_format_confidence": "unknown",
+        "business_format_method": null,
+        "business_format_reviewed": false,
+        "business_format_source": null,
+        "derived_confidence": "unknown",
+        "derived_context_method": "Unknown; no contextual inference performed.",
+        "derived_context_sources": [],
+        "establishment_context": "unknown",
+        "establishment_context_confidence": "unknown",
+        "establishment_context_method": null,
+        "establishment_context_reviewed": false,
+        "establishment_context_source": null,
+        "latitude": null,
+        "location_method": null,
+        "location_precision": null,
+        "location_reviewed": false,
+        "location_source": null,
+        "longitude": null,
+        "menu_context": "unknown",
+        "menu_context_confidence": "unknown",
+        "menu_context_method": null,
+        "menu_context_reviewed": false,
+        "menu_context_source": null,
+        "normalized_area": null
+      },
+      "display_summary": "Source reports a source-reported food-safety event involving বেকারি সংস্থা in দুর্গাপুরের বেনাচিতি বাজারে.",
+      "establishment_id": null,
+      "event_id": "WBFS-e1bd4ea695e6",
+      "evidence_support_status": "supported_as_of",
+      "extractor_id": "source_grounded_candidate",
+      "extractor_version": "1",
+      "first_published_at": "2026-09-15T11:42:24.512042Z",
+      "history": [
+        {
+          "at": "2026-09-15T11:42:24.512042Z",
+          "note": "Source-grounded LLM candidate auto-published after deterministic validation.",
+          "previous_record_sha256": null,
+          "status": "SOURCE VERIFIED"
+        }
+      ],
+      "is_fixture": false,
+      "last_source_checked_at": "2026-09-15T11:42:24.512042Z",
+      "last_successful_evidence_check_at": "2026-09-15T11:42:24.512042Z",
+      "llm": {
+        "fields_proposed": [
+          "area",
+          "establishment_name",
+          "reported_action",
+          "reported_authority",
+          "reported_observation"
+        ],
+        "llm_model": "gemini-3.5-flash-lite",
+        "llm_output_was_validated": true,
+        "llm_pipeline_version": "0.3.0",
+        "llm_provider": "gemini",
+        "llm_task": "structured source extraction",
+        "llm_task_version": "source_candidates_v2",
+        "llm_used": true,
+        "llm_used_at": "2026-09-15T11:42:44.571516Z",
+        "source_revision_id": "cd6f8c578c0a5d0763855edd8bb198012e5d944d4c5861d2b92f26d1a5e5675e",
+        "validation_result": "passed"
+      },
+      "location_id": null,
+      "pipeline_version": "0.3.0",
+      "publication_status": "active",
+      "record_class": "inspection_evidence",
+      "record_created_at": "2026-09-15T11:42:24.512042Z",
+      "record_scope": "establishment_event",
+      "record_updated_at": "2026-09-15T11:42:24.512042Z",
+      "related_record_ids": [],
+      "reported_fact": {
+        "area": "দুর্গাপুরের বেনাচিতি বাজারে",
+        "district": null,
+        "establishment_name": "বেকারি সংস্থা",
+        "establishment_type": null,
+        "event_date": null,
+        "evidence": {
+          "area": {
+            "quote": "পশ্চিম বর্ধমানের দুর্গাপুরের বেনাচিতি বাজারে বেকারি সংস্থার বিরুদ্ধে গুরুতর অভিযোগ উঠতেই দ্রুত অ্যাকশন নিল পুলিশ। সাময়িকভাবে বন্ধ করা হল দোকানের ঝাঁপ।",
+            "source_url": "https://bengali.abplive.com/district/durgapur-fungus-on-the-pizza-odor-food-shop-has-been-shut-down-1192879"
+          },
+          "establishment_name": {
+            "quote": "পশ্চিম বর্ধমানের দুর্গাপুরের বেনাচিতি বাজারে বেকারি সংস্থার বিরুদ্ধে গুরুতর অভিযোগ উঠতেই দ্রুত অ্যাকশন নিল পুলিশ। সাময়িকভাবে বন্ধ করা হল দোকানের ঝাঁপ।",
+            "source_url": "https://bengali.abplive.com/district/durgapur-fungus-on-the-pizza-odor-food-shop-has-been-shut-down-1192879"
+          },
+          "reported_action": {
+            "quote": "পশ্চিম বর্ধমানের দুর্গাপুরের বেনাচিতি বাজারে বেকারি সংস্থার বিরুদ্ধে গুরুতর অভিযোগ উঠতেই দ্রুত অ্যাকশন নিল পুলিশ। সাময়িকভাবে বন্ধ করা হল দোকানের ঝাঁপ।",
+            "source_url": "https://bengali.abplive.com/district/durgapur-fungus-on-the-pizza-odor-food-shop-has-been-shut-down-1192879"
+          },
+          "reported_authority": {
+            "quote": "পশ্চিম বর্ধমানের দুর্গাপুরের বেনাচিতি বাজারে বেকারি সংস্থার বিরুদ্ধে গুরুতর অভিযোগ উঠতেই দ্রুত অ্যাকশন নিল পুলিশ। সাময়িকভাবে বন্ধ করা হল দোকানের ঝাঁপ।",
+            "source_url": "https://bengali.abplive.com/district/durgapur-fungus-on-the-pizza-odor-food-shop-has-been-shut-down-1192879"
+          },
+          "reported_observation": {
+            "quote": "পশ্চিম বর্ধমানের দুর্গাপুরের বেনাচিতি বাজারে বেকারি সংস্থার বিরুদ্ধে গুরুতর অভিযোগ উঠতেই দ্রুত অ্যাকশন নিল পুলিশ। সাময়িকভাবে বন্ধ করা হল দোকানের ঝাঁপ।",
+            "source_url": "https://bengali.abplive.com/district/durgapur-fungus-on-the-pizza-odor-food-shop-has-been-shut-down-1192879"
+          }
+        },
+        "formal_finding": null,
+        "legal_finding_status": "unknown",
+        "reported_action": "সাময়িকভাবে বন্ধ করা হল দোকানের ঝাঁপ",
+        "reported_authority": "পুলিশ",
+        "reported_observation": "গুরুতর অভিযোগ",
+        "reported_quantity": null
+      },
+      "review": null,
+      "reviewed_associations": [],
+      "reviewer_hold": false,
+      "source_availability": "available",
+      "source_availability_reason": null,
+      "sources": [
+        {
+          "archive_url": null,
+          "evidence_context": "পশ্চিম বর্ধমানের দুর্গাপুরের বেনাচিতি বাজারে বেকারি সংস্থার বিরুদ্ধে গুরুতর অভিযোগ উঠতেই দ্রুত অ্যাকশন নিল পুলিশ। সাময়িকভাবে বন্ধ করা হল দোকানের ঝাঁপ।",
+          "evidence_language": "bn",
+          "evidence_locator": null,
+          "evidence_quote": "গুরুতর অভিযোগ",
+          "evidence_span_hash": "b6bdfba66f3c3c2f0ad48217813a65472b08d4735e85b8572999db420a5c9f36",
+          "origin_source_id": null,
+          "retrieved_at": "2026-09-15T11:42:24.512042Z",
+          "source_date": "2026-09-15",
+          "source_id": "SRC-84958c32320348974a97",
+          "source_language": "bn",
+          "source_publisher": "ABP Ananda",
+          "source_relationship": "unknown",
+          "source_revision_id": "19fc3c9ae82f7acca37e2451c15a9f98eb5bd078d53344a1f434b5c112d20e1b",
+          "source_title": "Rotten Food: পিৎজায় ফাঙ্গাস! খাবার থেকে বেরোচ্ছে পচা, বাসি গন্ধ, শাটার নামল এই দোকানের | Durgapur Fungus on the pizza odor food shop has been shut down",
+          "source_type": "news",
+          "source_url": "https://bengali.abplive.com/district/durgapur-fungus-on-the-pizza-odor-food-shop-has-been-shut-down-1192879",
+          "text_sha256": "19fc3c9ae82f7acca37e2451c15a9f98eb5bd078d53344a1f434b5c112d20e1b",
+          "tier": "B"
+        }
+      ],
+      "superseded_by": null,
+      "validator_id": "objective_source_grounding",
+      "validator_version": "2",
+      "verification_notes": "LLM-assisted candidate; objective source-grounding and publication checks passed. Source verification is not an independent finding of fact.",
       "verification_status": "SOURCE VERIFIED"
     },
     {
