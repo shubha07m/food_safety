@@ -112,7 +112,7 @@ Original source evidence remains authoritative. There is no chatbot, public Q&A,
 | `tests/` | Synthetic deterministic regression fixtures; no paid APIs |
 | `.github/workflows/` | CI and bounded two-hour refresh |
 
-Private pending/rejected queues, local article downloads, source snapshots and browser profiles are excluded from commits. Minimal suspension tombstones preserve stable record status without republishing held claims. Local branch history has been sanitized; repository visibility remains private until GitHub removes retained server-side pull-request refs documented in the [current audit](docs/PUBLIC_REPOSITORY_AUDIT.md).
+Private pending/rejected queues, local article downloads, source snapshots and browser profiles are excluded from commits. Minimal suspension tombstones preserve stable record status without republishing held claims. The repository is public; controlled publication history is sanitized, while normal GitHub-managed pull-request refs remain separately disclosed in the [current audit](docs/PUBLIC_REPOSITORY_AUDIT.md).
 
 ## Security and privacy
 
@@ -152,7 +152,7 @@ explicit refresh of the small README screenshot and social preview PNG.
 
 ## Contributing and volunteer maintainers
 
-Read [CONTRIBUTING.md](CONTRIBUTING.md) and the [Code of Conduct](CODE_OF_CONDUCT.md). Suggest a public source, request a correction, help audit evidence, improve Bengali wording or maintain the tooling. Controlled GitHub Issue Forms become publicly accessible when the maintainer makes the repository public. Until then, access requires a repository invitation.
+Read [CONTRIBUTING.md](CONTRIBUTING.md) and the [Code of Conduct](CODE_OF_CONDUCT.md). Suggest a public source, request a correction, help audit evidence, improve Bengali wording or maintain the tooling. The public GitHub Issue Forms provide controlled routes for source suggestions and corrections; every submission remains subject to the project's evidence and safety rules.
 
 ## Disclaimer and licensing
 
