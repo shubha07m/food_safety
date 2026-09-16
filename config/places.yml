@@ -1,0 +1,49 @@
+# Discovery is operator-invoked only. Never read by visitor code or news ingestion.
+settings:
+  monthly_limit: 3000
+  warning_threshold: 2500
+  max_calls_per_run: 5
+  max_results: 10
+  max_retries: 1
+  timeout_seconds: 15
+  cache_days: 7
+  max_zone_radius_m: 1500
+  overlap_fraction: 0.7
+  automatic_zones: true
+pandals:
+  - pandal_id: bagbazar-sarbojanin
+    name: Bagbazar Sarbojanin Durgotsav
+    name_bn: বাগবাজার সর্বজনীন দুর্গোৎসব
+    area: Bagbazar
+    latitude: 22.604964
+    longitude: 88.366303
+    restaurant_radius_m: 500
+    enabled: true
+    coordinate_source: https://commons.wikimedia.org/wiki/File:DurgaPuja2017_-_Durga_Idol_of_Bagbazar_Sarbajanin_Durgotsav_01.jpg
+    notes: >-
+      Historical coarse venue anchor from camera coordinates of Indrajit Das's
+      1 October 2017 photograph (Wikimedia Commons, CC BY-SA 3.0).
+      Not a verified 2026 entrance or pedestrian route. Coordinate provenance
+      checked 2026-09-15; verify current festival access before travel guidance.
+  - pandal_id: kumartuli-park
+    name: Kumartuli Park Sarbojanin
+    name_bn: কুমোরটুলি পার্ক সর্বজনীন
+    area: Kumartuli
+    enabled: false
+    notes: Starter entry only; coordinates and current venue need independent curation.
+  - pandal_id: ekdalia-evergreen
+    name: Ekdalia Evergreen
+    name_bn: একডালিয়া এভারগ্রিন
+    area: Ballygunge
+    enabled: false
+    notes: Starter entry only; coordinates and current venue need independent curation.
+zones:
+  - zone_id: bagbazar
+    name: Bagbazar historical venue catchment
+    center_latitude: 22.604964
+    center_longitude: 88.366303
+    radius_m: 500
+    pandal_ids: [bagbazar-sarbojanin]
+    enabled: true
+# Only independently sourced names may be supplied here. No Google displayName data.
+restaurants: []

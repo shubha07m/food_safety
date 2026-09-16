@@ -21,6 +21,23 @@ def main():
     sub = parser.add_subparsers(dest="command", required=True)
     for name in ["validate", "build", "pending", "migrate"]:
         sub.add_parser(name)
+    places = sub.add_parser(
+        "places", help="Explicit zone-first restaurant discovery; no map changes"
+    )
+    places_sub = places.add_subparsers(dest="places_command", required=True)
+    for name in ["validate", "plan", "remap", "usage"]:
+        places_sub.add_parser(name)
+    discovery = places_sub.add_parser("discover")
+    discovery.add_argument("--zone", help="One enabled planned zone ID")
+    discovery.add_argument("--dry-run", action="store_true", help="Read-only; zero HTTP calls")
+    discovery.add_argument(
+        "--max-calls", type=int, help="Lower the configured per-run attempt limit"
+    )
+    discovery.add_argument(
+        "--smoke-test",
+        action="store_true",
+        help="One zone, at most one attempt/10 results; usage only persisted",
+    )
     scan = sub.add_parser("update")
     scan.add_argument("--max-articles", type=bounded, default=3)
     scan.add_argument("--max-llm-calls", type=int, default=None)
@@ -55,7 +72,11 @@ def main():
     hold.add_argument("--replacement-id", help="Required for SUPERSEDED; must already be active")
     args = parser.parse_args()
     try:
-        if args.command == "llm-test":
+        if args.command == "places":
+            from .places.pipeline import run_command
+
+            result = run_command(ROOT, args)
+        elif args.command == "llm-test":
             from .llm_diagnostic import test_cached_articles
 
             result = test_cached_articles(ROOT, args.max_articles, args.use_llm)
@@ -120,6 +141,12 @@ def main():
             build(ROOT)
             result = {"event_id": old.event_id, "status": args.status}
         print(json.dumps(result, indent=2))
+        if (
+            args.command == "places"
+            and args.places_command == "discover"
+            and any(z.get("status") == "skipped" for z in result.get("zones", []))
+        ):
+            parser.exit(2, "Places discovery incomplete; prior durable output retained.\n")
         if args.command == "update" and result["errors"]:
             parser.exit(2, "Source scan incomplete; last successful update has not advanced.\n")
     except Exception as exc:

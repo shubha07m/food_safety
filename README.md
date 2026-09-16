@@ -111,6 +111,16 @@ Private pending/rejected queues, local article downloads, source snapshots and b
 
 ## Security and privacy
 
+### Pandal restaurant discovery (data subsystem)
+
+An optional operator-run [Places discovery subsystem](docs/PLACES.md) groups curated
+pandals into bounded search zones, deduplicates restaurant place IDs, and reverse-maps
+temporary coordinates locally. Run `python -m food_safety.cli places discover --dry-run`
+to inspect the plan without API calls. Durable exports contain only place IDs, Maps
+handoff links, independent metadata, and historical association metadata. Google
+coordinates expire in ignored runtime storage; Google names and raw responses are not
+persisted. This does not alter the current map or add per-visitor Google requests.
+
 No public database, write API, accounts, comments, uploads, ad trackers, analytics or runtime third-party scripts. HTTPS, CSP, framing restrictions, safe link rendering, SSRF-aware retrieval and response caps remain in place. The map is locally bundled, with [attribution](site/assets/BASEMAP_LICENSE.md). Hosting providers may process operational logs under their own policies.
 
 [Security](SECURITY.md) · [Privacy](PRIVACY.md) · [Deployment](docs/DEPLOYMENT.md) · [Public repository audit](docs/PUBLIC_REPOSITORY_AUDIT.md)

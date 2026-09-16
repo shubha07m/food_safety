@@ -15,7 +15,7 @@ SECRET = re.compile(
     rb"(?:api[_-]?key|secret|token)\s*[:=]\s*['\"][A-Za-z0-9_./+-]{20,}",
     re.I,
 )
-PRIVATE_PREFIXES = ("data/history/", "data/tmp/", ".cache/", "logs/")
+PRIVATE_PREFIXES = ("data/history/", "data/tmp/", "data/places-runtime/", ".cache/", "logs/")
 PRIVATE_PATHS = {"data/pending.json", "data/rejected.json", ".env"}
 SUSPICIOUS_NAMES = re.compile(r"(?:conversation|chatgpt|codex|scratch|brainstorm)", re.I)
 SCAN_SOURCE_EXEMPT = {

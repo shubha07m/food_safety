@@ -288,6 +288,9 @@ def lifecycle_counts(records, retired, at):
 
 def build(root):
     counts = validate(root)
+    from .places.pipeline import build_public
+
+    build_public(root)
     site = root / "site"
     site.mkdir(exist_ok=True)
     public = json.loads((root / "data/events.json").read_text())

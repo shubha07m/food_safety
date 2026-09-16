@@ -52,7 +52,15 @@ def main() -> None:
         "retired.json",
         "lifecycle.json",
         "compliance.json",
+        "places.json",
     }
+    places = SITE / "data/places.json"
+    if places.exists():
+        from food_safety.places.models import PublicData
+
+        PublicData.model_validate_json(places.read_text())
+        if json.loads(places.read_text()) != json.loads((ROOT / "data/places.json").read_text()):
+            present.append("public and durable Places datasets differ")
     for path in SITE.rglob("*"):
         if path.is_symlink():
             present.append("symlink in public output")
@@ -68,6 +76,7 @@ def main() -> None:
                 "__pycache__",
                 "llm_eval",
                 "corpus",
+                "places-runtime",
             }
             for part in path.relative_to(SITE).parts
         ):
