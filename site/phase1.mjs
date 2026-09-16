@@ -47,7 +47,7 @@ export async function phase1() {
   if (!main || document.getElementById('phase1-help')) return;
   const footer = document.querySelector('footer') || document.body.appendChild(document.createElement('footer'));
   footer.append(element('p', t.authorship));
-  if (new URLSearchParams(location.search).has('event')) return;
+  if (new URLSearchParams(location.search).has('event') || new URLSearchParams(location.search).get('module') !== 'safety') return;
   const oldAccess = document.querySelector('.policy .notice:last-of-type');
   if (oldAccess?.textContent.includes('publicly accessible intake channel')) oldAccess.textContent = t.submission;
   const help = document.createElement('section'); help.id = 'phase1-help'; help.className = 'phase1-panel';

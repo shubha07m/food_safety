@@ -90,6 +90,11 @@ An existing local `food` environment can be reused. Python execution and depende
 
 ## Architecture
 
+The Puja catalog has its own [source-grounded curation workflow](docs/PUJA_CURATION.md).
+Bounded Gemini extraction can prepare private candidates, but it cannot publish them;
+only reviewed entries in `config/puja.yml` become the static search catalog. Coordinates
+are optional and require explicit independent provenance.
+
 ### LLM extraction, with source-grounded publication checks
 
 The language model restructures fetched source documents into candidate records. Candidates that satisfy schema, exact evidence-grounding, source, duplicate, safety and publication checks may be published automatically. Ambiguous or unsupported candidates are skipped. Unsupported optional fields can be omitted without discarding supported core facts.

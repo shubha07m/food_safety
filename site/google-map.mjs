@@ -23,10 +23,11 @@ export function boot(win = window, doc = document) {
     map.data.forEach(f => map.data.remove(f));
     map.data.addGeoJson({ type: 'FeatureCollection', features: markers.map(m => ({ type: 'Feature', id: m.id,
       properties: { kind: m.kind, label: m.label, count: m.count }, geometry: { type: 'Point', coordinates: [m.lng, m.lat] } })) });
+    const focus = markers.some(m => m.kind === 'pandal') ? markers.filter(m => m.kind === 'pandal') : markers;
     const bounds = new win.google.maps.LatLngBounds();
-    markers.forEach(m => bounds.extend({ lat: m.lat, lng: m.lng }));
-    if (markers.length > 1) map.fitBounds(bounds, 40);
-    else if (markers.length) { map.setCenter({ lat: markers[0].lat, lng: markers[0].lng }); map.setZoom(13); }
+    focus.forEach(m => bounds.extend({ lat: m.lat, lng: m.lng }));
+    if (focus.length > 1) map.fitBounds(bounds, 40);
+    else if (focus.length) { map.setCenter({ lat: focus[0].lat, lng: focus[0].lng }); map.setZoom(13); }
   }
   win.foodpathMapLoaded = () => {
     try {

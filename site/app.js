@@ -5,12 +5,22 @@ import { initPuja } from './puja.mjs';
 import './foodpath-copy.mjs';
 import { language, tr, translateStatic, localizedURL } from './locale.mjs';
 import { phase1, sourceWarning, copy as phaseCopy } from './phase1.mjs';
-import { applyRoute } from './routes.mjs';
+import { applyRoute, safetyRoute } from './routes.mjs';
 
 translateStatic();
 const isRecordRoute = applyRoute(document, location.search);
+const isSafetyRoute = safetyRoute(location.search);
+if (isSafetyRoute) {
+  document.title = 'Food Safety Evidence · The Bengal FoodPath';
+  const canonical = document.querySelector('link[rel=canonical]');
+  if (canonical) canonical.href = 'https://foodsafety.nemoneek.com/?module=safety';
+}
 if (!isRecordRoute) {
-  document.getElementById('geography').append(document.querySelector('.map-panel'));
+  if (!isSafetyRoute) {
+    const panel = document.querySelector('.map-panel');
+    panel.querySelector('.panel-heading h3').textContent = language === 'bn' ? 'পুজোর মানচিত্র · কলকাতা ও হাওড়া' : 'Puja map · Kolkata & Howrah';
+    document.getElementById('geography').append(panel);
+  }
   initPuja(setMapPandals);
   initMapHost();
   const openEvidence = () => { if (location.hash === '#evidence') document.getElementById('evidence-register').open = true; };
@@ -238,7 +248,7 @@ function detailSection(container, label, title) {
 function detail() {
   const id = new URLSearchParams(location.search).get('event'); if (!isRecordRoute) return;
   const container = $('record-detail'); container.hidden = false;
-  const back = node('a', '← All published records', 'text-link'); back.href = localizedURL('index.html'); back.id = 'back-to-tracker'; container.append(back);
+  const back = node('a', '← All published records', 'text-link'); back.href = localizedURL('index.html?module=safety'); back.id = 'back-to-tracker'; container.append(back);
   const record = state.rows.find(row => row.event_id === id);
   if (!record) {
     const retired = state.retired.find(row => row.event_id === id);
@@ -299,6 +309,7 @@ try {
   if (state.repository) document.querySelectorAll('[data-repository]').forEach(anchor => { anchor.href = state.repository; anchor.rel = 'noopener noreferrer'; anchor.target = '_blank'; });
   const stats = aggregate(state.rows);
   for (const [id, key] of [['events', 'total'], ['areas', 'areas_count'], ['establishments', 'establishments_count'], ['sources', 'sources_count']]) $(`metric-${id}`).textContent = stats[key].toLocaleString('en-IN');
+  for (const [id, key] of [['teaser-events', 'total'], ['teaser-areas', 'areas_count'], ['teaser-sources', 'sources_count']]) if ($(id)) $(id).textContent = stats[key].toLocaleString('en-IN');
   $('coverage-publishers').textContent = stats.publishers_count; $('coverage-records').textContent = stats.total; $('coverage-cross').textContent = stats.coverage.cross_source.count; $('coverage-areas').textContent = stats.areas_count;
   const named = new Set(state.rows.map(r => r.reported_fact.establishment_name).filter(Boolean));
   const menus = new Set(state.rows.filter(r => r.derived_context.menu_context !== 'unknown').map(r => r.reported_fact.establishment_name).filter(Boolean));
@@ -309,7 +320,7 @@ try {
   if (language === 'bn') $('run-status').textContent = `শেষ পরীক্ষার ফল: ${status.last_run_result || 'উল্লেখ নেই'}। সক্রিয়: ${data.record_count}।`;
   if (status.scheduled_refresh_hours === 2) $('run-status').append(document.createTextNode(language === 'bn' ? ' প্রায় প্রতি ২ ঘণ্টায় স্বয়ংক্রিয়ভাবে পরীক্ষা করা হয়।' : ' Automatically checked approximately every 2 hours.'));
   if (isRecordRoute) detail(); else renderAll();
-  await phase1();
+  if (isRecordRoute || isSafetyRoute) await phase1();
   $('search').addEventListener('input', event => { state.query = event.target.value; renderRows(); });
   $('clear-filter').addEventListener('click', () => { state.filters = {}; state.query = ''; $('search').value = ''; renderAll(); });
 } catch (error) {

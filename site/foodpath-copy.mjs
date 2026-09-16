@@ -1,6 +1,23 @@
 import { bn, language } from './locale.mjs';
 
 const copy = {
+  'Puja FoodPath': 'পুজো ফুডপাথ',
+  'THE BENGAL FOODPATH · SHARODIYA EDITION': 'দ্য বেঙ্গল ফুডপাথ · শারদীয় সংস্করণ',
+  'Find a pandal. Find nearby food.': 'মণ্ডপ খুঁজুন। কাছাকাছি খাবার খুঁজুন।',
+  'Explore Kolkata & Howrah.': 'কলকাতা ও হাওড়া ঘুরে দেখুন।',
+  'A calm, source-conscious guide to festival neighbourhoods—beginning with the pandal, never a ranking.': 'উৎস সম্পর্কে সচেতন এক শান্ত উৎসব-পথনির্দেশিকা—শুরু মণ্ডপ দিয়ে, কখনও র‌্যাঙ্কিং দিয়ে নয়।',
+  'Search for a Puja pandal': 'পুজোমণ্ডপ খুঁজুন',
+  'Discovery with honest limits.': 'সীমাবদ্ধতা স্পষ্ট রেখে খোঁজ।',
+  'Where will your Puja path begin?': 'আপনার পুজোর পথ কোথা থেকে শুরু হবে?',
+  'Search locally in English or বাংলা. No Google request is made while you type.': 'বাংলা বা ইংরেজিতে স্থানীয়ভাবে খুঁজুন। টাইপ করার সময় Google-এ কোনো অনুরোধ যায় না।',
+  'POPULAR STARTING POINTS': 'জনপ্রিয় শুরুর স্থান',
+  'PANDALS FIRST · CONTEXT ON REQUEST': 'আগে মণ্ডপ · চাইলে প্রেক্ষাপট',
+  'See the festival geography': 'উৎসবের মানচিত্র দেখুন',
+  'A SEPARATE RESEARCH MODULE': 'একটি স্বতন্ত্র গবেষণা বিভাগ',
+  'Explore the evidence tracker →': 'উৎসভিত্তিক নথি দেখুন →',
+  'RESEARCH / PUBLIC-SOURCE EVIDENCE': 'গবেষণা / প্রকাশ্য উৎসের নথি',
+  'Source-backed inspection reporting, with visible limits.': 'সীমাবদ্ধতা স্পষ্ট রেখে উৎসসমর্থিত পরিদর্শন প্রতিবেদন।',
+  '← Return to Puja FoodPath': '← পুজো ফুডপাথে ফিরুন',
   'Browse the evidence register': 'উৎসভিত্তিক নথির তালিকা দেখুন',
   'Source-linked records, filters and original evidence': 'উৎসের লিঙ্কসহ নথি, ফিল্টার ও মূল প্রমাণ',
   'Food Safety Evidence': 'খাদ্য সুরক্ষার উৎসভিত্তিক নথি',

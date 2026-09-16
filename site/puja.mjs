@@ -9,10 +9,11 @@ export function mapsURL(id) {
   if (!validID(id)) return null;
   return `https://www.google.com/maps/search/?${new URLSearchParams({ api: '1', query: 'restaurant', query_place_id: id })}`;
 }
-export function parsePlaces(data) {
+export function parsePlaces(data, catalog = null) {
   if (data.schema_version !== 'places-1' || data.association_semantics !== 'historical_discovery_not_current_proximity'
     || !['pandals', 'restaurants', 'associations'].every(key => Array.isArray(data[key]))) throw Error('Invalid Places data');
-  const pandals = data.pandals.filter(p => p.enabled && validID(p.pandal_id) && typeof p.name === 'string' && typeof p.area === 'string');
+  const rawPandals = catalog?.records || data.pandals;
+  const pandals = rawPandals.filter(p => (p.enabled !== false) && validID(p.pandal_id) && typeof p.name === 'string' && typeof p.area === 'string');
   const restaurants = new Map();
   for (const r of data.restaurants) {
     if (!validID(r.place_id) || Object.keys(r).some(k => !['place_id', 'source', 'curated', 'google_maps_url'].includes(k))) throw Error('Restricted restaurant fields');
@@ -30,13 +31,14 @@ export function parsePlaces(data) {
       groups.set(a.pandal_id, matches); seen.add(key);
     }
   }
-  return { pandals, groups, index: pandals.map(p => ({ p, query: normalize(`${p.name} ${p.name_bn || ''} ${p.area}`) })) };
+  return { pandals, groups, index: pandals.map(p => ({ p, query: normalize(`${p.name} ${p.name_bn || ''} ${(p.aliases || []).join(' ')} ${p.area} ${p.neighborhood || ''} ${p.city || ''}`) })) };
 }
 export function searchPandals(index, query, limit = 8) {
   const tokens = normalize(query).split(' ').filter(Boolean);
   return index.filter(row => tokens.every(token => row.query.includes(token))).slice(0, Math.min(8, limit)).map(row => row.p);
 }
-export function featuredPandals(pandals, ids = FEATURED_IDS) {
+export function featuredPandals(pandals, ids = null) {
+  ids = ids || [...pandals.filter(p => p.featured).map(p => p.pandal_id), ...FEATURED_IDS];
   return [...new Set(ids)].map(id => pandals.find(p => p.pandal_id === id)).filter(Boolean).slice(0, 6);
 }
 export function nextOption(key, active, count) {
@@ -57,9 +59,12 @@ export async function initPuja(onData = () => {}) {
   const status = document.getElementById('pandal-search-status');
   const selected = document.getElementById('selected-pandal');
   try {
-    const response = await fetch('data/places.json', { credentials: 'omit' });
-    if (!response.ok) throw Error('Unavailable');
-    const data = parsePlaces(await response.json());
+    const [response, catalogResponse] = await Promise.all([
+      fetch('data/places.json', { credentials: 'omit' }),
+      fetch('data/pandals.json', { credentials: 'omit' }),
+    ]);
+    if (!response.ok || !catalogResponse.ok) throw Error('Unavailable');
+    const data = parsePlaces(await response.json(), await catalogResponse.json());
     let matches = []; let active = -1;
     const close = () => { options.hidden = true; input.setAttribute('aria-expanded', 'false'); input.removeAttribute('aria-activedescendant'); active = -1; };
     const select = (p, updateURL = true) => {
@@ -67,8 +72,16 @@ export async function initPuja(onData = () => {}) {
       selected.hidden = false; selected.replaceChildren();
       selected.append(el('p', text('Selected pandal'), 'eyebrow'));
       const heading = el('h3', input.value); heading.id = 'selected-pandal-title'; heading.tabIndex = -1;
-      selected.append(heading, el('p', `${p.name_bn && language !== 'bn' ? `${p.name_bn} · ` : ''}${p.area}`, 'pandal-area'));
-      const provenance = el('details'); provenance.append(el('summary', text('Read coordinate provenance')), el('p', p.notes || p.area)); selected.append(provenance);
+      selected.append(heading, el('p', `${p.name_bn && language !== 'bn' ? `${p.name_bn} · ` : ''}${p.neighborhood || p.area} · ${p.city || ''}`, 'pandal-area'));
+      if (p.subtitle) selected.append(el('p', p.subtitle, 'pandal-subtitle'));
+      const provenance = el('details'); provenance.append(el('summary', text('Read coordinate provenance')));
+      for (const source of p.sources || []) {
+        const paragraph = el('p'); const href = safeExternal(source.source_url);
+        if (href) { const link = el('a', source.source_title || source.publisher); link.href = href; link.target = '_blank'; link.rel = 'noopener noreferrer'; paragraph.append(link); }
+        else paragraph.append(el('span', source.source_title || source.publisher));
+        paragraph.append(document.createTextNode(` — “${source.quote}”`)); provenance.append(paragraph);
+      }
+      selected.append(provenance);
       const rows = data.groups.get(p.pandal_id) || [];
       selected.append(el('h4', `${text('Recorded restaurant links')} · ${rows.length}`), el('p', text('Historical discovery matches, not a current proximity guarantee. Current distances are unavailable.'), 'notice'));
       const attribution = el('p', 'Google Maps', 'google-attribution'); attribution.translate = false; selected.append(attribution);
@@ -112,7 +125,8 @@ export async function initPuja(onData = () => {}) {
     input.addEventListener('blur', close);
     const featured = document.getElementById('featured-pandals');
     for (const p of featuredPandals(data.pandals)) {
-      const card = el('article', null, 'pandal-card'); card.append(el('p', p.area, 'eyebrow'), el('h4', language === 'bn' && p.name_bn ? p.name_bn : p.name));
+      const card = el('article', null, 'pandal-card'); card.append(el('p', `${p.area} · ${p.city || 'West Bengal'}`, 'eyebrow'), el('h4', language === 'bn' && p.name_bn ? p.name_bn : p.name));
+      if (p.subtitle) card.append(el('p', p.subtitle));
       const button = el('button', text('View restaurant links'), 'button secondary'); button.type = 'button'; button.addEventListener('click', () => { select(p); selected.scrollIntoView({ block: 'nearest' }); document.getElementById('selected-pandal-title').focus({ preventScroll: true }); }); card.append(button); featured.append(card);
     }
     status.textContent = text('Type a name or area to search the current collection.');

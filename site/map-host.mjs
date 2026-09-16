@@ -13,20 +13,27 @@ export function areaMarkers(rows) {
   return [...groups.values()];
 }
 export function pandalMarkers(pandals) {
-  return pandals.filter(p => p.enabled && Number.isFinite(p.latitude) && Number.isFinite(p.longitude)
+  return pandals.filter(p => p.enabled !== false && Number.isFinite(p.latitude) && Number.isFinite(p.longitude)
     && Math.abs(p.latitude) <= 90 && Math.abs(p.longitude) <= 180 && p.coordinate_source)
     .map(p => ({ id: `pandal-${p.pandal_id}`, kind: 'pandal', label: p.name, lat: p.latitude, lng: p.longitude, count: 0 }));
 }
 let areas = []; let pandals = []; let frame = null; let key = ''; let chooseArea = () => {}; let started = false;
 const send = () => { if (frame) frame.contentWindow.postMessage({ type: 'foodpath-map-data', key, language, markers: [...areas, ...pandals] }, location.origin); };
-export function setMapPandals(value) { pandals = pandalMarkers(value); send(); }
+let mapped = 0; let totalRows = 0;
+function coverage() {
+  const node = document.getElementById('map-coverage');
+  if (document.body.classList.contains('puja-route')) node.textContent = language === 'bn'
+    ? `${pandals.length}টি উৎসসমর্থিত মণ্ডপ। খাদ্য সুরক্ষার এলাকার স্তরটি ঐচ্ছিক।`
+    : `${pandals.length} source-backed pandals. The food-safety area layer is optional context.`;
+  else node.textContent = language === 'bn'
+    ? `${totalRows}টি নথির মধ্যে ${mapped}টির ভৌগোলিক তথ্য দেখানো হয়েছে; ${totalRows - mapped}টি বাদ।`
+    : `Geographic coverage: ${mapped} of ${totalRows} records; ${totalRows - mapped} omitted for insufficient precision.`;
+}
+export function setMapPandals(value) { pandals = pandalMarkers(value); coverage(); send(); }
 export function renderAreaSummary(rows, activate) {
   areas = areaMarkers(rows); chooseArea = activate;
   const container = document.getElementById('chart-map'); container.replaceChildren();
-  const mapped = mappedRows(rows).length;
-  document.getElementById('map-coverage').textContent = language === 'bn'
-    ? `${rows.length}টি নথির মধ্যে ${mapped}টির ভৌগোলিক তথ্য দেখানো হয়েছে; ${rows.length - mapped}টি বাদ।`
-    : `Geographic coverage: ${mapped} of ${rows.length} records; ${rows.length - mapped} omitted for insufficient precision.`;
+  mapped = mappedRows(rows).length; totalRows = rows.length; coverage();
   for (const marker of areas) {
     const button = document.createElement('button'); button.type = 'button'; button.className = 'map-key';
     button.textContent = `${marker.label} · ${marker.count}`;

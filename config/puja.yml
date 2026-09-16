@@ -1,0 +1,37 @@
+schema_version: puja-curation-1
+settings:
+  max_sources_per_run: 5
+  max_model_calls_per_run: 3
+  max_candidates_per_source: 30
+sources:
+  - source_id: bagbazar-wikimedia-2017
+    url: https://commons.wikimedia.org/wiki/File:DurgaPuja2017_-_Durga_Idol_of_Bagbazar_Sarbajanin_Durgotsav_01.jpg
+    publisher: Wikimedia Commons
+    language: en
+    enabled: true
+published:
+  - pandal_id: bagbazar-sarbojanin
+    name: Bagbazar Sarbojanin Durgotsav
+    name_bn: বাগবাজার সর্বজনীন দুর্গোৎসব
+    aliases:
+      - Baghbazar Sarbojanin
+    area: Bagbazar
+    neighborhood: Bagbazar
+    city: Kolkata
+    district: Kolkata
+    latitude: 22.604964
+    longitude: 88.366303
+    coordinate_source: https://commons.wikimedia.org/wiki/File:DurgaPuja2017_-_Durga_Idol_of_Bagbazar_Sarbajanin_Durgotsav_01.jpg
+    coordinate_precision: neighborhood
+    organizer: null
+    year: null
+    featured: true
+    subtitle: A historic North Kolkata starting point
+    sources:
+      - source_url: https://commons.wikimedia.org/wiki/File:DurgaPuja2017_-_Durga_Idol_of_Bagbazar_Sarbajanin_Durgotsav_01.jpg
+        source_title: DurgaPuja2017 - Durga Idol of Bagbazar Sarbajanin Durgotsav 01
+        publisher: Wikimedia Commons
+        publication_date: 2017-09-28
+        quote: Durga Idol of Bagbazar Sarbajanin Durgotsav
+    verification_status: SOURCE VERIFIED
+    last_verified_at: 2026-09-15T00:00:00Z

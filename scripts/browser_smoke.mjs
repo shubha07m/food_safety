@@ -117,22 +117,42 @@ try {
   await command('Emulation.setDeviceMetricsOverride', { width: 1440, height: 1000, deviceScaleFactor: 1, mobile: false });
   await command('Page.navigate', { url: 'http://127.0.0.1:8000/' });
   await waitFor(`document.getElementById('metric-events')?.textContent === '${original.record_count}'`);
-  await waitFor("document.getElementById('lifecycle-summary') !== null");
   await waitFor("document.querySelectorAll('#featured-pandals button').length > 0");
+  assert.equal(await evaluate("document.body.classList.contains('puja-route')"), true);
+  assert.equal(await evaluate("document.querySelector('.safety-only').hidden"), true);
+  assert.equal(await evaluate("document.getElementById('headline').textContent.includes('PUJA')"), true);
+  await screenshot('puja-home', false);
   assert.ok(await evaluate("document.querySelectorAll('#featured-pandals article').length <= 6"));
   assert.equal(await evaluate("document.querySelector('#google-map-host iframe') === null"), true);
+  if (process.env.FOOD_LIVE_MAP_SMOKE === '1') {
+    await waitFor("document.getElementById('google-map-status').textContent !== 'The area summary below works without Google Maps.'");
+    if (await evaluate("!document.getElementById('load-google-map').disabled")) {
+      await evaluate("document.getElementById('load-google-map').click()");
+      await waitFor("document.querySelector('#google-map-host iframe') && document.getElementById('map-fallback').hidden");
+      await waitFor("document.querySelector('#google-map-host iframe').contentDocument.querySelector('.gm-style') !== null");
+      await delay(1500);
+      await evaluate("document.querySelector('#google-map-host iframe').scrollIntoView({block:'center'})");
+      await screenshot('google-map-live', false);
+    }
+  }
   await evaluate("document.getElementById('pandal-search').focus(); document.getElementById('pandal-search').value='bag'; document.getElementById('pandal-search').dispatchEvent(new Event('input'))");
   assert.equal(await evaluate("document.querySelectorAll('#pandal-options [role=option]').length"), 1);
   await evaluate("document.getElementById('pandal-search').dispatchEvent(new KeyboardEvent('keydown',{key:'ArrowDown',bubbles:true})); document.getElementById('pandal-search').dispatchEvent(new KeyboardEvent('keydown',{key:'Enter',bubbles:true}))");
   assert.equal(await evaluate("document.getElementById('selected-pandal').hidden"), false);
   assert.equal(await evaluate("document.getElementById('selected-pandal').textContent.includes('Current distances are unavailable')"), true);
   assert.equal(await evaluate("[...document.querySelectorAll('.restaurant-links a')].every(a => new URL(a.href).searchParams.has('query_place_id') && new URL(a.href).searchParams.has('query'))"), true);
+  await delay(400);
   await evaluate("document.getElementById('puja').scrollIntoView({block:'start'})");
   await screenshot('puja-desktop', false);
   await command('Emulation.setDeviceMetricsOverride', { width: 390, height: 844, deviceScaleFactor: 1, mobile: true });
   assert.equal(await evaluate('document.documentElement.scrollWidth <= window.innerWidth'), true);
+  await evaluate("window.scrollTo(0,0)");
+  await screenshot('puja-home-mobile', false);
   await evaluate("document.getElementById('puja').scrollIntoView({block:'start'})");
   await screenshot('puja-mobile', false);
+  await command('Emulation.setEmulatedMedia', { features: [{ name: 'prefers-reduced-motion', value: 'reduce' }] });
+  assert.equal(await evaluate("getComputedStyle(document.querySelector('.puja-hero-art img')).animationName"), 'none');
+  await command('Emulation.setEmulatedMedia', { features: [] });
   await evaluate("document.getElementById('pandal-search').value='no-such-pandal'; document.getElementById('pandal-search').dispatchEvent(new Event('input'))");
   assert.equal(await evaluate("document.getElementById('pandal-search-status').textContent.includes('No matching pandals')"), true);
   await evaluate("document.querySelector('#featured-pandals button').click()");
@@ -145,18 +165,21 @@ try {
   assert.equal(await evaluate("document.getElementById('selected-pandal-title').textContent.includes('বাগবাজার')"), true);
   await screenshot('puja-bengali', false);
   await command('Emulation.setDeviceMetricsOverride', { width: 1440, height: 1000, deviceScaleFactor: 1, mobile: false });
-  await command('Page.navigate', { url: 'http://127.0.0.1:8000/' });
+  await command('Page.navigate', { url: 'http://127.0.0.1:8000/?module=safety' });
   await waitFor("document.getElementById('lifecycle-summary') !== null");
   assert.equal(await evaluate("document.getElementById('dashboard-view').hidden"), false);
+  assert.equal(await evaluate("document.body.classList.contains('safety-route')"), true);
+  assert.equal(await evaluate("document.getElementById('puja').hidden"), true);
   assert.equal(await evaluate("document.getElementById('phase1-help').textContent.includes('Submission form coming shortly')"), true);
   await publicScreenshot('docs/assets/dashboard_preview.png');
   await evaluate("document.querySelector('.map-panel').scrollIntoView({block:'start'})");
   await screenshot('map-desktop');
   await evaluate("window.scrollTo(0,0)");
-  await screenshot('foodpath-home', false);
+  await screenshot('food-safety-module', false);
   assert.equal(await evaluate("document.querySelectorAll('.basemap-outline').length"), 0);
   assert.equal(await evaluate("document.querySelectorAll('#chart-map button').length > 0"), true);
-  assert.equal(await evaluate("document.getElementById('google-map-status').textContent.includes('not configured')"), true);
+  await waitFor("document.getElementById('google-map-status').textContent !== 'The area summary below works without Google Maps.'");
+  assert.equal(await evaluate("/not configured|only on request/.test(document.getElementById('google-map-status').textContent)"), true);
   assert.equal(await evaluate("document.getElementById('evidence-register').open"), false);
   await evaluate("document.querySelector('a[href$=\"#evidence\"]').click()");
   assert.equal(await evaluate("document.getElementById('evidence-register').open"), true);
@@ -179,7 +202,7 @@ try {
   await waitFor("document.documentElement.tagName === 'svg'");
   await publicScreenshot('site/assets/social-preview.png');
   await command('Emulation.setDeviceMetricsOverride', { width: 1440, height: 1000, deviceScaleFactor: 1, mobile: false });
-  await command('Page.navigate', { url: 'http://127.0.0.1:8000/' });
+  await command('Page.navigate', { url: 'http://127.0.0.1:8000/?module=safety' });
   await waitFor(`document.getElementById('metric-events')?.textContent === '${original.record_count}'`);
   assert.equal(await evaluate("document.getElementById('empty-evidence').hidden"), original.record_count > 0);
   assert.equal(await evaluate("document.querySelector('.status-strip').textContent.includes('Inclusion is not a finding of wrongdoing')"), true);
@@ -219,6 +242,7 @@ try {
   assert.equal(await evaluate("document.getElementById('record-detail').textContent.includes('Inclusion is not a finding of wrongdoing')"), true);
   await evaluate("document.getElementById('back-to-tracker').click()");
   await waitFor("document.getElementById('dashboard-view')?.hidden === false && document.querySelector('.record-link') !== null");
+  assert.equal(await evaluate("document.body.classList.contains('safety-route')"), true);
   assert.equal(await evaluate("document.getElementById('record-detail').hidden"), true);
   assert.deepEqual(runtimeErrors, []);
   assert.equal(JSON.parse(readFileSync(resolve(root, 'data/events.json'), 'utf8')).record_count, original.record_count);

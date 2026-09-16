@@ -22,6 +22,13 @@ test('search English Bengali areas case and whitespace locally', () => {
   assert.equal(searchPandals(index, 'unlisted').length, 0);
   assert.equal(normalize(' A   B '), 'a b');
 });
+test('published pandal catalog extends search without changing Places associations', () => {
+  const catalog = { records: [{ pandal_id: 'bagbazar', name: 'Bagbazar Sarbojanin', name_bn: 'বাগবাজার সর্বজনীন', aliases: ['Baghbazar'], area: 'Bagbazar', neighborhood: 'North Kolkata', city: 'Kolkata', featured: true }] };
+  const parsed = parsePlaces(fixture(), catalog);
+  assert.equal(searchPandals(parsed.index, 'baghbazar').length, 1);
+  assert.equal(searchPandals(parsed.index, 'north kolkata').length, 1);
+  assert.equal(parsed.groups.get('bagbazar').length, 1);
+});
 test('thousands of pandals do not become thousands of cards or options', () => {
   const data = fixture();
   data.pandals = Array.from({ length: 5000 }, (_, i) => ({ ...data.pandals[0], pandal_id: `p${i}`, name: `Pandal ${i}` }));
@@ -74,6 +81,7 @@ test('map plots only eligible area anchors and curated pandals, no restaurant la
   assert.equal(areaMarkers([row, row])[0].count, 2);
   assert.equal(areaMarkers([{ ...row, derived_context: { ...row.derived_context, location_precision: 'district' } }]).length, 0);
   assert.equal(pandalMarkers(fixture().pandals).length, 0);
+  assert.equal(pandalMarkers([{ pandal_id: 'verified', name: 'Verified', latitude: 22.6, longitude: 88.36, coordinate_source: 'https://example.org/source' }]).length, 1);
   assert.equal(safeMarkers([{ kind: 'restaurant', id: 'x', label: 'x', lat: 22, lng: 88 }]).length, 0);
 });
 test('map document has isolated CSP and parent keeps self-only scripts', () => {
@@ -81,6 +89,8 @@ test('map document has isolated CSP and parent keeps self-only scripts', () => {
   assert.match(readFileSync('site/google-map.html', 'utf8'), /https:\/\/maps.googleapis.com/);
   assert.doesNotMatch(readFileSync('site/google-map.html', 'utf8'), /script-src[^;]*'unsafe-inline'/);
   assert.match(readFileSync('site/_headers', 'utf8'), /\/google-map.html\n  ! Content-Security-Policy/);
+  const map = readFileSync('site/google-map.html', 'utf8');
+  assert.match(map, /id="pandals-layer" checked/); assert.doesNotMatch(map, /id="areas-layer" checked/);
   assert.match(readFileSync('.env.example', 'utf8'), /^GOOGLE_MAPS_BROWSER_KEY=$/m);
   assert.match(readFileSync('.gitignore', 'utf8'), /^site\/maps-config.json$/m);
 });
@@ -105,7 +115,7 @@ test('mock map renders distinct layers and safe selectable information without G
   const doc = { createElement: node, head: node(), getElementById(id) { if (!elements.has(id)) elements.set(id, node()); return elements.get(id); } };
   const parent = { postMessage: m => messages.push(m) };
   const win = { parent, location: { origin: 'https://example.org' }, addEventListener: (e, cb) => { listeners[e] = cb; }, google: { maps: {
-    Map: class { constructor() { this.data = { forEach() {}, remove() {}, addGeoJson(f) { features = f.features; }, setStyle(s) { style = s; }, addListener(e, cb) { click = cb; } }; } fitBounds() {} },
+    Map: class { constructor() { this.data = { forEach() {}, remove() {}, addGeoJson(f) { features = f.features; }, setStyle(s) { style = s; }, addListener(e, cb) { click = cb; } }; } fitBounds() {} setCenter() {} setZoom() {} },
     LatLngBounds: class { extend() {} }, SymbolPath: { CIRCLE: 'circle' },
     InfoWindow: class { setContent(c) { info = c; } setPosition() {} open() {} },
   } } };

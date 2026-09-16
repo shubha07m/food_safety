@@ -356,6 +356,60 @@ html[lang=bn] h1, html[lang=bn] h2, html[lang=bn] h3 { font-family: 'Bangla Sang
 html[lang=bn] .eyebrow, html[lang=bn] .status-strip { letter-spacing: normal; }
 @media (max-width: 640px) { .masthead { flex-wrap: wrap; } .language-toggle { margin-top: .5rem; } .map-key { font-size: .85rem; } }
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition: none !important; } }
+
+/* Sharodiya landing: warm discovery and cool evidence remain clearly separate. */
+:root { --vermilion:#a94835; --vermilion-dark:#763326; --gold:#c08a2d; --festival-cream:#f7e9c7; --night-green:#123a31; }
+.puja-route { background:linear-gradient(#f8f2e6 0 760px,var(--paper) 1180px); }
+.puja-route .status-strip { background:var(--night-green); }
+.puja-route .masthead { border-bottom-color:#987b55; }
+.puja-route .masthead nav a:first-child { color:var(--vermilion-dark); font-weight:800; }
+.puja-hero { min-height:610px; display:grid; grid-template-columns:1.08fr .92fr; gap:50px; align-items:center; padding:65px 0 55px; position:relative; }
+.puja-hero::before { content:""; position:absolute; inset:22px 0; pointer-events:none; border-block:1px solid #c08a2d55; background:repeating-linear-gradient(90deg,transparent 0 29px,#a9483514 30px 31px,transparent 32px 60px); mask:linear-gradient(black 0 8px,transparent 8px calc(100% - 8px),black calc(100% - 8px)); }
+.puja-hero-copy { position:relative; z-index:1; }
+.puja-hero h1 { font-size:clamp(68px,8vw,116px); line-height:.78; letter-spacing:-5px; margin:22px 0 34px; color:var(--night-green); }
+.puja-hero h1 span { color:var(--vermilion); font-style:italic; }
+.puja-hero .brand-tagline { font:clamp(27px,3vw,42px)/1.22 var(--serif); color:var(--night-green); }
+.puja-hero .dek { max-width:630px; }
+.puja-hero-art { position:relative; align-self:stretch; display:grid; align-content:center; padding:18px; }
+.puja-hero-art::before { content:""; position:absolute; inset:9% 4%; border-radius:50% 50% 46% 54%; background:#efdcae80; filter:blur(1px); }
+.puja-hero-art img { position:relative; width:100%; max-height:470px; animation:festival-breathe 7s ease-in-out infinite; }
+.puja-hero-art p { position:relative; margin:-25px auto 0; padding:14px 20px; max-width:360px; text-align:center; background:#fffaf0e8; border:1px solid #c49b58; border-radius:40px; font-size:12px; }
+.puja-hero-art strong { color:var(--vermilion-dark); font-size:15px; }
+@keyframes festival-breathe { 50% { transform:translateY(-7px) rotate(.35deg); } }
+.puja-section { border-top:6px solid var(--vermilion); box-shadow:0 22px 60px #5c35120d; background:#fffaf0; }
+.puja-search-wrap { max-width:none; padding:26px; background:var(--night-green); border-radius:14px; color:white; }
+.puja-search-wrap label { font:25px/1.2 var(--serif); }
+#pandal-search { background:#fffdf7; border-color:var(--gold); font-size:20px; min-height:64px; }
+#pandal-search-status { color:#e8e3d5; margin-bottom:0; }
+.featured-pandals .pandal-card { position:relative; overflow:hidden; background:#fffdf8; border-color:#d6b982; transition:transform .2s ease,box-shadow .2s ease; }
+.featured-pandals .pandal-card::after { content:"✦"; position:absolute; right:17px; top:10px; color:#c08a2d66; font-size:34px; }
+.featured-pandals .pandal-card:hover { transform:translateY(-3px); box-shadow:0 12px 25px #50310d14; }
+.selected-pandal { background:#fffaf0; border-left-color:var(--vermilion); box-shadow:0 16px 35px #45320f12; animation:selected-reveal .3s ease-out; }
+@keyframes selected-reveal { from { opacity:0; transform:translateY(8px); } }
+.food-safety-teaser { display:grid; grid-template-columns:.9fr 1.1fr; gap:50px; align-items:center; margin:55px 0; padding:35px 40px; border-radius:16px; border:1px solid #b5c9c3; border-top:5px solid var(--blue); background:#edf4f2; }
+.food-safety-teaser h2 { font:35px/1.15 var(--serif); margin:5px 0; }
+.food-safety-teaser strong { font:25px var(--serif); color:var(--blue); }
+.button.research { background:var(--blue); color:white; }
+.safety-route { background:#f3f6f4; }
+.safety-route .masthead nav a:nth-child(2) { color:var(--blue); font-weight:800; }
+.safety-hero { margin:48px 0 28px; padding:55px; border-radius:18px; background:#e5efec; border-left:7px solid var(--blue); }
+.safety-hero h1 { margin:13px 0; color:#244b55; }
+.safety-route .metrics > div { border-top-color:var(--blue); }
+[hidden] { display:none !important; }
+@media(max-width:800px) {
+  .puja-hero { grid-template-columns:1fr; min-height:auto; padding-top:42px; gap:0; }
+  .puja-hero h1 { letter-spacing:-3px; }
+  .puja-hero-art { max-width:500px; margin:auto; }
+  .food-safety-teaser { grid-template-columns:1fr; gap:15px; padding:27px 22px; }
+}
+@media(max-width:520px) {
+  .puja-route .masthead nav { display:grid; grid-template-columns:1fr 1fr; }
+  .puja-hero h1 { font-size:60px; }
+  .puja-hero .brand-tagline { font-size:26px; }
+  .puja-hero-art img { max-height:310px; }
+  .puja-search-wrap { padding:20px 15px; }
+  .safety-hero { padding:34px 22px; }
+}
 :root { --source-warning: #795619; }
 .phase1-panel { margin-block: 2rem; padding: 1.5rem; background: #edf3ee; border: 1px solid #c9d8ce; border-radius: 12px; }
 .phase1-panel details { margin-block: 1rem; }

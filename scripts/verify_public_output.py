@@ -17,6 +17,7 @@ REQUIRED = [
     "data/events.json",
     "data/events.csv",
     "data/events.csv.metadata.json",
+    "data/pandals.json",
     "_headers",
 ]
 FORBIDDEN = [".env", "data/pending.json", "data/rejected.json", "data/history", "data/runs"]
@@ -56,6 +57,7 @@ def main() -> None:
         "lifecycle.json",
         "compliance.json",
         "places.json",
+        "pandals.json",
     }
     places = SITE / "data/places.json"
     if places.exists():
@@ -64,6 +66,13 @@ def main() -> None:
         PublicData.model_validate_json(places.read_text())
         if json.loads(places.read_text()) != json.loads((ROOT / "data/places.json").read_text()):
             present.append("public and durable Places datasets differ")
+    pandals = SITE / "data/pandals.json"
+    if pandals.exists():
+        from food_safety.puja.models import PublicData as PublicPandalData
+
+        PublicPandalData.model_validate_json(pandals.read_text())
+        if json.loads(pandals.read_text()) != json.loads((ROOT / "data/pandals.json").read_text()):
+            present.append("public and durable pandal datasets differ")
     for path in SITE.rglob("*"):
         if path.is_symlink():
             present.append("symlink in public output")
