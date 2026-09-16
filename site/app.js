@@ -8,6 +8,8 @@ import { phase1, sourceWarning, copy as phaseCopy } from './phase1.mjs';
 import { applyRoute, safetyRoute } from './routes.mjs';
 
 translateStatic();
+const pujaHero = document.getElementById('puja-hero-image');
+if (pujaHero) pujaHero.addEventListener('error', () => pujaHero.closest('.puja-hero-art')?.classList.add('image-unavailable'));
 const isRecordRoute = applyRoute(document, location.search);
 const isSafetyRoute = safetyRoute(location.search);
 if (isSafetyRoute) {
@@ -18,7 +20,7 @@ if (isSafetyRoute) {
 if (!isRecordRoute) {
   if (!isSafetyRoute) {
     const panel = document.querySelector('.map-panel');
-    panel.querySelector('.panel-heading h3').textContent = language === 'bn' ? 'পুজোর মানচিত্র · কলকাতা ও হাওড়া' : 'Puja map · Kolkata & Howrah';
+    panel.querySelector('.panel-heading h3').textContent = language === 'bn' ? 'পুজোর ভৌগোলিক মানচিত্র' : 'Explore Puja geography';
     document.getElementById('geography').append(panel);
   }
   initPuja(setMapPandals);

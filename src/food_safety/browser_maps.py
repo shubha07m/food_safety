@@ -30,4 +30,9 @@ def browser_config(root):
 
 
 def build_browser_config(root):
+    """Write the intentionally public, browser-restricted Maps credential.
+
+    The file is a deployable client artifact, not a server secret. GitHub Actions
+    supplies it from GOOGLE_MAPS_BROWSER_KEY; it must never use the Places key.
+    """
     dump(root / "site/maps-config.json", browser_config(root))

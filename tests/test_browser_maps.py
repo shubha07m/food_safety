@@ -15,7 +15,7 @@ def test_browser_key_absent_does_not_fall_back_to_places_key(tmp_path, monkeypat
     assert json.loads((tmp_path / "site/maps-config.json").read_text()) == {"browser_key": ""}
 
 
-def test_ignored_config_is_deterministic_and_explicit(tmp_path, monkeypatch):
+def test_deployable_config_is_deterministic_and_explicit(tmp_path, monkeypatch):
     key = "AIza" + "a" * 35  # Synthetic, never a real credential.
     monkeypatch.setenv("GOOGLE_MAPS_BROWSER_KEY", key)
     build_browser_config(tmp_path)
@@ -23,7 +23,18 @@ def test_ignored_config_is_deterministic_and_explicit(tmp_path, monkeypatch):
     build_browser_config(tmp_path)
     assert (tmp_path / "site/maps-config.json").read_bytes() == first
     assert json.loads(first) == {"browser_key": key}
-    assert "site/maps-config.json" in (ROOT / ".gitignore").read_text()
+    assert "site/maps-config.json" not in (ROOT / ".gitignore").read_text()
+    assert json.loads((ROOT / "site/maps-config.json").read_text()) == {"browser_key": ""}
+
+
+def test_production_build_uses_environment_without_dotenv(tmp_path, monkeypatch):
+    key = "AIza" + "p" * 35
+    monkeypatch.setenv("GOOGLE_MAPS_BROWSER_KEY", key)
+    assert not (tmp_path / ".env").exists()
+    build_browser_config(tmp_path)
+    assert json.loads((tmp_path / "site/maps-config.json").read_text()) == {
+        "browser_key": key
+    }
 
 
 @pytest.mark.parametrize("server", ["GOOGLE_MAPS_API_KEY", "GEMINI_API_KEY"])

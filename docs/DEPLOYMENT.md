@@ -10,7 +10,7 @@ The project does not store Cloudflare credentials, account IDs, domain verificat
 
 ## Build and deploy
 
-`site/` is a versioned, prevalidated static artifact. Cloudflare needs no Python build to serve it. Set the Workers Builds deployment command to `npx wrangler deploy` (Cloudflare-managed environment); the local `wrangler.jsonc` specifies `site/`. Do not install global tooling or expose any tokens in the frontend. The existing custom-domain association remains in the Cloudflare dashboard.
+`site/` is a versioned, prevalidated static artifact. Cloudflare needs no Python build to serve it. Set the Workers Builds deployment command to `npx wrangler deploy` (Cloudflare-managed environment); the local `wrangler.jsonc` specifies `site/`. Do not install global tooling or expose server tokens in the frontend. The existing custom-domain association remains in the Cloudflare dashboard. The intentionally public, browser-restricted Maps key is generated into `site/maps-config.json` by GitHub Actions; the private Places key is never used there.
 
 GitHub CI checks code, data, tests and public output. The scheduled refresh runs every two hours and commits only validated public artifacts. Cloudflare Git integration observes changes to `main`. Its deployment status should be checked in the Cloudflare dashboard after any push; a successful GitHub push alone is not proof of deployment.
 
@@ -18,7 +18,7 @@ GitHub CI checks code, data, tests and public output. The scheduled refresh runs
 
 Run `python scripts/verify_public_output.py` before committing artifacts. On the live URL, verify HTTPS, CSP, `frame-ancestors 'none'`, HSTS, `X-Content-Type-Options`, referrer and permissions policies with `python scripts/check_deployment.py`. That bounded check does not log cookies or credentials.
 
-Cloudflare Workers static assets apply `site/_headers`. Domain-level security settings must not loosen them. Check English and `?lang=bn`, a record URL, data exports, correction links and the local map. No external map/font/translation request is needed.
+Cloudflare Workers static assets apply `site/_headers`. Domain-level security settings must not loosen them. Check English and `?lang=bn`, a record URL, data exports, correction links and the keyless map fallback. A deliberate live-map smoke contacts Google Maps; ordinary page load, fonts and translation remain local.
 
 Rollback using Cloudflare deployment history to a previously validated version, then revert the corresponding generated-data commit if necessary. Do not force-push history as a routine rollback. Pause the refresh workflow during an accuracy incident and suspend disputed records using the documented CLI.
 

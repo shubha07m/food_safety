@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { parsePlaces, searchPandals, featuredPandals, nextOption, mapsURL, normalize } from '../site/puja.mjs';
-import { areaMarkers, pandalMarkers } from '../site/map-host.mjs';
+import { areaMarkers, browserMapKey, pandalMarkers } from '../site/map-host.mjs';
 import { scriptURL, safeMarkers, boot } from '../site/google-map.mjs';
 import { text } from '../site/foodpath-copy.mjs';
 
@@ -76,6 +76,12 @@ test('Maps loader requests JavaScript only, not Places, and stays browser-only',
   assert.ok(host.indexOf("button.addEventListener('click'") < host.indexOf("document.createElement('iframe')"));
   assert.doesNotMatch(host, /GOOGLE_MAPS_API_KEY|searchNearby|placeDetails/);
 });
+test('browser map config enables only a valid public browser key and fails safely', async () => {
+  const key = 'AIza' + 'a'.repeat(35);
+  assert.equal(await browserMapKey(async () => ({ ok: true, json: async () => ({ browser_key: key }) })), key);
+  assert.equal(await browserMapKey(async () => ({ ok: false })), '');
+  assert.equal(await browserMapKey(async () => ({ ok: true, json: async () => ({ browser_key: 'server-key' }) })), '');
+});
 test('map plots only eligible area anchors and curated pandals, no restaurant layer', () => {
   const row = { reported_fact: { area: 'Area' }, derived_context: { location_reviewed: true, location_precision: 'neighborhood', latitude: 22.6, longitude: 88.36, location_source: 'https://www.openstreetmap.org/' } };
   assert.equal(areaMarkers([row, row])[0].count, 2);
@@ -92,7 +98,8 @@ test('map document has isolated CSP and parent keeps self-only scripts', () => {
   const map = readFileSync('site/google-map.html', 'utf8');
   assert.match(map, /id="pandals-layer" checked/); assert.doesNotMatch(map, /id="areas-layer" checked/);
   assert.match(readFileSync('.env.example', 'utf8'), /^GOOGLE_MAPS_BROWSER_KEY=$/m);
-  assert.match(readFileSync('.gitignore', 'utf8'), /^site\/maps-config.json$/m);
+  assert.doesNotMatch(readFileSync('.gitignore', 'utf8'), /^site\/maps-config.json$/m);
+  assert.deepEqual(JSON.parse(readFileSync('site/maps-config.json', 'utf8')), { browser_key: '' });
 });
 test('Bengali new UI translations exist without translating evidence', () => {
   for (const key of ['Puja FoodPath', 'Search for a Puja pandal', 'Restaurant on Google Maps', 'Food Safety Evidence', 'Load Google map']) assert.match(text(key, 'bn'), /[\u0980-\u09ff]/);
