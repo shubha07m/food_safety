@@ -11,6 +11,9 @@ def test_refresh_is_two_hour_bounded_and_release_push_skips_discovery():
     )
     assert workflow["name"] == "Refresh Food Safety Data"
     assert set(workflow["on"]) == {"workflow_dispatch", "schedule", "push"}
+    release_only = workflow["on"]["workflow_dispatch"]["inputs"]["release_only"]
+    assert release_only["type"] == "boolean"
+    assert release_only["default"] == "false"
     assert workflow["on"]["schedule"][0]["cron"] == "17 */2 * * *"
     assert workflow["on"]["push"]["branches"] == ["main"]
     job = workflow["jobs"]["candidates"]
@@ -28,7 +31,9 @@ def test_refresh_is_two_hour_bounded_and_release_push_skips_discovery():
     assert "git add ." not in steps
     assert "upload-artifact" not in str(workflow)
     scans = [step for step in job["steps"] if step.get("name", "").startswith("Limited source")]
-    assert scans[0]["if"] == "github.event_name != 'push'"
+    assert scans[0]["if"] == "github.event_name != 'push' && inputs.release_only != true"
+    puja = [step for step in job["steps"] if step.get("name", "").startswith("Due-only")]
+    assert puja[0]["if"] == "github.event_name != 'push' && inputs.release_only != true"
     assert "maps-config.json" in steps or "git add" in steps
     assert "test -e data/puja_refresh.json" in steps
 

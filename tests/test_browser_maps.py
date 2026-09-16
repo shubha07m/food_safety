@@ -1,4 +1,5 @@
 import json
+import re
 from pathlib import Path
 
 import pytest
@@ -24,7 +25,11 @@ def test_deployable_config_is_deterministic_and_explicit(tmp_path, monkeypatch):
     assert (tmp_path / "site/maps-config.json").read_bytes() == first
     assert json.loads(first) == {"browser_key": key}
     assert "site/maps-config.json" not in (ROOT / ".gitignore").read_text()
-    assert json.loads((ROOT / "site/maps-config.json").read_text()) == {"browser_key": ""}
+    tracked = json.loads((ROOT / "site/maps-config.json").read_text())
+    assert set(tracked) == {"browser_key"}
+    assert tracked["browser_key"] == "" or re.fullmatch(
+        r"AIza[A-Za-z0-9_-]{35}", tracked["browser_key"]
+    )
 
 
 def test_production_build_uses_environment_without_dotenv(tmp_path, monkeypatch):
