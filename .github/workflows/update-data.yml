@@ -1,6 +1,12 @@
 name: Refresh Food Safety Data
 on:
   workflow_dispatch:
+    inputs:
+      release_only:
+        description: 'Build and publish static output without source or Gemini research'
+        required: false
+        type: boolean
+        default: false
   schedule:
     - cron: '17 */2 * * *'
   push:
@@ -40,7 +46,7 @@ jobs:
           python -m pip install -r requirements-dev.lock
           python -m pip install --no-deps --no-build-isolation -e .
       - name: Limited source scan and validated LLM extraction
-        if: github.event_name != 'push'
+        if: github.event_name != 'push' && inputs.release_only != true
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
         run: |
@@ -49,7 +55,7 @@ jobs:
           # Partial source failure (2) retains validated suspensions; fatal (1) stops.
           test "$result" -eq 0 -o "$result" -eq 2
       - name: Due-only Puja source research (four runs per day)
-        if: github.event_name != 'push'
+        if: github.event_name != 'push' && inputs.release_only != true
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
         run: python -m food_safety.cli puja refresh

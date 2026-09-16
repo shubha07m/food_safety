@@ -99,7 +99,10 @@ test('map document has isolated CSP and parent keeps self-only scripts', () => {
   assert.match(map, /id="pandals-layer" checked/); assert.doesNotMatch(map, /id="areas-layer" checked/);
   assert.match(readFileSync('.env.example', 'utf8'), /^GOOGLE_MAPS_BROWSER_KEY=$/m);
   assert.doesNotMatch(readFileSync('.gitignore', 'utf8'), /^site\/maps-config.json$/m);
-  assert.deepEqual(JSON.parse(readFileSync('site/maps-config.json', 'utf8')), { browser_key: '' });
+  const config = JSON.parse(readFileSync('site/maps-config.json', 'utf8'));
+  assert.deepEqual(Object.keys(config), ['browser_key']);
+  assert.equal(typeof config.browser_key, 'string');
+  assert.ok(config.browser_key === '' || /^AIza[A-Za-z0-9_-]{35}$/.test(config.browser_key));
 });
 test('Bengali new UI translations exist without translating evidence', () => {
   for (const key of ['Puja FoodPath', 'Search for a Puja pandal', 'Restaurant on Google Maps', 'Food Safety Evidence', 'Load Google map']) assert.match(text(key, 'bn'), /[\u0980-\u09ff]/);
