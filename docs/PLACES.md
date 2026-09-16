@@ -173,6 +173,13 @@ server endpoint, per-visitor API call, or new background infrastructure in this 
 
 Official references (reviewed 2026-09-15):
 
+Restaurant quality filtering (ratings or review-count thresholds) is deferred.
+It would change the requested field mask and potentially the SKU/cost. The
+current list contains nearby restaurant links, not ranked recommendations.
+The operator response uses Google's returned order; durable records are
+deduplicated and serialized deterministically, so the public link list does
+not claim to reproduce a Google ranking.
+
 - [Nearby Search New](https://developers.google.com/maps/documentation/places/web-service/nearby-search)
 - [Places policies and attribution](https://developers.google.com/maps/documentation/places/web-service/policies)
 - [Service-specific terms §14: IDs and temporary coordinates](https://cloud.google.com/maps-platform/terms/maps-service-terms)

@@ -1,10 +1,11 @@
 # FoodPath homepage and optional browser map
 
 The umbrella homepage separates Food Safety Evidence from search-first Puja FoodPath.
-Pandal search uses `site/data/places.json` locally, with eight autocomplete options at
+Pandal search uses `site/data/pandals.json` and `site/data/places.json`, with eight options at
 most, English/Bengali names and area matching. `FEATURED_IDS` in `site/puja.mjs` is an
 explicit editorial list capped at six. Disabled pandals are not published by the Places
-pipeline. The current starter collection is deliberately small.
+pipeline. The source-backed catalog includes search-only entries without coordinates;
+these never become guessed map markers.
 
 Selected-pandal links use independently curated names or the neutral label “Restaurant
 on Google Maps.” Associations are historical discoveries, not a current proximity
@@ -42,9 +43,41 @@ Places or Gemini key. No real credential belongs in Git, including browser keys.
    python -m http.server 8000 --bind 127.0.0.1 --directory site
    ```
 
-6. Open `http://127.0.0.1:8000/`, scroll to geography and select **Load Google map**.
+6. Open `http://127.0.0.1:8000/`, scroll to geography and select **Open live Google map**.
    Confirm authorization, both layer toggles, source-marker filtering, and attribution.
    Missing/invalid authorization leaves the textual area list usable.
+
+## Cost controls (documentation checked 2026-09-16)
+
+Dynamic Maps and Places Nearby Search are separate billing paths. Normal visits
+load local data only: zero map loads and zero Places requests. A fresh page requires
+an explicit **Open live Google map** action. No preference auto-loads it on return.
+Double-clicks and repeated initialization reuse one loader and one map. Layers,
+selection, pan and zoom reuse that instance without Nearby Search. A failed load
+stops without automatic retries. Frontend state prevents accidental duplicates;
+it is not an abuse/security boundary or a monthly spending limit.
+
+The operator Places ledger retains its 3,000-attempt monthly hard cap. Maps
+JavaScript has no equivalent application monthly ledger. No Google tiles or
+rendered map imagery are cached or captured for offline reuse by the product.
+
+Google documents editable map-load quotas. In **Google Maps Platform → Quotas**,
+select **Maps JavaScript API**, select the project-level **map loads per minute**
+quota, choose **Edit**, and request **10 per minute** (or 5 for a small pilot).
+Confirm the console accepts the lower value for your project; we cannot verify
+your account's editable quota or approval result. Do not substitute a Places
+quota. If unavailable, use the Console's quota support/request flow.
+
+A QPM limit mitigates bursts but sustained usage can accumulate throughout the
+month. Billing alerts notify; they do not cap spending. Review usage, current
+SKU pricing, website/API restrictions, and quota settings periodically.
+
+- [Official map quotas and edit steps](https://developers.google.com/maps/documentation/javascript/usage-and-billing)
+- [Google cost controls and budget alerts](https://developers.google.com/maps/billing-and-pricing/manage-costs)
+
+Festival-data refresh is separate: the existing Actions workflow checks a
+persisted due-time guard (default six hours, maximum ten research runs/day).
+It rebuilds our catalog without loading maps or running Places discovery.
 
 The build creates **ignored** `site/maps-config.json`. It is an intended public browser
 configuration, not a secret endpoint. Only the exact schema/value matching the configured
@@ -59,8 +92,8 @@ deployment must run the static build with `GOOGLE_MAPS_BROWSER_KEY` available be
 uploading `site/` for a keyed map. If it only uploads tracked files, it will safely show
 the no-key fallback until the owner supplies that build-time environment/input. No
 Worker code, Cloudflare account setting, domain, deployment workflow, or production
-secret was changed here. Do not add this key to a bot commit. This task performs no live
-map loads; a restricted browser key can be checked separately.
+secret was changed here. Do not add this key to a bot commit. Browser smoke can test one
+explicit live load with the restricted local browser key; that mode captures no imagery.
 
 ## Runtime and security boundaries
 

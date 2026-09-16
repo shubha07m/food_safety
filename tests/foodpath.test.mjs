@@ -103,11 +103,14 @@ test('mock Maps boot filters origins and loads once without network', () => {
   const win = { parent, location: { origin: 'https://example.org' }, addEventListener: (event, cb) => { listeners[event] = cb; } };
   const doc = { createElement: () => ({}), head: { append: script => scripts.push(script) }, getElementById: () => ({}) };
   boot(win, doc); assert.equal(messages[0].type, 'foodpath-map-ready');
+  boot(win, doc); assert.equal(messages.length, 1);
   const message = { type: 'foodpath-map-data', key: 'AIza' + 'b'.repeat(35), language: 'en', markers: [] };
   listeners.message({ origin: 'https://attacker.invalid', source: parent, data: message }); assert.equal(scripts.length, 0);
   listeners.message({ origin: win.location.origin, source: parent, data: message });
   listeners.message({ origin: win.location.origin, source: parent, data: message }); assert.equal(scripts.length, 1);
   scripts[0].onerror(); assert.equal(messages.at(-1).type, 'foodpath-map-error');
+  listeners.message({ origin: win.location.origin, source: parent, data: message });
+  assert.equal(scripts.length, 1);
 });
 test('mock map renders distinct layers and safe selectable information without Google traffic', () => {
   const messages = []; const listeners = {}; const elements = new Map(); let features; let style; let click; let info;

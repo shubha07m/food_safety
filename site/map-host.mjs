@@ -17,14 +17,14 @@ export function pandalMarkers(pandals) {
     && Math.abs(p.latitude) <= 90 && Math.abs(p.longitude) <= 180 && p.coordinate_source)
     .map(p => ({ id: `pandal-${p.pandal_id}`, kind: 'pandal', label: p.name, lat: p.latitude, lng: p.longitude, count: 0 }));
 }
-let areas = []; let pandals = []; let frame = null; let key = ''; let chooseArea = () => {}; let started = false;
+let areas = []; let pandals = []; let frame = null; let key = ''; let chooseArea = () => {}; let started = false; let initialized = false;
 const send = () => { if (frame) frame.contentWindow.postMessage({ type: 'foodpath-map-data', key, language, markers: [...areas, ...pandals] }, location.origin); };
 let mapped = 0; let totalRows = 0;
 function coverage() {
   const node = document.getElementById('map-coverage');
   if (document.body.classList.contains('puja-route')) node.textContent = language === 'bn'
-    ? `${pandals.length}টি উৎসসমর্থিত মণ্ডপ। খাদ্য সুরক্ষার এলাকার স্তরটি ঐচ্ছিক।`
-    : `${pandals.length} source-backed pandals. The food-safety area layer is optional context.`;
+    ? `${pandals.length}টি মণ্ডপের অবস্থান স্বতন্ত্র উৎসে যাচাই করা। আরও উৎসসমর্থিত মণ্ডপ খুঁজতে সার্চ ব্যবহার করুন।`
+    : `${pandals.length} independently located pandals on the map. More source-backed listings are available through search.`;
   else node.textContent = language === 'bn'
     ? `${totalRows}টি নথির মধ্যে ${mapped}টির ভৌগোলিক তথ্য দেখানো হয়েছে; ${totalRows - mapped}টি বাদ।`
     : `Geographic coverage: ${mapped} of ${totalRows} records; ${totalRows - mapped} omitted for insufficient precision.`;
@@ -43,9 +43,12 @@ export function renderAreaSummary(rows, activate) {
   send();
 }
 export async function initMapHost() {
+  if (initialized) return;
+  initialized = true;
   const button = document.getElementById('load-google-map');
   const status = document.getElementById('google-map-status');
-  const fail = () => { status.textContent = text('Google map could not load. The area list is still available.'); document.getElementById('map-fallback').hidden = false; if (frame) frame.hidden = true; };
+  let failed = false;
+  const fail = () => { if (failed) return; failed = true; status.textContent = text('Google map could not load. The area list is still available.'); document.getElementById('map-fallback').hidden = false; if (frame) { frame.remove(); frame = null; } };
   try {
     const response = await fetch('maps-config.json', { credentials: 'omit', cache: 'no-store' });
     if (!response.ok) throw Error('No config');
@@ -66,6 +69,10 @@ export async function initMapHost() {
       const pandal = pandals.find(m => m.id === event.data.id);
       if (pandal) document.dispatchEvent(new CustomEvent('foodpath-select-pandal', { detail: pandal.id.slice(7) }));
     }
+  });
+  document.addEventListener('foodpath-focus-pandal', event => {
+    const marker = pandals.find(p => p.id === `pandal-${event.detail}`);
+    if (frame && marker) frame.contentWindow.postMessage({ type: 'foodpath-map-focus', id: marker.id }, location.origin);
   });
   button.addEventListener('click', () => {
     if (started || !key) return; started = true; button.disabled = true;

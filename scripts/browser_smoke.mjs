@@ -25,6 +25,7 @@ let socket;
 let nextId = 0;
 const requests = new Map();
 const runtimeErrors = [];
+let mapScriptLoads = 0; let placesRequests = 0;
 let intercept = false;
 const original = JSON.parse(readFileSync(resolve(root, 'site/data/events.json'), 'utf8'));
 const at = '2026-01-03T00:00:00Z';
@@ -77,11 +78,12 @@ async function waitFor(expression) {
   throw new Error(`Condition not reached: ${expression}; errors: ${JSON.stringify(runtimeErrors)}`);
 }
 async function screenshot(name, full = true) {
+  if (process.env.FOOD_LIVE_MAP_SMOKE === '1') return; // Never capture Google map imagery.
   const result = await command('Page.captureScreenshot', { format: 'png', captureBeyondViewport: full });
   writeFileSync(resolve(cache, name + '.png'), Buffer.from(result.data, 'base64'));
 }
 async function publicScreenshot(path) {
-  if (process.env.FOOD_UPDATE_PREVIEWS !== '1') return;
+  if (process.env.FOOD_UPDATE_PREVIEWS !== '1' || process.env.FOOD_LIVE_MAP_SMOKE === '1') return;
   const result = await command('Page.captureScreenshot', { format: 'png', captureBeyondViewport: false });
   writeFileSync(resolve(root, path), Buffer.from(result.data, 'base64'));
 }
@@ -95,6 +97,11 @@ try {
   await new Promise((done, reject) => { socket.onopen = done; socket.onerror = reject; });
   socket.onmessage = async ({ data }) => {
     const message = JSON.parse(data);
+    if (message.method === 'Network.requestWillBeSent') {
+      const url = new URL(message.params.request.url);
+      if (url.hostname === 'maps.googleapis.com' && url.pathname === '/maps/api/js') mapScriptLoads++;
+      if (url.hostname === 'places.googleapis.com' || /searchNearby|place\/nearbysearch/.test(url.pathname)) placesRequests++;
+    }
     if (message.id) {
       const pending = requests.get(message.id);
       if (!pending) return;
@@ -122,23 +129,31 @@ try {
   assert.equal(await evaluate("document.querySelector('.safety-only').hidden"), true);
   assert.equal(await evaluate("document.getElementById('headline').textContent.includes('PUJA')"), true);
   await screenshot('puja-home', false);
+  if (process.env.FOOD_UPDATE_PREVIEWS === '1') await command('Emulation.setDeviceMetricsOverride', { width: 1440, height: 1360, deviceScaleFactor: 1, mobile: false });
+  await publicScreenshot('docs/assets/puja_preview.png');
+  if (process.env.FOOD_UPDATE_PREVIEWS === '1') await command('Emulation.setDeviceMetricsOverride', { width: 1440, height: 1000, deviceScaleFactor: 1, mobile: false });
   assert.ok(await evaluate("document.querySelectorAll('#featured-pandals article').length <= 6"));
   assert.equal(await evaluate("document.querySelector('#google-map-host iframe') === null"), true);
+  assert.equal(mapScriptLoads, 0);
   if (process.env.FOOD_LIVE_MAP_SMOKE === '1') {
     await waitFor("document.getElementById('google-map-status').textContent !== 'The area summary below works without Google Maps.'");
     if (await evaluate("!document.getElementById('load-google-map').disabled")) {
-      await evaluate("document.getElementById('load-google-map').click()");
+      await evaluate("document.getElementById('load-google-map').click(); document.getElementById('load-google-map').click()");
       await waitFor("document.querySelector('#google-map-host iframe') && document.getElementById('map-fallback').hidden");
       await waitFor("document.querySelector('#google-map-host iframe').contentDocument.querySelector('.gm-style') !== null");
       await delay(1500);
       await evaluate("document.querySelector('#google-map-host iframe').scrollIntoView({block:'center'})");
       await screenshot('google-map-live', false);
+      await evaluate("const d=document.querySelector('#google-map-host iframe').contentDocument; d.getElementById('areas-layer').click(); d.getElementById('pandals-layer').click(); d.getElementById('pandals-layer').click()");
+      assert.equal(mapScriptLoads, 1);
+      assert.equal(await evaluate("document.querySelectorAll('#google-map-host iframe').length"), 1);
     }
   }
   await evaluate("document.getElementById('pandal-search').focus(); document.getElementById('pandal-search').value='bag'; document.getElementById('pandal-search').dispatchEvent(new Event('input'))");
-  assert.equal(await evaluate("document.querySelectorAll('#pandal-options [role=option]').length"), 1);
+  assert.ok(await evaluate("document.querySelectorAll('#pandal-options [role=option]').length >= 1 && document.querySelectorAll('#pandal-options [role=option]').length <= 8"));
   await evaluate("document.getElementById('pandal-search').dispatchEvent(new KeyboardEvent('keydown',{key:'ArrowDown',bubbles:true})); document.getElementById('pandal-search').dispatchEvent(new KeyboardEvent('keydown',{key:'Enter',bubbles:true}))");
   assert.equal(await evaluate("document.getElementById('selected-pandal').hidden"), false);
+  if (process.env.FOOD_LIVE_MAP_SMOKE === '1') assert.equal(mapScriptLoads, 1);
   assert.equal(await evaluate("document.getElementById('selected-pandal').textContent.includes('Current distances are unavailable')"), true);
   assert.equal(await evaluate("[...document.querySelectorAll('.restaurant-links a')].every(a => new URL(a.href).searchParams.has('query_place_id') && new URL(a.href).searchParams.has('query'))"), true);
   await delay(400);
@@ -157,6 +172,8 @@ try {
   assert.equal(await evaluate("document.getElementById('pandal-search-status').textContent.includes('No matching pandals')"), true);
   await evaluate("document.querySelector('#featured-pandals button').click()");
   assert.equal(await evaluate("document.getElementById('selected-pandal-title').textContent.includes('Bagbazar')"), true);
+  await evaluate("document.getElementById('pandal-search').value='Kashi Bose'; document.getElementById('pandal-search').dispatchEvent(new Event('input')); document.getElementById('pandal-search').dispatchEvent(new KeyboardEvent('keydown',{key:'Enter',bubbles:true}))");
+  assert.equal(await evaluate("document.getElementById('selected-pandal').textContent.includes('Map location is not yet independently verified.')"), true);
   await command('Page.navigate', { url: 'http://127.0.0.1:8000/?lang=bn#puja' });
   await waitFor("document.querySelectorAll('#featured-pandals button').length > 0");
   await evaluate("document.getElementById('pandal-search').value='বাগবাজার'; document.getElementById('pandal-search').dispatchEvent(new Event('input')); document.getElementById('pandal-search').dispatchEvent(new KeyboardEvent('keydown',{key:'Escape'}))");
@@ -171,7 +188,7 @@ try {
   assert.equal(await evaluate("document.body.classList.contains('safety-route')"), true);
   assert.equal(await evaluate("document.getElementById('puja').hidden"), true);
   assert.equal(await evaluate("document.getElementById('phase1-help').textContent.includes('Submission form coming shortly')"), true);
-  await publicScreenshot('docs/assets/dashboard_preview.png');
+  // README preview is captured from the Puja homepage above.
   await evaluate("document.querySelector('.map-panel').scrollIntoView({block:'start'})");
   await screenshot('map-desktop');
   await evaluate("window.scrollTo(0,0)");
@@ -245,6 +262,8 @@ try {
   assert.equal(await evaluate("document.body.classList.contains('safety-route')"), true);
   assert.equal(await evaluate("document.getElementById('record-detail').hidden"), true);
   assert.deepEqual(runtimeErrors, []);
+  assert.equal(placesRequests, 0);
+  console.log(`Google map script loads: ${mapScriptLoads}; visitor Places requests: ${placesRequests}`);
   assert.equal(JSON.parse(readFileSync(resolve(root, 'data/events.json'), 'utf8')).record_count, original.record_count);
   console.log('Browser smoke passed: desktop/mobile dataset state, policy pages, fixture rendering, chart/search filters, source links, XSS text handling, stable detail URL; no runtime exceptions.');
   console.log('Screenshots: .cache/browser-smoke/{zero-desktop,zero-mobile,synthetic-filter}.png');

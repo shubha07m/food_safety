@@ -11,6 +11,7 @@ class Strict(BaseModel):
 
 
 class Settings(Strict):
+    refresh_runs_per_day: int = Field(default=4, ge=1, le=10)
     max_sources_per_run: int = Field(default=5, ge=1, le=10)
     max_model_calls_per_run: int = Field(default=3, ge=0, le=5)
     max_candidates_per_source: int = Field(default=30, ge=1, le=50)
@@ -22,6 +23,8 @@ class SourceSpec(Strict):
     publisher: str = Field(min_length=1, max_length=160)
     language: Literal["en", "bn", "multilingual", "und"] = "und"
     enabled: bool = True
+    allow_missing_robots: bool = False
+    content_selector: str | None = Field(default=None, max_length=160)
 
 
 class SourceEvidence(Strict):
@@ -30,6 +33,7 @@ class SourceEvidence(Strict):
     publisher: str = Field(min_length=1, max_length=160)
     publication_date: date | None = None
     quote: str = Field(min_length=1, max_length=600)
+    source_revision_id: str | None = Field(default=None, pattern=r"^[a-f0-9]{64}$")
 
 
 class PandalRecord(Strict):
@@ -40,7 +44,8 @@ class PandalRecord(Strict):
     area: str = Field(min_length=1, max_length=160)
     neighborhood: str | None = Field(default=None, max_length=160)
     city: Literal["Kolkata", "Howrah", "Other West Bengal"]
-    district: str = Field(min_length=1, max_length=160)
+    district: str | None = Field(default=None, min_length=1, max_length=160)
+    location_precision: Literal["locality", "source_zone"] = "locality"
     latitude: Latitude | None = None
     longitude: Longitude | None = None
     coordinate_source: HttpUrl | None = None
@@ -55,6 +60,8 @@ class PandalRecord(Strict):
 
     @model_validator(mode="after")
     def provenance(self):
+        if self.name.casefold() in {"puja name", "pandal name", "name"}:
+            raise ValueError("table_header_is_not_a_pandal")
         if len({a.casefold() for a in self.aliases + [self.name]}) != len(self.aliases) + 1:
             raise ValueError("duplicate_alias")
         coordinates = (self.latitude, self.longitude)
@@ -117,6 +124,7 @@ class PublicData(Strict):
     generated_from: Literal["source_verified_curated_config"] = "source_verified_curated_config"
     record_count: int = Field(ge=0)
     records: list[PandalRecord]
+    coverage: dict = Field(default_factory=dict)
 
     @model_validator(mode="after")
     def count(self):

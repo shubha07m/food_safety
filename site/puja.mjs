@@ -73,8 +73,12 @@ export async function initPuja(onData = () => {}) {
       selected.append(el('p', text('Selected pandal'), 'eyebrow'));
       const heading = el('h3', input.value); heading.id = 'selected-pandal-title'; heading.tabIndex = -1;
       selected.append(heading, el('p', `${p.name_bn && language !== 'bn' ? `${p.name_bn} · ` : ''}${p.neighborhood || p.area} · ${p.city || ''}`, 'pandal-area'));
+      if (p.location_precision === 'source_zone') selected.append(el('p', text('Location is the directory’s broad zone, not a verified street address.')));
+      if (p.year) selected.append(el('p', `${text('Source listing year')}: ${p.year}. ${text('This does not confirm this year’s venue or opening times.')}`, 'fine-print'));
       if (p.subtitle) selected.append(el('p', p.subtitle, 'pandal-subtitle'));
-      const provenance = el('details'); provenance.append(el('summary', text('Read coordinate provenance')));
+      if (!Number.isFinite(p.latitude) || !Number.isFinite(p.longitude)) selected.append(el('p', text('Map location is not yet independently verified.'), 'notice'));
+      document.dispatchEvent(new CustomEvent('foodpath-focus-pandal', { detail: p.pandal_id }));
+      const provenance = el('details'); provenance.append(el('summary', text('Read source provenance')));
       for (const source of p.sources || []) {
         const paragraph = el('p'); const href = safeExternal(source.source_url);
         if (href) { const link = el('a', source.source_title || source.publisher); link.href = href; link.target = '_blank'; link.rel = 'noopener noreferrer'; paragraph.append(link); }
@@ -129,7 +133,7 @@ export async function initPuja(onData = () => {}) {
       if (p.subtitle) card.append(el('p', p.subtitle));
       const button = el('button', text('View restaurant links'), 'button secondary'); button.type = 'button'; button.addEventListener('click', () => { select(p); selected.scrollIntoView({ block: 'nearest' }); document.getElementById('selected-pandal-title').focus({ preventScroll: true }); }); card.append(button); featured.append(card);
     }
-    status.textContent = text('Type a name or area to search the current collection.');
+    status.textContent = language === 'bn' ? `${data.pandals.length}টি উৎসসমর্থিত মণ্ডপ। নাম বা এলাকা লিখে খুঁজুন।` : `${data.pandals.length} source-backed pandals. Search by name or area; this is not a complete directory.`;
     const fromURL = () => { const p = data.pandals.find(p => p.pandal_id === new URLSearchParams(location.search).get('pandal')); if (p) select(p, false); };
     fromURL(); window.addEventListener('popstate', fromURL);
     document.addEventListener('foodpath-select-pandal', event => {

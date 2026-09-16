@@ -12,7 +12,8 @@ export function safeMarkers(markers) {
     && Number.isFinite(m.lng) && Math.abs(m.lng) <= 180);
 }
 export function boot(win = window, doc = document) {
-  if (win.parent === win) return;
+  if (win.parent === win || win.foodpathMapBooted) return;
+  win.foodpathMapBooted = true;
   let map; let info; let markers = []; let started = false; let language = 'en'; let painted = '';
   const notify = (type, extra = {}) => win.parent.postMessage({ type, ...extra }, win.location.origin);
   const fail = () => { doc.getElementById('map-error').hidden = false; notify('foodpath-map-error'); };
@@ -30,6 +31,7 @@ export function boot(win = window, doc = document) {
     else if (focus.length) { map.setCenter({ lat: focus[0].lat, lng: focus[0].lng }); map.setZoom(13); }
   }
   win.foodpathMapLoaded = () => {
+    if (map) return;
     try {
       map = new win.google.maps.Map(doc.getElementById('map'), { center: { lat: 22.57, lng: 88.36 }, zoom: 11, maxZoom: 16,
         streetViewControl: false, mapTypeControl: false, fullscreenControl: true, clickableIcons: false, gestureHandling: 'cooperative' });
@@ -55,7 +57,13 @@ export function boot(win = window, doc = document) {
     } catch { fail(); }
   };
   win.addEventListener('message', event => {
-    if (event.source !== win.parent || event.origin !== win.location.origin || event.data?.type !== 'foodpath-map-data') return;
+    if (event.source !== win.parent || event.origin !== win.location.origin) return;
+    if (event.data?.type === 'foodpath-map-focus') {
+      const marker = markers.find(m => m.id === event.data.id && m.kind === 'pandal');
+      if (map && marker) { map.setCenter({ lat: marker.lat, lng: marker.lng }); map.setZoom(14); }
+      return;
+    }
+    if (event.data?.type !== 'foodpath-map-data') return;
     markers = safeMarkers(event.data.markers); language = event.data.language;
     if (started) { paint(); return; }
     started = true;

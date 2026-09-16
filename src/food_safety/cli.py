@@ -48,7 +48,7 @@ def main():
     puja_extract = puja_sub.add_parser("extract")
     puja_extract.add_argument("--source")
     puja_extract.add_argument("--max-calls", type=int)
-    for name in ["review-summary", "publish", "stats"]:
+    for name in ["review-summary", "publish", "stats", "refresh"]:
         puja_sub.add_parser(name)
     scan = sub.add_parser("update")
     scan.add_argument("--max-articles", type=bounded, default=3)
@@ -99,6 +99,7 @@ def main():
                 extract as extract_puja,
             )
             from .puja.pipeline import (
+                refresh,
                 review_summary,
                 validate_sources,
             )
@@ -116,6 +117,8 @@ def main():
                 result = review_summary(ROOT)
             elif args.puja_command == "publish":
                 result = build_puja_public(ROOT)
+            elif args.puja_command == "refresh":
+                result = refresh(ROOT)
             else:
                 result = puja_stats(ROOT)
         elif args.command == "llm-test":
