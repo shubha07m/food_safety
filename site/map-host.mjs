@@ -20,6 +20,12 @@ export function pandalMarkers(pandals) {
 let areas = []; let pandals = []; let frame = null; let key = ''; let chooseArea = () => {}; let started = false; let initialized = false;
 const send = () => { if (frame) frame.contentWindow.postMessage({ type: 'foodpath-map-data', key, language, markers: [...areas, ...pandals] }, location.origin); };
 let mapped = 0; let totalRows = 0;
+export async function browserMapKey(fetcher = fetch) {
+  const response = await fetcher('maps-config.json', { credentials: 'omit', cache: 'no-store' });
+  if (!response.ok) return '';
+  const config = await response.json();
+  return /^AIza[A-Za-z0-9_-]{35}$/.test(config.browser_key || '') ? config.browser_key : '';
+}
 function coverage() {
   const node = document.getElementById('map-coverage');
   if (document.body.classList.contains('puja-route')) node.textContent = language === 'bn'
@@ -50,13 +56,11 @@ export async function initMapHost() {
   let failed = false;
   const fail = () => { if (failed) return; failed = true; status.textContent = text('Google map could not load. The area list is still available.'); document.getElementById('map-fallback').hidden = false; if (frame) { frame.remove(); frame = null; } };
   try {
-    const response = await fetch('maps-config.json', { credentials: 'omit', cache: 'no-store' });
-    if (!response.ok) throw Error('No config');
-    const config = await response.json();
-    if (!/^AIza[A-Za-z0-9_-]{35}$/.test(config.browser_key || '')) throw Error('No key');
-    key = config.browser_key; button.disabled = false;
+    key = await browserMapKey();
+    if (!key) throw Error('No key');
+    button.hidden = false; button.disabled = false;
     status.textContent = text('Map loads only on request. Google receives network information when you choose to load it.');
-  } catch { status.textContent = text('Google map is not configured. Use the reported-area list below.'); }
+  } catch { button.hidden = true; status.textContent = text('Live map is temporarily unavailable. Use the festival and reported-area lists below.'); }
   let timer;
   window.addEventListener('message', event => {
     if (!frame || event.source !== frame.contentWindow || event.origin !== location.origin) return;

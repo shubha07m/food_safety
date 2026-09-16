@@ -5,15 +5,17 @@ import yaml
 ROOT = Path(__file__).resolve().parents[1]
 
 
-def test_refresh_is_two_hour_bounded_and_has_no_push_loop():
+def test_refresh_is_two_hour_bounded_and_release_push_skips_discovery():
     workflow = yaml.load(
         (ROOT / ".github/workflows/update-data.yml").read_text(), Loader=yaml.BaseLoader
     )
     assert workflow["name"] == "Refresh Food Safety Data"
-    assert set(workflow["on"]) == {"workflow_dispatch", "schedule"}
+    assert set(workflow["on"]) == {"workflow_dispatch", "schedule", "push"}
     assert workflow["on"]["schedule"][0]["cron"] == "17 */2 * * *"
+    assert workflow["on"]["push"]["branches"] == ["main"]
     job = workflow["jobs"]["candidates"]
     assert job["env"]["AUTO_PUBLISH"] == "true"
+    assert job["env"]["GOOGLE_MAPS_BROWSER_KEY"] == "${{ secrets.GOOGLE_MAPS_BROWSER_KEY }}"
     assert any(
         step.get("env", {}).get("GEMINI_API_KEY") == "${{ secrets.GEMINI_API_KEY }}"
         for step in job["steps"]
@@ -25,6 +27,10 @@ def test_refresh_is_two_hour_bounded_and_has_no_push_loop():
     assert "git diff --cached --quiet" in steps
     assert "git add ." not in steps
     assert "upload-artifact" not in str(workflow)
+    scans = [step for step in job["steps"] if step.get("name", "").startswith("Limited source")]
+    assert scans[0]["if"] == "github.event_name != 'push'"
+    assert "maps-config.json" in steps or "git add" in steps
+    assert "test -e data/puja_refresh.json" in steps
 
 
 def test_canonical_urls_and_readme_assets_exist():

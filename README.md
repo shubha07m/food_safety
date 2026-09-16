@@ -38,7 +38,7 @@ Select a pandal to read its source, listing year and available restaurant links.
 
 ![Puja FoodPath homepage with festival illustration and local pandal search](docs/assets/puja_preview.png)
 
-The preview shows the current development release; it contains project-authored artwork and local data, with no captured Google map imagery.
+The preview shows the current development release; it contains the locally hosted Sharodiya hero supplied for this project and local data, with no captured Google map imagery. The optimized website asset is `site/assets/puja/puja_hero.webp`; its development source and usage note are retained under [`docs/assets/`](docs/assets/ASSET_PROVENANCE.md).
 
 ## How Puja discovery works
 

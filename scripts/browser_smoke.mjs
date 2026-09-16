@@ -135,8 +135,13 @@ try {
   assert.ok(await evaluate("document.querySelectorAll('#featured-pandals article').length <= 6"));
   assert.equal(await evaluate("document.querySelector('#google-map-host iframe') === null"), true);
   assert.equal(mapScriptLoads, 0);
+  const mapActionBeforePandal = await evaluate("({disabled:document.getElementById('load-google-map').disabled,hidden:document.getElementById('load-google-map').hidden})");
+  if (process.env.FOOD_LIVE_MAP_SMOKE === '1') assert.deepEqual(mapActionBeforePandal, { disabled: false, hidden: false });
+  else assert.equal(mapActionBeforePandal.hidden, true);
+  await evaluate("document.querySelector('#featured-pandals button').click()");
+  assert.deepEqual(await evaluate("({disabled:document.getElementById('load-google-map').disabled,hidden:document.getElementById('load-google-map').hidden})"), mapActionBeforePandal);
   if (process.env.FOOD_LIVE_MAP_SMOKE === '1') {
-    await waitFor("document.getElementById('google-map-status').textContent !== 'The area summary below works without Google Maps.'");
+    await waitFor("document.getElementById('google-map-status').textContent !== 'The festival and area lists work without loading Google Maps.'");
     if (await evaluate("!document.getElementById('load-google-map').disabled")) {
       await evaluate("document.getElementById('load-google-map').click(); document.getElementById('load-google-map').click()");
       await waitFor("document.querySelector('#google-map-host iframe') && document.getElementById('map-fallback').hidden");
@@ -195,8 +200,8 @@ try {
   await screenshot('food-safety-module', false);
   assert.equal(await evaluate("document.querySelectorAll('.basemap-outline').length"), 0);
   assert.equal(await evaluate("document.querySelectorAll('#chart-map button').length > 0"), true);
-  await waitFor("document.getElementById('google-map-status').textContent !== 'The area summary below works without Google Maps.'");
-  assert.equal(await evaluate("/not configured|only on request/.test(document.getElementById('google-map-status').textContent)"), true);
+  await waitFor("document.getElementById('google-map-status').textContent !== 'The festival and area lists work without loading Google Maps.'");
+  assert.equal(await evaluate("/temporarily unavailable|only on request/.test(document.getElementById('google-map-status').textContent)"), true);
   assert.equal(await evaluate("document.getElementById('evidence-register').open"), false);
   await evaluate("document.querySelector('a[href$=\"#evidence\"]').click()");
   assert.equal(await evaluate("document.getElementById('evidence-register').open"), true);

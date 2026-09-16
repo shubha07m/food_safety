@@ -114,3 +114,22 @@ def test_sensitive_content_in_pull_ref_is_reported_and_blocking(tmp_path):
     assert result["pull_ref_secret_pattern_paths"] == [".env"]
     assert result["pull_ref_sensitive_content_found"] is True
     assert result["audit_passed"] is False
+
+
+def test_exact_public_browser_config_is_not_misclassified_as_server_secret(tmp_path):
+    root = _audit_fixture(tmp_path)
+    (root / "site").mkdir()
+    key = "AIza" + "b" * 35
+    (root / "site/maps-config.json").write_text('{"browser_key":"' + key + '"}\n')
+    _git(root, "add", "site/maps-config.json")
+    _git(root, "commit", "-m", "publish restricted browser config")
+    result = audit(root)
+    assert result["secret_pattern_paths"] == []
+    assert result["audit_passed"] is True
+
+    (root / "site/leak.txt").write_text(key)
+    _git(root, "add", "site/leak.txt")
+    _git(root, "commit", "-m", "leak same-shaped key elsewhere")
+    result = audit(root)
+    assert result["secret_pattern_paths"] == ["site/leak.txt"]
+    assert result["audit_passed"] is False

@@ -20,7 +20,9 @@ to be safe, endorsed or inspected. No Places/Details call occurs in the visitor 
   protected by Google Cloud website and API restrictions.
 
 Never reuse the server key. The build fails if the browser key equals a configured
-Places or Gemini key. No real credential belongs in Git, including browser keys.
+Places or Gemini key. The browser key is intentionally public client configuration;
+its Google Cloud API and referrer restrictions are the security boundary. Server
+credentials never belong in Git or public output.
 
 ## Owner setup
 
@@ -33,8 +35,10 @@ Places or Gemini key. No real credential belongs in Git, including browser keys.
 3. Under **API restrictions**, restrict the key to **Maps JavaScript API only**. Do not
    enable Places or server discovery APIs for this browser credential. Configure Cloud
    quotas/budget alerts; the operator's local 3,000-call ledger does not count map loads.
-4. Set `GOOGLE_MAPS_BROWSER_KEY` locally in your ignored `.env` or shell environment.
-   `.env.example` has only a blank placeholder. Do not put the value in tracked config.
+4. Add `GOOGLE_MAPS_BROWSER_KEY` at **Repository → Settings → Secrets and variables →
+   Actions → Repository secrets**. The existing refresh workflow passes it only to the
+   static build. For local use, set it in ignored `.env` or the shell; `.env.example`
+   has only a blank placeholder.
 5. Activate `food` and run:
 
    ```bash
@@ -79,21 +83,21 @@ Festival-data refresh is separate: the existing Actions workflow checks a
 persisted due-time guard (default six hours, maximum ten research runs/day).
 It rebuilds our catalog without loading maps or running Places discovery.
 
-The build creates **ignored** `site/maps-config.json`. It is an intended public browser
-configuration, not a secret endpoint. Only the exact schema/value matching the configured
-browser key is exempted by public-output verification; all other credential scanning
-remains in place. Build without the variable (and remove its `.env` entry) to regenerate
-the blank configuration. Do not commit the generated file or copy it into other JSON.
+The build creates `site/maps-config.json`, an intentionally public browser artifact—not
+a secret endpoint. A blank tracked version provides the no-key fallback. On a `main`
+release push, the existing workflow builds the keyed artifact and commits it for the
+tracked-static Cloudflare deployment. Only its exact one-field schema is exempted by
+the public-output and repository audits; all other key patterns remain blocking.
+Build with `GOOGLE_MAPS_BROWSER_KEY=` to regenerate the blank fallback.
 
-## Release wiring (not changed in this task)
+## Release wiring
 
-An ignored artifact does not reach hosting through a Git push alone. The existing
-deployment must run the static build with `GOOGLE_MAPS_BROWSER_KEY` available before
-uploading `site/` for a keyed map. If it only uploads tracked files, it will safely show
-the no-key fallback until the owner supplies that build-time environment/input. No
-Worker code, Cloudflare account setting, domain, deployment workflow, or production
-secret was changed here. Do not add this key to a bot commit. Browser smoke can test one
-explicit live load with the restricted local browser key; that mode captures no imagery.
+The existing refresh workflow also runs on a `main` push. Release pushes skip discovery
+and model calls, run validation/build with the Actions browser-key secret, and commit only
+approved generated assets. GitHub-token bot commits do not recursively trigger workflows.
+Cloudflare's existing Git integration then deploys the tracked `site/` tree. If the secret
+is missing, the blank artifact deploys and the public page shows a polished static fallback.
+No Worker, domain, DNS, or Cloudflare account configuration changes are required.
 
 ## Runtime and security boundaries
 

@@ -18,6 +18,8 @@ REQUIRED = [
     "data/events.csv",
     "data/events.csv.metadata.json",
     "data/pandals.json",
+    "maps-config.json",
+    "assets/puja/puja_hero.webp",
     "_headers",
 ]
 FORBIDDEN = [".env", "data/pending.json", "data/rejected.json", "data/history", "data/runs"]
@@ -109,13 +111,14 @@ def main() -> None:
                 ".csv",
                 ".svg",
                 ".png",
+                ".webp",
                 ".md",
                 ".txt",
             }
             and path.name not in {"_headers", "sitemap.xml"}
         ):
             present.append("unexpected public asset type")
-        if path.suffix != ".png":
+        if path.suffix not in {".png", ".webp"}:
             text = path.read_text()
             if path == SITE / "maps-config.json":
                 if json.loads(text) != expected_maps:
