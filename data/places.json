@@ -1,6 +1,67 @@
 {
   "association_semantics": "historical_discovery_not_current_proximity",
-  "associations": [],
+  "associations": [
+    {
+      "observed_at": "2026-09-16T06:29:29.045346Z",
+      "pandal_id": "bagbazar-sarbojanin",
+      "place_id": "ChIJ9yx3rPt3AjoRvyv9MEyzINs",
+      "provenance": "google_places_local_radius_match"
+    },
+    {
+      "observed_at": "2026-09-16T06:29:29.045346Z",
+      "pandal_id": "bagbazar-sarbojanin",
+      "place_id": "ChIJF5YleiJ3AjoRi7GLE2lf3YQ",
+      "provenance": "google_places_local_radius_match"
+    },
+    {
+      "observed_at": "2026-09-16T06:29:29.045346Z",
+      "pandal_id": "bagbazar-sarbojanin",
+      "place_id": "ChIJJ_K35DJ3AjoR6FGvMr9a3zw",
+      "provenance": "google_places_local_radius_match"
+    },
+    {
+      "observed_at": "2026-09-16T06:29:29.045346Z",
+      "pandal_id": "bagbazar-sarbojanin",
+      "place_id": "ChIJL5TFMQB3AjoRTs5QzBo1zQU",
+      "provenance": "google_places_local_radius_match"
+    },
+    {
+      "observed_at": "2026-09-16T06:29:29.045346Z",
+      "pandal_id": "bagbazar-sarbojanin",
+      "place_id": "ChIJN8K_ADt3AjoR3CKyUH4EtpE",
+      "provenance": "google_places_local_radius_match"
+    },
+    {
+      "observed_at": "2026-09-16T06:29:29.045346Z",
+      "pandal_id": "bagbazar-sarbojanin",
+      "place_id": "ChIJPzxH7c13AjoRygPN-zQNVn0",
+      "provenance": "google_places_local_radius_match"
+    },
+    {
+      "observed_at": "2026-09-16T06:29:29.045346Z",
+      "pandal_id": "bagbazar-sarbojanin",
+      "place_id": "ChIJd1dnikZ3AjoRXuGkCs4sRqU",
+      "provenance": "google_places_local_radius_match"
+    },
+    {
+      "observed_at": "2026-09-16T06:29:29.045346Z",
+      "pandal_id": "bagbazar-sarbojanin",
+      "place_id": "ChIJnRoxB2t3AjoR1WW4YKyl8Oo",
+      "provenance": "google_places_local_radius_match"
+    },
+    {
+      "observed_at": "2026-09-16T06:29:29.045346Z",
+      "pandal_id": "bagbazar-sarbojanin",
+      "place_id": "ChIJob9UeAB3AjoRoE-y5B6U0jQ",
+      "provenance": "google_places_local_radius_match"
+    },
+    {
+      "observed_at": "2026-09-16T06:29:29.045346Z",
+      "pandal_id": "bagbazar-sarbojanin",
+      "place_id": "ChIJuQO26fR3AjoRwrS0KOwPVU0",
+      "provenance": "google_places_local_radius_match"
+    }
+  ],
   "attribution": "Google Maps",
   "pandals": [
     {
@@ -16,7 +77,68 @@
       "restaurant_radius_m": 500.0
     }
   ],
-  "restaurants": [],
+  "restaurants": [
+    {
+      "curated": null,
+      "google_maps_url": "https://www.google.com/maps/search/?api=1&query=restaurant&query_place_id=ChIJ9yx3rPt3AjoRvyv9MEyzINs",
+      "place_id": "ChIJ9yx3rPt3AjoRvyv9MEyzINs",
+      "source": "google_places_id"
+    },
+    {
+      "curated": null,
+      "google_maps_url": "https://www.google.com/maps/search/?api=1&query=restaurant&query_place_id=ChIJF5YleiJ3AjoRi7GLE2lf3YQ",
+      "place_id": "ChIJF5YleiJ3AjoRi7GLE2lf3YQ",
+      "source": "google_places_id"
+    },
+    {
+      "curated": null,
+      "google_maps_url": "https://www.google.com/maps/search/?api=1&query=restaurant&query_place_id=ChIJJ_K35DJ3AjoR6FGvMr9a3zw",
+      "place_id": "ChIJJ_K35DJ3AjoR6FGvMr9a3zw",
+      "source": "google_places_id"
+    },
+    {
+      "curated": null,
+      "google_maps_url": "https://www.google.com/maps/search/?api=1&query=restaurant&query_place_id=ChIJL5TFMQB3AjoRTs5QzBo1zQU",
+      "place_id": "ChIJL5TFMQB3AjoRTs5QzBo1zQU",
+      "source": "google_places_id"
+    },
+    {
+      "curated": null,
+      "google_maps_url": "https://www.google.com/maps/search/?api=1&query=restaurant&query_place_id=ChIJN8K_ADt3AjoR3CKyUH4EtpE",
+      "place_id": "ChIJN8K_ADt3AjoR3CKyUH4EtpE",
+      "source": "google_places_id"
+    },
+    {
+      "curated": null,
+      "google_maps_url": "https://www.google.com/maps/search/?api=1&query=restaurant&query_place_id=ChIJPzxH7c13AjoRygPN-zQNVn0",
+      "place_id": "ChIJPzxH7c13AjoRygPN-zQNVn0",
+      "source": "google_places_id"
+    },
+    {
+      "curated": null,
+      "google_maps_url": "https://www.google.com/maps/search/?api=1&query=restaurant&query_place_id=ChIJd1dnikZ3AjoRXuGkCs4sRqU",
+      "place_id": "ChIJd1dnikZ3AjoRXuGkCs4sRqU",
+      "source": "google_places_id"
+    },
+    {
+      "curated": null,
+      "google_maps_url": "https://www.google.com/maps/search/?api=1&query=restaurant&query_place_id=ChIJnRoxB2t3AjoR1WW4YKyl8Oo",
+      "place_id": "ChIJnRoxB2t3AjoR1WW4YKyl8Oo",
+      "source": "google_places_id"
+    },
+    {
+      "curated": null,
+      "google_maps_url": "https://www.google.com/maps/search/?api=1&query=restaurant&query_place_id=ChIJob9UeAB3AjoRoE-y5B6U0jQ",
+      "place_id": "ChIJob9UeAB3AjoRoE-y5B6U0jQ",
+      "source": "google_places_id"
+    },
+    {
+      "curated": null,
+      "google_maps_url": "https://www.google.com/maps/search/?api=1&query=restaurant&query_place_id=ChIJuQO26fR3AjoRwrS0KOwPVU0",
+      "place_id": "ChIJuQO26fR3AjoRwrS0KOwPVU0",
+      "source": "google_places_id"
+    }
+  ],
   "schema_version": "places-1",
   "zones": [
     {
