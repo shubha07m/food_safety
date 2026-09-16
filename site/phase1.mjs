@@ -48,8 +48,6 @@ export async function phase1() {
   const footer = document.querySelector('footer') || document.body.appendChild(document.createElement('footer'));
   footer.append(element('p', t.authorship));
   if (new URLSearchParams(location.search).has('event')) return;
-  const hero = document.querySelector('.hero .eyebrow');
-  if (hero) hero.textContent = language === 'bn' ? 'খাদ্য সুরক্ষা ও পরিদর্শনের উৎসভিত্তিক নথি' : 'FOOD SAFETY & INSPECTION EVIDENCE';
   const oldAccess = document.querySelector('.policy .notice:last-of-type');
   if (oldAccess?.textContent.includes('publicly accessible intake channel')) oldAccess.textContent = t.submission;
   const help = document.createElement('section'); help.id = 'phase1-help'; help.className = 'phase1-panel';

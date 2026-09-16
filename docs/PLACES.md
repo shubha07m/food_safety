@@ -2,7 +2,8 @@
 
 This is an operator-run data subsystem, separate from food-safety evidence ingestion.
 Discovery is not an inspection, recommendation, quality judgment, or safety rating.
-The current website and local West Bengal map do not consume this data.
+The website's Puja search consumes only the durable static contract. It never calls
+Places on behalf of visitors or plots temporary restaurant coordinates.
 
 ## Flow and commands
 
@@ -153,13 +154,15 @@ It is a historical coarse venue anchor, **not a verified current pandal entrance
 Kumartuli Park and Ekdalia Evergreen are disabled starter entries with no invented
 coordinates. Verify venue/entrance location for the current festival before travel use.
 
-## Later integration boundaries
+## Website integration boundaries
 
-The future restaurant list/detail view can consume `site/data/places.json`, using only
-independently curated names or neutral place-ID handoff labels. Display required Google
-Maps attribution near Google-derived content and add the required Google terms/privacy
-references before exposing a Places consumer UI. Do **not** put Places-derived restaurant
-coordinates on the current non-Google basemap. The current frontend is unchanged.
+The search-first Puja view consumes `site/data/places.json`, using only independently
+curated names or neutral Google Maps handoff labels. Google Maps attribution and
+terms/privacy links accompany this experience. Associations are historical, not current
+proximity guarantees; no exact distances are displayed. The optional browser Google map
+plots only curated pandals and reviewed food-safety anchors, not restaurant coordinates.
+See [browser map setup and privacy boundaries](BROWSER_MAP.md). No visitor action calls
+Nearby Search or Place Details. Food-safety evidence remains a separate module.
 
 Zone planning, provider fetching, pure geometry, and serialization are separate modules.
 Future optimization can propose validated zone config without changing the client or

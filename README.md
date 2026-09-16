@@ -67,7 +67,7 @@ Ordinary visitors have no refresh endpoint. Maintainers use **Actions → Refres
 
 ## Bengali support
 
-Use **EN | বাংলা** or [`?lang=bn`](https://foodsafety.nemoneek.com/?lang=bn). Navigation, principal dashboard labels, charts, filters and policy summaries have static Bengali translations. Full policies are also available in English. The original English/Bengali source quotations remain unchanged and clearly labeled; UI translations are not evidence. No translation API, external font or tracking cookie is used.
+Use **EN | বাংলা** or [`?lang=bn`](https://foodsafety.nemoneek.com/?lang=bn). Navigation, principal dashboard labels, charts, filters and policy summaries have static Bengali translations. Full policies are also available in English. The original English/Bengali source quotations remain unchanged and clearly labeled; UI translations are not evidence. The interface uses system fonts, no translation API, and no tracking cookies. The optional Google map may load Google's own fonts and resources after the visitor requests it.
 
 The bounded multilingual extractor supports Bengali, English and mixed-language source passages while preserving original-language quotations. Ambiguous entities, unsupported facts and ungrounded quotations are skipped. Discovery remains bounded and publisher access restrictions are respected.
 
@@ -119,9 +119,12 @@ temporary coordinates locally. Run `python -m food_safety.cli places discover --
 to inspect the plan without API calls. Durable exports contain only place IDs, Maps
 handoff links, independent metadata, and historical association metadata. Google
 coordinates expire in ignored runtime storage; Google names and raw responses are not
-persisted. This does not alter the current map or add per-visitor Google requests.
+persisted. Puja FoodPath searches that static collection locally, with dated restaurant
+handoff links and featured pandal shortcuts. It makes no per-visitor Places requests.
+An optional, click-to-load Google geographic view uses a separate browser-restricted
+key. See [browser map setup](docs/BROWSER_MAP.md).
 
-No public database, write API, accounts, comments, uploads, ad trackers, analytics or runtime third-party scripts. HTTPS, CSP, framing restrictions, safe link rendering, SSRF-aware retrieval and response caps remain in place. The map is locally bundled, with [attribution](site/assets/BASEMAP_LICENSE.md). Hosting providers may process operational logs under their own policies.
+No public database, write API, accounts, comments, uploads, ad trackers or project analytics. HTTPS, CSP, framing restrictions, safe link rendering, SSRF-aware retrieval and response caps remain in place. Optional Google Maps loads in a dedicated document only on request; its provider privacy terms apply. The accessible geographic summary requires no Google connection. Hosting providers may process operational logs under their own policies.
 
 [Security](SECURITY.md) · [Privacy](PRIVACY.md) · [Deployment](docs/DEPLOYMENT.md) · [Public repository audit](docs/PUBLIC_REPOSITORY_AUDIT.md)
 

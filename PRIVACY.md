@@ -1,5 +1,16 @@
 # Privacy
 
+Puja pandal search runs locally over static curated data and does not contact Google
+Places. Restaurant links open Google Maps only when followed. An optional geographic
+map is loaded only after selecting **Load Google map**; Google then receives network
+information such as IP address and website origin and may process data under its
+[privacy policy](https://policies.google.com/privacy). No map is loaded on record-detail
+pages. The map uses a separate, publicly visible, website-restricted browser credential,
+never the operator's Places server key. The map document sends origin-only referrers for
+key authorization; other pages retain no-referrer. Use the textual geographic summary
+without loading Google if preferred. Google Maps use is subject to
+[Google Maps terms](https://www.google.com/help/terms_maps/). No visitor geolocation is requested.
+
 Optional community intake links to an owner-configured Google Form with private responses. Google processes submitted material under its own policies. No form is embedded or fetched by the public dashboard. The proposed form requests no uploads or email addresses and exposes no response summaries. The owner must restrict editor access, review responses and remove unnecessary information; raw responses must never be committed to Git. Submissions do not publish automatically. See the maintainer guide for setup.
 
 V1 has no accounts, registration, comments, advertising, analytics, tracking pixels, newsletters, profiling or application cookies. The static site has no public write API or submission database. It does not collect visitor form input. Search and chart filtering happen locally in the browser.

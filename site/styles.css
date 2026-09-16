@@ -23,6 +23,69 @@
   --serif: Georgia, 'Times New Roman', serif;
   --sans: Arial, Helvetica, sans-serif;
 }
+
+/* FoodPath umbrella: two distinct modules, one calm, accessible visual system. */
+.module-entries { display:grid; grid-template-columns:1fr 1fr; gap:20px; margin:0 0 28px; }
+.module-entries a { position:relative; display:grid; gap:8px; border:1px solid var(--border); border-top:4px solid var(--green); border-radius:12px; background:var(--surface); padding:24px 52px 24px 24px; text-decoration:none; color:var(--ink); }
+.module-entries a:nth-child(2) { border-top-color:var(--amber); background:#f8f0e0; }
+.module-entries .eyebrow { margin:0; }
+.module-entries strong { font:28px/1.25 var(--serif); }
+.module-entries a > span:not(.eyebrow) { font-size:14px; color:var(--muted); }
+.module-entries a > span:last-child { position:absolute; right:22px; top:25px; font-size:24px; color:var(--green); }
+.puja-section { background:var(--surface); border:1px solid var(--border); border-top:4px solid var(--amber); border-radius:18px; padding:32px; margin:30px 0 48px; }
+.puja-section .section-heading { margin-top:0; padding-top:0; }
+.puja-intro { max-width:730px; color:var(--muted); }
+.puja-search-wrap { position:relative; max-width:780px; }
+.puja-search-wrap label { display:block; font-weight:700; margin-bottom:8px; }
+#pandal-search { width:100%; min-height:58px; padding:14px 18px; border:2px solid var(--green); border-radius:10px; background:var(--paper); color:var(--ink); font-size:18px; }
+#pandal-options { position:absolute; top:88px; left:0; right:0; z-index:5; max-height:330px; overflow-y:auto; padding:6px; margin:0; list-style:none; background:var(--surface); border:1px solid var(--green); border-radius:10px; box-shadow:var(--shadow); }
+#pandal-options li { display:grid; padding:12px; cursor:pointer; min-height:64px; border-radius:6px; }
+#pandal-options li span { color:var(--muted); font-size:13px; }
+#pandal-options li:hover, #pandal-options [aria-selected="true"] { background:var(--green-light); outline:1px solid var(--green); }
+#pandal-search-status { font-size:13px; margin:10px 0 25px; min-height:22px; color:var(--muted); }
+.featured-heading { display:flex; gap:20px; justify-content:space-between; align-items:baseline; margin-top:28px; }
+.featured-heading p { font-size:13px; color:var(--muted); }
+.featured-pandals { display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr)); gap:16px; }
+.pandal-card { border:1px solid var(--border); border-radius:10px; background:var(--paper); padding:22px; max-width:430px; }
+.pandal-card h4 { font:24px/1.25 var(--serif); margin:12px 0 22px; }
+.selected-pandal { border:1px solid var(--border); border-left:4px solid var(--teal); background:#f1f6f0; border-radius:10px; padding:24px; margin:25px 0; }
+.selected-pandal h3 { font:30px/1.2 var(--serif); margin-bottom:10px; }
+.selected-pandal h4 { font-size:18px; margin:22px 0 12px; }
+.selected-pandal details { font-size:13px; max-width:760px; }
+.selected-pandal details p { padding:10px 0; }
+.restaurant-links { list-style:none; margin:0; padding:0; }
+.restaurant-links li { display:flex; gap:18px; align-items:center; justify-content:space-between; border-top:1px solid var(--border); padding:16px 0; }
+.restaurant-links small { display:block; color:var(--muted); margin-top:4px; }
+.restaurant-links .button { flex-shrink:0; }
+.google-attribution { font:400 14px/1.5 Arial,sans-serif; color:#1f1f1f; white-space:nowrap; }
+.puja-notice { font-size:13px; margin:26px 0 0; border-top:1px solid var(--border); padding-top:18px; }
+.analytics-disclosure { margin:36px 0; border:1px solid var(--border); border-radius:12px; background:var(--surface); padding:22px; }
+.analytics-disclosure > summary { font-size:20px; font-weight:700; cursor:pointer; }
+.analytics-disclosure > summary span { display:block; font-size:13px; font-weight:400; color:var(--muted); margin-left:22px; }
+.google-map-shell { border:1px solid var(--border); border-radius:12px; overflow:hidden; background:var(--blue-light); }
+.map-fallback { padding:30px; min-height:250px; text-align:center; }
+.map-symbol { display:block; font-size:42px; color:var(--blue); }
+.map-fallback h3 { font:28px/1.2 var(--serif); }
+.map-fallback .fine-print { margin-top:16px; }
+.google-map-frame { display:block; width:100%; height:470px; border:0; }
+.map-layer-key { display:flex; flex-wrap:wrap; gap:18px; font-size:13px; margin:15px 0; }
+.map-layer-key span:first-child { color:var(--blue); }
+.map-layer-key span:last-child { color:#855713; }
+.area-summary summary { cursor:pointer; font-weight:700; margin:15px 0; }
+#chart-map { display:flex; flex-wrap:wrap; gap:8px; }
+.map-key { min-height:44px; }
+button:disabled { opacity:.6; cursor:default; }
+@media(max-width:700px) {
+  .module-entries { grid-template-columns:1fr; gap:12px; }
+  .puja-section { padding:20px 16px; }
+  .selected-pandal { padding:18px 14px; }
+  .restaurant-links li { flex-direction:column; align-items:stretch; gap:10px; }
+  .featured-heading { display:block; }
+  .analytics-disclosure { padding:18px 12px; }
+  .map-fallback { padding:25px 16px; }
+  .google-map-frame { height:470px; }
+  .masthead nav { gap:10px 16px; }
+}
 * { box-sizing: border-box; }
 html { scroll-padding-top: 2rem; }
 body { margin: 0; background: var(--paper); color: var(--ink); font: 16px/1.6 var(--sans); }
