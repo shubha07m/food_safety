@@ -288,6 +288,13 @@ def lifecycle_counts(records, retired, at):
 
 def build(root):
     counts = validate(root)
+    from .browser_maps import build_browser_config
+    from .places.pipeline import build_public
+    from .puja.pipeline import build_public as build_puja_public
+
+    build_browser_config(root)
+    build_public(root)
+    build_puja_public(root)
     site = root / "site"
     site.mkdir(exist_ok=True)
     public = json.loads((root / "data/events.json").read_text())

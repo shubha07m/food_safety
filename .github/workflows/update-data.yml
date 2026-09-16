@@ -43,6 +43,10 @@ jobs:
           python -m food_safety.cli update --max-articles 20 || result=$?
           # Partial source failure (2) retains validated suspensions; fatal (1) stops.
           test "$result" -eq 0 -o "$result" -eq 2
+      - name: Due-only Puja source research (four runs per day)
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: python -m food_safety.cli puja refresh
       - name: Check candidate output
         env:
           LLM_ENABLED: 'false'
@@ -58,7 +62,7 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          git add data/events.json data/events.csv data/events.csv.metadata.json data/status.json data/retired.json data/source_checks.json site/
+          git add data/events.json data/events.csv data/events.csv.metadata.json data/status.json data/retired.json data/source_checks.json data/pandals.json data/puja_refresh.json site/
           if git diff --cached --quiet; then exit 0; fi
           git -c user.name='github-actions[bot]' -c user.email='41898282+github-actions[bot]@users.noreply.github.com' commit -m 'data: validated refresh [automated-refresh]'
           git -c credential.helper='!f() { echo username=x-access-token; echo "password=$GH_TOKEN"; }; f' push origin HEAD:main

@@ -96,9 +96,10 @@ def provider_diagnostic(status, body):
 
 
 class GeminiExtractor:
-    def __init__(self, model, client=None):
+    def __init__(self, model, client=None, prompt=PROMPT):
         self.model = model
         self.client = client
+        self.prompt = prompt
 
     @property
     def available(self):
@@ -114,7 +115,7 @@ class GeminiExtractor:
             "passages": [p.model_dump() for p in document_revision.passages],
         }
         payload = {
-            "systemInstruction": {"parts": [{"text": PROMPT + "Task: " + task_version}]},
+            "systemInstruction": {"parts": [{"text": self.prompt + "Task: " + task_version}]},
             "contents": [
                 {
                     "role": "user",

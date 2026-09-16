@@ -1,0 +1,3871 @@
+schema_version: puja-curation-1
+settings:
+  refresh_runs_per_day: 4
+  max_sources_per_run: 5
+  max_model_calls_per_run: 3
+  max_candidates_per_source: 30
+sources:
+  - source_id: bagbazar-wikimedia-2017
+    url: https://commons.wikimedia.org/wiki/File:DurgaPuja2017_-_Durga_Idol_of_Bagbazar_Sarbajanin_Durgotsav_01.jpg
+    publisher: Wikimedia Commons
+    language: en
+    enabled: false
+  - source_id: ifd-north-kolkata
+    url: https://www.indianfestivaldiary.com/durgapuja/north_kolkata.php
+    publisher: Indian Festival Diary
+    language: en
+    allow_missing_robots: true
+    content_selector: h1, table.order-table
+  - source_id: ifd-south-kolkata
+    url: https://www.indianfestivaldiary.com/durgapuja/south_kolkata.php
+    publisher: Indian Festival Diary
+    language: en
+    allow_missing_robots: true
+    content_selector: h1, table.order-table
+  - source_id: ifd-howrah
+    url: https://www.indianfestivaldiary.com/durgapuja/howrah.php
+    publisher: Indian Festival Diary
+    language: en
+    allow_missing_robots: true
+    content_selector: h1, table.order-table
+published:
+  - pandal_id: bagbazar-sarbojanin
+    name: Bagbazar Sarbojanin Durgotsav
+    name_bn: বাগবাজার সর্বজনীন দুর্গোৎসব
+    aliases:
+      - Baghbazar Sarbojanin
+    area: Bagbazar
+    neighborhood: Bagbazar
+    city: Kolkata
+    district: Kolkata
+    latitude: 22.604964
+    longitude: 88.366303
+    coordinate_source: https://commons.wikimedia.org/wiki/File:DurgaPuja2017_-_Durga_Idol_of_Bagbazar_Sarbajanin_Durgotsav_01.jpg
+    coordinate_precision: neighborhood
+    organizer: null
+    year: null
+    featured: true
+    subtitle: A historic North Kolkata starting point
+    sources:
+      - source_url: https://commons.wikimedia.org/wiki/File:DurgaPuja2017_-_Durga_Idol_of_Bagbazar_Sarbajanin_Durgotsav_01.jpg
+        source_title: DurgaPuja2017 - Durga Idol of Bagbazar Sarbajanin Durgotsav 01
+        publisher: Wikimedia Commons
+        publication_date: 2017-09-28
+        quote: Durga Idol of Bagbazar Sarbajanin Durgotsav
+    verification_status: SOURCE VERIFIED
+    last_verified_at: 2026-09-15T00:00:00Z
+  - pandal_id: makardah-karuri-para-sarbojanin-durgotsav
+    name: Makardah Karuri Para Sarbojanin Durgotsav
+    aliases: []
+    area: Howrah
+    city: Howrah
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: false
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/howrah.php
+      source_title: List of Durga puja in Howrah 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "Makardah Karuri Para Sarbojanin Durgotsav 2025\n\n\r\n                                Howrah"
+      source_revision_id: 3a2f6c2a5293bf4291d971f1f05505b14242a616555fd222de65fb0bdc937df6
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: nabanagar-badamtala-sarbojanin-durgotsab
+    name: Nabanagar Badamtala Sarbojanin Durgotsab
+    aliases: []
+    area: Howrah
+    city: Howrah
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: false
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/howrah.php
+      source_title: List of Durga puja in Howrah 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "Nabanagar Badamtala Sarbojanin Durgotsab 2025\n\n\r\n                                Howrah"
+      source_revision_id: 3a2f6c2a5293bf4291d971f1f05505b14242a616555fd222de65fb0bdc937df6
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: salap-utsahi-sangha-durga-puja
+    name: Salap Utsahi Sangha Durga Puja
+    aliases: []
+    area: Howrah
+    city: Howrah
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: false
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/howrah.php
+      source_title: List of Durga puja in Howrah 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "Salap Utsahi Sangha Durga Puja 2025\n\n\r\n                                Howrah"
+      source_revision_id: 3a2f6c2a5293bf4291d971f1f05505b14242a616555fd222de65fb0bdc937df6
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: salkia-baroari-durgatsob
+    name: Salkia Baroari Durgatsob
+    aliases: []
+    area: Howrah
+    city: Howrah
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: false
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/howrah.php
+      source_title: List of Durga puja in Howrah 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "Salkia Baroari Durgatsob 2025\n\n\r\n                                Howrah"
+      source_revision_id: 3a2f6c2a5293bf4291d971f1f05505b14242a616555fd222de65fb0bdc937df6
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: salkia-chatra-bayam-samity-sarbojanin
+    name: Salkia Chatra Bayam Samity Sarbojanin
+    aliases: []
+    area: Howrah
+    city: Howrah
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: false
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/howrah.php
+      source_title: List of Durga puja in Howrah 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "Salkia Chatra Bayam Samity Sarbojanin 2025\n\n\r\n                                Howrah"
+      source_revision_id: 3a2f6c2a5293bf4291d971f1f05505b14242a616555fd222de65fb0bdc937df6
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: salkia-sadharan-durga-puja
+    name: Salkia Sadharan Durga Puja
+    aliases: []
+    area: Howrah
+    city: Howrah
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: true
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/howrah.php
+      source_title: List of Durga puja in Howrah 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "Salkia Sadharan Durga Puja 2025\n\n\r\n                                Howrah"
+      source_revision_id: 3a2f6c2a5293bf4291d971f1f05505b14242a616555fd222de65fb0bdc937df6
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: salkia-sitalatala-sarbojanin-durgotsab
+    name: Salkia Sitalatala Sarbojanin Durgotsab
+    aliases: []
+    area: Howrah
+    city: Howrah
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: false
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/howrah.php
+      source_title: List of Durga puja in Howrah 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "Salkia Sitalatala Sarbojanin Durgotsab 2025\n\n\r\n                                Howrah"
+      source_revision_id: 3a2f6c2a5293bf4291d971f1f05505b14242a616555fd222de65fb0bdc937df6
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: shaktimoyee-sarbojanin-durgotsab-committee
+    name: Shaktimoyee Sarbojanin Durgotsab Committee
+    aliases: []
+    area: Howrah
+    city: Howrah
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: false
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/howrah.php
+      source_title: List of Durga puja in Howrah 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "Shaktimoyee Sarbojanin Durgotsab Committee 2025\n\n\r\n                                Howrah"
+      source_revision_id: 3a2f6c2a5293bf4291d971f1f05505b14242a616555fd222de65fb0bdc937df6
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: shibpur-sastitala-durga-puja
+    name: Shibpur Sastitala Durga Puja
+    aliases: []
+    area: Howrah
+    city: Howrah
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: true
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/howrah.php
+      source_title: List of Durga puja in Howrah 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "Shibpur Sastitala Durga Puja 2025\n\n\r\n                                Howrah"
+      source_revision_id: 3a2f6c2a5293bf4291d971f1f05505b14242a616555fd222de65fb0bdc937df6
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: subhaspally-shaktinagar-sarbojanin-durgatsav
+    name: Subhaspally Shaktinagar Sarbojanin Durgatsav
+    aliases: []
+    area: Howrah
+    city: Howrah
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: false
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/howrah.php
+      source_title: List of Durga puja in Howrah 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "Subhaspally Shaktinagar Sarbojanin Durgatsav 2025\n\n\r\n                                Howrah"
+      source_revision_id: 3a2f6c2a5293bf4291d971f1f05505b14242a616555fd222de65fb0bdc937df6
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: torpedo-welfare-society-durga-puja
+    name: Torpedo Welfare Society Durga Puja
+    aliases: []
+    area: Howrah
+    city: Howrah
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: false
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/howrah.php
+      source_title: List of Durga puja in Howrah 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "Torpedo Welfare Society Durga Puja 2025\n\n\r\n                                Howrah"
+      source_revision_id: 3a2f6c2a5293bf4291d971f1f05505b14242a616555fd222de65fb0bdc937df6
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: uttar-bantra-kumar-para-baroary-samity-durga-puja
+    name: Uttar Bantra Kumar Para Baroary Samity Durga Puja
+    aliases: []
+    area: Howrah
+    city: Howrah
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: false
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/howrah.php
+      source_title: List of Durga puja in Howrah 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "Uttar Bantra Kumar Para Baroary Samity Durga Puja 2025\n\n\r\n                           \
+        \     Howrah"
+      source_revision_id: 3a2f6c2a5293bf4291d971f1f05505b14242a616555fd222de65fb0bdc937df6
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: uttar-salkia-sarbojanin-durgotsab
+    name: Uttar Salkia Sarbojanin Durgotsab
+    aliases: []
+    area: Howrah
+    city: Howrah
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: false
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/howrah.php
+      source_title: List of Durga puja in Howrah 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "Uttar Salkia Sarbojanin Durgotsab 2025\n\n\r\n                                Howrah"
+      source_revision_id: 3a2f6c2a5293bf4291d971f1f05505b14242a616555fd222de65fb0bdc937df6
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: upohar-utsav-committee
+    name: Upohar Utsav Committee
+    aliases: []
+    area: South Kolkata
+    city: Kolkata
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: false
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/south_kolkata.php
+      source_title: List of Durga puja in South Kolkata 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "Upohar Utsav Committee 2025\n\n\r\n                                South Kolkata"
+      source_revision_id: 02c2eff3a20eaa166114de486a2f34da38ca72a38c5c1d65638d3091a210c1f6
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: vip-nagar-sarbojanin-durga-puja-committee
+    name: VIP Nagar Sarbojanin Durga Puja Committee
+    aliases: []
+    area: South Kolkata
+    city: Kolkata
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: false
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/south_kolkata.php
+      source_title: List of Durga puja in South Kolkata 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "VIP Nagar Sarbojanin Durga Puja Committee 2025\n\n\r\n                                South\
+        \ Kolkata"
+      source_revision_id: 02c2eff3a20eaa166114de486a2f34da38ca72a38c5c1d65638d3091a210c1f6
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: westend-park-sarbojanin-durga-puja
+    name: Westend Park Sarbojanin Durga Puja
+    aliases: []
+    area: South Kolkata
+    city: Kolkata
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: false
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/south_kolkata.php
+      source_title: List of Durga puja in South Kolkata 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "Westend Park Sarbojanin Durga Puja 2025\n\n\r\n                                South Kolkata"
+      source_revision_id: 02c2eff3a20eaa166114de486a2f34da38ca72a38c5c1d65638d3091a210c1f6
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: arabinda-nagar-arabinda-sangha-sarbojanin-durga-utsav
+    name: Arabinda Nagar Arabinda Sangha Sarbojanin Durga Utsav
+    aliases: []
+    area: Howrah
+    city: Howrah
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: false
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/howrah.php
+      source_title: List of Durga puja in Howrah 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "Arabinda Nagar Arabinda Sangha Sarbojanin Durga Utsav 2025\n\n\r\n                       \
+        \         Howrah"
+      source_revision_id: 3a2f6c2a5293bf4291d971f1f05505b14242a616555fd222de65fb0bdc937df6
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: arupara-sarbojanin-durgotsab-committee
+    name: Arupara Sarbojanin Durgotsab Committee
+    aliases: []
+    area: Howrah
+    city: Howrah
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: false
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/howrah.php
+      source_title: List of Durga puja in Howrah 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "Arupara Sarbojanin Durgotsab Committee 2025\n\n\r\n                                Howrah"
+      source_revision_id: 3a2f6c2a5293bf4291d971f1f05505b14242a616555fd222de65fb0bdc937df6
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: azad-hind-sangha-durga-puja
+    name: Azad Hind Sangha Durga Puja
+    aliases: []
+    area: Howrah
+    city: Howrah
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: false
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/howrah.php
+      source_title: List of Durga puja in Howrah 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "Azad Hind Sangha Durga Puja 2025\n\n\r\n                                Howrah"
+      source_revision_id: 3a2f6c2a5293bf4291d971f1f05505b14242a616555fd222de65fb0bdc937df6
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: bachhri-durga-puja
+    name: Bachhri Durga Puja
+    aliases: []
+    area: Howrah
+    city: Howrah
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: false
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/howrah.php
+      source_title: List of Durga puja in Howrah 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "Bachhri Durga Puja 2025\n\n\r\n                                Howrah"
+      source_revision_id: 3a2f6c2a5293bf4291d971f1f05505b14242a616555fd222de65fb0bdc937df6
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: bagnan-nabaneer-club-durga-puja
+    name: Bagnan Nabaneer Club Durga Puja
+    aliases: []
+    area: Howrah
+    city: Howrah
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: false
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/howrah.php
+      source_title: List of Durga puja in Howrah 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "Bagnan Nabaneer Club Durga Puja 2025\n\n\r\n                                Howrah"
+      source_revision_id: 3a2f6c2a5293bf4291d971f1f05505b14242a616555fd222de65fb0bdc937df6
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: balitikuri-netaji-balak-sangha
+    name: Balitikuri Netaji Balak Sangha
+    aliases: []
+    area: Howrah
+    city: Howrah
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: false
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/howrah.php
+      source_title: List of Durga puja in Howrah 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "Balitikuri Netaji Balak Sangha 2025\n\n\r\n                                Howrah"
+      source_revision_id: 3a2f6c2a5293bf4291d971f1f05505b14242a616555fd222de65fb0bdc937df6
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: bantra-mohila-sangha-durga-puja
+    name: Bantra Mohila Sangha Durga Puja
+    aliases: []
+    area: Howrah
+    city: Howrah
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: false
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/howrah.php
+      source_title: List of Durga puja in Howrah 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "Bantra Mohila Sangha Durga Puja 2025\n\n\r\n                                Howrah"
+      source_revision_id: 3a2f6c2a5293bf4291d971f1f05505b14242a616555fd222de65fb0bdc937df6
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: bantra-nabin-sangha-durga-puja
+    name: Bantra Nabin Sangha Durga Puja
+    aliases: []
+    area: Howrah
+    city: Howrah
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: false
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/howrah.php
+      source_title: List of Durga puja in Howrah 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "Bantra Nabin Sangha Durga Puja 2025\n\n\r\n                                Howrah"
+      source_revision_id: 3a2f6c2a5293bf4291d971f1f05505b14242a616555fd222de65fb0bdc937df6
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: batore-41er-pally-sarbojanin
+    name: Batore 41er Pally Sarbojanin
+    aliases: []
+    area: Howrah
+    city: Howrah
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: false
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/howrah.php
+      source_title: List of Durga puja in Howrah 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "Batore 41er Pally Sarbojanin 2025\n\n\r\n                                Howrah"
+      source_revision_id: 3a2f6c2a5293bf4291d971f1f05505b14242a616555fd222de65fb0bdc937df6
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: belepole-adams-club
+    name: Belepole Adams Club
+    aliases: []
+    area: Howrah
+    city: Howrah
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: false
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/howrah.php
+      source_title: List of Durga puja in Howrah 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "Belepole Adams Club 2025\n\n\r\n                                Howrah"
+      source_revision_id: 3a2f6c2a5293bf4291d971f1f05505b14242a616555fd222de65fb0bdc937df6
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: brindabon-netaji-balak-sangha-durga-puja
+    name: Brindabon Netaji Balak Sangha Durga Puja
+    aliases: []
+    area: Howrah
+    city: Howrah
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: false
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/howrah.php
+      source_title: List of Durga puja in Howrah 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "Brindabon Netaji Balak Sangha Durga Puja 2025\n\n\r\n                                Howrah"
+      source_revision_id: 3a2f6c2a5293bf4291d971f1f05505b14242a616555fd222de65fb0bdc937df6
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: daspara-panch-bhai-sangha
+    name: Daspara Panch Bhai Sangha
+    aliases: []
+    area: Howrah
+    city: Howrah
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: false
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/howrah.php
+      source_title: List of Durga puja in Howrah 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "Daspara Panch Bhai Sangha 2025\n\n\r\n                                Howrah"
+      source_revision_id: 3a2f6c2a5293bf4291d971f1f05505b14242a616555fd222de65fb0bdc937df6
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: dharmatala-durga-puja
+    name: Dharmatala Durga Puja
+    aliases: []
+    area: Howrah
+    city: Howrah
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: false
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/howrah.php
+      source_title: List of Durga puja in Howrah 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "Dharmatala Durga Puja 2025\n\n\r\n                                Howrah"
+      source_revision_id: 3a2f6c2a5293bf4291d971f1f05505b14242a616555fd222de65fb0bdc937df6
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: ghoshpara-sankalpa-sangha-durga-puja
+    name: Ghoshpara Sankalpa Sangha Durga Puja
+    aliases: []
+    area: Howrah
+    city: Howrah
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: false
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/howrah.php
+      source_title: List of Durga puja in Howrah 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "Ghoshpara Sankalpa Sangha Durga Puja 2025\n\n\r\n                                Howrah"
+      source_revision_id: 3a2f6c2a5293bf4291d971f1f05505b14242a616555fd222de65fb0bdc937df6
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: ghoshpara-young-stars-durga-puja
+    name: Ghoshpara Young Stars Durga Puja
+    aliases: []
+    area: Howrah
+    city: Howrah
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: false
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/howrah.php
+      source_title: List of Durga puja in Howrah 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "Ghoshpara Young Stars Durga Puja 2025\n\n\r\n                                Howrah"
+      source_revision_id: 3a2f6c2a5293bf4291d971f1f05505b14242a616555fd222de65fb0bdc937df6
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: guha-road-sarbojanin-mahapuja
+    name: Guha Road Sarbojanin Mahapuja
+    aliases: []
+    area: Howrah
+    city: Howrah
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: false
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/howrah.php
+      source_title: List of Durga puja in Howrah 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "Guha Road Sarbojanin Mahapuja 2025\n\n\r\n                                Howrah"
+      source_revision_id: 3a2f6c2a5293bf4291d971f1f05505b14242a616555fd222de65fb0bdc937df6
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: howrah-jatiya-sevadal-club-durga-puja
+    name: Howrah Jatiya Sevadal Club Durga Puja
+    aliases: []
+    area: Howrah
+    city: Howrah
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: false
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/howrah.php
+      source_title: List of Durga puja in Howrah 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "Howrah Jatiya Sevadal Club Durga Puja 2025\n\n\r\n                                Howrah"
+      source_revision_id: 3a2f6c2a5293bf4291d971f1f05505b14242a616555fd222de65fb0bdc937df6
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: ichapur-bayam-samity-durga-puja
+    name: Ichapur Bayam Samity Durga Puja
+    aliases: []
+    area: Howrah
+    city: Howrah
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: false
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/howrah.php
+      source_title: List of Durga puja in Howrah 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "Ichapur Bayam Samity Durga Puja 2025\n\n\r\n                                Howrah"
+      source_revision_id: 3a2f6c2a5293bf4291d971f1f05505b14242a616555fd222de65fb0bdc937df6
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: ichapur-mitali-sangha-durga-puja
+    name: Ichapur Mitali Sangha Durga Puja
+    aliases: []
+    area: Howrah
+    city: Howrah
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: false
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/howrah.php
+      source_title: List of Durga puja in Howrah 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "Ichapur Mitali Sangha Durga Puja 2025\n\n\r\n                                Howrah"
+      source_revision_id: 3a2f6c2a5293bf4291d971f1f05505b14242a616555fd222de65fb0bdc937df6
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: ichapur-sanghamitra-durga-puja
+    name: Ichapur Sanghamitra Durga Puja
+    aliases: []
+    area: Howrah
+    city: Howrah
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: false
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/howrah.php
+      source_title: List of Durga puja in Howrah 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "Ichapur Sanghamitra Durga Puja 2025\n\n\r\n                                Howrah"
+      source_revision_id: 3a2f6c2a5293bf4291d971f1f05505b14242a616555fd222de65fb0bdc937df6
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: jhorehat-pachal-para-puja-committee
+    name: Jhorehat Pachal Para Puja Committee
+    aliases: []
+    area: Howrah
+    city: Howrah
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: false
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/howrah.php
+      source_title: List of Durga puja in Howrah 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "Jhorehat Pachal Para Puja Committee 2025\n\n\r\n                                Howrah"
+      source_revision_id: 3a2f6c2a5293bf4291d971f1f05505b14242a616555fd222de65fb0bdc937df6
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: kamardanga-sisu-sangha-durga-puja
+    name: Kamardanga Sisu Sangha Durga Puja
+    aliases: []
+    area: Howrah
+    city: Howrah
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: false
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/howrah.php
+      source_title: List of Durga puja in Howrah 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "Kamardanga Sisu Sangha Durga Puja 2025\n\n\r\n                                Howrah"
+      source_revision_id: 3a2f6c2a5293bf4291d971f1f05505b14242a616555fd222de65fb0bdc937df6
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: kamardanga-sitalatala-barowari-durga-puja
+    name: Kamardanga Sitalatala Barowari Durga Puja
+    aliases: []
+    area: Howrah
+    city: Howrah
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: false
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/howrah.php
+      source_title: List of Durga puja in Howrah 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "Kamardanga Sitalatala Barowari Durga Puja 2025\n\n\r\n                                Howrah"
+      source_revision_id: 3a2f6c2a5293bf4291d971f1f05505b14242a616555fd222de65fb0bdc937df6
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: kashipur-yubo-gosthi
+    name: Kashipur Yubo Gosthi
+    aliases: []
+    area: Howrah
+    city: Howrah
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: false
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/howrah.php
+      source_title: List of Durga puja in Howrah 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "Kashipur Yubo Gosthi 2025\n\n\r\n                                Howrah"
+      source_revision_id: 3a2f6c2a5293bf4291d971f1f05505b14242a616555fd222de65fb0bdc937df6
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: kazi-bagan-lane-durga-puja
+    name: Kazi Bagan Lane Durga Puja
+    aliases: []
+    area: Howrah
+    city: Howrah
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: false
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/howrah.php
+      source_title: List of Durga puja in Howrah 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "Kazi Bagan Lane Durga Puja 2025\n\n\r\n                                Howrah"
+      source_revision_id: 3a2f6c2a5293bf4291d971f1f05505b14242a616555fd222de65fb0bdc937df6
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: kishor-sangsad-club-durga-puja
+    name: Kishor Sangsad Club Durga Puja
+    aliases: []
+    area: Howrah
+    city: Howrah
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: false
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/howrah.php
+      source_title: List of Durga puja in Howrah 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "Kishor Sangsad Club Durga Puja 2025\n\n\r\n                                Howrah"
+      source_revision_id: 3a2f6c2a5293bf4291d971f1f05505b14242a616555fd222de65fb0bdc937df6
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: madhusudan-das-lane-bye-lane-sarbojanin-durgotsab
+    name: Madhusudan Das Lane & Bye Lane Sarbojanin Durgotsab
+    aliases: []
+    area: Howrah
+    city: Howrah
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: false
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/howrah.php
+      source_title: List of Durga puja in Howrah 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "Madhusudan Das Lane & Bye Lane Sarbojanin Durgotsab 2025\n\n\r\n                         \
+        \       Howrah"
+      source_revision_id: 3a2f6c2a5293bf4291d971f1f05505b14242a616555fd222de65fb0bdc937df6
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: n-s-c-sports-club-durga-puja
+    name: N.S.C. Sports Club Durga Puja
+    aliases: []
+    area: South Kolkata
+    city: Kolkata
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: false
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/south_kolkata.php
+      source_title: List of Durga puja in South Kolkata 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "N.S.C. Sports Club Durga Puja 2025\n\n\r\n                                South Kolkata"
+      source_revision_id: 02c2eff3a20eaa166114de486a2f34da38ca72a38c5c1d65638d3091a210c1f6
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: naktala-udayan-sangha-durga-puja
+    name: Naktala Udayan Sangha Durga Puja
+    aliases: []
+    area: South Kolkata
+    city: Kolkata
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: false
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/south_kolkata.php
+      source_title: List of Durga puja in South Kolkata 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "Naktala Udayan Sangha Durga Puja 2025\n\n\r\n                                South Kolkata"
+      source_revision_id: 02c2eff3a20eaa166114de486a2f34da38ca72a38c5c1d65638d3091a210c1f6
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: naskarpara-sarbojanin-durgotsav
+    name: Naskarpara Sarbojanin Durgotsav
+    aliases: []
+    area: South Kolkata
+    city: Kolkata
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: false
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/south_kolkata.php
+      source_title: List of Durga puja in South Kolkata 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "Naskarpara Sarbojanin Durgotsav 2025\n\n\r\n                                South Kolkata"
+      source_revision_id: 02c2eff3a20eaa166114de486a2f34da38ca72a38c5c1d65638d3091a210c1f6
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: new-alipore-suruchi-sangha-durga-puja
+    name: New Alipore Suruchi Sangha Durga Puja
+    aliases: []
+    area: South Kolkata
+    city: Kolkata
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: false
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/south_kolkata.php
+      source_title: List of Durga puja in South Kolkata 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "New Alipore Suruchi Sangha Durga Puja 2025\n\n\r\n                                South Kolkata"
+      source_revision_id: 02c2eff3a20eaa166114de486a2f34da38ca72a38c5c1d65638d3091a210c1f6
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: new-santoshpur-adi-durgotsab
+    name: New Santoshpur Adi Durgotsab
+    aliases: []
+    area: South Kolkata
+    city: Kolkata
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: false
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/south_kolkata.php
+      source_title: List of Durga puja in South Kolkata 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "New Santoshpur Adi Durgotsab 2025\n\n\r\n                                South Kolkata"
+      source_revision_id: 02c2eff3a20eaa166114de486a2f34da38ca72a38c5c1d65638d3091a210c1f6
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: paddapukur-barwari-samity
+    name: Paddapukur Barwari Samity
+    aliases: []
+    area: South Kolkata
+    city: Kolkata
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: false
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/south_kolkata.php
+      source_title: List of Durga puja in South Kolkata 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "Paddapukur Barwari Samity 2025\n\n\r\n                                South Kolkata"
+      source_revision_id: 02c2eff3a20eaa166114de486a2f34da38ca72a38c5c1d65638d3091a210c1f6
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: paddapukur-youth-association-durga-puja
+    name: Paddapukur Youth Association Durga Puja
+    aliases: []
+    area: South Kolkata
+    city: Kolkata
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: false
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/south_kolkata.php
+      source_title: List of Durga puja in South Kolkata 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "Paddapukur Youth Association Durga Puja 2025\n\n\r\n                                South\
+        \ Kolkata"
+      source_revision_id: 02c2eff3a20eaa166114de486a2f34da38ca72a38c5c1d65638d3091a210c1f6
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: pally-mangal-samity-durga-puja
+    name: Pally Mangal Samity Durga Puja
+    aliases: []
+    area: South Kolkata
+    city: Kolkata
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: false
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/south_kolkata.php
+      source_title: List of Durga puja in South Kolkata 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "Pally Mangal Samity Durga Puja 2025\n\n\r\n                                South Kolkata"
+      source_revision_id: 02c2eff3a20eaa166114de486a2f34da38ca72a38c5c1d65638d3091a210c1f6
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: panchanna-gram-adhibasibrinda
+    name: Panchanna Gram Adhibasibrinda
+    aliases: []
+    area: South Kolkata
+    city: Kolkata
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: false
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/south_kolkata.php
+      source_title: List of Durga puja in South Kolkata 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "Panchanna Gram Adhibasibrinda 2025\n\n\r\n                                South Kolkata"
+      source_revision_id: 02c2eff3a20eaa166114de486a2f34da38ca72a38c5c1d65638d3091a210c1f6
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: paschim-putiary-sarbojanin-nabo-durgotsav
+    name: Paschim Putiary Sarbojanin Nabo Durgotsav
+    aliases: []
+    area: South Kolkata
+    city: Kolkata
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: false
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/south_kolkata.php
+      source_title: List of Durga puja in South Kolkata 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "Paschim Putiary Sarbojanin Nabo Durgotsav 2025\n\n\r\n                                South\
+        \ Kolkata"
+      source_revision_id: 02c2eff3a20eaa166114de486a2f34da38ca72a38c5c1d65638d3091a210c1f6
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: patuli-sarbojanin-durgotsab
+    name: Patuli Sarbojanin Durgotsab
+    aliases: []
+    area: South Kolkata
+    city: Kolkata
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: false
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/south_kolkata.php
+      source_title: List of Durga puja in South Kolkata 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "Patuli Sarbojanin Durgotsab 2025\n\n\r\n                                South Kolkata"
+      source_revision_id: 02c2eff3a20eaa166114de486a2f34da38ca72a38c5c1d65638d3091a210c1f6
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: peyarabagan-sarbojanin-durgotsab
+    name: Peyarabagan Sarbojanin Durgotsab
+    aliases: []
+    area: South Kolkata
+    city: Kolkata
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: false
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/south_kolkata.php
+      source_title: List of Durga puja in South Kolkata 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "Peyarabagan Sarbojanin Durgotsab 2025\n\n\r\n                                South Kolkata"
+      source_revision_id: 02c2eff3a20eaa166114de486a2f34da38ca72a38c5c1d65638d3091a210c1f6
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: picnic-sunrise-club
+    name: Picnic Sunrise Club
+    aliases: []
+    area: South Kolkata
+    city: Kolkata
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: false
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/south_kolkata.php
+      source_title: List of Durga puja in South Kolkata 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "Picnic Sunrise Club 2025\n\n\r\n                                South Kolkata"
+      source_revision_id: 02c2eff3a20eaa166114de486a2f34da38ca72a38c5c1d65638d3091a210c1f6
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: purbachal-residents-sarbojanin-durgotsav
+    name: Purbachal Residents Sarbojanin Durgotsav
+    aliases: []
+    area: South Kolkata
+    city: Kolkata
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: false
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/south_kolkata.php
+      source_title: List of Durga puja in South Kolkata 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "Purbachal Residents Sarbojanin Durgotsav 2025\n\n\r\n                                South\
+        \ Kolkata"
+      source_revision_id: 02c2eff3a20eaa166114de486a2f34da38ca72a38c5c1d65638d3091a210c1f6
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: putiary-sarbojanin-durgotsab-committee
+    name: Putiary Sarbojanin Durgotsab Committee
+    aliases: []
+    area: South Kolkata
+    city: Kolkata
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: false
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/south_kolkata.php
+      source_title: List of Durga puja in South Kolkata 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "Putiary Sarbojanin Durgotsab Committee 2025\n\n\r\n                                South Kolkata"
+      source_revision_id: 02c2eff3a20eaa166114de486a2f34da38ca72a38c5c1d65638d3091a210c1f6
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: ramgarh-satapally-sarbojanin-durgotsav-committee
+    name: Ramgarh Satapally Sarbojanin Durgotsav Committee
+    aliases: []
+    area: South Kolkata
+    city: Kolkata
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: false
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/south_kolkata.php
+      source_title: List of Durga puja in South Kolkata 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "Ramgarh Satapally Sarbojanin Durgotsav Committee 2025\n\n\r\n                            \
+        \    South Kolkata"
+      source_revision_id: 02c2eff3a20eaa166114de486a2f34da38ca72a38c5c1d65638d3091a210c1f6
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: rashbehari-suhrid-sangha
+    name: Rashbehari Suhrid Sangha
+    aliases: []
+    area: South Kolkata
+    city: Kolkata
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: false
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/south_kolkata.php
+      source_title: List of Durga puja in South Kolkata 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "Rashbehari Suhrid Sangha 2025\n\n\r\n                                South Kolkata"
+      source_revision_id: 02c2eff3a20eaa166114de486a2f34da38ca72a38c5c1d65638d3091a210c1f6
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: russa-madhyapally-sarbojanin-durgotsav
+    name: Russa Madhyapally Sarbojanin Durgotsav
+    aliases: []
+    area: South Kolkata
+    city: Kolkata
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: false
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/south_kolkata.php
+      source_title: List of Durga puja in South Kolkata 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "Russa Madhyapally Sarbojanin Durgotsav 2025\n\n\r\n                                South Kolkata"
+      source_revision_id: 02c2eff3a20eaa166114de486a2f34da38ca72a38c5c1d65638d3091a210c1f6
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: sahapur-suhrid-sangha-durga-puja-committee
+    name: Sahapur Suhrid Sangha Durga Puja Committee
+    aliases: []
+    area: South Kolkata
+    city: Kolkata
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: false
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/south_kolkata.php
+      source_title: List of Durga puja in South Kolkata 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "Sahapur Suhrid Sangha Durga Puja Committee 2025\n\n\r\n                                South\
+        \ Kolkata"
+      source_revision_id: 02c2eff3a20eaa166114de486a2f34da38ca72a38c5c1d65638d3091a210c1f6
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: sanghasree-kalighat-durga-puja
+    name: Sanghasree Kalighat Durga Puja
+    aliases: []
+    area: South Kolkata
+    city: Kolkata
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: false
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/south_kolkata.php
+      source_title: List of Durga puja in South Kolkata 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "Sanghasree Kalighat Durga Puja 2025\n\n\r\n                                South Kolkata"
+      source_revision_id: 02c2eff3a20eaa166114de486a2f34da38ca72a38c5c1d65638d3091a210c1f6
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: santoshpur-avenue-south
+    name: Santoshpur Avenue South
+    aliases: []
+    area: South Kolkata
+    city: Kolkata
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: false
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/south_kolkata.php
+      source_title: List of Durga puja in South Kolkata 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "Santoshpur Avenue South 2025\n\n\r\n                                South Kolkata"
+      source_revision_id: 02c2eff3a20eaa166114de486a2f34da38ca72a38c5c1d65638d3091a210c1f6
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: santoshpur-lake-pally-durga-puja
+    name: Santoshpur Lake Pally Durga Puja
+    aliases: []
+    area: South Kolkata
+    city: Kolkata
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: false
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/south_kolkata.php
+      source_title: List of Durga puja in South Kolkata 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "Santoshpur Lake Pally Durga Puja 2025\n\n\r\n                                South Kolkata"
+      source_revision_id: 02c2eff3a20eaa166114de486a2f34da38ca72a38c5c1d65638d3091a210c1f6
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: santoshpur-trikon-park-durgotsab
+    name: Santoshpur Trikon Park Durgotsab
+    aliases: []
+    area: South Kolkata
+    city: Kolkata
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: false
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/south_kolkata.php
+      source_title: List of Durga puja in South Kolkata 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "Santoshpur Trikon Park Durgotsab 2025\n\n\r\n                                South Kolkata"
+      source_revision_id: 02c2eff3a20eaa166114de486a2f34da38ca72a38c5c1d65638d3091a210c1f6
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: shibmandir-sarbojanin-durgotsab-samiti
+    name: Shibmandir Sarbojanin Durgotsab Samiti
+    aliases: []
+    area: South Kolkata
+    city: Kolkata
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: false
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/south_kolkata.php
+      source_title: List of Durga puja in South Kolkata 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "Shibmandir Sarbojanin Durgotsab Samiti 2025\n\n\r\n                                South Kolkata"
+      source_revision_id: 02c2eff3a20eaa166114de486a2f34da38ca72a38c5c1d65638d3091a210c1f6
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: singhi-park-sarbojanin-durga-puja
+    name: Singhi Park Sarbojanin Durga Puja
+    aliases: []
+    area: South Kolkata
+    city: Kolkata
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: false
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/south_kolkata.php
+      source_title: List of Durga puja in South Kolkata 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "Singhi Park Sarbojanin Durga Puja 2025\n\n\r\n                                South Kolkata"
+      source_revision_id: 02c2eff3a20eaa166114de486a2f34da38ca72a38c5c1d65638d3091a210c1f6
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: sonarpur-sarbojanin-durgotsav-puja-committee
+    name: Sonarpur Sarbojanin Durgotsav Puja Committee
+    aliases: []
+    area: South Kolkata
+    city: Kolkata
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: false
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/south_kolkata.php
+      source_title: List of Durga puja in South Kolkata 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "Sonarpur Sarbojanin Durgotsav Puja Committee 2025\n\n\r\n                                South\
+        \ Kolkata"
+      source_revision_id: 02c2eff3a20eaa166114de486a2f34da38ca72a38c5c1d65638d3091a210c1f6
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: surya-nagar-sarbojanin-durga-puja
+    name: Surya Nagar Sarbojanin Durga Puja
+    aliases: []
+    area: South Kolkata
+    city: Kolkata
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: false
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/south_kolkata.php
+      source_title: List of Durga puja in South Kolkata 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "Surya Nagar Sarbojanin Durga Puja 2025\n\n\r\n                                South Kolkata"
+      source_revision_id: 02c2eff3a20eaa166114de486a2f34da38ca72a38c5c1d65638d3091a210c1f6
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: tridhara-sammilani-durga-puja
+    name: Tridhara Sammilani Durga Puja
+    aliases: []
+    area: South Kolkata
+    city: Kolkata
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: false
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/south_kolkata.php
+      source_title: List of Durga puja in South Kolkata 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "Tridhara Sammilani Durga Puja 2025\n\n\r\n                                South Kolkata"
+      source_revision_id: 02c2eff3a20eaa166114de486a2f34da38ca72a38c5c1d65638d3091a210c1f6
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: tulipians-durgotsav
+    name: Tulipians Durgotsav
+    aliases: []
+    area: South Kolkata
+    city: Kolkata
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: false
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/south_kolkata.php
+      source_title: List of Durga puja in South Kolkata 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "Tulipians Durgotsav 2025\n\n\r\n                                South Kolkata"
+      source_revision_id: 02c2eff3a20eaa166114de486a2f34da38ca72a38c5c1d65638d3091a210c1f6
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: udayan-kidderpore-durga-puja
+    name: Udayan Kidderpore Durga Puja
+    aliases: []
+    area: South Kolkata
+    city: Kolkata
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: false
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/south_kolkata.php
+      source_title: List of Durga puja in South Kolkata 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "Udayan Kidderpore Durga Puja 2025\n\n\r\n                                South Kolkata"
+      source_revision_id: 02c2eff3a20eaa166114de486a2f34da38ca72a38c5c1d65638d3091a210c1f6
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: dhakuria-sarbojanin-durgotsab
+    name: Dhakuria Sarbojanin Durgotsab
+    aliases: []
+    area: South Kolkata
+    city: Kolkata
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: false
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/south_kolkata.php
+      source_title: List of Durga puja in South Kolkata 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "Dhakuria Sarbojanin Durgotsab 2025\n\n\r\n                                South Kolkata"
+      source_revision_id: 02c2eff3a20eaa166114de486a2f34da38ca72a38c5c1d65638d3091a210c1f6
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: ekdalia-evergreen-club-durga-puja
+    name: Ekdalia Evergreen Club Durga Puja
+    aliases: []
+    area: South Kolkata
+    city: Kolkata
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: true
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/south_kolkata.php
+      source_title: List of Durga puja in South Kolkata 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "Ekdalia Evergreen Club Durga Puja 2025\n\n\r\n                                South Kolkata"
+      source_revision_id: 02c2eff3a20eaa166114de486a2f34da38ca72a38c5c1d65638d3091a210c1f6
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: falguni-sangha-durga-puja
+    name: Falguni Sangha Durga Puja
+    aliases: []
+    area: South Kolkata
+    city: Kolkata
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: false
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/south_kolkata.php
+      source_title: List of Durga puja in South Kolkata 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "Falguni Sangha Durga Puja 2025\n\n\r\n                                South Kolkata"
+      source_revision_id: 02c2eff3a20eaa166114de486a2f34da38ca72a38c5c1d65638d3091a210c1f6
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: garfa-sarbojanin-durgotsav
+    name: Garfa Sarbojanin Durgotsav
+    aliases: []
+    area: South Kolkata
+    city: Kolkata
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: false
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/south_kolkata.php
+      source_title: List of Durga puja in South Kolkata 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "Garfa Sarbojanin Durgotsav 2025\n\n\r\n                                South Kolkata"
+      source_revision_id: 02c2eff3a20eaa166114de486a2f34da38ca72a38c5c1d65638d3091a210c1f6
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: goala-para-five-star-sporting-club
+    name: Goala Para Five Star Sporting Club
+    aliases: []
+    area: South Kolkata
+    city: Kolkata
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: false
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/south_kolkata.php
+      source_title: List of Durga puja in South Kolkata 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "Goala Para Five Star Sporting Club 2025\n\n\r\n                                South Kolkata"
+      source_revision_id: 02c2eff3a20eaa166114de486a2f34da38ca72a38c5c1d65638d3091a210c1f6
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: golpark-sarbojanin-durgotsab-committee
+    name: Golpark Sarbojanin Durgotsab Committee
+    aliases: []
+    area: South Kolkata
+    city: Kolkata
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: false
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/south_kolkata.php
+      source_title: List of Durga puja in South Kolkata 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "Golpark Sarbojanin Durgotsab Committee 2025\n\n\r\n                                South Kolkata"
+      source_revision_id: 02c2eff3a20eaa166114de486a2f34da38ca72a38c5c1d65638d3091a210c1f6
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: gopal-nagar-kalyan-sangha-durga-puja
+    name: Gopal Nagar Kalyan Sangha Durga Puja
+    aliases: []
+    area: South Kolkata
+    city: Kolkata
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: false
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/south_kolkata.php
+      source_title: List of Durga puja in South Kolkata 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "Gopal Nagar Kalyan Sangha Durga Puja 2025\n\n\r\n                                South Kolkata"
+      source_revision_id: 02c2eff3a20eaa166114de486a2f34da38ca72a38c5c1d65638d3091a210c1f6
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: harish-park-sarbojanin-durgotsab-samity
+    name: Harish Park Sarbojanin Durgotsab Samity
+    aliases: []
+    area: South Kolkata
+    city: Kolkata
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: false
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/south_kolkata.php
+      source_title: List of Durga puja in South Kolkata 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "Harish Park Sarbojanin Durgotsab Samity 2025\n\n\r\n                                South\
+        \ Kolkata"
+      source_revision_id: 02c2eff3a20eaa166114de486a2f34da38ca72a38c5c1d65638d3091a210c1f6
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: hindustan-pally-durga-puja-committee
+    name: Hindustan Pally Durga Puja Committee
+    aliases: []
+    area: South Kolkata
+    city: Kolkata
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: false
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/south_kolkata.php
+      source_title: List of Durga puja in South Kolkata 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "Hindustan Pally Durga Puja Committee 2025\n\n\r\n                                South Kolkata"
+      source_revision_id: 02c2eff3a20eaa166114de486a2f34da38ca72a38c5c1d65638d3091a210c1f6
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: jagaran-club-durga-puja
+    name: Jagaran Club Durga Puja
+    aliases: []
+    area: South Kolkata
+    city: Kolkata
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: false
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/south_kolkata.php
+      source_title: List of Durga puja in South Kolkata 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "Jagaran Club Durga Puja 2025\n\n\r\n                                South Kolkata"
+      source_revision_id: 02c2eff3a20eaa166114de486a2f34da38ca72a38c5c1d65638d3091a210c1f6
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: jubamaitry-kalighat-durga-puja
+    name: Jubamaitry Kalighat Durga Puja
+    aliases: []
+    area: South Kolkata
+    city: Kolkata
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: false
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/south_kolkata.php
+      source_title: List of Durga puja in South Kolkata 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "Jubamaitry Kalighat Durga Puja 2025\n\n\r\n                                South Kolkata"
+      source_revision_id: 02c2eff3a20eaa166114de486a2f34da38ca72a38c5c1d65638d3091a210c1f6
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: kalighat-nepal-bhattacharjee-street-club
+    name: Kalighat Nepal Bhattacharjee Street Club
+    aliases: []
+    area: South Kolkata
+    city: Kolkata
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: false
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/south_kolkata.php
+      source_title: List of Durga puja in South Kolkata 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "Kalighat Nepal Bhattacharjee Street Club 2025\n\n\r\n                                South\
+        \ Kolkata"
+      source_revision_id: 02c2eff3a20eaa166114de486a2f34da38ca72a38c5c1d65638d3091a210c1f6
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: kansaripara-sarbojanin-sarodotsab-committee
+    name: Kansaripara Sarbojanin Sarodotsab Committee
+    aliases: []
+    area: South Kolkata
+    city: Kolkata
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: false
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/south_kolkata.php
+      source_title: List of Durga puja in South Kolkata 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "Kansaripara Sarbojanin Sarodotsab Committee 2025\n\n\r\n                                South\
+        \ Kolkata"
+      source_revision_id: 02c2eff3a20eaa166114de486a2f34da38ca72a38c5c1d65638d3091a210c1f6
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: kasba-r-k-chatterjee-road-adhibasi-brinda-durga-puja
+    name: Kasba R.K. Chatterjee Road Adhibasi Brinda Durga Puja
+    aliases: []
+    area: South Kolkata
+    city: Kolkata
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: false
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/south_kolkata.php
+      source_title: List of Durga puja in South Kolkata 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "Kasba R.K. Chatterjee Road Adhibasi Brinda Durga Puja 2025\n\n\r\n                       \
+        \         South Kolkata"
+      source_revision_id: 02c2eff3a20eaa166114de486a2f34da38ca72a38c5c1d65638d3091a210c1f6
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: kasba-renaissance-club
+    name: Kasba Renaissance Club
+    aliases: []
+    area: South Kolkata
+    city: Kolkata
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: false
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/south_kolkata.php
+      source_title: List of Durga puja in South Kolkata 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "Kasba Renaissance Club 2025\n\n\r\n                                South Kolkata"
+      source_revision_id: 02c2eff3a20eaa166114de486a2f34da38ca72a38c5c1d65638d3091a210c1f6
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: kasba-shakti-sangha-pallybasi-durgotsav-samity
+    name: Kasba Shakti Sangha Pallybasi Durgotsav Samity
+    aliases: []
+    area: South Kolkata
+    city: Kolkata
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: false
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/south_kolkata.php
+      source_title: List of Durga puja in South Kolkata 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "Kasba Shakti Sangha Pallybasi Durgotsav Samity 2025\n\n\r\n                              \
+        \  South Kolkata"
+      source_revision_id: 02c2eff3a20eaa166114de486a2f34da38ca72a38c5c1d65638d3091a210c1f6
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: ketopole-sammilani-durga-puja
+    name: Ketopole Sammilani Durga Puja
+    aliases: []
+    area: South Kolkata
+    city: Kolkata
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: false
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/south_kolkata.php
+      source_title: List of Durga puja in South Kolkata 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "Ketopole Sammilani Durga Puja 2025\n\n\r\n                                South Kolkata"
+      source_revision_id: 02c2eff3a20eaa166114de486a2f34da38ca72a38c5c1d65638d3091a210c1f6
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: keyatala-pally-samity-durga-puja
+    name: Keyatala Pally Samity Durga Puja
+    aliases: []
+    area: South Kolkata
+    city: Kolkata
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: false
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/south_kolkata.php
+      source_title: List of Durga puja in South Kolkata 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "Keyatala Pally Samity Durga Puja 2025\n\n\r\n                                South Kolkata"
+      source_revision_id: 02c2eff3a20eaa166114de486a2f34da38ca72a38c5c1d65638d3091a210c1f6
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: kheyali-sangha-durga-puja
+    name: Kheyali Sangha Durga Puja
+    aliases: []
+    area: South Kolkata
+    city: Kolkata
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: false
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/south_kolkata.php
+      source_title: List of Durga puja in South Kolkata 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "Kheyali Sangha Durga Puja 2025\n\n\r\n                                South Kolkata"
+      source_revision_id: 02c2eff3a20eaa166114de486a2f34da38ca72a38c5c1d65638d3091a210c1f6
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: khidderpore-sarbojanin-durgotsab
+    name: Khidderpore Sarbojanin Durgotsab
+    aliases: []
+    area: South Kolkata
+    city: Kolkata
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: false
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/south_kolkata.php
+      source_title: List of Durga puja in South Kolkata 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "Khidderpore Sarbojanin Durgotsab 2025\n\n\r\n                                South Kolkata"
+      source_revision_id: 02c2eff3a20eaa166114de486a2f34da38ca72a38c5c1d65638d3091a210c1f6
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: khidderpur-75-pally-sarbojanin-durgotsab-committee
+    name: Khidderpur 75 Pally Sarbojanin Durgotsab Committee
+    aliases: []
+    area: South Kolkata
+    city: Kolkata
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: false
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/south_kolkata.php
+      source_title: List of Durga puja in South Kolkata 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "Khidderpur 75 Pally Sarbojanin Durgotsab Committee 2025\n\n\r\n                          \
+        \      South Kolkata"
+      source_revision_id: 02c2eff3a20eaa166114de486a2f34da38ca72a38c5c1d65638d3091a210c1f6
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: kidderpore-jubaghosthi-durga-puja
+    name: Kidderpore Jubaghosthi Durga Puja
+    aliases: []
+    area: South Kolkata
+    city: Kolkata
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: false
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/south_kolkata.php
+      source_title: List of Durga puja in South Kolkata 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "Kidderpore Jubaghosthi Durga Puja 2025\n\n\r\n                                South Kolkata"
+      source_revision_id: 02c2eff3a20eaa166114de486a2f34da38ca72a38c5c1d65638d3091a210c1f6
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: kidderpore-pally-saradiya-durga-puja
+    name: Kidderpore Pally Saradiya Durga Puja
+    aliases: []
+    area: South Kolkata
+    city: Kolkata
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: false
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/south_kolkata.php
+      source_title: List of Durga puja in South Kolkata 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "Kidderpore Pally Saradiya Durga Puja 2025\n\n\r\n                                South Kolkata"
+      source_revision_id: 02c2eff3a20eaa166114de486a2f34da38ca72a38c5c1d65638d3091a210c1f6
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: lake-gardens-peoples-association-durga-puja
+    name: Lake Gardens Peoples Association Durga Puja
+    aliases: []
+    area: South Kolkata
+    city: Kolkata
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: false
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/south_kolkata.php
+      source_title: List of Durga puja in South Kolkata 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "Lake Gardens Peoples Association Durga Puja 2025\n\n\r\n                                South\
+        \ Kolkata"
+      source_revision_id: 02c2eff3a20eaa166114de486a2f34da38ca72a38c5c1d65638d3091a210c1f6
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: lake-youth-corner-durga-puja
+    name: Lake Youth Corner Durga Puja
+    aliases: []
+    area: South Kolkata
+    city: Kolkata
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: false
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/south_kolkata.php
+      source_title: List of Durga puja in South Kolkata 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "Lake Youth Corner Durga Puja 2025\n\n\r\n                                South Kolkata"
+      source_revision_id: 02c2eff3a20eaa166114de486a2f34da38ca72a38c5c1d65638d3091a210c1f6
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: mahamayatala-sarbojanin-durgotsab
+    name: Mahamayatala Sarbojanin Durgotsab
+    aliases: []
+    area: South Kolkata
+    city: Kolkata
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: false
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/south_kolkata.php
+      source_title: List of Durga puja in South Kolkata 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "Mahamayatala Sarbojanin Durgotsab 2025\n\n\r\n                                South Kolkata"
+      source_revision_id: 02c2eff3a20eaa166114de486a2f34da38ca72a38c5c1d65638d3091a210c1f6
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: megacity-residents-puja-committee
+    name: Megacity Residents Puja Committee
+    aliases: []
+    area: South Kolkata
+    city: Kolkata
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: false
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/south_kolkata.php
+      source_title: List of Durga puja in South Kolkata 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "Megacity Residents Puja Committee 2025\n\n\r\n                                South Kolkata"
+      source_revision_id: 02c2eff3a20eaa166114de486a2f34da38ca72a38c5c1d65638d3091a210c1f6
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: mohila-mahal-club-durga-puja
+    name: Mohila Mahal Club Durga Puja
+    aliases: []
+    area: South Kolkata
+    city: Kolkata
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: false
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/south_kolkata.php
+      source_title: List of Durga puja in South Kolkata 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "Mohila Mahal Club Durga Puja 2025\n\n\r\n                                South Kolkata"
+      source_revision_id: 02c2eff3a20eaa166114de486a2f34da38ca72a38c5c1d65638d3091a210c1f6
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: monohar-pukur-baisakhi-sangha
+    name: Monohar Pukur Baisakhi Sangha
+    aliases: []
+    area: South Kolkata
+    city: Kolkata
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: false
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/south_kolkata.php
+      source_title: List of Durga puja in South Kolkata 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "Monohar Pukur Baisakhi Sangha 2025\n\n\r\n                                South Kolkata"
+      source_revision_id: 02c2eff3a20eaa166114de486a2f34da38ca72a38c5c1d65638d3091a210c1f6
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: mudiali-club-sarbojanin-durga-puja
+    name: Mudiali Club Sarbojanin Durga Puja
+    aliases: []
+    area: South Kolkata
+    city: Kolkata
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: false
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/south_kolkata.php
+      source_title: List of Durga puja in South Kolkata 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "Mudiali Club Sarbojanin Durga Puja 2025\n\n\r\n                                South Kolkata"
+      source_revision_id: 02c2eff3a20eaa166114de486a2f34da38ca72a38c5c1d65638d3091a210c1f6
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: baghajatin-b-and-c-block-durgotsav-committee
+    name: Baghajatin B and C Block Durgotsav Committee
+    aliases: []
+    area: South Kolkata
+    city: Kolkata
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: false
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/south_kolkata.php
+      source_title: List of Durga puja in South Kolkata 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "Baghajatin B and C Block Durgotsav Committee 2025\n\n\r\n                                South\
+        \ Kolkata"
+      source_revision_id: 02c2eff3a20eaa166114de486a2f34da38ca72a38c5c1d65638d3091a210c1f6
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: baghajatin-tarun-sangha-durgotsav
+    name: Baghajatin Tarun Sangha Durgotsav
+    aliases: []
+    area: South Kolkata
+    city: Kolkata
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: false
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/south_kolkata.php
+      source_title: List of Durga puja in South Kolkata 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "Baghajatin Tarun Sangha Durgotsav 2025\n\n\r\n                                South Kolkata"
+      source_revision_id: 02c2eff3a20eaa166114de486a2f34da38ca72a38c5c1d65638d3091a210c1f6
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: baishnabghata-paschimpara-sarbojanin-durgotsab
+    name: Baishnabghata Paschimpara Sarbojanin Durgotsab
+    aliases: []
+    area: South Kolkata
+    city: Kolkata
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: false
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/south_kolkata.php
+      source_title: List of Durga puja in South Kolkata 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "Baishnabghata Paschimpara Sarbojanin Durgotsab 2025\n\n\r\n                              \
+        \  South Kolkata"
+      source_revision_id: 02c2eff3a20eaa166114de486a2f34da38ca72a38c5c1d65638d3091a210c1f6
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: ballygunge-cultural-association-durga-puja
+    name: Ballygunge Cultural Association Durga Puja
+    aliases: []
+    area: South Kolkata
+    city: Kolkata
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: false
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/south_kolkata.php
+      source_title: List of Durga puja in South Kolkata 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "Ballygunge Cultural Association Durga Puja 2025\n\n\r\n                                South\
+        \ Kolkata"
+      source_revision_id: 02c2eff3a20eaa166114de486a2f34da38ca72a38c5c1d65638d3091a210c1f6
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: ballygunge-pally-sarbojanin-durgotsab-committee
+    name: Ballygunge Pally Sarbojanin Durgotsab Committee
+    aliases: []
+    area: South Kolkata
+    city: Kolkata
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: false
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/south_kolkata.php
+      source_title: List of Durga puja in South Kolkata 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "Ballygunge Pally Sarbojanin Durgotsab Committee 2025\n\n\r\n                             \
+        \   South Kolkata"
+      source_revision_id: 02c2eff3a20eaa166114de486a2f34da38ca72a38c5c1d65638d3091a210c1f6
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: bansdroni-sammilita-sarbojanin-durgotsab-committee
+    name: Bansdroni Sammilita Sarbojanin Durgotsab Committee
+    aliases: []
+    area: South Kolkata
+    city: Kolkata
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: false
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/south_kolkata.php
+      source_title: List of Durga puja in South Kolkata 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "Bansdroni Sammilita Sarbojanin Durgotsab Committee 2025\n\n\r\n                          \
+        \      South Kolkata"
+      source_revision_id: 02c2eff3a20eaa166114de486a2f34da38ca72a38c5c1d65638d3091a210c1f6
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: bediadanga-sarbojanin-durgotsav-committee
+    name: Bediadanga Sarbojanin Durgotsav Committee
+    aliases: []
+    area: South Kolkata
+    city: Kolkata
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: false
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/south_kolkata.php
+      source_title: List of Durga puja in South Kolkata 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "Bediadanga Sarbojanin Durgotsav Committee 2025\n\n\r\n                                South\
+        \ Kolkata"
+      source_revision_id: 02c2eff3a20eaa166114de486a2f34da38ca72a38c5c1d65638d3091a210c1f6
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: beltala-sarbojanin-durgotsab
+    name: Beltala Sarbojanin Durgotsab
+    aliases: []
+    area: South Kolkata
+    city: Kolkata
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: false
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/south_kolkata.php
+      source_title: List of Durga puja in South Kolkata 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "Beltala Sarbojanin Durgotsab 2025\n\n\r\n                                South Kolkata"
+      source_revision_id: 02c2eff3a20eaa166114de486a2f34da38ca72a38c5c1d65638d3091a210c1f6
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: bengal-united-club-durga-puja
+    name: Bengal United Club Durga Puja
+    aliases: []
+    area: South Kolkata
+    city: Kolkata
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: false
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/south_kolkata.php
+      source_title: List of Durga puja in South Kolkata 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "Bengal United Club Durga Puja 2025\n\n\r\n                                South Kolkata"
+      source_revision_id: 02c2eff3a20eaa166114de486a2f34da38ca72a38c5c1d65638d3091a210c1f6
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: bhawanipore-mahapuja-samity
+    name: Bhawanipore Mahapuja Samity
+    aliases: []
+    area: South Kolkata
+    city: Kolkata
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: false
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/south_kolkata.php
+      source_title: List of Durga puja in South Kolkata 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "Bhawanipore Mahapuja Samity 2025\n\n\r\n                                South Kolkata"
+      source_revision_id: 02c2eff3a20eaa166114de486a2f34da38ca72a38c5c1d65638d3091a210c1f6
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: bhowanipore-de-bari-durga-puja
+    name: Bhowanipore De Bari Durga Puja
+    aliases: []
+    area: South Kolkata
+    city: Kolkata
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: false
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/south_kolkata.php
+      source_title: List of Durga puja in South Kolkata 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "Bhowanipore De Bari Durga Puja 2025\n\n\r\n                                South Kolkata"
+      source_revision_id: 02c2eff3a20eaa166114de486a2f34da38ca72a38c5c1d65638d3091a210c1f6
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: bhowanipore-mitra-bari-durga-puja
+    name: Bhowanipore Mitra Bari Durga Puja
+    aliases: []
+    area: South Kolkata
+    city: Kolkata
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: false
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/south_kolkata.php
+      source_title: List of Durga puja in South Kolkata 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "Bhowanipore Mitra Bari Durga Puja 2025\n\n\r\n                                South Kolkata"
+      source_revision_id: 02c2eff3a20eaa166114de486a2f34da38ca72a38c5c1d65638d3091a210c1f6
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: bhowanipur-75-palli-durga-puja
+    name: Bhowanipur 75 Palli Durga Puja
+    aliases: []
+    area: South Kolkata
+    city: Kolkata
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: false
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/south_kolkata.php
+      source_title: List of Durga puja in South Kolkata 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "Bhowanipur 75 Palli Durga Puja 2025\n\n\r\n                                South Kolkata"
+      source_revision_id: 02c2eff3a20eaa166114de486a2f34da38ca72a38c5c1d65638d3091a210c1f6
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: bhowanipur-muktadal-durga-puja
+    name: Bhowanipur Muktadal Durga Puja
+    aliases: []
+    area: South Kolkata
+    city: Kolkata
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: false
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/south_kolkata.php
+      source_title: List of Durga puja in South Kolkata 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "Bhowanipur Muktadal Durga Puja 2025\n\n\r\n                                South Kolkata"
+      source_revision_id: 02c2eff3a20eaa166114de486a2f34da38ca72a38c5c1d65638d3091a210c1f6
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: bhowanipur-ritwik-club-durga-puja-committee
+    name: Bhowanipur Ritwik Club Durga Puja Committee
+    aliases: []
+    area: South Kolkata
+    city: Kolkata
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: false
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/south_kolkata.php
+      source_title: List of Durga puja in South Kolkata 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "Bhowanipur Ritwik Club Durga Puja Committee 2025\n\n\r\n                                South\
+        \ Kolkata"
+      source_revision_id: 02c2eff3a20eaa166114de486a2f34da38ca72a38c5c1d65638d3091a210c1f6
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: bhowanipur-sarbojanin-durgotsav
+    name: Bhowanipur Sarbojanin Durgotsav
+    aliases: []
+    area: South Kolkata
+    city: Kolkata
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: false
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/south_kolkata.php
+      source_title: List of Durga puja in South Kolkata 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "Bhowanipur Sarbojanin Durgotsav 2025\n\n\r\n                                South Kolkata"
+      source_revision_id: 02c2eff3a20eaa166114de486a2f34da38ca72a38c5c1d65638d3091a210c1f6
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: bhowanipur-students-club-sarbojanin-durga-puja
+    name: Bhowanipur Students Club Sarbojanin Durga Puja
+    aliases: []
+    area: South Kolkata
+    city: Kolkata
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: false
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/south_kolkata.php
+      source_title: List of Durga puja in South Kolkata 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "Bhowanipur Students Club Sarbojanin Durga Puja 2025\n\n\r\n                              \
+        \  South Kolkata"
+      source_revision_id: 02c2eff3a20eaa166114de486a2f34da38ca72a38c5c1d65638d3091a210c1f6
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: bhowanipur-swadhin-sangha-durga-puja
+    name: Bhowanipur Swadhin Sangha Durga Puja
+    aliases: []
+    area: South Kolkata
+    city: Kolkata
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: false
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/south_kolkata.php
+      source_title: List of Durga puja in South Kolkata 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "Bhowanipur Swadhin Sangha Durga Puja 2025\n\n\r\n                                South Kolkata"
+      source_revision_id: 02c2eff3a20eaa166114de486a2f34da38ca72a38c5c1d65638d3091a210c1f6
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: bhowanipur-udayan-club-durga-puja
+    name: Bhowanipur Udayan Club Durga Puja
+    aliases: []
+    area: South Kolkata
+    city: Kolkata
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: false
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/south_kolkata.php
+      source_title: List of Durga puja in South Kolkata 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "Bhowanipur Udayan Club Durga Puja 2025\n\n\r\n                                South Kolkata"
+      source_revision_id: 02c2eff3a20eaa166114de486a2f34da38ca72a38c5c1d65638d3091a210c1f6
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: bidhan-nagar-south-atheletics-club
+    name: Bidhan Nagar South Atheletics Club
+    aliases: []
+    area: South Kolkata
+    city: Kolkata
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: false
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/south_kolkata.php
+      source_title: List of Durga puja in South Kolkata 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "Bidhan Nagar South Atheletics Club 2025\n\n\r\n                                South Kolkata"
+      source_revision_id: 02c2eff3a20eaa166114de486a2f34da38ca72a38c5c1d65638d3091a210c1f6
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: bidhanpally-purbapara-sarbojanin
+    name: Bidhanpally Purbapara Sarbojanin
+    aliases: []
+    area: South Kolkata
+    city: Kolkata
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: false
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/south_kolkata.php
+      source_title: List of Durga puja in South Kolkata 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "Bidhanpally Purbapara Sarbojanin 2025\n\n\r\n                                South Kolkata"
+      source_revision_id: 02c2eff3a20eaa166114de486a2f34da38ca72a38c5c1d65638d3091a210c1f6
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: bosepukur-talbagan-sarbojanin
+    name: Bosepukur Talbagan Sarbojanin
+    aliases: []
+    area: South Kolkata
+    city: Kolkata
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: false
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/south_kolkata.php
+      source_title: List of Durga puja in South Kolkata 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "Bosepukur Talbagan Sarbojanin 2025\n\n\r\n                                South Kolkata"
+      source_revision_id: 02c2eff3a20eaa166114de486a2f34da38ca72a38c5c1d65638d3091a210c1f6
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: brahmapur-harisava-sarbojanin-durgotsab
+    name: Brahmapur Harisava Sarbojanin Durgotsab
+    aliases: []
+    area: South Kolkata
+    city: Kolkata
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: false
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/south_kolkata.php
+      source_title: List of Durga puja in South Kolkata 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "Brahmapur Harisava Sarbojanin Durgotsab 2025\n\n\r\n                                South\
+        \ Kolkata"
+      source_revision_id: 02c2eff3a20eaa166114de486a2f34da38ca72a38c5c1d65638d3091a210c1f6
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: chetla-agrani-club-durga-puja
+    name: Chetla Agrani Club Durga Puja
+    aliases: []
+    area: South Kolkata
+    city: Kolkata
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: true
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/south_kolkata.php
+      source_title: List of Durga puja in South Kolkata 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "Chetla Agrani Club Durga Puja 2025\n\n\r\n                                South Kolkata"
+      source_revision_id: 02c2eff3a20eaa166114de486a2f34da38ca72a38c5c1d65638d3091a210c1f6
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: chetla-sarbasadharaner-durgotsab
+    name: Chetla Sarbasadharaner Durgotsab
+    aliases: []
+    area: South Kolkata
+    city: Kolkata
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: false
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/south_kolkata.php
+      source_title: List of Durga puja in South Kolkata 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "Chetla Sarbasadharaner Durgotsab 2025\n\n\r\n                                South Kolkata"
+      source_revision_id: 02c2eff3a20eaa166114de486a2f34da38ca72a38c5c1d65638d3091a210c1f6
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: coal-india-puja-committee-durga-puja
+    name: Coal India Puja Committee Durga Puja
+    aliases: []
+    area: South Kolkata
+    city: Kolkata
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: false
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/south_kolkata.php
+      source_title: List of Durga puja in South Kolkata 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "Coal India Puja Committee Durga Puja 2025\n\n\r\n                                South Kolkata"
+      source_revision_id: 02c2eff3a20eaa166114de486a2f34da38ca72a38c5c1d65638d3091a210c1f6
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: dakshin-kolkata-sarbojanin-durgotsab
+    name: Dakshin Kolkata Sarbojanin Durgotsab
+    aliases: []
+    area: South Kolkata
+    city: Kolkata
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: false
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/south_kolkata.php
+      source_title: List of Durga puja in South Kolkata 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "Dakshin Kolkata Sarbojanin Durgotsab 2025\n\n\r\n                                South Kolkata"
+      source_revision_id: 02c2eff3a20eaa166114de486a2f34da38ca72a38c5c1d65638d3091a210c1f6
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: dakshin-kolkata-tarun-samity-durga-puja
+    name: Dakshin Kolkata Tarun Samity Durga Puja
+    aliases: []
+    area: South Kolkata
+    city: Kolkata
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: false
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/south_kolkata.php
+      source_title: List of Durga puja in South Kolkata 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "Dakshin Kolkata Tarun Samity Durga Puja 2025\n\n\r\n                                South\
+        \ Kolkata"
+      source_revision_id: 02c2eff3a20eaa166114de486a2f34da38ca72a38c5c1d65638d3091a210c1f6
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: deshapriya-park-durga-puja
+    name: Deshapriya Park Durga Puja
+    aliases: []
+    area: South Kolkata
+    city: Kolkata
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: false
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/south_kolkata.php
+      source_title: List of Durga puja in South Kolkata 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "Deshapriya Park Durga Puja 2025\n\n\r\n                                South Kolkata"
+      source_revision_id: 02c2eff3a20eaa166114de486a2f34da38ca72a38c5c1d65638d3091a210c1f6
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: dhakuria-pragati-sangha-durga-puja
+    name: Dhakuria Pragati Sangha Durga Puja
+    aliases: []
+    area: South Kolkata
+    city: Kolkata
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: false
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/south_kolkata.php
+      source_title: List of Durga puja in South Kolkata 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "Dhakuria Pragati Sangha Durga Puja 2025\n\n\r\n                                South Kolkata"
+      source_revision_id: 02c2eff3a20eaa166114de486a2f34da38ca72a38c5c1d65638d3091a210c1f6
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: shyambazar-nabin-sangha-durga-puja
+    name: Shyambazar Nabin Sangha Durga Puja
+    aliases: []
+    area: North Kolkata
+    city: Kolkata
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: false
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/north_kolkata.php
+      source_title: List of Durga puja in North Kolkata 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "Shyambazar Nabin Sangha Durga Puja 2025\n\n\r\n                                North Kolkata"
+      source_revision_id: 595f7b7dcbe2c91f90c0170a36fcd499278fad1dd39e521040fdfb1d23c4ec41
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: signum-aristo-residential-puja
+    name: Signum Aristo Residential Puja
+    aliases: []
+    area: North Kolkata
+    city: Kolkata
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: false
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/north_kolkata.php
+      source_title: List of Durga puja in North Kolkata 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "Signum Aristo Residential Puja 2025\n\n\r\n                                North Kolkata"
+      source_revision_id: 595f7b7dcbe2c91f90c0170a36fcd499278fad1dd39e521040fdfb1d23c4ec41
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: sikdar-bagan-sadharan-durgotsov
+    name: Sikdar Bagan Sadharan Durgotsov
+    aliases: []
+    area: North Kolkata
+    city: Kolkata
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: false
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/north_kolkata.php
+      source_title: List of Durga puja in North Kolkata 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "Sikdar Bagan Sadharan Durgotsov 2025\n\n\r\n                                North Kolkata"
+      source_revision_id: 595f7b7dcbe2c91f90c0170a36fcd499278fad1dd39e521040fdfb1d23c4ec41
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: simla-sporting-club-durga-puja
+    name: Simla Sporting Club Durga Puja
+    aliases: []
+    area: North Kolkata
+    city: Kolkata
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: false
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/north_kolkata.php
+      source_title: List of Durga puja in North Kolkata 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "Simla Sporting Club Durga Puja 2025\n\n\r\n                                North Kolkata"
+      source_revision_id: 595f7b7dcbe2c91f90c0170a36fcd499278fad1dd39e521040fdfb1d23c4ec41
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: sovabazar-sarbojanin-durgotsav
+    name: Sovabazar Sarbojanin Durgotsav
+    aliases: []
+    area: North Kolkata
+    city: Kolkata
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: false
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/north_kolkata.php
+      source_title: List of Durga puja in North Kolkata 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "Sovabazar Sarbojanin Durgotsav 2025\n\n\r\n                                North Kolkata"
+      source_revision_id: 595f7b7dcbe2c91f90c0170a36fcd499278fad1dd39e521040fdfb1d23c4ec41
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: sreebhumi-sporting-club-durga-puja
+    name: Sreebhumi Sporting Club Durga Puja
+    aliases: []
+    area: North Kolkata
+    city: Kolkata
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: false
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/north_kolkata.php
+      source_title: List of Durga puja in North Kolkata 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "Sreebhumi Sporting Club Durga Puja 2025\n\n\r\n                                North Kolkata"
+      source_revision_id: 595f7b7dcbe2c91f90c0170a36fcd499278fad1dd39e521040fdfb1d23c4ec41
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: tala-barowari-durgotsab
+    name: Tala Barowari Durgotsab
+    aliases: []
+    area: North Kolkata
+    city: Kolkata
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: false
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/north_kolkata.php
+      source_title: List of Durga puja in North Kolkata 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "Tala Barowari Durgotsab 2025\n\n\r\n                                North Kolkata"
+      source_revision_id: 595f7b7dcbe2c91f90c0170a36fcd499278fad1dd39e521040fdfb1d23c4ec41
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: tala-dakshin-pally-durgotsav-committee
+    name: Tala Dakshin Pally Durgotsav Committee
+    aliases: []
+    area: North Kolkata
+    city: Kolkata
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: false
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/north_kolkata.php
+      source_title: List of Durga puja in North Kolkata 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "Tala Dakshin Pally Durgotsav Committee 2025\n\n\r\n                                North Kolkata"
+      source_revision_id: 595f7b7dcbe2c91f90c0170a36fcd499278fad1dd39e521040fdfb1d23c4ec41
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: tala-park-15-pally-durga-puja
+    name: Tala Park 15 Pally Durga Puja
+    aliases: []
+    area: North Kolkata
+    city: Kolkata
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: false
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/north_kolkata.php
+      source_title: List of Durga puja in North Kolkata 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "Tala Park 15 Pally Durga Puja 2025\n\n\r\n                                North Kolkata"
+      source_revision_id: 595f7b7dcbe2c91f90c0170a36fcd499278fad1dd39e521040fdfb1d23c4ec41
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: telengabagan-sarbojanin-durgotsab
+    name: Telengabagan Sarbojanin Durgotsab
+    aliases: []
+    area: North Kolkata
+    city: Kolkata
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: false
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/north_kolkata.php
+      source_title: List of Durga puja in North Kolkata 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "Telengabagan Sarbojanin Durgotsab 2025\n\n\r\n                                North Kolkata"
+      source_revision_id: 595f7b7dcbe2c91f90c0170a36fcd499278fad1dd39e521040fdfb1d23c4ec41
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: ultadanga-jagarani-sangha-durga-puja
+    name: Ultadanga Jagarani Sangha Durga Puja
+    aliases: []
+    area: North Kolkata
+    city: Kolkata
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: false
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/north_kolkata.php
+      source_title: List of Durga puja in North Kolkata 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "Ultadanga Jagarani Sangha Durga Puja 2025\n\n\r\n                                North Kolkata"
+      source_revision_id: 595f7b7dcbe2c91f90c0170a36fcd499278fad1dd39e521040fdfb1d23c4ec41
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: ultadanga-pallyshree-durga-puja
+    name: Ultadanga Pallyshree Durga Puja
+    aliases: []
+    area: North Kolkata
+    city: Kolkata
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: false
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/north_kolkata.php
+      source_title: List of Durga puja in North Kolkata 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "Ultadanga Pallyshree Durga Puja 2025\n\n\r\n                                North Kolkata"
+      source_revision_id: 595f7b7dcbe2c91f90c0170a36fcd499278fad1dd39e521040fdfb1d23c4ec41
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: ultadanga-sangrami-durga-puja
+    name: Ultadanga Sangrami Durga Puja
+    aliases: []
+    area: North Kolkata
+    city: Kolkata
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: false
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/north_kolkata.php
+      source_title: List of Durga puja in North Kolkata 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "Ultadanga Sangrami Durga Puja 2025\n\n\r\n                                North Kolkata"
+      source_revision_id: 595f7b7dcbe2c91f90c0170a36fcd499278fad1dd39e521040fdfb1d23c4ec41
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: young-citizens-club-durga-puja
+    name: Young Citizens Club Durga Puja
+    aliases: []
+    area: North Kolkata
+    city: Kolkata
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: false
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/north_kolkata.php
+      source_title: List of Durga puja in North Kolkata 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "Young Citizens Club Durga Puja 2025\n\n\r\n                                North Kolkata"
+      source_revision_id: 595f7b7dcbe2c91f90c0170a36fcd499278fad1dd39e521040fdfb1d23c4ec41
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: 21-pally-sarbojanin-durgotsab-samiti
+    name: 21 Pally Sarbojanin Durgotsab Samiti
+    aliases: []
+    area: South Kolkata
+    city: Kolkata
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: false
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/south_kolkata.php
+      source_title: List of Durga puja in South Kolkata 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "21 Pally Sarbojanin Durgotsab Samiti 2025\n\n\r\n                                South Kolkata"
+      source_revision_id: 02c2eff3a20eaa166114de486a2f34da38ca72a38c5c1d65638d3091a210c1f6
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: 22-palli-sarodotsav
+    name: 22 Palli Sarodotsav
+    aliases: []
+    area: South Kolkata
+    city: Kolkata
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: false
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/south_kolkata.php
+      source_title: List of Durga puja in South Kolkata 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "22 Palli Sarodotsav 2025\n\n\r\n                                South Kolkata"
+      source_revision_id: 02c2eff3a20eaa166114de486a2f34da38ca72a38c5c1d65638d3091a210c1f6
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: 25-pally-durga-puja
+    name: 25 Pally Durga Puja
+    aliases: []
+    area: South Kolkata
+    city: Kolkata
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: false
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/south_kolkata.php
+      source_title: List of Durga puja in South Kolkata 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "25 Pally Durga Puja 2025\n\n\r\n                                South Kolkata"
+      source_revision_id: 02c2eff3a20eaa166114de486a2f34da38ca72a38c5c1d65638d3091a210c1f6
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: 64-pally-durgotsab-committee
+    name: 64 Pally Durgotsab Committee
+    aliases: []
+    area: South Kolkata
+    city: Kolkata
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: false
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/south_kolkata.php
+      source_title: List of Durga puja in South Kolkata 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "64 Pally Durgotsab Committee 2025\n\n\r\n                                South Kolkata"
+      source_revision_id: 02c2eff3a20eaa166114de486a2f34da38ca72a38c5c1d65638d3091a210c1f6
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: 66-pally-sarbojanin-durgotsab-committee
+    name: 66 Pally Sarbojanin Durgotsab Committee
+    aliases: []
+    area: South Kolkata
+    city: Kolkata
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: false
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/south_kolkata.php
+      source_title: List of Durga puja in South Kolkata 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "66 Pally Sarbojanin Durgotsab Committee 2025\n\n\r\n                                South\
+        \ Kolkata"
+      source_revision_id: 02c2eff3a20eaa166114de486a2f34da38ca72a38c5c1d65638d3091a210c1f6
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: 70-pally-sarbojanin-durga-puja
+    name: 70 Pally Sarbojanin Durga Puja
+    aliases: []
+    area: South Kolkata
+    city: Kolkata
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: false
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/south_kolkata.php
+      source_title: List of Durga puja in South Kolkata 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "70 Pally Sarbojanin Durga Puja 2025\n\n\r\n                                South Kolkata"
+      source_revision_id: 02c2eff3a20eaa166114de486a2f34da38ca72a38c5c1d65638d3091a210c1f6
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: 95-pally-jodhpur-park-durga-puja
+    name: 95 Pally Jodhpur Park Durga Puja
+    aliases: []
+    area: South Kolkata
+    city: Kolkata
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: false
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/south_kolkata.php
+      source_title: List of Durga puja in South Kolkata 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "95 Pally Jodhpur Park Durga Puja 2025\n\n\r\n                                South Kolkata"
+      source_revision_id: 02c2eff3a20eaa166114de486a2f34da38ca72a38c5c1d65638d3091a210c1f6
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: abasar-sarbojanin-durgotsab-committee
+    name: Abasar Sarbojanin Durgotsab Committee
+    aliases: []
+    area: South Kolkata
+    city: Kolkata
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: false
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/south_kolkata.php
+      source_title: List of Durga puja in South Kolkata 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "Abasar Sarbojanin Durgotsab Committee 2025\n\n\r\n                                South Kolkata"
+      source_revision_id: 02c2eff3a20eaa166114de486a2f34da38ca72a38c5c1d65638d3091a210c1f6
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: abasorika-durgotsav-committee
+    name: Abasorika Durgotsav Committee
+    aliases: []
+    area: South Kolkata
+    city: Kolkata
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: false
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/south_kolkata.php
+      source_title: List of Durga puja in South Kolkata 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "Abasorika Durgotsav Committee 2025\n\n\r\n                                South Kolkata"
+      source_revision_id: 02c2eff3a20eaa166114de486a2f34da38ca72a38c5c1d65638d3091a210c1f6
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: adi-ballygunge-sarbojanin-durga-puja
+    name: Adi Ballygunge Sarbojanin Durga Puja
+    aliases: []
+    area: South Kolkata
+    city: Kolkata
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: false
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/south_kolkata.php
+      source_title: List of Durga puja in South Kolkata 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "Adi Ballygunge Sarbojanin Durga Puja 2025\n\n\r\n                                South Kolkata"
+      source_revision_id: 02c2eff3a20eaa166114de486a2f34da38ca72a38c5c1d65638d3091a210c1f6
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: adi-dakshin-kalikata-barowari-samittee
+    name: Adi Dakshin Kalikata Barowari Samittee
+    aliases: []
+    area: South Kolkata
+    city: Kolkata
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: false
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/south_kolkata.php
+      source_title: List of Durga puja in South Kolkata 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "Adi Dakshin Kalikata Barowari Samittee 2025\n\n\r\n                                South Kolkata"
+      source_revision_id: 02c2eff3a20eaa166114de486a2f34da38ca72a38c5c1d65638d3091a210c1f6
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: agradut-udaya-sangha-durga-puja
+    name: Agradut Udaya Sangha Durga Puja
+    aliases: []
+    area: South Kolkata
+    city: Kolkata
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: false
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/south_kolkata.php
+      source_title: List of Durga puja in South Kolkata 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "Agradut Udaya Sangha Durga Puja 2025\n\n\r\n                                South Kolkata"
+      source_revision_id: 02c2eff3a20eaa166114de486a2f34da38ca72a38c5c1d65638d3091a210c1f6
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: arunodaya-adhibashi-brinder-durga-puja
+    name: Arunodaya Adhibashi Brinder Durga Puja
+    aliases: []
+    area: South Kolkata
+    city: Kolkata
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: false
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/south_kolkata.php
+      source_title: List of Durga puja in South Kolkata 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "Arunodaya Adhibashi Brinder Durga Puja 2025\n\n\r\n                                South Kolkata"
+      source_revision_id: 02c2eff3a20eaa166114de486a2f34da38ca72a38c5c1d65638d3091a210c1f6
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: avijan-gandhi-colony
+    name: Avijan Gandhi Colony
+    aliases: []
+    area: South Kolkata
+    city: Kolkata
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: false
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/south_kolkata.php
+      source_title: List of Durga puja in South Kolkata 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "Avijan Gandhi Colony 2025\n\n\r\n                                South Kolkata"
+      source_revision_id: 02c2eff3a20eaa166114de486a2f34da38ca72a38c5c1d65638d3091a210c1f6
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: babu-bagan-durga-puja
+    name: Babu Bagan Durga Puja
+    aliases: []
+    area: South Kolkata
+    city: Kolkata
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: false
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/south_kolkata.php
+      source_title: List of Durga puja in South Kolkata 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "Babu Bagan Durga Puja 2025\n\n\r\n                                South Kolkata"
+      source_revision_id: 02c2eff3a20eaa166114de486a2f34da38ca72a38c5c1d65638d3091a210c1f6
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: badamtala-ashar-sangha-durga-puja
+    name: Badamtala Ashar Sangha Durga Puja
+    aliases: []
+    area: South Kolkata
+    city: Kolkata
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: false
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/south_kolkata.php
+      source_title: List of Durga puja in South Kolkata 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "Badamtala Ashar Sangha Durga Puja 2025\n\n\r\n                                South Kolkata"
+      source_revision_id: 02c2eff3a20eaa166114de486a2f34da38ca72a38c5c1d65638d3091a210c1f6
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: hari-ghosh-street-sarbojanin
+    name: Hari Ghosh Street Sarbojanin
+    aliases: []
+    area: North Kolkata
+    city: Kolkata
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: false
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/north_kolkata.php
+      source_title: List of Durga puja in North Kolkata 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "Hari Ghosh Street Sarbojanin 2025\n\n\r\n                                North Kolkata"
+      source_revision_id: 595f7b7dcbe2c91f90c0170a36fcd499278fad1dd39e521040fdfb1d23c4ec41
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: hari-ghosh-street-swamiji-sangha-sarbojanin-durga-puja
+    name: Hari Ghosh Street Swamiji Sangha Sarbojanin Durga Puja
+    aliases: []
+    area: North Kolkata
+    city: Kolkata
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: false
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/north_kolkata.php
+      source_title: List of Durga puja in North Kolkata 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "Hari Ghosh Street Swamiji Sangha Sarbojanin Durga Puja 2025\n\n\r\n                      \
+        \          North Kolkata"
+      source_revision_id: 595f7b7dcbe2c91f90c0170a36fcd499278fad1dd39e521040fdfb1d23c4ec41
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: haritaki-bagan-sarbojanin-durgotsab
+    name: Haritaki Bagan Sarbojanin Durgotsab
+    aliases: []
+    area: North Kolkata
+    city: Kolkata
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: false
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/north_kolkata.php
+      source_title: List of Durga puja in North Kolkata 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "Haritaki Bagan Sarbojanin Durgotsab 2025\n\n\r\n                                North Kolkata"
+      source_revision_id: 595f7b7dcbe2c91f90c0170a36fcd499278fad1dd39e521040fdfb1d23c4ec41
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: hatibagan-nabinpally-sarbojanin-durgotsav
+    name: Hatibagan Nabinpally Sarbojanin Durgotsav
+    aliases: []
+    area: North Kolkata
+    city: Kolkata
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: false
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/north_kolkata.php
+      source_title: List of Durga puja in North Kolkata 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "Hatibagan Nabinpally Sarbojanin Durgotsav 2025\n\n\r\n                                North\
+        \ Kolkata"
+      source_revision_id: 595f7b7dcbe2c91f90c0170a36fcd499278fad1dd39e521040fdfb1d23c4ec41
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: jagat-mukherjee-park-durga-puja
+    name: Jagat Mukherjee Park Durga Puja
+    aliases: []
+    area: North Kolkata
+    city: Kolkata
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: false
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/north_kolkata.php
+      source_title: List of Durga puja in North Kolkata 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "Jagat Mukherjee Park Durga Puja 2025\n\n\r\n                                North Kolkata"
+      source_revision_id: 595f7b7dcbe2c91f90c0170a36fcd499278fad1dd39e521040fdfb1d23c4ec41
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: jokermath-sarbojonin-durga-puja
+    name: Jokermath Sarbojonin Durga Puja
+    aliases: []
+    area: North Kolkata
+    city: Kolkata
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: false
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/north_kolkata.php
+      source_title: List of Durga puja in North Kolkata 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "Jokermath Sarbojonin Durga Puja 2025\n\n\r\n                                North Kolkata"
+      source_revision_id: 595f7b7dcbe2c91f90c0170a36fcd499278fad1dd39e521040fdfb1d23c4ec41
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: kailash-bose-street-durga-puja
+    name: Kailash Bose Street Durga Puja
+    aliases: []
+    area: North Kolkata
+    city: Kolkata
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: false
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/north_kolkata.php
+      source_title: List of Durga puja in North Kolkata 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "Kailash Bose Street Durga Puja 2025\n\n\r\n                                North Kolkata"
+      source_revision_id: 595f7b7dcbe2c91f90c0170a36fcd499278fad1dd39e521040fdfb1d23c4ec41
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: kankurgachi-sarbojanin-durgotsab
+    name: Kankurgachi Sarbojanin Durgotsab
+    aliases: []
+    area: North Kolkata
+    city: Kolkata
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: false
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/north_kolkata.php
+      source_title: List of Durga puja in North Kolkata 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "Kankurgachi Sarbojanin Durgotsab 2025\n\n\r\n                                North Kolkata"
+      source_revision_id: 595f7b7dcbe2c91f90c0170a36fcd499278fad1dd39e521040fdfb1d23c4ec41
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: kashi-bose-lane-durga-puja-committee
+    name: Kashi Bose Lane Durga Puja Committee
+    aliases: []
+    area: North Kolkata
+    city: Kolkata
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: true
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/north_kolkata.php
+      source_title: List of Durga puja in North Kolkata 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "Kashi Bose Lane Durga Puja Committee 2025\n\n\r\n                                North Kolkata"
+      source_revision_id: 595f7b7dcbe2c91f90c0170a36fcd499278fad1dd39e521040fdfb1d23c4ec41
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: kumartuli-park-sarbojanin-durgotsab-committee
+    name: Kumartuli Park Sarbojanin Durgotsab Committee
+    aliases: []
+    area: North Kolkata
+    city: Kolkata
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: false
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/north_kolkata.php
+      source_title: List of Durga puja in North Kolkata 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "Kumartuli Park Sarbojanin Durgotsab Committee 2025\n\n\r\n                               \
+        \ North Kolkata"
+      source_revision_id: 595f7b7dcbe2c91f90c0170a36fcd499278fad1dd39e521040fdfb1d23c4ec41
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: kumartuli-sarbojanin-durgotsab
+    name: Kumartuli Sarbojanin Durgotsab
+    aliases: []
+    area: North Kolkata
+    city: Kolkata
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: false
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/north_kolkata.php
+      source_title: List of Durga puja in North Kolkata 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "Kumartuli Sarbojanin Durgotsab 2025\n\n\r\n                                North Kolkata"
+      source_revision_id: 595f7b7dcbe2c91f90c0170a36fcd499278fad1dd39e521040fdfb1d23c4ec41
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: lake-view-park-sarbojanin-durgotsav-samity
+    name: Lake View Park Sarbojanin Durgotsav Samity
+    aliases: []
+    area: North Kolkata
+    city: Kolkata
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: false
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/north_kolkata.php
+      source_title: List of Durga puja in North Kolkata 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "Lake View Park Sarbojanin Durgotsav Samity 2025\n\n\r\n                                North\
+        \ Kolkata"
+      source_revision_id: 595f7b7dcbe2c91f90c0170a36fcd499278fad1dd39e521040fdfb1d23c4ec41
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: mahalla-sarbojanin-durgautsab-samity
+    name: Mahalla Sarbojanin Durgautsab Samity
+    aliases: []
+    area: North Kolkata
+    city: Kolkata
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: false
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/north_kolkata.php
+      source_title: List of Durga puja in North Kolkata 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "Mahalla Sarbojanin Durgautsab Samity 2025\n\n\r\n                                North Kolkata"
+      source_revision_id: 595f7b7dcbe2c91f90c0170a36fcd499278fad1dd39e521040fdfb1d23c4ec41
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: mitali-kankurgachi-durga-puja
+    name: Mitali Kankurgachi Durga Puja
+    aliases: []
+    area: North Kolkata
+    city: Kolkata
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: false
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/north_kolkata.php
+      source_title: List of Durga puja in North Kolkata 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "Mitali Kankurgachi Durga Puja 2025\n\n\r\n                                North Kolkata"
+      source_revision_id: 595f7b7dcbe2c91f90c0170a36fcd499278fad1dd39e521040fdfb1d23c4ec41
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: mohan-bagan-barwari-durga-puja
+    name: Mohan Bagan Barwari Durga Puja
+    aliases: []
+    area: North Kolkata
+    city: Kolkata
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: false
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/north_kolkata.php
+      source_title: List of Durga puja in North Kolkata 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "Mohan Bagan Barwari Durga Puja 2025\n\n\r\n                                North Kolkata"
+      source_revision_id: 595f7b7dcbe2c91f90c0170a36fcd499278fad1dd39e521040fdfb1d23c4ec41
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: mondal-para-sporting-club-durga-puja
+    name: Mondal Para Sporting Club Durga Puja
+    aliases: []
+    area: North Kolkata
+    city: Kolkata
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: false
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/north_kolkata.php
+      source_title: List of Durga puja in North Kolkata 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "Mondal Para Sporting Club Durga Puja 2025\n\n\r\n                                North Kolkata"
+      source_revision_id: 595f7b7dcbe2c91f90c0170a36fcd499278fad1dd39e521040fdfb1d23c4ec41
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: nainan-para-jogendra-basak-road-sarbojanin-shree-shree-durgapuja
+    name: Nainan Para & Jogendra Basak Road Sarbojanin Shree Shree Durgapuja
+    aliases: []
+    area: North Kolkata
+    city: Kolkata
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: false
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/north_kolkata.php
+      source_title: List of Durga puja in North Kolkata 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "Nainan Para & Jogendra Basak Road Sarbojanin Shree Shree Durgapuja 2025\n\n\r\n          \
+        \                      North Kolkata"
+      source_revision_id: 595f7b7dcbe2c91f90c0170a36fcd499278fad1dd39e521040fdfb1d23c4ec41
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: nalin-sarkar-street-sarbojanin-durgotsab
+    name: Nalin Sarkar Street Sarbojanin Durgotsab
+    aliases: []
+    area: North Kolkata
+    city: Kolkata
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: false
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/north_kolkata.php
+      source_title: List of Durga puja in North Kolkata 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "Nalin Sarkar Street Sarbojanin Durgotsab 2025\n\n\r\n                                North\
+        \ Kolkata"
+      source_revision_id: 595f7b7dcbe2c91f90c0170a36fcd499278fad1dd39e521040fdfb1d23c4ec41
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: nimta-boy-s-athletic-club-sarbojanin-durgotsav
+    name: Nimta Boy's Athletic Club Sarbojanin Durgotsav
+    aliases: []
+    area: North Kolkata
+    city: Kolkata
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: false
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/north_kolkata.php
+      source_title: List of Durga puja in North Kolkata 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "Nimta Boy's Athletic Club Sarbojanin Durgotsav 2025\n\n\r\n                              \
+        \  North Kolkata"
+      source_revision_id: 595f7b7dcbe2c91f90c0170a36fcd499278fad1dd39e521040fdfb1d23c4ec41
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: nimtala-sarbojanin-durgotsab
+    name: Nimtala Sarbojanin Durgotsab
+    aliases: []
+    area: North Kolkata
+    city: Kolkata
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: false
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/north_kolkata.php
+      source_title: List of Durga puja in North Kolkata 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "Nimtala Sarbojanin Durgotsab 2025\n\n\r\n                                North Kolkata"
+      source_revision_id: 595f7b7dcbe2c91f90c0170a36fcd499278fad1dd39e521040fdfb1d23c4ec41
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: north-tangra-durga-puja
+    name: North Tangra Durga Puja
+    aliases: []
+    area: North Kolkata
+    city: Kolkata
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: false
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/north_kolkata.php
+      source_title: List of Durga puja in North Kolkata 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "North Tangra Durga Puja 2025\n\n\r\n                                North Kolkata"
+      source_revision_id: 595f7b7dcbe2c91f90c0170a36fcd499278fad1dd39e521040fdfb1d23c4ec41
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: north-tridhara-sarbojanin-durga-puja
+    name: North Tridhara Sarbojanin Durga Puja
+    aliases: []
+    area: North Kolkata
+    city: Kolkata
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: false
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/north_kolkata.php
+      source_title: List of Durga puja in North Kolkata 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "North Tridhara Sarbojanin Durga Puja 2025\n\n\r\n                                North Kolkata"
+      source_revision_id: 595f7b7dcbe2c91f90c0170a36fcd499278fad1dd39e521040fdfb1d23c4ec41
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: nutan-pally-sarbojanin-durgotsab
+    name: Nutan Pally Sarbojanin Durgotsab
+    aliases: []
+    area: North Kolkata
+    city: Kolkata
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: false
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/north_kolkata.php
+      source_title: List of Durga puja in North Kolkata 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "Nutan Pally Sarbojanin Durgotsab 2025\n\n\r\n                                North Kolkata"
+      source_revision_id: 595f7b7dcbe2c91f90c0170a36fcd499278fad1dd39e521040fdfb1d23c4ec41
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: pathuria-ghata-pancher-palli-sarbojanin
+    name: Pathuria Ghata Pancher Palli Sarbojanin
+    aliases: []
+    area: North Kolkata
+    city: Kolkata
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: false
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/north_kolkata.php
+      source_title: List of Durga puja in North Kolkata 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "Pathuria Ghata Pancher Palli Sarbojanin 2025\n\n\r\n                                North\
+        \ Kolkata"
+      source_revision_id: 595f7b7dcbe2c91f90c0170a36fcd499278fad1dd39e521040fdfb1d23c4ec41
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: ramesh-dutta-street-sarbojanin-durgotsab
+    name: Ramesh Dutta Street Sarbojanin Durgotsab
+    aliases: []
+    area: North Kolkata
+    city: Kolkata
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: false
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/north_kolkata.php
+      source_title: List of Durga puja in North Kolkata 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "Ramesh Dutta Street Sarbojanin Durgotsab 2025\n\n\r\n                                North\
+        \ Kolkata"
+      source_revision_id: 595f7b7dcbe2c91f90c0170a36fcd499278fad1dd39e521040fdfb1d23c4ec41
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: rammohan-sammilani-durga-puja
+    name: Rammohan Sammilani Durga Puja
+    aliases: []
+    area: North Kolkata
+    city: Kolkata
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: false
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/north_kolkata.php
+      source_title: List of Durga puja in North Kolkata 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "Rammohan Sammilani Durga Puja 2025\n\n\r\n                                North Kolkata"
+      source_revision_id: 595f7b7dcbe2c91f90c0170a36fcd499278fad1dd39e521040fdfb1d23c4ec41
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: sadhukhan-bari-durga-puja
+    name: Sadhukhan Bari Durga Puja
+    aliases: []
+    area: North Kolkata
+    city: Kolkata
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: false
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/north_kolkata.php
+      source_title: List of Durga puja in North Kolkata 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "Sadhukhan Bari Durga Puja 2025\n\n\r\n                                North Kolkata"
+      source_revision_id: 595f7b7dcbe2c91f90c0170a36fcd499278fad1dd39e521040fdfb1d23c4ec41
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: sammilita-lalabagan-sarbojanin-durga-puja
+    name: Sammilita Lalabagan Sarbojanin Durga Puja
+    aliases: []
+    area: North Kolkata
+    city: Kolkata
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: false
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/north_kolkata.php
+      source_title: List of Durga puja in North Kolkata 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "Sammilita Lalabagan Sarbojanin Durga Puja 2025\n\n\r\n                                North\
+        \ Kolkata"
+      source_revision_id: 595f7b7dcbe2c91f90c0170a36fcd499278fad1dd39e521040fdfb1d23c4ec41
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: sarkar-bagan-sammilita-sangha-durga-puja
+    name: Sarkar Bagan Sammilita Sangha Durga Puja
+    aliases: []
+    area: North Kolkata
+    city: Kolkata
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: false
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/north_kolkata.php
+      source_title: List of Durga puja in North Kolkata 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "Sarkar Bagan Sammilita Sangha Durga Puja 2025\n\n\r\n                                North\
+        \ Kolkata"
+      source_revision_id: 595f7b7dcbe2c91f90c0170a36fcd499278fad1dd39e521040fdfb1d23c4ec41
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: sater-palli-sarbojanin-durgotsav
+    name: Sater Palli Sarbojanin Durgotsav
+    aliases: []
+    area: North Kolkata
+    city: Kolkata
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: false
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/north_kolkata.php
+      source_title: List of Durga puja in North Kolkata 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "Sater Palli Sarbojanin Durgotsav 2025\n\n\r\n                                North Kolkata"
+      source_revision_id: 595f7b7dcbe2c91f90c0170a36fcd499278fad1dd39e521040fdfb1d23c4ec41
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: 31-pally-sadharan-durgotsab-samity
+    name: 31 Pally Sadharan Durgotsab Samity
+    aliases: []
+    area: North Kolkata
+    city: Kolkata
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: false
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/north_kolkata.php
+      source_title: List of Durga puja in North Kolkata 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "31 Pally Sadharan Durgotsab Samity 2025\n\n\r\n                                North Kolkata"
+      source_revision_id: 595f7b7dcbe2c91f90c0170a36fcd499278fad1dd39e521040fdfb1d23c4ec41
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: ahiritola-jubak-brinda-durga-puja
+    name: Ahiritola Jubak Brinda Durga Puja
+    aliases: []
+    area: North Kolkata
+    city: Kolkata
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: false
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/north_kolkata.php
+      source_title: List of Durga puja in North Kolkata 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "Ahiritola Jubak Brinda Durga Puja 2025\n\n\r\n                                North Kolkata"
+      source_revision_id: 595f7b7dcbe2c91f90c0170a36fcd499278fad1dd39e521040fdfb1d23c4ec41
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: amherst-sarbojanin-durgotsab
+    name: Amherst Sarbojanin Durgotsab
+    aliases: []
+    area: North Kolkata
+    city: Kolkata
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: false
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/north_kolkata.php
+      source_title: List of Durga puja in North Kolkata 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "Amherst Sarbojanin Durgotsab 2025\n\n\r\n                                North Kolkata"
+      source_revision_id: 595f7b7dcbe2c91f90c0170a36fcd499278fad1dd39e521040fdfb1d23c4ec41
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: aswiningar-sarbojanin-durgotsav
+    name: Aswiningar Sarbojanin Durgotsav
+    aliases: []
+    area: North Kolkata
+    city: Kolkata
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: false
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/north_kolkata.php
+      source_title: List of Durga puja in North Kolkata 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "Aswiningar Sarbojanin Durgotsav 2025\n\n\r\n                                North Kolkata"
+      source_revision_id: 595f7b7dcbe2c91f90c0170a36fcd499278fad1dd39e521040fdfb1d23c4ec41
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: bandhudal-durgotsob
+    name: Bandhudal Durgotsob
+    aliases: []
+    area: North Kolkata
+    city: Kolkata
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: false
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/north_kolkata.php
+      source_title: List of Durga puja in North Kolkata 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "Bandhudal Durgotsob 2025\n\n\r\n                                North Kolkata"
+      source_revision_id: 595f7b7dcbe2c91f90c0170a36fcd499278fad1dd39e521040fdfb1d23c4ec41
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: beadon-street-sarbojanin-durgotsav
+    name: Beadon Street Sarbojanin Durgotsav
+    aliases: []
+    area: North Kolkata
+    city: Kolkata
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: false
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/north_kolkata.php
+      source_title: List of Durga puja in North Kolkata 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "Beadon Street Sarbojanin Durgotsav 2025\n\n\r\n                                North Kolkata"
+      source_revision_id: 595f7b7dcbe2c91f90c0170a36fcd499278fad1dd39e521040fdfb1d23c4ec41
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: belgachia-sadharan-durgotsab
+    name: Belgachia Sadharan Durgotsab
+    aliases: []
+    area: North Kolkata
+    city: Kolkata
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: false
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/north_kolkata.php
+      source_title: List of Durga puja in North Kolkata 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "Belgachia Sadharan Durgotsab 2025\n\n\r\n                                North Kolkata"
+      source_revision_id: 595f7b7dcbe2c91f90c0170a36fcd499278fad1dd39e521040fdfb1d23c4ec41
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: belgachia-yuba-sammilani-durga-puja
+    name: Belgachia Yuba Sammilani Durga Puja
+    aliases: []
+    area: North Kolkata
+    city: Kolkata
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: false
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/north_kolkata.php
+      source_title: List of Durga puja in North Kolkata 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "Belgachia Yuba Sammilani Durga Puja 2025\n\n\r\n                                North Kolkata"
+      source_revision_id: 595f7b7dcbe2c91f90c0170a36fcd499278fad1dd39e521040fdfb1d23c4ec41
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: bhagabati-park-durga-puja-committee
+    name: Bhagabati Park Durga Puja Committee
+    aliases: []
+    area: North Kolkata
+    city: Kolkata
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: false
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/north_kolkata.php
+      source_title: List of Durga puja in North Kolkata 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "Bhagabati Park Durga Puja Committee 2025\n\n\r\n                                North Kolkata"
+      source_revision_id: 595f7b7dcbe2c91f90c0170a36fcd499278fad1dd39e521040fdfb1d23c4ec41
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: bharatiya-tarun-sangha-durga-puja
+    name: Bharatiya Tarun Sangha Durga Puja
+    aliases: []
+    area: North Kolkata
+    city: Kolkata
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: false
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/north_kolkata.php
+      source_title: List of Durga puja in North Kolkata 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "Bharatiya Tarun Sangha Durga Puja 2025\n\n\r\n                                North Kolkata"
+      source_revision_id: 595f7b7dcbe2c91f90c0170a36fcd499278fad1dd39e521040fdfb1d23c4ec41
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: biswanath-apartment-sharodutsab
+    name: Biswanath Apartment Sharodutsab
+    aliases: []
+    area: North Kolkata
+    city: Kolkata
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: false
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/north_kolkata.php
+      source_title: List of Durga puja in North Kolkata 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "Biswanath Apartment Sharodutsab 2025\n\n\r\n                                North Kolkata"
+      source_revision_id: 595f7b7dcbe2c91f90c0170a36fcd499278fad1dd39e521040fdfb1d23c4ec41
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: brindaban-matri-mandir-durga-puja
+    name: Brindaban Matri Mandir Durga Puja
+    aliases: []
+    area: North Kolkata
+    city: Kolkata
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: false
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/north_kolkata.php
+      source_title: List of Durga puja in North Kolkata 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "Brindaban Matri Mandir Durga Puja 2025\n\n\r\n                                North Kolkata"
+      source_revision_id: 595f7b7dcbe2c91f90c0170a36fcd499278fad1dd39e521040fdfb1d23c4ec41
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: calcutta-youth-forum
+    name: Calcutta Youth Forum
+    aliases: []
+    area: North Kolkata
+    city: Kolkata
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: false
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/north_kolkata.php
+      source_title: List of Durga puja in North Kolkata 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "Calcutta Youth Forum 2025\n\n\r\n                                North Kolkata"
+      source_revision_id: 595f7b7dcbe2c91f90c0170a36fcd499278fad1dd39e521040fdfb1d23c4ec41
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: campbagan-sadharan-durgotsav
+    name: Campbagan Sadharan Durgotsav
+    aliases: []
+    area: North Kolkata
+    city: Kolkata
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: false
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/north_kolkata.php
+      source_title: List of Durga puja in North Kolkata 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "Campbagan Sadharan Durgotsav 2025\n\n\r\n                                North Kolkata"
+      source_revision_id: 595f7b7dcbe2c91f90c0170a36fcd499278fad1dd39e521040fdfb1d23c4ec41
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: chaltabagan-lohapatty-durga-puja
+    name: Chaltabagan Lohapatty Durga Puja
+    aliases: []
+    area: North Kolkata
+    city: Kolkata
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: false
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/north_kolkata.php
+      source_title: List of Durga puja in North Kolkata 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "Chaltabagan Lohapatty Durga Puja 2025\n\n\r\n                                North Kolkata"
+      source_revision_id: 595f7b7dcbe2c91f90c0170a36fcd499278fad1dd39e521040fdfb1d23c4ec41
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: charer-palli-sarbojanin-durgotsab
+    name: Charer Palli Sarbojanin Durgotsab
+    aliases: []
+    area: North Kolkata
+    city: Kolkata
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: false
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/north_kolkata.php
+      source_title: List of Durga puja in North Kolkata 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "Charer Palli Sarbojanin Durgotsab 2025\n\n\r\n                                North Kolkata"
+      source_revision_id: 595f7b7dcbe2c91f90c0170a36fcd499278fad1dd39e521040fdfb1d23c4ec41
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: chorebagan-sarbojanin-durgotsab-samity
+    name: Chorebagan Sarbojanin Durgotsab Samity
+    aliases: []
+    area: North Kolkata
+    city: Kolkata
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: false
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/north_kolkata.php
+      source_title: List of Durga puja in North Kolkata 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "Chorebagan Sarbojanin Durgotsab Samity 2025\n\n\r\n                                North Kolkata"
+      source_revision_id: 595f7b7dcbe2c91f90c0170a36fcd499278fad1dd39e521040fdfb1d23c4ec41
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: cossipore-shakti-sangha-durga-puja
+    name: Cossipore Shakti Sangha Durga Puja
+    aliases: []
+    area: North Kolkata
+    city: Kolkata
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: false
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/north_kolkata.php
+      source_title: List of Durga puja in North Kolkata 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "Cossipore Shakti Sangha Durga Puja 2025\n\n\r\n                                North Kolkata"
+      source_revision_id: 595f7b7dcbe2c91f90c0170a36fcd499278fad1dd39e521040fdfb1d23c4ec41
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: dakshin-rabindrapally-sarbojanin-durga-puja
+    name: Dakshin Rabindrapally Sarbojanin Durga Puja
+    aliases: []
+    area: North Kolkata
+    city: Kolkata
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: false
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/north_kolkata.php
+      source_title: List of Durga puja in North Kolkata 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "Dakshin Rabindrapally Sarbojanin Durga Puja 2025\n\n\r\n                                North\
+        \ Kolkata"
+      source_revision_id: 595f7b7dcbe2c91f90c0170a36fcd499278fad1dd39e521040fdfb1d23c4ec41
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: darjeepara-sarbojanin-durgotsab-samity
+    name: Darjeepara Sarbojanin Durgotsab Samity
+    aliases: []
+    area: North Kolkata
+    city: Kolkata
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: false
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/north_kolkata.php
+      source_title: List of Durga puja in North Kolkata 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "Darjeepara Sarbojanin Durgotsab Samity 2025\n\n\r\n                                North Kolkata"
+      source_revision_id: 595f7b7dcbe2c91f90c0170a36fcd499278fad1dd39e521040fdfb1d23c4ec41
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: deshbandhunagar-sarbojanin-durgotsab
+    name: Deshbandhunagar Sarbojanin Durgotsab
+    aliases: []
+    area: North Kolkata
+    city: Kolkata
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: false
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/north_kolkata.php
+      source_title: List of Durga puja in North Kolkata 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "Deshbandhunagar Sarbojanin Durgotsab 2025\n\n\r\n                                North Kolkata"
+      source_revision_id: 595f7b7dcbe2c91f90c0170a36fcd499278fad1dd39e521040fdfb1d23c4ec41
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: dum-dum-park-bharat-chakra-durga-puja
+    name: Dum Dum Park Bharat Chakra Durga Puja
+    aliases: []
+    area: North Kolkata
+    city: Kolkata
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: false
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/north_kolkata.php
+      source_title: List of Durga puja in North Kolkata 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "Dum Dum Park Bharat Chakra Durga Puja 2025\n\n\r\n                                North Kolkata"
+      source_revision_id: 595f7b7dcbe2c91f90c0170a36fcd499278fad1dd39e521040fdfb1d23c4ec41
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: dum-dum-park-sarbojanin-durga-puja
+    name: Dum Dum Park Sarbojanin Durga Puja
+    aliases: []
+    area: North Kolkata
+    city: Kolkata
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: false
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/north_kolkata.php
+      source_title: List of Durga puja in North Kolkata 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "Dum Dum Park Sarbojanin Durga Puja 2025\n\n\r\n                                North Kolkata"
+      source_revision_id: 595f7b7dcbe2c91f90c0170a36fcd499278fad1dd39e521040fdfb1d23c4ec41
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: durbar-mahila-samanya-committee
+    name: Durbar Mahila Samanya Committee
+    aliases: []
+    area: North Kolkata
+    city: Kolkata
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: false
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/north_kolkata.php
+      source_title: List of Durga puja in North Kolkata 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "Durbar Mahila Samanya Committee 2025\n\n\r\n                                North Kolkata"
+      source_revision_id: 595f7b7dcbe2c91f90c0170a36fcd499278fad1dd39e521040fdfb1d23c4ec41
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: garden-lane-sarbojanin-durgotsab
+    name: Garden Lane Sarbojanin Durgotsab
+    aliases: []
+    area: North Kolkata
+    city: Kolkata
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: false
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/north_kolkata.php
+      source_title: List of Durga puja in North Kolkata 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "Garden Lane Sarbojanin Durgotsab 2025\n\n\r\n                                North Kolkata"
+      source_revision_id: 595f7b7dcbe2c91f90c0170a36fcd499278fad1dd39e521040fdfb1d23c4ec41
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: goabagan-sarodatsav-sammilani-durga-puja
+    name: Goabagan Sarodatsav Sammilani Durga Puja
+    aliases: []
+    area: North Kolkata
+    city: Kolkata
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: false
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/north_kolkata.php
+      source_title: List of Durga puja in North Kolkata 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "Goabagan Sarodatsav Sammilani Durga Puja 2025\n\n\r\n                                North\
+        \ Kolkata"
+      source_revision_id: 595f7b7dcbe2c91f90c0170a36fcd499278fad1dd39e521040fdfb1d23c4ec41
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: golaghata-sammilani-durga-puja
+    name: Golaghata Sammilani Durga Puja
+    aliases: []
+    area: North Kolkata
+    city: Kolkata
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: false
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/north_kolkata.php
+      source_title: List of Durga puja in North Kolkata 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "Golaghata Sammilani Durga Puja 2025\n\n\r\n                                North Kolkata"
+      source_revision_id: 595f7b7dcbe2c91f90c0170a36fcd499278fad1dd39e521040fdfb1d23c4ec41
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: grey-street-sarbojanin-durga-puja
+    name: Grey Street Sarbojanin Durga Puja
+    aliases: []
+    area: North Kolkata
+    city: Kolkata
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: false
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/north_kolkata.php
+      source_title: List of Durga puja in North Kolkata 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "Grey Street Sarbojanin Durga Puja 2025\n\n\r\n                                North Kolkata"
+      source_revision_id: 595f7b7dcbe2c91f90c0170a36fcd499278fad1dd39e521040fdfb1d23c4ec41
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'
+  - pandal_id: halsibagan-sarbojanin-durgotsab
+    name: Halsibagan Sarbojanin Durgotsab
+    aliases: []
+    area: North Kolkata
+    city: Kolkata
+    district: null
+    location_precision: source_zone
+    year: 2025
+    featured: false
+    sources:
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/north_kolkata.php
+      source_title: List of Durga puja in North Kolkata 2025 | Indian Festival Diary
+      publisher: Indian Festival Diary
+      quote: "Halsibagan Sarbojanin Durgotsab 2025\n\n\r\n                                North Kolkata"
+      source_revision_id: 595f7b7dcbe2c91f90c0170a36fcd499278fad1dd39e521040fdfb1d23c4ec41
+    verification_status: SOURCE VERIFIED
+    last_verified_at: '2026-09-16T17:00:00Z'

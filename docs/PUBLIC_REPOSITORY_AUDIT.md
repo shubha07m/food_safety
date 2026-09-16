@@ -1,6 +1,6 @@
 # Public repository audit
 
-Audit date: **2026-09-11**
+Local audit date: **2026-09-16**
 
 Repository visibility: **Public**
 
@@ -23,7 +23,7 @@ Non-noreply author email metadata is reported separately and is not classified a
 
 ## GitHub-managed pull refs
 
-GitHub currently retains **8** `refs/pull/*/head` refs. They are normal server-managed contribution metadata and cannot be removed through ordinary branch maintenance. Their presence is reported through `affected_pull_refs` and `github_pull_refs_cleared`; it does not by itself make `local_history_sanitized` false or fail routine CI.
+The recorded server-side inventory contains **8** `refs/pull/*/head` refs; this is not a live count of current PRs. They are normal server-managed contribution metadata and cannot be removed through ordinary branch maintenance. Their presence is reported through `affected_pull_refs` and `github_pull_refs_cleared`; it does not by itself make `local_history_sanitized` false or fail routine CI.
 
 When pull refs are locally available, the audit scans their reachable content separately. Any private path, credential pattern or workstation path found there sets `pull_ref_sensitive_content_found: true` and fails `audit_passed`. A checkout that does not contain server-side pull refs cannot attest to their contents; the configured count remains an informational server-side inventory.
 

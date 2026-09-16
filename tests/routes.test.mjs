@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { applyRoute, recordRoute } from '../site/routes.mjs';
+import { applyRoute, recordRoute, safetyRoute } from '../site/routes.mjs';
 import { readFileSync } from 'node:fs';
 
 for (const lang of ['', '&lang=bn']) {
@@ -20,9 +20,23 @@ test('empty and unknown event routes must not fall through to dashboard', () => 
   assert.equal(recordRoute('?event=missing&lang=bn'), true);
   assert.equal(recordRoute('?lang=bn'), false);
 });
+test('Puja landing and food-safety module are separate views', () => {
+  assert.equal(safetyRoute(''), false);
+  assert.equal(safetyRoute('?module=safety&lang=bn'), true);
+  assert.equal(safetyRoute('?module=safety&event=WBFS-x'), false);
+  const classes = new Set();
+  const nodes = { puja: [{ hidden: false }], safety: [{ hidden: true }] };
+  const root = {
+    body: { classList: { toggle: (name, yes) => yes ? classes.add(name) : classes.delete(name) } },
+    getElementById: id => ({ hidden: id === 'record-detail' }),
+    querySelectorAll: selector => selector === '.puja-only' ? nodes.puja : nodes.safety,
+  };
+  applyRoute(root, '?module=safety');
+  assert.ok(classes.has('safety-route')); assert.equal(nodes.puja[0].hidden, true); assert.equal(nodes.safety[0].hidden, false);
+});
 test('brand and bilingual disclosure preserve tracker identity without blanket no-model claims', () => {
   const html = readFileSync(new URL('../site/index.html', import.meta.url), 'utf8');
-  assert.match(html, /<h1 id="headline">THE BENGAL<br><em>FOODPATH/);
+  assert.match(html, /<h1 id="headline"><span>PUJA<\/span><br>FOODPATH/);
   assert.match(html, /class="module-title">West Bengal Food Safety Evidence Tracker/);
   const policy = readFileSync(new URL('../site/methodology.html', import.meta.url), 'utf8');
   assert.doesNotMatch(policy, /LLM calls are disabled by default/);

@@ -1,17 +1,39 @@
 import { aggregate, dimensions, filterOptions, filterRows, recordDate, safeExternal, validateDataset } from './data.mjs';
 import { strings as t } from './strings.mjs';
-import { mappedRows, projection, geometryPath } from './geography.mjs';
+import { initMapHost, renderAreaSummary, setMapPandals } from './map-host.mjs';
+import { initPuja } from './puja.mjs';
+import './foodpath-copy.mjs';
 import { language, tr, translateStatic, localizedURL } from './locale.mjs';
 import { phase1, sourceWarning, copy as phaseCopy } from './phase1.mjs';
-import { applyRoute } from './routes.mjs';
+import { applyRoute, safetyRoute } from './routes.mjs';
 
 translateStatic();
 const isRecordRoute = applyRoute(document, location.search);
+const isSafetyRoute = safetyRoute(location.search);
+if (isSafetyRoute) {
+  document.title = 'Food Safety Evidence · The Bengal FoodPath';
+  const canonical = document.querySelector('link[rel=canonical]');
+  if (canonical) canonical.href = 'https://foodsafety.nemoneek.com/?module=safety';
+}
+if (!isRecordRoute) {
+  if (!isSafetyRoute) {
+    const panel = document.querySelector('.map-panel');
+    panel.querySelector('.panel-heading h3').textContent = language === 'bn' ? 'পুজোর মানচিত্র · কলকাতা ও হাওড়া' : 'Puja map · Kolkata & Howrah';
+    document.getElementById('geography').append(panel);
+  }
+  initPuja(setMapPandals);
+  initMapHost();
+  const openEvidence = () => { if (location.hash === '#evidence') document.getElementById('evidence-register').open = true; };
+  window.addEventListener('hashchange', openEvidence);
+  document.querySelectorAll('a[href]').forEach(a => {
+    if (new URL(a.href).hash === '#evidence') a.addEventListener('click', () => { document.getElementById('evidence-register').open = true; });
+  });
+  openEvidence();
+}
 
 const $ = id => document.getElementById(id);
 const SVG = 'http://www.w3.org/2000/svg';
 const state = { rows: [], filters: {}, query: '', repository: null, retired: [] };
-let boundary = null;
 const chartNames = {
   timeline: 'Date', areas: 'Area', actions: 'Reported action', establishments: 'Establishment context',
   publishers: 'Publisher', verification: 'Verification status', menus: 'Menu context',
@@ -50,6 +72,7 @@ async function json(path) {
   return response.json();
 }
 function activate(dimension, value) {
+  $('evidence-register').open = true;
   if (state.filters[dimension] === value) delete state.filters[dimension];
   else state.filters[dimension] = value;
   renderAll();
@@ -134,47 +157,7 @@ function donutChart(container, entries, dimension, palette) {
   svg.append(svgNode('text', { x: 106, y: 140, 'text-anchor': 'middle', class: 'axis-label' }, dimension === 'publishers' ? 'source links' : 'records'));
   container.append(svg);
 }
-function mapChart(rows) {
-  const container = $('chart-map'); container.replaceChildren();
-  const mapped = mappedRows(rows);
-  $('map-coverage').textContent = language === 'bn' ? `ভৌগোলিক পরিধি: ${rows.length}টি নথির মধ্যে ${mapped.length}টিতে এই মানচিত্রের উপযোগী এলাকার তথ্য রয়েছে। ${rows.length - mapped.length}টি দেখানো হয়নি।` : `Geographic coverage: ${mapped.length} of ${rows.length} records have sufficient location information for this view. ${rows.length - mapped.length} omitted.`;
-  if (!boundary) { container.closest('.map-panel').hidden = true; return; }
-  if (!mapped.length) return emptyChart(container);
-  const groups = new Map();
-  for (const row of mapped) {
-    const key = row.derived_context.normalized_area || row.reported_fact.area;
-    const current = groups.get(key) || { count: 0, lat: row.derived_context.latitude, lon: row.derived_context.longitude };
-    current.count += 1; groups.set(key, current);
-  }
-  const svg = svgNode('svg', { viewBox: '0 0 900 490', class: 'svg-map', role: 'group', 'aria-label': 'West Bengal reference map and Kolkata-region inset' });
-  const stateProject = projection([85.7, 21.4, 90, 27.3], [15, 40, 350, 420]);
-  const insetProject = projection([88.15, 22.3, 88.55, 22.8], [410, 50, 440, 385]);
-  svg.append(svgNode('rect', { x: 390, y: 35, width: 490, height: 430, rx: 14, class: 'map-inset' }));
-  const defs = svgNode('defs'); const clip = svgNode('clipPath', { id: 'inset-clip' });
-  clip.append(svgNode('rect', { x: 390, y: 35, width: 490, height: 430, rx: 14 })); defs.append(clip); svg.append(defs);
-  svg.append(svgNode('path', { d: geometryPath(boundary.geometry, insetProject), class: 'basemap-outline', 'clip-path': 'url(#inset-clip)', 'fill-rule': 'evenodd' }));
-  svg.append(svgNode('path', { d: geometryPath(boundary.geometry, stateProject), class: 'basemap-outline', 'fill-rule': 'evenodd' }));
-  svg.append(svgNode('text', { x: 30, y: 25, class: 'map-heading' }, 'West Bengal'));
-  svg.append(svgNode('text', { x: 415, y: 25, class: 'map-heading' }, 'Kolkata region · enlarged'));
-  svg.append(svgNode('text', { x: 30, y: 485, class: 'axis-title' }, 'Historical reference boundary · north ↑'));
-  const [kx, ky] = stateProject([88.36, 22.57]);
-  svg.append(svgNode('circle', { cx: kx, cy: ky, r: 9, class: 'map-region' }), svgNode('line', { x1: kx + 10, y1: ky, x2: 390, y2: 250, class: 'map-leader' }));
-  const legend = node('div', null, 'map-legend');
-  for (const [area, point] of groups) {
-    const inInset = point.lon >= 88.15 && point.lon <= 88.55 && point.lat >= 22.3 && point.lat <= 22.8;
-    const [x, y] = (inInset ? insetProject : stateProject)([point.lon, point.lat]);
-    const group = svgNode('g', { class: state.filters.areas === area ? 'selected' : '' });
-    interactive(group, 'areas', area, point.count);
-    group.append(svgNode('title', {}, `${area}: ${point.count} records; reviewed area anchor`));
-    group.append(svgNode('circle', { cx: x, cy: y, r: 7, class: 'map-point' }));
-    if (!inInset) group.append(svgNode('text', { x: x + 11, y: y - 7, class: 'map-label' }, area));
-    svg.append(group);
-    const button = node('button', `${area} · ${point.count}`, 'map-key');
-    button.type = 'button'; button.setAttribute('aria-pressed', String(state.filters.areas === area));
-    button.addEventListener('click', () => activate('areas', area)); legend.append(button);
-  }
-  container.append(svg, legend, external('Boundary: geoBoundaries / DataMeet · CC BY 2.5 IN', 'https://www.geoboundaries.org/'), document.createTextNode(' · '), external('Area anchors © OpenStreetMap contributors', 'https://www.openstreetmap.org/copyright'));
-}
+function mapChart(rows) { renderAreaSummary(rows, activate); }
 function coverage(stats) {
   const labels = {
     named_establishment: 'Named establishment', reported_action: 'Reported action',
@@ -265,7 +248,7 @@ function detailSection(container, label, title) {
 function detail() {
   const id = new URLSearchParams(location.search).get('event'); if (!isRecordRoute) return;
   const container = $('record-detail'); container.hidden = false;
-  const back = node('a', '← All published records', 'text-link'); back.href = localizedURL('index.html'); back.id = 'back-to-tracker'; container.append(back);
+  const back = node('a', '← All published records', 'text-link'); back.href = localizedURL('index.html?module=safety'); back.id = 'back-to-tracker'; container.append(back);
   const record = state.rows.find(row => row.event_id === id);
   if (!record) {
     const retired = state.retired.find(row => row.event_id === id);
@@ -321,12 +304,12 @@ function detail() {
 function renderAll() { const stats = aggregate(state.rows); charts(stats); renderFilters(); renderRows(); }
 
 try {
-  boundary = await json('assets/west-bengal.geojson').catch(() => null);
   const [data, status, repository, retired] = await Promise.all([json('data/events.json'), json('status.json'), json('repository.json'), json('data/retired.json')]);
   validateDataset(data); state.rows = data.records; state.retired = retired.records; state.repository = safeExternal(repository.url);
   if (state.repository) document.querySelectorAll('[data-repository]').forEach(anchor => { anchor.href = state.repository; anchor.rel = 'noopener noreferrer'; anchor.target = '_blank'; });
   const stats = aggregate(state.rows);
   for (const [id, key] of [['events', 'total'], ['areas', 'areas_count'], ['establishments', 'establishments_count'], ['sources', 'sources_count']]) $(`metric-${id}`).textContent = stats[key].toLocaleString('en-IN');
+  for (const [id, key] of [['teaser-events', 'total'], ['teaser-areas', 'areas_count'], ['teaser-sources', 'sources_count']]) if ($(id)) $(id).textContent = stats[key].toLocaleString('en-IN');
   $('coverage-publishers').textContent = stats.publishers_count; $('coverage-records').textContent = stats.total; $('coverage-cross').textContent = stats.coverage.cross_source.count; $('coverage-areas').textContent = stats.areas_count;
   const named = new Set(state.rows.map(r => r.reported_fact.establishment_name).filter(Boolean));
   const menus = new Set(state.rows.filter(r => r.derived_context.menu_context !== 'unknown').map(r => r.reported_fact.establishment_name).filter(Boolean));
@@ -337,7 +320,7 @@ try {
   if (language === 'bn') $('run-status').textContent = `শেষ পরীক্ষার ফল: ${status.last_run_result || 'উল্লেখ নেই'}। সক্রিয়: ${data.record_count}।`;
   if (status.scheduled_refresh_hours === 2) $('run-status').append(document.createTextNode(language === 'bn' ? ' প্রায় প্রতি ২ ঘণ্টায় স্বয়ংক্রিয়ভাবে পরীক্ষা করা হয়।' : ' Automatically checked approximately every 2 hours.'));
   if (isRecordRoute) detail(); else renderAll();
-  await phase1();
+  if (isRecordRoute || isSafetyRoute) await phase1();
   $('search').addEventListener('input', event => { state.query = event.target.value; renderRows(); });
   $('clear-filter').addEventListener('click', () => { state.filters = {}; state.query = ''; $('search').value = ''; renderAll(); });
 } catch (error) {

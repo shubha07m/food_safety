@@ -17,6 +17,7 @@ REQUIRED = [
     "data/events.json",
     "data/events.csv",
     "data/events.csv.metadata.json",
+    "data/pandals.json",
     "_headers",
 ]
 FORBIDDEN = [".env", "data/pending.json", "data/rejected.json", "data/history", "data/runs"]
@@ -24,6 +25,9 @@ FORBIDDEN = [".env", "data/pending.json", "data/rejected.json", "data/history", 
 
 def main() -> None:
     validate(ROOT)
+    from food_safety.browser_maps import browser_config
+
+    expected_maps = browser_config(ROOT)
     missing = [name for name in REQUIRED if not (SITE / name).is_file()]
     present = [name for name in FORBIDDEN if (SITE / name).exists()]
     headers = (SITE / "_headers").read_text(encoding="utf-8")
@@ -52,7 +56,23 @@ def main() -> None:
         "retired.json",
         "lifecycle.json",
         "compliance.json",
+        "places.json",
+        "pandals.json",
     }
+    places = SITE / "data/places.json"
+    if places.exists():
+        from food_safety.places.models import PublicData
+
+        PublicData.model_validate_json(places.read_text())
+        if json.loads(places.read_text()) != json.loads((ROOT / "data/places.json").read_text()):
+            present.append("public and durable Places datasets differ")
+    pandals = SITE / "data/pandals.json"
+    if pandals.exists():
+        from food_safety.puja.models import PublicData as PublicPandalData
+
+        PublicPandalData.model_validate_json(pandals.read_text())
+        if json.loads(pandals.read_text()) != json.loads((ROOT / "data/pandals.json").read_text()):
+            present.append("public and durable pandal datasets differ")
     for path in SITE.rglob("*"):
         if path.is_symlink():
             present.append("symlink in public output")
@@ -68,6 +88,7 @@ def main() -> None:
                 "__pycache__",
                 "llm_eval",
                 "corpus",
+                "places-runtime",
             }
             for part in path.relative_to(SITE).parts
         ):
@@ -96,6 +117,13 @@ def main() -> None:
             present.append("unexpected public asset type")
         if path.suffix != ".png":
             text = path.read_text()
+            if path == SITE / "maps-config.json":
+                if json.loads(text) != expected_maps:
+                    present.append("unexpected browser Maps configuration")
+                elif expected_maps["browser_key"]:
+                    # Only this ignored, exact-schema public browser credential is permitted.
+                    # Server keys and credential patterns everywhere else remain prohibited.
+                    text = text.replace(expected_maps["browser_key"], "BROWSER_KEY")
             if re.search(
                 r"/Users/|BEGIN .*PRIVATE KEY|github_pat_[A-Za-z0-9_]{30,}"
                 r"|gh[pousr]_[A-Za-z0-9]{30,}|sk-[A-Za-z0-9]{30,}|AIza[A-Za-z0-9_-]{35}",

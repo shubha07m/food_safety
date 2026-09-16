@@ -2,145 +2,154 @@
 
 Independent food-information research for West Bengal.
 
-Current module: **Food Safety & Inspection Evidence** (West Bengal Food Safety Evidence Tracker).
-
-![West Bengal Food Safety Evidence Tracker — Public Beta](docs/assets/readme_banner.svg)
+![The Bengal FoodPath — Puja FoodPath and Food Safety Evidence](docs/assets/readme_banner.svg)
 
 [![CI](https://github.com/shubha07m/food_safety/actions/workflows/ci.yml/badge.svg)](https://github.com/shubha07m/food_safety/actions/workflows/ci.yml)
-**PUBLIC BETA · Python 3.12 · Static site · Cloudflare · MIT code · No tracking**
+**PUBLIC BETA · Static site · Python 3.12 · MIT code · No project tracking**
 
-> Independent public-source research. **Not a government database. Inclusion is not a finding of wrongdoing.** Source verification means the cited source supports the displayed statement; it does not mean the project independently established the event as fact.
+### [Explore Puja FoodPath →](https://foodsafety.nemoneek.com/)
 
-### [Explore the live tracker →](https://foodsafety.nemoneek.com/)
+[Food Safety Evidence](https://foodsafety.nemoneek.com/?module=safety) · [বাংলায় দেখুন](https://foodsafety.nemoneek.com/?lang=bn) · [Methodology](METHODOLOGY.md) · [Corrections](https://foodsafety.nemoneek.com/corrections.html)
 
-[বাংলায় দেখুন](https://foodsafety.nemoneek.com/?lang=bn) · [Methodology](METHODOLOGY.md) · [Disclaimer](DISCLAIMER.md) · [Data](https://foodsafety.nemoneek.com/data.html) · [Corrections](https://foodsafety.nemoneek.com/corrections.html) · [Contribute](CONTRIBUTING.md)
+> Independent public-source research. **Not a government database. Inclusion is not a finding of wrongdoing.** Nearby restaurant links are not endorsements or safety ratings. Source verification means the cited source supports the displayed statement; it does not mean the project independently established the event as fact.
 
 ## What this is
 
-A public-interest, educational and academic data-research project organizing publicly reported food-safety inspection events in West Bengal, initially Kolkata and nearby areas. Every published fact links to source evidence; every chart reveals the records behind its count.
+The Bengal FoodPath brings together two distinct experiences for West Bengal:
 
-This is not a blacklist, safety rating, official total, accusation platform or opinion-building project. It does not infer social/community identity or recommend patronizing or avoiding any business. Unknown information is shown, not guessed.
+- **Puja FoodPath**, the primary seasonal experience: search source-backed pandal listings, explore festival geography, and follow nearby restaurant links to Google Maps.
+- **Food Safety Evidence**, the research module: inspect source-linked reporting, geographic context, publication history, corrections and evidence methodology.
 
-> ### 🤝 Help keep the tracker useful
->
-> Volunteer maintainers are welcome for source review, Bengali/English coverage, data validation and open-data tooling. Evidence and safety standards apply to every contribution.
->
-> **[Volunteer / Contribute →](CONTRIBUTING.md)** · No personal information is collected on this website.
+Restaurant discovery and inspection reporting remain separate. Proximity never establishes a restaurant's safety or a connection to an inspection record.
 
-## Dashboard preview
+> **Help keep FoodPath useful.** Volunteer maintainers are welcome for Bengali/English source review, pandal curation, data validation and open-data tooling. [Volunteer / contribute →](CONTRIBUTING.md)
 
-![Current dashboard: evidence metrics, geographic context and interactive charts](docs/assets/dashboard_preview.png)
+## Puja FoodPath
 
-Native SVG charts, source-linked records, combined filters, field completeness and missingness. The local West Bengal basemap uses coarse reviewed area anchors—not establishment addresses, incident density or risk.
+Search locally by English or Bengali name, alias, area, neighborhood or city. A small set of featured pandals offers curated shortcuts, not rankings. Search works without coordinates; only independently located entries appear as map markers.
 
-## How it works
+Select a pandal to read its source, listing year and available restaurant links. Records without independently curated restaurant names use “Restaurant on Google Maps.” The source directory's broad Kolkata/Howrah zones can include surrounding districts. Historical listings do not confirm this year's venue or hours.
 
-![Public sources → bounded retrieval → evidence and safety validation → structured records → static Cloudflare dashboard](docs/assets/pipeline.svg)
+## Food Safety Evidence
 
-Public sources → bounded retrieval → exact evidence validation → safety checks and deduplication → structured record → interactive dashboard. Failed or ambiguous candidates do not become public records.
+[Open the evidence module](https://foodsafety.nemoneek.com/?module=safety) for records, source links, filters, charts and corrections. Unknown information stays unknown. Counts describe indexed reporting, not prevalence, wrongdoing, compliance or official totals.
+
+## Current experience
+
+![Puja FoodPath homepage with festival illustration and local pandal search](docs/assets/puja_preview.png)
+
+The preview shows the current development release; it contains project-authored artwork and local data, with no captured Google map imagery.
+
+## How Puja discovery works
+
+Curated public sources → bounded retrieval → structured extraction and source review → verified catalog → local search.
+
+Gemini assists with extracting candidate facts and exact evidence spans. It cannot invent pandals, translations or coordinates and cannot directly publish the pandal catalog. Already structured source tables can be curated directly. The reviewed configuration is the publication boundary. [Curation and refresh details](docs/PUJA_CURATION.md).
+
+Restaurant discovery is separate: reviewed zones → operator Nearby Search → dedupe by place ID → temporary coordinate matching → durable associations and Google Maps links.
+
+Place IDs are durable. Google-derived coordinates expire in ignored storage, within 30 days; Google names, raw responses and coordinates do not enter permanent public data. [Places architecture](docs/PLACES.md).
+
+## How evidence works
+
+Public reporting → bounded retrieval → LLM structured candidates → source-grounded schema, evidence, duplicate and safety validation → publish or skip.
+
+Fully validated Food Safety candidates may publish automatically. Ambiguous or unsupported candidates do not. Source evidence remains authoritative. There is no chatbot, public Q&A, training or fine-tuning.
+
+Previously published records can carry source-availability warnings while technical failures are retried. Material uncertainty, corrections and withdrawals change publication eligibility; prolonged unverifiability moves records out of active analytics. History remains visible. [Methodology](METHODOLOGY.md) · [LLM extraction](docs/LLM_EXTRACTION.md).
+
+## Maps and cost-aware operation
+
+The initial page serves local data and an accessible geographic summary. **Open live Google map** is an explicit choice on each fresh visit. The loader reuses one map for selection and layer changes; no Google map tiles or imagery are stored for offline reuse.
+
+- Zero visitor-triggered Places calls.
+- Places discovery is explicit/operator-side, with a 3,000-attempt monthly internal cap and five-attempt default run cap.
+- Dynamic Maps loads are billed separately and have no project-side monthly ledger.
+- Separate API keys serve browser visualization and private server discovery.
+- Restricted referrers, Maps API restrictions and a conservative Google Cloud map-load quota mitigate abuse. QPM limits and billing alerts are not a monthly cost ceiling.
+
+[Browser-key setup, quota steps and deployment input](docs/BROWSER_MAP.md). The optional map needs the existing build environment to supply its restricted browser key; the fallback remains fully functional without it.
 
 ## Current coverage
 
-The live dashboard computes its own totals from the [published JSON](https://foodsafety.nemoneek.com/data/events.json), with a matching [CSV export](https://foodsafety.nemoneek.com/data/events.csv). The initial sample is small and concentrated in a few publishers. Cross-source verification and contextual coverage remain limited. See [dataset quality](reports/v2_dataset_quality_report.md); its dated snapshot is not a live total.
+Snapshot: **2026-09-16**, prepared for PR #14.
 
-Counts describe indexed reporting, **not prevalence, compliance, authority activity or wrongdoing**. Prototype values and test fixtures never enter production data.
+| Dataset | Coverage |
+| --- | --- |
+| Source-backed pandal catalog | 223 listings: 183 Kolkata-zone, 40 Howrah-zone |
+| Map-ready pandals | 1; coordinates are absent for the other listings |
+| Pandal sources / featured shortcuts | 4 source URLs / 6 featured entries |
+| Restaurant links | 10 durable associations at Bagbazar |
+| Active Food Safety Evidence | 48 records, 37 area labels, 19 sources |
 
-## Automatic updates
+This is not a complete Puja directory. Most new entries are grounded in one directory's 2025 tables; broader independent and Bengali source coverage remains limited.
 
-**Refresh Food Safety Data** is scheduled approximately every two hours (`17 */2 * * *`) and can be run manually in GitHub Actions. Schedules are best-effort, not a freshness guarantee.
+Current counts come from [pandal JSON](https://foodsafety.nemoneek.com/data/pandals.json), [evidence JSON](https://foodsafety.nemoneek.com/data/events.json) and [CSV](https://foodsafety.nemoneek.com/data/events.csv). The live site reflects these changes after the release merge.
 
-The workflow draws from bounded publisher indexes, RSS/Atom feeds, configured sitemaps, curated URLs and approved community leads. It can discover up to 80 unique URLs and processes at most 20 new/due articles per run, with separate discovery and revalidation budgets and per-host circuit breaking. An optional Brave Search API adapter is disabled unless a maintainer explicitly configures it. New English/Bengali candidates require explicit supported inspection statements and all source, schema and safety gates. Ambiguous new records never publish. See the current [source coverage report](reports/source_coverage.md).
+## Automatic refresh
 
-Previously published records receive dated access warnings for technical failures, not automatic evidence-failure suspensions. Semantic uncertainty leaves active analytics; 30 days without adequate revalidation leads to an unverifiable archive. Restoration preserves first-publication history. See [the detailed lifecycle](METHODOLOGY.md).
+**Refresh Food Safety Data** runs approximately every two hours. Within it, Puja source research is due every six hours by default, with a hard configuration maximum of ten runs/day. Revision receipts prevent repeated Gemini calls for unchanged Puja sources, including on fresh runners. The Puja catalog rebuild publishes only reviewed configuration; scheduled research candidates remain private and ephemeral.
 
-Public metrics distinguish Active, Ever published, warning and non-active states. These overlap and must not be added together. Private-response community intake is prepared through a configurable Google Form; no fake form URL or community queue count is displayed. A URL-only **Licensing & Compliance Documents** schema is a manually reviewed pilot with no published documents or quality endorsements. Language, source/revision IDs and field support preserve future research compatibility without embeddings or a database.
-
-Only approved public artifacts are committed to `main`; Cloudflare Git integration redeploys `site/`. No change means no empty commit. The workflow has no push trigger, so its generated commits cannot recursively start another source scan. Failed scans never advance the last-successful timestamp. Maintainers periodically audit a few new records.
-
-Ordinary visitors have no refresh endpoint. Maintainers use **Actions → Refresh Food Safety Data → Run workflow**. [Short maintainer guide](docs/MAINTAINER_GUIDE.md).
-
-## Evidence standards
-
-`reported_fact` and `derived_context` are structurally separate. Exact short source spans support factual fields. Non-default contextual categories need evidence, method, confidence and maintainer review. `SOURCE VERIFIED` is about source support, not independently proven truth. Automatic validation has explicit provenance and never impersonates human review.
-
-[Data dictionary](DATA_DICTIONARY.md) · [Source policy](SOURCES.md) · [Methodology](METHODOLOGY.md) · [Corrections](CORRECTIONS.md)
-
-## Bengali support
-
-Use **EN | বাংলা** or [`?lang=bn`](https://foodsafety.nemoneek.com/?lang=bn). Navigation, principal dashboard labels, charts, filters and policy summaries have static Bengali translations. Full policies are also available in English. The original English/Bengali source quotations remain unchanged and clearly labeled; UI translations are not evidence. No translation API, external font or tracking cookie is used.
-
-The bounded multilingual extractor supports Bengali, English and mixed-language source passages while preserving original-language quotations. Ambiguous entities, unsupported facts and ungrounded quotations are skipped. Discovery remains bounded and publisher access restrictions are respected.
-
-Created and maintained by **Shubhabrata Mukherjee** ([@shubha07m](https://github.com/shubha07m)).
-
-© 2026 Shubhabrata Mukherjee · The Bengal FoodPath. Independent public-interest data project. Project code is MIT-licensed where stated. Third-party content and trademarks remain subject to their respective rights.
+There is no scheduled all-zone Places sweep, public refresh endpoint, or Google map prefetch. Schedules are best-effort. [Maintainer guide](docs/MAINTAINER_GUIDE.md).
 
 ## Run locally
 
-```bash
-git clone https://github.com/shubha07m/food_safety.git
-cd food_safety
-bash scripts/setup_food.sh
+Use the existing project environment:
+
+~~~bash
 conda activate "$(pwd)/.conda/envs/food"
+python -m food_safety.cli validate
 python -m food_safety.cli build
 python -m http.server 8000 --bind 127.0.0.1 --directory site
-```
+~~~
 
-An existing local `food` environment can be reused. Python execution and dependencies stay in that environment. For an explicitly bounded local refresh: `AUTO_PUBLISH=true python -m food_safety.cli update --max-articles 3`. Transport failures create warnings rather than evidence suspensions; inspect every resulting diff.
+Open http://127.0.0.1:8000/. Copy blank placeholders from `.env.example` into an ignored local `.env` as needed; never commit key values. Browse without credentials using the fallback. Model and Places calls are bounded operator actions.
+
+~~~bash
+python -m food_safety.cli puja stats
+python -m food_safety.cli places discover --dry-run
+python -m ruff check .
+python -m pytest -q
+node --test tests/*.test.mjs
+python scripts/verify_public_output.py
+~~~
+
+[Environment setup](scripts/setup_food.sh) · [Puja CLI](docs/PUJA_CURATION.md) · [Places CLI](docs/PLACES.md).
 
 ## Architecture
 
-### LLM extraction, with source-grounded publication checks
-
-The language model restructures fetched source documents into candidate records. Candidates that satisfy schema, exact evidence-grounding, source, duplicate, safety and publication checks may be published automatically. Ambiguous or unsupported candidates are skipped. Unsupported optional fields can be omitted without discarding supported core facts.
-
-The LLM is the normal article-interpretation layer; the application verifies its structured output rather than asking the former phrase grammar to interpret the prose again. Missing credentials or model failures skip new extraction for that run and leave existing records and source lifecycle states unaffected. Use [LLM extraction and diagnostics](docs/LLM_EXTRACTION.md) for bounded testing.
-
-Original source evidence remains authoritative. There is no chatbot, public Q&A, model training, fine-tuning or autonomous source-independent factual generation. Model assistance is not a trust score or a marketing claim.
-
-| Component | Responsibility |
+| Location | Purpose |
 | --- | --- |
-| `src/food_safety/` | Bounded retrieval, schemas, evidence validation, publication, exports |
-| `config/` | Explicit source whitelist and hard request limits |
-| `data/events.json` | Versioned approved research dataset |
-| `site/` | Only public deployment output; native JS/SVG, local assets |
-| `tests/` | Synthetic deterministic regression fixtures; no paid APIs |
-| `.github/workflows/` | CI and bounded two-hour refresh |
+| `src/food_safety/` | Retrieval, extraction, evidence validation, lifecycle and exports |
+| `config/puja.yml` | Reviewed pandal catalog and bounded research sources |
+| `config/places.yml` | Curated pandals/zones and explicit Places budgets |
+| `data/` | Versioned public structured data |
+| `site/` | Static HTML, native JavaScript/CSS and local assets |
+| `.github/workflows/` | CI and bounded refresh |
 
-Private pending/rejected queues, local article downloads, source snapshots and browser profiles are excluded from commits. Minimal suspension tombstones preserve stable record status without republishing held claims. Local branch history has been sanitized; repository visibility remains private until GitHub removes retained server-side pull-request refs documented in the [current audit](docs/PUBLIC_REPOSITORY_AUDIT.md).
+JSON/CSV remain canonical; there is no database server, vector store or frontend framework. Production uses the existing Cloudflare static-assets integration. Work goes to `develop`; release uses a merge commit into `main`.
 
 ## Security and privacy
 
-No public database, write API, accounts, comments, uploads, ad trackers, analytics or runtime third-party scripts. HTTPS, CSP, framing restrictions, safe link rendering, SSRF-aware retrieval and response caps remain in place. The map is locally bundled, with [attribution](site/assets/BASEMAP_LICENSE.md). Hosting providers may process operational logs under their own policies.
+No project tracking, public write API, accounts, comments, uploads or ratings platform. Optional Google Maps receives provider network information only after the user chooses to load it. Hosting and Google privacy policies apply.
 
-[Security](SECURITY.md) · [Privacy](PRIVACY.md) · [Deployment](docs/DEPLOYMENT.md) · [Public repository audit](docs/PUBLIC_REPOSITORY_AUDIT.md)
+Private source snapshots, model candidates, caches, operational ledgers and credentials are excluded from Git and public output. Source retrieval uses URL/DNS/robots controls and response limits. Public rendering uses safe text APIs and a restricted CSP.
 
-## Validate changes
+[Security](SECURITY.md) · [Privacy](PRIVACY.md) · [Repository audit](docs/PUBLIC_REPOSITORY_AUDIT.md) · [Deployment](docs/DEPLOYMENT.md).
 
-```bash
-ruff check .
-pytest --basetemp=.cache/pytest
-node --test tests/*.test.mjs
-python -m food_safety.cli validate
-python -m food_safety.cli build
-python scripts/verify_public_output.py
-```
+## Contributing
 
-The optional browser smoke uses an already-installed Chrome; no browser bundle is downloaded. Tests mock model responses and never consume paid API tokens. VLM remains disabled. Source submissions and Issues never publish automatically.
-
-With the local server running, `node scripts/browser_smoke.mjs` checks the real and
-synthetic UI without modifying public assets. Set `FOOD_UPDATE_PREVIEWS=1` for an
-explicit refresh of the small README screenshot and social preview PNG.
-
-## Contributing and volunteer maintainers
-
-Read [CONTRIBUTING.md](CONTRIBUTING.md) and the [Code of Conduct](CODE_OF_CONDUCT.md). Suggest a public source, request a correction, help audit evidence, improve Bengali wording or maintain the tooling. Controlled GitHub Issue Forms become publicly accessible when the maintainer makes the repository public. Until then, access requires a repository invitation.
+Read [CONTRIBUTING.md](CONTRIBUTING.md) and the [Code of Conduct](CODE_OF_CONDUCT.md). Help verify sources, correct records, curate pandals or improve Bengali coverage. Contributions do not bypass evidence rules. Private-response community intake is prepared through a configurable Google Form; no unconfigured form or fabricated queue count is displayed.
 
 ## Disclaimer and licensing
 
-**Project policy wording is not legal advice. Independent legal review has not been completed.** This project does not promise legal immunity. Preserve source links and interpretation notices when sharing; third-party commentary does not represent the project. See the full [disclaimer](DISCLAIMER.md).
+**Project policy wording is not legal advice. Independent legal review has not been completed.** Read the full [disclaimer](DISCLAIMER.md) and preserve source links and limitations when reusing data.
 
-Code is [MIT licensed](LICENSE). Third-party news content and geographic data are not relicensed by that license. Evidence excerpts retain their original rights; research data reuse must preserve attribution, limitations and applicable third-party rights.
+Project code is [MIT licensed](LICENSE). Third-party content and trademarks remain subject to their respective rights. News excerpts and geographic materials are not relicensed as project-owned content. Compiled factual data does not imply ownership of source facts.
+
+Created and maintained by **Shubhabrata Mukherjee** ([@shubha07m](https://github.com/shubha07m)).
+
+© 2026 Shubhabrata Mukherjee · The Bengal FoodPath.
 
 ## Professional independence
 

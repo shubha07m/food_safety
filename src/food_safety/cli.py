@@ -21,6 +21,35 @@ def main():
     sub = parser.add_subparsers(dest="command", required=True)
     for name in ["validate", "build", "pending", "migrate"]:
         sub.add_parser(name)
+    places = sub.add_parser(
+        "places", help="Explicit zone-first restaurant discovery; no map changes"
+    )
+    places_sub = places.add_subparsers(dest="places_command", required=True)
+    for name in ["validate", "plan", "remap", "usage"]:
+        places_sub.add_parser(name)
+    discovery = places_sub.add_parser("discover")
+    discovery.add_argument("--zone", help="One enabled planned zone ID")
+    discovery.add_argument("--dry-run", action="store_true", help="Read-only; zero HTTP calls")
+    discovery.add_argument(
+        "--max-calls", type=int, help="Lower the configured per-run attempt limit"
+    )
+    discovery.add_argument(
+        "--smoke-test",
+        action="store_true",
+        help="One zone, at most one attempt/10 results; usage only persisted",
+    )
+    puja = sub.add_parser("puja", help="Bounded, source-grounded Puja pandal curation")
+    puja_sub = puja.add_subparsers(dest="puja_command", required=True)
+    puja_sources = puja_sub.add_parser("sources")
+    puja_sources_sub = puja_sources.add_subparsers(dest="puja_sources_command", required=True)
+    puja_sources_sub.add_parser("validate")
+    puja_discover = puja_sub.add_parser("discover")
+    puja_discover.add_argument("--source")
+    puja_extract = puja_sub.add_parser("extract")
+    puja_extract.add_argument("--source")
+    puja_extract.add_argument("--max-calls", type=int)
+    for name in ["review-summary", "publish", "stats", "refresh"]:
+        puja_sub.add_parser(name)
     scan = sub.add_parser("update")
     scan.add_argument("--max-articles", type=bounded, default=3)
     scan.add_argument("--max-llm-calls", type=int, default=None)
@@ -55,7 +84,44 @@ def main():
     hold.add_argument("--replacement-id", help="Required for SUPERSEDED; must already be active")
     args = parser.parse_args()
     try:
-        if args.command == "llm-test":
+        if args.command == "places":
+            from .places.pipeline import run_command
+
+            result = run_command(ROOT, args)
+        elif args.command == "puja":
+            from .puja.pipeline import (
+                build_public as build_puja_public,
+            )
+            from .puja.pipeline import (
+                discover as discover_puja,
+            )
+            from .puja.pipeline import (
+                extract as extract_puja,
+            )
+            from .puja.pipeline import (
+                refresh,
+                review_summary,
+                validate_sources,
+            )
+            from .puja.pipeline import (
+                stats as puja_stats,
+            )
+
+            if args.puja_command == "sources":
+                result = validate_sources(ROOT)
+            elif args.puja_command == "discover":
+                result = discover_puja(ROOT, args.source)
+            elif args.puja_command == "extract":
+                result = extract_puja(ROOT, args.source, args.max_calls)
+            elif args.puja_command == "review-summary":
+                result = review_summary(ROOT)
+            elif args.puja_command == "publish":
+                result = build_puja_public(ROOT)
+            elif args.puja_command == "refresh":
+                result = refresh(ROOT)
+            else:
+                result = puja_stats(ROOT)
+        elif args.command == "llm-test":
             from .llm_diagnostic import test_cached_articles
 
             result = test_cached_articles(ROOT, args.max_articles, args.use_llm)
@@ -120,6 +186,12 @@ def main():
             build(ROOT)
             result = {"event_id": old.event_id, "status": args.status}
         print(json.dumps(result, indent=2))
+        if (
+            args.command == "places"
+            and args.places_command == "discover"
+            and any(z.get("status") == "skipped" for z in result.get("zones", []))
+        ):
+            parser.exit(2, "Places discovery incomplete; prior durable output retained.\n")
         if args.command == "update" and result["errors"]:
             parser.exit(2, "Source scan incomplete; last successful update has not advanced.\n")
     except Exception as exc:

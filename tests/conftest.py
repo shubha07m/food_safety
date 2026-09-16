@@ -58,6 +58,8 @@ class FixtureLLM:
 def no_live_model_credentials(monkeypatch):
     """Unit tests never consume an accidentally configured hosted-model credential."""
     monkeypatch.delenv("GEMINI_API_KEY", raising=False)
+    monkeypatch.delenv("GOOGLE_MAPS_API_KEY", raising=False)
+    monkeypatch.delenv("GOOGLE_MAPS_BROWSER_KEY", raising=False)
     monkeypatch.delenv("LLM_ENABLED", raising=False)
 
 
