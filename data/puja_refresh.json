@@ -1,13 +1,14 @@
 {
   "date": "2026-09-17",
-  "last_run_at": "2026-09-17T07:37:53.516696+00:00",
+  "last_run_at": "2026-09-17T18:11:52.226137+00:00",
   "last_summary": {
     "failures": 1,
     "model_calls": 1,
-    "unchanged": 1
+    "unchanged": 2
   },
-  "runs_today": 2,
+  "runs_today": 3,
   "source_revisions": {
+    "ifd-howrah": "241b01b9ea22c7c22e4a6799cc347dff0cf841d3204142dc7e31703f5e1f0461",
     "ifd-north-kolkata": "7947f85bc8a37cdaec233eb14ee08b3a7a4c692baeb6671339a1d7df4ff80b47",
     "ifd-south-kolkata": "ee990b4d9a154bf08f577088cd8a9c80df24ca95151b3d08717d0b6c060b8947"
   }
