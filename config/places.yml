@@ -2,7 +2,7 @@
 settings:
   monthly_limit: 3000
   warning_threshold: 2500
-  max_calls_per_run: 10
+  max_calls_per_run: 60
   max_results: 20
   max_retries: 1
   timeout_seconds: 15
@@ -10,6 +10,9 @@ settings:
   max_zone_radius_m: 1500
   overlap_fraction: 0.7
   default_restaurant_radius_m: 600
+  max_supplemental_searches: 3
+  supplemental_offset_m: 300
+  supplemental_radius_m: 400
   automatic_zones: true
 pandals:
   - pandal_id: bagbazar-sarbojanin

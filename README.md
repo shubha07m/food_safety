@@ -46,7 +46,9 @@ Curated public sources → bounded retrieval → structured extraction and sourc
 
 Gemini assists with extracting candidate facts and exact evidence spans. It cannot invent pandals, translations or coordinates and cannot directly publish the pandal catalog. Already structured source tables can be curated directly. The reviewed configuration is the publication boundary. [Curation and refresh details](docs/PUJA_CURATION.md).
 
-Restaurant discovery is separate: reviewed zones → operator Nearby Search → dedupe by place ID → temporary coordinate matching → durable associations and Google Maps links.
+Restaurant discovery is separate: reviewed zones → bounded saturation-aware Nearby
+Search → dedupe by place ID → temporary coordinate matching → durable associations
+and Google Maps links.
 
 Place IDs are durable. Google-derived coordinates expire in ignored storage, within 30 days; Google names, raw responses and coordinates do not enter permanent public data. [Places architecture](docs/PLACES.md).
 
@@ -63,7 +65,9 @@ Previously published records can carry source-availability warnings while techni
 The initial page serves local data and an accessible geographic summary. **Open live Google map** is an explicit choice on each fresh visit. The loader reuses one map for selection and layer changes; no Google map tiles or imagery are stored for offline reuse.
 
 - Zero visitor-triggered Places calls.
-- Places discovery is explicit/operator-side, with a 3,000-attempt monthly internal cap and five-attempt default run cap.
+- Places discovery is explicit/operator-side, with a 3,000-attempt monthly internal
+  cap and a 60-attempt per-run ceiling. Saturated searches may use up to three
+  deterministic supplemental circles; dry-run planning exposes the full bound first.
 - Dynamic Maps loads are billed separately and have no project-side monthly ledger.
 - Separate API keys serve browser visualization and private server discovery.
 - Restricted referrers, Maps API restrictions and a conservative Google Cloud map-load quota mitigate abuse. QPM limits and billing alerts are not a monthly cost ceiling.

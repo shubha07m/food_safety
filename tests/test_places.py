@@ -11,7 +11,7 @@ import yaml
 from pydantic import ValidationError
 
 from food_safety.places.client import FIELD_MASK, PlacesError, retry_delay
-from food_safety.places.geometry import distance_m, plan, reverse_map
+from food_safety.places.geometry import distance_m, plan, reverse_map, supplemental_zones
 from food_safety.places.models import (
     Config,
     CuratedRestaurant,
@@ -171,6 +171,34 @@ def test_manual_dense_zone_split_replaces_automatic_group():
     assert [z.pandal_ids for z in result] == [["a"], ["b"]]
 
 
+def test_supplemental_geometry_is_deterministic_and_bounded():
+    config = Config(
+        pandals=[pandal()],
+        zones=[zone()],
+        settings={
+            "max_supplemental_searches": 3,
+            "supplemental_offset_m": 300,
+            "supplemental_radius_m": 400,
+        },
+    )
+    primary = plan(config)[0]
+    first = supplemental_zones(primary, config.settings)
+    assert first == supplemental_zones(primary, config.settings)
+    assert len(first) == 3
+    assert len({item.zone_id for item in first}) == 3
+    assert all(item.radius_m == 400 for item in first)
+    assert all(
+        distance_m(
+            primary.center_latitude,
+            primary.center_longitude,
+            item.center_latitude,
+            item.center_longitude,
+        )
+        == pytest.approx(300, abs=0.02)
+        for item in first
+    )
+
+
 def test_disabled_automatic_requires_assignment():
     with pytest.raises(ValueError, match="missing_zone"):
         plan(Config(pandals=[pandal()], settings={"automatic_zones": False}))
@@ -244,7 +272,11 @@ def test_dry_run_is_read_only_and_no_http(workspace, monkeypatch):
     monkeypatch.setattr(httpx.Client, "stream", forbidden)
     result = discover(workspace, dry_run=True, clock=lambda: AT)
     assert result["expected_calls_without_retries"] == 1
-    assert result["maximum_attempts"] == 2
+    assert result["primary_searches_planned"] == 1
+    assert result["potential_supplemental_searches"] == 3
+    assert result["absolute_maximum_requests"] == 4
+    assert result["maximum_search_requests_this_run"] == 4
+    assert result["maximum_attempts"] == 8
     assert not (workspace / "data").exists()
 
 
@@ -403,6 +435,14 @@ def test_missing_key_fails_without_request(workspace, monkeypatch):
     assert run(workspace)["attempts"] == 0
 
 
+def test_fresh_cache_does_not_require_api_key(workspace, monkeypatch):
+    run(workspace)
+    monkeypatch.delenv("GOOGLE_MAPS_API_KEY")
+    result = run(workspace)
+    assert result["attempts"] == 0
+    assert result["zones"][0]["status"] == "cached"
+
+
 def test_env_loading_no_shell_evaluation(workspace, monkeypatch):
     monkeypatch.delenv("GOOGLE_MAPS_API_KEY")
     (workspace / ".env").write_text("GOOGLE_MAPS_API_KEY='fixture-key'\nGEMINI_API_KEY=unused\n")
@@ -529,6 +569,7 @@ def test_multiple_restaurants_are_one_call(workspace):
     result = run(workspace, lambda r: httpx.Response(200, json=payload))
     assert result["zones"][0]["places_returned"] == 2
     assert result["usage"]["calls"] == 1
+    assert result["zones"][0]["supplemental_search_count"] == 0
 
 
 def test_twenty_results_set_limit_signal_and_discovery_state(workspace):
@@ -537,11 +578,116 @@ def test_twenty_results_set_limit_signal_and_discovery_state(workspace):
     result = run(workspace, lambda r: httpx.Response(200, json=payload))
     assert result["zones"][0]["places_returned"] == 20
     assert result["zones"][0]["result_limit_reached"] is True
+    assert result["attempts"] == 4
+    assert result["zones"][0]["supplemental_search_count"] == 3
+    assert result["zones"][0]["raw_candidate_count"] == 80
+    assert result["zones"][0]["unique_place_count"] == 20
+    assert result["zones"][0]["overlap_ratio"] == 0.75
     public = PublicData.model_validate_json((workspace / "data/places.json").read_text())
     assert len(public.restaurants) == 20
     assert public.discoveries[0].pandal_id == "a"
     assert public.discoveries[0].candidates_returned == 20
     assert public.discoveries[0].result_limit_reached is True
+    assert public.discoveries[0].supplemental_search_count == 3
+    assert public.discoveries[0].saturation_encountered is True
+    assert public.search_diagnostics[0].raw_candidate_count == 80
+    assert public.search_diagnostics[0].unique_place_count_after_dedupe == 20
+
+
+def test_supplemental_results_merge_dedupe_and_reverse_map(workspace):
+    configure(workspace, settings={"max_results": 20})
+    calls = 0
+
+    def handler(request):
+        nonlocal calls
+        calls += 1
+        start = (calls - 1) * 10
+        return httpx.Response(
+            200,
+            json={
+                "places": [
+                    response(f"place_{index}")["places"][0]
+                    for index in range(start, start + 20)
+                ]
+            },
+        )
+
+    result = run(workspace, handler)
+    zone_result = result["zones"][0]
+    assert calls == result["attempts"] == 4
+    assert zone_result["raw_candidate_count"] == 80
+    assert zone_result["unique_place_count"] == 50
+    assert zone_result["overlap_ratio"] == 0.375
+    public = PublicData.model_validate_json((workspace / "data/places.json").read_text())
+    assert len(public.restaurants) == 50
+    assert len(public.associations) == 50
+
+
+@pytest.mark.parametrize(
+    ("settings", "max_calls", "expected"),
+    [
+        ({"max_results": 20, "max_supplemental_searches": 2}, None, 3),
+        ({"max_results": 20}, 2, 2),
+        (
+            {
+                "max_results": 20,
+                "monthly_limit": 2,
+                "warning_threshold": 1,
+            },
+            None,
+            2,
+        ),
+    ],
+)
+def test_supplemental_hard_and_quota_caps(workspace, settings, max_calls, expected):
+    configure(workspace, settings=settings)
+    payload = {"places": [response(f"place_{index}")["places"][0] for index in range(20)]}
+    result = run(
+        workspace,
+        lambda request: httpx.Response(200, json=payload),
+        **({"max_calls": max_calls} if max_calls else {}),
+    )
+    assert result["attempts"] == expected
+    assert result["zones"][0]["supplemental_search_count"] == expected - 1
+
+
+def test_dry_run_plans_missing_supplements_for_cached_saturated_primary(workspace):
+    configure(workspace, settings={"max_results": 20})
+    primary = plan(load_config(workspace))[0]
+    observations = [
+        Observation(
+            place_id=f"place_{index}",
+            latitude=22.60,
+            longitude=88.36,
+            fetched_at=AT,
+            expires_at=AT + timedelta(days=7),
+        )
+        for index in range(20)
+    ]
+    snapshot = Snapshot(
+        query_hash="unused",
+        fetched_at=AT,
+        expires_at=AT + timedelta(days=7),
+        observations=observations,
+        result_limit_reached=True,
+    )
+    from food_safety.places.pipeline import query_hash
+
+    snapshot = snapshot.model_copy(update={"query_hash": query_hash(primary, 20)})
+    runtime = workspace / "data/places-runtime"
+    runtime.mkdir(parents=True)
+    (runtime / "observations.json").write_text(
+        json.dumps({primary.zone_id: snapshot.model_dump(mode="json")}, default=str)
+    )
+    (runtime / "usage.json").write_text(
+        json.dumps({"version": 1, "months": {}, "last_attempt_at": None})
+    )
+    result = planned(workspace, clock=lambda: AT)
+    assert result["primary_searches_due"] == 0
+    assert result["known_saturated_primary_searches"] == 1
+    assert result["supplemental_searches_due"] == 3
+    assert result["expected_calls_without_retries"] == 3
+    assert result["maximum_search_requests_this_run"] == 3
 
 
 def test_empty_discovery_is_distinct_from_never_run(workspace):

@@ -7,8 +7,9 @@ Places on behalf of visitors or plots temporary restaurant coordinates.
 
 ## Flow and commands
 
-Curated pandals → practical search zones → Places API (New) Nearby Search → deduplicate
-by place ID → local Haversine reverse mapping → durable static JSON.
+Curated pandals → practical search zones → Places API (New) Nearby Search → bounded
+supplemental circles when a primary result is saturated → deduplicate by place ID →
+local Haversine reverse mapping → durable static JSON.
 
 Activate the existing `food` environment first. From the repository root:
 
@@ -24,8 +25,9 @@ python -m food_safety.cli build
 ```
 
 `validate`, `plan`, `usage`, and `discover --dry-run` make **zero HTTP requests** and
-do not write files. Plans show due zones, expected requests without retries, and
-the maximum attempts allowed. `remap` makes zero HTTP requests; it purges expired
+do not write files. Plans distinguish primary searches, potential/due supplemental
+searches, the absolute geometric maximum, and the request/attempt ceilings. `remap`
+makes zero HTTP requests; it purges expired
 observations, rebuilds minimal historical association metadata, and returns current
 runtime distances sorted within each pandal. Do not commit redirected runtime output.
 
@@ -63,11 +65,19 @@ Nearby Search uses `includedTypes: [restaurant]`, `rankPreference: DISTANCE`, an
 `places.id,places.displayName,places.location`. No Place Details, Maps JavaScript, or
 consumer Google Maps scraping is used. Results are ranked and bounded (configured 20,
 the API maximum), **not exhaustive**. A result-limit flag is reported when the cap is
-filled. In dense areas, maintainers should use smaller independently curated zones;
-do not interpret a large circle as comprehensive coverage or automatically expand it.
+filled. Reaching 20 is a saturation signal, not evidence of complete coverage. A
+saturated primary may trigger up to three deterministic offset circles at bearings
+0°, 120°, and 240°. Defaults use a 300 m center offset and 400 m supplemental radius;
+the primary/catchment radius remains 600 m. The circles are bounded, revision-cached,
+and never recurse. Unsaturated primaries trigger no supplemental request. All results
+enter one global place-ID pool before local reverse mapping. Do not interpret even an
+adaptive result set as comprehensive coverage.
+
 The September 2026 audit split saturated multi-pandal circles into pandal-centered
-manual zones. Saturated single-pandal searches remain flagged rather than triggering
-an unbounded grid of provider calls.
+manual zones. The adaptive layer improves candidate coverage within those deliberate
+catchments without expanding a single circle indefinitely. Public discovery metadata
+records primary saturation, supplemental count, raw/unique candidates, overlap, calls,
+and association count, but never provider coordinates or raw responses.
 
 Reverse mapping uses all usable observations, not just a zone's member list. A restaurant
 can match several pandals. Distances are straight-line, not walking distances or travel
@@ -122,9 +132,10 @@ included in URLs, static data, error messages, or browser code. Restrict the ser
 to Places API (New) and appropriate server application restrictions; browser referrer
 restrictions are not suitable for this server-side command. Do not expose this key in JS.
 
-Defaults: **3,000 attempts per UTC month**, warning at **2,500**, **10 attempts/run**, one
-retry, 15-second request timeout, 128 KiB response ceiling. Both monthly and run ceilings
-can be lowered. Each real HTTP attempt—including retries and failed requests—is reserved
+Defaults: **3,000 attempts per UTC month**, warning at **2,500**, **60 attempts/run**, one
+retry, 15-second request timeout, 128 KiB response ceiling, and at most three supplemental
+searches per saturated primary (four searches total). The monthly and run ceilings can
+be lowered. Each real HTTP attempt—including retries and failed requests—is reserved
 on disk **before sending**. Twenty returned restaurants still count as one request.
 Interrupted reservations may conservatively overcount; they never grant an unaccounted call.
 An exclusive local process lock prevents concurrent runs consuming the same budget.

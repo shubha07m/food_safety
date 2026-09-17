@@ -8,7 +8,7 @@ from datetime import timedelta
 import yaml
 
 from .client import FIELD_MASK, Client, PlacesError
-from .geometry import plan, reverse_map
+from .geometry import plan, reverse_map, supplemental_zones
 from .models import (
     Association,
     Config,
@@ -17,6 +17,7 @@ from .models import (
     PublicRestaurant,
     Registry,
     Restaurant,
+    SearchDiagnostic,
     Snapshot,
     maps_url,
 )
@@ -111,6 +112,7 @@ def read_registry(root):
         ],
         associations=data.associations,
         discoveries=data.discoveries,
+        search_diagnostics=data.search_diagnostics,
     )
 
 
@@ -119,6 +121,7 @@ def export(root, config, registry):
     restaurants = {r.place_id: r for r in registry.restaurants}
     restaurants.update({pid: Restaurant(place_id=pid, curated=r) for pid, r in curated.items()})
     enabled = {p.pandal_id for p in config.pandals if p.enabled}
+    primary_zone_ids = {z.zone_id for z in plan(config)}
     result = PublicData(
         pandals=[p for p in config.pandals if p.enabled],
         zones=plan(config),
@@ -134,6 +137,10 @@ def export(root, config, registry):
             [d for d in registry.discoveries if d.pandal_id in enabled],
             key=lambda d: d.pandal_id,
         ),
+        search_diagnostics=sorted(
+            [d for d in registry.search_diagnostics if d.zone_id in primary_zone_ids],
+            key=lambda d: d.zone_id,
+        ),
     ).model_dump(mode="json")
     for path in (root / "data/places.json", root / "site/data/places.json"):
         if not path.exists() or json.loads(path.read_text()) != result:
@@ -148,8 +155,42 @@ def build_public(root):
     # Build also evicts expired private coordinates; never refreshes them over the network.
     store = Store(root, config.settings)
     with store.lock():
-        read_snapshots(store, plan(config), config.settings.max_results)
+        primary = plan(config)
+        all_zones = [
+            zone
+            for item in primary
+            for zone in (item, *supplemental_zones(item, config.settings))
+        ]
+        read_snapshots(store, all_zones, config.settings.max_results)
         export(root, config, read_registry(root))
+
+
+def _snapshot_is_usable(snapshot, zone, count, at):
+    return bool(
+        snapshot
+        and snapshot.fetched_at <= at < snapshot.expires_at
+        and snapshot.query_hash == query_hash(zone, count)
+    )
+
+
+def _adaptive_zones(primary, settings):
+    return {
+        zone.zone_id: [zone, *supplemental_zones(zone, settings)] for zone in primary
+    }
+
+
+def _active_snapshots(primary, zone_groups, usable):
+    active = {}
+    for zone in primary:
+        snapshot = usable.get(zone.zone_id)
+        if not snapshot:
+            continue
+        active[zone.zone_id] = snapshot
+        if snapshot.result_limit_reached:
+            for supplemental in zone_groups[zone.zone_id][1:]:
+                if supplemental.zone_id in usable:
+                    active[supplemental.zone_id] = usable[supplemental.zone_id]
+    return active
 
 
 def planned(root, zone_id=None, max_calls=None, clock=utcnow):
@@ -164,21 +205,52 @@ def planned(root, zone_id=None, max_calls=None, clock=utcnow):
     # Dry-run is read-only: do not initialize files or purge cache.
     path = store.directory / "observations.json"
     cached = json.loads(path.read_text()) if path.exists() else {}
-    due = []
+    at = clock()
+    groups = _adaptive_zones(zones, config.settings)
+    primary_due = []
+    supplemental_due = []
+    saturated = []
     for zone in zones:
-        s = Snapshot.model_validate(cached[zone.zone_id]) if zone.zone_id in cached else None
-        if (
-            not s
-            or not s.fetched_at <= clock() < s.expires_at
-            or s.query_hash != query_hash(zone, config.settings.max_results)
-        ):
-            due.append(zone.zone_id)
+        raw = cached.get(zone.zone_id)
+        snapshot = Snapshot.model_validate(raw) if raw else None
+        if not _snapshot_is_usable(snapshot, zone, config.settings.max_results, at):
+            primary_due.append(zone.zone_id)
+            continue
+        if not snapshot.result_limit_reached:
+            continue
+        saturated.append(zone.zone_id)
+        for supplemental in groups[zone.zone_id][1:]:
+            raw = cached.get(supplemental.zone_id)
+            item = Snapshot.model_validate(raw) if raw else None
+            if not _snapshot_is_usable(item, supplemental, config.settings.max_results, at):
+                supplemental_due.append(supplemental.zone_id)
+    minimum_requests = len(primary_due) + len(supplemental_due)
+    maximum_requests = (
+        len(primary_due) * (1 + config.settings.max_supplemental_searches)
+        + len(supplemental_due)
+    )
+    bounded_requests = min(maximum_requests, store.max_calls, status["remaining"])
     return {
         "zones": [z.model_dump() for z in zones],
-        "due_zone_ids": due,
-        "expected_calls_without_retries": min(len(due), store.max_calls, status["remaining"]),
+        "due_zone_ids": primary_due,
+        "due_supplemental_zone_ids": supplemental_due,
+        "primary_searches_planned": len(zones),
+        "primary_searches_due": len(primary_due),
+        "known_saturated_primary_searches": len(saturated),
+        "potential_supplemental_searches": (
+            len(zones) * config.settings.max_supplemental_searches
+        ),
+        "supplemental_searches_due": len(supplemental_due),
+        "absolute_maximum_requests": len(zones)
+        * (1 + config.settings.max_supplemental_searches),
+        "expected_calls_without_retries": min(
+            minimum_requests, store.max_calls, status["remaining"]
+        ),
+        "maximum_search_requests_this_run": bounded_requests,
         "maximum_attempts": min(
-            len(due) * (config.settings.max_retries + 1), store.max_calls, status["remaining"]
+            maximum_requests * (config.settings.max_retries + 1),
+            store.max_calls,
+            status["remaining"],
         ),
         "usage": status,
         "google_requests_made": 0,
@@ -210,18 +282,21 @@ def discover(
     store = Store(root, config.settings, 1 if smoke_test else max_calls, clock)
     results = []
     count = min(10, config.settings.max_results) if smoke_test else config.settings.max_results
+    groups = _adaptive_zones(zones, config.settings)
+    all_zones = [item for zone in zones for item in groups[zone.zone_id]]
     with store.lock():
-        cache, usable = read_snapshots(store, zones, count)
+        cache, usable = read_snapshots(store, all_zones, count)
         registry = read_registry(root)
         known = {r.place_id: r for r in registry.restaurants}
         associations = {(a.pandal_id, a.place_id): a for a in registry.associations}
         discoveries = {d.pandal_id: d for d in registry.discoveries}
+        diagnostics = {d.zone_id: d for d in registry.search_diagnostics}
         changed = False
-        for zone in selected:
-            if zone.zone_id in usable and not smoke_test:
-                results.append({"zone_id": zone.zone_id, "status": "cached"})
-                continue
-            try:
+        client = None
+
+        def nearby(search_zone):
+            nonlocal client
+            if client is None:
                 client = Client(
                     api_key(root),
                     config.settings,
@@ -229,32 +304,92 @@ def discover(
                     transport,
                     **({"sleep": sleep} if sleep else {}),
                 )
-                observations, at = client.nearby(zone, count)
-            except (PlacesError, LimitReached) as exc:
-                results.append({"zone_id": zone.zone_id, "status": "skipped", "reason": str(exc)})
-                continue
-            snapshot = Snapshot(
-                query_hash=query_hash(zone, count),
-                fetched_at=at,
-                expires_at=at + timedelta(days=config.settings.cache_days),
-                observations=observations,
-                result_limit_reached=len(observations) == count,
-            )
+            return client.nearby(search_zone, count)
+
+        for zone in selected:
+            calls_before = store.calls
+            fetched = []
+            supplemental_stop_reason = None
+            primary = usable.get(zone.zone_id) if not smoke_test else None
+            status = "cached" if primary else "fetched"
+            if not primary:
+                try:
+                    observations, at = nearby(zone)
+                except (PlacesError, LimitReached) as exc:
+                    results.append(
+                        {"zone_id": zone.zone_id, "status": "skipped", "reason": str(exc)}
+                    )
+                    continue
+                primary = Snapshot(
+                    query_hash=query_hash(zone, count),
+                    fetched_at=at,
+                    expires_at=at + timedelta(days=config.settings.cache_days),
+                    observations=observations,
+                    result_limit_reached=len(observations) == count,
+                )
+                fetched.append(zone.zone_id)
+                if smoke_test:
+                    results.append(
+                        {
+                            "zone_id": zone.zone_id,
+                            "status": "fetched",
+                            "places_returned": len(observations),
+                            "result_limit_reached": primary.result_limit_reached,
+                        }
+                    )
+                    continue
+                cache[zone.zone_id] = usable[zone.zone_id] = primary
+                changed = True
+            active_group = {zone.zone_id: primary}
+            if primary.result_limit_reached:
+                for supplemental in groups[zone.zone_id][1:]:
+                    snapshot = usable.get(supplemental.zone_id)
+                    if not snapshot:
+                        try:
+                            observations, at = nearby(supplemental)
+                        except (PlacesError, LimitReached) as exc:
+                            supplemental_stop_reason = str(exc)
+                            break
+                        snapshot = Snapshot(
+                            query_hash=query_hash(supplemental, count),
+                            fetched_at=at,
+                            expires_at=at + timedelta(days=config.settings.cache_days),
+                            observations=observations,
+                            result_limit_reached=len(observations) == count,
+                        )
+                        cache[supplemental.zone_id] = usable[supplemental.zone_id] = snapshot
+                        fetched.append(supplemental.zone_id)
+                        changed = True
+                    active_group[supplemental.zone_id] = snapshot
+            raw_count = sum(len(item.observations) for item in active_group.values())
+            unique_ids = {
+                observation.place_id
+                for item in active_group.values()
+                for observation in item.observations
+            }
             results.append(
                 {
                     "zone_id": zone.zone_id,
-                    "status": "fetched",
-                    "places_returned": len(observations),
-                    "result_limit_reached": snapshot.result_limit_reached,
+                    "status": status,
+                    "fetched_zone_ids": fetched,
+                    "places_returned": len(primary.observations),
+                    "primary_result_count": len(primary.observations),
+                    "saturated": primary.result_limit_reached,
+                    "result_limit_reached": primary.result_limit_reached,
+                    "supplemental_search_count": len(active_group) - 1,
+                    "raw_candidate_count": raw_count,
+                    "unique_place_count": len(unique_ids),
+                    "overlap_ratio": round(
+                        (raw_count - len(unique_ids)) / raw_count if raw_count else 0, 4
+                    ),
+                    "calls_used": store.calls - calls_before,
+                    **(
+                        {"supplemental_stop_reason": supplemental_stop_reason}
+                        if supplemental_stop_reason
+                        else {}
+                    ),
                 }
             )
-            if smoke_test:
-                # Count usage, but do not persist live test coordinates/IDs/associations.
-                continue
-            cache[zone.zone_id] = usable[zone.zone_id] = snapshot
-            for obs in observations:
-                known.setdefault(obs.place_id, Restaurant(place_id=obs.place_id))
-            changed = True
         if not smoke_test and (changed or usable):
             if changed:
                 write_json(
@@ -262,12 +397,13 @@ def discover(
                     {key: s.model_dump(mode="json") for key, s in cache.items()},
                 )
             # Also recover durable IDs after an interruption between cache and export writes.
-            for snapshot in usable.values():
+            active = _active_snapshots(zones, groups, usable)
+            for snapshot in active.values():
                 for observation in snapshot.observations:
                     known.setdefault(
                         observation.place_id, Restaurant(place_id=observation.place_id)
                     )
-            mappings = reverse_map(config.pandals, usable, clock())
+            mappings = reverse_map(config.pandals, active, clock())
             for item in mappings:
                 association = Association(
                     pandal_id=item["pandal_id"],
@@ -275,19 +411,56 @@ def discover(
                     observed_at=item["fetched_at"],
                 )
                 associations[(association.pandal_id, association.place_id)] = association
-            zones_by_id = {z.zone_id: z for z in zones}
             for result in results:
-                if result.get("status") != "fetched":
+                if result.get("status") not in {"fetched", "cached"}:
                     continue
-                zone = zones_by_id[result["zone_id"]]
+                zone = next(item for item in zones if item.zone_id == result["zone_id"])
                 snapshot = usable[zone.zone_id]
+                association_count = sum(
+                    item["pandal_id"] in zone.pandal_ids for item in mappings
+                )
+                result["associations_created"] = association_count
+                observed_at = max(
+                    active[item.zone_id].fetched_at
+                    for item in groups[zone.zone_id]
+                    if item.zone_id in active
+                )
+                expires_at = min(
+                    active[item.zone_id].expires_at
+                    for item in groups[zone.zone_id]
+                    if item.zone_id in active
+                )
+                diagnostics[zone.zone_id] = SearchDiagnostic(
+                    zone_id=zone.zone_id,
+                    observed_at=observed_at,
+                    expires_at=expires_at,
+                    result_count=result["primary_result_count"],
+                    saturated=result["saturated"],
+                    supplemental_search_count=result["supplemental_search_count"],
+                    raw_candidate_count=result["raw_candidate_count"],
+                    unique_place_count_after_dedupe=result["unique_place_count"],
+                    associations_created=association_count,
+                    overlap_ratio=result["overlap_ratio"],
+                    calls_used=result["calls_used"],
+                )
                 for pandal_id in zone.pandal_ids:
                     discoveries[pandal_id] = Discovery(
                         pandal_id=pandal_id,
-                        observed_at=snapshot.fetched_at,
-                        expires_at=snapshot.expires_at,
-                        candidates_returned=len(snapshot.observations),
+                        observed_at=observed_at,
+                        expires_at=expires_at,
+                        candidates_returned=result["unique_place_count"],
                         result_limit_reached=snapshot.result_limit_reached,
+                        primary_result_count=result["primary_result_count"],
+                        supplemental_search_count=result["supplemental_search_count"],
+                        raw_candidate_count=result["raw_candidate_count"],
+                        candidate_unique_count=result["unique_place_count"],
+                        association_count=sum(
+                            item["pandal_id"] == pandal_id for item in mappings
+                        ),
+                        saturation_encountered=result["saturated"],
+                        overlap_ratio=result["overlap_ratio"],
+                        calls_used=result["calls_used"],
+                        last_enriched_at=observed_at,
                     )
             export(
                 root,
@@ -296,6 +469,7 @@ def discover(
                     restaurants=list(known.values()),
                     associations=list(associations.values()),
                     discoveries=list(discoveries.values()),
+                    search_diagnostics=list(diagnostics.values()),
                 ),
             )
         return {
@@ -310,12 +484,16 @@ def remap(root, clock=utcnow):
     config = load_config(root)
     store = Store(root, config.settings, clock=clock)
     with store.lock():
-        _, usable = read_snapshots(store, plan(config), config.settings.max_results)
-        mappings = reverse_map(config.pandals, usable, clock())
+        primary = plan(config)
+        groups = _adaptive_zones(primary, config.settings)
+        all_zones = [item for zone in primary for item in groups[zone.zone_id]]
+        _, usable = read_snapshots(store, all_zones, config.settings.max_results)
+        active = _active_snapshots(primary, groups, usable)
+        mappings = reverse_map(config.pandals, active, clock())
         registry = read_registry(root)
         associations = {(a.pandal_id, a.place_id): a for a in registry.associations}
         known = {r.place_id: r for r in registry.restaurants}
-        for snapshot in usable.values():
+        for snapshot in active.values():
             for observation in snapshot.observations:
                 known.setdefault(observation.place_id, Restaurant(place_id=observation.place_id))
         for item in mappings:
@@ -333,6 +511,7 @@ def remap(root, clock=utcnow):
                 restaurants=list(known.values()),
                 associations=list(associations.values()),
                 discoveries=registry.discoveries,
+                search_diagnostics=registry.search_diagnostics,
             ),
         )
         # Runtime distances are returned to the operator, NEVER written to public/Git artifacts.

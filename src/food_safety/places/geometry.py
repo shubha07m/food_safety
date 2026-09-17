@@ -44,6 +44,48 @@ def circle(members):
     )
 
 
+def destination(latitude, longitude, distance, bearing):
+    """Return a deterministic geodesic offset in metres/degrees."""
+    angular = distance / 6371008.8
+    lat1 = math.radians(latitude)
+    lon1 = math.radians(longitude)
+    direction = math.radians(bearing)
+    lat2 = math.asin(
+        math.sin(lat1) * math.cos(angular)
+        + math.cos(lat1) * math.sin(angular) * math.cos(direction)
+    )
+    lon2 = lon1 + math.atan2(
+        math.sin(direction) * math.sin(angular) * math.cos(lat1),
+        math.cos(angular) - math.sin(lat1) * math.sin(lat2),
+    )
+    return math.degrees(lat2), ((math.degrees(lon2) + 180) % 360) - 180
+
+
+def supplemental_zones(zone, settings):
+    """Three bounded offset circles for a saturated primary zone."""
+    bearings = (0, 120, 240)[: settings.max_supplemental_searches]
+    digest = hashlib.sha256(zone.zone_id.encode()).hexdigest()[:12]
+    result = []
+    for index, bearing in enumerate(bearings, 1):
+        latitude, longitude = destination(
+            zone.center_latitude,
+            zone.center_longitude,
+            settings.supplemental_offset_m,
+            bearing,
+        )
+        result.append(
+            Zone(
+                zone_id=f"sup-{digest}-{index}",
+                name=f"{zone.name} supplemental {index}"[:200],
+                center_latitude=latitude,
+                center_longitude=longitude,
+                radius_m=settings.supplemental_radius_m,
+                pandal_ids=zone.pandal_ids,
+            )
+        )
+    return result
+
+
 def plan(config: Config):
     active = {p.pandal_id: p for p in config.pandals if p.enabled}
     zones = []

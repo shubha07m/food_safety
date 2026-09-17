@@ -32,9 +32,15 @@ export function parsePlaces(data, catalog = null) {
     }
   }
   const discoveries = new Map();
+  const discoveryFields = new Set([
+    'pandal_id', 'observed_at', 'expires_at', 'candidates_returned',
+    'result_limit_reached', 'primary_result_count', 'supplemental_search_count',
+    'raw_candidate_count', 'candidate_unique_count', 'association_count',
+    'saturation_encountered', 'overlap_ratio', 'calls_used', 'last_enriched_at',
+  ]);
   for (const d of data.discoveries || []) {
     if (!ids.has(d.pandal_id) || discoveries.has(d.pandal_id)
-      || Object.keys(d).some(k => !['pandal_id', 'observed_at', 'expires_at', 'candidates_returned', 'result_limit_reached'].includes(k))) throw Error('Invalid discovery metadata');
+      || Object.keys(d).some(k => !discoveryFields.has(k))) throw Error('Invalid discovery metadata');
     discoveries.set(d.pandal_id, d);
   }
   return { pandals, groups, discoveries, index: pandals.map(p => ({ p, query: normalize(`${p.name} ${p.name_bn || ''} ${(p.aliases || []).join(' ')} ${p.area} ${p.neighborhood || ''} ${p.city || ''}`) })) };
