@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
-import { parsePlaces, searchPandals, featuredPandals, nextOption, mapsURL, normalize } from '../site/puja.mjs';
+import { parsePlaces, searchPandals, featuredPandals, nextOption, mapsURL, normalize, discoveryState } from '../site/puja.mjs';
 import { areaMarkers, browserMapKey, pandalMarkers } from '../site/map-host.mjs';
 import { scriptURL, safeMarkers, boot } from '../site/google-map.mjs';
 import { text } from '../site/foodpath-copy.mjs';
@@ -10,6 +10,13 @@ const fixture = () => ({ schema_version: 'places-1', association_semantics: 'his
   pandals: [{ pandal_id: 'bagbazar', name: 'Bagbazar Sarbojanin', name_bn: 'বাগবাজার সর্বজনীন', area: 'North Kolkata', enabled: true }],
   restaurants: [{ place_id: 'fixture_ID', curated: null }],
   associations: [{ pandal_id: 'bagbazar', place_id: 'fixture_ID', observed_at: '2026-09-15T00:00:00Z', provenance: 'google_places_local_radius_match' }] });
+test('autocomplete list is anchored below its input rather than over typed text', () => {
+  const html = readFileSync('site/index.html', 'utf8'); const css = readFileSync('site/styles.css', 'utf8');
+  assert.match(html, /class="pandal-combobox"[\s\S]*id="pandal-search"[\s\S]*id="pandal-options"/);
+  assert.match(css, /\.pandal-combobox\s*\{[^}]*position:\s*relative/);
+  assert.match(css, /#pandal-options\s*\{[^}]*top:\s*calc\(100% \+ 7px\)/);
+  assert.doesNotMatch(css, /#pandal-options\s*\{[^}]*top:\s*88px/);
+});
 test('umbrella homepage has two first-class modules and bounded analytics disclosure', () => {
   const html = readFileSync('site/index.html', 'utf8');
   for (const id of ['headline', 'food-safety', 'puja', 'geography', 'evidence', 'evidence-analytics', 'selected-pandal']) assert.ok(html.includes(`id="${id}"`));
@@ -60,6 +67,15 @@ test('only independent names and duplicate-free historical associations survive'
   data.restaurants[0].curated.independent_source = 'https://maps.google.com/';
   assert.equal(parsePlaces(data).groups.get('bagbazar')[0].name, null);
 });
+test('restaurant state distinguishes not run, current zero, current links, and stale', () => {
+  const p = { pandal_id: 'p', latitude: 22.5, longitude: 88.3 };
+  const current = { pandal_id: 'p', observed_at: '2026-09-16T00:00:00Z', expires_at: '2026-09-23T00:00:00Z', candidates_returned: 0, result_limit_reached: false };
+  assert.equal(discoveryState(p, null, [], new Date('2026-09-17T00:00:00Z')), 'not_run');
+  assert.equal(discoveryState(p, current, [], new Date('2026-09-17T00:00:00Z')), 'current_zero');
+  assert.equal(discoveryState(p, current, [{ id: 'x' }], new Date('2026-09-17T00:00:00Z')), 'current_nonzero');
+  assert.equal(discoveryState(p, current, [], new Date('2026-09-24T00:00:00Z')), 'stale');
+  assert.equal(discoveryState({ pandal_id: 'q' }, null, [], new Date()), 'unavailable');
+});
 test('reject restaurant coordinates, reviews, ratings, and durable exact distances', () => {
   for (const key of ['latitude', 'longitude', 'rating', 'reviews', 'displayName']) {
     const data = fixture(); data.restaurants[0][key] = 'restricted'; assert.throws(() => parsePlaces(data));
@@ -89,6 +105,12 @@ test('map plots only eligible area anchors and curated pandals, no restaurant la
   assert.equal(pandalMarkers(fixture().pandals).length, 0);
   assert.equal(pandalMarkers([{ pandal_id: 'verified', name: 'Verified', latitude: 22.6, longitude: 88.36, coordinate_source: 'https://example.org/source' }]).length, 1);
   assert.equal(safeMarkers([{ kind: 'restaurant', id: 'x', label: 'x', lat: 22, lng: 88 }]).length, 0);
+});
+test('every published map-ready pandal becomes a marker', () => {
+  const catalog = JSON.parse(readFileSync('site/data/pandals.json', 'utf8'));
+  const markers = pandalMarkers(catalog.records);
+  assert.equal(markers.length, catalog.coverage.map_ready_count);
+  assert.equal(new Set(markers.map(marker => marker.id)).size, markers.length);
 });
 test('map document has isolated CSP and parent keeps self-only scripts', () => {
   assert.match(readFileSync('site/index.html', 'utf8'), /script-src 'self';/);
@@ -122,23 +144,29 @@ test('mock Maps boot filters origins and loads once without network', () => {
   listeners.message({ origin: win.location.origin, source: parent, data: message });
   assert.equal(scripts.length, 1);
 });
-test('mock map renders distinct layers and safe selectable information without Google traffic', () => {
-  const messages = []; const listeners = {}; const elements = new Map(); let features; let style; let click; let info;
+test('mock map fits all pandals and focuses mapped selection without false fallback focus', () => {
+  const messages = []; const listeners = {}; const elements = new Map(); let features; let style; let click; let info; const centers = []; const zooms = []; const bounds = [];
   const node = () => ({ children: [], checked: true, append(...items) { this.children.push(...items); }, addEventListener(type, cb) { this[type] = cb; } });
   const doc = { createElement: node, head: node(), getElementById(id) { if (!elements.has(id)) elements.set(id, node()); return elements.get(id); } };
   const parent = { postMessage: m => messages.push(m) };
   const win = { parent, location: { origin: 'https://example.org' }, addEventListener: (e, cb) => { listeners[e] = cb; }, google: { maps: {
-    Map: class { constructor() { this.data = { forEach() {}, remove() {}, addGeoJson(f) { features = f.features; }, setStyle(s) { style = s; }, addListener(e, cb) { click = cb; } }; } fitBounds() {} setCenter() {} setZoom() {} },
-    LatLngBounds: class { extend() {} }, SymbolPath: { CIRCLE: 'circle' },
+    Map: class { constructor() { this.data = { forEach() {}, remove() {}, addGeoJson(f) { features = f.features; }, setStyle(s) { style = s; }, addListener(e, cb) { click = cb; } }; } fitBounds(b) { bounds.push(b.points); } setCenter(c) { centers.push(c); } setZoom(z) { zooms.push(z); } },
+    LatLngBounds: class { constructor() { this.points = []; } extend(p) { this.points.push(p); } }, SymbolPath: { CIRCLE: 'circle' },
     InfoWindow: class { setContent(c) { info = c; } setPosition() {} open() {} },
   } } };
   boot(win, doc);
   listeners.message({ origin: win.location.origin, source: parent, data: { type: 'foodpath-map-data', key: 'AIza' + 'f'.repeat(35), language: 'en', markers: [
     { id: 'area-0', kind: 'area', label: '<img onerror=bad>', lat: 22.5, lng: 88.3, count: 2 },
     { id: 'pandal-bagbazar', kind: 'pandal', label: 'Bagbazar', lat: 22.6, lng: 88.3 },
+    { id: 'pandal-chetla', kind: 'pandal', label: 'Chetla', lat: 22.51, lng: 88.33 },
   ] } });
   win.foodpathMapLoaded();
-  assert.equal(features.length, 2); assert.equal(messages.at(-1).type, 'foodpath-map-loaded');
+  assert.equal(features.length, 3); assert.equal(messages.at(-1).type, 'foodpath-map-loaded');
+  assert.equal(bounds.at(-1).length, 2);
+  listeners.message({ origin: win.location.origin, source: parent, data: { type: 'foodpath-map-focus', id: 'pandal-chetla' } });
+  assert.deepEqual(centers.at(-1), { lat: 22.51, lng: 88.33 }); assert.equal(zooms.at(-1), 14);
+  listeners.message({ origin: win.location.origin, source: parent, data: { type: 'foodpath-map-focus', id: null } });
+  assert.equal(bounds.at(-1).length, 2);
   const feature = f => ({ getProperty: k => f.properties[k], getId: () => f.id });
   assert.equal(style(feature(features[0])).icon.path, 'circle');
   assert.notEqual(style(feature(features[1])).icon.path, 'circle');

@@ -31,7 +31,19 @@ export function parsePlaces(data, catalog = null) {
       groups.set(a.pandal_id, matches); seen.add(key);
     }
   }
-  return { pandals, groups, index: pandals.map(p => ({ p, query: normalize(`${p.name} ${p.name_bn || ''} ${(p.aliases || []).join(' ')} ${p.area} ${p.neighborhood || ''} ${p.city || ''}`) })) };
+  const discoveries = new Map();
+  for (const d of data.discoveries || []) {
+    if (!ids.has(d.pandal_id) || discoveries.has(d.pandal_id)
+      || Object.keys(d).some(k => !['pandal_id', 'observed_at', 'expires_at', 'candidates_returned', 'result_limit_reached'].includes(k))) throw Error('Invalid discovery metadata');
+    discoveries.set(d.pandal_id, d);
+  }
+  return { pandals, groups, discoveries, index: pandals.map(p => ({ p, query: normalize(`${p.name} ${p.name_bn || ''} ${(p.aliases || []).join(' ')} ${p.area} ${p.neighborhood || ''} ${p.city || ''}`) })) };
+}
+export function discoveryState(pandal, discovery, rows, now = Date.now()) {
+  if (!Number.isFinite(pandal.latitude) || !Number.isFinite(pandal.longitude)) return 'unavailable';
+  if (!discovery) return rows.length ? 'stale' : 'not_run';
+  if (!Number.isFinite(Date.parse(discovery.expires_at)) || Date.parse(discovery.expires_at) <= now) return 'stale';
+  return rows.length ? 'current_nonzero' : 'current_zero';
 }
 export function searchPandals(index, query, limit = 8) {
   const tokens = normalize(query).split(' ').filter(Boolean);
@@ -76,7 +88,10 @@ export async function initPuja(onData = () => {}) {
       if (p.location_precision === 'source_zone') selected.append(el('p', text('Location is the directory’s broad zone, not a verified street address.')));
       if (p.year) selected.append(el('p', `${text('Source listing year')}: ${p.year}. ${text('This does not confirm this year’s venue or opening times.')}`, 'fine-print'));
       if (p.subtitle) selected.append(el('p', p.subtitle, 'pandal-subtitle'));
-      if (!Number.isFinite(p.latitude) || !Number.isFinite(p.longitude)) selected.append(el('p', text('Map location is not yet independently verified.'), 'notice'));
+      const mapReady = Number.isFinite(p.latitude) && Number.isFinite(p.longitude);
+      if (!mapReady) selected.append(el('p', text('Map location is not yet independently verified.'), 'notice'));
+      else if (p.coordinate_precision === 'street' || p.coordinate_precision === 'neighborhood') selected.append(el('p', text('Map location is an independently sourced approximate anchor.'), 'notice'));
+      else selected.append(el('p', text('Map location is independently sourced.'), 'notice'));
       document.dispatchEvent(new CustomEvent('foodpath-focus-pandal', { detail: p.pandal_id }));
       const provenance = el('details'); provenance.append(el('summary', text('Read source provenance')));
       for (const source of p.sources || []) {
@@ -87,9 +102,14 @@ export async function initPuja(onData = () => {}) {
       }
       selected.append(provenance);
       const rows = data.groups.get(p.pandal_id) || [];
-      selected.append(el('h4', `${text('Recorded restaurant links')} · ${rows.length}`), el('p', text('Historical discovery matches, not a current proximity guarantee. Current distances are unavailable.'), 'notice'));
-      const attribution = el('p', 'Google Maps', 'google-attribution'); attribution.translate = false; selected.append(attribution);
-      if (!rows.length) selected.append(el('p', text('No restaurant links published yet. This does not mean there are no restaurants nearby.')));
+      const enrichment = discoveryState(p, data.discoveries.get(p.pandal_id), rows);
+      if (enrichment === 'unavailable' || enrichment === 'not_run') {
+        selected.append(el('h4', text('Nearby food')), el('p', text('Restaurant discovery is not yet available for this pandal.'), 'notice'));
+      } else {
+        selected.append(el('h4', `${text('Recorded restaurant links')} · ${rows.length}`), el('p', text(enrichment === 'stale' ? 'Restaurant discovery is awaiting refresh; historical links may still be shown.' : 'Historical discovery matches, not a current proximity guarantee. Current distances are unavailable.'), 'notice'));
+        const attribution = el('p', 'Google Maps', 'google-attribution'); attribution.translate = false; selected.append(attribution);
+        if (enrichment === 'current_zero') selected.append(el('p', text('A bounded discovery run found no durable associations. This does not mean there are no restaurants nearby.')));
+      }
       const list = el('ol', null, 'restaurant-links'); selected.append(list);
       let shown = 0;
       const more = el('button', text('Show more restaurant links'), 'button secondary'); more.type = 'button';
@@ -104,7 +124,9 @@ export async function initPuja(onData = () => {}) {
       };
       more.addEventListener('click', append); selected.append(more); append();
       if (updateURL) { const url = new URL(location.href); url.searchParams.set('pandal', p.pandal_id); url.hash = 'puja'; history.replaceState(null, '', url); }
-      status.textContent = `${input.value} · ${rows.length} ${text('Recorded restaurant links')}`;
+      status.textContent = enrichment === 'unavailable' || enrichment === 'not_run'
+        ? `${input.value} · ${text('Restaurant enrichment pending')}`
+        : `${input.value} · ${rows.length} ${text('Recorded restaurant links')}`;
     };
     const update = () => {
       matches = searchPandals(data.index, input.value); active = -1; options.replaceChildren();

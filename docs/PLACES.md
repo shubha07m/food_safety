@@ -61,10 +61,13 @@ circles. The API's absolute maximum is 50,000 m, not a recommended search radius
 
 Nearby Search uses `includedTypes: [restaurant]`, `rankPreference: DISTANCE`, and exactly
 `places.id,places.displayName,places.location`. No Place Details, Maps JavaScript, or
-consumer Google Maps scraping is used. Results are ranked and bounded (default 10,
-API maximum 20), **not exhaustive**. A result-limit flag is reported when the cap is
+consumer Google Maps scraping is used. Results are ranked and bounded (configured 20,
+the API maximum), **not exhaustive**. A result-limit flag is reported when the cap is
 filled. In dense areas, maintainers should use smaller independently curated zones;
 do not interpret a large circle as comprehensive coverage or automatically expand it.
+The September 2026 audit split saturated multi-pandal circles into pandal-centered
+manual zones. Saturated single-pandal searches remain flagged rather than triggering
+an unbounded grid of provider calls.
 
 Reverse mapping uses all usable observations, not just a zone's member list. A restaurant
 can match several pandals. Distances are straight-line, not walking distances or travel
@@ -119,7 +122,7 @@ included in URLs, static data, error messages, or browser code. Restrict the ser
 to Places API (New) and appropriate server application restrictions; browser referrer
 restrictions are not suitable for this server-side command. Do not expose this key in JS.
 
-Defaults: **3,000 attempts per UTC month**, warning at **2,500**, **5 attempts/run**, one
+Defaults: **3,000 attempts per UTC month**, warning at **2,500**, **10 attempts/run**, one
 retry, 15-second request timeout, 128 KiB response ceiling. Both monthly and run ceilings
 can be lowered. Each real HTTP attempt—including retries and failed requests—is reserved
 on disk **before sending**. Twenty returned restaurants still count as one request.
@@ -144,15 +147,15 @@ The requested fields use Nearby Search Pro. Google's standard pricing page, chec
 but other applications, billing-region terms, and pricing changes can affect actual cost.
 The application does not claim a billing guarantee.
 
-## Starter coordinate provenance
+## Coordinate provenance
 
-Bagbazar uses the camera coordinate **22.604964, 88.366303** of Indrajit Das's
-[2017 Bagbazar puja photograph](https://commons.wikimedia.org/wiki/File:DurgaPuja2017_-_Durga_Idol_of_Bagbazar_Sarbajanin_Durgotsav_01.jpg)
-on Wikimedia Commons. Coordinate provenance is attributed under
-[CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/); no photograph is downloaded.
-It is a historical coarse venue anchor, **not a verified current pandal entrance**.
-Kumartuli Park and Ekdalia Evergreen are disabled starter entries with no invented
-coordinates. Verify venue/entrance location for the current festival before travel use.
+Map-ready pandals use reviewed OpenStreetMap objects referenced directly from the
+curated pandal catalog. Precision is explicit: venue-level objects and approximate
+street anchors are not interchangeable. These are independent geographic anchors,
+**not verified current-year entrances, walking routes, or opening information**.
+Unresolved catalog entries stay searchable without coordinates and do not appear as
+markers. OpenStreetMap data is credited on the public map section; verify current
+festival access before travel use.
 
 ## Website integration boundaries
 

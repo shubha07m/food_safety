@@ -14,6 +14,9 @@ python -m food_safety.cli puja review-summary
 python -m food_safety.cli puja publish
 python -m food_safety.cli puja stats
 python -m food_safety.cli puja refresh
+python -m food_safety.cli puja geocode --dry-run --pandal PANDAL_ID
+python -m food_safety.cli puja geocode --pandal PANDAL_ID
+python -m food_safety.cli puja geocode-summary
 ```
 
 `discover` fetches only enabled, explicitly configured public URLs. Existing URL, DNS,
@@ -30,6 +33,15 @@ by source revision, model, task and schema.
 `review-summary` reports private candidates without printing source bodies. A maintainer
 must inspect citations and add supported values to `published` in `config/puja.yml`.
 `publish` validates provenance, coordinates and IDs before generating public data.
+
+`geocode` is an explicit operator research aid for a small named set of already
+source-backed pandals. It uses the public Nominatim service single-threaded at no more
+than one request/second, sends a project User-Agent, caches under ignored `.cache/`,
+and accepts at most 30 calls/run. It never edits the catalog or publishes a result.
+Review identity, precision and the linked OpenStreetMap object before adding a coordinate
+to `config/puja.yml`. Ambiguous and distant name matches must be rejected. Respect the
+[Nominatim usage policy](https://operations.osmfoundation.org/policies/nominatim/);
+this tool is not a bulk geocoder.
 
 ## Publication requirements
 
@@ -62,11 +74,13 @@ The 2026-09-16 catalog includes reviewed factual rows from Indian Festival Diary
 2025 North Kolkata, South Kolkata and Howrah tables. These are directory listings,
 not confirmation of 2026 venues, hours, admission, or municipal boundaries. The
 source's broad zones include surrounding districts. `location_precision=source_zone`
-preserves that limitation; `district` and coordinates remain null. Exact short
+preserves that limitation; `district` and coordinates remain null unless a separate,
+reviewed coordinate source is attached. Exact short
 row evidence and the frozen source revision accompany every imported record.
-Ambiguous generic names and possible duplicates were excluded. Bengali names,
-aliases, organizers and coordinates were not inferred. Existing Bagbazar metadata
-keeps its independent source. This is a source-backed catalog, not a complete list.
+Ambiguous generic names and possible duplicates were excluded. Bengali names, aliases,
+organizers and coordinates were not inferred. A limited subset now has independently
+reviewed OpenStreetMap venue/street anchors; unresolved entries remain searchable but
+unmapped. This is a source-backed catalog, not a complete list.
 
 Structured tables can be curated directly without model inference. Gemini remains
 useful for prose. The bounded live run encountered provider quota errors, so no

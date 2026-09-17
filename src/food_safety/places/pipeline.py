@@ -12,6 +12,7 @@ from .geometry import plan, reverse_map
 from .models import (
     Association,
     Config,
+    Discovery,
     PublicData,
     PublicRestaurant,
     Registry,
@@ -23,7 +24,35 @@ from .storage import LimitReached, Store, utcnow, write_json
 
 
 def load_config(root):
-    return Config.model_validate(yaml.safe_load((root / "config/places.yml").read_text()))
+    raw = yaml.safe_load((root / "config/places.yml").read_text())
+    puja_path = root / "config/puja.yml"
+    if not puja_path.exists():
+        return Config.model_validate(raw)
+    from ..puja.pipeline import load_config as load_puja_config
+    from .models import Pandal, Settings
+
+    settings = Settings.model_validate(raw.get("settings", {}))
+    known = {item.get("pandal_id") for item in raw.get("pandals", [])}
+    additions = []
+    for record in load_puja_config(root).published:
+        if record.latitude is None or record.longitude is None or record.pandal_id in known:
+            continue
+        additions.append(
+            Pandal(
+                pandal_id=record.pandal_id,
+                name=record.name,
+                name_bn=record.name_bn,
+                area=record.neighborhood or record.area,
+                latitude=record.latitude,
+                longitude=record.longitude,
+                restaurant_radius_m=settings.default_restaurant_radius_m,
+                enabled=True,
+                coordinate_source=record.coordinate_source,
+                notes=f"{record.coordinate_precision} coordinate from curated Puja catalog",
+            )
+        )
+    raw["pandals"] = [*raw.get("pandals", []), *(p.model_dump(mode="json") for p in additions)]
+    return Config.model_validate(raw)
 
 
 def api_key(root):
@@ -81,6 +110,7 @@ def read_registry(root):
             for r in data.restaurants
         ],
         associations=data.associations,
+        discoveries=data.discoveries,
     )
 
 
@@ -99,6 +129,10 @@ def export(root, config, registry):
         associations=sorted(
             [a for a in registry.associations if a.pandal_id in enabled],
             key=lambda a: (a.pandal_id, a.place_id),
+        ),
+        discoveries=sorted(
+            [d for d in registry.discoveries if d.pandal_id in enabled],
+            key=lambda d: d.pandal_id,
         ),
     ).model_dump(mode="json")
     for path in (root / "data/places.json", root / "site/data/places.json"):
@@ -181,6 +215,7 @@ def discover(
         registry = read_registry(root)
         known = {r.place_id: r for r in registry.restaurants}
         associations = {(a.pandal_id, a.place_id): a for a in registry.associations}
+        discoveries = {d.pandal_id: d for d in registry.discoveries}
         changed = False
         for zone in selected:
             if zone.zone_id in usable and not smoke_test:
@@ -232,18 +267,35 @@ def discover(
                     known.setdefault(
                         observation.place_id, Restaurant(place_id=observation.place_id)
                     )
-            for item in reverse_map(config.pandals, usable, clock()):
+            mappings = reverse_map(config.pandals, usable, clock())
+            for item in mappings:
                 association = Association(
                     pandal_id=item["pandal_id"],
                     place_id=item["place_id"],
                     observed_at=item["fetched_at"],
                 )
                 associations[(association.pandal_id, association.place_id)] = association
+            zones_by_id = {z.zone_id: z for z in zones}
+            for result in results:
+                if result.get("status") != "fetched":
+                    continue
+                zone = zones_by_id[result["zone_id"]]
+                snapshot = usable[zone.zone_id]
+                for pandal_id in zone.pandal_ids:
+                    discoveries[pandal_id] = Discovery(
+                        pandal_id=pandal_id,
+                        observed_at=snapshot.fetched_at,
+                        expires_at=snapshot.expires_at,
+                        candidates_returned=len(snapshot.observations),
+                        result_limit_reached=snapshot.result_limit_reached,
+                    )
             export(
                 root,
                 config,
                 Registry(
-                    restaurants=list(known.values()), associations=list(associations.values())
+                    restaurants=list(known.values()),
+                    associations=list(associations.values()),
+                    discoveries=list(discoveries.values()),
                 ),
             )
         return {
@@ -277,7 +329,11 @@ def remap(root, clock=utcnow):
         export(
             root,
             config,
-            Registry(restaurants=list(known.values()), associations=list(associations.values())),
+            Registry(
+                restaurants=list(known.values()),
+                associations=list(associations.values()),
+                discoveries=registry.discoveries,
+            ),
         )
         # Runtime distances are returned to the operator, NEVER written to public/Git artifacts.
         return {"runtime_only": True, "google_requests_made": 0, "associations": mappings}

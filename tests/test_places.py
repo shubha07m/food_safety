@@ -158,6 +158,19 @@ def test_deterministic_overlap_grouping_and_large_zone_avoidance():
     assert plan(config.model_copy(update={"pandals": list(reversed(config.pandals))})) == result
 
 
+def test_manual_dense_zone_split_replaces_automatic_group():
+    config = Config(
+        pandals=[pandal(), pandal("b", 88.362)],
+        zones=[
+            zone("a-zone", ["a"], radius_m=500),
+            zone("b-zone", ["b"], longitude=88.362, radius_m=500),
+        ],
+    )
+    result = plan(config)
+    assert [z.zone_id for z in result] == ["a-zone", "b-zone"]
+    assert [z.pandal_ids for z in result] == [["a"], ["b"]]
+
+
 def test_disabled_automatic_requires_assignment():
     with pytest.raises(ValueError, match="missing_zone"):
         plan(Config(pandals=[pandal()], settings={"automatic_zones": False}))
@@ -516,6 +529,27 @@ def test_multiple_restaurants_are_one_call(workspace):
     result = run(workspace, lambda r: httpx.Response(200, json=payload))
     assert result["zones"][0]["places_returned"] == 2
     assert result["usage"]["calls"] == 1
+
+
+def test_twenty_results_set_limit_signal_and_discovery_state(workspace):
+    configure(workspace, settings={"max_results": 20})
+    payload = {"places": [response(f"place_{index}")["places"][0] for index in range(20)]}
+    result = run(workspace, lambda r: httpx.Response(200, json=payload))
+    assert result["zones"][0]["places_returned"] == 20
+    assert result["zones"][0]["result_limit_reached"] is True
+    public = PublicData.model_validate_json((workspace / "data/places.json").read_text())
+    assert len(public.restaurants) == 20
+    assert public.discoveries[0].pandal_id == "a"
+    assert public.discoveries[0].candidates_returned == 20
+    assert public.discoveries[0].result_limit_reached is True
+
+
+def test_empty_discovery_is_distinct_from_never_run(workspace):
+    run(workspace, lambda r: httpx.Response(200, json={}))
+    public = PublicData.model_validate_json((workspace / "data/places.json").read_text())
+    assert public.associations == []
+    assert len(public.discoveries) == 1
+    assert public.discoveries[0].candidates_returned == 0
 
 
 def test_expired_cache_never_restored_on_failed_refresh(workspace):

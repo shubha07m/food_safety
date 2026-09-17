@@ -167,6 +167,20 @@ def test_catalog_search_records_need_no_coordinates_and_stats_match(tmp_path):
     assert all(r["name"] != "Puja Name" for r in public["records"])
 
 
+def test_curated_coordinate_subset_drives_places_zones_without_duplicate_config():
+    from food_safety.places.geometry import plan
+    from food_safety.places.pipeline import load_config as load_places_config
+
+    public = build_public(ROOT)
+    places = load_places_config(ROOT)
+    mapped = {r["pandal_id"] for r in public["records"] if r["latitude"] is not None}
+    assert {p.pandal_id for p in places.pandals if p.enabled} == mapped
+    zones = plan(places)
+    assert {pandal_id for zone in zones for pandal_id in zone.pandal_ids} == mapped
+    assert sum(len(zone.pandal_ids) for zone in zones) == len(mapped)
+    assert all(p.coordinate_source for p in places.pandals if p.enabled)
+
+
 def test_source_table_header_cannot_be_published():
     import pytest
 

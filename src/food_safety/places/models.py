@@ -62,7 +62,7 @@ class Zone(Strict):
 class Settings(Strict):
     monthly_limit: int = Field(default=3000, ge=1, le=3000)
     warning_threshold: int = Field(default=2500, ge=0, le=3000)
-    max_calls_per_run: int = Field(default=5, ge=1, le=20)
+    max_calls_per_run: int = Field(default=10, ge=1, le=20)
     max_results: int = Field(default=10, ge=1, le=20)
     max_retries: int = Field(default=1, ge=0, le=2)
     timeout_seconds: int = Field(default=15, ge=1, le=30)
@@ -70,6 +70,7 @@ class Settings(Strict):
     max_zone_radius_m: int = Field(default=1500, ge=1, le=50000)
     overlap_fraction: float = Field(default=0.7, gt=0, lt=1)
     automatic_zones: bool = True
+    default_restaurant_radius_m: int = Field(default=600, ge=300, le=1500)
 
     @model_validator(mode="after")
     def limits(self):
@@ -169,9 +170,24 @@ class Association(Strict):
     provenance: Literal["google_places_local_radius_match"] = "google_places_local_radius_match"
 
 
+class Discovery(Strict):
+    pandal_id: ID
+    observed_at: AwareDatetime
+    expires_at: AwareDatetime
+    candidates_returned: int = Field(ge=0, le=20)
+    result_limit_reached: bool
+
+    @model_validator(mode="after")
+    def dates(self):
+        if not timedelta(0) < self.expires_at - self.observed_at <= timedelta(days=30):
+            raise ValueError("invalid_discovery_window")
+        return self
+
+
 class Registry(Strict):
     restaurants: list[Restaurant] = Field(default_factory=list)
     associations: list[Association] = Field(default_factory=list)
+    discoveries: list[Discovery] = Field(default_factory=list)
 
 
 class PublicRestaurant(Restaurant):
@@ -194,6 +210,7 @@ class PublicData(Strict):
     zones: list[Zone]
     restaurants: list[PublicRestaurant]
     associations: list[Association]
+    discoveries: list[Discovery] = Field(default_factory=list)
 
     @model_validator(mode="after")
     def references(self):
@@ -203,6 +220,10 @@ class PublicData(Strict):
             raise ValueError("duplicate_public_id")
         if any(a.pandal_id not in pandals or a.place_id not in places for a in self.associations):
             raise ValueError("invalid_public_association")
+        if len({d.pandal_id for d in self.discoveries}) != len(self.discoveries) or any(
+            d.pandal_id not in pandals for d in self.discoveries
+        ):
+            raise ValueError("invalid_public_discovery")
         return self
 
 

@@ -72,14 +72,14 @@ The initial page serves local data and an accessible geographic summary. **Open 
 
 ## Current coverage
 
-Snapshot: **2026-09-16**, prepared for PR #14.
+Snapshot: **2026-09-16**.
 
 | Dataset | Coverage |
 | --- | --- |
 | Source-backed pandal catalog | 223 listings: 183 Kolkata-zone, 40 Howrah-zone |
-| Map-ready pandals | 1; coordinates are absent for the other listings |
+| Map-ready pandals | 14 independently sourced anchors; other listings remain searchable without markers |
 | Pandal sources / featured shortcuts | 4 source URLs / 6 featured entries |
-| Restaurant links | 10 durable associations at Bagbazar |
+| Restaurant discovery | 296 unique place IDs / 464 historical radius associations across 14 pandals |
 | Active Food Safety Evidence | 48 records, 37 area labels, 19 sources |
 
 This is not a complete Puja directory. Most new entries are grounded in one directory's 2025 tables; broader independent and Bengali source coverage remains limited.

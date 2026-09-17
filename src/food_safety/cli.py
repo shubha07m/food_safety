@@ -48,6 +48,13 @@ def main():
     puja_extract = puja_sub.add_parser("extract")
     puja_extract.add_argument("--source")
     puja_extract.add_argument("--max-calls", type=int)
+    puja_geocode = puja_sub.add_parser(
+        "geocode", help="Bounded private coordinate research; never auto-publishes"
+    )
+    puja_geocode.add_argument("--pandal", action="append", required=True)
+    puja_geocode.add_argument("--max-calls", type=int, default=10)
+    puja_geocode.add_argument("--dry-run", action="store_true")
+    puja_sub.add_parser("geocode-summary")
     for name in ["review-summary", "publish", "stats", "refresh"]:
         puja_sub.add_parser(name)
     scan = sub.add_parser("update")
@@ -113,6 +120,16 @@ def main():
                 result = discover_puja(ROOT, args.source)
             elif args.puja_command == "extract":
                 result = extract_puja(ROOT, args.source, args.max_calls)
+            elif args.puja_command == "geocode":
+                from .puja.geocoding import discover as geocode
+
+                result = geocode(
+                    ROOT, args.pandal, max_calls=args.max_calls, dry_run=args.dry_run
+                )
+            elif args.puja_command == "geocode-summary":
+                from .puja.geocoding import summary as geocode_summary
+
+                result = geocode_summary(ROOT)
             elif args.puja_command == "review-summary":
                 result = review_summary(ROOT)
             elif args.puja_command == "publish":

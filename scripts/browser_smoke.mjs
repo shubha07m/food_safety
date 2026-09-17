@@ -156,6 +156,7 @@ try {
   }
   await evaluate("document.getElementById('pandal-search').focus(); document.getElementById('pandal-search').value='bag'; document.getElementById('pandal-search').dispatchEvent(new Event('input'))");
   assert.ok(await evaluate("document.querySelectorAll('#pandal-options [role=option]').length >= 1 && document.querySelectorAll('#pandal-options [role=option]').length <= 8"));
+  assert.equal(await evaluate("document.getElementById('pandal-options').getBoundingClientRect().top >= document.getElementById('pandal-search').getBoundingClientRect().bottom"), true);
   await evaluate("document.getElementById('pandal-search').dispatchEvent(new KeyboardEvent('keydown',{key:'ArrowDown',bubbles:true})); document.getElementById('pandal-search').dispatchEvent(new KeyboardEvent('keydown',{key:'Enter',bubbles:true}))");
   assert.equal(await evaluate("document.getElementById('selected-pandal').hidden"), false);
   if (process.env.FOOD_LIVE_MAP_SMOKE === '1') assert.equal(mapScriptLoads, 1);
@@ -177,7 +178,7 @@ try {
   assert.equal(await evaluate("document.getElementById('pandal-search-status').textContent.includes('No matching pandals')"), true);
   await evaluate("document.querySelector('#featured-pandals button').click()");
   assert.equal(await evaluate("document.getElementById('selected-pandal-title').textContent.includes('Bagbazar')"), true);
-  await evaluate("document.getElementById('pandal-search').value='Kashi Bose'; document.getElementById('pandal-search').dispatchEvent(new Event('input')); document.getElementById('pandal-search').dispatchEvent(new KeyboardEvent('keydown',{key:'Enter',bubbles:true}))");
+  await evaluate("document.getElementById('pandal-search').value='Shibpur Sastitala'; document.getElementById('pandal-search').dispatchEvent(new Event('input')); document.getElementById('pandal-search').dispatchEvent(new KeyboardEvent('keydown',{key:'Enter',bubbles:true}))");
   assert.equal(await evaluate("document.getElementById('selected-pandal').textContent.includes('Map location is not yet independently verified.')"), true);
   await command('Page.navigate', { url: 'http://127.0.0.1:8000/?lang=bn#puja' });
   await waitFor("document.querySelectorAll('#featured-pandals button').length > 0");
