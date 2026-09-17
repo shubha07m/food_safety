@@ -18,7 +18,17 @@ def test_refresh_is_two_hour_bounded_and_release_push_skips_discovery():
     assert workflow["on"]["push"]["branches"] == ["main"]
     job = workflow["jobs"]["candidates"]
     assert job["env"]["AUTO_PUBLISH"] == "true"
-    assert job["env"]["GOOGLE_MAPS_BROWSER_KEY"] == "${{ secrets.GOOGLE_MAPS_BROWSER_KEY }}"
+    assert "GOOGLE_MAPS_BROWSER_KEY" not in job["env"]
+    runtime_steps = [s for s in job["steps"] if "GOOGLE_MAPS_BROWSER_KEY" in s.get("env", {})]
+    assert len(runtime_steps) == 1
+    assert (
+        runtime_steps[0]["env"]["GOOGLE_MAPS_BROWSER_KEY"]
+        == "${{ secrets.GOOGLE_MAPS_BROWSER_KEY }}"
+    )
+    assert "build_deployment.mjs" in runtime_steps[0]["run"]
+    assert job["steps"].index(runtime_steps[0]) > next(
+        i for i, s in enumerate(job["steps"]) if s.get("name") == "Commit approved artifacts only"
+    )
     assert any(
         step.get("env", {}).get("GEMINI_API_KEY") == "${{ secrets.GEMINI_API_KEY }}"
         for step in job["steps"]
@@ -34,8 +44,8 @@ def test_refresh_is_two_hour_bounded_and_release_push_skips_discovery():
     assert scans[0]["if"] == "github.event_name != 'push' && inputs.release_only != true"
     puja = [step for step in job["steps"] if step.get("name", "").startswith("Due-only")]
     assert puja[0]["if"] == "github.event_name != 'push' && inputs.release_only != true"
-    assert "maps-config.json" in steps or "git add" in steps
-    assert "test -e data/puja_refresh.json" in steps
+    assert "stage_generated.py --stage" in steps
+    assert "git add" not in steps
 
 
 def test_canonical_urls_and_readme_assets_exist():

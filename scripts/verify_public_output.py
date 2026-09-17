@@ -1,5 +1,6 @@
 """Fail-closed audit of the exact static directory eligible for publication."""
 
+import argparse
 import json
 import re
 from pathlib import Path
@@ -25,11 +26,16 @@ REQUIRED = [
 FORBIDDEN = [".env", "data/pending.json", "data/rejected.json", "data/history", "data/runs"]
 
 
-def main() -> None:
+def main(*, runtime=False) -> None:
     validate(ROOT)
     from food_safety.browser_maps import browser_config
 
-    expected_maps = browser_config(ROOT)
+    expected_maps = browser_config(ROOT) if runtime else {"browser_key": ""}
+    from food_safety.browser_maps import configured_key
+
+    private_values = [
+        configured_key(ROOT, name) for name in ("GOOGLE_MAPS_API_KEY", "GEMINI_API_KEY")
+    ]
     missing = [name for name in REQUIRED if not (SITE / name).is_file()]
     present = [name for name in FORBIDDEN if (SITE / name).exists()]
     headers = (SITE / "_headers").read_text(encoding="utf-8")
@@ -97,6 +103,8 @@ def main() -> None:
             present.append("private path in public output")
         if not path.is_file():
             continue
+        if any(value and value.encode() in path.read_bytes() for value in private_values):
+            present.append("private value in public output")
         if path.parent == SITE / "data" and path.name not in allowed_data:
             present.append("unexpected public data file")
         if (
@@ -124,8 +132,7 @@ def main() -> None:
                 if json.loads(text) != expected_maps:
                     present.append("unexpected browser Maps configuration")
                 elif expected_maps["browser_key"]:
-                    # Only this ignored, exact-schema public browser credential is permitted.
-                    # Server keys and credential patterns everywhere else remain prohibited.
+                    # Only the explicitly requested runtime artifact may carry this value.
                     text = text.replace(expected_maps["browser_key"], "BROWSER_KEY")
             if re.search(
                 r"/Users/|BEGIN .*PRIVATE KEY|github_pat_[A-Za-z0-9_]{30,}"
@@ -142,4 +149,12 @@ def main() -> None:
 
 
 if __name__ == "__main__":
-    main()
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--runtime", action="store_true")
+    parser.add_argument("--site", type=Path)
+    args = parser.parse_args()
+    if args.site:
+        SITE = args.site.resolve()
+    if args.runtime and SITE.resolve() == (ROOT / "site").resolve():
+        raise SystemExit("Runtime validation requires a separate deployment directory")
+    main(runtime=args.runtime)

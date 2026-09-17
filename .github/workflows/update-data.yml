@@ -26,7 +26,6 @@ jobs:
     timeout-minutes: 10
     env:
       AUTO_PUBLISH: 'true'
-      GOOGLE_MAPS_BROWSER_KEY: ${{ secrets.GOOGLE_MAPS_BROWSER_KEY }}
       PIP_DISABLE_PIP_VERSION_CHECK: '1'
     defaults:
       run:
@@ -70,14 +69,20 @@ jobs:
           python -m food_safety.cli build
           node --test tests/*.test.mjs
           python scripts/verify_public_output.py
+          python scripts/stage_generated.py
       - name: Commit approved artifacts only
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          git add data/events.json data/events.csv data/events.csv.metadata.json data/status.json data/retired.json data/source_checks.json data/pandals.json site/
-          if test -e data/puja_refresh.json; then git add data/puja_refresh.json; fi
+          python scripts/stage_generated.py --stage
           if git diff --cached --quiet; then exit 0; fi
           git -c user.name='github-actions[bot]' -c user.email='41898282+github-actions[bot]@users.noreply.github.com' commit -m 'data: validated refresh [automated-refresh]'
           git -c credential.helper='!f() { echo username=x-access-token; echo "password=$GH_TOKEN"; }; f' push origin HEAD:main
-          # No push trigger here, and GITHUB_TOKEN pushes do not trigger Actions.
-          # Cloudflare Git integration handles redeployment from main.
+          # GITHUB_TOKEN pushes do not trigger another Actions run.
+      - name: Validate isolated deployment artifact
+        env:
+          GOOGLE_MAPS_BROWSER_KEY: ${{ secrets.GOOGLE_MAPS_BROWSER_KEY }}
+        run: |
+          node scripts/build_deployment.mjs
+          python scripts/verify_public_output.py --runtime --site dist/site
+          python scripts/stage_generated.py
