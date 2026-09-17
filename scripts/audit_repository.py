@@ -1,5 +1,6 @@
 """Bounded current-tree and reachable-history audit; never prints matched values."""
 
+import argparse
 import json
 import re
 import subprocess
@@ -23,7 +24,6 @@ SCAN_SOURCE_EXEMPT = {
     "scripts/verify_public_output.py",
     "tests/test_public_repository.py",
 }
-PUBLIC_BROWSER_CONFIG = "site/maps-config.json"
 ALLOWED_AUTHOR_DOMAINS = {"users.noreply.github.com"}
 
 
@@ -66,19 +66,6 @@ def reachable_blobs(root, revisions):
     return result, total
 
 
-def _is_public_browser_config(path, body):
-    """Recognize only the exact one-field, intentionally public client config."""
-    if path != PUBLIC_BROWSER_CONFIG:
-        return False
-    try:
-        value = json.loads(body)
-    except (UnicodeDecodeError, json.JSONDecodeError):
-        return False
-    return isinstance(value, dict) and set(value) == {"browser_key"} and bool(
-        re.fullmatch(r"AIza[A-Za-z0-9_-]{35}", value["browser_key"] or "")
-    )
-
-
 def content_findings(blobs):
     private = sorted(
         {
@@ -93,7 +80,7 @@ def content_findings(blobs):
         {
             path
             for path, body in blobs
-            if SECRET.search(body) and not _is_public_browser_config(path, body)
+            if SECRET.search(body)
         }
     )
     machine = sorted(
@@ -191,10 +178,14 @@ def audit(root=ROOT):
 
 
 def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--no-write", action="store_true", help="Report without updating files")
+    args = parser.parse_args()
     result = audit()
-    (ROOT / "reports/public_repository_audit.json").write_text(
-        json.dumps(result, indent=2, sort_keys=True) + "\n"
-    )
+    if not args.no_write:
+        (ROOT / "reports/public_repository_audit.json").write_text(
+            json.dumps(result, indent=2, sort_keys=True) + "\n"
+        )
     print(
         json.dumps(
             {

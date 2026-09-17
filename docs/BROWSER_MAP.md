@@ -83,21 +83,37 @@ Festival-data refresh is separate: the existing Actions workflow checks a
 persisted due-time guard (default six hours, maximum ten research runs/day).
 It rebuilds our catalog without loading maps or running Places discovery.
 
-The build creates `site/maps-config.json`, an intentionally public browser artifact—not
-a secret endpoint. A blank tracked version provides the no-key fallback. On a `main`
-release push, the existing workflow builds the keyed artifact and commits it for the
-tracked-static Cloudflare deployment. Only its exact one-field schema is exempted by
-the public-output and repository audits; all other key patterns remain blocking.
-Build with `GOOGLE_MAPS_BROWSER_KEY=` to regenerate the blank fallback.
+Normal builds always write `{"browser_key":""}` to tracked `site/maps-config.json`,
+regardless of the environment. This provides the portable local fallback.
+`node scripts/build_deployment.mjs` copies the validated site to ignored `dist/site/`
+and writes browser configuration only into that copy. It reads the environment,
+does not read `.env`, and requires a fresh output directory. It also creates
+`dist/wrangler.json` with the existing project settings and artifact-relative paths.
 
 ## Release wiring
 
 The existing refresh workflow also runs on a `main` push. Release pushes skip discovery
-and model calls, run validation/build with the Actions browser-key secret, and commit only
-approved generated assets. GitHub-token bot commits do not recursively trigger workflows.
-Cloudflare's existing Git integration then deploys the tracked `site/` tree. If the secret
-is missing, the blank artifact deploys and the public page shows a polished static fallback.
-No Worker, domain, DNS, or Cloudflare account configuration changes are required.
+and model calls. Generated commits use an explicit file allowlist that excludes map
+configuration. After that commit boundary, a separate step constructs and validates an
+isolated artifact. GitHub-token bot commits do not recursively trigger workflows.
+
+The Actions artifact check does not deploy the site. The existing hosting build must
+independently supply `GOOGLE_MAPS_BROWSER_KEY` in its build environment and run:
+
+```sh
+node scripts/build_deployment.mjs && npx wrangler deploy --config dist/wrangler.json
+```
+
+Set `REQUIRE_BROWSER_MAP_CONFIG=true` in that build environment to require a live-map
+configuration at deployment. These build-environment and command settings must be in
+place before releasing this change. GitHub Actions environment values are not passed
+automatically to the hosting build. The domain, asset behavior, and map interactions
+are unchanged. Local artifact builds without a value retain the fallback.
+
+Validate source output with `python scripts/verify_public_output.py`. Validate the
+isolated output with `python scripts/verify_public_output.py --runtime --site dist/site`
+using the same environment. `python scripts/stage_generated.py` checks both checkout
+and index; `--stage` stages only the approved generated file set.
 
 ## Runtime and security boundaries
 

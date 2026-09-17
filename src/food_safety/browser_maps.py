@@ -1,4 +1,4 @@
-"""Build-only public browser configuration. Never fall back to a server credential."""
+"""Browser configuration validation and the blank source-tree default."""
 
 import os
 import re
@@ -30,9 +30,5 @@ def browser_config(root):
 
 
 def build_browser_config(root):
-    """Write the intentionally public, browser-restricted Maps credential.
-
-    The file is a deployable client artifact, not a server secret. GitHub Actions
-    supplies it from GOOGLE_MAPS_BROWSER_KEY; it must never use the Places key.
-    """
-    dump(root / "site/maps-config.json", browser_config(root))
+    """Normal builds always produce the portable, keyless source configuration."""
+    dump(root / "site/maps-config.json", {"browser_key": ""})

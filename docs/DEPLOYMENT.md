@@ -10,7 +10,15 @@ The project does not store Cloudflare credentials, account IDs, domain verificat
 
 ## Build and deploy
 
-`site/` is a versioned, prevalidated static artifact. Cloudflare needs no Python build to serve it. Set the Workers Builds deployment command to `npx wrangler deploy` (Cloudflare-managed environment); the local `wrangler.jsonc` specifies `site/`. Do not install global tooling or expose server tokens in the frontend. The existing custom-domain association remains in the Cloudflare dashboard. The intentionally public, browser-restricted Maps key is generated into `site/maps-config.json` by GitHub Actions; the private Places key is never used there.
+`site/` is versioned, prevalidated static output with a blank browser configuration.
+The deployment build runs `node scripts/build_deployment.mjs && npx wrangler deploy --config dist/wrangler.json`.
+It supplies `GOOGLE_MAPS_BROWSER_KEY` through its own build environment; set
+`REQUIRE_BROWSER_MAP_CONFIG=true` to require it. The Node-only build copies `site/`
+into ignored `dist/site/`, adds runtime configuration there, and derives
+`dist/wrangler.json` from the existing project settings. No Python build is needed.
+The build command and environment must be configured before merging this change;
+the Actions artifact check does not transfer its environment to the hosting build.
+The existing custom-domain association remains unchanged. See [BROWSER_MAP.md](BROWSER_MAP.md).
 
 GitHub CI checks code, data, tests and public output. The scheduled refresh runs every two hours and commits only validated public artifacts. Cloudflare Git integration observes changes to `main`. Its deployment status should be checked in the Cloudflare dashboard after any push; a successful GitHub push alone is not proof of deployment.
 
