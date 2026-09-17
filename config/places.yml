@@ -2,29 +2,31 @@
 settings:
   monthly_limit: 3000
   warning_threshold: 2500
-  max_calls_per_run: 5
-  max_results: 10
+  max_calls_per_run: 60
+  max_results: 20
   max_retries: 1
   timeout_seconds: 15
   cache_days: 7
   max_zone_radius_m: 1500
   overlap_fraction: 0.7
+  default_restaurant_radius_m: 600
+  max_supplemental_searches: 3
+  supplemental_offset_m: 300
+  supplemental_radius_m: 400
   automatic_zones: true
 pandals:
   - pandal_id: bagbazar-sarbojanin
     name: Bagbazar Sarbojanin Durgotsav
     name_bn: বাগবাজার সর্বজনীন দুর্গোৎসব
     area: Bagbazar
-    latitude: 22.604964
-    longitude: 88.366303
-    restaurant_radius_m: 500
+    latitude: 22.6046989
+    longitude: 88.3661347
+    restaurant_radius_m: 600
     enabled: true
-    coordinate_source: https://commons.wikimedia.org/wiki/File:DurgaPuja2017_-_Durga_Idol_of_Bagbazar_Sarbajanin_Durgotsav_01.jpg
+    coordinate_source: https://www.openstreetmap.org/node/10081941244
     notes: >-
-      Historical coarse venue anchor from camera coordinates of Indrajit Das's
-      1 October 2017 photograph (Wikimedia Commons, CC BY-SA 3.0).
-      Not a verified 2026 entrance or pedestrian route. Coordinate provenance
-      checked 2026-09-15; verify current festival access before travel guidance.
+      Independently sourced OpenStreetMap venue anchor. Not a verified 2026
+      entrance or pedestrian route; verify current festival access before travel guidance.
   - pandal_id: kumartuli-park
     name: Kumartuli Park Sarbojanin
     name_bn: কুমোরটুলি পার্ক সর্বজনীন
@@ -40,10 +42,62 @@ pandals:
 zones:
   - zone_id: bagbazar
     name: Bagbazar historical venue catchment
-    center_latitude: 22.604964
-    center_longitude: 88.366303
-    radius_m: 500
+    center_latitude: 22.6046989
+    center_longitude: 88.3661347
+    radius_m: 600
     pandal_ids: [bagbazar-sarbojanin]
+    enabled: true
+  # Dense multi-pandal groups hit Nearby Search's 20-result bound during the
+  # 2026-09-16 audit. Pandal-centered zones avoid one ranked result set serving
+  # several catchments while retaining one request per practical search circle.
+  - zone_id: ekdalia-evergreen
+    name: Ekdalia Evergreen venue catchment
+    center_latitude: 22.5212474
+    center_longitude: 88.3679418
+    radius_m: 600
+    pandal_ids: [ekdalia-evergreen-club-durga-puja]
+    enabled: true
+  - zone_id: singhi-park
+    name: Singhi Park venue catchment
+    center_latitude: 22.5212239
+    center_longitude: 88.3630115
+    radius_m: 600
+    pandal_ids: [singhi-park-sarbojanin-durga-puja]
+    enabled: true
+  - zone_id: ballygunge-cultural
+    name: Ballygunge Cultural venue catchment
+    center_latitude: 22.5158837
+    center_longitude: 88.3558166
+    radius_m: 600
+    pandal_ids: [ballygunge-cultural-association-durga-puja]
+    enabled: true
+  - zone_id: deshapriya-park
+    name: Deshapriya Park venue catchment
+    center_latitude: 22.5184354
+    center_longitude: 88.3535152
+    radius_m: 600
+    pandal_ids: [deshapriya-park-durga-puja]
+    enabled: true
+  - zone_id: tridhara-sammilani
+    name: Tridhara Sammilani venue catchment
+    center_latitude: 22.5195762
+    center_longitude: 88.3553485
+    radius_m: 600
+    pandal_ids: [tridhara-sammilani-durga-puja]
+    enabled: true
+  - zone_id: badamtala-ashar-sangha
+    name: Badamtala Ashar Sangha venue catchment
+    center_latitude: 22.5179272
+    center_longitude: 88.3441647
+    radius_m: 600
+    pandal_ids: [badamtala-ashar-sangha-durga-puja]
+    enabled: true
+  - zone_id: chetla-agrani
+    name: Chetla Agrani venue catchment
+    center_latitude: 22.5164506
+    center_longitude: 88.3371265
+    radius_m: 600
+    pandal_ids: [chetla-agrani-club-durga-puja]
     enabled: true
 # Only independently sourced names may be supplied here. No Google displayName data.
 restaurants: []

@@ -38,10 +38,10 @@ published:
     neighborhood: Bagbazar
     city: Kolkata
     district: Kolkata
-    latitude: 22.604964
-    longitude: 88.366303
-    coordinate_source: https://commons.wikimedia.org/wiki/File:DurgaPuja2017_-_Durga_Idol_of_Bagbazar_Sarbajanin_Durgotsav_01.jpg
-    coordinate_precision: neighborhood
+    latitude: 22.6046989
+    longitude: 88.3661347
+    coordinate_source: https://www.openstreetmap.org/node/10081941244
+    coordinate_precision: venue
     organizer: null
     year: null
     featured: true
@@ -146,6 +146,10 @@ published:
     city: Howrah
     district: null
     location_precision: source_zone
+    latitude: 22.6039928
+    longitude: 88.3435136
+    coordinate_source: https://www.openstreetmap.org/way/1550768842
+    coordinate_precision: venue
     year: 2025
     featured: true
     sources:
@@ -154,6 +158,10 @@ published:
       publisher: Indian Festival Diary
       quote: "Salkia Sadharan Durga Puja 2025\n\n\r\n                                Howrah"
       source_revision_id: 3a2f6c2a5293bf4291d971f1f05505b14242a616555fd222de65fb0bdc937df6
+    - source_url: https://wb.gov.in/pdf/BBSS_Result_2025.pdf
+      source_title: Biswa Bangla Sharad Samman 2025 results
+      publisher: Government of West Bengal
+      quote: SALKIA SADHARAN DURGA PUJA (JATADHARI PARK)
     verification_status: SOURCE VERIFIED
     last_verified_at: '2026-09-16T17:00:00Z'
   - pandal_id: salkia-sitalatala-sarbojanin-durgotsab
@@ -813,6 +821,10 @@ published:
     city: Kolkata
     district: null
     location_precision: source_zone
+    latitude: 22.4743607
+    longitude: 88.3665164
+    coordinate_source: https://www.openstreetmap.org/way/359030948
+    coordinate_precision: venue
     year: 2025
     featured: false
     sources:
@@ -847,6 +859,10 @@ published:
     city: Kolkata
     district: null
     location_precision: source_zone
+    latitude: 22.5090969
+    longitude: 88.3341832
+    coordinate_source: https://www.openstreetmap.org/node/10083307822
+    coordinate_precision: venue
     year: 2025
     featured: false
     sources:
@@ -1209,6 +1225,10 @@ published:
     city: Kolkata
     district: null
     location_precision: source_zone
+    latitude: 22.5212239
+    longitude: 88.3630115
+    coordinate_source: https://www.openstreetmap.org/node/10082383703
+    coordinate_precision: venue
     year: 2025
     featured: false
     sources:
@@ -1261,6 +1281,10 @@ published:
     city: Kolkata
     district: null
     location_precision: source_zone
+    latitude: 22.5195762
+    longitude: 88.3553485
+    coordinate_source: https://www.openstreetmap.org/node/10082383706
+    coordinate_precision: venue
     year: 2025
     featured: false
     sources:
@@ -1329,6 +1353,10 @@ published:
     city: Kolkata
     district: null
     location_precision: source_zone
+    latitude: 22.5212474
+    longitude: 88.3679418
+    coordinate_source: https://www.openstreetmap.org/way/1196034981
+    coordinate_precision: street
     year: 2025
     featured: true
     sources:
@@ -1337,6 +1365,10 @@ published:
       publisher: Indian Festival Diary
       quote: "Ekdalia Evergreen Club Durga Puja 2025\n\n\r\n                                South Kolkata"
       source_revision_id: 02c2eff3a20eaa166114de486a2f34da38ca72a38c5c1d65638d3091a210c1f6
+    - source_url: https://www.kolkatadurgotsav.com/ekdalia-evergreen-club-sarbojanin-durgotsav.html
+      source_title: Ekdalia Evergreen Club Sarbojanin Durgotsav
+      publisher: Kolkata Durgotsav
+      quote: 15, Ekdalia Road, Ballygunge, Kolkata- 700 019
     verification_status: SOURCE VERIFIED
     last_verified_at: '2026-09-16T17:00:00Z'
   - pandal_id: falguni-sangha-durga-puja
@@ -1812,6 +1844,10 @@ published:
     city: Kolkata
     district: null
     location_precision: source_zone
+    latitude: 22.5100748
+    longitude: 88.3466256
+    coordinate_source: https://www.openstreetmap.org/node/10083307830
+    coordinate_precision: venue
     year: 2025
     featured: false
     sources:
@@ -1882,6 +1918,10 @@ published:
     city: Kolkata
     district: null
     location_precision: source_zone
+    latitude: 22.5158837
+    longitude: 88.3558166
+    coordinate_source: https://www.openstreetmap.org/node/10083307833
+    coordinate_precision: venue
     year: 2025
     featured: false
     sources:
@@ -2229,6 +2269,10 @@ published:
     city: Kolkata
     district: null
     location_precision: source_zone
+    latitude: 22.5164506
+    longitude: 88.3371265
+    coordinate_source: https://www.openstreetmap.org/way/191003743
+    coordinate_precision: venue
     year: 2025
     featured: true
     sources:
@@ -2315,6 +2359,10 @@ published:
     city: Kolkata
     district: null
     location_precision: source_zone
+    latitude: 22.5184354
+    longitude: 88.3535152
+    coordinate_source: https://www.openstreetmap.org/way/35875337
+    coordinate_precision: venue
     year: 2025
     featured: false
     sources:
@@ -2451,6 +2499,10 @@ published:
     city: Kolkata
     district: null
     location_precision: source_zone
+    latitude: 22.6068111
+    longitude: 88.3748754
+    coordinate_source: https://www.openstreetmap.org/node/11271390647
+    coordinate_precision: venue
     year: 2025
     featured: false
     sources:
@@ -2843,6 +2895,10 @@ published:
     city: Kolkata
     district: null
     location_precision: source_zone
+    latitude: 22.5179272
+    longitude: 88.3441647
+    coordinate_source: https://www.openstreetmap.org/node/10082383714
+    coordinate_precision: venue
     year: 2025
     featured: false
     sources:
@@ -2998,6 +3054,10 @@ published:
     city: Kolkata
     district: null
     location_precision: source_zone
+    latitude: 22.5910057
+    longitude: 88.3689645
+    coordinate_source: https://www.openstreetmap.org/node/11271655876
+    coordinate_precision: venue
     year: 2025
     featured: true
     sources:
@@ -3006,6 +3066,10 @@ published:
       publisher: Indian Festival Diary
       quote: "Kashi Bose Lane Durga Puja Committee 2025\n\n\r\n                                North Kolkata"
       source_revision_id: 595f7b7dcbe2c91f90c0170a36fcd499278fad1dd39e521040fdfb1d23c4ec41
+    - source_url: https://www.indianfestivaldiary.com/durgapuja/kashi-bose-lane.php
+      source_title: Kashi Bose Lane Durga Puja 2025
+      publisher: Indian Festival Diary
+      quote: 5/1, Kashi Bose Lane, Kolkata
     verification_status: SOURCE VERIFIED
     last_verified_at: '2026-09-16T17:00:00Z'
   - pandal_id: kumartuli-park-sarbojanin-durgotsab-committee

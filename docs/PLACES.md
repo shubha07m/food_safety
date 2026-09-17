@@ -7,8 +7,9 @@ Places on behalf of visitors or plots temporary restaurant coordinates.
 
 ## Flow and commands
 
-Curated pandals → practical search zones → Places API (New) Nearby Search → deduplicate
-by place ID → local Haversine reverse mapping → durable static JSON.
+Curated pandals → practical search zones → Places API (New) Nearby Search → bounded
+supplemental circles when a primary result is saturated → deduplicate by place ID →
+local Haversine reverse mapping → durable static JSON.
 
 Activate the existing `food` environment first. From the repository root:
 
@@ -24,8 +25,9 @@ python -m food_safety.cli build
 ```
 
 `validate`, `plan`, `usage`, and `discover --dry-run` make **zero HTTP requests** and
-do not write files. Plans show due zones, expected requests without retries, and
-the maximum attempts allowed. `remap` makes zero HTTP requests; it purges expired
+do not write files. Plans distinguish primary searches, potential/due supplemental
+searches, the absolute geometric maximum, and the request/attempt ceilings. `remap`
+makes zero HTTP requests; it purges expired
 observations, rebuilds minimal historical association metadata, and returns current
 runtime distances sorted within each pandal. Do not commit redirected runtime output.
 
@@ -61,10 +63,21 @@ circles. The API's absolute maximum is 50,000 m, not a recommended search radius
 
 Nearby Search uses `includedTypes: [restaurant]`, `rankPreference: DISTANCE`, and exactly
 `places.id,places.displayName,places.location`. No Place Details, Maps JavaScript, or
-consumer Google Maps scraping is used. Results are ranked and bounded (default 10,
-API maximum 20), **not exhaustive**. A result-limit flag is reported when the cap is
-filled. In dense areas, maintainers should use smaller independently curated zones;
-do not interpret a large circle as comprehensive coverage or automatically expand it.
+consumer Google Maps scraping is used. Results are ranked and bounded (configured 20,
+the API maximum), **not exhaustive**. A result-limit flag is reported when the cap is
+filled. Reaching 20 is a saturation signal, not evidence of complete coverage. A
+saturated primary may trigger up to three deterministic offset circles at bearings
+0°, 120°, and 240°. Defaults use a 300 m center offset and 400 m supplemental radius;
+the primary/catchment radius remains 600 m. The circles are bounded, revision-cached,
+and never recurse. Unsaturated primaries trigger no supplemental request. All results
+enter one global place-ID pool before local reverse mapping. Do not interpret even an
+adaptive result set as comprehensive coverage.
+
+The September 2026 audit split saturated multi-pandal circles into pandal-centered
+manual zones. The adaptive layer improves candidate coverage within those deliberate
+catchments without expanding a single circle indefinitely. Public discovery metadata
+records primary saturation, supplemental count, raw/unique candidates, overlap, calls,
+and association count, but never provider coordinates or raw responses.
 
 Reverse mapping uses all usable observations, not just a zone's member list. A restaurant
 can match several pandals. Distances are straight-line, not walking distances or travel
@@ -119,9 +132,10 @@ included in URLs, static data, error messages, or browser code. Restrict the ser
 to Places API (New) and appropriate server application restrictions; browser referrer
 restrictions are not suitable for this server-side command. Do not expose this key in JS.
 
-Defaults: **3,000 attempts per UTC month**, warning at **2,500**, **5 attempts/run**, one
-retry, 15-second request timeout, 128 KiB response ceiling. Both monthly and run ceilings
-can be lowered. Each real HTTP attempt—including retries and failed requests—is reserved
+Defaults: **3,000 attempts per UTC month**, warning at **2,500**, **60 attempts/run**, one
+retry, 15-second request timeout, 128 KiB response ceiling, and at most three supplemental
+searches per saturated primary (four searches total). The monthly and run ceilings can
+be lowered. Each real HTTP attempt—including retries and failed requests—is reserved
 on disk **before sending**. Twenty returned restaurants still count as one request.
 Interrupted reservations may conservatively overcount; they never grant an unaccounted call.
 An exclusive local process lock prevents concurrent runs consuming the same budget.
@@ -144,15 +158,15 @@ The requested fields use Nearby Search Pro. Google's standard pricing page, chec
 but other applications, billing-region terms, and pricing changes can affect actual cost.
 The application does not claim a billing guarantee.
 
-## Starter coordinate provenance
+## Coordinate provenance
 
-Bagbazar uses the camera coordinate **22.604964, 88.366303** of Indrajit Das's
-[2017 Bagbazar puja photograph](https://commons.wikimedia.org/wiki/File:DurgaPuja2017_-_Durga_Idol_of_Bagbazar_Sarbajanin_Durgotsav_01.jpg)
-on Wikimedia Commons. Coordinate provenance is attributed under
-[CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/); no photograph is downloaded.
-It is a historical coarse venue anchor, **not a verified current pandal entrance**.
-Kumartuli Park and Ekdalia Evergreen are disabled starter entries with no invented
-coordinates. Verify venue/entrance location for the current festival before travel use.
+Map-ready pandals use reviewed OpenStreetMap objects referenced directly from the
+curated pandal catalog. Precision is explicit: venue-level objects and approximate
+street anchors are not interchangeable. These are independent geographic anchors,
+**not verified current-year entrances, walking routes, or opening information**.
+Unresolved catalog entries stay searchable without coordinates and do not appear as
+markers. OpenStreetMap data is credited on the public map section; verify current
+festival access before travel use.
 
 ## Website integration boundaries
 

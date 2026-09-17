@@ -17,8 +17,9 @@ export function pandalMarkers(pandals) {
     && Math.abs(p.latitude) <= 90 && Math.abs(p.longitude) <= 180 && p.coordinate_source)
     .map(p => ({ id: `pandal-${p.pandal_id}`, kind: 'pandal', label: p.name, lat: p.latitude, lng: p.longitude, count: 0 }));
 }
-let areas = []; let pandals = []; let frame = null; let key = ''; let chooseArea = () => {}; let started = false; let initialized = false;
-const send = () => { if (frame) frame.contentWindow.postMessage({ type: 'foodpath-map-data', key, language, markers: [...areas, ...pandals] }, location.origin); };
+let areas = []; let pandals = []; let frame = null; let key = ''; let chooseArea = () => {}; let started = false; let initialized = false; let selectedPandal = null;
+const selectedMarker = () => pandals.find(p => p.id === `pandal-${selectedPandal}`);
+const send = () => { if (frame) frame.contentWindow.postMessage({ type: 'foodpath-map-data', key, language, markers: [...areas, ...pandals], selectedPandalId: selectedMarker()?.id || null }, location.origin); };
 let mapped = 0; let totalRows = 0;
 export async function browserMapKey(fetcher = fetch) {
   const response = await fetcher('maps-config.json', { credentials: 'omit', cache: 'no-store' });
@@ -75,8 +76,9 @@ export async function initMapHost() {
     }
   });
   document.addEventListener('foodpath-focus-pandal', event => {
-    const marker = pandals.find(p => p.id === `pandal-${event.detail}`);
-    if (frame && marker) frame.contentWindow.postMessage({ type: 'foodpath-map-focus', id: marker.id }, location.origin);
+    selectedPandal = event.detail;
+    const marker = selectedMarker();
+    if (frame) frame.contentWindow.postMessage({ type: 'foodpath-map-focus', id: marker?.id || null }, location.origin);
   });
   button.addEventListener('click', () => {
     if (started || !key) return; started = true; button.disabled = true;
