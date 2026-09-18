@@ -55,13 +55,13 @@ export async function initMapHost() {
   const button = document.getElementById('load-google-map');
   const status = document.getElementById('google-map-status');
   let failed = false;
-  const fail = () => { if (failed) return; failed = true; status.textContent = text('Google map could not load. The area list is still available.'); document.getElementById('map-fallback').hidden = false; if (frame) { frame.remove(); frame = null; } };
+  const fail = () => { if (failed) return; failed = true; status.textContent = text('Live map is temporarily unavailable. You can still browse the lists and search.'); document.getElementById('map-fallback').hidden = false; if (frame) { frame.remove(); frame = null; } };
   try {
     key = await browserMapKey();
     if (!key) throw Error('No key');
     button.hidden = false; button.disabled = false;
     status.textContent = text('Map loads only on request. Google receives network information when you choose to load it.');
-  } catch { button.hidden = true; status.textContent = text('Live map is temporarily unavailable. Use the festival and reported-area lists below.'); }
+  } catch { button.hidden = true; status.textContent = text('Live map is temporarily unavailable. You can still browse the lists and search.'); }
   let timer;
   window.addEventListener('message', event => {
     if (!frame || event.source !== frame.contentWindow || event.origin !== location.origin) return;

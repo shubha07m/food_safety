@@ -66,8 +66,26 @@ def main(*, runtime=False) -> None:
         "compliance.json",
         "places.json",
         "pandals.json",
+        "osm_food.json",
+        "food_provider.json",
     }
     places = SITE / "data/places.json"
+    osm = SITE / "data/osm_food.json"
+    if osm.exists():
+        from food_safety.food_pois.models import PublicData as OSMData
+
+        OSMData.model_validate_json(osm.read_text())
+        if json.loads(osm.read_text()) != json.loads((ROOT / "data/osm_food.json").read_text()):
+            present.append("public and approved OSM datasets differ")
+    provider = SITE / "data/food_provider.json"
+    if provider.exists():
+        from food_safety.food_pois.models import PublicProvider
+
+        PublicProvider.model_validate_json(provider.read_text())
+        if json.loads(provider.read_text()) != json.loads(
+            (ROOT / "data/food_provider.json").read_text()
+        ):
+            present.append("public and approved provider configuration differ")
     if places.exists():
         from food_safety.places.models import PublicData
 
@@ -97,6 +115,7 @@ def main(*, runtime=False) -> None:
                 "llm_eval",
                 "corpus",
                 "places-runtime",
+                "osm-runtime",
             }
             for part in path.relative_to(SITE).parts
         ):
@@ -107,24 +126,20 @@ def main(*, runtime=False) -> None:
             present.append("private value in public output")
         if path.parent == SITE / "data" and path.name not in allowed_data:
             present.append("unexpected public data file")
-        if (
-            path.suffix
-            not in {
-                ".html",
-                ".js",
-                ".mjs",
-                ".css",
-                ".json",
-                ".geojson",
-                ".csv",
-                ".svg",
-                ".png",
-                ".webp",
-                ".md",
-                ".txt",
-            }
-            and path.name not in {"_headers", "sitemap.xml"}
-        ):
+        if path.suffix not in {
+            ".html",
+            ".js",
+            ".mjs",
+            ".css",
+            ".json",
+            ".geojson",
+            ".csv",
+            ".svg",
+            ".png",
+            ".webp",
+            ".md",
+            ".txt",
+        } and path.name not in {"_headers", "sitemap.xml"}:
             present.append("unexpected public asset type")
         if path.suffix not in {".png", ".webp"}:
             text = path.read_text()

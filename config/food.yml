@@ -1,0 +1,22 @@
+# Provider choice is evaluated with `osm bakeoff`; Google remains intact.
+provider: hybrid
+initial_display_limit: 12
+osm:
+  enabled: true
+  source_url: https://download.geofabrik.de/asia/india/eastern-zone-latest.osm.pbf
+  source_path: data/osm-runtime/source/eastern-zone.osm.pbf
+  dataset: Geofabrik India Eastern Zone
+  max_download_bytes: 400000000
+  # Research envelope: 14 independently sourced pandal anchors plus a 10 km
+  # margin, rounded outward. This is not a municipal boundary or coverage claim.
+  bbox: {west: 88.2368, south: 22.3844, east: 88.4723, north: 22.6968}
+  bbox_basis: verified pandal anchor envelope + 10 km research margin, 2026-09-17
+  categories:
+    amenity: [restaurant, cafe, fast_food, ice_cream, food_court]
+    shop: [bakery, confectionery]
+google_enrichment:
+  enabled: false
+  pandal_ids: []
+  max_unique_pois: 10
+  # IDs-only responses cannot establish identity without independent confirmation.
+  verified_links: []

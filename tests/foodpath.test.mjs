@@ -57,7 +57,7 @@ test('restaurant handoff uses both query fields, no raw ID label or invented nam
   const url = new URL(mapsURL(r.id));
   assert.equal(url.searchParams.get('query'), 'restaurant'); assert.equal(url.searchParams.get('query_place_id'), r.id);
   assert.equal(mapsURL('bad&key=value'), null);
-  assert.match(readFileSync('site/puja.mjs', 'utf8'), /row.name \|\| text\('Restaurant on Google Maps'\)/);
+  assert.doesNotMatch(readFileSync('site/puja.mjs', 'utf8'), /'Restaurant on Google Maps'|'Unnamed food place'/);
 });
 test('only independent names and duplicate-free historical associations survive', () => {
   const data = fixture(); data.associations.push({ ...data.associations[0] });

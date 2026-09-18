@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Original synthetic fixture. No real venue or provider response. -->
+<osm version="0.6" generator="foodpath-fixture">
+  <node id="1" lat="22.5" lon="88.35" version="1"><tag k="amenity" v="restaurant"/><tag k="name" v="Synthetic Kitchen"/><tag k="cuisine" v="regional"/></node>
+  <node id="2" lat="22.502" lon="88.352" version="1"><tag k="shop" v="bakery"/></node>
+  <node id="3" lat="22.5" lon="88.35" version="1"><tag k="amenity" v="cafe"/><tag k="access" v="private"/></node>
+  <node id="4" lat="22.5" lon="88.35" version="1"><tag k="amenity" v="restaurant"/><tag k="disused" v="yes"/></node>
+  <node id="10" lat="22.501" lon="88.351" version="1"/>
+  <node id="11" lat="22.501" lon="88.353" version="1"/>
+  <node id="12" lat="22.503" lon="88.353" version="1"/>
+  <node id="13" lat="22.503" lon="88.351" version="1"/>
+  <node id="14" lat="22.502" lon="88.352" version="1"><tag k="amenity" v="cafe"/><tag k="name" v="Synthetic Cafe"/></node>
+  <node id="20" lat="22.504" lon="88.354" version="1"/>
+  <node id="21" lat="22.504" lon="88.356" version="1"/>
+  <node id="22" lat="22.506" lon="88.356" version="1"/>
+  <node id="23" lat="22.506" lon="88.354" version="1"/>
+  <way id="100" version="1"><nd ref="10"/><nd ref="11"/><nd ref="12"/><nd ref="13"/><nd ref="10"/><tag k="amenity" v="cafe"/><tag k="name" v="Synthetic Cafe"/></way>
+  <way id="200" version="1"><nd ref="20"/><nd ref="21"/><nd ref="22"/><nd ref="23"/><nd ref="20"/></way>
+  <relation id="300" version="1"><member type="way" ref="200" role="outer"/><tag k="type" v="multipolygon"/><tag k="amenity" v="food_court"/><tag k="name" v="Synthetic Court"/></relation>
+</osm>

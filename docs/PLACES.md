@@ -1,5 +1,10 @@
 # Pandal restaurant discovery
 
+This document describes the retained **Google provider**. The parallel regional
+OSM snapshot, provider selection, attribution, and migration workflow are documented
+in [Local nearby-food discovery](FOOD_POIS.md). The Google commands below remain
+explicit operator operations; ordinary builds and visitor requests do not call them.
+
 This is an operator-run data subsystem, separate from food-safety evidence ingestion.
 Discovery is not an inspection, recommendation, quality judgment, or safety rating.
 The website's Puja search consumes only the durable static contract. It never calls
