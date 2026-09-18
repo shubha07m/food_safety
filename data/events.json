@@ -1,6 +1,6 @@
 {
   "context_notice": "Independent, non-governmental public-source research. Inclusion is not a finding of wrongdoing. Counts describe records in this tracker, not official totals, prevalence, compliance, risk or group behavior. Read the sources and preserve this context when sharing.",
-  "generated_at": "2026-09-18T04:45:35.199179+00:00",
+  "generated_at": "2026-09-18T11:11:28.909125+00:00",
   "pipeline_version": "0.3.0",
   "record_count": 48,
   "records": [
@@ -418,11 +418,17 @@
           "note": "Supporting source context revalidated; original evidence retained.",
           "previous_record_sha256": "9c6f9a9bf7d845f3c546100ec3bf8f55b3ba7fffa080c42b231fbd1a962c773d",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-18T11:11:28.909125Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "2c1e3a73a363b63081ebd1b34d1a448cf9f5e4095806fe4c8191939d3eba9b12",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-09-17T21:20:38.965756Z",
-      "last_successful_evidence_check_at": "2026-09-17T21:20:38.965756Z",
+      "last_source_checked_at": "2026-09-18T11:11:28.909125Z",
+      "last_successful_evidence_check_at": "2026-09-18T11:11:28.909125Z",
       "llm": {
         "fields_proposed": [],
         "llm_model": null,
@@ -442,7 +448,7 @@
       "record_class": "inspection_evidence",
       "record_created_at": "2026-09-09T23:11:25.626009Z",
       "record_scope": "area_operation",
-      "record_updated_at": "2026-09-17T21:20:38.965756Z",
+      "record_updated_at": "2026-09-18T11:11:28.909125Z",
       "related_record_ids": [],
       "reported_fact": {
         "area": "ডেকার্স লেন",
@@ -633,11 +639,17 @@
           "note": "Supporting source context revalidated; original evidence retained.",
           "previous_record_sha256": "d2977430cbf6aaf77395bf0d96cf54ba47026fcb31ab8ae771427fe64db23574",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-18T11:11:28.909125Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "0ef315ddb55867409652fefe68a6f55dddfda8b57adb2ed422c119b7a7bf6e7e",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-09-17T13:25:51.653462Z",
-      "last_successful_evidence_check_at": "2026-09-17T13:25:51.653462Z",
+      "last_source_checked_at": "2026-09-18T11:11:28.909125Z",
+      "last_successful_evidence_check_at": "2026-09-18T11:11:28.909125Z",
       "llm": {
         "fields_proposed": [
           "area",
@@ -664,7 +676,7 @@
       "record_class": "inspection_evidence",
       "record_created_at": "2026-09-11T11:18:01.816017Z",
       "record_scope": "establishment_event",
-      "record_updated_at": "2026-09-17T13:25:51.653462Z",
+      "record_updated_at": "2026-09-18T11:11:28.909125Z",
       "related_record_ids": [],
       "reported_fact": {
         "area": "বাদুড়িয়া",
@@ -2922,11 +2934,17 @@
           "note": "Supporting source context revalidated; original evidence retained.",
           "previous_record_sha256": "7e9fe2bba095e4f55ebfee122bf16ac11cb63c915654fe171d086abcb4ba9fab",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-18T11:11:28.909125Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "560376da0c76bf1f47ea1473324705dafdda254d858e31012e77b6e09b151fa3",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-09-17T21:20:38.965756Z",
-      "last_successful_evidence_check_at": "2026-09-17T21:20:38.965756Z",
+      "last_source_checked_at": "2026-09-18T11:11:28.909125Z",
+      "last_successful_evidence_check_at": "2026-09-18T11:11:28.909125Z",
       "llm": {
         "fields_proposed": [
           "area",
@@ -2952,7 +2970,7 @@
       "record_class": "inspection_evidence",
       "record_created_at": "2026-09-13T11:48:42.474489Z",
       "record_scope": "statewide_operation",
-      "record_updated_at": "2026-09-17T21:20:38.965756Z",
+      "record_updated_at": "2026-09-18T11:11:28.909125Z",
       "related_record_ids": [],
       "reported_fact": {
         "area": "across the state",
@@ -3629,11 +3647,17 @@
           "note": "Supporting source context revalidated; original evidence retained.",
           "previous_record_sha256": "f34d894c610aa9ee6b29f36f7a2334abf4f7a5b0452cfdf3f1a2ccdc9bfca07c",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-18T11:11:28.909125Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "e9a1b4e9b95743894df372cfa409d6a46a812d15362b61987bcaa3684ed1db1c",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-09-17T21:20:38.965756Z",
-      "last_successful_evidence_check_at": "2026-09-17T21:20:38.965756Z",
+      "last_source_checked_at": "2026-09-18T11:11:28.909125Z",
+      "last_successful_evidence_check_at": "2026-09-18T11:11:28.909125Z",
       "llm": {
         "fields_proposed": [],
         "llm_model": null,
@@ -3653,7 +3677,7 @@
       "record_class": "inspection_evidence",
       "record_created_at": "2026-09-07T21:12:32.942437Z",
       "record_scope": "unknown",
-      "record_updated_at": "2026-09-17T21:20:38.965756Z",
+      "record_updated_at": "2026-09-18T11:11:28.909125Z",
       "related_record_ids": [],
       "reported_fact": {
         "area": "মধ‌্যমগ্রামের",
@@ -3712,11 +3736,11 @@
           "source_language": "bn",
           "source_publisher": "TV9 Bangla",
           "source_relationship": "unknown",
-          "source_revision_id": "5da8b8980816f2a9640aef512b60425a48d26d645f4aa983b29431b6faac0794",
+          "source_revision_id": "d1d5c29c17056f54f5580b803c925259e76c6a280fad69491ad58639deab5651",
           "source_title": "Restaurants License Cancelled: খাবারে ফাংগাস, মিলেছে পোকা-মাকড়! ৫ নামী রেস্তরাঁর লাইসেন্স সাসপেন্ড, তালিকায় কোনগুলি? | West Bengal Food Safety Drive: Irregularities Found at 1,525 Food Centres, Licences of 13 Processing Units Cancelled | TV9 Bangla News",
           "source_type": "news",
           "source_url": "https://tv9bangla.com/kolkata/west-bengal-food-safety-drive-irregularities-found-at-1525-food-centres-licences-of-13-processing-units-cancelled-1343938.html",
-          "text_sha256": "5da8b8980816f2a9640aef512b60425a48d26d645f4aa983b29431b6faac0794",
+          "text_sha256": "d1d5c29c17056f54f5580b803c925259e76c6a280fad69491ad58639deab5651",
           "tier": "B"
         }
       ],
@@ -4669,11 +4693,17 @@
           "note": "Supporting source context revalidated; original evidence retained.",
           "previous_record_sha256": "edb143759e13d66c6b25c2e64db34ff914d75c3b8a05554acb2c80b3ff2db827",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-18T11:11:28.909125Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "67f92be2eedfc07025331eb8c03e46ea9f85e38638f3fabb744039fa7956d1da",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-09-17T21:20:38.965756Z",
-      "last_successful_evidence_check_at": "2026-09-17T21:20:38.965756Z",
+      "last_source_checked_at": "2026-09-18T11:11:28.909125Z",
+      "last_successful_evidence_check_at": "2026-09-18T11:11:28.909125Z",
       "llm": {
         "fields_proposed": [],
         "llm_model": null,
@@ -4693,7 +4723,7 @@
       "record_class": "inspection_evidence",
       "record_created_at": "2026-09-07T21:12:32.942437Z",
       "record_scope": "unknown",
-      "record_updated_at": "2026-09-17T21:20:38.965756Z",
+      "record_updated_at": "2026-09-18T11:11:28.909125Z",
       "related_record_ids": [],
       "reported_fact": {
         "area": "সেক্টর ফাইভের আরডিবি মলের",
@@ -4752,11 +4782,11 @@
           "source_language": "bn",
           "source_publisher": "TV9 Bangla",
           "source_relationship": "unknown",
-          "source_revision_id": "5da8b8980816f2a9640aef512b60425a48d26d645f4aa983b29431b6faac0794",
+          "source_revision_id": "d1d5c29c17056f54f5580b803c925259e76c6a280fad69491ad58639deab5651",
           "source_title": "Restaurants License Cancelled: খাবারে ফাংগাস, মিলেছে পোকা-মাকড়! ৫ নামী রেস্তরাঁর লাইসেন্স সাসপেন্ড, তালিকায় কোনগুলি? | West Bengal Food Safety Drive: Irregularities Found at 1,525 Food Centres, Licences of 13 Processing Units Cancelled | TV9 Bangla News",
           "source_type": "news",
           "source_url": "https://tv9bangla.com/kolkata/west-bengal-food-safety-drive-irregularities-found-at-1525-food-centres-licences-of-13-processing-units-cancelled-1343938.html",
-          "text_sha256": "5da8b8980816f2a9640aef512b60425a48d26d645f4aa983b29431b6faac0794",
+          "text_sha256": "d1d5c29c17056f54f5580b803c925259e76c6a280fad69491ad58639deab5651",
           "tier": "B"
         }
       ],
@@ -6322,11 +6352,17 @@
           "note": "Supporting source context revalidated; original evidence retained.",
           "previous_record_sha256": "c2186bfb48bcc0818245abd10643b7b501ca27e5a992aea3134978a2e17f3931",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-18T11:11:28.909125Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "6ec4d2e92c708d6b74342c1e3ffb8388b1b30154ce6f284b6802c20be3b02371",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-09-17T21:20:38.965756Z",
-      "last_successful_evidence_check_at": "2026-09-17T21:20:38.965756Z",
+      "last_source_checked_at": "2026-09-18T11:11:28.909125Z",
+      "last_successful_evidence_check_at": "2026-09-18T11:11:28.909125Z",
       "llm": {
         "fields_proposed": [],
         "llm_model": null,
@@ -6346,7 +6382,7 @@
       "record_class": "inspection_evidence",
       "record_created_at": "2026-09-07T21:12:32.942437Z",
       "record_scope": "unknown",
-      "record_updated_at": "2026-09-17T21:20:38.965756Z",
+      "record_updated_at": "2026-09-18T11:11:28.909125Z",
       "related_record_ids": [],
       "reported_fact": {
         "area": "মধ্যমগ্রামের",
@@ -6405,11 +6441,11 @@
           "source_language": "bn",
           "source_publisher": "TV9 Bangla",
           "source_relationship": "unknown",
-          "source_revision_id": "5da8b8980816f2a9640aef512b60425a48d26d645f4aa983b29431b6faac0794",
+          "source_revision_id": "d1d5c29c17056f54f5580b803c925259e76c6a280fad69491ad58639deab5651",
           "source_title": "Restaurants License Cancelled: খাবারে ফাংগাস, মিলেছে পোকা-মাকড়! ৫ নামী রেস্তরাঁর লাইসেন্স সাসপেন্ড, তালিকায় কোনগুলি? | West Bengal Food Safety Drive: Irregularities Found at 1,525 Food Centres, Licences of 13 Processing Units Cancelled | TV9 Bangla News",
           "source_type": "news",
           "source_url": "https://tv9bangla.com/kolkata/west-bengal-food-safety-drive-irregularities-found-at-1525-food-centres-licences-of-13-processing-units-cancelled-1343938.html",
-          "text_sha256": "5da8b8980816f2a9640aef512b60425a48d26d645f4aa983b29431b6faac0794",
+          "text_sha256": "d1d5c29c17056f54f5580b803c925259e76c6a280fad69491ad58639deab5651",
           "tier": "B"
         }
       ],
@@ -8971,11 +9007,17 @@
           "note": "Supporting source context revalidated; original evidence retained.",
           "previous_record_sha256": "be94ec7c7bb6ec29af8836f11633f0b32b030ed3a4810e3c9d64ec245ac78ac3",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-18T11:11:28.909125Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "a6e5d128155e75ee194563658dbaa19504b50c986983e44263f3a6b42b2f3bed",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-09-17T21:20:38.965756Z",
-      "last_successful_evidence_check_at": "2026-09-17T21:20:38.965756Z",
+      "last_source_checked_at": "2026-09-18T11:11:28.909125Z",
+      "last_successful_evidence_check_at": "2026-09-18T11:11:28.909125Z",
       "llm": {
         "fields_proposed": [],
         "llm_model": null,
@@ -8995,7 +9037,7 @@
       "record_class": "inspection_evidence",
       "record_created_at": "2026-09-07T21:12:32.942437Z",
       "record_scope": "unknown",
-      "record_updated_at": "2026-09-17T21:20:38.965756Z",
+      "record_updated_at": "2026-09-18T11:11:28.909125Z",
       "related_record_ids": [],
       "reported_fact": {
         "area": "সোদপুরের",
@@ -9054,11 +9096,11 @@
           "source_language": "bn",
           "source_publisher": "TV9 Bangla",
           "source_relationship": "unknown",
-          "source_revision_id": "5da8b8980816f2a9640aef512b60425a48d26d645f4aa983b29431b6faac0794",
+          "source_revision_id": "d1d5c29c17056f54f5580b803c925259e76c6a280fad69491ad58639deab5651",
           "source_title": "Restaurants License Cancelled: খাবারে ফাংগাস, মিলেছে পোকা-মাকড়! ৫ নামী রেস্তরাঁর লাইসেন্স সাসপেন্ড, তালিকায় কোনগুলি? | West Bengal Food Safety Drive: Irregularities Found at 1,525 Food Centres, Licences of 13 Processing Units Cancelled | TV9 Bangla News",
           "source_type": "news",
           "source_url": "https://tv9bangla.com/kolkata/west-bengal-food-safety-drive-irregularities-found-at-1525-food-centres-licences-of-13-processing-units-cancelled-1343938.html",
-          "text_sha256": "5da8b8980816f2a9640aef512b60425a48d26d645f4aa983b29431b6faac0794",
+          "text_sha256": "d1d5c29c17056f54f5580b803c925259e76c6a280fad69491ad58639deab5651",
           "tier": "B"
         }
       ],
@@ -10426,11 +10468,17 @@
           "note": "Supporting source context revalidated; original evidence retained.",
           "previous_record_sha256": "c2a7f130be8e56def88cc2e2e64196f326aa512e34bd48cb40d9648a8751e8b4",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-18T11:11:28.909125Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "881ab63354239f9240c9ce1cab8e244fc417a1be62d898917726441332beaf0a",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-09-17T21:20:38.965756Z",
-      "last_successful_evidence_check_at": "2026-09-17T21:20:38.965756Z",
+      "last_source_checked_at": "2026-09-18T11:11:28.909125Z",
+      "last_successful_evidence_check_at": "2026-09-18T11:11:28.909125Z",
       "llm": {
         "fields_proposed": [
           "area",
@@ -10455,7 +10503,7 @@
       "record_class": "inspection_evidence",
       "record_created_at": "2026-09-15T21:19:16.262489Z",
       "record_scope": "statewide_operation",
-      "record_updated_at": "2026-09-17T21:20:38.965756Z",
+      "record_updated_at": "2026-09-18T11:11:28.909125Z",
       "related_record_ids": [],
       "reported_fact": {
         "area": "রাজ্য জুড়ে",
@@ -10508,11 +10556,11 @@
           "source_language": "bn",
           "source_publisher": "TV9 Bangla",
           "source_relationship": "unknown",
-          "source_revision_id": "61f0f945f18eb90d5165f5da77c1bd06834e29e3729e784d7416bfaab26c3793",
+          "source_revision_id": "d47e992185fc2490e5ac3f1e46150137cdccb8acd7167feb5e4af43379a541ca",
           "source_title": "Restaurant License Cancelled: করিমস, ডেনজং-এর মতো ৪০ রেস্তোরাঁর লাইসেন্স বাতিল | 50 Restaurant's License Cancelled in West Bengal including some popular restaurants | TV9 Bangla News",
           "source_type": "news",
           "source_url": "https://tv9bangla.com/kolkata/50-restaurants-license-cancelled-in-west-bengal-including-some-popular-restaurants-1345015.html",
-          "text_sha256": "61f0f945f18eb90d5165f5da77c1bd06834e29e3729e784d7416bfaab26c3793",
+          "text_sha256": "d47e992185fc2490e5ac3f1e46150137cdccb8acd7167feb5e4af43379a541ca",
           "tier": "B"
         }
       ],
@@ -11861,11 +11909,17 @@
           "note": "Supporting source context revalidated; original evidence retained.",
           "previous_record_sha256": "6df8bfe660636c6373274def9f4b244bcf8c7893b12275c1cfebc2738d7bd82b",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-18T11:11:28.909125Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "f638ca1300bda184ac33352fbff7b2fc0c7c4be680852ac71145eb4dec765bc6",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-09-17T21:20:38.965756Z",
-      "last_successful_evidence_check_at": "2026-09-17T21:20:38.965756Z",
+      "last_source_checked_at": "2026-09-18T11:11:28.909125Z",
+      "last_successful_evidence_check_at": "2026-09-18T11:11:28.909125Z",
       "llm": {
         "fields_proposed": [],
         "llm_model": null,
@@ -11885,7 +11939,7 @@
       "record_class": "inspection_evidence",
       "record_created_at": "2026-09-07T21:12:32.942437Z",
       "record_scope": "unknown",
-      "record_updated_at": "2026-09-17T21:20:38.965756Z",
+      "record_updated_at": "2026-09-18T11:11:28.909125Z",
       "related_record_ids": [],
       "reported_fact": {
         "area": "সেক্টর থ্রি-র",
@@ -11944,11 +11998,11 @@
           "source_language": "bn",
           "source_publisher": "TV9 Bangla",
           "source_relationship": "unknown",
-          "source_revision_id": "5da8b8980816f2a9640aef512b60425a48d26d645f4aa983b29431b6faac0794",
+          "source_revision_id": "d1d5c29c17056f54f5580b803c925259e76c6a280fad69491ad58639deab5651",
           "source_title": "Restaurants License Cancelled: খাবারে ফাংগাস, মিলেছে পোকা-মাকড়! ৫ নামী রেস্তরাঁর লাইসেন্স সাসপেন্ড, তালিকায় কোনগুলি? | West Bengal Food Safety Drive: Irregularities Found at 1,525 Food Centres, Licences of 13 Processing Units Cancelled | TV9 Bangla News",
           "source_type": "news",
           "source_url": "https://tv9bangla.com/kolkata/west-bengal-food-safety-drive-irregularities-found-at-1525-food-centres-licences-of-13-processing-units-cancelled-1343938.html",
-          "text_sha256": "5da8b8980816f2a9640aef512b60425a48d26d645f4aa983b29431b6faac0794",
+          "text_sha256": "d1d5c29c17056f54f5580b803c925259e76c6a280fad69491ad58639deab5651",
           "tier": "B"
         }
       ],
