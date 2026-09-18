@@ -12,7 +12,7 @@ import yaml
 from pydantic import ValidationError
 
 from ..places.storage import write_json
-from .models import Config, FoodPOI, Snapshot, normalize
+from .models import Config, OSMFoodPOI, Snapshot, normalize
 
 RUNTIME = "data/osm-runtime"
 SNAPSHOT = "normalized_food_pois.json"
@@ -100,7 +100,7 @@ def make_poi(kind, identifier, tags, lat, lon, method, config, timestamp=None):
     if not food_category or not config.bbox.contains(lat, lon):
         return None
     try:
-        return FoodPOI(
+        return OSMFoodPOI(
             poi_id=f"osm:{kind}:{identifier}",
             provider_id=f"{kind}/{identifier}",
             osm_type=kind,

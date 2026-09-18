@@ -9,7 +9,7 @@ import yaml
 from pydantic import ValidationError
 
 from food_safety.food_pois.google import IDClient, resolve_ids
-from food_safety.food_pois.models import Enrichment, PublicData, Snapshot
+from food_safety.food_pois.models import Enrichment, FoodPOI, PublicData, Snapshot
 from food_safety.food_pois.osm import (
     category,
     download,
@@ -121,6 +121,29 @@ def test_normalized_identity_and_bad_coordinates(food_root):
     assert poi(food_root, lon=181) is None
     with pytest.raises(ValidationError):
         type(value).model_validate({**value.model_dump(), "provider": "google"})
+
+
+def test_provider_neutral_runtime_point_cannot_enter_osm_public_data(food_root):
+    point = FoodPOI(
+        poi_id="google:fixture",
+        provider="google",
+        provider_id="fixture",
+        latitude=22.5,
+        longitude=88.35,
+    )
+    assert point.provider == "google"
+    raw = snapshot(food_root).model_dump()
+    raw["pois"] = [point.model_dump()]
+    with pytest.raises(ValidationError):
+        Snapshot.model_validate(raw)
+    with pytest.raises(ValidationError):
+        FoodPOI(
+            poi_id="osm:node:1",
+            provider="google",
+            provider_id="fixture",
+            latitude=22.5,
+            longitude=88.35,
+        )
 
 
 def test_polygon_point_respects_holes_and_concavity():

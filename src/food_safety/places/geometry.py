@@ -141,13 +141,22 @@ def reverse_map(pandals, snapshots, at):
             zones = {zone_id} | (previous[1] if previous else set())
             latest = obs if not previous or obs.fetched_at > previous[0].fetched_at else previous[0]
             places[obs.place_id] = (latest, zones)
+    from ..food_pois.models import FoodPOI
     from ..food_pois.spatial import nearby_pairs
 
     mapped = []
-    points = [
-        {"id": pid, "latitude": obs.latitude, "longitude": obs.longitude}
-        for pid, (obs, _) in places.items()
-    ]
+    # This normalized provider-neutral view is ephemeral. The public Google
+    # contract below still publishes no coordinates or provider-derived names.
+    points = []
+    for pid, (obs, _) in places.items():
+        point = FoodPOI(
+            poi_id=f"google:{pid}",
+            provider="google",
+            provider_id=pid,
+            latitude=obs.latitude,
+            longitude=obs.longitude,
+        )
+        points.append({"id": pid, "latitude": point.latitude, "longitude": point.longitude})
     for pandal_id, pid, distance, _ in nearby_pairs(pandals, points):
         obs, zones = places[pid]
         mapped.append(

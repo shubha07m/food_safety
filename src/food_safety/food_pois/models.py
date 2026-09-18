@@ -93,15 +93,30 @@ class Config(Strict):
 
 
 class FoodPOI(Strict):
+    """Provider-neutral spatial identity; Google instances are runtime-only."""
+
     poi_id: str
-    provider: Literal["osm"] = "osm"
+    provider: Literal["osm", "google"]
     provider_id: str
-    osm_type: Literal["node", "way", "relation"]
-    osm_id: int = Field(gt=0)
     name: str | None = Field(default=None, min_length=1, max_length=500)
-    name_bn: str | None = Field(default=None, min_length=1, max_length=500)
     latitude: Latitude
     longitude: Longitude
+
+    @model_validator(mode="after")
+    def qualified_identity(self):
+        expected = f"{self.provider}:{self.provider_id.replace('/', ':')}"
+        if self.poi_id != expected:
+            raise ValueError("provider_identity_mismatch")
+        return self
+
+
+class OSMFoodPOI(FoodPOI):
+    """Durable OSM specialization; never accepts Google coordinate content."""
+
+    provider: Literal["osm"] = "osm"
+    osm_type: Literal["node", "way", "relation"]
+    osm_id: int = Field(gt=0)
+    name_bn: str | None = Field(default=None, min_length=1, max_length=500)
     category: str
     amenity: str | None = None
     shop: str | None = None
@@ -162,7 +177,7 @@ class Snapshot(Strict):
     license_url: Literal["https://opendatacommons.org/licenses/odbl/1-0/"] = LICENSE
     normalization_version: Literal[1] = 1
     diagnostics: dict[str, int] = Field(default_factory=dict)
-    pois: list[FoodPOI]
+    pois: list[OSMFoodPOI]
 
     @model_validator(mode="after")
     def unique(self):
