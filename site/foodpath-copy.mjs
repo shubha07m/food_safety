@@ -1,6 +1,19 @@
 import { bn, language } from './locale.mjs';
 
 const copy = {
+  'Snapshot date': 'মানচিত্রের তথ্যের তারিখ',
+  'OSM snapshot matches': 'সংরক্ষিত OSM তথ্যে মেলা জায়গা',
+  'Separate historical Google links follow the OSM list. Their current distance is unavailable; providers may describe the same place.': 'OSM তালিকার পরে Google-এর আগের খোঁজের লিঙ্ক আলাদা করে আছে। সেগুলির বর্তমান দূরত্ব জানা নেই; দুই উৎসে একই জায়গা থাকতে পারে।',
+  'Show more nearby food': 'কাছাকাছি আরও খাবারের জায়গা দেখুন',
+  'Unnamed food place': 'নাম নথিভুক্ত নেই এমন খাবারের জায়গা',
+  'Approximate straight-line distance': 'আনুমানিক সরলরেখার দূরত্ব',
+  'Food-place discovery from OpenStreetMap data.': 'OpenStreetMap-এর তথ্য থেকে খাবারের জায়গার তালিকা।',
+  'Download OSM-derived data': 'OSM-ভিত্তিক তথ্য ডাউনলোড করুন',
+  'Snapshot matches; straight-line distance is approximate, not a walking route. Listings may have changed.': 'সংরক্ষিত মানচিত্রের তথ্য অনুযায়ী তালিকা; সরলরেখার দূরত্ব আনুমানিক, হাঁটার পথ নয়। তথ্য বদলে থাকতে পারে।',
+  'No food places are mapped in this snapshot catchment. This does not mean none exist.': 'এই এলাকার সংরক্ষিত মানচিত্রে খাবারের জায়গা নথিভুক্ত নেই। এর অর্থ এই নয় যে এখানে খাবারের জায়গা নেই।',
+  'Nearby does not mean inspected, endorsed, or safety-rated.': 'কাছাকাছি মানেই পরিদর্শিত, অনুমোদিত বা খাদ্যসুরক্ষার মান নির্ধারিত নয়।',
+  'Restaurant': 'রেস্তরাঁ', 'Cafe': 'ক্যাফে', 'Fast food': 'ফাস্ট ফুড',
+  'Ice cream': 'আইসক্রিম', 'Food court': 'ফুড কোর্ট', 'Bakery': 'বেকারি', 'Confectionery': 'মিষ্টি ও মিষ্টান্ন',
   'Puja FoodPath': 'পুজো ফুডপাথ',
   'THE BENGAL FOODPATH · SHARODIYA EDITION': 'দ্য বেঙ্গল ফুডপাথ · শারদীয় সংস্করণ',
   'Find a pandal. Find nearby food.': 'মণ্ডপ খুঁজুন। কাছাকাছি খাবার খুঁজুন।',

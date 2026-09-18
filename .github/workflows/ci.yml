@@ -35,6 +35,7 @@ jobs:
           python -c "import os; assert os.environ['CONDA_DEFAULT_ENV'] == 'food'"
           python -m pip install -r requirements-dev.lock
           python -m pip install --no-deps --no-build-isolation -e .
+          python -m pip install --only-binary=:all: --no-deps osmium==4.3.1
       - name: Lint, fixture tests and public data validation
         run: |
           mkdir -p .cache

@@ -295,6 +295,9 @@ def build(root):
     build_browser_config(root)
     build_public(root)
     build_puja_public(root)
+    from .food_pois.pipeline import build_public as build_food_public
+
+    build_food_public(root)
     site = root / "site"
     site.mkdir(exist_ok=True)
     public = json.loads((root / "data/events.json").read_text())

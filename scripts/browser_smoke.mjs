@@ -25,7 +25,7 @@ let socket;
 let nextId = 0;
 const requests = new Map();
 const runtimeErrors = [];
-let mapScriptLoads = 0; let placesRequests = 0;
+let mapScriptLoads = 0; let placesRequests = 0; let osmRequests = 0;
 let intercept = false;
 const original = JSON.parse(readFileSync(resolve(root, 'site/data/events.json'), 'utf8'));
 const at = '2026-01-03T00:00:00Z';
@@ -101,6 +101,7 @@ try {
       const url = new URL(message.params.request.url);
       if (url.hostname === 'maps.googleapis.com' && url.pathname === '/maps/api/js') mapScriptLoads++;
       if (url.hostname === 'places.googleapis.com' || /searchNearby|place\/nearbysearch/.test(url.pathname)) placesRequests++;
+      if (url.hostname.endsWith('openstreetmap.org') || url.hostname.includes('overpass') || url.hostname === 'download.geofabrik.de') osmRequests++;
     }
     if (message.id) {
       const pending = requests.get(message.id);
@@ -160,17 +161,37 @@ try {
   await evaluate("document.getElementById('pandal-search').dispatchEvent(new KeyboardEvent('keydown',{key:'ArrowDown',bubbles:true})); document.getElementById('pandal-search').dispatchEvent(new KeyboardEvent('keydown',{key:'Enter',bubbles:true}))");
   assert.equal(await evaluate("document.getElementById('selected-pandal').hidden"), false);
   if (process.env.FOOD_LIVE_MAP_SMOKE === '1') assert.equal(mapScriptLoads, 1);
-  assert.equal(await evaluate("document.getElementById('selected-pandal').textContent.includes('Current distances are unavailable')"), true);
-  assert.equal(await evaluate("[...document.querySelectorAll('.restaurant-links a')].every(a => new URL(a.href).searchParams.has('query_place_id') && new URL(a.href).searchParams.has('query'))"), true);
+  const foodMode = JSON.parse(readFileSync(resolve(root, 'site/data/food_provider.json'), 'utf8')).provider;
+  if (foodMode !== 'google') {
+    assert.equal(await evaluate("document.getElementById('selected-pandal').textContent.includes('© OpenStreetMap contributors')"), true);
+    assert.equal(await evaluate("document.querySelectorAll('.restaurant-links li').length <= 15"), true);
+    assert.equal(await evaluate("!!document.querySelector('#selected-pandal a[href=\"data/osm_food.json\"]')"), true);
+    await evaluate("[...document.querySelectorAll('#selected-pandal button')].find(b => b.textContent === 'Show more nearby food')?.click()");
+    assert.equal(await evaluate("document.querySelectorAll('.restaurant-links li').length <= 30"), true);
+  } else {
+    assert.equal(await evaluate("document.getElementById('selected-pandal').textContent.includes('Current distances are unavailable')"), true);
+  }
+  assert.equal(await evaluate("[...document.querySelectorAll('.restaurant-links a')].every(a => new URL(a.href).hostname === 'www.google.com' && new URL(a.href).searchParams.has('query'))"), true);
   await delay(400);
   await evaluate("document.getElementById('puja').scrollIntoView({block:'start'})");
   await screenshot('puja-desktop', false);
+  if (foodMode !== 'google') {
+    await evaluate("document.getElementById('pandal-search').value='Ekdalia Evergreen'; document.getElementById('pandal-search').dispatchEvent(new Event('input')); document.getElementById('pandal-search').dispatchEvent(new KeyboardEvent('keydown',{key:'Enter',bubbles:true}))");
+    assert.equal(await evaluate("document.querySelector('.restaurant-links strong').textContent !== 'Restaurant on Google Maps'"), true);
+    assert.equal(await evaluate("document.getElementById('selected-pandal').textContent.includes('Approximate straight-line distance')"), true);
+    assert.equal(await evaluate("document.querySelectorAll('.restaurant-links li').length"), 15);
+    await screenshot('osm-food-desktop', false);
+  }
   await command('Emulation.setDeviceMetricsOverride', { width: 390, height: 844, deviceScaleFactor: 1, mobile: true });
   assert.equal(await evaluate('document.documentElement.scrollWidth <= window.innerWidth'), true);
   await evaluate("window.scrollTo(0,0)");
   await screenshot('puja-home-mobile', false);
   await evaluate("document.getElementById('puja').scrollIntoView({block:'start'})");
   await screenshot('puja-mobile', false);
+  if (foodMode !== 'google') {
+    await evaluate("document.getElementById('selected-pandal').scrollIntoView({block:'start'})");
+    await screenshot('osm-food-mobile', false);
+  }
   await command('Emulation.setEmulatedMedia', { features: [{ name: 'prefers-reduced-motion', value: 'reduce' }] });
   assert.equal(await evaluate("getComputedStyle(document.querySelector('.puja-hero-art img')).animationName"), 'none');
   await command('Emulation.setEmulatedMedia', { features: [] });
@@ -269,7 +290,8 @@ try {
   assert.equal(await evaluate("document.getElementById('record-detail').hidden"), true);
   assert.deepEqual(runtimeErrors, []);
   assert.equal(placesRequests, 0);
-  console.log(`Google map script loads: ${mapScriptLoads}; visitor Places requests: ${placesRequests}`);
+  assert.equal(osmRequests, 0);
+  console.log(`Google map script loads: ${mapScriptLoads}; visitor Places requests: ${placesRequests}; visitor OSM requests: ${osmRequests}`);
   assert.equal(JSON.parse(readFileSync(resolve(root, 'data/events.json'), 'utf8')).record_count, original.record_count);
   console.log('Browser smoke passed: desktop/mobile dataset state, policy pages, fixture rendering, chart/search filters, source links, XSS text handling, stable detail URL; no runtime exceptions.');
   console.log('Screenshots: .cache/browser-smoke/{zero-desktop,zero-mobile,synthetic-filter}.png');

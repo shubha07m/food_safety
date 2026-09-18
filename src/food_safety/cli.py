@@ -21,6 +21,20 @@ def main():
     sub = parser.add_subparsers(dest="command", required=True)
     for name in ["validate", "build", "pending", "migrate"]:
         sub.add_parser(name)
+    osm = sub.add_parser("osm", help="Operator-side regional food POI snapshots")
+    osm_sub = osm.add_subparsers(dest="osm_command", required=True)
+    for name in ["validate", "stats", "associate", "bakeoff"]:
+        osm_sub.add_parser(name)
+    osm_import = osm_sub.add_parser("import")
+    osm_import.add_argument("--source", type=Path, help="Existing local OSM PBF/XML extract")
+    osm_import.add_argument("--download", action="store_true")
+    osm_import.add_argument(
+        "--refresh", action="store_true", help="Explicitly replace cached download"
+    )
+    resolve = osm_sub.add_parser(
+        "resolve-google", help="Optional ID-only suggestions; no automatic links"
+    )
+    resolve.add_argument("--dry-run", action="store_true")
     places = sub.add_parser(
         "places", help="Explicit zone-first restaurant discovery; no map changes"
     )
@@ -91,7 +105,40 @@ def main():
     hold.add_argument("--replacement-id", help="Required for SUPERSEDED; must already be active")
     args = parser.parse_args()
     try:
-        if args.command == "places":
+        if args.command == "osm":
+            from .food_pois import osm as importer
+            from .food_pois import pipeline as food
+
+            if args.osm_command == "validate":
+                result = importer.load_config(ROOT).model_dump(mode="json")
+            elif args.osm_command == "import":
+                from importlib.util import find_spec
+
+                if find_spec("osmium") is None:
+                    parser.exit(
+                        1,
+                        "Install the optional parser first: "
+                        "python -m pip install 'osmium==4.3.1'\n",
+                    )
+                if args.refresh and not args.download:
+                    raise ValueError("refresh_requires_explicit_download")
+                acquisition = (
+                    importer.download(ROOT, refresh=args.refresh) if args.download else None
+                )
+                result = importer.import_snapshot(ROOT, args.source)
+                result["acquisition"] = acquisition
+            elif args.osm_command == "associate":
+                result = food.associate(ROOT)
+                food.build_public(ROOT)
+            elif args.osm_command == "stats":
+                result = food.stats(ROOT)
+            elif args.osm_command == "bakeoff":
+                result = food.bakeoff(ROOT)
+            else:
+                from .food_pois.google import resolve_ids
+
+                result = resolve_ids(ROOT, dry_run=args.dry_run)
+        elif args.command == "places":
             from .places.pipeline import run_command
 
             result = run_command(ROOT, args)

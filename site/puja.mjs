@@ -1,6 +1,7 @@
 import { safeExternal } from './data.mjs';
 import { language } from './locale.mjs';
 import { text } from './foodpath-copy.mjs';
+import { combineFood } from './nearby-food.mjs';
 
 export const FEATURED_IDS = ['bagbazar-sarbojanin'];
 const validID = value => typeof value === 'string' && /^[A-Za-z0-9_-]{1,255}$/.test(value);
@@ -82,7 +83,12 @@ export async function initPuja(onData = () => {}) {
       fetch('data/pandals.json', { credentials: 'omit' }),
     ]);
     if (!response.ok || !catalogResponse.ok) throw Error('Unavailable');
-    const data = parsePlaces(await response.json(), await catalogResponse.json());
+    let data = parsePlaces(await response.json(), await catalogResponse.json());
+    // Missing optional provider files preserve the existing Google-only contract.
+    const optional = async path => { try { const r = await fetch(path, { credentials: 'omit' }); return r.ok ? await r.json() : null; } catch { return null; } };
+    const policy = await optional('data/food_provider.json');
+    const osm = policy && policy.provider !== 'google' ? await optional('data/osm_food.json') : null;
+    data = combineFood(data, osm, policy);
     let matches = []; let active = -1;
     const close = () => { options.hidden = true; input.setAttribute('aria-expanded', 'false'); input.removeAttribute('aria-activedescendant'); active = -1; };
     const select = (p, updateURL = true) => {
@@ -108,31 +114,53 @@ export async function initPuja(onData = () => {}) {
       }
       selected.append(provenance);
       const rows = data.groups.get(p.pandal_id) || [];
-      const enrichment = discoveryState(p, data.discoveries.get(p.pandal_id), rows);
+      const osmAvailable = data.osmCoverage?.has(p.pandal_id);
+      const osmCount = rows.filter(r => r.provider === 'osm').length;
+      const googleCount = rows.length - osmCount;
+      const enrichment = osmAvailable ? (rows.length ? 'snapshot_nonzero' : 'snapshot_zero') : discoveryState(p, data.provider === 'osm' ? null : data.discoveries.get(p.pandal_id), rows);
       if (enrichment === 'unavailable' || enrichment === 'not_run') {
         selected.append(el('h4', text('Nearby food')), el('p', text('Restaurant discovery is not yet available for this pandal.'), 'notice'));
       } else {
-        selected.append(el('h4', `${text('Recorded restaurant links')} · ${rows.length}`), el('p', text(enrichment === 'stale' ? 'Restaurant discovery is awaiting refresh; historical links may still be shown.' : 'Historical discovery matches, not a current proximity guarantee. Current distances are unavailable.'), 'notice'));
-        const attribution = el('p', 'Google Maps', 'google-attribution'); attribution.translate = false; selected.append(attribution);
+        selected.append(el('h4', `${text('Nearby food')} · ${rows.length}`), el('p', text(osmAvailable ? 'Snapshot matches; straight-line distance is approximate, not a walking route. Listings may have changed.' : enrichment === 'stale' ? 'Restaurant discovery is awaiting refresh; historical links may still be shown.' : 'Historical discovery matches, not a current proximity guarantee. Current distances are unavailable.'), 'notice'));
+        if (osmAvailable) {
+          const attribution = el('p', text('Food-place discovery from OpenStreetMap data.') + ' ', 'fine-print');
+          const credit = el('a', '© OpenStreetMap contributors'); credit.href = 'https://www.openstreetmap.org/copyright'; credit.target = '_blank'; credit.rel = 'noopener noreferrer';
+          const download = el('a', text('Download OSM-derived data')); download.href = 'data/osm_food.json';
+          attribution.append(credit, document.createTextNode(' · '), download); selected.append(attribution);
+          selected.append(el('p', `${text('OSM snapshot matches')}: ${osmCount}`, 'fine-print'));
+        }
+        if (googleCount) {
+          const attribution = el('p', 'Google Maps', 'google-attribution'); attribution.translate = false; selected.append(attribution);
+          if (osmAvailable) selected.append(el('p', text('Separate historical Google links follow the OSM list. Their current distance is unavailable; providers may describe the same place.'), 'fine-print'));
+        }
         if (enrichment === 'current_zero') selected.append(el('p', text('A bounded discovery run found no durable associations. This does not mean there are no restaurants nearby.')));
+        if (enrichment === 'snapshot_zero') selected.append(el('p', text('No food places are mapped in this snapshot catchment. This does not mean none exist.')));
       }
+      selected.append(el('p', text('Nearby does not mean inspected, endorsed, or safety-rated.'), 'fine-print'));
       const list = el('ol', null, 'restaurant-links'); selected.append(list);
       let shown = 0;
-      const more = el('button', text('Show more restaurant links'), 'button secondary'); more.type = 'button';
+      const limit = data.displayLimit || 15;
+      const more = el('button', text('Show more nearby food'), 'button secondary'); more.type = 'button';
       const append = () => {
-        rows.slice(shown, shown + 20).forEach((row, i) => {
-          const li = el('li'); const copy = el('div'); copy.append(el('strong', row.name || text('Restaurant on Google Maps')));
-          if (row.at) copy.append(el('small', `${text('Discovery date')}: ${row.at}`));
+        rows.slice(shown, shown + limit).forEach((row, i) => {
+          const li = el('li'); const copy = el('div'); copy.append(el('strong', (language === 'bn' && row.name_bn) || row.name || text(row.provider === 'osm' ? 'Unnamed food place' : 'Restaurant on Google Maps')));
+          if (row.provider === 'osm') {
+            const category = { restaurant: 'Restaurant', cafe: 'Cafe', fast_food: 'Fast food', ice_cream: 'Ice cream', food_court: 'Food court', bakery: 'Bakery', confectionery: 'Confectionery' }[row.category];
+            copy.append(el('small', [text(category || row.category), row.cuisine?.replaceAll(';', ', ')].filter(Boolean).join(' · ')));
+            copy.append(el('small', `${Math.round(row.distance)} m · ${text('Approximate straight-line distance')}`));
+          }
+          const source = el('small', row.provider === 'osm' ? 'OpenStreetMap' : 'Google Maps'); source.translate = false; copy.append(source);
+          if (row.at) copy.append(el('small', `${text(row.provider === 'osm' ? 'Snapshot date' : 'Discovery date')}: ${row.at}`));
           const a = el('a', text('Open in Google Maps ↗'), 'button secondary'); a.href = row.url; a.target = '_blank'; a.rel = 'noopener noreferrer'; a.setAttribute('aria-label', `${a.textContent} — ${row.name || shown + i + 1}`);
           li.append(copy, a); list.append(li);
         });
-        shown += 20; more.hidden = shown >= rows.length;
+        shown += limit; more.hidden = shown >= rows.length;
       };
       more.addEventListener('click', append); selected.append(more); append();
       if (updateURL) { const url = new URL(location.href); url.searchParams.set('pandal', p.pandal_id); url.hash = 'puja'; history.replaceState(null, '', url); }
       status.textContent = enrichment === 'unavailable' || enrichment === 'not_run'
         ? `${input.value} · ${text('Restaurant enrichment pending')}`
-        : `${input.value} · ${rows.length} ${text('Recorded restaurant links')}`;
+        : `${input.value} · ${rows.length} ${text('Nearby food')}`;
     };
     const update = () => {
       matches = searchPandals(data.index, input.value); active = -1; options.replaceChildren();

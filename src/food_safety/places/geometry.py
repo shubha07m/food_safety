@@ -141,21 +141,23 @@ def reverse_map(pandals, snapshots, at):
             zones = {zone_id} | (previous[1] if previous else set())
             latest = obs if not previous or obs.fetched_at > previous[0].fetched_at else previous[0]
             places[obs.place_id] = (latest, zones)
+    from ..food_pois.spatial import nearby_pairs
+
     mapped = []
-    for pandal in pandals:
-        if not pandal.enabled:
-            continue
-        for pid, (obs, zones) in places.items():
-            distance = distance_m(pandal.latitude, pandal.longitude, obs.latitude, obs.longitude)
-            if distance <= pandal.restaurant_radius_m:
-                mapped.append(
-                    {
-                        "pandal_id": pandal.pandal_id,
-                        "place_id": pid,
-                        "distance_m": round(distance, 1),
-                        "source_zone_ids": sorted(zones),
-                        "fetched_at": obs.fetched_at.isoformat(),
-                        "expires_at": obs.expires_at.isoformat(),
-                    }
-                )
+    points = [
+        {"id": pid, "latitude": obs.latitude, "longitude": obs.longitude}
+        for pid, (obs, _) in places.items()
+    ]
+    for pandal_id, pid, distance, _ in nearby_pairs(pandals, points):
+        obs, zones = places[pid]
+        mapped.append(
+            {
+                "pandal_id": pandal_id,
+                "place_id": pid,
+                "distance_m": round(distance, 1),
+                "source_zone_ids": sorted(zones),
+                "fetched_at": obs.fetched_at.isoformat(),
+                "expires_at": obs.expires_at.isoformat(),
+            }
+        )
     return sorted(mapped, key=lambda m: (m["pandal_id"], m["distance_m"], m["place_id"]))
