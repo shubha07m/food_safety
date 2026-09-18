@@ -2,6 +2,37 @@
 const osmID = /^osm:(node|way|relation):[1-9][0-9]*$/;
 const googleID = /^[A-Za-z0-9_-]{1,255}$/;
 const categories = new Set(['restaurant', 'cafe', 'fast_food', 'ice_cream', 'food_court', 'bakery', 'confectionery']);
+export const INITIAL_FOOD_LIMIT = 12;
+export const MAX_FOOD_LIMIT = 20;
+const normalizedName = value => String(value || '').normalize('NFC').trim().replace(/\s+/g, ' ').toLowerCase();
+const compareText = (a, b) => a < b ? -1 : a > b ? 1 : 0;
+export function mappedPandal(p) {
+  return p.enabled !== false && !!p.coordinate_source && Number.isFinite(p.latitude) && Number.isFinite(p.longitude)
+    && Math.abs(p.latitude) <= 90 && Math.abs(p.longitude) <= 180;
+}
+export function publicFood(data, pandal) {
+  const all = data.groups.get(pandal.pandal_id) || [];
+  const seen = new Set();
+  const named = mappedPandal(pandal) ? all.filter(row => row.provider === 'osm' && osmID.test(row.id)
+    && typeof row.name === 'string' && /\p{L}/u.test(row.name)
+    && !['unnamed', 'unknown', 'n/a', 'no name', 'unnamed food place', 'restaurant on google maps'].includes(normalizedName(row.name))
+    && Number.isFinite(row.distance) && row.distance >= 0)
+    .sort((a, b) => a.distance - b.distance || compareText(normalizedName(a.name), normalizedName(b.name)) || compareText(a.id, b.id))
+    .filter(row => { if (seen.has(row.id)) return false; seen.add(row.id); return true; }) : [];
+  return { rows: named.slice(0, MAX_FOOD_LIMIT), named_public_count: Math.min(named.length, MAX_FOOD_LIMIT),
+    named_snapshot_count: named.length,
+    historical_google_association_count: data.historicalGoogleCounts?.get(pandal.pandal_id)
+      ?? new Set(all.filter(r => r.provider !== 'osm').map(r => r.id)).size };
+}
+export function foodGeography(data) {
+  return data.pandals.filter(mappedPandal).map(pandal => ({ pandal, count: publicFood(data, pandal).named_snapshot_count }))
+    .sort((a, b) => compareText(normalizedName(a.pandal.name), normalizedName(b.pandal.name)) || compareText(a.pandal.pandal_id, b.pandal.pandal_id));
+}
+export function pandalFoodURL(pandal) {
+  if (!mappedPandal(pandal)) return null;
+  const query = `restaurants near ${pandal.latitude.toFixed(7)},${pandal.longitude.toFixed(7)}`;
+  return `https://www.google.com/maps/search/?${new URLSearchParams({ api: '1', query })}`;
+}
 export function osmMapsURL(poi, placeID = null) {
   if (!osmID.test(poi.poi_id) || !Number.isFinite(poi.latitude) || !Number.isFinite(poi.longitude)
     || Math.abs(poi.latitude) > 90 || Math.abs(poi.longitude) > 180) return null;
@@ -14,7 +45,8 @@ export function osmMapsURL(poi, placeID = null) {
 export function combineFood(legacy, osm, policy) {
   if (!policy || policy.schema_version !== 'food-provider-1' || !['osm', 'google', 'hybrid'].includes(policy.provider)) return legacy;
   const mode = policy.provider;
-  const result = { ...legacy, provider: mode, displayLimit: Math.max(10, Math.min(15, policy.initial_display_limit || 15)), osmCoverage: new Map() };
+  const result = { ...legacy, provider: mode, displayLimit: Math.max(10, Math.min(15, policy.initial_display_limit || 15)), osmCoverage: new Map(),
+    historicalGoogleCounts: new Map([...legacy.groups].map(([id, rows]) => [id, new Set(rows.map(r => r.id)).size])) };
   if (mode === 'google') return result;
   if (!osm || osm.schema_version !== 'food-osm-1' || osm.license !== 'ODbL-1.0'
     || osm.attribution_url !== 'https://www.openstreetmap.org/copyright'

@@ -87,7 +87,7 @@ class Enrichment(Strict):
 
 class Config(Strict):
     provider: Literal["osm", "google", "hybrid"] = "google"
-    initial_display_limit: int = Field(default=15, ge=10, le=15)
+    initial_display_limit: int = Field(default=12, ge=10, le=15)
     osm: OSMConfig
     google_enrichment: Enrichment = Field(default_factory=Enrichment)
 

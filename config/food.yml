@@ -1,6 +1,6 @@
 # Provider choice is evaluated with `osm bakeoff`; Google remains intact.
 provider: hybrid
-initial_display_limit: 15
+initial_display_limit: 12
 osm:
   enabled: true
   source_url: https://download.geofabrik.de/asia/india/eastern-zone-latest.osm.pbf

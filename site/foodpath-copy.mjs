@@ -1,6 +1,18 @@
 import { bn, language } from './locale.mjs';
 
 const copy = {
+  'Nearby food comes from a dated independent snapshot—not recommendations, inspections, or safety ratings.': 'কাছাকাছি খাবারের তালিকা নির্দিষ্ট তারিখের স্বাধীন উৎসের তথ্য থেকে—সুপারিশ, পরিদর্শন বা খাদ্যসুরক্ষার মান নির্ধারণ নয়।',
+  'Food around the festival': 'পুজোর পথে খাবারের খোঁজ',
+  'Named snapshot places by pandal catchment—not rankings. The same place may appear near more than one pandal.': 'মণ্ডপের কাছাকাছি নামসহ নথিভুক্ত খাবারের জায়গা—র‌্যাঙ্কিং নয়। একই জায়গা একাধিক মণ্ডপের কাছে থাকতে পারে।',
+  'named nearby food places': 'নামসহ কাছাকাছি খাবারের জায়গা',
+  'named places from the current OpenStreetMap snapshot': 'নামসহ খাবারের জায়গা বর্তমান OpenStreetMap তথ্য থেকে',
+  'Named listings pending': 'নামসহ খাবারের তালিকা এখনও নেই',
+  'Named nearby food listings are not yet available from the current independent data snapshot.': 'বর্তমান স্বাধীন উৎসের তথ্য থেকে কাছাকাছি নামসহ খাবারের তালিকা এখনও পাওয়া যায়নি।',
+  'Explore restaurants around this pandal on Google Maps ↗': 'এই মণ্ডপের কাছাকাছি রেস্তরাঁ Google Maps-এ খুঁজুন ↗',
+  'Showing the nearest 20 named places; this is not a quality ranking.': 'কাছের ২০টি নামসহ জায়গা দেখানো হচ্ছে; এটি গুণমানের র‌্যাঙ্কিং নয়।',
+  'Food-place data': 'খাবারের জায়গার তথ্য',
+  'Nearby is not a recommendation, inspection, or safety rating.': 'কাছাকাছি মানেই সুপারিশ, পরিদর্শন বা খাদ্যসুরক্ষার মান নির্ধারণ নয়।',
+  'Live map is temporarily unavailable. You can still browse the lists and search.': 'সরাসরি মানচিত্র আপাতত পাওয়া যাচ্ছে না। তালিকা দেখা ও খোঁজা চালিয়ে যেতে পারেন।',
   'Snapshot date': 'মানচিত্রের তথ্যের তারিখ',
   'OSM snapshot matches': 'সংরক্ষিত OSM তথ্যে মেলা জায়গা',
   'Separate historical Google links follow the OSM list. Their current distance is unavailable; providers may describe the same place.': 'OSM তালিকার পরে Google-এর আগের খোঁজের লিঙ্ক আলাদা করে আছে। সেগুলির বর্তমান দূরত্ব জানা নেই; দুই উৎসে একই জায়গা থাকতে পারে।',

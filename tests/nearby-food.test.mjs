@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { combineFood, osmMapsURL } from '../site/nearby-food.mjs';
+import { combineFood, osmMapsURL, publicFood, foodGeography, pandalFoodURL, INITIAL_FOOD_LIMIT, MAX_FOOD_LIMIT } from '../site/nearby-food.mjs';
 
 const poi = (id = 1, name = 'মিত্র Cafe & Food') => ({ poi_id: `osm:node:${id}`, provider: 'osm', osm_type: 'node', osm_id: id,
   name, latitude: 22.5, longitude: 88.35, category: 'cafe', cuisine: 'regional;indian', source_url: `https://www.openstreetmap.org/node/${id}` });
@@ -44,4 +44,46 @@ test('invalid provenance, wrong snapshot, malformed catchment fail rather than r
   assert.throws(() => combineFood(legacy(), data2, policy('osm')), /Invalid OSM/);
   const data3 = fixture(); data3.associations[0].distance_m = 601;
   assert.throws(() => combineFood(legacy(), data3, policy('osm')), /catchment/);
+});
+
+const mapped = (id = 'p') => ({ pandal_id: id, name: id, latitude: 22.5, longitude: 88.35, coordinate_source: 'https://www.openstreetmap.org/node/123' });
+test('presentation filters anonymous/Google rows without deleting retained associations', () => {
+  const combined = combineFood(legacy(), fixture(), policy('hybrid'));
+  const before = JSON.stringify([...combined.groups]);
+  const visible = publicFood(combined, mapped());
+  assert.equal(visible.named_public_count, 1); assert.equal(visible.historical_google_association_count, 1);
+  assert.equal(visible.rows[0].name, 'মিত্র Cafe & Food'); assert.equal(visible.rows[0].category, 'cafe');
+  assert.equal(visible.rows[0].cuisine, 'regional;indian'); assert.equal(visible.rows[0].distance, 100);
+  assert.ok(visible.rows[0].url.startsWith('https://www.google.com/maps/search/?'));
+  assert.equal(JSON.stringify([...combined.groups]), before);
+});
+test('public named list caps at twenty; stable distance/name/ID ordering and distinct counts', () => {
+  const rows = Array.from({ length: 35 }, (_, i) => ({ id: `osm:node:${i + 1}`, provider: 'osm', name: `Cafe ${i}`, distance: 100 - i }));
+  const data = { pandals: [mapped()], groups: new Map([['p', [...rows, rows[0]]]]) };
+  const result = publicFood(data, mapped());
+  assert.equal(INITIAL_FOOD_LIMIT, 12); assert.equal(MAX_FOOD_LIMIT, 20);
+  assert.equal(result.named_public_count, 20); assert.equal(result.named_snapshot_count, 35);
+  assert.equal(result.rows[0].id, 'osm:node:35'); assert.equal(result.rows.at(-1).id, 'osm:node:16');
+  assert.equal(foodGeography(data)[0].count, 35);
+  rows[0].distance = rows[1].distance = 0; rows[0].name = ' zed '; rows[1].name = 'Alpha';
+  assert.equal(publicFood(data, mapped()).rows[0].id, rows[1].id);
+});
+test('geography counts shared POIs per pandal, excludes unmapped, and does not rank by count', () => {
+  const row = { id: 'osm:node:1', provider: 'osm', name: 'Shared cafe', distance: 100 };
+  const data = { pandals: [mapped('z'), mapped('a'), { pandal_id: 'unmapped' }], groups: new Map([['a', [row, row]], ['z', [row]]]) };
+  assert.deepEqual(foodGeography(data).map(x => [x.pandal.pandal_id, x.count]), [['a', 1], ['z', 1]]);
+});
+test('sparse mapped pandal gets a keyless neighbourhood search, never a fabricated place ID', () => {
+  const url = new URL(pandalFoodURL(mapped()));
+  assert.equal(url.searchParams.get('query'), 'restaurants near 22.5000000,88.3500000');
+  assert.equal(url.searchParams.get('api'), '1'); assert.equal(url.searchParams.get('query_place_id'), null);
+  assert.equal(url.searchParams.get('key'), null);
+  assert.equal(pandalFoodURL({ ...mapped(), coordinate_source: null }), null);
+  assert.equal(pandalFoodURL({ pandal_id: 'missing' }), null);
+  assert.equal(pandalFoodURL({ ...mapped(), latitude: 91 }), null);
+});
+test('empty, placeholder or non-OSM names cannot become public food rows', () => {
+  const rows = ['', ' ', 'Unknown', 'Unnamed', '???', 'Restaurant on Google Maps'].map((name, i) => ({ id: `osm:node:${i + 1}`, provider: 'osm', name, distance: 1 }));
+  rows.push({ id: 'google', provider: 'google', name: 'Not an accepted durable source here', distance: 1 });
+  assert.equal(publicFood({ groups: new Map([['p', rows]]) }, mapped()).named_public_count, 0);
 });

@@ -74,15 +74,28 @@ Distances mean approximate straight-line distance, not walking distance.
 
 `config/food.yml: provider` accepts:
 
-- `google`: original durable Google dataset and generic labels; rollback path.
+- `google`: original durable Google dataset for operator comparison/rollback.
 - `osm`: only OSM-derived snapshot matches.
-- `hybrid`: OSM snapshot matches first, original Google links afterward.
+- `hybrid`: both provider datasets retained; public individual rows use named OSM records only.
 
-Google links are suppressed as duplicates only for explicitly verified identity
-links. Unresolved providers can represent the same venue; proximity alone never
-establishes equivalence. OSM-first ordering is provider presentation, not a quality
-ranking. Within each OSM list, distance ordering is deterministic. The first 15
-items render initially; “Show more nearby food” adds another 15.
+Provider identity links remain explicit: proximity alone never establishes
+equivalence. Google IDs and historical associations remain intact for diagnostics,
+future matching and selective enrichment, but anonymous Google records are not
+individual public list items. Missing or placeholder OSM names are also omitted.
+
+The public list sorts named OSM records by approximate straight-line distance,
+normalized name and stable ID. It starts with 12 rows and stops at 20 even after
+“Show more nearby food.” The visible count describes the bounded named list, not
+Google associations; where there are more than 20, the UI states that it shows
+the nearest 20. Internal `named_public_count`, `named_snapshot_count` and
+`historical_google_association_count` are distinct.
+
+With no named results, a mapped pandal gets one keyless Google Maps neighbourhood
+search link, not a restaurant record or a claim that no restaurants exist.
+Unmapped pandals get no false proximity handoff. Alphabetical festival-food chips
+count distinct named POI IDs per catchment (including legitimate cross-pandal
+overlap) and use the same selection state as search/map markers. Food Safety area
+pills remain in `?module=safety`, not on the Puja homepage.
 
 Run `osm bakeoff` before changing the default. It compares five existing 600 m
 catchments using only unexpired Google coordinate observations, without new Google
@@ -177,7 +190,10 @@ No food listing implies recommendation, inspection, endorsement or safety.
 
 Builds use the committed OSM subset, never a silently newer local runtime snapshot.
 Re-association is deterministic from that snapshot plus current sourced pandal
-coordinates. To roll back the list, set `provider: google` and build; existing
-Google IDs/associations have not been deleted. Google saturation-aware Nearby Search
+coordinates. Set `provider: google` and build to use only the retained Google
+dataset for operator comparison. This does not restore anonymous public rows:
+the named-only presentation policy is independent of provider selection. Restoring
+the former presentation would require an explicit UI rollback. Existing Google
+IDs/associations have not been deleted. Google saturation-aware Nearby Search
 remains an explicit operator comparison/selective-discovery option, not a build
 side effect. No ordinary page request or build triggers enrichment.

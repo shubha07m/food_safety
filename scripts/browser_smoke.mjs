@@ -26,7 +26,14 @@ let nextId = 0;
 const requests = new Map();
 const runtimeErrors = [];
 let mapScriptLoads = 0; let placesRequests = 0; let osmRequests = 0;
-let intercept = false;
+let intercept = false; let foodFixture = false;
+const osmFixture = JSON.parse(readFileSync(resolve(root, 'site/data/osm_food.json'), 'utf8'));
+const template = osmFixture.pois.find(p => p.name);
+osmFixture.pois = Array.from({ length: 30 }, (_, i) => ({ ...template,
+  poi_id: `osm:node:${900000 + i}`, osm_type: 'node', osm_id: 900000 + i,
+  name: `Fixture food ${i}`, source_url: `https://www.openstreetmap.org/node/${900000 + i}` }));
+osmFixture.associations = osmFixture.pois.map((p, i) => ({ pandal_id: 'bagbazar-sarbojanin',
+  poi_id: p.poi_id, provider: 'osm', distance_m: i + 1, source_snapshot: osmFixture.snapshot_id }));
 const original = JSON.parse(readFileSync(resolve(root, 'site/data/events.json'), 'utf8'));
 const at = '2026-01-03T00:00:00Z';
 const makeRow = (id, area, name) => ({
@@ -113,10 +120,12 @@ try {
     if (message.method === 'Runtime.consoleAPICalled' && message.params.type === 'error') runtimeErrors.push(message.params.args.map(arg => arg.description || arg.value));
     if (message.method === 'Fetch.requestPaused') {
       const { requestId, request } = message.params;
-      if (intercept && new URL(request.url).pathname === '/data/events.json') {
+      const payload = foodFixture && new URL(request.url).pathname === '/data/osm_food.json'
+        ? osmFixture : intercept && new URL(request.url).pathname === '/data/events.json' ? fixtureData : null;
+      if (payload) {
         await command('Fetch.fulfillRequest', { requestId, responseCode: 200,
           responseHeaders: [{ name: 'Content-Type', value: 'application/json' }],
-          body: Buffer.from(JSON.stringify(fixtureData)).toString('base64') });
+          body: Buffer.from(JSON.stringify(payload)).toString('base64') });
       } else await command('Fetch.continueRequest', { requestId });
     }
   };
@@ -164,13 +173,12 @@ try {
   const foodMode = JSON.parse(readFileSync(resolve(root, 'site/data/food_provider.json'), 'utf8')).provider;
   if (foodMode !== 'google') {
     assert.equal(await evaluate("document.getElementById('selected-pandal').textContent.includes('© OpenStreetMap contributors')"), true);
-    assert.equal(await evaluate("document.querySelectorAll('.restaurant-links li').length <= 15"), true);
-    assert.equal(await evaluate("!!document.querySelector('#selected-pandal a[href=\"data/osm_food.json\"]')"), true);
-    await evaluate("[...document.querySelectorAll('#selected-pandal button')].find(b => b.textContent === 'Show more nearby food')?.click()");
-    assert.equal(await evaluate("document.querySelectorAll('.restaurant-links li').length <= 30"), true);
-  } else {
-    assert.equal(await evaluate("document.getElementById('selected-pandal').textContent.includes('Current distances are unavailable')"), true);
   }
+  assert.equal(await evaluate("document.querySelectorAll('.restaurant-links li').length"), 0);
+  assert.equal(await evaluate("document.querySelectorAll('[data-food-search]').length"), 1);
+  assert.equal(await evaluate("document.querySelector('.area-summary').hidden"), true);
+  assert.equal(await evaluate("document.getElementById('festival-food-geography').hidden"), false);
+  assert.equal(await evaluate("document.querySelectorAll('[data-food-pandal]').length"), 14);
   assert.equal(await evaluate("[...document.querySelectorAll('.restaurant-links a')].every(a => new URL(a.href).hostname === 'www.google.com' && new URL(a.href).searchParams.has('query'))"), true);
   await delay(400);
   await evaluate("document.getElementById('puja').scrollIntoView({block:'start'})");
@@ -179,11 +187,35 @@ try {
     await evaluate("document.getElementById('pandal-search').value='Ekdalia Evergreen'; document.getElementById('pandal-search').dispatchEvent(new Event('input')); document.getElementById('pandal-search').dispatchEvent(new KeyboardEvent('keydown',{key:'Enter',bubbles:true}))");
     assert.equal(await evaluate("document.querySelector('.restaurant-links strong').textContent !== 'Restaurant on Google Maps'"), true);
     assert.equal(await evaluate("document.getElementById('selected-pandal').textContent.includes('Approximate straight-line distance')"), true);
-    assert.equal(await evaluate("document.querySelectorAll('.restaurant-links li').length"), 15);
+    assert.equal(await evaluate("document.querySelectorAll('.restaurant-links li').length"), 12);
+    assert.equal(await evaluate("document.getElementById('nearby-food-count').textContent.startsWith('13 named')"), true);
+    await evaluate("document.querySelector('[data-food-more]').click()");
+    assert.equal(await evaluate("document.querySelectorAll('.restaurant-links li').length"), 13);
+    assert.equal(await evaluate("document.querySelector('[data-food-more]').hidden"), true);
+    assert.equal(await evaluate("document.getElementById('selected-pandal').textContent.includes('Restaurant on Google Maps')"), false);
+    assert.equal(await evaluate("[...document.querySelectorAll('.restaurant-links a')].every(a => new URL(a.href).searchParams.has('query'))"), true);
     await screenshot('osm-food-desktop', false);
+    await evaluate("window.lastFoodFocus=null; document.addEventListener('foodpath-focus-pandal', e => window.lastFoodFocus=e.detail)");
+    for (const [name, count] of [['Singhi Park', 18], ['Deshapriya Park', 13]]) {
+      await evaluate(`[...document.querySelectorAll('[data-food-pandal]')].find(b => b.textContent.includes(${JSON.stringify(name)})).click()`);
+      assert.equal(await evaluate(`document.getElementById('selected-pandal-title').textContent.includes(${JSON.stringify(name)})`), true);
+      assert.equal(await evaluate(`document.getElementById('nearby-food-count').textContent.startsWith('${count} named')`), true);
+      assert.equal(await evaluate("document.querySelector('[data-food-pandal][aria-pressed=true]').dataset.foodPandal === new URL(location.href).searchParams.get('pandal')"), true);
+      assert.equal(await evaluate("window.lastFoodFocus === new URL(location.href).searchParams.get('pandal')"), true);
+    }
+    // The map host dispatches this same selection event; no separate food state.
+    await evaluate("document.dispatchEvent(new CustomEvent('foodpath-select-pandal',{detail:'bagbazar-sarbojanin'}))");
+    assert.equal(await evaluate("document.getElementById('selected-pandal-title').textContent.includes('Bagbazar')"), true);
+    await evaluate("document.getElementById('pandal-search').value='Naktala'; document.getElementById('pandal-search').dispatchEvent(new Event('input')); document.getElementById('pandal-search').dispatchEvent(new KeyboardEvent('keydown',{key:'Enter',bubbles:true}))");
+    assert.equal(await evaluate("document.querySelectorAll('.restaurant-links li').length"), 0);
+    assert.equal(await evaluate("document.querySelectorAll('[data-food-search]').length"), 1);
+    await evaluate("[...document.querySelectorAll('[data-food-pandal]')].find(b => b.textContent.includes('Ekdalia')).click()");
   }
   await command('Emulation.setDeviceMetricsOverride', { width: 390, height: 844, deviceScaleFactor: 1, mobile: true });
   assert.equal(await evaluate('document.documentElement.scrollWidth <= window.innerWidth'), true);
+  await evaluate("document.getElementById('festival-food-geography').scrollIntoView({block:'start'})");
+  await screenshot('festival-food-mobile', false);
+  assert.equal(await evaluate("[...document.querySelectorAll('[data-food-pandal]')].every(b => b.getBoundingClientRect().right <= innerWidth)"), true);
   await evaluate("window.scrollTo(0,0)");
   await screenshot('puja-home-mobile', false);
   await evaluate("document.getElementById('puja').scrollIntoView({block:'start'})");
@@ -201,6 +233,20 @@ try {
   assert.equal(await evaluate("document.getElementById('selected-pandal-title').textContent.includes('Bagbazar')"), true);
   await evaluate("document.getElementById('pandal-search').value='Shibpur Sastitala'; document.getElementById('pandal-search').dispatchEvent(new Event('input')); document.getElementById('pandal-search').dispatchEvent(new KeyboardEvent('keydown',{key:'Enter',bubbles:true}))");
   assert.equal(await evaluate("document.getElementById('selected-pandal').textContent.includes('Map location is not yet independently verified.')"), true);
+  assert.equal(await evaluate("document.querySelectorAll('[data-food-search], .restaurant-links li').length"), 0);
+  if (foodMode !== 'google') {
+    foodFixture = true;
+    await command('Fetch.enable', { patterns: [{ urlPattern: '*data/osm_food.json*' }] });
+    await command('Page.navigate', { url: 'http://127.0.0.1:8000/?pandal=bagbazar-sarbojanin' });
+    await waitFor("document.querySelectorAll('.restaurant-links li').length === 12");
+    assert.equal(await evaluate("document.getElementById('nearby-food-count').textContent.startsWith('20 named')"), true);
+    await evaluate("document.querySelector('[data-food-more]').click(); document.querySelector('[data-food-more]').click()");
+    assert.equal(await evaluate("document.querySelectorAll('.restaurant-links li').length"), 20);
+    assert.equal(await evaluate("document.querySelector('[data-food-more]').hidden"), true);
+    assert.equal(await evaluate("document.getElementById('selected-pandal').textContent.includes('nearest 20')"), true);
+    foodFixture = false;
+    await command('Fetch.disable');
+  }
   await command('Page.navigate', { url: 'http://127.0.0.1:8000/?lang=bn#puja' });
   await waitFor("document.querySelectorAll('#featured-pandals button').length > 0");
   await evaluate("document.getElementById('pandal-search').value='বাগবাজার'; document.getElementById('pandal-search').dispatchEvent(new Event('input')); document.getElementById('pandal-search').dispatchEvent(new KeyboardEvent('keydown',{key:'Escape'}))");
@@ -214,6 +260,8 @@ try {
   assert.equal(await evaluate("document.getElementById('dashboard-view').hidden"), false);
   assert.equal(await evaluate("document.body.classList.contains('safety-route')"), true);
   assert.equal(await evaluate("document.getElementById('puja').hidden"), true);
+  assert.equal(await evaluate("document.querySelector('.area-summary').hidden"), false);
+  assert.equal(await evaluate("document.getElementById('festival-food-geography').hidden"), true);
   assert.equal(await evaluate("document.getElementById('phase1-help').textContent.includes('Submission form coming shortly')"), true);
   // README preview is captured from the Puja homepage above.
   await evaluate("document.querySelector('.map-panel').scrollIntoView({block:'start'})");

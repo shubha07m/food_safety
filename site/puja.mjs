@@ -1,7 +1,7 @@
 import { safeExternal } from './data.mjs';
 import { language } from './locale.mjs';
 import { text } from './foodpath-copy.mjs';
-import { combineFood } from './nearby-food.mjs';
+import { combineFood, publicFood, foodGeography, pandalFoodURL, INITIAL_FOOD_LIMIT } from './nearby-food.mjs';
 
 export const FEATURED_IDS = ['bagbazar-sarbojanin'];
 const validID = value => typeof value === 'string' && /^[A-Za-z0-9_-]{1,255}$/.test(value);
@@ -72,6 +72,48 @@ function el(tag, value, className) {
   if (className) item.className = className;
   return item;
 }
+function renderFood(selected, data, pandal) {
+  const info = publicFood(data, pandal);
+  const rows = info.rows;
+  selected.append(el('h4', text('Nearby food')));
+  if (rows.length) {
+    const count = el('p', `${info.named_public_count} ${text('named places from the current OpenStreetMap snapshot')}`);
+    count.id = 'nearby-food-count'; selected.append(count);
+    if (info.named_snapshot_count > rows.length) selected.append(el('p', text('Showing the nearest 20 named places; this is not a quality ranking.'), 'fine-print'));
+  } else {
+    selected.append(el('p', text('Named nearby food listings are not yet available from the current independent data snapshot.'), 'notice'));
+    const url = pandalFoodURL(pandal);
+    if (url) {
+      const link = el('a', text('Explore restaurants around this pandal on Google Maps ↗'), 'button secondary');
+      link.href = url; link.target = '_blank'; link.rel = 'noopener noreferrer'; link.dataset.foodSearch = '';
+      selected.append(link);
+    } else selected.append(el('p', text('Restaurant discovery is not yet available for this pandal.'), 'fine-print'));
+  }
+  const list = el('ol', null, 'restaurant-links'); selected.append(list);
+  let shown = 0;
+  const more = el('button', text('Show more nearby food'), 'button secondary'); more.type = 'button'; more.dataset.foodMore = '';
+  const append = () => {
+    for (const row of rows.slice(shown, shown + INITIAL_FOOD_LIMIT)) {
+      const li = el('li'); const copy = el('div');
+      copy.append(el('strong', (language === 'bn' && row.name_bn?.trim()) || row.name));
+      const category = { restaurant: 'Restaurant', cafe: 'Cafe', fast_food: 'Fast food', ice_cream: 'Ice cream', food_court: 'Food court', bakery: 'Bakery', confectionery: 'Confectionery' }[row.category];
+      copy.append(el('small', [text(category || row.category), row.cuisine?.replaceAll(';', ', ')].filter(Boolean).join(' · ')));
+      copy.append(el('small', `${Math.round(row.distance)} m · ${text('Approximate straight-line distance')}`));
+      const link = el('a', text('Open in Google Maps ↗'), 'button secondary');
+      link.href = row.url; link.target = '_blank'; link.rel = 'noopener noreferrer'; link.setAttribute('aria-label', `${link.textContent} — ${row.name}`);
+      li.append(copy, link); list.append(li);
+    }
+    shown = Math.min(shown + INITIAL_FOOD_LIMIT, rows.length); more.hidden = shown >= rows.length;
+  };
+  more.addEventListener('click', append); selected.append(more); append();
+  const footer = el('p', text('Food-place data') + ': ', 'fine-print food-provenance');
+  const credit = el('a', '© OpenStreetMap contributors'); credit.href = 'https://www.openstreetmap.org/copyright'; credit.rel = 'noopener noreferrer';
+  footer.append(credit, document.createTextNode(` · ${text('Nearby is not a recommendation, inspection, or safety rating.')}`));
+  selected.append(footer);
+  if (rows[0]?.at) selected.append(el('small', `${text('Snapshot date')}: ${rows[0].at}`, 'fine-print'));
+  return info;
+}
+
 export async function initPuja(onData = () => {}) {
   const input = document.getElementById('pandal-search');
   const options = document.getElementById('pandal-options');
@@ -113,54 +155,10 @@ export async function initPuja(onData = () => {}) {
         paragraph.append(document.createTextNode(` — “${source.quote}”`)); provenance.append(paragraph);
       }
       selected.append(provenance);
-      const rows = data.groups.get(p.pandal_id) || [];
-      const osmAvailable = data.osmCoverage?.has(p.pandal_id);
-      const osmCount = rows.filter(r => r.provider === 'osm').length;
-      const googleCount = rows.length - osmCount;
-      const enrichment = osmAvailable ? (rows.length ? 'snapshot_nonzero' : 'snapshot_zero') : discoveryState(p, data.provider === 'osm' ? null : data.discoveries.get(p.pandal_id), rows);
-      if (enrichment === 'unavailable' || enrichment === 'not_run') {
-        selected.append(el('h4', text('Nearby food')), el('p', text('Restaurant discovery is not yet available for this pandal.'), 'notice'));
-      } else {
-        selected.append(el('h4', `${text('Nearby food')} · ${rows.length}`), el('p', text(osmAvailable ? 'Snapshot matches; straight-line distance is approximate, not a walking route. Listings may have changed.' : enrichment === 'stale' ? 'Restaurant discovery is awaiting refresh; historical links may still be shown.' : 'Historical discovery matches, not a current proximity guarantee. Current distances are unavailable.'), 'notice'));
-        if (osmAvailable) {
-          const attribution = el('p', text('Food-place discovery from OpenStreetMap data.') + ' ', 'fine-print');
-          const credit = el('a', '© OpenStreetMap contributors'); credit.href = 'https://www.openstreetmap.org/copyright'; credit.target = '_blank'; credit.rel = 'noopener noreferrer';
-          const download = el('a', text('Download OSM-derived data')); download.href = 'data/osm_food.json';
-          attribution.append(credit, document.createTextNode(' · '), download); selected.append(attribution);
-          selected.append(el('p', `${text('OSM snapshot matches')}: ${osmCount}`, 'fine-print'));
-        }
-        if (googleCount) {
-          const attribution = el('p', 'Google Maps', 'google-attribution'); attribution.translate = false; selected.append(attribution);
-          if (osmAvailable) selected.append(el('p', text('Separate historical Google links follow the OSM list. Their current distance is unavailable; providers may describe the same place.'), 'fine-print'));
-        }
-        if (enrichment === 'current_zero') selected.append(el('p', text('A bounded discovery run found no durable associations. This does not mean there are no restaurants nearby.')));
-        if (enrichment === 'snapshot_zero') selected.append(el('p', text('No food places are mapped in this snapshot catchment. This does not mean none exist.')));
-      }
-      selected.append(el('p', text('Nearby does not mean inspected, endorsed, or safety-rated.'), 'fine-print'));
-      const list = el('ol', null, 'restaurant-links'); selected.append(list);
-      let shown = 0;
-      const limit = data.displayLimit || 15;
-      const more = el('button', text('Show more nearby food'), 'button secondary'); more.type = 'button';
-      const append = () => {
-        rows.slice(shown, shown + limit).forEach((row, i) => {
-          const li = el('li'); const copy = el('div'); copy.append(el('strong', (language === 'bn' && row.name_bn) || row.name || text(row.provider === 'osm' ? 'Unnamed food place' : 'Restaurant on Google Maps')));
-          if (row.provider === 'osm') {
-            const category = { restaurant: 'Restaurant', cafe: 'Cafe', fast_food: 'Fast food', ice_cream: 'Ice cream', food_court: 'Food court', bakery: 'Bakery', confectionery: 'Confectionery' }[row.category];
-            copy.append(el('small', [text(category || row.category), row.cuisine?.replaceAll(';', ', ')].filter(Boolean).join(' · ')));
-            copy.append(el('small', `${Math.round(row.distance)} m · ${text('Approximate straight-line distance')}`));
-          }
-          const source = el('small', row.provider === 'osm' ? 'OpenStreetMap' : 'Google Maps'); source.translate = false; copy.append(source);
-          if (row.at) copy.append(el('small', `${text(row.provider === 'osm' ? 'Snapshot date' : 'Discovery date')}: ${row.at}`));
-          const a = el('a', text('Open in Google Maps ↗'), 'button secondary'); a.href = row.url; a.target = '_blank'; a.rel = 'noopener noreferrer'; a.setAttribute('aria-label', `${a.textContent} — ${row.name || shown + i + 1}`);
-          li.append(copy, a); list.append(li);
-        });
-        shown += limit; more.hidden = shown >= rows.length;
-      };
-      more.addEventListener('click', append); selected.append(more); append();
+      const food = renderFood(selected, data, p);
+      document.querySelectorAll('[data-food-pandal]').forEach(button => button.setAttribute('aria-pressed', String(button.dataset.foodPandal === p.pandal_id)));
       if (updateURL) { const url = new URL(location.href); url.searchParams.set('pandal', p.pandal_id); url.hash = 'puja'; history.replaceState(null, '', url); }
-      status.textContent = enrichment === 'unavailable' || enrichment === 'not_run'
-        ? `${input.value} · ${text('Restaurant enrichment pending')}`
-        : `${input.value} · ${rows.length} ${text('Nearby food')}`;
+      status.textContent = `${input.value} · ${food.named_public_count ? `${food.named_public_count} ${text('named nearby food places')}` : text('Named listings pending')}`;
     };
     const update = () => {
       matches = searchPandals(data.index, input.value); active = -1; options.replaceChildren();
@@ -183,6 +181,14 @@ export async function initPuja(onData = () => {}) {
       if (e.key === 'Enter' && !options.hidden && matches.length) { e.preventDefault(); select(matches[Math.max(0, active)]); }
     });
     input.addEventListener('blur', close);
+    const geography = document.getElementById('festival-food-entries');
+    for (const { pandal, count } of foodGeography(data)) {
+      const button = el('button', null, 'food-geography-chip'); button.type = 'button'; button.dataset.foodPandal = pandal.pandal_id; button.setAttribute('aria-pressed', 'false');
+      button.append(el('strong', language === 'bn' && pandal.name_bn ? pandal.name_bn : pandal.name),
+        el('span', count ? `${count} ${text('named nearby food places')}` : text('Named listings pending')));
+      button.addEventListener('click', () => document.dispatchEvent(new CustomEvent('foodpath-select-pandal', { detail: pandal.pandal_id })));
+      geography?.append(button);
+    }
     const featured = document.getElementById('featured-pandals');
     for (const p of featuredPandals(data.pandals)) {
       const card = el('article', null, 'pandal-card'); card.append(el('p', `${p.area} · ${p.city || 'West Bengal'}`, 'eyebrow'), el('h4', language === 'bn' && p.name_bn ? p.name_bn : p.name));

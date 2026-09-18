@@ -58,6 +58,13 @@
 .restaurant-links li { display:flex; gap:18px; align-items:center; justify-content:space-between; border-top:1px solid var(--border); padding:16px 0; }
 .restaurant-links small { display:block; color:var(--muted); margin-top:4px; }
 .restaurant-links .button { flex-shrink:0; }
+.food-provenance { margin-top:18px; }
+.festival-food-geography { margin-top:24px; }
+.food-geography-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr)); gap:10px; margin:16px 0; }
+.food-geography-chip { display:flex; flex-direction:column; text-align:left; gap:6px; min-height:64px; padding:12px 14px; border:1px solid var(--border); border-radius:10px; background:#f0f8f7; color:var(--ink); font:inherit; cursor:pointer; overflow-wrap:anywhere; }
+.food-geography-chip span { color:var(--muted); font-size:.85rem; }
+.food-geography-chip[aria-pressed=true] { border-color:#34726c; box-shadow:inset 3px 0 #34726c; }
+.food-geography-chip:focus-visible { outline:3px solid #b26c32; outline-offset:3px; }
 .google-attribution { font:400 14px/1.5 Arial,sans-serif; color:#1f1f1f; white-space:nowrap; }
 .puja-notice { font-size:13px; margin:26px 0 0; border-top:1px solid var(--border); padding-top:18px; }
 .analytics-disclosure { margin:36px 0; border:1px solid var(--border); border-radius:12px; background:var(--surface); padding:22px; }
