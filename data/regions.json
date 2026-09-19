@@ -1,0 +1,53 @@
+{
+  "default_region": "kolkata",
+  "regions": [
+    {
+      "admin1": "West Bengal",
+      "country_code": "IN",
+      "default_map_center": {
+        "lat": 22.57,
+        "lng": 88.36
+      },
+      "default_map_zoom": 11,
+      "featured_ids": [
+        "ekdalia-evergreen-club-durga-puja",
+        "singhi-park-sarbojanin-durga-puja",
+        "deshapriya-park-durga-puja",
+        "tridhara-sammilani-durga-puja",
+        "ballygunge-cultural-association-durga-puja",
+        "mudiali-club-sarbojanin-durga-puja"
+      ],
+      "food_data": "data/osm_food.json",
+      "food_provider_mode": "hybrid",
+      "label": "Kolkata region",
+      "provider_data": "data/food_provider.json",
+      "region_id": "kolkata",
+      "restaurant_radius_m": 600,
+      "safety_context": true
+    },
+    {
+      "admin1": "California",
+      "country_code": "US",
+      "default_map_center": {
+        "lat": 36.5,
+        "lng": -119.5
+      },
+      "default_map_zoom": 6,
+      "featured_ids": [
+        "ca-sanskriti",
+        "ca-pashchimi",
+        "ca-agomoni",
+        "ca-basc",
+        "ca-vbc"
+      ],
+      "food_data": "data/osm_food_california.json",
+      "food_provider_mode": "osm",
+      "label": "California",
+      "provider_data": "data/food_provider_california.json",
+      "region_id": "california",
+      "restaurant_radius_m": 600,
+      "safety_context": false
+    }
+  ],
+  "schema_version": "puja-regions-1"
+}

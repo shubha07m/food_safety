@@ -14,5 +14,6 @@ export function applyRoute(root, search) {
   root.body?.classList.toggle('puja-route', !detail && !safety);
   root.querySelectorAll?.('.puja-only').forEach(node => { node.hidden = detail || safety; });
   root.querySelectorAll?.('.safety-only').forEach(node => { node.hidden = detail || !safety; });
+  root.querySelector?.('.evidence-banner')?.toggleAttribute('hidden', !detail && !safety);
   return detail;
 }

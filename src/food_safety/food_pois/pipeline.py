@@ -4,17 +4,51 @@ import json
 import time
 from collections import Counter
 
-from ..places.geometry import destination, reverse_map
+from ..places.geometry import destination, distance_m, reverse_map
 from ..places.models import Snapshot as GoogleSnapshot
 from ..places.pipeline import load_config as places_config
 from ..places.storage import utcnow, write_json
 from .models import Association, Coverage, PublicData, Snapshot
-from .osm import RUNTIME, SNAPSHOT, load_config
+from .osm import RUNTIME, SNAPSHOT, load_config, runtime
 from .spatial import nearby_pairs
 
 
-def read_snapshot(root):
-    for path in (root / RUNTIME / SNAPSHOT, root / "data/osm_food.json"):
+def public_paths(root, region_id="kolkata"):
+    if (root / "config/regions.yml").exists():
+        from ..puja.regions import get_region
+
+        region = get_region(root, region_id)
+        return region.food_data, region.provider_data
+    return "data/osm_food.json", "data/food_provider.json"
+
+
+def regional_pandals(root, region_id="kolkata"):
+    if region_id == "kolkata":
+        return [p for p in places_config(root).pandals if p.enabled]
+    from ..places.models import Pandal
+    from ..puja.pipeline import load_config as catalog
+    from ..puja.regions import get_region
+
+    region = get_region(root, region_id)
+
+    return [
+        Pandal(
+            pandal_id=p.pandal_id,
+            name=p.name,
+            area=p.area,
+            latitude=p.latitude,
+            longitude=p.longitude,
+            coordinate_source=p.coordinate_source,
+            restaurant_radius_m=region.restaurant_radius_m,
+            enabled=True,
+        )
+        for p in catalog(root).published
+        if p.region_id == region_id and p.latitude is not None
+    ]
+
+
+def read_snapshot(root, region_id="kolkata"):
+    for path in (root / runtime(region_id) / SNAPSHOT, root / public_paths(root, region_id)[0]):
         if path.exists():
             raw = json.loads(path.read_text())
             return Snapshot.model_validate(
@@ -32,10 +66,22 @@ def covered(pandal, bounds):
     )
 
 
-def associate(root, snapshot=None):
-    snapshot = snapshot or read_snapshot(root)
-    pandals = [p for p in places_config(root).pandals if p.enabled]
-    eligible = [p for p in pandals if covered(p, snapshot.bbox)]
+def associate(root, snapshot=None, region_id="kolkata"):
+    snapshot = snapshot or read_snapshot(root, region_id)
+    pandals = regional_pandals(root, region_id)
+    eligible = [
+        p
+        for p in pandals
+        if covered(p, snapshot.bbox)
+        and (
+            snapshot.coverage_circles is None
+            or any(
+                distance_m(p.latitude, p.longitude, c.latitude, c.longitude) + p.restaurant_radius_m
+                <= c.radius_m
+                for c in snapshot.coverage_circles
+            )
+        )
+    ]
     points = [
         dict(id=p.poi_id, latitude=p.latitude, longitude=p.longitude, name=p.name)
         for p in snapshot.pois
@@ -65,7 +111,8 @@ def associate(root, snapshot=None):
             for p in sorted(pandals, key=lambda p: p.pandal_id)
         ],
     )
-    for path in (root / "data/osm_food.json", root / "site/data/osm_food.json"):
+    relative = public_paths(root, region_id)[0]
+    for path in (root / relative, root / "site" / relative):
         write_json(path, result.model_dump(mode="json", exclude_none=True))
     return {
         "pois": len(snapshot.pois),
@@ -79,14 +126,26 @@ def associate(root, snapshot=None):
 def build_public(root):
     if not (root / "config/food.yml").exists():
         return
-    config = load_config(root)
+    regions = ["kolkata"]
+    if (root / "config/regions.yml").exists():
+        from ..puja.regions import build_regions, load_regions
+
+        regions = [r.region_id for r in load_regions(root).regions]
+        build_regions(root)
+    for region_id in regions:
+        build_region(root, region_id)
+
+
+def build_region(root, region_id):
+    config = load_config(root, region_id)
+    food_path, provider_path = public_paths(root, region_id)
     # CI/release builds use only the committed OSM subset; operator cache never
     # silently overrides a reviewed snapshot. Import + associate are explicit.
-    public = root / "data/osm_food.json"
+    public = root / food_path
     if public.exists():
         data = PublicData.model_validate_json(public.read_text())
         snapshot = Snapshot.model_validate(data.model_dump(exclude={"associations", "coverage"}))
-        associate(root, snapshot)
+        associate(root, snapshot, region_id)
     elif config.provider != "google":
         raise ValueError("provider_requires_published_osm_snapshot")
     ids = {p.poi_id for p in data.pois} if public.exists() else set()
@@ -101,12 +160,12 @@ def build_public(root):
         ],
     }
     # Cross-provider identity links are intentionally outside the ODbL dataset.
-    for path in (root / "data/food_provider.json", root / "site/data/food_provider.json"):
+    for path in (root / provider_path, root / "site" / provider_path):
         write_json(path, provider)
 
 
-def stats(root):
-    snapshot = read_snapshot(root)
+def stats(root, region_id="kolkata"):
+    snapshot = read_snapshot(root, region_id)
     named = sum(bool(p.name) for p in snapshot.pois)
     return {
         "snapshot_date": snapshot.snapshot_date.isoformat() if snapshot.snapshot_date else None,

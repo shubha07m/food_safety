@@ -36,6 +36,9 @@ def load_config(root):
     known = {item.get("pandal_id") for item in raw.get("pandals", [])}
     additions = []
     for record in load_puja_config(root).published:
+        # The existing Google operator plan remains scoped to its original region.
+        if record.region_id != "kolkata":
+            continue
         if record.latitude is None or record.longitude is None or record.pandal_id in known:
             continue
         additions.append(

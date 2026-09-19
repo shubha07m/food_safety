@@ -138,6 +138,8 @@ try {
   assert.equal(await evaluate("document.body.classList.contains('puja-route')"), true);
   assert.equal(await evaluate("document.querySelector('.safety-only').hidden"), true);
   assert.equal(await evaluate("document.getElementById('headline').textContent.includes('PUJA')"), true);
+  assert.equal(await evaluate("document.querySelector('.evidence-banner').hidden"), true);
+  assert.equal(await evaluate("document.getElementById('region-count').textContent.includes('223')"), true);
   await screenshot('puja-home', false);
   if (process.env.FOOD_UPDATE_PREVIEWS === '1') await command('Emulation.setDeviceMetricsOverride', { width: 1440, height: 1360, deviceScaleFactor: 1, mobile: false });
   await publicScreenshot('docs/assets/puja_preview.png');
@@ -230,10 +232,44 @@ try {
   await evaluate("document.getElementById('pandal-search').value='no-such-pandal'; document.getElementById('pandal-search').dispatchEvent(new Event('input'))");
   assert.equal(await evaluate("document.getElementById('pandal-search-status').textContent.includes('No matching pandals')"), true);
   await evaluate("document.querySelector('#featured-pandals button').click()");
-  assert.equal(await evaluate("document.getElementById('selected-pandal-title').textContent.includes('Bagbazar')"), true);
+  assert.equal(await evaluate("document.getElementById('selected-pandal-title').textContent.includes('Ekdalia')"), true);
   await evaluate("document.getElementById('pandal-search').value='Shibpur Sastitala'; document.getElementById('pandal-search').dispatchEvent(new Event('input')); document.getElementById('pandal-search').dispatchEvent(new KeyboardEvent('keydown',{key:'Enter',bubbles:true}))");
   assert.equal(await evaluate("document.getElementById('selected-pandal').textContent.includes('Map location is not yet independently verified.')"), true);
   assert.equal(await evaluate("document.querySelectorAll('[data-food-search], .restaurant-links li').length"), 0);
+  // Region switches share selection, food, geography and lazy-map state.
+  await evaluate("document.querySelector('[data-region=california]').click()");
+  await waitFor("document.getElementById('puja-discovery').getAttribute('aria-busy') === 'false'");
+  assert.equal(await evaluate("document.getElementById('selected-pandal').hidden && !new URL(location.href).searchParams.has('pandal')"), true);
+  assert.equal(await evaluate("document.getElementById('region-count').textContent.includes('6 source-backed')"), true);
+  assert.equal(await evaluate("document.getElementById('map-coverage').textContent.startsWith('4 independently')"), true);
+  assert.equal(await evaluate("[...document.querySelectorAll('[data-safety-context]')].every(n => n.hidden)"), true);
+  assert.equal(await evaluate("[...document.querySelectorAll('[data-food-pandal]')].every(b => b.dataset.foodPandal.startsWith('ca-'))"), true);
+  await evaluate("document.getElementById('pandal-search').value='Ekdalia'; document.getElementById('pandal-search').dispatchEvent(new Event('input'))");
+  assert.equal(await evaluate("document.querySelectorAll('#pandal-options li').length"), 0);
+  for (const id of ['ca-pashchimi', 'ca-sanskriti', 'ca-basc', 'ca-vbc']) {
+    await evaluate(`document.dispatchEvent(new CustomEvent('foodpath-select-pandal',{detail:${JSON.stringify(id)}}))`);
+    assert.equal(await evaluate("new URL(location.href).searchParams.get('region')"), 'california');
+    assert.equal(await evaluate("document.getElementById('selected-pandal').textContent.includes('Map location is independently sourced.')"), true);
+    assert.equal(await evaluate("document.querySelectorAll('.restaurant-links li').length <= 20"), true);
+    assert.equal(await evaluate("document.getElementById('selected-pandal').textContent.includes('Restaurant on Google Maps')"), false);
+  }
+  await delay(500); // Let the existing reduced-motion-aware panel reveal finish.
+  await screenshot('california-food-mobile', false);
+  for (const width of [390, 768, 1440]) {
+    await command('Emulation.setDeviceMetricsOverride', { width, height: 1000, deviceScaleFactor: 1, mobile: width < 600 });
+    assert.equal(await evaluate('document.documentElement.scrollWidth <= innerWidth'), true);
+    assert.equal(await evaluate("[...document.querySelectorAll('.region-tab')].every(b => b.getBoundingClientRect().height >= 44 && b.getBoundingClientRect().right <= innerWidth)"), true);
+  }
+  await screenshot('california-food-desktop', false);
+  await evaluate("document.getElementById('puja').scrollIntoView({block:'start'})");
+  await delay(500);
+  await screenshot('california-search-desktop', false);
+  await evaluate("document.dispatchEvent(new CustomEvent('foodpath-select-pandal',{detail:'ca-agomoni'}))");
+  assert.equal(await evaluate("document.querySelectorAll('[data-food-search], .restaurant-links li').length"), 0);
+  await evaluate("document.querySelector('[data-region=california]').dispatchEvent(new KeyboardEvent('keydown',{key:'ArrowLeft',bubbles:true}))");
+  await waitFor("document.getElementById('region-count').textContent.includes('223') && document.getElementById('puja-discovery').getAttribute('aria-busy') === 'false'");
+  assert.equal(await evaluate("document.getElementById('selected-pandal').hidden"), true);
+  assert.equal(await evaluate("document.querySelector('[data-region=kolkata]').getAttribute('aria-selected')"), 'true');
   if (foodMode !== 'google') {
     foodFixture = true;
     await command('Fetch.enable', { patterns: [{ urlPattern: '*data/osm_food.json*' }] });
@@ -251,14 +287,21 @@ try {
   await waitFor("document.querySelectorAll('#featured-pandals button').length > 0");
   await evaluate("document.getElementById('pandal-search').value='বাগবাজার'; document.getElementById('pandal-search').dispatchEvent(new Event('input')); document.getElementById('pandal-search').dispatchEvent(new KeyboardEvent('keydown',{key:'Escape'}))");
   assert.equal(await evaluate("document.getElementById('pandal-options').hidden"), true);
-  await evaluate("document.querySelector('#featured-pandals button').click()");
+  await evaluate("document.dispatchEvent(new CustomEvent('foodpath-select-pandal',{detail:'bagbazar-sarbojanin'}))");
   assert.equal(await evaluate("document.getElementById('selected-pandal-title').textContent.includes('বাগবাজার')"), true);
   await screenshot('puja-bengali', false);
+  await command('Page.navigate', { url: 'http://127.0.0.1:8000/?region=california&lang=bn&pandal=ca-sanskriti' });
+  await waitFor("document.getElementById('selected-pandal-title')?.textContent === 'Sanskriti Durga Puja'");
+  assert.equal(await evaluate("document.documentElement.lang"), 'bn');
+  assert.equal(await evaluate("document.getElementById('region-count').textContent.includes('6')"), true);
+  assert.equal(await evaluate('document.documentElement.scrollWidth <= innerWidth'), true);
+  await screenshot('california-bengali', false);
   await command('Emulation.setDeviceMetricsOverride', { width: 1440, height: 1000, deviceScaleFactor: 1, mobile: false });
   await command('Page.navigate', { url: 'http://127.0.0.1:8000/?module=safety' });
   await waitFor("document.getElementById('lifecycle-summary') !== null");
   assert.equal(await evaluate("document.getElementById('dashboard-view').hidden"), false);
   assert.equal(await evaluate("document.body.classList.contains('safety-route')"), true);
+  assert.equal(await evaluate("document.querySelector('.evidence-banner').hidden"), false);
   assert.equal(await evaluate("document.getElementById('puja').hidden"), true);
   assert.equal(await evaluate("document.querySelector('.area-summary').hidden"), false);
   assert.equal(await evaluate("document.getElementById('festival-food-geography').hidden"), true);
@@ -297,7 +340,7 @@ try {
   await command('Page.navigate', { url: 'http://127.0.0.1:8000/?module=safety' });
   await waitFor(`document.getElementById('metric-events')?.textContent === '${original.record_count}'`);
   assert.equal(await evaluate("document.getElementById('empty-evidence').hidden"), original.record_count > 0);
-  assert.equal(await evaluate("document.querySelector('.status-strip').textContent.includes('Inclusion is not a finding of wrongdoing')"), true);
+  assert.equal(await evaluate("document.querySelector('.evidence-banner').textContent.includes('Inclusion is not a finding of wrongdoing')"), true);
   await screenshot('zero-desktop');
   await command('Emulation.setDeviceMetricsOverride', { width: 390, height: 844, deviceScaleFactor: 1, mobile: true });
   assert.equal(await evaluate('document.documentElement.scrollWidth <= window.innerWidth'), true);

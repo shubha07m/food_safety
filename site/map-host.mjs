@@ -18,8 +18,12 @@ export function pandalMarkers(pandals) {
     .map(p => ({ id: `pandal-${p.pandal_id}`, kind: 'pandal', label: p.name, lat: p.latitude, lng: p.longitude, count: 0 }));
 }
 let areas = []; let pandals = []; let frame = null; let key = ''; let chooseArea = () => {}; let started = false; let initialized = false; let selectedPandal = null;
+let regionConfig = null;
 const selectedMarker = () => pandals.find(p => p.id === `pandal-${selectedPandal}`);
-const send = () => { if (frame) frame.contentWindow.postMessage({ type: 'foodpath-map-data', key, language, markers: [...areas, ...pandals], selectedPandalId: selectedMarker()?.id || null }, location.origin); };
+const send = () => { if (frame) frame.contentWindow.postMessage({ type: 'foodpath-map-data', key, language,
+  regionId: regionConfig?.region_id, mapCenter: regionConfig?.default_map_center, mapZoom: regionConfig?.default_map_zoom,
+  safetyContext: regionConfig?.safety_context !== false,
+  markers: regionConfig?.safety_context === false ? pandals : [...areas, ...pandals], selectedPandalId: selectedMarker()?.id || null }, location.origin); };
 let mapped = 0; let totalRows = 0;
 export async function browserMapKey(fetcher = fetch) {
   const response = await fetcher('maps-config.json', { credentials: 'omit', cache: 'no-store' });
@@ -36,7 +40,11 @@ function coverage() {
     ? `${totalRows}টি নথির মধ্যে ${mapped}টির ভৌগোলিক তথ্য দেখানো হয়েছে; ${totalRows - mapped}টি বাদ।`
     : `Geographic coverage: ${mapped} of ${totalRows} records; ${totalRows - mapped} omitted for insufficient precision.`;
 }
-export function setMapPandals(value) { pandals = pandalMarkers(value); coverage(); send(); }
+export function setMapPandals(value, region = null) {
+  if (regionConfig?.region_id !== region?.region_id) selectedPandal = null;
+  regionConfig = region; pandals = pandalMarkers(value); coverage(); send();
+  document.querySelectorAll('[data-safety-context]').forEach(n => { n.hidden = region?.safety_context === false; });
+}
 export function renderAreaSummary(rows, activate) {
   areas = areaMarkers(rows); chooseArea = activate;
   const container = document.getElementById('chart-map'); container.replaceChildren();

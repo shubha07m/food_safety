@@ -173,7 +173,11 @@ def test_curated_coordinate_subset_drives_places_zones_without_duplicate_config(
 
     public = build_public(ROOT)
     places = load_places_config(ROOT)
-    mapped = {r["pandal_id"] for r in public["records"] if r["latitude"] is not None}
+    mapped = {
+        r["pandal_id"]
+        for r in public["records"]
+        if r["latitude"] is not None and r["region_id"] == "kolkata"
+    }
     assert {p.pandal_id for p in places.pandals if p.enabled} == mapped
     zones = plan(places)
     assert {pandal_id for zone in zones for pandal_id in zone.pandal_ids} == mapped

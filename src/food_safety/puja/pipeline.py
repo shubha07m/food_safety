@@ -44,14 +44,40 @@ class PujaFetcher(Fetcher):
             return super().raw(url, redirects, check_redirect_robots)
         except FetchError as exc:
             parsed = urlsplit(url)
-            if (str(exc) == "http_404" and parsed.path == "/robots.txt"
-                    and parsed.hostname in self.missing_robots_hosts and redirects == 0):
+            if (
+                str(exc) == "http_404"
+                and parsed.path == "/robots.txt"
+                and parsed.hostname in self.missing_robots_hosts
+                and redirects == 0
+            ):
                 return url, ""  # RFC 9309 §2.3.1.3; no rule exists here.
             raise
 
 
 def load_config(root: Path) -> Config:
-    return Config.model_validate(yaml.safe_load((root / "config/puja.yml").read_text()))
+    raw = yaml.safe_load((root / "config/puja.yml").read_text())
+    if (root / "config/regions.yml").exists():
+        from .regions import load_regions
+
+        registry = {r.region_id: r for r in load_regions(root).regions}
+        for region in registry.values():
+            if region.catalog_config:
+                extra = yaml.safe_load((root / region.catalog_config).read_text())
+                raw["published"].extend(extra.get("published", []))
+        config = Config.model_validate(raw)
+        for record in config.published:
+            region = registry.get(record.region_id)
+            if not region or (record.country_code, record.admin1) != (
+                region.country_code,
+                region.admin1,
+            ):
+                raise ValueError("pandal_region_mismatch")
+            if record.latitude is not None:
+                w, s, e, n = region.geocode_bounds
+                if not (w <= record.longitude <= e and s <= record.latitude <= n):
+                    raise ValueError("pandal_coordinate_outside_region")
+        return config
+    return Config.model_validate(raw)
 
 
 def build_public(root: Path):
@@ -64,6 +90,7 @@ def build_public(root: Path):
         "catalog_count": len(records),
         "map_ready_count": sum(r.latitude is not None for r in records),
         "cities": dict(Counter(r.city for r in records)),
+        "regions": dict(Counter(r.region_id for r in records)),
         "source_count": len({str(s.source_url) for r in records for s in r.sources}),
         "featured_count": min(6, sum(r.featured for r in records)),
         "last_catalog_update": max((r.last_verified_at.isoformat() for r in records), default=None),
@@ -368,9 +395,14 @@ def _refresh_locked(root, at, fetcher, extractor):
             continue
         source = item["source_id"]
         revision = item["source_revision_id"]
-        identity = hashlib.sha256((revision + TASK_VERSION + pipeline_settings(root).llm_model
-                                   + json.dumps(Extraction.model_json_schema(), sort_keys=True))
-                                  .encode()).hexdigest()
+        identity = hashlib.sha256(
+            (
+                revision
+                + TASK_VERSION
+                + pipeline_settings(root).llm_model
+                + json.dumps(Extraction.model_json_schema(), sort_keys=True)
+            ).encode()
+        ).hexdigest()
         if state["source_revisions"].get(source) == identity:
             unchanged += 1
             continue
@@ -391,5 +423,8 @@ def _refresh_locked(root, at, fetcher, extractor):
     build_public(root)
     state["last_summary"] = {"model_calls": calls, "unchanged": unchanged, "failures": failures}
     dump(path, state)
-    return {"status": "refreshed", **state["last_summary"],
-            "candidate_storage": "private_local_only; scheduled candidates are ephemeral"}
+    return {
+        "status": "refreshed",
+        **state["last_summary"],
+        "candidate_storage": "private_local_only; scheduled candidates are ephemeral",
+    }

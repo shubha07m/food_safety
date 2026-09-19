@@ -1,6 +1,21 @@
 import { bn, language } from './locale.mjs';
 
 const copy = {
+  'PUJA NEIGHBOURHOODS · NEARBY FOOD · SOURCE-BACKED': 'পুজোর পাড়া · কাছাকাছি খাবার · উৎসসমর্থিত',
+  'Find a Puja. Find nearby food.': 'পুজো খুঁজুন। কাছাকাছি খাবার খুঁজুন।',
+  'From Kolkata to California.': 'কলকাতা থেকে ক্যালিফোর্নিয়া।',
+  'A calm, source-conscious guide to festival neighbourhoods—beginning with the Puja, never a ranking.': 'উৎস সম্পর্কে সচেতন এক শান্ত উৎসব-পথনির্দেশিকা—শুরু পুজো দিয়ে, কখনও র‌্যাঙ্কিং দিয়ে নয়।',
+  'Search for a Puja': 'পুজো খুঁজুন',
+  'Kolkata region': 'কলকাতা ও সংলগ্ন অঞ্চল',
+  'California': 'ক্যালিফোর্নিয়া',
+  'source-backed Puja listings': 'উৎসসমর্থিত পুজোর তথ্য',
+  'Explore nearby food': 'কাছাকাছি খাবার খুঁজুন',
+  'Featured Pujas': 'বাছাই করা পুজো',
+  'CURATED STARTING POINTS': 'বাছাই করা শুরুর স্থান',
+  'Curated Pujas in the selected region.': 'নির্বাচিত অঞ্চলের উৎসসমর্থিত পুজো।',
+  'West Bengal evidence is optional context.': 'পশ্চিমবঙ্গের উৎসভিত্তিক নথি ঐচ্ছিক প্রেক্ষাপট।',
+  'West Bengal research only': 'শুধু পশ্চিমবঙ্গের গবেষণা',
+  'Verified locations for this region are not yet available.': 'এই অঞ্চলের যাচাই করা অবস্থান এখনও পাওয়া যায়নি।',
   'Nearby food comes from a dated independent snapshot—not recommendations, inspections, or safety ratings.': 'কাছাকাছি খাবারের তালিকা নির্দিষ্ট তারিখের স্বাধীন উৎসের তথ্য থেকে—সুপারিশ, পরিদর্শন বা খাদ্যসুরক্ষার মান নির্ধারণ নয়।',
   'Food around the festival': 'পুজোর পথে খাবারের খোঁজ',
   'Named snapshot places by pandal catchment—not rankings. The same place may appear near more than one pandal.': 'মণ্ডপের কাছাকাছি নামসহ নথিভুক্ত খাবারের জায়গা—র‌্যাঙ্কিং নয়। একই জায়গা একাধিক মণ্ডপের কাছে থাকতে পারে।',

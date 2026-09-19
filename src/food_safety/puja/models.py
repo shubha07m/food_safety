@@ -38,12 +38,19 @@ class SourceEvidence(Strict):
 
 class PandalRecord(Strict):
     pandal_id: ID
+    region_id: ID = "kolkata"
+    country_code: str = Field(default="IN", pattern=r"^[A-Z]{2}$")
+    admin1: str = "West Bengal"
+    metro_region: str | None = Field(default=None, max_length=160)
     name: str = Field(min_length=1, max_length=200)
     name_bn: str | None = Field(default=None, max_length=200)
     aliases: list[str] = Field(default_factory=list, max_length=20)
     area: str = Field(min_length=1, max_length=160)
     neighborhood: str | None = Field(default=None, max_length=160)
-    city: Literal["Kolkata", "Howrah", "Other West Bengal"]
+    city: str = Field(min_length=1, max_length=160)
+    venue: str | None = Field(default=None, max_length=200)
+    address: str | None = Field(default=None, max_length=300)
+    event_dates: str | None = Field(default=None, max_length=160)
     district: str | None = Field(default=None, min_length=1, max_length=160)
     location_precision: Literal["locality", "source_zone"] = "locality"
     latitude: Latitude | None = None

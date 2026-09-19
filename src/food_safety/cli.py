@@ -22,6 +22,7 @@ def main():
     for name in ["validate", "build", "pending", "migrate"]:
         sub.add_parser(name)
     osm = sub.add_parser("osm", help="Operator-side regional food POI snapshots")
+    osm.add_argument("--region", default="kolkata", help="Region from config/regions.yml")
     osm_sub = osm.add_subparsers(dest="osm_command", required=True)
     for name in ["validate", "stats", "associate", "bakeoff"]:
         osm_sub.add_parser(name)
@@ -110,7 +111,7 @@ def main():
             from .food_pois import pipeline as food
 
             if args.osm_command == "validate":
-                result = importer.load_config(ROOT).model_dump(mode="json")
+                result = importer.load_config(ROOT, args.region).model_dump(mode="json")
             elif args.osm_command == "import":
                 from importlib.util import find_spec
 
@@ -123,20 +124,26 @@ def main():
                 if args.refresh and not args.download:
                     raise ValueError("refresh_requires_explicit_download")
                 acquisition = (
-                    importer.download(ROOT, refresh=args.refresh) if args.download else None
+                    importer.download(ROOT, refresh=args.refresh, region_id=args.region)
+                    if args.download
+                    else None
                 )
-                result = importer.import_snapshot(ROOT, args.source)
+                result = importer.import_snapshot(ROOT, args.source, args.region)
                 result["acquisition"] = acquisition
             elif args.osm_command == "associate":
-                result = food.associate(ROOT)
+                result = food.associate(ROOT, region_id=args.region)
                 food.build_public(ROOT)
             elif args.osm_command == "stats":
-                result = food.stats(ROOT)
+                result = food.stats(ROOT, args.region)
             elif args.osm_command == "bakeoff":
+                if args.region != "kolkata":
+                    raise ValueError("no_google_comparison_pool_for_region")
                 result = food.bakeoff(ROOT)
             else:
                 from .food_pois.google import resolve_ids
 
+                if args.region != "kolkata":
+                    raise ValueError("no_google_resolution_allowlist_for_region")
                 result = resolve_ids(ROOT, dry_run=args.dry_run)
         elif args.command == "places":
             from .places.pipeline import run_command
@@ -170,9 +177,7 @@ def main():
             elif args.puja_command == "geocode":
                 from .puja.geocoding import discover as geocode
 
-                result = geocode(
-                    ROOT, args.pandal, max_calls=args.max_calls, dry_run=args.dry_run
-                )
+                result = geocode(ROOT, args.pandal, max_calls=args.max_calls, dry_run=args.dry_run)
             elif args.puja_command == "geocode-summary":
                 from .puja.geocoding import summary as geocode_summary
 

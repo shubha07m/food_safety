@@ -2,8 +2,8 @@ import { safeExternal } from './data.mjs';
 import { language } from './locale.mjs';
 import { text } from './foodpath-copy.mjs';
 import { combineFood, publicFood, foodGeography, pandalFoodURL, INITIAL_FOOD_LIMIT } from './nearby-food.mjs';
+import { parseRegions, regionFromURL, scopeFood, regionURL } from './regions.mjs';
 
-export const FEATURED_IDS = ['bagbazar-sarbojanin'];
 const validID = value => typeof value === 'string' && /^[A-Za-z0-9_-]{1,255}$/.test(value);
 export const normalize = value => String(value || '').normalize('NFC').toLocaleLowerCase().trim().replace(/\s+/g, ' ');
 export function mapsURL(id) {
@@ -44,7 +44,7 @@ export function parsePlaces(data, catalog = null) {
       || Object.keys(d).some(k => !discoveryFields.has(k))) throw Error('Invalid discovery metadata');
     discoveries.set(d.pandal_id, d);
   }
-  return { pandals, groups, discoveries, index: pandals.map(p => ({ p, query: normalize(`${p.name} ${p.name_bn || ''} ${(p.aliases || []).join(' ')} ${p.area} ${p.neighborhood || ''} ${p.city || ''}`) })) };
+  return { pandals, groups, discoveries, index: pandals.map(p => ({ p, query: normalize(`${p.name} ${p.name_bn || ''} ${(p.aliases || []).join(' ')} ${p.area} ${p.neighborhood || ''} ${p.city || ''} ${p.metro_region || ''} ${p.admin1 || ''}`) })) };
 }
 export function discoveryState(pandal, discovery, rows, now = Date.now()) {
   if (!Number.isFinite(pandal.latitude) || !Number.isFinite(pandal.longitude)) return 'unavailable';
@@ -56,9 +56,11 @@ export function searchPandals(index, query, limit = 8) {
   const tokens = normalize(query).split(' ').filter(Boolean);
   return index.filter(row => tokens.every(token => row.query.includes(token))).slice(0, Math.min(8, limit)).map(row => row.p);
 }
-export function featuredPandals(pandals, ids = null) {
-  ids = ids || [...pandals.filter(p => p.featured).map(p => p.pandal_id), ...FEATURED_IDS];
-  return [...new Set(ids)].map(id => pandals.find(p => p.pandal_id === id)).filter(Boolean).slice(0, 6);
+export function featuredPandals(data, ids = []) {
+  const eligible = [...new Set(ids)].map(id => data.pandals.find(p => p.pandal_id === id))
+    .filter(p => p && publicFood(data, p).named_snapshot_count >= 1);
+  const richer = eligible.filter(p => publicFood(data, p).named_snapshot_count >= 3);
+  return (richer.length >= 3 ? richer : eligible).slice(0, 6);
 }
 export function nextOption(key, active, count) {
   if (!count || key === 'Escape') return -1;
@@ -111,6 +113,10 @@ function renderFood(selected, data, pandal) {
   footer.append(credit, document.createTextNode(` · ${text('Nearby is not a recommendation, inspection, or safety rating.')}`));
   selected.append(footer);
   if (rows[0]?.at) selected.append(el('small', `${text('Snapshot date')}: ${rows[0].at}`, 'fine-print'));
+  if (data.foodData) {
+    const download = el('a', text('Download OSM-derived data'), 'fine-print');
+    download.href = data.foodData; selected.append(download);
+  }
   return info;
 }
 
@@ -120,17 +126,19 @@ export async function initPuja(onData = () => {}) {
   const status = document.getElementById('pandal-search-status');
   const selected = document.getElementById('selected-pandal');
   try {
-    const [response, catalogResponse] = await Promise.all([
+    const [response, catalogResponse, regionResponse] = await Promise.all([
       fetch('data/places.json', { credentials: 'omit' }),
       fetch('data/pandals.json', { credentials: 'omit' }),
+      fetch('data/regions.json', { credentials: 'omit' }),
     ]);
-    if (!response.ok || !catalogResponse.ok) throw Error('Unavailable');
-    let data = parsePlaces(await response.json(), await catalogResponse.json());
+    if (!response.ok || !catalogResponse.ok || !regionResponse.ok) throw Error('Unavailable');
+    const allData = parsePlaces(await response.json(), await catalogResponse.json());
+    const registry = parseRegions(await regionResponse.json());
+    let region = regionFromURL(location.search, registry);
+    let data = scopeFood(allData, region, registry.default_region);
     // Missing optional provider files preserve the existing Google-only contract.
     const optional = async path => { try { const r = await fetch(path, { credentials: 'omit' }); return r.ok ? await r.json() : null; } catch { return null; } };
-    const policy = await optional('data/food_provider.json');
-    const osm = policy && policy.provider !== 'google' ? await optional('data/osm_food.json') : null;
-    data = combineFood(data, osm, policy);
+    const loaded = new Map(); let generation = 0;
     let matches = []; let active = -1;
     const close = () => { options.hidden = true; input.setAttribute('aria-expanded', 'false'); input.removeAttribute('aria-activedescendant'); active = -1; };
     const select = (p, updateURL = true) => {
@@ -142,6 +150,8 @@ export async function initPuja(onData = () => {}) {
       if (p.location_precision === 'source_zone') selected.append(el('p', text('Location is the directory’s broad zone, not a verified street address.')));
       if (p.year) selected.append(el('p', `${text('Source listing year')}: ${p.year}. ${text('This does not confirm this year’s venue or opening times.')}`, 'fine-print'));
       if (p.subtitle) selected.append(el('p', p.subtitle, 'pandal-subtitle'));
+      if (p.venue || p.address) selected.append(el('p', [p.venue, p.address].filter(Boolean).join(' · '), 'pandal-area'));
+      if (p.event_dates) selected.append(el('p', p.event_dates, 'fine-print'));
       const mapReady = Number.isFinite(p.latitude) && Number.isFinite(p.longitude);
       if (!mapReady) selected.append(el('p', text('Map location is not yet independently verified.'), 'notice'));
       else if (p.coordinate_precision === 'street' || p.coordinate_precision === 'neighborhood') selected.append(el('p', text('Map location is an independently sourced approximate anchor.'), 'notice'));
@@ -157,7 +167,7 @@ export async function initPuja(onData = () => {}) {
       selected.append(provenance);
       const food = renderFood(selected, data, p);
       document.querySelectorAll('[data-food-pandal]').forEach(button => button.setAttribute('aria-pressed', String(button.dataset.foodPandal === p.pandal_id)));
-      if (updateURL) { const url = new URL(location.href); url.searchParams.set('pandal', p.pandal_id); url.hash = 'puja'; history.replaceState(null, '', url); }
+      if (updateURL) { const url = new URL(location.href); url.searchParams.set('region', region.region_id); url.searchParams.set('pandal', p.pandal_id); url.hash = 'puja'; history.replaceState(null, '', url); }
       status.textContent = `${input.value} · ${food.named_public_count ? `${food.named_public_count} ${text('named nearby food places')}` : text('Named listings pending')}`;
     };
     const update = () => {
@@ -181,27 +191,83 @@ export async function initPuja(onData = () => {}) {
       if (e.key === 'Enter' && !options.hidden && matches.length) { e.preventDefault(); select(matches[Math.max(0, active)]); }
     });
     input.addEventListener('blur', close);
-    const geography = document.getElementById('festival-food-entries');
-    for (const { pandal, count } of foodGeography(data)) {
-      const button = el('button', null, 'food-geography-chip'); button.type = 'button'; button.dataset.foodPandal = pandal.pandal_id; button.setAttribute('aria-pressed', 'false');
-      button.append(el('strong', language === 'bn' && pandal.name_bn ? pandal.name_bn : pandal.name),
-        el('span', count ? `${count} ${text('named nearby food places')}` : text('Named listings pending')));
-      button.addEventListener('click', () => document.dispatchEvent(new CustomEvent('foodpath-select-pandal', { detail: pandal.pandal_id })));
-      geography?.append(button);
+    const tabs = document.getElementById('region-tabs');
+    for (const item of registry.regions) {
+      const button = el('button', text(item.label), 'region-tab'); button.type = 'button'; button.dataset.region = item.region_id;
+      button.setAttribute('role', 'tab');
+      button.setAttribute('aria-controls', 'puja-discovery');
+      button.id = `region-tab-${item.region_id}`;
+      button.addEventListener('click', () => changeRegion(item, true));
+      button.addEventListener('keydown', e => {
+        if (!['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(e.key)) return;
+        e.preventDefault(); const i = registry.regions.indexOf(item);
+        const index = e.key === 'Home' ? 0 : e.key === 'End' ? registry.regions.length - 1
+          : (i + (e.key === 'ArrowRight' ? 1 : -1) + registry.regions.length) % registry.regions.length;
+        tabs.children[index].focus(); tabs.children[index].click();
+      });
+      tabs.append(button);
     }
-    const featured = document.getElementById('featured-pandals');
-    for (const p of featuredPandals(data.pandals)) {
-      const card = el('article', null, 'pandal-card'); card.append(el('p', `${p.area} · ${p.city || 'West Bengal'}`, 'eyebrow'), el('h4', language === 'bn' && p.name_bn ? p.name_bn : p.name));
-      if (p.subtitle) card.append(el('p', p.subtitle));
-      const button = el('button', text('View restaurant links'), 'button secondary'); button.type = 'button'; button.addEventListener('click', () => { select(p); selected.scrollIntoView({ block: 'nearest' }); document.getElementById('selected-pandal-title').focus({ preventScroll: true }); }); card.append(button); featured.append(card);
+    function renderRegion() {
+      const geography = document.getElementById('festival-food-entries');
+      geography.replaceChildren();
+      for (const { pandal, count } of foodGeography(data)) {
+        const button = el('button', null, 'food-geography-chip'); button.type = 'button'; button.dataset.foodPandal = pandal.pandal_id; button.setAttribute('aria-pressed', 'false');
+        button.append(el('strong', language === 'bn' && pandal.name_bn ? pandal.name_bn : pandal.name),
+          el('span', count ? `${count} ${text('named nearby food places')}` : text('Named listings pending')));
+        button.addEventListener('click', () => document.dispatchEvent(new CustomEvent('foodpath-select-pandal', { detail: pandal.pandal_id })));
+        geography.append(button);
+      }
+      const featured = document.getElementById('featured-pandals');
+      featured.replaceChildren();
+      const picks = featuredPandals(data, region.featured_ids);
+      document.getElementById('featured-heading').hidden = !picks.length;
+      for (const p of picks) {
+        const card = el('article', null, 'pandal-card'); card.append(el('p', `${p.area} · ${p.city || region.admin1}`, 'eyebrow'), el('h4', language === 'bn' && p.name_bn ? p.name_bn : p.name));
+        if (p.subtitle) card.append(el('p', p.subtitle));
+        const button = el('button', text('Explore nearby food'), 'button secondary'); button.type = 'button'; button.addEventListener('click', () => { select(p); selected.scrollIntoView({ block: 'nearest' }); document.getElementById('selected-pandal-title').focus({ preventScroll: true }); }); card.append(button); featured.append(card);
+      }
+      status.textContent = language === 'bn' ? `${data.pandals.length}টি উৎসসমর্থিত মণ্ডপ। নাম বা এলাকা লিখে খুঁজুন।` : `${data.pandals.length} source-backed pandals. Search by name or area; this is not a complete directory.`;
+      document.getElementById('region-count').textContent = `${text(region.label)} · ${data.pandals.length} ${text('source-backed Puja listings')}`;
+      if (!geography.children.length) geography.append(el('p', text('Verified locations for this region are not yet available.')));
+      onData(data.pandals, region);
+      const p = data.pandals.find(p => p.pandal_id === new URLSearchParams(location.search).get('pandal'));
+      if (p) select(p, false);
     }
-    status.textContent = language === 'bn' ? `${data.pandals.length}টি উৎসসমর্থিত মণ্ডপ। নাম বা এলাকা লিখে খুঁজুন।` : `${data.pandals.length} source-backed pandals. Search by name or area; this is not a complete directory.`;
-    const fromURL = () => { const p = data.pandals.find(p => p.pandal_id === new URLSearchParams(location.search).get('pandal')); if (p) select(p, false); };
-    fromURL(); window.addEventListener('popstate', fromURL);
+    async function changeRegion(next, navigate = false) {
+      const run = ++generation; region = next; close(); matches = []; input.value = ''; input.disabled = true;
+      selected.hidden = true; selected.replaceChildren();
+      document.getElementById('featured-pandals').replaceChildren(); document.getElementById('festival-food-entries').replaceChildren();
+      document.getElementById('featured-heading').hidden = true;
+      data = scopeFood(allData, region, registry.default_region);
+      if (navigate) history.pushState(null, '', regionURL(location.href, region.region_id, data.pandals));
+      else if (new URLSearchParams(location.search).has('pandal') && !data.pandals.some(p => p.pandal_id === new URLSearchParams(location.search).get('pandal'))) {
+        history.replaceState(null, '', regionURL(location.href, region.region_id, data.pandals));
+      }
+      document.getElementById('region-count').textContent = `${text(region.label)} · ${data.pandals.length} ${text('source-backed Puja listings')}`;
+      document.getElementById('puja-discovery').setAttribute('aria-busy', 'true');
+      document.dispatchEvent(new CustomEvent('foodpath-focus-pandal', { detail: null }));
+      onData(data.pandals, region);
+      tabs.querySelectorAll('button').forEach(b => { const active = b.dataset.region === region.region_id; b.setAttribute('aria-selected', String(active)); b.tabIndex = active ? 0 : -1; });
+      document.getElementById('puja-discovery').setAttribute('aria-labelledby', `region-tab-${region.region_id}`);
+      status.textContent = text('Loading curated pandals…');
+      if (!loaded.has(region.region_id)) loaded.set(region.region_id, (async () => {
+        const policy = await optional(next.provider_data);
+        const osm = policy?.provider !== 'google' ? await optional(next.food_data) : null;
+        return { ...combineFood(scopeFood(allData, next, registry.default_region), osm, policy),
+          foodData: osm ? next.food_data : null };
+      })());
+      try {
+        const result = await loaded.get(region.region_id);
+        if (run !== generation) return;
+        data = result; input.disabled = false; renderRegion();
+      } catch { if (run === generation) { status.textContent = text('Pandal data is unavailable. Please try again later.'); input.disabled = false; } }
+      finally { if (run === generation) document.getElementById('puja-discovery').setAttribute('aria-busy', 'false'); }
+    }
+    await changeRegion(region);
+    window.addEventListener('popstate', () => changeRegion(regionFromURL(location.search, registry)));
     document.addEventListener('foodpath-select-pandal', event => {
       const p = data.pandals.find(p => p.pandal_id === event.detail);
       if (p) { select(p); selected.scrollIntoView({ block: 'start' }); document.getElementById('selected-pandal-title').focus({ preventScroll: true }); }
     });
-    onData(data.pandals);
   } catch { input.disabled = true; status.textContent = text('Pandal data is unavailable. Please try again later.'); }
 }

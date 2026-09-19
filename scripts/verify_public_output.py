@@ -69,6 +69,33 @@ def main(*, runtime=False) -> None:
         "osm_food.json",
         "food_provider.json",
     }
+    if (ROOT / "config/regions.yml").exists():
+        from food_safety.food_pois.models import PublicData as RegionFood
+        from food_safety.food_pois.models import PublicProvider as RegionProvider
+        from food_safety.puja.pipeline import load_config as catalog_config
+        from food_safety.puja.regions import load_regions, public_registry
+
+        regions = load_regions(ROOT)
+        catalog = catalog_config(ROOT)
+        allowed_data.add("regions.json")
+        if (SITE / "data/regions.json").read_bytes() != (ROOT / "data/regions.json").read_bytes():
+            present.append("public and approved regions differ")
+        if json.loads((SITE / "data/regions.json").read_text()) != public_registry(ROOT):
+            present.append("region output differs from registry")
+        for region in regions.regions:
+            ids = {p.pandal_id for p in catalog.published if p.region_id == region.region_id}
+            for relative, model in (
+                (region.food_data, RegionFood),
+                (region.provider_data, RegionProvider),
+            ):
+                allowed_data.add(Path(relative).name)
+                value = model.model_validate_json((SITE / relative).read_text())
+                if (SITE / relative).read_bytes() != (ROOT / relative).read_bytes():
+                    present.append("public and approved regional food differ")
+                if isinstance(value, RegionFood) and any(
+                    a.pandal_id not in ids for a in [*value.associations, *value.coverage]
+                ):
+                    present.append("cross-region food association")
     places = SITE / "data/places.json"
     osm = SITE / "data/osm_food.json"
     if osm.exists():

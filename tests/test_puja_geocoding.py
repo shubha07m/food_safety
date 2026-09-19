@@ -103,5 +103,5 @@ def test_query_uses_name_and_locality_without_coordinates(tmp_path):
 
     record = {r.pandal_id: r for r in load_config(root).published}[records[1]["pandal_id"]]
     value = query(record)
-    assert record.name.split()[0] in value and record.city in value and "India" in value
+    assert record.name.split()[0] in value and record.city in value and record.country_code in value
     assert "Durga Puja" not in value

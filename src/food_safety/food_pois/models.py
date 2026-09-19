@@ -48,6 +48,7 @@ class OSMConfig(Strict):
     max_download_bytes: int = Field(default=400_000_000, ge=1, le=2_000_000_000)
     bbox: Bounds
     bbox_basis: str
+    catchment_radius_m: float | None = Field(default=None, ge=600, le=5000)
     categories: dict[Literal["amenity", "shop"], list[str]]
 
     @model_validator(mode="after")
@@ -162,6 +163,12 @@ class Association(Strict):
     source_snapshot: str
 
 
+class CoverageCircle(Strict):
+    latitude: Latitude
+    longitude: Longitude
+    radius_m: float = Field(gt=0, le=5000, allow_inf_nan=False)
+
+
 class Snapshot(Strict):
     schema_version: Literal["food-osm-1"] = "food-osm-1"
     snapshot_id: str
@@ -171,6 +178,8 @@ class Snapshot(Strict):
     snapshot_date: AwareDatetime | None = None
     extracted_at: AwareDatetime
     bbox: Bounds
+    # Absent for whole-bbox extracts; explicit for bounded venue subsets.
+    coverage_circles: list[CoverageCircle] | None = Field(default=None, min_length=1)
     attribution: Literal["© OpenStreetMap contributors"] = ATTRIBUTION
     attribution_url: Literal["https://www.openstreetmap.org/copyright"] = COPYRIGHT
     license: Literal["ODbL-1.0"] = "ODbL-1.0"

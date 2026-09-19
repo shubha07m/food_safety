@@ -1,0 +1,133 @@
+# Small organizer-sourced catalog; unknown venue locations remain null.
+published:
+  - pandal_id: ca-pashchimi
+    region_id: california
+    country_code: US
+    admin1: California
+    name: Pashchimi Durga Puja
+    organizer: Pashchimi
+    city: Newark
+    area: Newark
+    venue: Oasis Palace
+    latitude: 37.5483346
+    longitude: -122.048156
+    coordinate_source: https://www.openstreetmap.org/node/5690230329
+    coordinate_precision: venue
+    address: 35145 Newark Blvd, Newark, CA 94560
+    year: 2026
+    event_dates: October 16–20, 2026
+    featured: true
+    last_verified_at: '2026-09-19T16:00:00Z'
+    sources:
+      - source_url: https://pashchimi.org/
+        source_title: Pashchimi — organizer event announcement
+        publisher: Pashchimi
+        quote: 'Venue: 35145 Newark Blvd. Newark CA-94560Oasis Palace'
+  - pandal_id: ca-sanskriti
+    region_id: california
+    country_code: US
+    admin1: California
+    metro_region: Bay Area
+    name: Sanskriti Durga Puja
+    organizer: Sanskriti Bay Area
+    city: Newark
+    area: Newark
+    venue: Newark Pavilion
+    latitude: 37.5332703
+    longitude: -122.0324619
+    coordinate_source: https://www.openstreetmap.org/node/368167218
+    coordinate_precision: venue
+    address: 6430 Thornton Ave, Newark, CA 94560
+    year: 2026
+    event_dates: October 9–11, 2026
+    featured: true
+    last_verified_at: '2026-09-19T16:00:00Z'
+    sources:
+      - source_url: https://www.sanskriti.org/
+        source_title: Sanskriti — organizer event announcement
+        publisher: Sanskriti Bay Area
+        quote: 'Newark Pavilion, 6430 Thornton Ave, Newark, CA 94560, USA'
+  - pandal_id: ca-agomoni
+    region_id: california
+    country_code: US
+    admin1: California
+    name: Agomoni Durga Puja
+    organizer: Agomoni
+    city: San Ramon
+    area: San Ramon
+    venue: 2600 Camino Ramon parking lot
+    address: 2600 Camino Ramon, San Ramon, CA 94583
+    year: 2026
+    event_dates: October 16–18, 2026
+    featured: true
+    last_verified_at: '2026-09-19T16:00:00Z'
+    sources:
+      - source_url: https://agomoni.org/durgapuja-2026/
+        source_title: Agomoni — 2026 organizer announcement
+        publisher: Agomoni
+        quote: 'Venue: 2600 Camino Ramon, Parking Lot, San Ramon, CA 94583'
+  - pandal_id: ca-basc
+    region_id: california
+    country_code: US
+    admin1: California
+    name: BASC Durga Pujo
+    organizer: Bengali Association of Southern California
+    city: Cerritos
+    area: Cerritos
+    venue: Cerritos Center for the Performing Arts
+    latitude: 33.8675683
+    longitude: -118.0616575
+    coordinate_source: https://www.openstreetmap.org/way/229352083
+    coordinate_precision: venue
+    address: 18000 Park Plaza Dr, Cerritos, CA 90703
+    year: 2026
+    event_dates: October 16–18, 2026
+    featured: true
+    last_verified_at: '2026-09-19T16:00:00Z'
+    sources:
+      - source_url: https://bascweb.org/
+        source_title: BASC — organizer event announcement
+        publisher: Bengali Association of Southern California
+        quote: 'Cerritos Center for the Performing Arts 18000 Park Plaza Dr, Cerritos, CA 90703'
+  - pandal_id: ca-vbc
+    region_id: california
+    country_code: US
+    admin1: California
+    metro_region: Greater Los Angeles
+    name: Valley Bengali Community Durgotsav
+    organizer: Valley Bengali Community
+    city: Los Angeles
+    neighborhood: Canoga Park
+    area: Canoga Park
+    venue: Canoga Park High School
+    latitude: 34.1956304
+    longitude: -118.6043728
+    coordinate_source: https://www.openstreetmap.org/way/380023703
+    coordinate_precision: venue
+    address: 6850 Topanga Canyon Blvd, Canoga Park, CA
+    year: 2026
+    event_dates: October 16–18, 2026
+    featured: true
+    last_verified_at: '2026-09-19T16:00:00Z'
+    sources:
+      - source_url: https://durga.valleybengali.org/
+        source_title: VBC — 2026 organizer announcement
+        publisher: Valley Bengali Community
+        quote: 'Canoga Park High School 6850 Topanga Canyon Blvd. Canoga Park'
+  - pandal_id: ca-ankur
+    region_id: california
+    country_code: US
+    admin1: California
+    name: Ankur Sharodotsav
+    organizer: Ankur Inc.
+    city: Sacramento
+    area: Sacramento
+    location_precision: source_zone
+    year: 2026
+    event_dates: October 23–25, 2026
+    last_verified_at: '2026-09-19T16:00:00Z'
+    sources:
+      - source_url: https://www.ankurinc.org/
+        source_title: Ankur — annual event calendar
+        publisher: Ankur Inc.
+        quote: 'Sharodotsav · দুর্গা পূজা'
