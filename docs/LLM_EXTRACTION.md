@@ -1,5 +1,8 @@
 # Structured extraction
 
+This document describes the West Bengal Food Safety Evidence extractor. Puja catalog
+curation has a separate reviewed publication boundary; see [PUJA_CURATION.md](PUJA_CURATION.md).
+
 The language model converts fetched source documents into structured candidate records. Python validates schema, evidence spans, source provenance, safety, dates, duplicates and publication policy. Fully validated candidates may publish automatically; ambiguous or unsupported candidates are skipped. There is no LLM review queue or promotion stage.
 
 ## Configuration

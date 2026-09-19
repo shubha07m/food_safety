@@ -4,6 +4,12 @@ Project policy draft — not legal advice. An India-qualified lawyer should revi
 
 ## Identity and purpose
 
+The Bengal FoodPath is the umbrella project. Puja FoodPath offers source-conscious festival and food discovery, currently in the Kolkata region and California. This is not a complete directory. Listings, geographic anchors and OSM food tags can be incomplete or outdated; verify event and business details before travel. Approximate straight-line distance is not a walking route or proof of access.
+
+Nearby food, featured shortcuts and Google Maps handoffs are not recommendations, inspections, endorsements or safety ratings. California's Bengali-food links open regional Google Maps searches, not a verified restaurant catalog. A coordinate handoff identifies a sourced location, not necessarily a matched Google business. Google Maps use is subject to [Google Maps terms](https://www.google.com/help/terms_maps/) and [Google privacy](https://policies.google.com/privacy). OSM-derived food data is attributed to [OpenStreetMap contributors](https://www.openstreetmap.org/copyright) under ODbL; it is not project-owned proprietary listing data.
+
+Food Safety Evidence remains a separate West Bengal-only module. The evidence interpretation rules below apply to that module, not to Puja or food-list inclusion.
+
 The West Bengal Food Safety Evidence Tracker is an independent, non-governmental, initially non-commercial educational, academic and public-interest data-research project. Its initial scope is West Bengal, India, with emphasis on Kolkata and surrounding areas. It organizes publicly available reporting into a structured evidence browser. It is not an official register, government database, restaurant blacklist, accusation platform or substitute for official records.
 
 Kolkata Municipal Corporation (KMC), the Government of West Bengal, FSSAI, news publishers, establishments and other parties do not endorse this project. Source references and links do not imply affiliation, sponsorship or endorsement by either party.
@@ -40,7 +46,7 @@ Meaningful historical changes are recorded through revision notes and prior-vers
 
 ## Automated assistance and rights
 
-Automated tools, including language models where enabled, may assist extraction. Model output is not evidence. Factual fields require supporting source material, deterministic checks and maintainer context review. No model determines guilt, liability, food safety, community identity or wrongdoing.
+Automated tools, including language models where enabled, may assist extraction. Model output is not evidence. Factual fields require supporting source material and objective validation; source-backed Puja additions require reviewed configuration. Valid Food Safety candidates may publish automatically, while later semantic holds and corrections retain their review requirements. No model determines guilt, liability, food safety, community identity or wrongdoing.
 
 Links and minimal quotations do not transfer copyright. Third-party article content is not relicensed by this repository. No full article text is republished. See SOURCES.md and LICENSE.
 

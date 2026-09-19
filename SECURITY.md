@@ -2,13 +2,13 @@
 
 ## Structured extraction boundary
 
-Article text is untrusted data, including prompt-like instructions. The extractor has no tools, browser session, publication permission or configurable destination supplied by article text. The hosted adapter uses a fixed HTTPS endpoint, a header-held credential, bounded input/output, a 20-second timeout, no redirects and no automatic retries. Provider errors are reduced to controlled codes; article bodies and credentials are not logged. A schema-valid answer still needs independent span, semantic, source and publication validation. Source lifecycle checks do not consume model output.
+Article text is untrusted data, including prompt-like instructions. The extractor has no tools, browser session, publication permission or configurable destination supplied by article text. The hosted adapter uses a fixed HTTPS endpoint, a header-held credential, bounded input/output, a 20-second timeout, no redirects and no automatic retries. Provider errors are reduced to controlled codes; article bodies and credentials are not logged. A schema-valid answer still needs objective evidence-span, schema, source, policy and publication validation. Source lifecycle checks do not consume model output.
 
-Shadow/evaluation/exception artifacts stay under ignored `.cache/llm_eval/`; do not upload them as GitHub artifacts or include them in deployments. Tests remove live credentials. No model token or runtime inference is present in the static frontend. Provider billing limits remain an owner responsibility; local spend estimates are not a billing guarantee.
+Private extraction/diagnostic artifacts stay under ignored `.cache/llm_eval/`; do not upload them as GitHub artifacts or include them in deployments. Tests remove live credentials. No model token or runtime inference is present in the static frontend. Provider billing limits remain an owner responsibility; local spend estimates are not a billing guarantee.
 
 The project keeps static deployment. Community intake is an outbound link to a validated HTTPS Google Forms URL, never an embedded public write endpoint. Submitted URLs must separately pass publisher admission and SSRF controls. The optional local CSV importer retains only an allowed source URL and submission type; no raw form response, contact, or reviewer note is public. Retry-After and host failure limits prevent aggressive retries; no anti-bot/TLS bypass is allowed. A source warning never relaxes new-record admission. develop cannot dispatch production ingestion; hosting remains unchanged.
 
-The public site is static HTML/CSS/JavaScript and generated public JSON. There is no public admin endpoint, database write API, login, executable submission content, comments, arbitrary upload or SQL backend. Only the site/ directory may be deployed, after review. Never serve the repository root: it contains private pending/history/configuration.
+The public site is static HTML/CSS/JavaScript and generated public JSON. There is no public admin endpoint, database write API, login, executable submission content, comments, arbitrary upload or SQL backend. Only the isolated dist/site/ artifact may be deployed after review; tracked site/ is its validated source with blank browser configuration. Never serve the repository root: it contains private pending/history/configuration.
 
 ## Safeguards
 
@@ -18,7 +18,13 @@ Fetches require configured exact domains. DNS results are checked for global add
 
 Cloudflare _headers supplies CSP, frame-ancestors none, nosniff, no-referrer, restrictive permissions and HTTPS HSTS. The HTML also has a CSP meta fallback for local/GitHub Pages use. HSTS and frame-ancestors require actual HTTP response headers; GitHub Pages cannot apply _headers. Use Cloudflare or an appropriate front proxy if those controls are required. Confirm headers on the final custom domain. Local Python http.server is for loopback development only.
 
-Dependencies are pinned and CI includes a lightweight audit. Dependabot proposes updates. Actions use immutable SHAs. CI has read-only contents permission and never receives model keys, runs a crawler or consumes paid tokens on PRs. Refresh Food Safety Data runs approximately every two hours or by authenticated manual dispatch. Only that job has contents-write permission; it commits an explicit public-artifact allowlist after tests and validation. It does not upload private queues or snapshots. There is no push-triggered source scan or public refresh endpoint.
+Dependencies are pinned and CI includes a lightweight audit. Dependabot proposes updates. Actions use immutable SHAs. PR validation has read-only contents permission and does not receive model keys, run a crawler or consume provider quota. Refresh Food Safety Data runs approximately every two hours or by authenticated manual dispatch. Only that job has contents-write permission; it commits an explicit public-artifact allowlist after tests and validation. It does not upload private queues or snapshots. There is no push-triggered source scan or public refresh endpoint.
+
+## Regional food and runtime boundaries
+
+OSM snapshots are imported by operators; visitors read static regional subsets. Google ID-only suggestions remain in ignored revision-keyed caches. A single result is not identity proof, and only explicit verified crosswalks may add public place-ID handoffs. Regional food-search links are validated keyless URLs, not provider responses or restaurant records. No page action invokes Places or OSM APIs.
+
+The deployment builder copies blank tracked configuration into ignored dist/site/ and adds only the designated browser value there. Current tree/index validation rejects populated tracked configuration; generated commits use an explicit allowlist. Private Places/Gemini values are rejected from output. Never replace the blank tracked default to test a live map.
 
 ## Reporting
 
@@ -26,7 +32,7 @@ Do not put credentials, exploit details or private data in public Issues. Use Gi
 
 ## Maintainer operations
 
-Keep .env and model secrets out of commits and frontend assets. Avoid logging exception bodies or environment variables. Review all action/config/dependency changes. Recommend protected main, required CI, restricted direct pushes, secret scanning where available and tightly scoped deployment tokens. GitHub Free does not expose branch-protection rules for this private repository; enable required CI, block force pushes and block deletion immediately if the plan changes or the repository becomes eligible. A single-maintainer project should not require multiple human approvals.
+Keep .env and model secrets out of commits and frontend assets. Avoid logging exception bodies or environment variables. Review all action/config/dependency changes. Recommend protected main, required CI, restricted direct pushes, secret scanning where available and tightly scoped deployment tokens. This repository is public. Verify current required checks, force-push/deletion restrictions and narrowly scoped automation permissions rather than relying on this document as an attestation. A single-maintainer project should not require multiple human approvals.
 
 An interrupted data transaction blocks validation and site build. Inspect data/.transaction.json and Git diffs, preserve any useful audit snapshots, restore the last reviewed coherent data set, then remove only that marker after review. Never automatically delete a marker or force a build through inconsistent data.
 

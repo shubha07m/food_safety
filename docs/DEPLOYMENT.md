@@ -1,37 +1,56 @@
-# Live deployment
+# Static deployment
 
-Keep the existing main-to-Cloudflare integration unchanged. Reconcile bot-generated production data before any owner-approved develop-to-main merge; see MAINTAINER_GUIDE.md. No new backend, map provider, domain or deployment infrastructure is required.
+Canonical site: https://foodsafety.nemoneek.com/
 
-Canonical public beta: https://foodsafety.nemoneek.com/
+`main` is production; `develop` is implementation. Preserve the existing hosting
+integration and reconcile newer scheduled production data before an owner-approved
+merge commit. Do not deploy the repository root.
 
-Hosting: **Cloudflare Workers static assets**. The existing Git integration builds `main` and deploys only `site/`, never the repository root. Fallback: https://food-safety.shubha07m.workers.dev/
+## Source and artifact
 
-The project does not store Cloudflare credentials, account IDs, domain verification values or GitHub tokens. The existing authorized Cloudflare integration owns deployment. Repository visibility is a separate maintainer action; no script changes it.
+Tracked `site/` contains validated static assets and a blank `maps-config.json`.
+The existing Node build copies it to ignored `dist/site/` and injects browser
+configuration only into that deployment artifact:
 
-## Build and deploy
+~~~sh
+node scripts/build_deployment.mjs && npx wrangler deploy --config dist/wrangler.json
+~~~
 
-`site/` is versioned, prevalidated static output with a blank browser configuration.
-The deployment build runs `node scripts/build_deployment.mjs && npx wrangler deploy --config dist/wrangler.json`.
-It supplies `GOOGLE_MAPS_BROWSER_KEY` through its own build environment; set
-`REQUIRE_BROWSER_MAP_CONFIG=true` to require it. The Node-only build copies `site/`
-into ignored `dist/site/`, adds runtime configuration there, and derives
-`dist/wrangler.json` from the existing project settings. No Python build is needed.
-The build command and environment must be configured before merging this change;
-the Actions artifact check does not transfer its environment to the hosting build.
-The existing custom-domain association remains unchanged. See [BROWSER_MAP.md](BROWSER_MAP.md).
+The generated Wrangler file derives existing settings and points at the artifact.
+The hosting build must independently receive `GOOGLE_MAPS_BROWSER_KEY`; Actions
+environment values do not transfer to it. `REQUIRE_BROWSER_MAP_CONFIG=true` requires
+configuration. Neither private operator key belongs in public output. No Python build,
+provider discovery or snapshot download is needed in this deployment step.
+[Browser setup and local artifact testing](BROWSER_MAP.md).
 
-GitHub CI checks code, data, tests and public output. The scheduled refresh runs every two hours and commits only validated public artifacts. Cloudflare Git integration observes changes to `main`. Its deployment status should be checked in the Cloudflare dashboard after any push; a successful GitHub push alone is not proof of deployment.
+Actions validates source/data, stages an explicit generated-file allowlist and checks
+an isolated artifact after the commit boundary. It does not deploy the site.
+Release-triggered builds skip source/Gemini research; scheduled ingestion remains
+bounded. The hosting integration observes `main`. Green GitHub CI alone does not
+prove hosting deployment succeeded.
 
-## Verification and rollback
+## Verification
 
-Run `python scripts/verify_public_output.py` before committing artifacts. On the live URL, verify HTTPS, CSP, `frame-ancestors 'none'`, HSTS, `X-Content-Type-Options`, referrer and permissions policies with `python scripts/check_deployment.py`. That bounded check does not log cookies or credentials.
+~~~sh
+python scripts/verify_public_output.py
+python scripts/stage_generated.py
+python scripts/verify_public_output.py --runtime --site dist/site
+python scripts/check_deployment.py
+~~~
 
-Cloudflare Workers static assets apply `site/_headers`. Domain-level security settings must not loosen them. Check English and `?lang=bn`, a record URL, data exports, correction links and the keyless map fallback. A deliberate live-map smoke contacts Google Maps; ordinary page load, fonts and translation remain local.
+Runtime verification needs the same environment used to build that artifact. Check
+HTTPS and response policies on the live domain, then Kolkata/California, English/Bengali,
+food handoffs, optional live map, Food Safety, record details and corrections.
+Ordinary local `site/` serving deliberately uses the map fallback.
 
-Rollback using Cloudflare deployment history to a previously validated version, then revert the corresponding generated-data commit if necessary. Do not force-push history as a routine rollback. Pause the refresh workflow during an accuracy incident and suspend disputed records using the documented CLI.
+## Rollback and operations
 
-## Operational caveats
+Use existing deployment history for an approved rollback, followed by a reviewed revert
+where needed. Never force-push public history as routine rollback. Pause research
+refresh when accuracy requires it; source lifecycle corrections remain distinct from
+UI deployment. Preserve stable record IDs and later production tombstones.
 
-GitHub schedules are best-effort and may be delayed; public inactive repositories can have scheduled workflows disabled by GitHub. Watch occasional notifications. Only the last successful refresh timestamp signals success. A partial source failure can publish safe suspension changes while leaving the last-successful time unchanged.
-
-Main protection on this private repository requires an eligible GitHub plan. Until available, retain single-maintainer writes, least-privilege workflows, local pre-push checks, green CI and no force-push/deletion. Once public, configure required CI and PR checks before accepting broader contributions.
+GitHub schedules are best-effort; watch failed runs and last-successful timestamps.
+Public-repository inactivity can affect scheduling. Check current branch protections,
+required checks and narrowly scoped bot permissions before release; no static document
+attests to the live settings. [Maintainer procedure](MAINTAINER_GUIDE.md).

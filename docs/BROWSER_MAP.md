@@ -1,148 +1,107 @@
-# FoodPath homepage and optional browser map
+# Optional browser map and configuration delivery
 
-The umbrella homepage separates Food Safety Evidence from search-first Puja FoodPath.
-Pandal search uses `site/data/pandals.json` and `site/data/places.json`, with eight options at
-most, English/Bengali names and area matching. `FEATURED_IDS` in `site/puja.mjs` is an
-explicit editorial list capped at six. Disabled pandals are not published by the Places
-pipeline. The source-backed catalog includes search-only entries without coordinates;
-these never become guessed map markers.
+Puja FoodPath uses region-scoped local search and reviewed map anchors. Kolkata
+and California reuse one optional Google map. Food Safety Evidence remains West
+Bengal-only; its area layer is optional in Kolkata and absent in California.
+Restaurant coordinates are not sent to this map. Food lists are static; see
+[FOOD_POIS.md](FOOD_POIS.md).
 
-Selected-pandal links use independently curated names or the neutral label “Restaurant
-on Google Maps.” Associations are historical discoveries, not a current proximity
-guarantee. This durable contract has no valid distances: the interface deliberately does
-not display any. No restaurant is linked to inspection evidence by proximity or implied
-to be safe, endorsed or inspected. No Places/Details call occurs in the visitor path.
+## Tracked source versus runtime output
 
-## Two separate credentials
+Tracked `site/maps-config.json` must remain `{"browser_key":""}`. Normal Python
+builds always write that blank default, regardless of local environment. A plain
+`python -m http.server --directory site` therefore shows the intentional fallback.
+A local `.env` does not make this static server a configured live-map deployment.
 
-- `GOOGLE_MAPS_API_KEY`: private server/operator Places discovery only, unchanged.
-- `GOOGLE_MAPS_BROWSER_KEY`: intended to be publicly visible, Maps JavaScript API only,
-  protected by Google Cloud website and API restrictions.
+`node scripts/build_deployment.mjs` copies validated `site/` to ignored
+`dist/site/`, then injects `GOOGLE_MAPS_BROWSER_KEY` into **that copy only**.
+It reads the process environment, not `.env`, and requires a fresh output directory.
+It also derives `dist/wrangler.json` from existing deployment settings.
+Never manually populate the tracked file.
 
-Never reuse the server key. The build fails if the browser key equals a configured
-Places or Gemini key. The browser key is intentionally public client configuration;
-its Google Cloud API and referrer restrictions are the security boundary. Server
-credentials never belong in Git or public output.
+- `GOOGLE_MAPS_BROWSER_KEY`: browser-restricted Maps JavaScript configuration.
+- `GOOGLE_MAPS_API_KEY`: private operator Places calls, never browser output.
+- `GEMINI_API_KEY`: private structured extraction, never browser output.
 
-## Owner setup
+The artifact builder rejects reuse of a configured private key as the browser value.
+Current-tree/index guards reject populated tracked map configuration. Runtime validation
+permits only the designated browser value in the isolated artifact.
 
-1. In Google Cloud Console, select your billing-enabled project and enable **Maps
-   JavaScript API**. Its map loads have separate pricing/quota from Nearby Search.
-2. Create a **new** API key. Under **Application restrictions**, select **Websites**.
-   Allow `https://foodsafety.nemoneek.com/*`. For local development add
-   `http://localhost:8000/*` and `http://127.0.0.1:8000/*` (prefer a separate development
-   browser key if practical). Do not permit arbitrary sites or unrestricted wildcards.
-3. Under **API restrictions**, restrict the key to **Maps JavaScript API only**. Do not
-   enable Places or server discovery APIs for this browser credential. Configure Cloud
-   quotas/budget alerts; the operator's local 3,000-call ledger does not count map loads.
-4. Add `GOOGLE_MAPS_BROWSER_KEY` at **Repository → Settings → Secrets and variables →
-   Actions → Repository secrets**. The existing refresh workflow passes it only to the
-   static build. For local use, set it in ignored `.env` or the shell; `.env.example`
-   has only a blank placeholder.
-5. Activate `food` and run:
+## Deliberate local live-map test
 
-   ```bash
-   python -m food_safety.cli build
-   python scripts/verify_public_output.py
-   python -m http.server 8000 --bind 127.0.0.1 --directory site
-   ```
+Supply the restricted browser value through your local environment without printing
+or saving it in tracked files. With a fresh ignored `dist/` output:
 
-6. Open `http://127.0.0.1:8000/`, scroll to geography and select **Open live Google map**.
-   Confirm authorization, both layer toggles, source-marker filtering, and attribution.
-   Missing/invalid authorization leaves the textual area list usable.
+~~~sh
+node scripts/build_deployment.mjs
+python scripts/verify_public_output.py --runtime --site dist/site
+python -m http.server 8000 --bind 127.0.0.1 --directory dist/site
+~~~
 
-## Cost controls (documentation checked 2026-09-16)
+Use the same environment for artifact generation and verification. Set
+`REQUIRE_BROWSER_MAP_CONFIG=true` to make absent configuration fail the build.
+Inspect any existing output before moving/removing it; do not reuse stale artifacts.
+The keyless workflow remains `python -m food_safety.cli build` and serving `site/`.
 
-Dynamic Maps and Places Nearby Search are separate billing paths. Normal visits
-load local data only: zero map loads and zero Places requests. A fresh page requires
-an explicit **Open live Google map** action. No preference auto-loads it on return.
-Double-clicks and repeated initialization reuse one loader and one map. Layers,
-selection, pan and zoom reuse that instance without Nearby Search. A failed load
-stops without automatic retries. Frontend state prevents accidental duplicates;
-it is not an abuse/security boundary or a monthly spending limit.
+## Production boundary
 
-The operator Places ledger retains its 3,000-attempt monthly hard cap. Maps
-JavaScript has no equivalent application monthly ledger. No Google tiles or
-rendered map imagery are cached or captured for offline reuse by the product.
+Actions builds/tests tracked output and commits only an explicit generated-file
+allowlist; map configuration is excluded. Its separate artifact check is not a deploy
+and does not transfer environment values to the hosting build.
 
-Google documents editable map-load quotas. In **Google Maps Platform → Quotas**,
-select **Maps JavaScript API**, select the project-level **map loads per minute**
-quota, choose **Edit**, and request **10 per minute** (or 5 for a small pilot).
-Confirm the console accepts the lower value for your project; we cannot verify
-your account's editable quota or approval result. Do not substitute a Places
-quota. If unavailable, use the Console's quota support/request flow.
+The existing hosting build independently receives `GOOGLE_MAPS_BROWSER_KEY` and runs:
 
-A QPM limit mitigates bursts but sustained usage can accumulate throughout the
-month. Billing alerts notify; they do not cap spending. Review usage, current
-SKU pricing, website/API restrictions, and quota settings periodically.
-
-- [Official map quotas and edit steps](https://developers.google.com/maps/documentation/javascript/usage-and-billing)
-- [Google cost controls and budget alerts](https://developers.google.com/maps/billing-and-pricing/manage-costs)
-
-Festival-data refresh is separate: the existing Actions workflow checks a
-persisted due-time guard (default six hours, maximum ten research runs/day).
-It rebuilds our catalog without loading maps or running Places discovery.
-
-Normal builds always write `{"browser_key":""}` to tracked `site/maps-config.json`,
-regardless of the environment. This provides the portable local fallback.
-`node scripts/build_deployment.mjs` copies the validated site to ignored `dist/site/`
-and writes browser configuration only into that copy. It reads the environment,
-does not read `.env`, and requires a fresh output directory. It also creates
-`dist/wrangler.json` with the existing project settings and artifact-relative paths.
-
-## Release wiring
-
-The existing refresh workflow also runs on a `main` push. Release pushes skip discovery
-and model calls. Generated commits use an explicit file allowlist that excludes map
-configuration. After that commit boundary, a separate step constructs and validates an
-isolated artifact. GitHub-token bot commits do not recursively trigger workflows.
-
-The Actions artifact check does not deploy the site. The existing hosting build must
-independently supply `GOOGLE_MAPS_BROWSER_KEY` in its build environment and run:
-
-```sh
+~~~sh
 node scripts/build_deployment.mjs && npx wrangler deploy --config dist/wrangler.json
-```
+~~~
 
-Set `REQUIRE_BROWSER_MAP_CONFIG=true` in that build environment to require a live-map
-configuration at deployment. These build-environment and command settings must be in
-place before releasing this change. GitHub Actions environment values are not passed
-automatically to the hosting build. The domain, asset behavior, and map interactions
-are unchanged. Local artifact builds without a value retain the fallback.
+Only `dist/site/` is deployed. Preserve the current hosting configuration.
+[Deployment](DEPLOYMENT.md) documents verification and rollback.
+`python scripts/stage_generated.py` validates checkout/index; `--stage` uses the
+explicit allowlist. `python scripts/verify_public_output.py` checks tracked output.
 
-Validate source output with `python scripts/verify_public_output.py`. Validate the
-isolated output with `python scripts/verify_public_output.py --runtime --site dist/site`
-using the same environment. `python scripts/stage_generated.py` checks both checkout
-and index; `--stage` stages only the approved generated file set.
+## Loading and cost behavior
 
-## Runtime and security boundaries
+A fresh visit makes **zero map loads**, **zero Places calls**, and **zero OSM API
+calls**. Only **Open live Google map** creates the same-origin map iframe and loads
+Maps JavaScript. No stored preference silently reloads it on a future visit.
+Double-clicks, region switches, selected-Puja changes and layer toggles reuse a
+singleton loader/map. A failed load stops without an automatic retry loop.
 
-The homepage fetches only local JSON initially. On a deliberate click it creates a
-same-origin `google-map.html` iframe. That document alone requests the Maps JavaScript
-API, using the quarterly release channel and origin-only key authorization. It does not
-load the Places library, request geolocation, or access restaurant coordinates. It plots
-reviewed food-safety area anchors and independently curated pandals in different layers.
-Coarse anchors are not establishment addresses. Google data-layer points avoid requiring
-a new Cloud Map ID or deprecated marker API. Text/source filtering remains accessible
-outside the map. No map frame is loaded on record-detail or policy pages.
+Dynamic Maps rendering is a separate billing path from operator Nearby/Text Search.
+The Google operation ledger has a 3,000-attempt monthly internal cap; Maps JavaScript
+has no equivalent application-side monthly ledger. Frontend deduplication is not an
+abuse boundary. No Google map tiles or rendered imagery are cached for offline reuse.
 
-`site/_headers` keeps the normal self-only CSP globally. Only `/google-map.html` and its
-clean-URL alias detach that header and X-Frame-Options; the map document enforces its own
-Google-compatible meta CSP. This is a static-asset security rule, not deployment
-infrastructure reconfiguration. Main pages retain strict CSP, no-referrer and frame denial.
-There is no static reusable CSP nonce. Map source strings are DOM text, never HTML;
-postMessage handlers validate origin, source window, and marker fields. The dedicated
-map page is intentionally not a standalone entry and needs a same-origin parent to load.
+Recommended Google Cloud configuration (owner-controlled):
 
-Google requests occur only after opting in. Policy links are next to the geography panel;
-Google's map attribution must remain visible. The small text attribution on restaurant
-links identifies Google Maps handoff separately from project-curated metadata. Existing
-OSM area-anchor attribution remains visible. UI translations never translate source quotes.
+1. Restrict the browser key to **Maps JavaScript API only**.
+2. Restrict website referrers to `https://foodsafety.nemoneek.com/*`; allow
+   `http://localhost:8000/*` and `http://127.0.0.1:8000/*` only if needed.
+3. In Google Maps Platform quotas, inspect Maps JavaScript's map-loads-per-minute
+   quota. Request a conservative 5–10/minute if that editable quota is available;
+   confirm the console accepts it for the project.
+4. Review usage, API/referrer restrictions, billing alerts and current pricing.
 
-Official references checked 2026-09-15:
+A per-minute limit mitigates bursts, not sustained monthly cost. Alerts notify rather
+than impose a spending ceiling. Pricing/quota options can change.
+[Official quotas](https://developers.google.com/maps/documentation/javascript/usage-and-billing) ·
+[Cost controls](https://developers.google.com/maps/billing-and-pricing/manage-costs).
 
-- [Load Maps JavaScript API](https://developers.google.com/maps/documentation/javascript/load-maps-js-api)
-- [Key setup and restrictions](https://developers.google.com/maps/documentation/javascript/get-api-key)
-- [Maps CSP](https://developers.google.com/maps/documentation/javascript/content-security-policy)
-- [Google Maps policies](https://developers.google.com/maps/documentation/javascript/policies)
-- [Static header detachment](https://developers.cloudflare.com/workers/static-assets/headers/)
+## Runtime boundaries and accessibility
+
+The main page reads local JSON and keeps strict script policy. Only the opt-in
+`google-map.html` document permits required Google endpoints; it validates message
+origin and sending window. Public anchors are rendered as text, never source HTML.
+It loads no Places library, requests no visitor geolocation and is not initialized
+on record-detail or policy pages.
+
+Textual geography, regional search and food lists remain usable without the live map.
+Puja markers appear first; source labels and precision remain visible. Area anchors
+do not locate inspections or establishments. Attribution stays visible, and UI
+translation never replaces original evidence.
+
+[Maps loader](https://developers.google.com/maps/documentation/javascript/load-maps-js-api) ·
+[Key restrictions](https://developers.google.com/maps/documentation/javascript/get-api-key) ·
+[Maps CSP](https://developers.google.com/maps/documentation/javascript/content-security-policy) ·
+[Privacy](../PRIVACY.md).

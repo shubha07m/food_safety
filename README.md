@@ -1,160 +1,216 @@
 # The Bengal FoodPath
 
-Independent food-information research for West Bengal.
+**Find a Puja. Find nearby food. From Kolkata to California.**
 
-![The Bengal FoodPath — Puja FoodPath and Food Safety Evidence](docs/assets/readme_banner.svg)
+A source-conscious, static-first food and festival discovery project originating
+in Bengal and extending to Bengali communities beyond Bengal.
 
 [![CI](https://github.com/shubha07m/food_safety/actions/workflows/ci.yml/badge.svg)](https://github.com/shubha07m/food_safety/actions/workflows/ci.yml)
-**PUBLIC BETA · Static site · Python 3.12 · MIT code · No project tracking**
 
-### [Explore Puja FoodPath →](https://foodsafety.nemoneek.com/)
+[Explore Puja FoodPath](https://foodsafety.nemoneek.com/) ·
+[California](https://foodsafety.nemoneek.com/?region=california) ·
+[বাংলা](https://foodsafety.nemoneek.com/?lang=bn) ·
+[Food Safety Evidence](https://foodsafety.nemoneek.com/?module=safety)
 
-[Food Safety Evidence](https://foodsafety.nemoneek.com/?module=safety) · [বাংলায় দেখুন](https://foodsafety.nemoneek.com/?lang=bn) · [Methodology](METHODOLOGY.md) · [Corrections](https://foodsafety.nemoneek.com/corrections.html)
+> Independent and non-governmental. Nearby food is not a recommendation, inspection,
+> or safety rating. Food Safety Evidence is a separate West Bengal research module:
+> inclusion is not a finding of wrongdoing, and source support is not independent
+> proof of an event.
 
-> Independent public-source research. **Not a government database. Inclusion is not a finding of wrongdoing.** Nearby restaurant links are not endorsements or safety ratings. Source verification means the cited source supports the displayed statement; it does not mean the project independently established the event as fact.
+## Two distinct experiences
 
-## What this is
+**Puja FoodPath** is the primary seasonal experience, beginning with the **Kolkata
+region** and **California**. Search source-backed Puja listings, explore reviewed
+geographic anchors, browse named nearby food, and open Google Maps when useful.
+“The Bengal” describes the project's origin and cultural context, not a promise
+of worldwide coverage.
 
-The Bengal FoodPath brings together two distinct experiences for West Bengal:
-
-- **Puja FoodPath**, the primary seasonal experience: search source-backed pandal listings, explore festival geography, and follow nearby restaurant links to Google Maps.
-- **Food Safety Evidence**, the research module: inspect source-linked reporting, geographic context, publication history, corrections and evidence methodology.
-
-Restaurant discovery and inspection reporting remain separate. Proximity never establishes a restaurant's safety or a connection to an inspection record.
-
-> **Help keep FoodPath useful.** Volunteer maintainers are welcome for Bengali/English source review, pandal curation, data validation and open-data tooling. [Volunteer / contribute →](CONTRIBUTING.md)
-
-## Puja FoodPath
-
-Search locally by English or Bengali name, alias, area, neighborhood or city. A small set of featured pandals offers curated shortcuts, not rankings. Search works without coordinates; only independently located entries appear as map markers.
-
-Select a pandal to read its source, listing year and available restaurant links. Records without independently curated restaurant names use “Restaurant on Google Maps.” The source directory's broad Kolkata/Howrah zones can include surrounding districts. Historical listings do not confirm this year's venue or hours.
-
-## Food Safety Evidence
-
-[Open the evidence module](https://foodsafety.nemoneek.com/?module=safety) for records, source links, filters, charts and corrections. Unknown information stays unknown. Counts describe indexed reporting, not prevalence, wrongdoing, compliance or official totals.
+**Food Safety Evidence** remains **West Bengal only**. It organizes source-linked
+reporting, original evidence, reporting geography, publication history and corrections.
+California food discovery does not create California inspection coverage or connect
+restaurants to West Bengal evidence.
 
 ## Current experience
 
-![Puja FoodPath homepage with festival illustration and local pandal search](docs/assets/puja_preview.png)
+![Puja FoodPath with the multi-region selector and seasonal hero](docs/assets/puja_preview.png)
 
-The preview shows the current development release; it contains the locally hosted Sharodiya hero supplied for this project and local data, with no captured Google map imagery. The optimized website asset is `site/assets/puja/puja_hero.webp`; its development source and usage note are retained under [`docs/assets/`](docs/assets/ASSET_PROVENANCE.md).
+![California named nearby food and regional discovery](docs/assets/california_food_preview.png)
 
-## How Puja discovery works
+These development-release previews use local static data and no captured Google
+map imagery. [Artwork and screenshot provenance](docs/assets/ASSET_PROVENANCE.md).
 
-Curated public sources → bounded retrieval → structured extraction and source review → verified catalog → local search.
+## Discover a Puja and nearby food
 
-Gemini assists with extracting candidate facts and exact evidence spans. It cannot invent pandals, translations or coordinates and cannot directly publish the pandal catalog. Already structured source tables can be curated directly. The reviewed configuration is the publication boundary. [Curation and refresh details](docs/PUJA_CURATION.md).
+- Choose a region; search locally by name, sourced alias, neighbourhood, area or city.
+- Featured Pujas are curated shortcuts with reviewed geography and meaningful named
+  food coverage, never rankings. There are at most six per region.
+- Select a Puja to browse up to 20 named food places, initially 12. Ordering is by
+  approximate straight-line distance, then name and stable ID—not quality.
+- Food names and optional cuisine/category tags come from OpenStreetMap. Anonymous
+  historical Google associations remain retained but are not individual public rows.
+- Sparse mapped catchments offer one neighbourhood-search handoff. Unmapped listings
+  remain searchable without invented proximity results.
+- California also offers **Bengali food** shortcuts for the Bay Area, Southern
+  California, Sacramento and all California. These open regional Google Maps searches;
+  they are not a verified restaurant directory or additional food POIs.
 
-Restaurant discovery is separate: reviewed zones → bounded saturation-aware Nearby
-Search → dedupe by place ID → temporary coordinate matching → durable associations
-and Google Maps links.
+Historical listings and map anchors do not establish current-year entrances, hours,
+accessibility, walking routes or business availability. Check organizers and venues.
 
-Place IDs are durable. Google-derived coordinates expire in ignored storage, within 30 days; Google names, raw responses and coordinates do not enter permanent public data. [Places architecture](docs/PLACES.md).
+## How discovery works
 
-## How evidence works
+~~~text
+Public Puja sources → reviewed catalog and geographic anchors
+Regional food snapshots → normalized provider-neutral POIs
+                       → local grid/Haversine association
+                       → static named nearby-food results
+                       → keyless Google Maps handoff
+                       + optional verified Google identity crosswalk
+~~~
 
-Public reporting → bounded retrieval → LLM structured candidates → source-grounded schema, evidence, duplicate and safety validation → publish or skip.
+**Kolkata uses hybrid discovery:** OSM names and local associations alongside retained
+Google discovery/enrichment data. **California currently uses OSM** for nearby-food
+lists, with optional operator-side Google identity suggestions. OSM has not replaced
+Google everywhere; coverage differs substantially by region.
 
-Fully validated Food Safety candidates may publish automatically. Ambiguous or unsupported candidates do not. Source evidence remains authoritative. There is no chatbot, public Q&A, training or fine-tuning.
+A verified Google place ID takes precedence in the handoff. Otherwise the URL targets
+the OSM latitude/longitude directly, avoiding a broad chain-name search. A coordinate
+pin is not a claim of exact Google business identity. ID-only search suggestions cannot
+verify that identity by themselves and never publish automatically.
 
-Previously published records can carry source-availability warnings while technical failures are retried. Material uncertainty, corrections and withdrawals change publication eligibility; prolonged unverifiability moves records out of active analytics. History remains visible. [Methodology](METHODOLOGY.md) · [LLM extraction](docs/LLM_EXTRACTION.md).
+Gemini assists bounded source extraction, not identity matching or coordinate invention.
+Puja publication requires reviewed source-backed configuration. Full technical details:
+[Food POIs](docs/FOOD_POIS.md) · [Puja curation](docs/PUJA_CURATION.md) ·
+[Google provider](docs/PLACES.md).
 
-## Maps and cost-aware operation
+## Coverage snapshot
 
-The initial page serves local data and an accessible geographic summary. **Open live Google map** is an explicit choice on each fresh visit. The loader reuses one map for selection and layer changes; no Google map tiles or imagery are stored for offline reuse.
+Development data checked **2026-09-19**; the live site changes after release.
 
-- Zero visitor-triggered Places calls.
-- Places discovery is explicit/operator-side, with a 3,000-attempt monthly internal
-  cap and a 60-attempt per-run ceiling. Saturated searches may use up to three
-  deterministic supplemental circles; dry-run planning exposes the full bound first.
-- Dynamic Maps loads are billed separately and have no project-side monthly ledger.
-- Separate API keys serve browser visualization and private server discovery.
-- Restricted referrers, Maps API restrictions and a conservative Google Cloud map-load quota mitigate abuse. QPM limits and billing alerts are not a monthly cost ceiling.
+| Dataset | Kolkata region | California |
+| --- | --- | --- |
+| Source-backed Puja listings | 223 | 6 |
+| Reviewed map anchors | 14 | 4 |
+| Normalized OSM food POIs | 652 | 263 retained regional catchment POIs |
+| Named OSM POIs | 618 | 246 |
+| Distinct named associated food places | 63 | 72 |
+| OSM snapshot | 2026-09-16 | 2026-09-18 |
 
-[Browser-key setup, quota steps and deployment input](docs/BROWSER_MAP.md). The optional map needs the existing build environment to supply its restricted browser key; the fallback remains fully functional without it.
+These are snapshot counts, not complete directories. Overlapping Puja catchments can
+share food places. Many Kolkata listings come from 2025 directory rows; California
+uses organizer sources for 2026. Only independently located Pujas receive spatial
+associations. Featured counts and available lists are generated from current coverage.
 
-## Current coverage
+Food Safety Evidence currently contains **48 active published records**, **36 area
+labels** and **19 source URLs**. These measure indexed reporting, not incidence or
+official inspection totals. [Public data](https://foodsafety.nemoneek.com/data/events.json)
+and [methodology](METHODOLOGY.md) provide context.
 
-Snapshot: **2026-09-16**.
+## Maps, APIs and privacy
 
-| Dataset | Coverage |
-| --- | --- |
-| Source-backed pandal catalog | 223 listings: 183 Kolkata-zone, 40 Howrah-zone |
-| Map-ready pandals | 14 independently sourced anchors; other listings remain searchable without markers |
-| Pandal sources / featured shortcuts | 4 source URLs / 6 featured entries |
-| Restaurant discovery | 296 unique place IDs / 464 historical radius associations across 14 pandals |
-| Active Food Safety Evidence | 48 records, 37 area labels, 19 sources |
+Visitors make **zero Google Places API calls and zero OSM API calls**. Food lists,
+search and geographic summaries read precomputed static JSON.
 
-This is not a complete Puja directory. Most new entries are grounded in one directory's 2025 tables; broader independent and Bengali source coverage remains limited.
+The optional **Open live Google map** action loads Maps JavaScript separately.
+Region switches, markers and layers reuse one map instance. Ordinary Google Maps
+links navigate to Google; no application API request is needed to construct them.
 
-Current counts come from [pandal JSON](https://foodsafety.nemoneek.com/data/pandals.json), [evidence JSON](https://foodsafety.nemoneek.com/data/events.json) and [CSV](https://foodsafety.nemoneek.com/data/events.csv). The live site reflects these changes after the release merge.
+Google operator calls have a shared 3,000-attempt monthly internal ceiling, per-run
+limits, retry accounting and dry runs. Maps JavaScript billing is separate and has
+no project-side monthly ledger. No Google tiles or map imagery are stored for reuse.
+[Browser configuration and cost controls](docs/BROWSER_MAP.md).
 
-## Automatic refresh
+There is no project analytics, tracking, account system, public write API or visitor
+database. Hosting and external-provider policies still apply.
+[Privacy](PRIVACY.md) · [Current controls](SECURITY.md).
 
-**Refresh Food Safety Data** runs approximately every two hours. Within it, Puja source research is due every six hours by default, with a hard configuration maximum of ten runs/day. Revision receipts prevent repeated Gemini calls for unchanged Puja sources, including on fresh runners. The Puja catalog rebuild publishes only reviewed configuration; scheduled research candidates remain private and ephemeral.
+## Food Safety evidence workflow
 
-There is no scheduled all-zone Places sweep, public refresh endpoint, or Google map prefetch. Schedules are best-effort. [Maintainer guide](docs/MAINTAINER_GUIDE.md).
+Public reporting → bounded retrieval → LLM structured candidates → objective source,
+schema, evidence, duplicate and publication validation → publish or skip.
+
+Original evidence stays authoritative. Unsupported candidates are skipped; later
+corrections, withdrawals and availability changes follow the existing lifecycle.
+There is no chatbot, model training or fine-tuning. Source verification does not
+establish real-world truth. [Evidence methodology](METHODOLOGY.md) ·
+[Corrections](CORRECTIONS.md) · [Extraction](docs/LLM_EXTRACTION.md).
 
 ## Run locally
 
-Use the existing project environment:
-
 ~~~bash
+# Existing project environment; scripts/setup_food.sh provides initial setup.
 conda activate "$(pwd)/.conda/envs/food"
 python -m food_safety.cli validate
 python -m food_safety.cli build
 python -m http.server 8000 --bind 127.0.0.1 --directory site
 ~~~
 
-Open http://127.0.0.1:8000/. Copy blank placeholders from `.env.example` into an ignored local `.env` as needed; never commit key values. Browse without credentials using the fallback. Model and Places calls are bounded operator actions.
+Open http://127.0.0.1:8000/ or add `?region=california`, `?lang=bn`, or
+`?module=safety`. Tracked `site/maps-config.json` is deliberately blank.
+**An ordinary local static server shows the live-map fallback, even with a local
+.env file.** This is expected. Use the isolated deployment-artifact procedure in
+[BROWSER_MAP.md](docs/BROWSER_MAP.md) for deliberate live-map testing; never populate
+the tracked configuration.
 
 ~~~bash
-python -m food_safety.cli puja stats
-python -m food_safety.cli places discover --dry-run
+python -m food_safety.cli osm --region california stats
+python -m food_safety.cli osm --region california associate
+python -m food_safety.cli osm --region california resolve-google --dry-run
 python -m ruff check .
 python -m pytest -q
 node --test tests/*.test.mjs
 python scripts/verify_public_output.py
 ~~~
 
-[Environment setup](scripts/setup_food.sh) · [Puja CLI](docs/PUJA_CURATION.md) · [Places CLI](docs/PLACES.md).
+Normal builds do not download snapshots or call Places. Real imports and enrichment
+are explicit operator actions, separate from visitors and scheduled evidence updates.
 
-## Architecture
+## Structure and maintenance
 
-| Location | Purpose |
+| Path | Purpose |
 | --- | --- |
-| `src/food_safety/` | Retrieval, extraction, evidence validation, lifecycle and exports |
-| `config/puja.yml` | Reviewed pandal catalog and bounded research sources |
-| `config/places.yml` | Curated pandals/zones and explicit Places budgets |
-| `data/` | Versioned public structured data |
-| `site/` | Static HTML, native JavaScript/CSS and local assets |
-| `.github/workflows/` | CI and bounded refresh |
+| `config/regions.yml` | Region registry, static food-search shortcuts and provider paths |
+| `config/puja*.yml` | Reviewed Puja records, sources and geographic provenance |
+| `config/food*.yml` | Regional OSM settings and optional identity crosswalk |
+| `config/places.yml` | Retained Google zone discovery and budgets |
+| `src/food_safety/` | Evidence pipeline, Puja curation and provider-neutral food processing |
+| `data/` → `site/data/` | Validated static public datasets |
+| `site/` → ignored `dist/site/` | Tracked static source → configured deployment artifact |
 
-JSON/CSV remain canonical; there is no database server, vector store or frontend framework. Production uses the existing Cloudflare static-assets integration. Work goes to `develop`; release uses a merge commit into `main`.
+No database server or frontend framework is required. Scheduled evidence refresh is
+bounded; Puja research is due roughly four times/day, without an automatic Places
+sweep. `develop` is implementation; `main` is production. Releases use owner-approved
+merge commits. [Maintainer guide](docs/MAINTAINER_GUIDE.md) ·
+[Deployment](docs/DEPLOYMENT.md) · [Repository audit](docs/PUBLIC_REPOSITORY_AUDIT.md).
 
-## Security and privacy
+## Contribute
 
-No project tracking, public write API, accounts, comments, uploads or ratings platform. Optional Google Maps receives provider network information only after the user chooses to load it. Hosting and Google privacy policies apply.
+Help verify Puja sources, California/community venues, coordinates, Bengali/English
+wording, OSM data or identity corrections. Evidence corrections remain a separate
+source-grounded process. Read [CONTRIBUTING.md](CONTRIBUTING.md) and the
+[Code of Conduct](CODE_OF_CONDUCT.md). No submission automatically publishes.
 
-Private source snapshots, model candidates, caches, operational ledgers and credentials are excluded from Git and public output. Source retrieval uses URL/DNS/robots controls and response limits. Public rendering uses safe text APIs and a restricted CSP.
+## Rights and limitations
 
-[Security](SECURITY.md) · [Privacy](PRIVACY.md) · [Repository audit](docs/PUBLIC_REPOSITORY_AUDIT.md) · [Deployment](docs/DEPLOYMENT.md).
+- Software/code: [MIT](LICENSE), unless otherwise stated.
+- OSM-derived data: **ODbL-1.0, © OpenStreetMap contributors**; see
+  [OSM copyright](https://www.openstreetmap.org/copyright).
+- Google identifiers/content: applicable Google terms, not project-owned data.
+- Original project artwork/content: applicable ownership and asset-specific statements.
+- Third-party reporting, quotations and trademarks are **not relicensed as MIT**.
 
-## Contributing
-
-Read [CONTRIBUTING.md](CONTRIBUTING.md) and the [Code of Conduct](CODE_OF_CONDUCT.md). Help verify sources, correct records, curate pandals or improve Bengali coverage. Contributions do not bypass evidence rules. Private-response community intake is prepared through a configurable Google Form; no unconfigured form or fabricated queue count is displayed.
-
-## Disclaimer and licensing
-
-**Project policy wording is not legal advice. Independent legal review has not been completed.** Read the full [disclaimer](DISCLAIMER.md) and preserve source links and limitations when reusing data.
-
-Project code is [MIT licensed](LICENSE). Third-party content and trademarks remain subject to their respective rights. News excerpts and geographic materials are not relicensed as project-owned content. Compiled factual data does not imply ownership of source facts.
-
-Created and maintained by **Shubhabrata Mukherjee** ([@shubha07m](https://github.com/shubha07m)).
-
-© 2026 Shubhabrata Mukherjee · The Bengal FoodPath.
+This is public-interest discovery and research, not travel assurance, official records
+or advice to patronize or avoid businesses. Policy wording is not legal advice;
+independent legal review remains outstanding. [Full disclaimer](DISCLAIMER.md).
 
 ## Professional independence
 
-The Bengal FoodPath is a personal, independent project created and maintained by Shubhabrata Mukherjee. It is not affiliated with, sponsored by, endorsed by, or produced on behalf of Lawrence Berkeley National Laboratory (Berkeley Lab), the University of California, the U.S. Department of Energy, or any current or former employer or professional affiliation of the maintainer. The views, data curation, software, analysis, and project decisions are solely those of the project maintainer and contributors, as stated, and do not represent those organizations. Third-party source content and trademarks remain subject to their respective rights.
+Created and maintained by **Shubhabrata Mukherjee** ([@shubha07m](https://github.com/shubha07m)).
+The Bengal FoodPath is a personal, independent project. It is
+not affiliated with, sponsored by, endorsed by, or produced on behalf of
+Lawrence Berkeley National Laboratory (Berkeley Lab), the University of California, the U.S. Department of Energy,
+or any current or former employer or professional affiliation of the maintainer.
+Project decisions and views belong to the maintainer and contributors, not those
+organizations. Third-party content and trademarks remain subject to their respective rights.
+
+© 2026 Shubhabrata Mukherjee · The Bengal FoodPath.

@@ -1,37 +1,49 @@
-# Public repository audit
+# Repository audit procedure
 
-Local audit date: **2026-09-16**
+This is a bounded pattern/path audit, not proof of absence of sensitive material.
+Run it against the current checkout; dated reports are snapshots, not current
+certification.
 
-Repository visibility: **Public**
+~~~sh
+python scripts/audit_repository.py --no-write
+python scripts/verify_public_output.py
+python scripts/stage_generated.py
+~~~
 
-Recommendation: **ROUTINE AUDIT PASSED**
+## Controlled history and current output
 
-This is a bounded pattern and path audit, not proof that no sensitive material exists. It distinguishes publication history controlled by the repository maintainers from GitHub-managed pull-request refs.
+`local_history_sanitized` covers tracked content and reachable maintained branches
+and tags. The report distinguishes history from the current tree. A clean current
+output does not establish that historical checks pass. Non-noreply author metadata
+is reported separately; prefer intentional public attribution metadata.
 
-## Controlled publication history
+Tracked `site/maps-config.json` must be blank. Current checkout/index guards reject
+populated configuration and credential-shaped values. Runtime artifact validation
+permits only the designated browser configuration in ignored `dist/site/`, never
+private operator values. Deploy only that isolated artifact.
 
-`local_history_sanitized` covers the current tracked tree and locally reachable `refs/heads/*` and `refs/tags/*`. It does not use `git rev-list --all`, because that would conflate maintained publication history with stashes or hosting-provider refs.
-
-The current scan found:
-
-- no tracked or historical private queue/cache paths;
-- no credential/private-key pattern;
-- no local workstation path; and
-- no private source dump in controlled history.
-
-Non-noreply author email metadata is reported separately and is not classified as a repository-content sanitation failure. Contributors should still prefer GitHub noreply addresses when they do not intend to publish an email address.
+Source snapshots, raw provider responses, local notes, caches and operational ledgers
+must stay ignored. Public JSON retains only its allowed provenance/data contract.
 
 ## GitHub-managed pull refs
 
-The recorded server-side inventory contains **8** `refs/pull/*/head` refs; this is not a live count of current PRs. They are normal server-managed contribution metadata and cannot be removed through ordinary branch maintenance. Their presence is reported through `affected_pull_refs` and `github_pull_refs_cleared`; it does not by itself make `local_history_sanitized` false or fail routine CI.
+Retained `refs/pull/*` are server-managed contribution metadata. Their existence is
+reported separately through `affected_pull_refs` and `github_pull_refs_cleared`;
+it does not alone fail controlled-history sanitation.
 
-When pull refs are locally available, the audit scans their reachable content separately. Any private path, credential pattern or workstation path found there sets `pull_ref_sensitive_content_found: true` and fails `audit_passed`. A checkout that does not contain server-side pull refs cannot attest to their contents; the configured count remains an informational server-side inventory.
+Locally available pull refs are scanned separately. Actual sensitive-content findings
+remain blocking. A checkout without those refs cannot attest to their content;
+a configured server-side inventory is informational, not a live content scan.
 
-## Other checks
+## Reading results
 
-- Public deployment remains limited to `site/`; its verifier rejects private paths, unsupported file types, symlinks and common secret patterns.
-- Full downloaded articles, private submissions and LLM caches are not tracked or deployed.
-- No retained Actions artifacts are recorded in the current configuration.
-- The machine-readable result is [reports/public_repository_audit.json](../reports/public_repository_audit.json).
+Inspect exit status and each finding category. `audit_passed` requires sanitized
+controlled history and no detected sensitive content in locally available pull refs.
+Do not silently suppress historical findings to pass a release gate.
+The versioned [report](../reports/public_repository_audit.json) may predate current
+work; rerun before relying on it. `--no-write` inspects without replacing that report.
 
-The audit exits successfully when controlled history is sanitized and no locally available pull ref contains a sensitive-content finding. `github_pull_refs_cleared: false` remains visible information, not a claim that GitHub deleted those refs.
+Public-output verification also checks private paths, file types, symlinks and bounded
+patterns. Runtime checks, dependency audit and browser tests are complementary—not
+substitutes for history review. See [current controls](../SECURITY.md) and
+[release checklist](PUBLIC_RELEASE_CHECKLIST.md).
