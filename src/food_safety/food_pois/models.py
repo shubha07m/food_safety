@@ -146,9 +146,12 @@ class OSMFoodPOI(FoodPOI):
             raise ValueError("unsupported_category")
         return self
 
-    def maps_url(self, place_id=None):
-        # Coordinates select the OSM location, not an unverified chain identity.
-        query = f"{self.latitude:.7f},{self.longitude:.7f}"
+    def maps_url(self, place_id=None, locality=()):
+        # Same handoff contract as site/maps-handoff.mjs. Context comes from
+        # reviewed geography, not inferred restaurant address or Google identity.
+        coordinates = f"{self.latitude:.7f},{self.longitude:.7f}"
+        context = list(dict.fromkeys(" ".join(v.split()) for v in locality if v and v.strip()))
+        query = ", ".join([self.name, *context, coordinates]) if self.name else coordinates
         params = {"api": "1", "query": query}
         if place_id is not None:
             from pydantic import TypeAdapter
