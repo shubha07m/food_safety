@@ -20,8 +20,19 @@ NORMALIZATION_VERSION = 1
 LIFECYCLES = ("disused", "abandoned", "demolished", "razed", "removed", "construction", "proposed")
 
 
-def load_config(root):
-    return Config.model_validate(yaml.safe_load((root / "config/food.yml").read_text()))
+def load_config(root, region_id="kolkata"):
+    from ..puja.regions import get_region
+
+    path = (
+        get_region(root, region_id).food_config
+        if (root / "config/regions.yml").exists()
+        else "config/food.yml"
+    )
+    return Config.model_validate(yaml.safe_load((root / path).read_text()))
+
+
+def runtime(region_id="kolkata"):
+    return RUNTIME if region_id == "kolkata" else f"{RUNTIME}/{region_id}"
 
 
 def source_path(root, config):
@@ -31,8 +42,8 @@ def source_path(root, config):
     return path
 
 
-def download(root, *, refresh=False, transport=None):
-    config = load_config(root).osm
+def download(root, *, refresh=False, transport=None, region_id="kolkata"):
+    config = load_config(root, region_id).osm
     target = source_path(root, config)
     if target.exists() and not refresh:
         return {"status": "cached", "requests": 0, "bytes": target.stat().st_size}
@@ -289,8 +300,8 @@ def parse_file(path, config):
     return normalized, dict(counters)
 
 
-def import_snapshot(root, path=None):
-    config = load_config(root).osm
+def import_snapshot(root, path=None, region_id="kolkata"):
+    config = load_config(root, region_id).osm
     if not config.enabled:
         raise ValueError("osm_disabled")
     path = Path(path) if path else source_path(root, config)
@@ -298,15 +309,55 @@ def import_snapshot(root, path=None):
         raise RuntimeError("Missing local extract; run osm import --download or supply --source")
     with path.open("rb") as stream:
         digest = hashlib.file_digest(stream, "sha256").hexdigest()
+    anchors = []
+    if config.catchment_radius_m is not None:
+        from .pipeline import regional_pandals
+
+        anchors = [
+            p.model_copy(update={"restaurant_radius_m": config.catchment_radius_m})
+            for p in regional_pandals(root, region_id)
+        ]
+        if not anchors:
+            raise ValueError("catchment_import_requires_located_pandals")
+    anchor_version = (
+        json.dumps(
+            [
+                (p.pandal_id, p.latitude, p.longitude)
+                for p in sorted(anchors, key=lambda p: p.pandal_id)
+            ]
+        )
+        + ":coverage-circles-1"
+        if anchors
+        else ""
+    )
     identity = hashlib.sha256(
-        (digest + config.model_dump_json() + f":normalization-{NORMALIZATION_VERSION}").encode()
+        (
+            digest
+            + config.model_dump_json()
+            + anchor_version
+            + f":normalization-{NORMALIZATION_VERSION}"
+        ).encode()
     ).hexdigest()
-    output = root / RUNTIME / SNAPSHOT
+    output = root / runtime(region_id) / SNAPSHOT
     if output.exists():
         old = Snapshot.model_validate_json(output.read_text())
         if old.snapshot_id == identity:
             return {"status": "cached", "snapshot_id": identity, "pois": len(old.pois)}
     pois, diagnostics = parse_file(path, config)
+    if config.catchment_radius_m is not None:
+        from .spatial import nearby_pairs
+
+        pairs = nearby_pairs(
+            anchors,
+            [
+                dict(id=p.poi_id, name=p.name, latitude=p.latitude, longitude=p.longitude)
+                for p in pois
+            ],
+        )
+        keep = {p[1] for p in pairs}
+        diagnostics["outside_catchments_removed"] = len(pois) - len(keep)
+        diagnostics["catchment_radius_m"] = int(config.catchment_radius_m)
+        pois = [p for p in pois if p.poi_id in keep]
     import osmium
 
     with osmium.io.Reader(str(path), osmium.osm.NOTHING) as reader:
@@ -319,6 +370,11 @@ def import_snapshot(root, path=None):
         snapshot_date=stamp,
         extracted_at=datetime.now(UTC),
         bbox=config.bbox,
+        coverage_circles=[
+            {"latitude": p.latitude, "longitude": p.longitude, "radius_m": p.restaurant_radius_m}
+            for p in sorted(anchors, key=lambda p: p.pandal_id)
+        ]
+        or None,
         pois=pois,
         diagnostics=diagnostics,
     )

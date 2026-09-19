@@ -1,5 +1,16 @@
 # Visual asset provenance
 
+## Current product screenshots
+
+- `puja_preview.png` and `california_food_preview.png`: captured from the local
+  static development release using `FOOD_UPDATE_PREVIEWS=1 node scripts/browser_smoke.mjs`.
+- Updated: 2026-09-19; multi-region selector, named OSM food and regional search UI.
+- Screenshots contain project UI, attributed OSM-derived facts and the maintainer's
+  supplied hero artwork. No Google map imagery, browser chrome or runtime values.
+- These are interface illustrations, not evidence of venue availability or endorsement.
+- The older `readme_banner.svg` and `dashboard_preview.png` are historical assets;
+  they are not the current README presentation.
+
 ## Puja hero
 
 - Development source: `puja_hero_source.png`

@@ -1,199 +1,149 @@
-# Local nearby-food discovery
+# Nearby food: provider-neutral regional architecture
 
-OSM supplies a regional candidate snapshot. Local geometry associates places with
-independently located pandals. Static JSON serves visitors. Google Maps is a
-handoff destination; optional Google discovery remains available for comparison
-and sparse neighborhoods. Neither provider is a complete or current venue census.
+This is the technical reference for Puja FoodPath food discovery. It is separate
+from West Bengal Food Safety Evidence and never implies an inspection or endorsement.
 
-## Operator workflow
+## Pipeline and regional boundaries
 
-Use the existing `food` environment. Only import needs the optional binary reader:
+Regional OSM snapshot → normalized POIs → local spatial association → static JSON
+→ named public food list → keyless Google Maps handoff.
 
-```bash
-python -m pip install --only-binary=:all: 'osmium==4.3.1'
-python -m food_safety.cli osm validate
-python -m food_safety.cli osm import --download
-python -m food_safety.cli osm stats
-python -m food_safety.cli osm bakeoff
-python -m food_safety.cli osm associate
+`config/regions.yml` declares catalog geography, provider configuration and public
+dataset paths. Kolkata uses `config/food.yml` in **hybrid** mode; California uses
+`config/food-california.yml` in **osm** mode. Google-only and hybrid modes remain
+available for comparison/rollback. Google data is never relabeled OSM.
+
+Geofabrik Eastern Zone supplies the Kolkata research bbox; Geofabrik California
+supplies the independently mapped California catchments. Raw PBF files and normalized
+operator snapshots stay ignored. The retained California subset covers bounded
+catchments, not a statewide food directory. Imports are explicit, never part of
+ordinary builds or visitor requests.
+
+## Model and normalization
+
+Canonical IDs are `osm:node:ID`, `osm:way:ID`, or `osm:relation:ID`. Records preserve
+provider/object identity, name if present, coordinates, category, optional cuisine,
+snapshot and source provenance. Pyosmium reads nodes and polygonal features; area
+representatives lie inside polygons, with explicit coordinate method. Duplicate
+representations such as a tagged node within its matching named area are handled
+conservatively; nearby chain branches are not fuzzy-merged.
+
+Configured categories: restaurant, cafe, fast_food, ice_cream, food_court, bakery and
+confectionery. Explicit private/access or abandoned/disused/demolished tags exclude
+unsuitable records. Missing names/cuisine remain absent; absence of a lifecycle tag
+does not prove a business is open.
+
+## Local association
+
+A grid index narrows candidates, then Haversine distance is compared with each
+reviewed Puja's radius (currently 600 m). One POI can associate with multiple Pujas.
+Unmapped Pujas never acquire fabricated proximity records. Associating another mapped
+Puja from an existing regional snapshot needs no external discovery request.
+
+Associations retain pandal ID, POI ID, provider, distance and snapshot identity.
+Ordering is deterministic: distance, normalized name, stable ID. Straight-line distance
+is approximate—not walking distance or a verified entrance location.
+
+## Public presentation
+
+Only meaningful **OSM-derived names** currently qualify as individual food rows.
+Google-only anonymous associations remain in durable data for diagnostics, future
+verified linking and rollback, but do not inflate the public list count.
+
+The UI shows 12 rows initially and at most 20 after **Show more nearby food**.
+The selected-list count describes that browsable dataset. Festival-food chips count
+distinct named snapshot IDs within each catchment; overlapping catchments may repeat
+a POI across Pujas. Featured eligibility needs reviewed geography plus named food,
+preferring at least three names when enough curated entries qualify; at most six.
+
+Mapped catchments without names show a sparse-data message and one keyless
+restaurants-near-coordinate search link. Unmapped listings have no location-based
+handoff. “No named snapshot listings” is not “no restaurants exist.”
+
+## Handoff hierarchy
+
+1. **Verified identity crosswalk:** Google Maps search URL with `api=1`,
+   coordinate `query`, and `query_place_id`.
+2. **No verified identity:** the same documented URL with `query=latitude,longitude`
+   only. This opens the independently sourced OSM location, rather than a broad chain
+   search. It does not assert Google's business identity or guarantee listing details.
+
+Names stay visible in FoodPath; they are not needed in the coordinate URL. Parameters
+are URL-encoded. Generating/following these links requires no FoodPath API key or
+visitor Places request. [Official URL semantics](https://developers.google.com/maps/documentation/urls/get-started).
+
+## Optional ID-only operator suggestions
+
+Google Text Search (New), `POST /v1/places:searchText`, uses only
+`places.id,nextPageToken`. Requests include a normalized name, regional context,
+a 150 m rectangle and pageSize 3; additional pages are not fetched. Google may apply
+text/location ranking: a lone returned ID is **not** verified identity evidence.
+
+Statuses are unresolved, suggested or ambiguous. A next-page token also means
+ambiguity. ID-only responses provide no display name/location to compare; neither
+Gemini nor fuzzy logic upgrades them. Public crosswalk entries require explicit
+operator-reviewed identity provenance and verification time, with status verified.
+Suggestions are cached privately by POI/config revision and never copied into exports.
+
+On 2026-09-19 Google's pricing table lists Text Search Essentials (IDs Only) as
+unlimited/no unit charge. It still needs an authorized billing-enabled project and
+method/project quotas; account terms and future pricing can differ.
+[Text Search](https://developers.google.com/maps/documentation/places/web-service/text-search) ·
+[Pricing](https://developers.google.com/maps/billing-and-pricing/pricing) ·
+[Quotas](https://developers.google.com/maps/documentation/places/web-service/usage-and-billing).
+
+The allowlist is regional. Eligibility uses meaningful names in each Puja's first
+20 rows, globally deduplicated before requests. The explicit California pass allows
+at most 60 unique candidates/attempts and shares the existing monthly Google ledger.
+Every retry counts before send. Unchanged cached suggestions consume zero calls.
+
+~~~bash
+python -m food_safety.cli osm --region california validate
+python -m food_safety.cli osm --region california stats
+python -m food_safety.cli osm --region california import
+python -m food_safety.cli osm --region california associate
 python -m food_safety.cli build
-```
+# Inspect budget first; execute is a deliberate operator override of disabled-by-default.
+python -m food_safety.cli osm --region california resolve-google --dry-run
+python -m food_safety.cli osm --region california resolve-google --execute
+python -m food_safety.cli places usage
+~~~
 
-The pinned pyosmium wheel is an optional Python extra (`.[osm]`), not a system
-package. The same commands work on supported macOS and Linux wheels. No silent
-installation occurs. A missing reader produces an installation message.
-`osm import --source /path/to/extract.osm.pbf` accepts an already downloaded PBF
-(OSM XML also works for small fixtures). Ordinary builds never download or parse
-PBFs and do not require pyosmium.
+Omit `--region california` for Kolkata. Imports require the configured local PBF;
+use `osm --region california import --download` explicitly when a new extract is needed.
+No visitor or ordinary build downloads it. See CLI help before real operations.
 
-The first download is explicit, HTTPS-only, size-limited to 400 MB, and restricted
-to Geofabrik, including redirects. Later imports reuse the local file. Use
-`osm import --download --refresh` deliberately to obtain a new extract. There is
-no scheduled OSM download and no public Overpass dependency. Import identity is
-the file SHA-256 plus configuration; unchanged imports reuse their normalized
-snapshot. Increment the normalization version when transformation rules change.
+## California regional food searches
 
-## Region and normalization
+The registry also carries typed `regional_food_search` entries for Bengali-food
+searches in the Bay Area, Southern California, Sacramento and all California.
+They render only in California's secondary Bengali-food view. They have no POI ID,
+coordinate, restaurant count or association: they are Google Maps search shortcuts,
+not verified restaurants. The browser validates/reconstructs their keyless URLs.
 
-The maintained [Geofabrik India Eastern Zone extract](https://download.geofabrik.de/asia/india/eastern-zone.html)
-was the smallest listed regional parent covering both cities when checked on
-2026-09-17. No West Bengal sub-extract was listed in the
-[India inventory](https://download.geofabrik.de/asia/india.html). Verify upstream
-availability before changing the configured URL; do not download the planet.
+## Data lifecycle, attribution and measured limits
 
-`config/food.yml` specifies the local research box. Its bounds are the envelope
-of the 14 independently located pandals plus a 10 km geodesic margin, rounded
-outward. This is **not** an administrative boundary or a claim of citywide
-coverage. A complete pandal catchment must fit inside the imported region.
-New located pandals inside that region can be associated without any API call.
-Unlocated catalog entries remain unavailable for spatial discovery.
+Published OSM data carries **ODbL-1.0**, snapshot provenance and
+**© OpenStreetMap contributors**, linked to
+[OSM copyright](https://www.openstreetmap.org/copyright). The public JSON supplies the
+OSM-derived dataset used for association; downstream reuse must assess applicable
+ODbL obligations. Database publication and Produced Works are different concepts;
+this project does not claim blanket permission to relicense source data.
 
-Categories are configurable: restaurant, cafe, fast_food, ice_cream, food_court,
-bakery, confectionery. Explicit private/no access and disused, abandoned,
-demolished, razed, removed, construction or proposed lifecycle tags are excluded.
-Absence of a lifecycle tag does not prove a business is still operating.
+Google place IDs have a storage exception. Google-derived coordinates remain in
+ignored expiring runtime storage, at most 30 days, and never enter public OSM records.
+Raw responses/names are not a permanent public Google listing cache.
+[Google provider details](PLACES.md).
 
-Libosmium reads nodes and assembles closed ways/multipolygon relations. Areas use
-a scanline interior representative point respecting holes, not an invented street
-address. Open ways use their middle vertex. Unsupported relation geometries and
-invalid geometries are counted. Original OSM type/ID, object URL, tags, timestamp
-and point method remain attached to each record. NFC/whitespace normalization
-does not invent names, translations or cuisine.
+The initial five-Puja comparison did not justify replacing Google globally:
+Kolkata OSM had 652 POIs, 618 named, 103 associations and 63 distinct associated
+places; conservative named-OSM/all-Google sample ratio was 4.81%. This was not a
+ground-truth or completeness benchmark. California's 2026-09-18 retained subset has
+263 POIs, 246 named and 72 distinct named associated places across four mapped Pujas.
+Different regions need different provider balances.
 
-Deduplication removes repeated object IDs and equal-name/category node-in-area
-or explicit relation-member representations. Nearby same-name chain branches
-are **not** fuzzy-merged. This is conservative: some duplicate physical venues
-can remain where OSM representations provide insufficient identity evidence.
-
-## Local association and provider modes
-
-The shared grid-prefilter/Haversine join accepts either provider's points. Each
-food place can belong to multiple pandals within their configured catchment
-(currently 600 m). OSM ordering is distance, normalized name, stable object ID.
-Distances mean approximate straight-line distance, not walking distance.
-
-`config/food.yml: provider` accepts:
-
-- `google`: original durable Google dataset for operator comparison/rollback.
-- `osm`: only OSM-derived snapshot matches.
-- `hybrid`: both provider datasets retained; public individual rows use named OSM records only.
-
-Provider identity links remain explicit: proximity alone never establishes
-equivalence. Google IDs and historical associations remain intact for diagnostics,
-future matching and selective enrichment, but anonymous Google records are not
-individual public list items. Missing or placeholder OSM names are also omitted.
-
-The public list sorts named OSM records by approximate straight-line distance,
-normalized name and stable ID. It starts with 12 rows and stops at 20 even after
-“Show more nearby food.” The visible count describes the bounded named list, not
-Google associations; where there are more than 20, the UI states that it shows
-the nearest 20. Internal `named_public_count`, `named_snapshot_count` and
-`historical_google_association_count` are distinct.
-
-With no named results, a mapped pandal gets one keyless Google Maps neighbourhood
-search link, not a restaurant record or a claim that no restaurants exist.
-Unmapped pandals get no false proximity handoff. Alphabetical festival-food chips
-count distinct named POI IDs per catchment (including legitimate cross-pandal
-overlap) and use the same selection state as search/map markers. Food Safety area
-pills remain in `?module=safety`, not on the Puja homepage.
-
-Run `osm bakeoff` before changing the default. It compares five existing 600 m
-catchments using only unexpired Google coordinate observations, without new Google
-calls. Google display names were intentionally not retained, so the report leaves
-Google named/unnamed counts unknown. The ratio uses all active Google IDs as a
-conservative upper-bound reference, **not** a measured named-coverage denominator.
-It cannot identify Google-only versus OSM-only venues. A 70% reference threshold
-is an engineering aid, not proof of complete coverage; inspect individual areas.
-
-## Data contracts and ODbL
-
-### First measured migration decision (2026-09-17)
-
-The 2026-09-16T20:21:21Z snapshot yielded 652 POIs, 618 named (94.79%),
-after two equal-name node/area representations were merged. All 14 mapped
-pandal catchments were evaluated; 12 contain OSM matches (103 associations,
-63 distinct places). The other 209 catalog entries still lack coordinates.
-
-| Catchment (600 m) | Active Google IDs | OSM places | Named OSM |
-| --- | ---: | ---: | ---: |
-| Bagbazar | 53 | 0 | 0 |
-| Ekdalia | 100 | 13 | 13 |
-| Chetla | 52 | 1 | 1 |
-| Salkia | 55 | 1 | 1 |
-| Naktala | 52 | 0 | 0 |
-
-The reference ratio is 15/312 (4.81%), nowhere near the proposed threshold.
-**Hybrid is the development default; OSM-only is not justified.** Named OSM
-matches improve some lists but do not replace Google's coverage. No identity
-overlap or exhaustive-coverage claim is made; zero OSM records means a snapshot
-gap, not absence of food places. The 762 durable Google IDs remain untouched.
-
-Native-filtered regional PBF import took 8.98 s on the development laptop.
-The grid join took 0.030 s for 1,000 test pandals against the real 652-point
-snapshot, and 0.072 s against a synthetic 10,000-point regional pool on the
-development laptop. These are illustrative measurements, not performance SLAs.
-
-`data/osm-runtime/` is ignored: raw PBF, normalized operator snapshot, comparison
-reports and optional Google ID suggestions. `data/osm_food.json` and its site copy
-publish the entire normalized regional subset and associations, including OSM
-provenance, upstream snapshot date when available, SHA-256, extraction timestamp,
-box, diagnostics and **ODbL-1.0** metadata. This data has its own license; it is not
-relicensed under the application's code license.
-
-The restaurant UI shows **© OpenStreetMap contributors**, links to
-[OSM copyright](https://www.openstreetmap.org/copyright), and offers the downloadable
-OSM-derived dataset. Database publication is not merely a Produced Work. Follow
-the [ODbL](https://opendatacommons.org/licenses/odbl/1-0/),
-[OSMF attribution guidelines](https://osmfoundation.org/wiki/Licence/Attribution_Guidelines)
-and [Produced Work guidance](https://osmfoundation.org/wiki/Licence/Community_Guidelines/Produced_Work_-_Guideline),
-including applicable attribution/share-alike and access requirements. This is an
-engineering implementation of those boundaries, not a legal opinion about every
-possible future combined database.
-
-Google data stays in the existing `places.json` contract. Its temporary coordinate
-observations never enter the OSM dataset. `food_provider.json` carries provider
-choice and any independently verified cross-provider identity links separately.
-Do not publish Google-derived names, coordinates or other content as OSM tags.
-Do not copy data from Google consumer pages into OSM.
-
-## Maps handoff and optional ID suggestions
-
-An OSM name/category plus independent coordinates forms a URL-encoded
-`https://www.google.com/maps/search/?api=1&query=...` link. Creating that link
-requires no Google API request. `query_place_id` is added only for an explicitly
-verified cross-provider link. See [Maps URLs](https://developers.google.com/maps/documentation/urls/get-started).
-
-Optional `osm resolve-google --dry-run` plans globally deduplicated, named POIs
-from a configured pandal allowlist. `google_enrichment.enabled` defaults to false.
-An explicit enabled run uses Text Search (New), field mask
-`places.id,nextPageToken`, page size 3, a small location restriction, and no other
-fields. Responses are ID-only suggestions in ignored storage. Even one result
-is **not identity proof**; multiple results/page continuation are ambiguous.
-No suggestion is automatically attached. Verified links require an independent
-identity source, timestamp and explanatory note in operator configuration.
-
-On 2026-09-17 the official [Text Search documentation](https://developers.google.com/maps/documentation/places/web-service/text-search)
-and [pricing table](https://developers.google.com/maps/billing-and-pricing/pricing)
-listed Text Search Essentials (IDs Only) with unlimited free usage. Review current
-terms before enabling; this is not a permanent price promise. API/project quotas
-still apply. [Place IDs](https://developers.google.com/maps/documentation/places/web-service/policies)
-have a storage exception; that does not extend to other Google content.
-Every actual attempt, including retries, consumes the shared conservative local
-3,000/month Google operation guard, with its own bounded per-run plan (default
-10 attempts). Existing Nearby Search accounting and limits are retained.
-
-## Serving and rollback
-
-Visitors fetch static project JSON only: zero OSM API and zero Places API requests.
-The optional click-to-load Google map is a separate rendering path and unchanged.
-No food listing implies recommendation, inspection, endorsement or safety.
-
-Builds use the committed OSM subset, never a silently newer local runtime snapshot.
-Re-association is deterministic from that snapshot plus current sourced pandal
-coordinates. Set `provider: google` and build to use only the retained Google
-dataset for operator comparison. This does not restore anonymous public rows:
-the named-only presentation policy is independent of provider selection. Restoring
-the former presentation would require an explicit UI rollback. Existing Google
-IDs/associations have not been deleted. Google saturation-aware Nearby Search
-remains an explicit operator comparison/selective-discovery option, not a build
-side effect. No ordinary page request or build triggers enrichment.
+Refresh snapshots deliberately, record upstream time/hash and rebuild locally.
+Ordinary builds reuse versioned data. Preserve prior reviewed snapshots/configuration
+for rollback; switching provider does not delete Google IDs or replace evidence data.
+Visitors make **zero OSM API and zero Places API requests**. Optional Maps JavaScript
+visualization remains a separate lazy-loaded feature.

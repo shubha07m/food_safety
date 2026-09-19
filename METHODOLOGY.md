@@ -1,6 +1,26 @@
 # Methodology
 
-Public beta at https://foodsafety.nemoneek.com/ . The repository contains an initial public-source sample. The preserved HTML prototype and synthetic test fixtures are not evidence.
+Public beta at https://foodsafety.nemoneek.com/ . Puja FoodPath and Food Safety Evidence have distinct units of observation and publication rules. The preserved HTML prototype and synthetic test fixtures are not evidence.
+
+## Puja FoodPath: catalog and geographic provenance
+
+Puja discovery currently supports the Kolkata region and California through the region registry. Every published listing has a stable ID, source URL/title, supporting text, listing year where supported, and reviewed provenance. Organizer sources support California's catalog; much of Kolkata's catalog comes from older directory rows. A listing is not confirmation of a current venue, schedule or access arrangement.
+
+Coordinates are optional and independently sourced, with explicit precision. No model invents them. Search-only records remain useful without markers or proximity results. Regions scope search, featured shortcuts, map bounds and food associations; California does not broaden Food Safety Evidence. See [Puja curation](docs/PUJA_CURATION.md).
+
+## Puja FoodPath: food and handoff methodology
+
+Regional OpenStreetMap snapshots supply normalized food POIs with source/object identity, names and optional cuisine/category tags. A local grid and Haversine distance associate each POI with reviewed Puja catchments, independently of discovery. Overlap can legitimately associate a place with several Pujas. Kolkata uses hybrid OSM/retained Google data; California currently uses OSM for its public list. Neither provider is complete ground truth.
+
+Only meaningfully named OSM entries appear as individual food rows. The UI initially shows 12 and at most 20, ordered by approximate straight-line distance, name and ID. Counts distinguish the browsable list from full snapshot catchments. Google-only anonymous associations remain retained but hidden from those counts. Nearby food is not recommendation, quality, inspection or safety evidence.
+
+Google Maps handoff prefers an independently verified place-ID crosswalk; otherwise it targets the OSM coordinate, not a broad chain-name search. A coordinate pin does not prove Google identity. Optional ID-only Text Search returns private unresolved/suggested/ambiguous results: without returned name/location, a single ID cannot automatically become verified. California's Bengali-food regional links are search shortcuts, not restaurant records or a verified directory.
+
+Visitors read static data with zero Places and zero OSM API requests. Optional Maps JavaScript is a separate user action. OSM data carries ODbL provenance and attribution; Google-derived content retains its own boundaries. See [food POI methodology](docs/FOOD_POIS.md).
+
+## Food Safety Evidence — West Bengal only
+
+The remainder describes the existing evidence-research module. Puja proximity and regional expansion do not alter these semantics.
 
 ## Coarse geographic context
 
@@ -55,7 +75,7 @@ A: official authority material. B: established identifiable news publishers with
 
 SOURCE VERIFIED: source existence, quoted support and context reviewed, not independent proof of the event. CROSS-SOURCE VERIFIED: independent publishers support the displayed observation; not proof of real-world truth. Review defaults to SOURCE VERIFIED even with multiple sources.
 
-SINGLE SOURCE and PENDING REVIEW are not public acceptance states. SOURCE UPDATED, DISPUTED, SOURCE WITHDRAWN, SUPERSEDED and REJECTED are held out of public statistics. A failed later source check suspends the affected public record. Partial scans do not establish that every record was recently checked.
+SINGLE SOURCE and PENDING REVIEW are not public acceptance states. SOURCE UPDATED, DISPUTED, SOURCE WITHDRAWN, SUPERSEDED and REJECTED are held out of public statistics. Later checks follow the lifecycle table above: technical retrieval failure alone does not semantically suspend a record. Partial scans do not establish that every record was recently checked.
 
 ## Evidence, provenance and revisions
 

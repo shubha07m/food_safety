@@ -8,6 +8,22 @@ main is production; develop is human code development. CI checks both; the refre
 
 Release procedure: fetch origin; merge latest origin/main into develop; preserve newer production-generated data as migration inputs; run migrate, reconcile reviewed recovery changes with any new production holds, build and test. Inspect timestamps and conflicting record changes individually. Never resolve generated-data conflicts wholesale with "ours" or "theirs" or overwrite newer production data with stale exports. The bot can advance main during review: fetch again immediately before requesting release approval. No force pushes. Any required-PR protection must account for the validated production-data bot explicitly.
 
+## Regional Puja and food maintenance
+
+The region registry separates Kolkata-region hybrid discovery from California OSM
+food snapshots. Food Safety remains West Bengal-only. Review organizer sources and
+independent anchors in the appropriate Puja config; never fill missing geography to
+make cards or maps look populated. Imports/associations are explicit operator tasks,
+not visitor or routine-build API calls. See [curation](PUJA_CURATION.md) and
+[food POIs](FOOD_POIS.md). California's Bengali-food shortcuts are regional Maps
+searches, not additional restaurants or verified identity claims.
+
+Tracked map configuration stays blank. Plain local static serving intentionally
+shows fallback; live-map tests use an isolated deployment artifact. See
+[browser setup](BROWSER_MAP.md). Private Google ID-only suggestions never become
+public crosswalks without independent verification. Always dry-run before bounded
+operator calls and preserve the shared usage ledger.
+
 ## Private Google Form — owner setup
 
 Title: **The Bengal FoodPath — Source & Correction Intake**.

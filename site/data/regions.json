@@ -1,0 +1,96 @@
+{
+  "default_region": "kolkata",
+  "regions": [
+    {
+      "admin1": "West Bengal",
+      "country_code": "IN",
+      "default_map_center": {
+        "lat": 22.57,
+        "lng": 88.36
+      },
+      "default_map_zoom": 11,
+      "featured_ids": [
+        "ekdalia-evergreen-club-durga-puja",
+        "singhi-park-sarbojanin-durga-puja",
+        "deshapriya-park-durga-puja",
+        "tridhara-sammilani-durga-puja",
+        "ballygunge-cultural-association-durga-puja",
+        "mudiali-club-sarbojanin-durga-puja"
+      ],
+      "food_data": "data/osm_food.json",
+      "food_provider_mode": "hybrid",
+      "label": "Kolkata region",
+      "provider_data": "data/food_provider.json",
+      "region_id": "kolkata",
+      "regional_food_searches": [],
+      "restaurant_radius_m": 600,
+      "safety_context": true
+    },
+    {
+      "admin1": "California",
+      "country_code": "US",
+      "default_map_center": {
+        "lat": 36.5,
+        "lng": -119.5
+      },
+      "default_map_zoom": 6,
+      "featured_ids": [
+        "ca-sanskriti",
+        "ca-pashchimi",
+        "ca-agomoni",
+        "ca-basc",
+        "ca-vbc"
+      ],
+      "food_data": "data/osm_food_california.json",
+      "food_provider_mode": "osm",
+      "label": "California",
+      "provider_data": "data/food_provider_california.json",
+      "region_id": "california",
+      "regional_food_searches": [
+        {
+          "area_id": "bay-area",
+          "label": "Bay Area",
+          "maps_url": "https://www.google.com/maps/search/?api=1&query=Bengali+restaurants+Bay+Area+California",
+          "provider": "Google Maps",
+          "query": "Bengali restaurants Bay Area California",
+          "region_id": "california",
+          "scope_note": "Regional search handoff, not a verified restaurant record",
+          "type": "regional_food_search"
+        },
+        {
+          "area_id": "southern-california",
+          "label": "Los Angeles / Southern California",
+          "maps_url": "https://www.google.com/maps/search/?api=1&query=Bengali+restaurants+Los+Angeles+Southern+California",
+          "provider": "Google Maps",
+          "query": "Bengali restaurants Los Angeles Southern California",
+          "region_id": "california",
+          "scope_note": "Regional search handoff, not a verified restaurant record",
+          "type": "regional_food_search"
+        },
+        {
+          "area_id": "sacramento",
+          "label": "Sacramento",
+          "maps_url": "https://www.google.com/maps/search/?api=1&query=Bengali+restaurants+Sacramento+California",
+          "provider": "Google Maps",
+          "query": "Bengali restaurants Sacramento California",
+          "region_id": "california",
+          "scope_note": "Regional search handoff, not a verified restaurant record",
+          "type": "regional_food_search"
+        },
+        {
+          "area_id": "all-california",
+          "label": "All California",
+          "maps_url": "https://www.google.com/maps/search/?api=1&query=Bengali+restaurants+California",
+          "provider": "Google Maps",
+          "query": "Bengali restaurants California",
+          "region_id": "california",
+          "scope_note": "Regional search handoff, not a verified restaurant record",
+          "type": "regional_food_search"
+        }
+      ],
+      "restaurant_radius_m": 600,
+      "safety_context": false
+    }
+  ],
+  "schema_version": "puja-regions-1"
+}

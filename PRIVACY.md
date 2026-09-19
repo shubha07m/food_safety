@@ -1,26 +1,47 @@
 # Privacy
 
-Puja pandal search runs locally over static curated data and does not contact Google
-Places. Restaurant links open Google Maps only when followed. An optional geographic
-map is loaded only after selecting **Load Google map**; Google then receives network
-information such as IP address and website origin and may process data under its
-[privacy policy](https://policies.google.com/privacy). No map is loaded on record-detail
-pages. The map uses a separate, publicly visible, website-restricted browser credential,
-never the operator's Places server key. The map document sends origin-only referrers for
-key authorization; other pages retain no-referrer. Use the textual geographic summary
-without loading Google if preferred. Google Maps use is subject to
-[Google Maps terms](https://www.google.com/help/terms_maps/). No visitor geolocation is requested.
+Puja search, region selection, food lists and Food Safety filters read local static
+data. Visitors make zero Google Places API calls and zero OSM API calls. Language,
+region, selected Puja and California's Bengali-food view use URL parameters; they
+do not require accounts or tracking storage.
 
-Optional community intake links to an owner-configured Google Form with private responses. Google processes submitted material under its own policies. No form is embedded or fetched by the public dashboard. The proposed form requests no uploads or email addresses and exposes no response summaries. The owner must restrict editor access, review responses and remove unnecessary information; raw responses must never be committed to Git. Submissions do not publish automatically. See the maintainer guide for setup.
+**Open live Google map** is optional. Only that action loads the separate map
+document and Google Maps JavaScript. Google then receives network information such
+as IP address and origin under its [privacy policy](https://policies.google.com/privacy)
+and [Maps terms](https://www.google.com/help/terms_maps/). No map loads on record-detail
+or policy pages, and no visitor geolocation is requested. Text/search fallback works
+without Google. The map uses a separate browser-restricted configuration value, never
+the operator Places or Gemini values. Origin-only referrers support map authorization.
 
-V1 has no accounts, registration, comments, advertising, analytics, tracking pixels, newsletters, profiling or application cookies. The static site has no public write API or submission database. It does not collect visitor form input. Search and chart filtering happen locally in the browser.
+Restaurant coordinate/verified-ID handoffs, sparse-catchment links and California's
+regional Bengali-food searches navigate to Google Maps when followed. They are ordinary
+external URLs, not background FoodPath API calls. Google's policies apply after
+navigation. OSM-derived food data and approximate distance do not imply recommendations
+or inspection results.
 
-Hosting providers may process IP addresses and operational request/security logs under their own policies. Following an external source or GitHub link sends the visitor to that provider, whose privacy practices apply. A no-referrer policy is configured to limit information sent on navigation.
+There is no project analytics, advertising, tracking pixel, profiling, application
+cookie, account registration, public write API or visitor database. Hosting providers
+may process IP addresses and operational logs. Other external source/GitHub links
+are governed by their providers' policies; normal external links use no-referrer.
 
-GitHub Issue Forms require GitHub access and may associate a submission with the contributor's account. Do not provide unnecessary personal information. While the repository remains private, Issues require collaborator access; after a visibility change, they may be publicly readable. Reassess historical content before that change. The English/Bengali language choice uses a URL parameter only, with no tracking or persistent browser storage. The local basemap makes no external tile requests.
+Community intake is an optional outbound owner-configured Google Form, not an embedded
+write endpoint. Responses must remain private, with no uploads, email collection or
+public response summaries requested by this project. No submission automatically
+publishes. Do not submit unnecessary personal information. Code discussions and
+contributions on this public GitHub repository may be publicly readable.
 
-The dataset rejects social-identity fields and unnecessary personal data. It does not infer religion, caste, ethnicity, politics, community, sexual orientation or nationality from names, menus or locations. Business names and coarse event areas may appear only with supporting public-source context. No owner family histories, private home addresses, employee details, phone lists or personal social-media data are collected.
+Food Safety Evidence remains West Bengal-only. It rejects social-identity inference
+and unnecessary personal information. Business names and coarse reported areas need
+source support; no private home addresses, owner family histories or employee/contact
+lists are collected for that evidence dataset.
 
-Full article text is processed in memory and is not written to logs. Minimal evidence spans and source metadata are retained for provenance. Private history is reviewed for necessity if a record is disputed or removed. Logs store bounded operational counts and reason codes, not article bodies or API keys.
+Bounded public article passages may be sent to the configured model provider for
+structured extraction. This sends no visitor data, form responses or private reviewer
+notes. Review provider terms/data-use settings before operation. Model output must pass
+source-grounded validation. Private research snapshots, candidates, operational ledgers
+and model responses stay ignored and outside deployments; logs use counts/reason codes.
+Routine evidence processing does not publish full article bodies. Minimal quotations
+and provenance are retained, with necessity review on corrections/removal.
 
-The bounded language-model extractor is enabled for structured source-document extraction when provider credentials are available. It sends only bounded public article passages to the configured provider; it does not send visitor data, form responses or private reviewer notes. Model output is never evidence by itself and must pass the normal source-grounding and publication gates. Maintainers must review provider terms and data-use settings before operation; evaluation articles and model responses remain in an ignored local cache, never public exports or Git history. Remove private evaluation material when no longer needed. VLM and face recognition remain disabled.
+[Methodology](METHODOLOGY.md) · [Corrections](CORRECTIONS.md) ·
+[Browser map](docs/BROWSER_MAP.md) · [Maintainer guide](docs/MAINTAINER_GUIDE.md).

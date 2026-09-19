@@ -8,7 +8,7 @@ from pathlib import Path
 from urllib.parse import urlencode
 
 import httpx
-from pydantic import BaseModel, ConfigDict, Field, model_validator
+from pydantic import BaseModel, ConfigDict, Field
 
 from ..places.models import Latitude, Longitude
 from ..places.storage import write_json
@@ -33,19 +33,18 @@ class GeocodeResult(Strict):
     category: str = Field(default="", max_length=100)
     result_type: str = Field(default="", max_length=100)
 
-    @model_validator(mode="after")
-    def local(self):
-        # Current catalog is Kolkata/Howrah only; distant name collisions are not candidates.
-        if not 22.30 <= self.latitude <= 22.80 or not 88.10 <= self.longitude <= 88.60:
-            raise ValueError("result_outside_kolkata_howrah_bounds")
-        return self
-
     @property
     def source_url(self):
         return f"https://www.openstreetmap.org/{self.osm_type}/{self.osm_id}"
 
 
 def query(record):
+    if record.address:
+        return (
+            ", ".join((record.venue, record.city, record.admin1, record.country_code))
+            if record.venue
+            else record.address
+        )
     # Directory names often append festival/committee boilerplate that is absent from OSM.
     # Remove only generic tokens; never infer or translate a locality.
     name = re.sub(
@@ -58,7 +57,7 @@ def query(record):
     locality = record.neighborhood or (
         record.area if record.location_precision != "source_zone" else ""
     )
-    values = (name, locality, record.city, "West Bengal", "India")
+    values = (name, locality, record.city, record.admin1, record.country_code)
     return ", ".join(value for value in values if value)
 
 
@@ -127,6 +126,13 @@ def discover(root: Path, pandal_ids, max_calls=10, dry_run=False, transport=None
         headers={"User-Agent": USER_AGENT},
     ) as client:
         for record in records:
+            from .regions import get_region
+
+            region = (
+                get_region(root, record.region_id)
+                if (root / "config/regions.yml").exists()
+                else None
+            )
             identity = _identity(record)
             if cache.get(record.pandal_id, {}).get("query_hash") == identity:
                 continue
@@ -142,7 +148,7 @@ def discover(root: Path, pandal_ids, max_calls=10, dry_run=False, transport=None
                         "q": query(record),
                         "format": "jsonv2",
                         "limit": 3,
-                        "countrycodes": "in",
+                        "countrycodes": record.country_code.lower(),
                         "addressdetails": 1,
                         "namedetails": 1,
                     }
@@ -168,6 +174,11 @@ def discover(root: Path, pandal_ids, max_calls=10, dry_run=False, transport=None
                             category=item.get("category", ""),
                             result_type=item.get("type", ""),
                         )
+                        w, s, e, n = (
+                            region.geocode_bounds if region else (88.10, 22.30, 88.60, 22.80)
+                        )
+                        if not (w <= result.longitude <= e and s <= result.latitude <= n):
+                            continue
                         results.append(
                             {
                                 **result.model_dump(mode="json"),

@@ -15,6 +15,7 @@ export function boot(win = window, doc = document) {
   if (win.parent === win || win.foodpathMapBooted) return;
   win.foodpathMapBooted = true;
   let map; let info; let markers = []; let started = false; let language = 'en'; let painted = ''; let selectedId = null; let markerStyle;
+  let regionId = ''; let center = { lat: 22.57, lng: 88.36 }; let zoom = 11; let safetyContext = true;
   const notify = (type, extra = {}) => win.parent.postMessage({ type, ...extra }, win.location.origin);
   const fail = () => { doc.getElementById('map-error').hidden = false; notify('foodpath-map-error'); };
   win.gm_authFailure = fail;
@@ -25,6 +26,7 @@ export function boot(win = window, doc = document) {
     focus.forEach(m => bounds.extend({ lat: m.lat, lng: m.lng }));
     if (focus.length > 1) map.fitBounds(bounds, 40);
     else if (focus.length) { map.setCenter({ lat: focus[0].lat, lng: focus[0].lng }); map.setZoom(13); }
+    else { map.setCenter(center); map.setZoom(zoom); }
   }
   function focusSelected() {
     const marker = markers.find(m => m.id === selectedId && m.kind === 'pandal');
@@ -33,7 +35,8 @@ export function boot(win = window, doc = document) {
   }
   function paint() {
     if (!map) return;
-    const signature = JSON.stringify(markers); if (painted === signature) return; painted = signature;
+    const signature = JSON.stringify([regionId, markers]); if (painted === signature) return; painted = signature;
+    info?.close?.();
     map.data.forEach(f => map.data.remove(f));
     map.data.addGeoJson({ type: 'FeatureCollection', features: markers.map(m => ({ type: 'Feature', id: m.id,
       properties: { kind: m.kind, label: m.label, count: m.count }, geometry: { type: 'Point', coordinates: [m.lng, m.lat] } })) });
@@ -42,7 +45,7 @@ export function boot(win = window, doc = document) {
   win.foodpathMapLoaded = () => {
     if (map) return;
     try {
-      map = new win.google.maps.Map(doc.getElementById('map'), { center: { lat: 22.57, lng: 88.36 }, zoom: 11, maxZoom: 16,
+      map = new win.google.maps.Map(doc.getElementById('map'), { center, zoom, maxZoom: 16,
         streetViewControl: false, mapTypeControl: false, fullscreenControl: true, clickableIcons: false, gestureHandling: 'cooperative' });
       info = new win.google.maps.InfoWindow();
       markerStyle = feature => ({ visible: doc.getElementById(feature.getProperty('kind') === 'area' ? 'areas-layer' : 'pandals-layer').checked,
@@ -73,7 +76,16 @@ export function boot(win = window, doc = document) {
       return;
     }
     if (event.data?.type !== 'foodpath-map-data') return;
-    markers = safeMarkers(event.data.markers); language = event.data.language; selectedId = event.data.selectedPandalId || null;
+    regionId = event.data.regionId || '';
+    const c = event.data.mapCenter;
+    if (Number.isFinite(c?.lat) && Math.abs(c.lat) <= 90 && Number.isFinite(c?.lng) && Math.abs(c.lng) <= 180) center = c;
+    if (Number.isInteger(event.data.mapZoom) && event.data.mapZoom >= 1 && event.data.mapZoom <= 16) zoom = event.data.mapZoom;
+    safetyContext = event.data.safetyContext !== false;
+    const areaToggle = doc.getElementById('areas-layer');
+    if (!safetyContext) areaToggle.checked = false;
+    areaToggle.disabled = !safetyContext;
+    if (areaToggle.parentElement) areaToggle.parentElement.hidden = !safetyContext;
+    markers = safeMarkers(event.data.markers).filter(m => safetyContext || m.kind !== 'area'); language = event.data.language; selectedId = event.data.selectedPandalId || null;
     if (started) { paint(); return; }
     started = true;
     try { const script = doc.createElement('script'); script.src = scriptURL(event.data.key, language); script.async = true; script.referrerPolicy = 'origin'; script.onerror = fail; doc.head.append(script); } catch { fail(); }

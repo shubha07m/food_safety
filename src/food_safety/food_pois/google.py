@@ -2,6 +2,7 @@
 
 import hashlib
 import json
+from collections import Counter
 
 import httpx
 from pydantic import TypeAdapter
@@ -12,15 +13,15 @@ from ..places.models import PlaceID
 from ..places.pipeline import api_key
 from ..places.pipeline import load_config as places_config
 from ..places.storage import LimitReached, Store, write_json
-from .models import PublicData
-from .osm import RUNTIME, load_config
+from .models import PublicData, normalize
+from .osm import load_config, runtime
 
 ENDPOINT = "https://places.googleapis.com/v1/places:searchText"
 MASK = "places.id,nextPageToken"
 
 
 class IDClient(Client):
-    def search(self, poi):
+    def search(self, poi, context="West Bengal India"):
         if not poi.name:
             raise PlacesError("id_search_requires_name")
         north, _ = destination(poi.latitude, poi.longitude, 150, 0)
@@ -28,7 +29,7 @@ class IDClient(Client):
         _, east = destination(poi.latitude, poi.longitude, 150, 90)
         _, west = destination(poi.latitude, poi.longitude, 150, 270)
         payload = {
-            "textQuery": poi.name + " West Bengal India",
+            "textQuery": normalize(poi.name) + " " + context,
             "pageSize": 3,
             "locationRestriction": {
                 "rectangle": {
@@ -85,6 +86,13 @@ class IDClient(Client):
                                 "place_ids": sorted(set(ids)),
                                 "ambiguous": len(set(ids)) != 1 or bool(raw.get("nextPageToken")),
                                 "identity_verified": False,
+                                "status": (
+                                    "unresolved"
+                                    if not ids
+                                    else "ambiguous"
+                                    if len(set(ids)) != 1 or raw.get("nextPageToken")
+                                    else "suggested"
+                                ),
                             }
                 except (httpx.TimeoutException, httpx.NetworkError):
                     error, retry = "provider_transport_error", True
@@ -99,51 +107,89 @@ class IDClient(Client):
         raise PlacesError("provider_unavailable")
 
 
-def resolve_ids(root, dry_run=True, transport=None):
-    config = load_config(root)
+def resolve_ids(root, dry_run=True, transport=None, region_id="kolkata", execute=False):
+    from .pipeline import public_paths
+
+    config = load_config(root, region_id)
     policy = config.google_enrichment
-    data = PublicData.model_validate_json((root / "data/osm_food.json").read_text())
+    data = PublicData.model_validate_json((root / public_paths(root, region_id)[0]).read_text())
     if set(policy.pandal_ids) - {c.pandal_id for c in data.coverage if c.status == "snapshot"}:
         raise ValueError("enrichment_requires_known_snapshot_catchments")
-    ids = {a.poi_id for a in data.associations if a.pandal_id in policy.pandal_ids}
+    pois = {p.poi_id: p for p in data.pois}
+    named = {
+        p.poi_id
+        for p in data.pois
+        if p.name
+        and any(c.isalpha() for c in p.name)
+        and normalize(p.name)
+        not in {
+            "unnamed",
+            "unknown",
+            "n/a",
+            "no name",
+            "unnamed food place",
+            "restaurant on google maps",
+        }
+    }
+    ids = set()
+    for pandal_id in policy.pandal_ids:
+        rows = sorted(
+            (a for a in data.associations if a.pandal_id == pandal_id and a.poi_id in named),
+            key=lambda a: (a.distance_m, normalize(pois[a.poi_id].name), a.poi_id),
+        )
+        ids.update(a.poi_id for a in rows[:20])
     verified = {x.poi_id for x in policy.verified_links}
     selected = [p for p in data.pois if p.poi_id in ids and p.name and p.poi_id not in verified]
     selected = sorted(selected, key=lambda p: p.poi_id)[: policy.max_unique_pois]
     settings = places_config(root).settings
-    store = Store(root, settings, max_calls=policy.max_unique_pois)
-    path = root / RUNTIME / "google_id_suggestions.json"
+    store = Store(root, settings, max_calls=min(settings.max_calls_per_run, policy.max_unique_pois))
+    context = "West Bengal IN"
+    if (root / "config/regions.yml").exists():
+        from ..puja.regions import get_region
+
+        region = get_region(root, region_id)
+        context = f"{region.admin1} {region.country_code}"
+    path = root / runtime(region_id) / "google_id_suggestions.json"
     cache = json.loads(path.read_text()) if path.exists() else {}
     hashes = {
-        p.poi_id: hashlib.sha256((p.model_dump_json() + MASK).encode()).hexdigest()
+        p.poi_id: hashlib.sha256(
+            (p.model_dump_json() + MASK + context + ":suggestions-v2").encode()
+        ).hexdigest()
         for p in selected
     }
     due = [p for p in selected if hashes[p.poi_id] not in cache]
     report = {
-        "enabled": policy.enabled,
+        "enabled": policy.enabled or execute,
+        "region_id": region_id,
+        "eligible_unique_pois": len(ids),
         "selected_unique_pois": len(selected),
         "due": len(due),
         "cache_hits": len(selected) - len(due),
         "maximum_attempts": min(
             len(due) * (settings.max_retries + 1),
             policy.max_unique_pois,
+            settings.max_calls_per_run,
             store.status()["remaining"],
         ),
         "calls": 0,
+        "ledger_before": store.status()["calls"],
+        "remaining_before": store.status()["remaining"],
+        "verification_note": "IDs-only response cannot verify returned name or coordinates",
         "results": [],
     }
-    if dry_run or not policy.enabled:
+    if dry_run or not (policy.enabled or execute):
         return report
     with store.lock():
         client = IDClient(api_key(root), settings, store, transport)
         for poi in due:
             try:
-                result = client.search(poi)
+                result = client.search(poi, context)
                 cache[hashes[poi.poi_id]] = {"poi_id": poi.poi_id, **result}
                 write_json(path, cache)
                 report["results"].append(
                     {
                         "poi_id": poi.poi_id,
-                        "status": "identity_unverified",
+                        "status": result["status"],
                         "id_count": len(result["place_ids"]),
                     }
                 )
@@ -151,4 +197,14 @@ def resolve_ids(root, dry_run=True, transport=None):
                 report["results"].append({"poi_id": poi.poi_id, "status": str(exc)})
                 break
     report["calls"] = store.calls
+    report["ledger_after"] = store.status()["calls"]
+    report["status_counts"] = dict(
+        Counter(
+            cache[hashes[p.poi_id]].get("status", "unresolved")
+            if hashes[p.poi_id] in cache
+            else "unresolved"
+            for p in selected
+        )
+    )
+    report["verified_ids_added"] = 0
     return report

@@ -9,6 +9,12 @@ from audit_repository import SECRET
 
 ROOT = Path(__file__).resolve().parents[1]
 GENERATED = (
+    "data/regions.json",
+    "site/data/regions.json",
+    "data/osm_food_california.json",
+    "site/data/osm_food_california.json",
+    "data/food_provider_california.json",
+    "site/data/food_provider_california.json",
     "data/events.json",
     "data/events.csv",
     "data/events.csv.metadata.json",

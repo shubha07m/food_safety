@@ -1,0 +1,20 @@
+provider: osm
+initial_display_limit: 12
+osm:
+  enabled: true
+  source_url: https://download.geofabrik.de/north-america/us/california-latest.osm.pbf
+  source_path: data/osm-runtime/california/source/california.osm.pbf
+  dataset: Geofabrik California — curated venue catchments
+  max_download_bytes: 1500000000
+  # Envelope of sourced Newark/Canoga Park/Cerritos anchors plus ~10 km margin.
+  bbox: {west: -122.17, south: 33.76, east: -117.95, north: 37.66}
+  bbox_basis: independent venue anchor envelope; not statewide coverage
+  catchment_radius_m: 1500
+  categories:
+    amenity: [restaurant, cafe, fast_food, ice_cream, food_court]
+    shop: [bakery, confectionery]
+google_enrichment:
+  enabled: false
+  pandal_ids: [ca-pashchimi, ca-sanskriti, ca-basc, ca-vbc]
+  max_unique_pois: 60
+  verified_links: []

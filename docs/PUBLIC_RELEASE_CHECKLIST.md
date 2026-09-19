@@ -19,7 +19,7 @@ Use this checklist immediately before the explicit `--confirm-public-release` ac
 
 ## Security and hosting
 
-- [ ] Only `site/` is selected as the Cloudflare Workers static assets directory.
+- [ ] Only the isolated `dist/site/` artifact is deployed; tracked map configuration remains blank.
 - [ ] Preview deployment passes header, CSP, mobile and keyboard checks.
 - [ ] HTTPS headers, including CSP, HSTS, nosniff, no-referrer and framing controls, are checked on the actual domain.
 - [ ] No secret, pending queue, rejected record, history archive or run artifact is publicly reachable.
@@ -29,6 +29,9 @@ Use this checklist immediately before the explicit `--confirm-public-release` ac
 
 - [ ] Disclaimer, correction route and volunteer callout are visible on desktop and mobile.
 - [ ] Chart filters, map points, data downloads and record details work.
+- [ ] Kolkata/California search, featured eligibility, named-food limits and region URLs work.
+- [ ] Coordinate/verified-ID handoffs and California regional food searches are clearly distinguished.
+- [ ] OSM attribution and source/snapshot provenance remain present; visitors make no Places/OSM API requests.
 - [ ] Two-hour scan remains bounded; automatic publication requires all validation gates.
 - [ ] Maintainers can access workflow-dispatch; private review artifacts are not uploaded.
 - [ ] Rollback procedure is understood and a prior Workers deployment is available.

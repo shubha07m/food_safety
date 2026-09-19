@@ -1,4 +1,4 @@
-# Pandal restaurant discovery
+# Google provider and selective enrichment
 
 This document describes the retained **Google provider**. The parallel regional
 OSM snapshot, provider selection, attribution, and migration workflow are documented
@@ -11,6 +11,10 @@ The website's Puja search consumes only the durable static contract. It never ca
 Places on behalf of visitors or plots temporary restaurant coordinates.
 
 ## Flow and commands
+
+Kolkata currently retains hybrid OSM/Google discovery; California's public food list
+uses OSM. This subsystem is not the universal bulk restaurant source. Named public
+lists and regional handoffs are described in [FOOD_POIS.md](FOOD_POIS.md).
 
 Curated pandals → practical search zones → Places API (New) Nearby Search → bounded
 supplemental circles when a primary result is saturated → deduplicate by place ID →
@@ -175,10 +179,11 @@ festival access before travel use.
 
 ## Website integration boundaries
 
-The search-first Puja view consumes `site/data/places.json`, using only independently
-curated names or neutral Google Maps handoff labels. Google Maps attribution and
-terms/privacy links accompany this experience. Associations are historical, not current
-proximity guarantees; no exact distances are displayed. The optional browser Google map
+The search-first Puja view retains `site/data/places.json` for hybrid diagnostics and
+rollback. Anonymous Google records are not individual public rows or named-list counts.
+OSM-derived named entries have approximate straight-line distances and attribution;
+Google historical associations do not acquire public coordinate/distance fields.
+The optional browser Google map
 plots only curated pandals and reviewed food-safety anchors, not restaurant coordinates.
 See [browser map setup and privacy boundaries](BROWSER_MAP.md). No visitor action calls
 Nearby Search or Place Details. Food-safety evidence remains a separate module.
@@ -190,7 +195,21 @@ refresh should retain the same ledger and query fingerprint. Richer metadata req
 separate provenance/retention decision. There is no Gemini clustering, database, queue,
 server endpoint, per-visitor API call, or new background infrastructure in this feature.
 
-Official references (reviewed 2026-09-15):
+## Selective ID-only suggestions (checked 2026-09-19)
+
+`osm --region california resolve-google --dry-run` plans globally deduplicated named
+POIs in the public 20-per-Puja list. `--execute` explicitly enables that bounded run.
+Text Search (New) uses `places.id,nextPageToken`, at most three results and no page
+follow-up. Its IDs Only tier is listed without unit charge in current Google pricing;
+method/project quotas and the local shared 3,000-attempt ledger still apply. Every
+retry counts. No Place Details, ratings or reviews are requested.
+
+Name/context and a local rectangle guide discovery but cannot prove identity from an
+ID-only response. Single results remain suggested, multiple/paginated results ambiguous,
+and empty results unresolved. Private revision-keyed caches prevent repeat calls.
+Only independently verified, provenance-bearing crosswalk entries may enter public
+`query_place_id` links. There is no automatic promotion, Gemini matching or fuzzy merge.
+See [the complete handoff and verification contract](FOOD_POIS.md).
 
 Restaurant quality filtering (ratings or review-count thresholds) is deferred.
 It would change the requested field mask and potentially the SKU/cost. The
@@ -198,6 +217,8 @@ current list contains nearby restaurant links, not ranked recommendations.
 The operator response uses Google's returned order; durable records are
 deduplicated and serialized deterministically, so the public link list does
 not claim to reproduce a Google ranking.
+
+Official references:
 
 - [Nearby Search New](https://developers.google.com/maps/documentation/places/web-service/nearby-search)
 - [Places policies and attribution](https://developers.google.com/maps/documentation/places/web-service/policies)

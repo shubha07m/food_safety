@@ -188,15 +188,64 @@ def test_public_export_deterministic_and_complete_odbl_subset(food_root, monkeyp
     assert first == (food_root / "data/osm_food.json").read_bytes()
 
 
-def test_maps_url_has_encoded_name_coordinates_no_key(food_root):
-    p = poi(food_root, tags={"amenity": "restaurant", "name": "খাবার & Cafe"})
+@pytest.mark.parametrize("name", ["Independent Cafe", "Taco Bell", "খাবার & Cafe", None])
+def test_maps_url_targets_coordinate_not_broad_name(food_root, name):
+    tags = {"amenity": "restaurant"}
+    if name:
+        tags["name"] = name
+    p = poi(food_root, tags=tags)
     params = parse_qs(urlsplit(p.maps_url()).query)
     assert params["api"] == ["1"]
-    assert params["query"][0].startswith("খাবার & Cafe")
+    assert params["query"] == ["22.5000000,88.3500000"]
     assert "key" not in params and "query_place_id" not in params
     assert parse_qs(urlsplit(p.maps_url("verified_id")).query)["query_place_id"] == ["verified_id"]
     with pytest.raises(ValidationError):
         p.maps_url("bad value")
+
+
+def test_suggested_identity_cannot_enter_verified_configuration():
+    with pytest.raises(ValidationError):
+        Enrichment(
+            verified_links=[
+                {
+                    "poi_id": "osm:node:1",
+                    "place_id": "fixture",
+                    "status": "suggested",
+                    "identity_source": "https://example.org",
+                    "verified_at": AT,
+                    "note": "Not independent verification",
+                }
+            ]
+        )
+
+
+@pytest.mark.parametrize(
+    "response,status",
+    [
+        ({}, "unresolved"),
+        ({"places": [{"id": "one"}]}, "suggested"),
+        ({"places": [{"id": "one"}, {"id": "two"}]}, "ambiguous"),
+        ({"places": [{"id": "one"}], "nextPageToken": "next"}, "ambiguous"),
+    ],
+)
+def test_id_only_status_is_never_identity_verification(food_root, response, status):
+    settings = Settings(max_calls_per_run=1)
+    store = Store(food_root, settings, clock=lambda: AT)
+
+    def handler(request):
+        payload = json.loads(request.content)
+        assert payload["textQuery"].endswith("California US")
+        assert payload["pageSize"] == 3
+        assert "locationRestriction" in payload
+        return httpx.Response(200, json=response)
+
+    with store.lock():
+        result = IDClient("test-only", settings, store, httpx.MockTransport(handler)).search(
+            poi(food_root), "California US"
+        )
+    assert result["status"] == status
+    assert result["identity_verified"] is False
+    assert store.calls == 1
 
 
 def test_snapshot_import_cache_and_unchanged_inputs(food_root):
@@ -329,6 +378,33 @@ def test_disabled_id_resolution_does_not_use_google(food_root):
         transport=httpx.MockTransport(lambda _: pytest.fail("network called")),
     )
     assert result["calls"] == 0 and result["enabled"] is False
+
+
+def test_resolution_is_explicit_cached_and_cannot_publish_suggestions(food_root, monkeypatch):
+    associate(food_root, snapshot(food_root))
+    before = (food_root / "data/osm_food.json").read_bytes()
+    path = food_root / "config/food.yml"
+    config = yaml.safe_load(path.read_text())
+    config["google_enrichment"] = {"enabled": False, "pandal_ids": ["a"], "max_unique_pois": 2}
+    path.write_text(yaml.safe_dump(config))
+    monkeypatch.setattr("food_safety.food_pois.google.api_key", lambda _: "test-only")
+    forbidden = httpx.MockTransport(lambda _: pytest.fail("unexpected request"))
+    planned = resolve_ids(food_root, dry_run=True, execute=True, transport=forbidden)
+    assert planned["eligible_unique_pois"] == 1
+    assert planned["calls"] == 0 and planned["maximum_attempts"] <= 2
+    result = resolve_ids(
+        food_root,
+        dry_run=False,
+        execute=True,
+        transport=httpx.MockTransport(
+            lambda _: httpx.Response(200, json={"places": [{"id": "fixture"}]})
+        ),
+    )
+    assert result["calls"] == 1 and result["status_counts"] == {"suggested": 1}
+    assert result["verified_ids_added"] == 0
+    cached = resolve_ids(food_root, dry_run=False, execute=True, transport=forbidden)
+    assert cached["cache_hits"] == 1 and cached["calls"] == 0
+    assert (food_root / "data/osm_food.json").read_bytes() == before
 
 
 def test_bakeoff_does_not_claim_named_google_coverage(food_root):

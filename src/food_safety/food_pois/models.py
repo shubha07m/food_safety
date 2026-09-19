@@ -48,6 +48,7 @@ class OSMConfig(Strict):
     max_download_bytes: int = Field(default=400_000_000, ge=1, le=2_000_000_000)
     bbox: Bounds
     bbox_basis: str
+    catchment_radius_m: float | None = Field(default=None, ge=600, le=5000)
     categories: dict[Literal["amenity", "shop"], list[str]]
 
     @model_validator(mode="after")
@@ -61,6 +62,7 @@ class OSMConfig(Strict):
 
 
 class VerifiedLink(Strict):
+    status: Literal["verified"] = "verified"
     poi_id: str = Field(pattern=r"^osm:(node|way|relation):[1-9][0-9]*$")
     place_id: PlaceID
     identity_source: HttpUrl
@@ -71,7 +73,7 @@ class VerifiedLink(Strict):
 class Enrichment(Strict):
     enabled: bool = False
     pandal_ids: list[ID] = Field(default_factory=list)
-    max_unique_pois: int = Field(default=10, ge=1, le=30)
+    max_unique_pois: int = Field(default=10, ge=1, le=60)
     verified_links: list[VerifiedLink] = Field(default_factory=list)
 
     @model_validator(mode="after")
@@ -145,7 +147,8 @@ class OSMFoodPOI(FoodPOI):
         return self
 
     def maps_url(self, place_id=None):
-        query = f"{self.name or self.category} {self.latitude:.7f},{self.longitude:.7f}"
+        # Coordinates select the OSM location, not an unverified chain identity.
+        query = f"{self.latitude:.7f},{self.longitude:.7f}"
         params = {"api": "1", "query": query}
         if place_id is not None:
             from pydantic import TypeAdapter
@@ -162,6 +165,12 @@ class Association(Strict):
     source_snapshot: str
 
 
+class CoverageCircle(Strict):
+    latitude: Latitude
+    longitude: Longitude
+    radius_m: float = Field(gt=0, le=5000, allow_inf_nan=False)
+
+
 class Snapshot(Strict):
     schema_version: Literal["food-osm-1"] = "food-osm-1"
     snapshot_id: str
@@ -171,6 +180,8 @@ class Snapshot(Strict):
     snapshot_date: AwareDatetime | None = None
     extracted_at: AwareDatetime
     bbox: Bounds
+    # Absent for whole-bbox extracts; explicit for bounded venue subsets.
+    coverage_circles: list[CoverageCircle] | None = Field(default=None, min_length=1)
     attribution: Literal["© OpenStreetMap contributors"] = ATTRIBUTION
     attribution_url: Literal["https://www.openstreetmap.org/copyright"] = COPYRIGHT
     license: Literal["ODbL-1.0"] = "ODbL-1.0"

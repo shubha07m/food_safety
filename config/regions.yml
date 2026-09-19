@@ -1,0 +1,48 @@
+default_region: kolkata
+regions:
+  - region_id: kolkata
+    label: Kolkata region
+    country_code: IN
+    admin1: West Bengal
+    default_map_center: {lat: 22.57, lng: 88.36}
+    default_map_zoom: 11
+    safety_context: true
+    geocode_bounds: [88.10, 22.30, 88.60, 22.80]
+    food_config: config/food.yml
+    food_data: data/osm_food.json
+    provider_data: data/food_provider.json
+    catalog_config: null
+    featured_ids:
+      - ekdalia-evergreen-club-durga-puja
+      - singhi-park-sarbojanin-durga-puja
+      - deshapriya-park-durga-puja
+      - tridhara-sammilani-durga-puja
+      - ballygunge-cultural-association-durga-puja
+      - mudiali-club-sarbojanin-durga-puja
+  - region_id: california
+    label: California
+    country_code: US
+    admin1: California
+    # Regional framing only; never used as a venue coordinate.
+    default_map_center: {lat: 36.5, lng: -119.5}
+    default_map_zoom: 6
+    safety_context: false
+    geocode_bounds: [-124.5, 32.5, -114.0, 42.1]
+    food_config: config/food-california.yml
+    food_data: data/osm_food_california.json
+    provider_data: data/food_provider_california.json
+    catalog_config: config/puja-california.yml
+    featured_ids: [ca-sanskriti, ca-pashchimi, ca-agomoni, ca-basc, ca-vbc]
+    regional_food_searches:
+      - area_id: bay-area
+        label: Bay Area
+        query: Bengali restaurants Bay Area California
+      - area_id: southern-california
+        label: Los Angeles / Southern California
+        query: Bengali restaurants Los Angeles Southern California
+      - area_id: sacramento
+        label: Sacramento
+        query: Bengali restaurants Sacramento California
+      - area_id: all-california
+        label: All California
+        query: Bengali restaurants California

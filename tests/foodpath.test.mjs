@@ -41,8 +41,9 @@ test('thousands of pandals do not become thousands of cards or options', () => {
   data.pandals = Array.from({ length: 5000 }, (_, i) => ({ ...data.pandals[0], pandal_id: `p${i}`, name: `Pandal ${i}` }));
   const parsed = parsePlaces(data);
   assert.equal(searchPandals(parsed.index, 'pandal').length, 8);
-  assert.equal(featuredPandals(parsed.pandals, parsed.pandals.map(p => p.pandal_id)).length, 6);
-  assert.equal(featuredPandals(parsed.pandals, ['not-listed']).length, 0);
+  // Searchability alone no longer makes a listing a useful featured shortcut.
+  assert.equal(featuredPandals(parsed, parsed.pandals.map(p => p.pandal_id)).length, 0);
+  assert.equal(featuredPandals(parsed, ['not-listed']).length, 0);
 });
 test('keyboard cursor wraps and Escape clears selection', () => {
   assert.equal(nextOption('ArrowDown', -1, 8), 0);
@@ -177,4 +178,19 @@ test('mock map fits all pandals and focuses mapped selection without false fallb
   info.children[2].click(); assert.equal(messages.at(-1).id, 'area-0');
   click({ feature: feature(features[1]), latLng: {} });
   info.children[2].click(); assert.equal(messages.at(-1).id, 'pandal-bagbazar');
+  const ca = [
+    { id: 'ca-1', kind: 'pandal', label: 'Bay Area', lat: 37.5, lng: -122 },
+    { id: 'ca-2', kind: 'pandal', label: 'Southern California', lat: 34, lng: -118 },
+    { id: 'area-wb', kind: 'area', label: 'West Bengal', lat: 22.5, lng: 88.3 },
+  ];
+  listeners.message({ origin: win.location.origin, source: parent, data: { type: 'foodpath-map-data',
+    regionId: 'california', safetyContext: false, mapCenter: { lat: 36, lng: -120 }, mapZoom: 6, markers: ca } });
+  assert.equal(features.length, 2); assert.equal(bounds.at(-1).length, 2);
+  assert.ok(bounds.at(-1).every(p => p.lng < 0));
+  assert.equal(elements.get('areas-layer').disabled, true);
+  assert.equal(doc.head.children.length, 1);
+  win.foodpathMapLoaded(); assert.equal(doc.head.children.length, 1);
+  listeners.message({ origin: win.location.origin, source: parent, data: { type: 'foodpath-map-data',
+    regionId: 'empty-region', safetyContext: false, mapCenter: { lat: 36, lng: -120 }, mapZoom: 6, markers: [] } });
+  assert.deepEqual(centers.at(-1), { lat: 36, lng: -120 }); assert.equal(zooms.at(-1), 6);
 });

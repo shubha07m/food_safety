@@ -12,12 +12,22 @@ function fixture() {
 }
 const legacy = () => ({ pandals: [{ pandal_id: 'p' }], groups: new Map([['p', [{ id: 'googleID', name: null, url: 'https://www.google.com/maps/search/?api=1&query=restaurant&query_place_id=googleID' }]]]) });
 const policy = (provider, google_links = []) => ({ schema_version: 'food-provider-1', provider, initial_display_limit: 15, google_links });
-test('OSM handoff encodes independent name/location without API or invented Google ID', () => {
+test('OSM handoff pins independent coordinates without claiming Google identity', () => {
   const url = new URL(osmMapsURL(poi()));
-  assert.equal(url.searchParams.get('query'), 'মিত্র Cafe & Food 22.5000000,88.3500000');
+  assert.equal(url.searchParams.get('query'), '22.5000000,88.3500000');
   assert.equal(url.searchParams.get('key'), null); assert.equal(url.searchParams.get('query_place_id'), null);
   assert.equal(new URL(osmMapsURL(poi(), 'verified')).searchParams.get('query_place_id'), 'verified');
   assert.equal(osmMapsURL({ ...poi(), latitude: NaN }), null);
+});
+test('chain, independent, special-character and missing names never broaden coordinate fallback', () => {
+  for (const name of ['Taco Bell', 'Local Cafe', 'খাবার & Café / #1', null]) {
+    const url = new URL(osmMapsURL(poi(1, name)));
+    assert.equal(url.searchParams.get('query'), '22.5000000,88.3500000');
+    assert.equal(url.searchParams.has('key'), false);
+  }
+  const link = { poi_id: 'osm:node:1', place_id: 'fixture', status: 'suggested',
+    identity_source: 'https://example.org', verified_at: '2026-09-19T00:00:00Z' };
+  assert.throws(() => combineFood(legacy(), fixture(), policy('hybrid', [link])));
 });
 test('OSM mode retains useful names/categories/cuisine, sorted distance; unnamed remains unnamed', () => {
   const result = combineFood(legacy(), fixture(), policy('osm'));
