@@ -36,7 +36,7 @@ export function pandalFoodURL(pandal) {
 export function osmMapsURL(poi, placeID = null) {
   if (!osmID.test(poi.poi_id) || !Number.isFinite(poi.latitude) || !Number.isFinite(poi.longitude)
     || Math.abs(poi.latitude) > 90 || Math.abs(poi.longitude) > 180) return null;
-  const query = `${poi.name || poi.category} ${poi.latitude.toFixed(7)},${poi.longitude.toFixed(7)}`;
+  const query = `${poi.latitude.toFixed(7)},${poi.longitude.toFixed(7)}`;
   const params = new URLSearchParams({ api: '1', query });
   if (placeID && googleID.test(placeID)) params.set('query_place_id', placeID);
   return `https://www.google.com/maps/search/?${params}`;
@@ -53,7 +53,7 @@ export function combineFood(legacy, osm, policy) {
     || !Array.isArray(osm.pois) || !Array.isArray(osm.associations)) return legacy;
   const pois = new Map(); const links = new Map(); const usedIDs = new Set();
   for (const link of policy.google_links || []) {
-    if (!osmID.test(link.poi_id) || !googleID.test(link.place_id) || !link.identity_source || !link.verified_at
+    if ((link.status && link.status !== 'verified') || !osmID.test(link.poi_id) || !googleID.test(link.place_id) || !link.identity_source || !link.verified_at
       || links.has(link.poi_id) || usedIDs.has(link.place_id)) throw Error('Ambiguous food identity link');
     links.set(link.poi_id, link.place_id); usedIDs.add(link.place_id);
   }

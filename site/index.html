@@ -52,11 +52,21 @@
       <p class="puja-intro">Search locally in English or বাংলা. No Google request is made while you type.</p>
       <div id="region-tabs" class="region-tabs" role="tablist" aria-label="Puja region"></div>
       <p id="region-count" class="fine-print" aria-live="polite"></p>
+      <div id="food-view-tabs" class="region-tabs" role="tablist" aria-label="California discovery" hidden>
+        <button id="food-view-puja" class="region-tab" type="button" role="tab" aria-selected="true" aria-controls="puja-discovery">Puja &amp; nearby food</button>
+        <button id="food-view-bengali" class="region-tab" type="button" role="tab" aria-selected="false" aria-controls="regional-food-discovery" tabindex="-1">Bengali food</button>
+      </div>
       <div id="puja-discovery" role="tabpanel">
       <div class="puja-search-wrap"><label for="pandal-search">Search for a Puja pandal</label><div class="pandal-combobox"><input id="pandal-search" type="search" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="pandal-options" autocomplete="off" placeholder="Pandal name or neighbourhood…"><ul id="pandal-options" role="listbox" aria-label="Matching pandals" hidden></ul></div><p id="pandal-search-status" role="status" aria-live="polite">Loading curated pandals…</p></div>
       <section id="selected-pandal" class="selected-pandal" aria-labelledby="selected-pandal-title" hidden></section>
       <div id="featured-heading" class="featured-heading"><div><p class="eyebrow">CURATED STARTING POINTS</p><h3>Featured Pujas</h3></div><p>Curated shortcuts, not rankings.</p></div><div id="featured-pandals" class="featured-pandals"></div>
       </div>
+      <section id="regional-food-discovery" class="regional-food" role="tabpanel" aria-labelledby="food-view-bengali" hidden>
+        <h3>Bengali food in California</h3>
+        <p>Looking for familiar flavours beyond the Puja grounds? Explore Bengali food across California.</p>
+        <div id="regional-food-links" class="food-geography-grid"></div>
+        <p class="fine-print">These links open regional Google Maps searches. They are discovery shortcuts, not FoodPath recommendations, safety ratings, or a verified directory.</p>
+      </section>
       <p class="puja-notice">Restaurant discovery is separate from food-safety evidence. Nearby does not mean safe, inspected, or endorsed.</p>
     </section>
     <section id="geography" class="puja-only geography-intro" aria-labelledby="geography-heading"><div class="section-heading"><div><p class="eyebrow">PANDALS FIRST · CONTEXT ON REQUEST</p><h2 id="geography-heading">Explore Puja geography</h2></div><p>Curated Pujas in the selected region.<br><span data-safety-context>West Bengal evidence is optional context.</span></p></div></section>

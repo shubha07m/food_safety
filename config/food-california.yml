@@ -15,6 +15,6 @@ osm:
     shop: [bakery, confectionery]
 google_enrichment:
   enabled: false
-  pandal_ids: []
-  max_unique_pois: 10
+  pandal_ids: [ca-pashchimi, ca-sanskriti, ca-basc, ca-vbc]
+  max_unique_pois: 60
   verified_links: []

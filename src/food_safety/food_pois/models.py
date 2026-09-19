@@ -62,6 +62,7 @@ class OSMConfig(Strict):
 
 
 class VerifiedLink(Strict):
+    status: Literal["verified"] = "verified"
     poi_id: str = Field(pattern=r"^osm:(node|way|relation):[1-9][0-9]*$")
     place_id: PlaceID
     identity_source: HttpUrl
@@ -72,7 +73,7 @@ class VerifiedLink(Strict):
 class Enrichment(Strict):
     enabled: bool = False
     pandal_ids: list[ID] = Field(default_factory=list)
-    max_unique_pois: int = Field(default=10, ge=1, le=30)
+    max_unique_pois: int = Field(default=10, ge=1, le=60)
     verified_links: list[VerifiedLink] = Field(default_factory=list)
 
     @model_validator(mode="after")
@@ -146,7 +147,8 @@ class OSMFoodPOI(FoodPOI):
         return self
 
     def maps_url(self, place_id=None):
-        query = f"{self.name or self.category} {self.latitude:.7f},{self.longitude:.7f}"
+        # Coordinates select the OSM location, not an unverified chain identity.
+        query = f"{self.latitude:.7f},{self.longitude:.7f}"
         params = {"api": "1", "query": query}
         if place_id is not None:
             from pydantic import TypeAdapter

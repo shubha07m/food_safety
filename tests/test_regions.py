@@ -13,9 +13,40 @@ from food_safety.food_pois.pipeline import associate, regional_pandals
 from food_safety.places.pipeline import load_config as google_config
 from food_safety.puja.geocoding import discover
 from food_safety.puja.pipeline import load_config
-from food_safety.puja.regions import load_regions
+from food_safety.puja.regions import load_regions, public_registry
 
 ROOT = Path(__file__).resolve().parents[1]
+
+
+def test_regional_search_handoffs_do_not_change_catalog_or_food_counts(region_root):
+    before = len(load_config(region_root).published)
+    result = public_registry(region_root)
+    regions = {r["region_id"]: r for r in result["regions"]}
+    assert regions["kolkata"]["regional_food_searches"] == []
+    searches = regions["california"]["regional_food_searches"]
+    assert len(searches) == 4
+    assert all(s["type"] == "regional_food_search" for s in searches)
+    assert all(s["region_id"] == "california" and "poi_id" not in s for s in searches)
+    assert all(
+        s["maps_url"].startswith("https://www.google.com/maps/search/?api=1&query=")
+        for s in searches
+    )
+    assert len(load_config(region_root).published) == before == 229
+
+
+def test_regional_search_rejects_duplicate_area_and_custom_url(region_root):
+    path = region_root / "config/regions.yml"
+    config = yaml.safe_load(path.read_text())
+    region = next(r for r in config["regions"] if r["region_id"] == "california")
+    region["regional_food_searches"].append(region["regional_food_searches"][0].copy())
+    path.write_text(yaml.safe_dump(config))
+    with pytest.raises(ValueError, match="duplicate_regional_food_search"):
+        load_regions(region_root)
+    region["regional_food_searches"].pop()
+    region["regional_food_searches"][0]["maps_url"] = "https://example.org"
+    path.write_text(yaml.safe_dump(config))
+    with pytest.raises(ValueError):
+        load_regions(region_root)
 
 
 @pytest.fixture

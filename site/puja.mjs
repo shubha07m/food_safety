@@ -3,6 +3,7 @@ import { language } from './locale.mjs';
 import { text } from './foodpath-copy.mjs';
 import { combineFood, publicFood, foodGeography, pandalFoodURL, INITIAL_FOOD_LIMIT } from './nearby-food.mjs';
 import { parseRegions, regionFromURL, scopeFood, regionURL } from './regions.mjs';
+import { regionalSearches, foodView } from './regional-food.mjs';
 
 const validID = value => typeof value === 'string' && /^[A-Za-z0-9_-]{1,255}$/.test(value);
 export const normalize = value => String(value || '').normalize('NFC').toLocaleLowerCase().trim().replace(/\s+/g, ' ');
@@ -140,8 +141,33 @@ export async function initPuja(onData = () => {}) {
     const optional = async path => { try { const r = await fetch(path, { credentials: 'omit' }); return r.ok ? await r.json() : null; } catch { return null; } };
     const loaded = new Map(); let generation = 0;
     let matches = []; let active = -1;
+    const viewTabs = document.getElementById('food-view-tabs');
+    function setFoodView(view, navigate = false) {
+      const available = regionalSearches(region);
+      const bengali = view === 'bengali-food' && available.length > 0;
+      viewTabs.hidden = !available.length;
+      document.getElementById('puja-discovery').hidden = !!bengali;
+      document.getElementById('regional-food-discovery').hidden = !bengali;
+      const buttons = [...viewTabs.querySelectorAll('button')];
+      buttons.forEach((b, i) => { const active = i === (bengali ? 1 : 0); b.setAttribute('aria-selected', String(active)); b.tabIndex = active ? 0 : -1; });
+      document.getElementById('puja-discovery').setAttribute('aria-labelledby', available.length ? 'food-view-puja' : `region-tab-${region.region_id}`);
+      if (navigate) {
+        const url = new URL(location.href);
+        if (bengali) url.searchParams.set('view', 'bengali-food'); else url.searchParams.delete('view');
+        history.replaceState(null, '', url);
+      }
+    }
+    [...viewTabs.querySelectorAll('button')].forEach((button, i, buttons) => {
+      button.addEventListener('click', () => setFoodView(i ? 'bengali-food' : 'puja', true));
+      button.addEventListener('keydown', e => {
+        if (!['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(e.key)) return;
+        e.preventDefault(); const next = e.key === 'Home' ? 0 : e.key === 'End' ? 1 : 1 - i;
+        buttons[next].focus(); buttons[next].click();
+      });
+    });
     const close = () => { options.hidden = true; input.setAttribute('aria-expanded', 'false'); input.removeAttribute('aria-activedescendant'); active = -1; };
     const select = (p, updateURL = true) => {
+      if (updateURL) setFoodView('puja', true);
       close(); input.value = language === 'bn' && p.name_bn ? p.name_bn : p.name;
       selected.hidden = false; selected.replaceChildren();
       selected.append(el('p', text('Selected pandal'), 'eyebrow'));
@@ -244,11 +270,17 @@ export async function initPuja(onData = () => {}) {
         history.replaceState(null, '', regionURL(location.href, region.region_id, data.pandals));
       }
       document.getElementById('region-count').textContent = `${text(region.label)} · ${data.pandals.length} ${text('source-backed Puja listings')}`;
+      const regionalLinks = document.getElementById('regional-food-links'); regionalLinks.replaceChildren();
+      for (const row of regionalSearches(region)) {
+        const a = el('a', `${text(row.label)} ↗`, 'food-geography-chip'); a.href = row.url;
+        a.target = '_blank'; a.rel = 'noopener noreferrer'; a.dataset.regionalFoodSearch = row.area_id;
+        regionalLinks.append(a);
+      }
+      setFoodView(foodView(location.search, region));
       document.getElementById('puja-discovery').setAttribute('aria-busy', 'true');
       document.dispatchEvent(new CustomEvent('foodpath-focus-pandal', { detail: null }));
       onData(data.pandals, region);
       tabs.querySelectorAll('button').forEach(b => { const active = b.dataset.region === region.region_id; b.setAttribute('aria-selected', String(active)); b.tabIndex = active ? 0 : -1; });
-      document.getElementById('puja-discovery').setAttribute('aria-labelledby', `region-tab-${region.region_id}`);
       status.textContent = text('Loading curated pandals…');
       if (!loaded.has(region.region_id)) loaded.set(region.region_id, (async () => {
         const policy = await optional(next.provider_data);

@@ -244,6 +244,16 @@ try {
   assert.equal(await evaluate("document.getElementById('map-coverage').textContent.startsWith('4 independently')"), true);
   assert.equal(await evaluate("[...document.querySelectorAll('[data-safety-context]')].every(n => n.hidden)"), true);
   assert.equal(await evaluate("[...document.querySelectorAll('[data-food-pandal]')].every(b => b.dataset.foodPandal.startsWith('ca-'))"), true);
+  assert.equal(await evaluate("document.getElementById('food-view-tabs').hidden"), false);
+  await evaluate("document.getElementById('food-view-bengali').click()");
+  assert.equal(await evaluate("document.getElementById('puja-discovery').hidden && !document.getElementById('regional-food-discovery').hidden"), true);
+  assert.equal(await evaluate("new URL(location.href).searchParams.get('view')"), 'bengali-food');
+  assert.equal(await evaluate("document.querySelectorAll('[data-regional-food-search]').length"), 4);
+  assert.equal(await evaluate("[...document.querySelectorAll('[data-regional-food-search]')].every(a => { const u=new URL(a.href); return u.hostname==='www.google.com' && u.searchParams.get('query').includes('Bengali') && !u.searchParams.has('key') && !u.searchParams.has('query_place_id'); })"), true);
+  assert.equal(await evaluate("document.getElementById('region-count').textContent.includes('6 source-backed')"), true);
+  await screenshot('california-bengali-food-mobile', false);
+  await evaluate("document.getElementById('food-view-bengali').dispatchEvent(new KeyboardEvent('keydown',{key:'ArrowLeft',bubbles:true}))");
+  assert.equal(await evaluate("document.getElementById('puja-discovery').hidden"), false);
   await evaluate("document.getElementById('pandal-search').value='Ekdalia'; document.getElementById('pandal-search').dispatchEvent(new Event('input'))");
   assert.equal(await evaluate("document.querySelectorAll('#pandal-options li').length"), 0);
   for (const id of ['ca-pashchimi', 'ca-sanskriti', 'ca-basc', 'ca-vbc']) {
@@ -252,6 +262,15 @@ try {
     assert.equal(await evaluate("document.getElementById('selected-pandal').textContent.includes('Map location is independently sourced.')"), true);
     assert.equal(await evaluate("document.querySelectorAll('.restaurant-links li').length <= 20"), true);
     assert.equal(await evaluate("document.getElementById('selected-pandal').textContent.includes('Restaurant on Google Maps')"), false);
+  }
+  for (const name of ['Taco Bell', 'RING Baked Tofu Donuts, Sea Salt Coffee, Matcha Tea']) {
+    assert.equal(await evaluate(`(() => {
+      const row = [...document.querySelectorAll('.restaurant-links li')].find(n => n.textContent.includes(${JSON.stringify(name)}));
+      const link = row?.querySelector('a'); if (!link) return false;
+      const url = new URL(link.href);
+      return /^-?\\d+\\.\\d+,-?\\d+\\.\\d+$/.test(url.searchParams.get('query'))
+        && !url.searchParams.has('query_place_id') && !url.searchParams.has('key') && link.target === '_blank';
+    })()`), true);
   }
   await delay(500); // Let the existing reduced-motion-aware panel reveal finish.
   await screenshot('california-food-mobile', false);
@@ -264,12 +283,16 @@ try {
   await evaluate("document.getElementById('puja').scrollIntoView({block:'start'})");
   await delay(500);
   await screenshot('california-search-desktop', false);
+  await command('Emulation.setDeviceMetricsOverride', { width: 1440, height: 1360, deviceScaleFactor: 1, mobile: false });
+  await publicScreenshot('docs/assets/california_food_preview.png');
+  await command('Emulation.setDeviceMetricsOverride', { width: 1440, height: 1000, deviceScaleFactor: 1, mobile: false });
   await evaluate("document.dispatchEvent(new CustomEvent('foodpath-select-pandal',{detail:'ca-agomoni'}))");
   assert.equal(await evaluate("document.querySelectorAll('[data-food-search], .restaurant-links li').length"), 0);
   await evaluate("document.querySelector('[data-region=california]').dispatchEvent(new KeyboardEvent('keydown',{key:'ArrowLeft',bubbles:true}))");
   await waitFor("document.getElementById('region-count').textContent.includes('223') && document.getElementById('puja-discovery').getAttribute('aria-busy') === 'false'");
   assert.equal(await evaluate("document.getElementById('selected-pandal').hidden"), true);
   assert.equal(await evaluate("document.querySelector('[data-region=kolkata]').getAttribute('aria-selected')"), 'true');
+  assert.equal(await evaluate("document.getElementById('food-view-tabs').hidden && document.getElementById('regional-food-discovery').hidden"), true);
   if (foodMode !== 'google') {
     foodFixture = true;
     await command('Fetch.enable', { patterns: [{ urlPattern: '*data/osm_food.json*' }] });
@@ -296,6 +319,10 @@ try {
   assert.equal(await evaluate("document.getElementById('region-count').textContent.includes('6')"), true);
   assert.equal(await evaluate('document.documentElement.scrollWidth <= innerWidth'), true);
   await screenshot('california-bengali', false);
+  await evaluate("document.getElementById('food-view-bengali').click()");
+  assert.equal(await evaluate("document.querySelectorAll('[data-regional-food-search]').length"), 4);
+  assert.equal(await evaluate('document.documentElement.scrollWidth <= innerWidth'), true);
+  await screenshot('california-regional-food-bengali', false);
   await command('Emulation.setDeviceMetricsOverride', { width: 1440, height: 1000, deviceScaleFactor: 1, mobile: false });
   await command('Page.navigate', { url: 'http://127.0.0.1:8000/?module=safety' });
   await waitFor("document.getElementById('lifecycle-summary') !== null");

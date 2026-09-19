@@ -36,6 +36,9 @@ def main():
         "resolve-google", help="Optional ID-only suggestions; no automatic links"
     )
     resolve.add_argument("--dry-run", action="store_true")
+    resolve.add_argument(
+        "--execute", action="store_true", help="Explicitly enable this bounded run"
+    )
     places = sub.add_parser(
         "places", help="Explicit zone-first restaurant discovery; no map changes"
     )
@@ -142,9 +145,9 @@ def main():
             else:
                 from .food_pois.google import resolve_ids
 
-                if args.region != "kolkata":
-                    raise ValueError("no_google_resolution_allowlist_for_region")
-                result = resolve_ids(ROOT, dry_run=args.dry_run)
+                result = resolve_ids(
+                    ROOT, dry_run=args.dry_run, region_id=args.region, execute=args.execute
+                )
         elif args.command == "places":
             from .places.pipeline import run_command
 

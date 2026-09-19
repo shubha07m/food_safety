@@ -1,6 +1,15 @@
 import { bn, language } from './locale.mjs';
 
 const copy = {
+  'Puja & nearby food': 'পুজো ও কাছাকাছি খাবার',
+  'Bengali food': 'বাঙালি খাবার',
+  'Bengali food in California': 'ক্যালিফোর্নিয়ায় বাঙালি খাবার',
+  'Looking for familiar flavours beyond the Puja grounds? Explore Bengali food across California.': 'পুজোর মাঠের বাইরেও চেনা স্বাদ খুঁজছেন? ক্যালিফোর্নিয়া জুড়ে বাঙালি খাবার খুঁজে দেখুন।',
+  'These links open regional Google Maps searches. They are discovery shortcuts, not FoodPath recommendations, safety ratings, or a verified directory.': 'এই লিঙ্কগুলি Google Maps-এ অঞ্চলভিত্তিক অনুসন্ধান খোলে। এগুলি খোঁজার সহজ পথ—FoodPath-এর সুপারিশ, খাদ্যসুরক্ষার মান নির্ধারণ বা যাচাই করা তালিকা নয়।',
+  'Bay Area': 'বে এরিয়া',
+  'Los Angeles / Southern California': 'লস অ্যাঞ্জেলেস / দক্ষিণ ক্যালিফোর্নিয়া',
+  'Sacramento': 'স্যাক্রামেন্টো',
+  'All California': 'সমগ্র ক্যালিফোর্নিয়া',
   'PUJA NEIGHBOURHOODS · NEARBY FOOD · SOURCE-BACKED': 'পুজোর পাড়া · কাছাকাছি খাবার · উৎসসমর্থিত',
   'Find a Puja. Find nearby food.': 'পুজো খুঁজুন। কাছাকাছি খাবার খুঁজুন।',
   'From Kolkata to California.': 'কলকাতা থেকে ক্যালিফোর্নিয়া।',

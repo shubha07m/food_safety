@@ -22,6 +22,7 @@
       "label": "Kolkata region",
       "provider_data": "data/food_provider.json",
       "region_id": "kolkata",
+      "regional_food_searches": [],
       "restaurant_radius_m": 600,
       "safety_context": true
     },
@@ -45,6 +46,48 @@
       "label": "California",
       "provider_data": "data/food_provider_california.json",
       "region_id": "california",
+      "regional_food_searches": [
+        {
+          "area_id": "bay-area",
+          "label": "Bay Area",
+          "maps_url": "https://www.google.com/maps/search/?api=1&query=Bengali+restaurants+Bay+Area+California",
+          "provider": "Google Maps",
+          "query": "Bengali restaurants Bay Area California",
+          "region_id": "california",
+          "scope_note": "Regional search handoff, not a verified restaurant record",
+          "type": "regional_food_search"
+        },
+        {
+          "area_id": "southern-california",
+          "label": "Los Angeles / Southern California",
+          "maps_url": "https://www.google.com/maps/search/?api=1&query=Bengali+restaurants+Los+Angeles+Southern+California",
+          "provider": "Google Maps",
+          "query": "Bengali restaurants Los Angeles Southern California",
+          "region_id": "california",
+          "scope_note": "Regional search handoff, not a verified restaurant record",
+          "type": "regional_food_search"
+        },
+        {
+          "area_id": "sacramento",
+          "label": "Sacramento",
+          "maps_url": "https://www.google.com/maps/search/?api=1&query=Bengali+restaurants+Sacramento+California",
+          "provider": "Google Maps",
+          "query": "Bengali restaurants Sacramento California",
+          "region_id": "california",
+          "scope_note": "Regional search handoff, not a verified restaurant record",
+          "type": "regional_food_search"
+        },
+        {
+          "area_id": "all-california",
+          "label": "All California",
+          "maps_url": "https://www.google.com/maps/search/?api=1&query=Bengali+restaurants+California",
+          "provider": "Google Maps",
+          "query": "Bengali restaurants California",
+          "region_id": "california",
+          "scope_note": "Regional search handoff, not a verified restaurant record",
+          "type": "regional_food_search"
+        }
+      ],
       "restaurant_radius_m": 600,
       "safety_context": false
     }
