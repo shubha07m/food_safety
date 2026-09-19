@@ -189,14 +189,15 @@ def test_public_export_deterministic_and_complete_odbl_subset(food_root, monkeyp
 
 
 @pytest.mark.parametrize("name", ["Independent Cafe", "Taco Bell", "খাবার & Cafe", None])
-def test_maps_url_targets_coordinate_not_broad_name(food_root, name):
+def test_maps_url_preserves_named_identity_and_local_context(food_root, name):
     tags = {"amenity": "restaurant"}
     if name:
         tags["name"] = name
     p = poi(food_root, tags=tags)
-    params = parse_qs(urlsplit(p.maps_url()).query)
+    params = parse_qs(urlsplit(p.maps_url(locality=("California", "US"))).query)
     assert params["api"] == ["1"]
-    assert params["query"] == ["22.5000000,88.3500000"]
+    expected = f"{name}, California, US, 22.5000000,88.3500000" if name else "22.5000000,88.3500000"
+    assert params["query"] == [expected]
     assert "key" not in params and "query_place_id" not in params
     assert parse_qs(urlsplit(p.maps_url("verified_id")).query)["query_place_id"] == ["verified_id"]
     with pytest.raises(ValidationError):

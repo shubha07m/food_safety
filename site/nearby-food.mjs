@@ -1,4 +1,5 @@
 // Static provider composition only. No discovery/geocoding/provider HTTP calls.
+import { foodMapsURL } from './maps-handoff.mjs';
 const osmID = /^osm:(node|way|relation):[1-9][0-9]*$/;
 const googleID = /^[A-Za-z0-9_-]{1,255}$/;
 const categories = new Set(['restaurant', 'cafe', 'fast_food', 'ice_cream', 'food_court', 'bakery', 'confectionery']);
@@ -33,13 +34,8 @@ export function pandalFoodURL(pandal) {
   const query = `restaurants near ${pandal.latitude.toFixed(7)},${pandal.longitude.toFixed(7)}`;
   return `https://www.google.com/maps/search/?${new URLSearchParams({ api: '1', query })}`;
 }
-export function osmMapsURL(poi, placeID = null) {
-  if (!osmID.test(poi.poi_id) || !Number.isFinite(poi.latitude) || !Number.isFinite(poi.longitude)
-    || Math.abs(poi.latitude) > 90 || Math.abs(poi.longitude) > 180) return null;
-  const query = `${poi.latitude.toFixed(7)},${poi.longitude.toFixed(7)}`;
-  const params = new URLSearchParams({ api: '1', query });
-  if (placeID && googleID.test(placeID)) params.set('query_place_id', placeID);
-  return `https://www.google.com/maps/search/?${params}`;
+export function osmMapsURL(poi, placeID = null, locality = []) {
+  return osmID.test(poi.poi_id) ? foodMapsURL(poi, { locality, verifiedPlaceID: placeID }) : null;
 }
 
 export function combineFood(legacy, osm, policy) {
@@ -52,6 +48,8 @@ export function combineFood(legacy, osm, policy) {
     || osm.attribution_url !== 'https://www.openstreetmap.org/copyright'
     || !Array.isArray(osm.pois) || !Array.isArray(osm.associations)) return legacy;
   const pois = new Map(); const links = new Map(); const usedIDs = new Set();
+  const rawPois = new Map(osm.pois.map(p => [p.poi_id, p]));
+  const anchors = new Map(legacy.pandals.map(p => [p.pandal_id, p]));
   for (const link of policy.google_links || []) {
     if ((link.status && link.status !== 'verified') || !osmID.test(link.poi_id) || !googleID.test(link.place_id) || !link.identity_source || !link.verified_at
       || links.has(link.poi_id) || usedIDs.has(link.place_id)) throw Error('Ambiguous food identity link');
@@ -80,7 +78,11 @@ export function combineFood(legacy, osm, policy) {
     if (!pandals.has(a.pandal_id) || seen.has(key)) continue;
     if (!result.osmCoverage.has(a.pandal_id) || a.distance_m > result.osmCoverage.get(a.pandal_id).radius_m) throw Error('Invalid OSM catchment');
     const rows = groups.get(a.pandal_id) || [];
-    rows.push({ ...pois.get(a.poi_id), distance: a.distance_m }); groups.set(a.pandal_id, rows); seen.add(key);
+    const anchor = anchors.get(a.pandal_id);
+    const locality = [anchor.neighborhood, anchor.area, anchor.city, anchor.admin1, anchor.country_code];
+    rows.push({ ...pois.get(a.poi_id), distance: a.distance_m,
+      url: osmMapsURL(rawPois.get(a.poi_id), links.get(a.poi_id), locality) });
+    groups.set(a.pandal_id, rows); seen.add(key);
   }
   for (const rows of groups.values()) rows.sort((a, b) => a.distance - b.distance || (a.name || '').localeCompare(b.name || '') || a.id.localeCompare(b.id));
   if (mode === 'hybrid') {

@@ -268,7 +268,9 @@ try {
       const row = [...document.querySelectorAll('.restaurant-links li')].find(n => n.textContent.includes(${JSON.stringify(name)}));
       const link = row?.querySelector('a'); if (!link) return false;
       const url = new URL(link.href);
-      return /^-?\\d+\\.\\d+,-?\\d+\\.\\d+$/.test(url.searchParams.get('query'))
+      const query = url.searchParams.get('query');
+      if (!query.startsWith(${JSON.stringify(name)} + ', ') || !query.includes('California, US, ')) return false;
+      return /-?\\d+\\.\\d+,-?\\d+\\.\\d+$/.test(url.searchParams.get('query'))
         && !url.searchParams.has('query_place_id') && !url.searchParams.has('key') && link.target === '_blank';
     })()`), true);
   }
