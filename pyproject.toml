@@ -11,7 +11,7 @@ dependencies = ["pydantic==2.13.5", "httpx==0.28.1", "beautifulsoup4==4.15.0", "
 
 [project.optional-dependencies]
 osm = ["osmium==4.3.1"]
-dev = ["pytest==9.1.1", "ruff==0.16.6", "pip-audit==2.10.1"]
+dev = ["pytest==9.1.1", "ruff==0.16.8", "pip-audit==2.10.1"]
 
 [project.scripts]
 food-safety = "food_safety.cli:main"
