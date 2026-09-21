@@ -1,6 +1,6 @@
 {
   "context_notice": "Independent, non-governmental public-source research. Inclusion is not a finding of wrongdoing. Counts describe records in this tracker, not official totals, prevalence, compliance, risk or group behavior. Read the sources and preserve this context when sharing.",
-  "generated_at": "2026-09-21T19:26:04.378271+00:00",
+  "generated_at": "2026-09-21T23:15:55.380525+00:00",
   "pipeline_version": "0.3.0",
   "record_count": 48,
   "records": [
@@ -478,11 +478,17 @@
           "note": "Supporting source context revalidated; original evidence retained.",
           "previous_record_sha256": "885d664e9823d41b0b695ffddda8b5528457bcde0dccb814bcedcf2e83d8b99a",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-21T23:15:55.380525Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "db3c189f36b7eebaec4904bb9ab83712b143da45853ca57795afa22072a35a34",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-09-21T04:52:47.650674Z",
-      "last_successful_evidence_check_at": "2026-09-21T04:52:47.650674Z",
+      "last_source_checked_at": "2026-09-21T23:15:55.380525Z",
+      "last_successful_evidence_check_at": "2026-09-21T23:15:55.380525Z",
       "llm": {
         "fields_proposed": [],
         "llm_model": null,
@@ -502,7 +508,7 @@
       "record_class": "inspection_evidence",
       "record_created_at": "2026-09-09T23:11:25.626009Z",
       "record_scope": "area_operation",
-      "record_updated_at": "2026-09-21T04:52:47.650674Z",
+      "record_updated_at": "2026-09-21T23:15:55.380525Z",
       "related_record_ids": [],
       "reported_fact": {
         "area": "ডেকার্স লেন",
@@ -723,11 +729,17 @@
           "note": "Supporting source context revalidated; original evidence retained.",
           "previous_record_sha256": "5c2bf350c08d9ea51588054cf88370b4c499e90ff3d8c3ad4602f821ea6f322d",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-21T23:15:55.380525Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "95e77e6788c699190b07fe44e009183613a53d8ee291814c1ec51c2ab0521914",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-09-21T04:52:47.650674Z",
-      "last_successful_evidence_check_at": "2026-09-21T04:52:47.650674Z",
+      "last_source_checked_at": "2026-09-21T23:15:55.380525Z",
+      "last_successful_evidence_check_at": "2026-09-21T23:15:55.380525Z",
       "llm": {
         "fields_proposed": [
           "area",
@@ -754,7 +766,7 @@
       "record_class": "inspection_evidence",
       "record_created_at": "2026-09-11T11:18:01.816017Z",
       "record_scope": "establishment_event",
-      "record_updated_at": "2026-09-21T04:52:47.650674Z",
+      "record_updated_at": "2026-09-21T23:15:55.380525Z",
       "related_record_ids": [],
       "reported_fact": {
         "area": "বাদুড়িয়া",
@@ -985,11 +997,17 @@
           "note": "Supporting source context revalidated; original evidence retained.",
           "previous_record_sha256": "74a5e848d7dd7427ff9264eca105ed1538cad1d4000f4d9d8d6081666b87a485",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-21T23:15:55.380525Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "5c7c49964fd6785e10eff812be1d32b72c7554d25b56f1d3b194bd85a47c3327",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-09-21T04:52:47.650674Z",
-      "last_successful_evidence_check_at": "2026-09-21T04:52:47.650674Z",
+      "last_source_checked_at": "2026-09-21T23:15:55.380525Z",
+      "last_successful_evidence_check_at": "2026-09-21T23:15:55.380525Z",
       "llm": {
         "fields_proposed": [
           "area",
@@ -1016,7 +1034,7 @@
       "record_class": "inspection_evidence",
       "record_created_at": "2026-09-11T04:37:44.799127Z",
       "record_scope": "establishment_event",
-      "record_updated_at": "2026-09-21T04:52:47.650674Z",
+      "record_updated_at": "2026-09-21T23:15:55.380525Z",
       "related_record_ids": [],
       "reported_fact": {
         "area": "ট্যাংরার",
@@ -3240,11 +3258,17 @@
           "note": "Supporting source context revalidated; original evidence retained.",
           "previous_record_sha256": "099bf52db7b0d2e0776a1028d4641f920d9fee2a3091fe7480ebd6edc9a382a7",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-21T23:15:55.380525Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "f5ebd2ac33910a8319eb2e900f15054ffc095390326b020169e6b5d1d255d5e9",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-09-20T11:20:04.123217Z",
-      "last_successful_evidence_check_at": "2026-09-20T11:20:04.123217Z",
+      "last_source_checked_at": "2026-09-21T23:15:55.380525Z",
+      "last_successful_evidence_check_at": "2026-09-21T23:15:55.380525Z",
       "llm": {
         "fields_proposed": [
           "area",
@@ -3270,7 +3294,7 @@
       "record_class": "inspection_evidence",
       "record_created_at": "2026-09-13T11:48:42.474489Z",
       "record_scope": "statewide_operation",
-      "record_updated_at": "2026-09-20T11:20:04.123217Z",
+      "record_updated_at": "2026-09-21T23:15:55.380525Z",
       "related_record_ids": [],
       "reported_fact": {
         "area": "across the state",
@@ -11530,11 +11554,17 @@
           "note": "Supporting source context revalidated; original evidence retained.",
           "previous_record_sha256": "9b0a78b6bd39ddbb041a19a7dfc9d959e9ffb72e798bfaa3dd73328e2acf6889",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-21T23:15:55.380525Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "01e557ce2a7b64cce4349555ed9a38bc1ffc3c71e06c638c6cabfce89d9876b3",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-09-20T22:25:59.942458Z",
-      "last_successful_evidence_check_at": "2026-09-20T22:25:59.942458Z",
+      "last_source_checked_at": "2026-09-21T23:15:55.380525Z",
+      "last_successful_evidence_check_at": "2026-09-21T23:15:55.380525Z",
       "llm": {
         "fields_proposed": [
           "area",
@@ -11559,7 +11589,7 @@
       "record_class": "inspection_evidence",
       "record_created_at": "2026-09-15T21:19:16.262489Z",
       "record_scope": "statewide_operation",
-      "record_updated_at": "2026-09-20T22:25:59.942458Z",
+      "record_updated_at": "2026-09-21T23:15:55.380525Z",
       "related_record_ids": [],
       "reported_fact": {
         "area": "রাজ্য জুড়ে",
@@ -11612,11 +11642,11 @@
           "source_language": "bn",
           "source_publisher": "TV9 Bangla",
           "source_relationship": "unknown",
-          "source_revision_id": "5f29fc76b0c3a51259b0e0204345556f39ed016484cea1c64d08f01663801d37",
+          "source_revision_id": "f83862dc93050c721ff6f9f1f482dd915c2ea6d245992d84165ace72496ccfd0",
           "source_title": "Restaurant License Cancelled: করিমস, ডেনজং-এর মতো ৪০ রেস্তোরাঁর লাইসেন্স বাতিল | 50 Restaurant's License Cancelled in West Bengal including some popular restaurants | TV9 Bangla News",
           "source_type": "news",
           "source_url": "https://tv9bangla.com/kolkata/50-restaurants-license-cancelled-in-west-bengal-including-some-popular-restaurants-1345015.html",
-          "text_sha256": "5f29fc76b0c3a51259b0e0204345556f39ed016484cea1c64d08f01663801d37",
+          "text_sha256": "f83862dc93050c721ff6f9f1f482dd915c2ea6d245992d84165ace72496ccfd0",
           "tier": "B"
         }
       ],
