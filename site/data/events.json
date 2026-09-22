@@ -1,6 +1,6 @@
 {
   "context_notice": "Independent, non-governmental public-source research. Inclusion is not a finding of wrongdoing. Counts describe records in this tracker, not official totals, prevalence, compliance, risk or group behavior. Read the sources and preserve this context when sharing.",
-  "generated_at": "2026-09-22T04:52:38.950631+00:00",
+  "generated_at": "2026-09-22T11:35:18.949174+00:00",
   "pipeline_version": "0.3.0",
   "record_count": 48,
   "records": [
@@ -234,10 +234,16 @@
           "note": "Supporting source context revalidated; original evidence retained.",
           "previous_record_sha256": "f95278fc464fa040df77fea2a69ed93aa2a156b457ddb8997557019b218c2858",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-22T11:35:18.949174Z",
+          "note": "Source access unavailable; historical support is not disproved.",
+          "previous_record_sha256": "e6127533ac4af9faca8542366989d8373e61191f953526cda842af6df28dbdfa",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-09-21T12:44:53.797425Z",
+      "last_source_checked_at": "2026-09-22T11:35:18.949174Z",
       "last_successful_evidence_check_at": "2026-09-21T12:44:53.797425Z",
       "llm": {
         "fields_proposed": [],
@@ -254,11 +260,11 @@
       },
       "location_id": null,
       "pipeline_version": "0.3.0",
-      "publication_status": "active",
+      "publication_status": "active_with_warning",
       "record_class": "inspection_evidence",
       "record_created_at": "2026-09-07T21:12:32.942437Z",
       "record_scope": "unknown",
-      "record_updated_at": "2026-09-21T12:44:53.797425Z",
+      "record_updated_at": "2026-09-22T11:35:18.949174Z",
       "related_record_ids": [],
       "reported_fact": {
         "area": "Park Street",
@@ -304,8 +310,8 @@
       },
       "reviewed_associations": [],
       "reviewer_hold": false,
-      "source_availability": "available",
-      "source_availability_reason": null,
+      "source_availability": "unavailable",
+      "source_availability_reason": "network_error",
       "sources": [
         {
           "archive_url": null,
@@ -332,7 +338,7 @@
       "superseded_by": null,
       "validator_id": "field_evidence_validation",
       "validator_version": "2",
-      "verification_notes": "Supporting source context revalidated; original evidence retained.",
+      "verification_notes": "Source access unavailable; historical support is not disproved.",
       "verification_status": "SOURCE VERIFIED"
     },
     {
@@ -1913,10 +1919,16 @@
           "note": "Supporting source context revalidated; original evidence retained.",
           "previous_record_sha256": "2138463300534cee2a1863f64a9aca46dfcb3e1cb75225dae38f832ec69e8c63",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-22T11:35:18.949174Z",
+          "note": "Source access unavailable; historical support is not disproved.",
+          "previous_record_sha256": "e8d0958f20113f1a977df44c8fab820c3e90e9092818ffb3afc19afd31517f5e",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-09-21T12:44:53.797425Z",
+      "last_source_checked_at": "2026-09-22T11:35:18.949174Z",
       "last_successful_evidence_check_at": "2026-09-21T12:44:53.797425Z",
       "llm": {
         "fields_proposed": [],
@@ -1933,11 +1945,11 @@
       },
       "location_id": null,
       "pipeline_version": "0.3.0",
-      "publication_status": "active",
+      "publication_status": "active_with_warning",
       "record_class": "inspection_evidence",
       "record_created_at": "2026-09-07T21:12:32.942437Z",
       "record_scope": "unknown",
-      "record_updated_at": "2026-09-21T12:44:53.797425Z",
+      "record_updated_at": "2026-09-22T11:35:18.949174Z",
       "related_record_ids": [],
       "reported_fact": {
         "area": "Sonarpur",
@@ -1975,8 +1987,8 @@
       },
       "reviewed_associations": [],
       "reviewer_hold": false,
-      "source_availability": "available",
-      "source_availability_reason": null,
+      "source_availability": "unavailable",
+      "source_availability_reason": "network_error",
       "sources": [
         {
           "archive_url": null,
@@ -2003,7 +2015,7 @@
       "superseded_by": null,
       "validator_id": "field_evidence_validation",
       "validator_version": "2",
-      "verification_notes": "Supporting source context revalidated; original evidence retained.",
+      "verification_notes": "Source access unavailable; historical support is not disproved.",
       "verification_status": "SOURCE VERIFIED"
     },
     {
@@ -2718,10 +2730,16 @@
           "note": "Supporting source context revalidated; original evidence retained.",
           "previous_record_sha256": "380750949b19fdb9770295506a74692ba5bd259fd6277d2c241b6bb87bce7e6f",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-22T11:35:18.949174Z",
+          "note": "Source access unavailable; historical support is not disproved.",
+          "previous_record_sha256": "534a87aca713841898369c51b397d515f8781e31a73f6fa4b5098f052a75ff02",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-09-21T12:44:53.797425Z",
+      "last_source_checked_at": "2026-09-22T11:35:18.949174Z",
       "last_successful_evidence_check_at": "2026-09-21T12:44:53.797425Z",
       "llm": {
         "fields_proposed": [],
@@ -2738,11 +2756,11 @@
       },
       "location_id": null,
       "pipeline_version": "0.3.0",
-      "publication_status": "active",
+      "publication_status": "active_with_warning",
       "record_class": "inspection_evidence",
       "record_created_at": "2026-09-07T21:12:32.942437Z",
       "record_scope": "unknown",
-      "record_updated_at": "2026-09-21T12:44:53.797425Z",
+      "record_updated_at": "2026-09-22T11:35:18.949174Z",
       "related_record_ids": [],
       "reported_fact": {
         "area": "Kamalgazi",
@@ -2780,8 +2798,8 @@
       },
       "reviewed_associations": [],
       "reviewer_hold": false,
-      "source_availability": "available",
-      "source_availability_reason": null,
+      "source_availability": "unavailable",
+      "source_availability_reason": "network_error",
       "sources": [
         {
           "archive_url": null,
@@ -2808,7 +2826,7 @@
       "superseded_by": null,
       "validator_id": "field_evidence_validation",
       "validator_version": "2",
-      "verification_notes": "Supporting source context revalidated; original evidence retained.",
+      "verification_notes": "Source access unavailable; historical support is not disproved.",
       "verification_status": "SOURCE VERIFIED"
     },
     {
@@ -3029,10 +3047,16 @@
           "note": "Supporting source context revalidated; original evidence retained.",
           "previous_record_sha256": "1cd0abdbc1c152e25f318a98592f9e4e2c82aca678eb55d1b637e33ad282ab2e",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-22T11:35:18.949174Z",
+          "note": "Source access unavailable; historical support is not disproved.",
+          "previous_record_sha256": "ee3214115c6018eebaffddc203f21b4b2d65ca569248ca5e58266c409d5fcf0d",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-09-21T19:26:04.378271Z",
+      "last_source_checked_at": "2026-09-22T11:35:18.949174Z",
       "last_successful_evidence_check_at": "2026-09-21T19:26:04.378271Z",
       "llm": {
         "fields_proposed": [],
@@ -3049,11 +3073,11 @@
       },
       "location_id": null,
       "pipeline_version": "0.3.0",
-      "publication_status": "active",
+      "publication_status": "active_with_warning",
       "record_class": "inspection_evidence",
       "record_created_at": "2026-09-07T21:12:32.942437Z",
       "record_scope": "unknown",
-      "record_updated_at": "2026-09-21T19:26:04.378271Z",
+      "record_updated_at": "2026-09-22T11:35:18.949174Z",
       "related_record_ids": [],
       "reported_fact": {
         "area": "Dacres Lane",
@@ -3095,8 +3119,8 @@
       },
       "reviewed_associations": [],
       "reviewer_hold": false,
-      "source_availability": "available",
-      "source_availability_reason": null,
+      "source_availability": "unavailable",
+      "source_availability_reason": "network_error",
       "sources": [
         {
           "archive_url": null,
@@ -3123,7 +3147,7 @@
       "superseded_by": null,
       "validator_id": "field_evidence_validation",
       "validator_version": "2",
-      "verification_notes": "Supporting source context revalidated; original evidence retained.",
+      "verification_notes": "Source access unavailable; historical support is not disproved.",
       "verification_status": "SOURCE VERIFIED"
     },
     {
@@ -4649,10 +4673,16 @@
           "note": "Supporting source context revalidated; original evidence retained.",
           "previous_record_sha256": "8c2b276848eefbd9625d76570a3f1fb09bad2e0467c18fac148c9bf567cce54e",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-22T11:35:18.949174Z",
+          "note": "Source access unavailable; historical support is not disproved.",
+          "previous_record_sha256": "ec70f1fdfce11041a544a3dfa601d4bca968c543c7390c9fb0c715ed14036422",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-09-21T19:26:04.378271Z",
+      "last_source_checked_at": "2026-09-22T11:35:18.949174Z",
       "last_successful_evidence_check_at": "2026-09-21T19:26:04.378271Z",
       "llm": {
         "fields_proposed": [],
@@ -4669,11 +4699,11 @@
       },
       "location_id": null,
       "pipeline_version": "0.3.0",
-      "publication_status": "active",
+      "publication_status": "active_with_warning",
       "record_class": "inspection_evidence",
       "record_created_at": "2026-09-07T21:12:32.942437Z",
       "record_scope": "unknown",
-      "record_updated_at": "2026-09-21T19:26:04.378271Z",
+      "record_updated_at": "2026-09-22T11:35:18.949174Z",
       "related_record_ids": [],
       "reported_fact": {
         "area": "Dum Dum",
@@ -4711,8 +4741,8 @@
       },
       "reviewed_associations": [],
       "reviewer_hold": false,
-      "source_availability": "available",
-      "source_availability_reason": null,
+      "source_availability": "unavailable",
+      "source_availability_reason": "network_error",
       "sources": [
         {
           "archive_url": null,
@@ -4739,7 +4769,7 @@
       "superseded_by": null,
       "validator_id": "field_evidence_validation",
       "validator_version": "2",
-      "verification_notes": "Supporting source context revalidated; original evidence retained.",
+      "verification_notes": "Source access unavailable; historical support is not disproved.",
       "verification_status": "SOURCE VERIFIED"
     },
     {
@@ -6536,10 +6566,16 @@
           "note": "Supporting source context revalidated; original evidence retained.",
           "previous_record_sha256": "563fb947a95d7dc6aeaa14dbb1428e686a459adbe0f82bab32bcab43cf5950c7",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-22T11:35:18.949174Z",
+          "note": "Source access unavailable; historical support is not disproved.",
+          "previous_record_sha256": "e3ba3e7cc3aa65223bc70d649ac8f52464f2a29d776f5fc01e771af0a3f89349",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-09-21T19:26:04.378271Z",
+      "last_source_checked_at": "2026-09-22T11:35:18.949174Z",
       "last_successful_evidence_check_at": "2026-09-21T19:26:04.378271Z",
       "llm": {
         "fields_proposed": [],
@@ -6556,11 +6592,11 @@
       },
       "location_id": null,
       "pipeline_version": "0.3.0",
-      "publication_status": "active",
+      "publication_status": "active_with_warning",
       "record_class": "inspection_evidence",
       "record_created_at": "2026-09-07T21:12:32.942437Z",
       "record_scope": "unknown",
-      "record_updated_at": "2026-09-21T19:26:04.378271Z",
+      "record_updated_at": "2026-09-22T11:35:18.949174Z",
       "related_record_ids": [],
       "reported_fact": {
         "area": "Dacres Lane",
@@ -6602,8 +6638,8 @@
       },
       "reviewed_associations": [],
       "reviewer_hold": false,
-      "source_availability": "available",
-      "source_availability_reason": null,
+      "source_availability": "unavailable",
+      "source_availability_reason": "network_error",
       "sources": [
         {
           "archive_url": null,
@@ -6630,7 +6666,7 @@
       "superseded_by": null,
       "validator_id": "field_evidence_validation",
       "validator_version": "2",
-      "verification_notes": "Supporting source context revalidated; original evidence retained.",
+      "verification_notes": "Source access unavailable; historical support is not disproved.",
       "verification_status": "SOURCE VERIFIED"
     },
     {
@@ -7807,11 +7843,17 @@
           "note": "Supporting source context revalidated; original evidence retained.",
           "previous_record_sha256": "62c6080054ab4ea8b4d0fe3b8f1d734d602fa0ed8ef440af95a2270154da4d0c",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-22T11:35:18.949174Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "ca152e8e2a3da09e9e1ead13913b0b9e27c8ed1fa610edd18dd57431f8f538b9",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-09-21T12:44:53.797425Z",
-      "last_successful_evidence_check_at": "2026-09-21T12:44:53.797425Z",
+      "last_source_checked_at": "2026-09-22T11:35:18.949174Z",
+      "last_successful_evidence_check_at": "2026-09-22T11:35:18.949174Z",
       "llm": {
         "fields_proposed": [
           "area",
@@ -7836,7 +7878,7 @@
       "record_class": "inspection_evidence",
       "record_created_at": "2026-09-10T04:39:32.448783Z",
       "record_scope": "district_operation",
-      "record_updated_at": "2026-09-21T12:44:53.797425Z",
+      "record_updated_at": "2026-09-22T11:35:18.949174Z",
       "related_record_ids": [],
       "reported_fact": {
         "area": "বীরভূমের",
@@ -8121,10 +8163,16 @@
           "note": "Supporting source context revalidated; original evidence retained.",
           "previous_record_sha256": "aa57e1fae2cf0ee12e6c3d719d680ef2a8d90e98d4cca0675b71817865754cf6",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-22T11:35:18.949174Z",
+          "note": "Source access unavailable; historical support is not disproved.",
+          "previous_record_sha256": "c6c284f9928e138b5b945d8f38af76c76185e76e485ed4d5dcf4128d32deed78",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-09-21T19:26:04.378271Z",
+      "last_source_checked_at": "2026-09-22T11:35:18.949174Z",
       "last_successful_evidence_check_at": "2026-09-21T19:26:04.378271Z",
       "llm": {
         "fields_proposed": [],
@@ -8141,11 +8189,11 @@
       },
       "location_id": null,
       "pipeline_version": "0.3.0",
-      "publication_status": "active",
+      "publication_status": "active_with_warning",
       "record_class": "inspection_evidence",
       "record_created_at": "2026-09-07T21:12:32.942437Z",
       "record_scope": "unknown",
-      "record_updated_at": "2026-09-21T19:26:04.378271Z",
+      "record_updated_at": "2026-09-22T11:35:18.949174Z",
       "related_record_ids": [],
       "reported_fact": {
         "area": "Jorabagan",
@@ -8183,8 +8231,8 @@
       },
       "reviewed_associations": [],
       "reviewer_hold": false,
-      "source_availability": "available",
-      "source_availability_reason": null,
+      "source_availability": "unavailable",
+      "source_availability_reason": "network_error",
       "sources": [
         {
           "archive_url": null,
@@ -8211,7 +8259,7 @@
       "superseded_by": null,
       "validator_id": "field_evidence_validation",
       "validator_version": "2",
-      "verification_notes": "Supporting source context revalidated; original evidence retained.",
+      "verification_notes": "Source access unavailable; historical support is not disproved.",
       "verification_status": "SOURCE VERIFIED"
     },
     {
@@ -8444,10 +8492,16 @@
           "note": "Supporting source context revalidated; original evidence retained.",
           "previous_record_sha256": "99ac71a1c83dd4502ed0655d492c4e684c4efb1235bcb4bf8d1fa2c4b1f3fa58",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-22T11:35:18.949174Z",
+          "note": "Source access unavailable; historical support is not disproved.",
+          "previous_record_sha256": "3258ea735a9b0a2ed811be9b1d39d5e3d527094b645567772f1aea38c184f36c",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-09-21T12:44:53.797425Z",
+      "last_source_checked_at": "2026-09-22T11:35:18.949174Z",
       "last_successful_evidence_check_at": "2026-09-21T12:44:53.797425Z",
       "llm": {
         "fields_proposed": [],
@@ -8464,11 +8518,11 @@
       },
       "location_id": null,
       "pipeline_version": "0.3.0",
-      "publication_status": "active",
+      "publication_status": "active_with_warning",
       "record_class": "inspection_evidence",
       "record_created_at": "2026-09-07T21:12:32.942437Z",
       "record_scope": "unknown",
-      "record_updated_at": "2026-09-21T12:44:53.797425Z",
+      "record_updated_at": "2026-09-22T11:35:18.949174Z",
       "related_record_ids": [],
       "reported_fact": {
         "area": "Park Street",
@@ -8514,8 +8568,8 @@
       },
       "reviewed_associations": [],
       "reviewer_hold": false,
-      "source_availability": "available",
-      "source_availability_reason": null,
+      "source_availability": "unavailable",
+      "source_availability_reason": "network_error",
       "sources": [
         {
           "archive_url": null,
@@ -8542,7 +8596,7 @@
       "superseded_by": null,
       "validator_id": "field_evidence_validation",
       "validator_version": "2",
-      "verification_notes": "Supporting source context revalidated; original evidence retained.",
+      "verification_notes": "Source access unavailable; historical support is not disproved.",
       "verification_status": "SOURCE VERIFIED"
     },
     {
@@ -8763,10 +8817,16 @@
           "note": "Supporting source context revalidated; original evidence retained.",
           "previous_record_sha256": "021a939e0bb1f6191496909961a78484ce1f5543b58113457fc29c6100ebc480",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-22T11:35:18.949174Z",
+          "note": "Source access unavailable; historical support is not disproved.",
+          "previous_record_sha256": "73971bef266f0e36f59633d6abcc65c802faff339d78e4753cad29d0758ff7af",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-09-21T19:26:04.378271Z",
+      "last_source_checked_at": "2026-09-22T11:35:18.949174Z",
       "last_successful_evidence_check_at": "2026-09-21T19:26:04.378271Z",
       "llm": {
         "fields_proposed": [],
@@ -8783,11 +8843,11 @@
       },
       "location_id": null,
       "pipeline_version": "0.3.0",
-      "publication_status": "active",
+      "publication_status": "active_with_warning",
       "record_class": "inspection_evidence",
       "record_created_at": "2026-09-07T21:12:32.942437Z",
       "record_scope": "unknown",
-      "record_updated_at": "2026-09-21T19:26:04.378271Z",
+      "record_updated_at": "2026-09-22T11:35:18.949174Z",
       "related_record_ids": [],
       "reported_fact": {
         "area": "Dacres Lane",
@@ -8829,8 +8889,8 @@
       },
       "reviewed_associations": [],
       "reviewer_hold": false,
-      "source_availability": "available",
-      "source_availability_reason": null,
+      "source_availability": "unavailable",
+      "source_availability_reason": "network_error",
       "sources": [
         {
           "archive_url": null,
@@ -8857,7 +8917,7 @@
       "superseded_by": null,
       "validator_id": "field_evidence_validation",
       "validator_version": "2",
-      "verification_notes": "Supporting source context revalidated; original evidence retained.",
+      "verification_notes": "Source access unavailable; historical support is not disproved.",
       "verification_status": "SOURCE VERIFIED"
     },
     {
@@ -9377,10 +9437,16 @@
           "note": "Supporting source context revalidated; original evidence retained.",
           "previous_record_sha256": "62b53d37efd920a819f0bfa6d6e73706a25e472d9a6a183ae71ecae8b9e99085",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-22T11:35:18.949174Z",
+          "note": "Source access unavailable; historical support is not disproved.",
+          "previous_record_sha256": "62b1539aaddfcb38a121d3b272584745b1611f5c9efb628f7434371b169b2c5e",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-09-21T12:44:53.797425Z",
+      "last_source_checked_at": "2026-09-22T11:35:18.949174Z",
       "last_successful_evidence_check_at": "2026-09-21T12:44:53.797425Z",
       "llm": {
         "fields_proposed": [],
@@ -9397,11 +9463,11 @@
       },
       "location_id": null,
       "pipeline_version": "0.3.0",
-      "publication_status": "active",
+      "publication_status": "active_with_warning",
       "record_class": "inspection_evidence",
       "record_created_at": "2026-09-07T21:12:32.942437Z",
       "record_scope": "unknown",
-      "record_updated_at": "2026-09-21T12:44:53.797425Z",
+      "record_updated_at": "2026-09-22T11:35:18.949174Z",
       "related_record_ids": [],
       "reported_fact": {
         "area": "Park Street",
@@ -9447,8 +9513,8 @@
       },
       "reviewed_associations": [],
       "reviewer_hold": false,
-      "source_availability": "available",
-      "source_availability_reason": null,
+      "source_availability": "unavailable",
+      "source_availability_reason": "network_error",
       "sources": [
         {
           "archive_url": null,
@@ -9475,7 +9541,7 @@
       "superseded_by": null,
       "validator_id": "field_evidence_validation",
       "validator_version": "2",
-      "verification_notes": "Supporting source context revalidated; original evidence retained.",
+      "verification_notes": "Source access unavailable; historical support is not disproved.",
       "verification_status": "SOURCE VERIFIED"
     },
     {
@@ -9708,10 +9774,16 @@
           "note": "Supporting source context revalidated; original evidence retained.",
           "previous_record_sha256": "c25fbda8369b8fdb8b08b2f68b789a9185ba586aac6120d66f47ef3d8da57e1e",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-22T11:35:18.949174Z",
+          "note": "Source access unavailable; historical support is not disproved.",
+          "previous_record_sha256": "f63d79bd37ef6a4ef77aa175b6b5b43b6fcf872d3a5d649187e8211052dc3d19",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-09-21T12:44:53.797425Z",
+      "last_source_checked_at": "2026-09-22T11:35:18.949174Z",
       "last_successful_evidence_check_at": "2026-09-21T12:44:53.797425Z",
       "llm": {
         "fields_proposed": [],
@@ -9728,11 +9800,11 @@
       },
       "location_id": null,
       "pipeline_version": "0.3.0",
-      "publication_status": "active",
+      "publication_status": "active_with_warning",
       "record_class": "inspection_evidence",
       "record_created_at": "2026-09-07T21:12:32.942437Z",
       "record_scope": "unknown",
-      "record_updated_at": "2026-09-21T12:44:53.797425Z",
+      "record_updated_at": "2026-09-22T11:35:18.949174Z",
       "related_record_ids": [],
       "reported_fact": {
         "area": "Park Street",
@@ -9778,8 +9850,8 @@
       },
       "reviewed_associations": [],
       "reviewer_hold": false,
-      "source_availability": "available",
-      "source_availability_reason": null,
+      "source_availability": "unavailable",
+      "source_availability_reason": "network_error",
       "sources": [
         {
           "archive_url": null,
@@ -9806,7 +9878,7 @@
       "superseded_by": null,
       "validator_id": "field_evidence_validation",
       "validator_version": "2",
-      "verification_notes": "Supporting source context revalidated; original evidence retained.",
+      "verification_notes": "Source access unavailable; historical support is not disproved.",
       "verification_status": "SOURCE VERIFIED"
     },
     {
@@ -10836,10 +10908,16 @@
           "note": "Supporting source context revalidated; original evidence retained.",
           "previous_record_sha256": "d9022ba65881354902baf9f962e04c6bc4d95b142477715e8d0ff56caf8b224b",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-22T11:35:18.949174Z",
+          "note": "Source access unavailable; historical support is not disproved.",
+          "previous_record_sha256": "a0bf10fc54125dbd6ee7d39d6c9b959c30e96c450212e15542086f7ce5b07328",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-09-21T12:44:53.797425Z",
+      "last_source_checked_at": "2026-09-22T11:35:18.949174Z",
       "last_successful_evidence_check_at": "2026-09-21T12:44:53.797425Z",
       "llm": {
         "fields_proposed": [],
@@ -10856,11 +10934,11 @@
       },
       "location_id": null,
       "pipeline_version": "0.3.0",
-      "publication_status": "active",
+      "publication_status": "active_with_warning",
       "record_class": "inspection_evidence",
       "record_created_at": "2026-09-07T21:12:32.942437Z",
       "record_scope": "unknown",
-      "record_updated_at": "2026-09-21T12:44:53.797425Z",
+      "record_updated_at": "2026-09-22T11:35:18.949174Z",
       "related_record_ids": [],
       "reported_fact": {
         "area": "Park Street",
@@ -10906,8 +10984,8 @@
       },
       "reviewed_associations": [],
       "reviewer_hold": false,
-      "source_availability": "available",
-      "source_availability_reason": null,
+      "source_availability": "unavailable",
+      "source_availability_reason": "network_error",
       "sources": [
         {
           "archive_url": null,
@@ -10934,7 +11012,7 @@
       "superseded_by": null,
       "validator_id": "field_evidence_validation",
       "validator_version": "2",
-      "verification_notes": "Supporting source context revalidated; original evidence retained.",
+      "verification_notes": "Source access unavailable; historical support is not disproved.",
       "verification_status": "SOURCE VERIFIED"
     },
     {
@@ -11391,10 +11469,16 @@
           "note": "Supporting source context revalidated; original evidence retained.",
           "previous_record_sha256": "5d58b6d6ecb2d5e5641de1a9d784d3010a140fc74387c3c0e03406d757dc5a75",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-22T11:35:18.949174Z",
+          "note": "Source access unavailable; historical support is not disproved.",
+          "previous_record_sha256": "be260bd38d6bac6bbf04fc892067227d7b6ac32f890ed80216e6ad36eace92fd",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-09-21T19:26:04.378271Z",
+      "last_source_checked_at": "2026-09-22T11:35:18.949174Z",
       "last_successful_evidence_check_at": "2026-09-21T19:26:04.378271Z",
       "llm": {
         "fields_proposed": [],
@@ -11411,11 +11495,11 @@
       },
       "location_id": null,
       "pipeline_version": "0.3.0",
-      "publication_status": "active",
+      "publication_status": "active_with_warning",
       "record_class": "inspection_evidence",
       "record_created_at": "2026-09-07T21:12:32.942437Z",
       "record_scope": "unknown",
-      "record_updated_at": "2026-09-21T19:26:04.378271Z",
+      "record_updated_at": "2026-09-22T11:35:18.949174Z",
       "related_record_ids": [],
       "reported_fact": {
         "area": "Dacres Lane",
@@ -11457,8 +11541,8 @@
       },
       "reviewed_associations": [],
       "reviewer_hold": false,
-      "source_availability": "available",
-      "source_availability_reason": null,
+      "source_availability": "unavailable",
+      "source_availability_reason": "network_error",
       "sources": [
         {
           "archive_url": null,
@@ -11485,7 +11569,7 @@
       "superseded_by": null,
       "validator_id": "field_evidence_validation",
       "validator_version": "2",
-      "verification_notes": "Supporting source context revalidated; original evidence retained.",
+      "verification_notes": "Source access unavailable; historical support is not disproved.",
       "verification_status": "SOURCE VERIFIED"
     },
     {
@@ -12601,11 +12685,17 @@
           "note": "Supporting source context revalidated; original evidence retained.",
           "previous_record_sha256": "8e314710295ecc5f7bb2b32296d991ce07439a3f101f6fa7109e191d4e93e781",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-22T11:35:18.949174Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "f5a69bf73fa98a809753f7970798cc7c597d81160d6be942a044cfd22ce38632",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-09-21T12:44:53.797425Z",
-      "last_successful_evidence_check_at": "2026-09-21T12:44:53.797425Z",
+      "last_source_checked_at": "2026-09-22T11:35:18.949174Z",
+      "last_successful_evidence_check_at": "2026-09-22T11:35:18.949174Z",
       "llm": {
         "fields_proposed": [
           "area",
@@ -12631,7 +12721,7 @@
       "record_class": "inspection_evidence",
       "record_created_at": "2026-09-15T11:42:24.512042Z",
       "record_scope": "establishment_event",
-      "record_updated_at": "2026-09-21T12:44:53.797425Z",
+      "record_updated_at": "2026-09-22T11:35:18.949174Z",
       "related_record_ids": [],
       "reported_fact": {
         "area": "দুর্গাপুরের বেনাচিতি বাজারে",
@@ -12920,10 +13010,16 @@
           "note": "Supporting source context revalidated; original evidence retained.",
           "previous_record_sha256": "61518250fa491ac9b6e71c75fab2f2bcb24bf30e813acfab730cb2402d4edb1f",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-22T11:35:18.949174Z",
+          "note": "Source access unavailable; historical support is not disproved.",
+          "previous_record_sha256": "64e48f4b2f5e6e3ae44f1ac708c6ca4735b3eee99a03bc78dffcb2242633406a",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-09-21T19:26:04.378271Z",
+      "last_source_checked_at": "2026-09-22T11:35:18.949174Z",
       "last_successful_evidence_check_at": "2026-09-21T19:26:04.378271Z",
       "llm": {
         "fields_proposed": [],
@@ -12940,11 +13036,11 @@
       },
       "location_id": null,
       "pipeline_version": "0.3.0",
-      "publication_status": "active",
+      "publication_status": "active_with_warning",
       "record_class": "inspection_evidence",
       "record_created_at": "2026-09-07T21:12:32.942437Z",
       "record_scope": "unknown",
-      "record_updated_at": "2026-09-21T19:26:04.378271Z",
+      "record_updated_at": "2026-09-22T11:35:18.949174Z",
       "related_record_ids": [],
       "reported_fact": {
         "area": "Lake Market",
@@ -12986,8 +13082,8 @@
       },
       "reviewed_associations": [],
       "reviewer_hold": false,
-      "source_availability": "available",
-      "source_availability_reason": null,
+      "source_availability": "unavailable",
+      "source_availability_reason": "network_error",
       "sources": [
         {
           "archive_url": null,
@@ -13014,7 +13110,7 @@
       "superseded_by": null,
       "validator_id": "field_evidence_validation",
       "validator_version": "2",
-      "verification_notes": "Supporting source context revalidated; original evidence retained.",
+      "verification_notes": "Source access unavailable; historical support is not disproved.",
       "verification_status": "SOURCE VERIFIED"
     },
     {
