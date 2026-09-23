@@ -4,7 +4,11 @@ Public beta at https://foodsafety.nemoneek.com/ . Puja FoodPath and Food Safety 
 
 ## Puja FoodPath: catalog and geographic provenance
 
-Puja discovery currently supports the Kolkata region and California through the region registry. Every published listing has a stable ID, source URL/title, supporting text, listing year where supported, and reviewed provenance. Organizer sources support California's catalog; much of Kolkata's catalog comes from older directory rows. A listing is not confirmation of a current venue, schedule or access arrangement.
+Puja discovery supports Kolkata region, California, London region, Toronto / GTA and Melbourne through the region registry. Every published listing has a stable ID, source URL/title, supporting text, listing year where supported, and reviewed provenance. Organizer sources support diaspora catalogs; much of Kolkata's catalog comes from older directory rows. Regions are curated discovery geographies, not assertions of municipal boundaries. A listing is not confirmation of a current venue, schedule or access arrangement.
+
+Optional edition data separately records supported year, date range, timezone, confirmation and venue review with its own evidence. An old listing or successful HTTP check cannot create a current-year badge. Known-source monitoring uses conditional requests/content hashes, daily in September–October and weekly otherwise. A changed or initially unreviewed revision remains pending review; no scheduled Puja model call or automatic publication occurs.
+
+Near Me compares browser-permissioned, ephemeral coordinates locally against published map anchors within 100 km. It does not transmit the location or establish complete local coverage. World map displays only Puja anchors and reuses the opt-in map. Share links carry only public region/Puja identity. Directions are offered only for precise, edition-reviewed venue anchors; approximate anchors are not presented as exact entrances.
 
 Coordinates are optional and independently sourced, with explicit precision. No model invents them. Search-only records remain useful without markers or proximity results. Regions scope search, featured shortcuts, map bounds and food associations; California does not broaden Food Safety Evidence. See [Puja curation](docs/PUJA_CURATION.md).
 
@@ -14,11 +18,13 @@ Regional OpenStreetMap snapshots supply normalized food POIs with source/object 
 
 Only meaningfully named OSM entries appear as individual food rows. The UI initially shows 12 and at most 20, ordered by approximate straight-line distance, name and ID. Counts distinguish the browsable list from full snapshot catchments. Google-only anonymous associations remain retained but hidden from those counts. Nearby food is not recommendation, quality, inspection or safety evidence.
 
-Google Maps handoff prefers an independently verified place-ID crosswalk; otherwise it targets the OSM coordinate, not a broad chain-name search. A coordinate pin does not prove Google identity. Optional ID-only Text Search returns private unresolved/suggested/ambiguous results: without returned name/location, a single ID cannot automatically become verified. California's Bengali-food regional links are search shortcuts, not restaurant records or a verified directory.
+Google Maps handoff prefers an independently verified place-ID crosswalk; otherwise named records retain name, sourced locality and OSM coordinates. Results may remain ambiguous; a coordinate is not proof of Google identity. Only unnamed locations use a coordinate-only pin. Optional ID-only Text Search returns private unresolved/suggested/ambiguous results: without returned name/location, a single ID cannot automatically become verified. California's Bengali-food regional links are search shortcuts, not restaurant records or a verified directory.
 
 Visitors read static data with zero Places and zero OSM API requests. Optional Maps JavaScript is a separate user action. OSM data carries ODbL provenance and attribution; Google-derived content retains its own boundaries. See [food POI methodology](docs/FOOD_POIS.md).
 
 ## Food Safety Evidence — West Bengal only
+
+The aggregate site counter is operational metadata, never an evidence or popularity metric. It counts accepted approximate tab-session increments, not unique people. [Counter definition](docs/VISIT_COUNTER.md).
 
 The remainder describes the existing evidence-research module. Puja proximity and regional expansion do not alter these semantics.
 

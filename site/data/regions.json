@@ -24,7 +24,8 @@
       "region_id": "kolkata",
       "regional_food_searches": [],
       "restaurant_radius_m": 600,
-      "safety_context": true
+      "safety_context": true,
+      "timezone": null
     },
     {
       "admin1": "California",
@@ -89,7 +90,74 @@
         }
       ],
       "restaurant_radius_m": 600,
-      "safety_context": false
+      "safety_context": false,
+      "timezone": null
+    },
+    {
+      "admin1": "England",
+      "country_code": "GB",
+      "default_map_center": {
+        "lat": 51.55,
+        "lng": -0.07
+      },
+      "default_map_zoom": 10,
+      "featured_ids": [
+        "london-camden",
+        "london-bcsc"
+      ],
+      "food_data": "data/osm_food_london.json",
+      "food_provider_mode": "osm",
+      "label": "London region",
+      "provider_data": "data/food_provider_london.json",
+      "region_id": "london",
+      "regional_food_searches": [],
+      "restaurant_radius_m": 600,
+      "safety_context": false,
+      "timezone": "Europe/London"
+    },
+    {
+      "admin1": "Ontario",
+      "country_code": "CA",
+      "default_map_center": {
+        "lat": 43.74,
+        "lng": -79.3
+      },
+      "default_map_zoom": 10,
+      "featured_ids": [
+        "gta-durba",
+        "gta-apcat"
+      ],
+      "food_data": "data/osm_food_toronto.json",
+      "food_provider_mode": "osm",
+      "label": "Toronto / GTA",
+      "provider_data": "data/food_provider_toronto.json",
+      "region_id": "toronto",
+      "regional_food_searches": [],
+      "restaurant_radius_m": 600,
+      "safety_context": false,
+      "timezone": "America/Toronto"
+    },
+    {
+      "admin1": "Victoria",
+      "country_code": "AU",
+      "default_map_center": {
+        "lat": -37.89,
+        "lng": 144.64
+      },
+      "default_map_zoom": 10,
+      "featured_ids": [
+        "melbourne-melba",
+        "melbourne-bsm"
+      ],
+      "food_data": "data/osm_food_melbourne.json",
+      "food_provider_mode": "osm",
+      "label": "Melbourne",
+      "provider_data": "data/food_provider_melbourne.json",
+      "region_id": "melbourne",
+      "regional_food_searches": [],
+      "restaurant_radius_m": 600,
+      "safety_context": false,
+      "timezone": "Australia/Melbourne"
     }
   ],
   "schema_version": "puja-regions-1"

@@ -19,7 +19,7 @@ Use this checklist immediately before the explicit `--confirm-public-release` ac
 
 ## Security and hosting
 
-- [ ] Only the isolated `dist/site/` artifact is deployed; tracked map configuration remains blank.
+- [ ] Only isolated static assets and the reviewed counter Worker are deployed; tracked map configuration remains blank.
 - [ ] Preview deployment passes header, CSP, mobile and keyboard checks.
 - [ ] HTTPS headers, including CSP, HSTS, nosniff, no-referrer and framing controls, are checked on the actual domain.
 - [ ] No secret, pending queue, rejected record, history archive or run artifact is publicly reachable.
@@ -29,7 +29,10 @@ Use this checklist immediately before the explicit `--confirm-public-release` ac
 
 - [ ] Disclaimer, correction route and volunteer callout are visible on desktop and mobile.
 - [ ] Chart filters, map points, data downloads and record details work.
-- [ ] Kolkata/California search, featured eligibility, named-food limits and region URLs work.
+- [ ] All five regions, featured eligibility, named-food limits and region URLs work.
+- [ ] Near Me permission/fallback/privacy, world selection, share and precise-venue directions work.
+- [ ] Counter uses Free-plan SQLite allowances, fails independently, and counts approximate sessions only.
+- [ ] Puja freshness makes zero scheduled model calls; source checks do not imply annual verification.
 - [ ] Coordinate/verified-ID handoffs and California regional food searches are clearly distinguished.
 - [ ] OSM attribution and source/snapshot provenance remain present; visitors make no Places/OSM API requests.
 - [ ] Two-hour scan remains bounded; automatic publication requires all validation gates.
@@ -38,7 +41,7 @@ Use this checklist immediately before the explicit `--confirm-public-release` ac
 - [ ] The public-repository audit reports `local_history_sanitized` and `audit_passed` as true; retained GitHub pull refs remain disclosed, and no pull-ref sensitive-content finding is present.
 # Develop-to-main approval gates
 
-- [ ] Owner explicitly approved merge; Cloudflare configuration unchanged.
+- [ ] Owner explicitly approved merge and reviewed the minimal counter binding/migration and actual hosting plan.
 - [ ] Latest production bot commits reconciled and migrated; no stale-data overwrite.
 - [ ] Recovery report reviewed; no semantic holds silently restored.
 - [ ] Google Form responder URL tested; response Sheet private, no uploads/email collection/public summaries.

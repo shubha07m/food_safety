@@ -4,7 +4,7 @@
 
 - `puja_preview.png` and `california_food_preview.png`: captured from the local
   static development release using `FOOD_UPDATE_PREVIEWS=1 node scripts/browser_smoke.mjs`.
-- Updated: 2026-09-19; multi-region selector, named OSM food and regional search UI.
+- Updated: 2026-09-22; five-region selector, explicit Near Me control, named OSM food and regional search UI.
 - Screenshots contain project UI, attributed OSM-derived facts and the maintainer's
   supplied hero artwork. No Google map imagery, browser chrome or runtime values.
 - These are interface illustrations, not evidence of venue availability or endorsement.

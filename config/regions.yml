@@ -46,3 +46,45 @@ regions:
       - area_id: all-california
         label: All California
         query: Bengali restaurants California
+  - region_id: london
+    label: London region
+    country_code: GB
+    admin1: England
+    timezone: Europe/London
+    default_map_center: {lat: 51.55, lng: -0.07}
+    default_map_zoom: 10
+    safety_context: false
+    geocode_bounds: [-0.3, 51.4, 0.15, 51.75]
+    food_config: config/food-london.yml
+    food_data: data/osm_food_london.json
+    provider_data: data/food_provider_london.json
+    catalog_config: config/puja-london.yml
+    featured_ids: [london-camden, london-bcsc]
+  - region_id: toronto
+    label: Toronto / GTA
+    country_code: CA
+    admin1: Ontario
+    timezone: America/Toronto
+    default_map_center: {lat: 43.74, lng: -79.3}
+    default_map_zoom: 10
+    safety_context: false
+    geocode_bounds: [-79.75, 43.5, -78.9, 44]
+    food_config: config/food-toronto.yml
+    food_data: data/osm_food_toronto.json
+    provider_data: data/food_provider_toronto.json
+    catalog_config: config/puja-toronto.yml
+    featured_ids: [gta-durba, gta-apcat]
+  - region_id: melbourne
+    label: Melbourne
+    country_code: AU
+    admin1: Victoria
+    timezone: Australia/Melbourne
+    default_map_center: {lat: -37.89, lng: 144.64}
+    default_map_zoom: 10
+    safety_context: false
+    geocode_bounds: [144.5, -38, 144.8, -37.7]
+    food_config: config/food-melbourne.yml
+    food_data: data/osm_food_melbourne.json
+    provider_data: data/food_provider_melbourne.json
+    catalog_config: config/puja-melbourne.yml
+    featured_ids: [melbourne-melba, melbourne-bsm]

@@ -9,6 +9,18 @@ from audit_repository import SECRET
 
 ROOT = Path(__file__).resolve().parents[1]
 GENERATED = (
+    "data/osm_food_london.json",
+    "site/data/osm_food_london.json",
+    "data/food_provider_london.json",
+    "site/data/food_provider_london.json",
+    "data/osm_food_toronto.json",
+    "site/data/osm_food_toronto.json",
+    "data/food_provider_toronto.json",
+    "site/data/food_provider_toronto.json",
+    "data/osm_food_melbourne.json",
+    "site/data/osm_food_melbourne.json",
+    "data/food_provider_melbourne.json",
+    "site/data/food_provider_melbourne.json",
     "data/regions.json",
     "site/data/regions.json",
     "data/osm_food_california.json",

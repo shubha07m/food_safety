@@ -2,7 +2,7 @@
 
 The Puja catalog is source-backed project data, separate from food POI discovery.
 `config/regions.yml` declares regions and their additional reviewed catalog files.
-`config/puja.yml` plus `config/puja-california.yml` are the current publication boundary.
+`config/puja.yml` plus the registry's regional `config/puja-*.yml` files are the publication boundary.
 The static build writes
 only validated records to `data/pandals.json` and `site/data/pandals.json`.
 
@@ -25,8 +25,11 @@ python -m food_safety.cli puja geocode-summary
 robots, timeout and response-size controls apply. Frozen passages stay under ignored
 `.cache/puja/sources/` and are never public artifacts.
 
-`extract` reuses the bounded Gemini adapter. Source text is untrusted data. The model may
-propose names, Bengali names, aliases, areas, organizers, years and coordinates only with
+`discover` recognizes supported JSON-LD Event records deterministically; `extract`
+uses those grounded candidates first, with no model call. Structured source tables can
+also be reviewed directly. Unstructured sources use the explicit bounded Gemini adapter.
+Source text is untrusted data. The model may
+propose names, Bengali names, aliases, areas, organizers, years, venue/address/date text only with
 passage IDs and verbatim quotes. Application code proves each quote and value occurs in
 the frozen passage using exact, NFC or whitespace-normalized matching. A model cannot
 publish, geocode, rank or create a Google Maps request. Calls are capped per run and cached
@@ -59,7 +62,7 @@ country, administrative area, city and coordinate bounds must agree with the reg
 Howrah is not silently treated as Kolkata municipality. Private candidates and raw
 model responses never enter Git.
 
-## California and future regions
+## Five-region catalog and annual editions
 
 California currently has six organizer-source-backed 2026 listings and four reviewed
 OSM venue anchors. Sources include Pashchimi, Sanskriti, BASC, Valley Bengali Community,
@@ -68,9 +71,23 @@ California configuration. Missing or tentative venues stay unmapped. An organize
 identity does not verify a venue by itself; corroborate the published address and
 independent geographic object separately.
 
-The existing automated Gemini/source research path remains scoped to its configured
-West Bengal sources. California entries were manually source-reviewed, not generated
-from model memory. Do not run a West Bengal-geocoding context against another region.
+London region, Toronto / GTA and Melbourne each begin with two organizer-backed
+listings and independently reviewed geographic anchors. London includes Camden and
+BCSC; GTA includes Durba and APCAT; Melbourne includes MELBA and BSM. Exact organizer
+URLs/quotes are in each regional config. Camden remains a source-backed listing without
+an inferred 2026 edition. The other five new records carry explicitly sourced dates.
+APCAT is an address/street anchor; BSM is an approximate racecourse-area anchor, not a
+reviewed entrance. Their precision must remain visible and does not qualify for exact
+venue directions. Catalog regions need not follow municipal boundaries.
+
+`edition` separates annual facts from stable listing identity: supported year,
+confirmation, start/end dates, IANA timezone, venue review, review time and evidence.
+Never infer year from copyright, reachability or weekday coincidence. Existing legacy
+`year`/`event_dates` do not automatically become reviewed edition data.
+
+Source and extractor configuration is region-aware. California and the new listings
+were manually source-reviewed, not generated from model memory. Do not run a West
+Bengal-geocoding context against another region.
 Add a future region through registry metadata, explicit source-backed catalog records,
 independent anchors and a regional food configuration; validate bounds and provenance
 before publication. Never infer an organization's translated name or venue.
@@ -111,23 +128,31 @@ Structured tables can be curated directly without model inference. Gemini remain
 useful for prose. The bounded live run encountered provider quota errors, so no
 model-generated facts were added from it.
 
-## Scheduled research
+## Scheduled monitoring, not scheduled extraction
 
-`puja refresh` runs inside **Refresh Food Safety Data**, due every six hours by
-default (`refresh_runs_per_day: 4`, maximum 10). A UTC daily counter, minimum
-interval, local file lock, and workflow concurrency serialize runs.
-`data/puja_refresh.json` persists timestamps, source revision/task/schema/model
-fingerprints, and counts only. Source bodies and candidates remain ignored.
-Runs reserve allowance before requests. Unchanged fingerprints cause zero Gemini
-calls even on fresh runners. Failed attempted revisions are remembered too;
-explicit `puja extract --source ID` retries after resolving provider failures.
-A quota response stops the scheduled model batch. Local cached proposals still
-pass current validation before use.
+`puja refresh` runs inside **Refresh Food Safety Data** without changing its evidence
+schedule. It checks at most five due known sources, least-recently-attempted first.
+Each source is due daily during September–October and weekly otherwise. The existing
+two-hour workflow wakeup drains due batches; it is not a two-hour-per-source refresh.
+Manual invocation uses the same due/batch controls. There is no bulk crawler.
 
-Scheduled extraction processes only freshly retrieved sources. Candidate outputs
-are ephemeral and never silently publish: additions still cross the reviewed
-configuration boundary. Catalog rebuild makes no Google calls. Places discovery
-remains explicit/operator-side.
+The monitor uses ETag first, then Last-Modified, otherwise normalized relevant-text
+hashing. DNS-pinned transport, robots checks, redirects, size/time bounds and host
+spacing remain enforced. An unchanged source only updates its check receipt. Changed
+or initially unreviewed revisions are pending; no record is published, removed or
+silently moved and **no scheduled Puja Gemini call occurs**, even for changed content.
+
+`data/puja_refresh.json` stores small attempt/success timestamps, URL, bounded HTTP
+validators, content hash, reviewed revision, pending flag and separate extraction
+status. No raw pages or model payloads are committed. A failed fetch keeps the last
+successful timestamp. First checks establish an unreviewed baseline, not confirmation.
+
+After reviewing the current source, maintainers can set `reviewed_revision` on its
+SourceSpec to the exact receipt hash. Review annual evidence separately in `edition`.
+Use `puja discover --source ID` then `puja extract --source ID --max-calls 1` only when
+explicitly needed; deterministic JSON-LD precedes the bounded cached model path.
+Private candidates remain review-only and need not be extracted just because a page
+changed. Catalog rebuild and monitoring make no Google calls.
 
 `allow_missing_robots: true` is a reviewed exception for literal 404 responses
 at `/robots.txt` only, consistent with [RFC 9309](https://www.rfc-editor.org/rfc/rfc9309.html#section-2.3.1.3).

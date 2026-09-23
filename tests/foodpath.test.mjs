@@ -117,7 +117,7 @@ test('map document has isolated CSP and parent keeps self-only scripts', () => {
   assert.match(readFileSync('site/index.html', 'utf8'), /script-src 'self';/);
   assert.match(readFileSync('site/google-map.html', 'utf8'), /https:\/\/maps.googleapis.com/);
   assert.doesNotMatch(readFileSync('site/google-map.html', 'utf8'), /script-src[^;]*'unsafe-inline'/);
-  assert.match(readFileSync('site/_headers', 'utf8'), /\/google-map.html\n  ! Content-Security-Policy/);
+  assert.match(readFileSync('site/_headers', 'utf8'), /\/google-map.html\n[^\n]*\n  ! Content-Security-Policy/);
   const map = readFileSync('site/google-map.html', 'utf8');
   assert.match(map, /id="pandals-layer" checked/); assert.doesNotMatch(map, /id="areas-layer" checked/);
   assert.match(readFileSync('.env.example', 'utf8'), /^GOOGLE_MAPS_BROWSER_KEY=$/m);
@@ -170,7 +170,8 @@ test('mock map fits all pandals and focuses mapped selection without false fallb
   assert.equal(bounds.at(-1).length, 2);
   const feature = f => ({ getProperty: k => f.properties[k], getId: () => f.id });
   assert.equal(style(feature(features[0])).icon.path, 'circle');
-  assert.notEqual(style(feature(features[1])).icon.path, 'circle');
+  assert.equal(style(feature(features[1])).icon.path, 'circle');
+  assert.notEqual(style(feature(features[1])).icon.strokeColor, style(feature(features[0])).icon.strokeColor);
   elements.get('areas-layer').checked = false;
   assert.equal(style(feature(features[0])).visible, false);
   click({ feature: feature(features[0]), latLng: {} });

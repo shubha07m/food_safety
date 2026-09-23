@@ -3,15 +3,17 @@
   Strict-Transport-Security: max-age=31536000
   X-Content-Type-Options: nosniff
   Referrer-Policy: no-referrer
-  Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=(), usb=(), browsing-topics=()
+  Permissions-Policy: camera=(), microphone=(), geolocation=(self), payment=(), usb=(), browsing-topics=()
   X-Frame-Options: DENY
   Cache-Control: public, max-age=0, must-revalidate
 
 # Only the dedicated, user-loaded map document uses its own Google-compatible CSP.
 # Main pages keep the strict self-only policy above. No hosting configuration change.
 /google-map.html
+  Permissions-Policy: geolocation=(), camera=(), microphone=()
   ! Content-Security-Policy
   ! X-Frame-Options
 /google-map
+  Permissions-Policy: geolocation=(), camera=(), microphone=()
   ! Content-Security-Policy
   ! X-Frame-Options

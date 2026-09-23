@@ -31,7 +31,7 @@ def test_regional_search_handoffs_do_not_change_catalog_or_food_counts(region_ro
         s["maps_url"].startswith("https://www.google.com/maps/search/?api=1&query=")
         for s in searches
     )
-    assert len(load_config(region_root).published) == before == 229
+    assert len(load_config(region_root).published) == before == 235
 
 
 def test_regional_search_rejects_duplicate_area_and_custom_url(region_root):

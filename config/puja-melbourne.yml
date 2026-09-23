@@ -1,0 +1,112 @@
+{
+  "sources": [
+    {
+      "source_id": "melbourne-melba",
+      "region_id": "melbourne",
+      "url": "https://www.melba.org.au/",
+      "publisher": "Melbourne Bengali Association",
+      "language": "en",
+      "allow_missing_robots": true
+    },
+    {
+      "source_id": "melbourne-bsm",
+      "region_id": "melbourne",
+      "url": "https://bsm.org.au/events/durgotsav",
+      "publisher": "Bengali Society of Melbourne",
+      "language": "en",
+      "allow_missing_robots": true
+    }
+  ],
+  "published": [
+    {
+      "pandal_id": "melbourne-melba",
+      "region_id": "melbourne",
+      "country_code": "AU",
+      "admin1": "Victoria",
+      "metro_region": "Melbourne",
+      "name": "MELBA Durga Pujo",
+      "organizer": "Melbourne Bengali Association",
+      "city": "Wyndham Vale",
+      "area": "Wyndham Vale",
+      "venue": "Riverbend Primary School",
+      "address": "1 Communal Road, Wyndham Vale, VIC 3024",
+      "latitude": -37.8753998,
+      "longitude": 144.6266428,
+      "coordinate_source": "https://www.openstreetmap.org/way/1007516287",
+      "coordinate_precision": "venue",
+      "featured": true,
+      "last_verified_at": "2026-09-22T18:00:00Z",
+      "sources": [
+        {
+          "source_url": "https://www.melba.org.au/",
+          "source_title": "MELBA Durga Pujo — organizer announcement",
+          "publisher": "Melbourne Bengali Association",
+          "quote": "DURGA PUJA 2026 Date: 17th October – 18th October Riverbend Primary School, 1 Communal Road, Wyndham Vale – 3024"
+        }
+      ],
+      "year": 2026,
+      "edition": {
+        "year": 2026,
+        "confirmed": true,
+        "start_date": "2026-10-17",
+        "end_date": "2026-10-18",
+        "timezone": "Australia/Melbourne",
+        "venue_reviewed": true,
+        "reviewed_at": "2026-09-22T18:00:00Z",
+        "evidence": [
+          {
+            "source_url": "https://www.melba.org.au/",
+            "source_title": "MELBA Durga Pujo — organizer announcement",
+            "publisher": "Melbourne Bengali Association",
+            "quote": "DURGA PUJA 2026 Date: 17th October – 18th October Riverbend Primary School, 1 Communal Road, Wyndham Vale – 3024"
+          }
+        ]
+      }
+    },
+    {
+      "pandal_id": "melbourne-bsm",
+      "region_id": "melbourne",
+      "country_code": "AU",
+      "admin1": "Victoria",
+      "metro_region": "Melbourne",
+      "name": "Bengali Society of Melbourne Durgotsav",
+      "organizer": "Bengali Society of Melbourne",
+      "city": "Werribee",
+      "area": "Werribee",
+      "venue": "Werribee Racing Club",
+      "address": "2–10 Bulban Rd, Werribee, VIC 3030",
+      "latitude": -37.9028292,
+      "longitude": 144.6453403,
+      "coordinate_source": "https://www.openstreetmap.org/way/173267625",
+      "coordinate_precision": "neighborhood",
+      "featured": true,
+      "last_verified_at": "2026-09-22T18:00:00Z",
+      "sources": [
+        {
+          "source_url": "https://bsm.org.au/events/durgotsav",
+          "source_title": "Bengali Society of Melbourne Durgotsav — organizer announcement",
+          "publisher": "Bengali Society of Melbourne",
+          "quote": "Durga Puja 2026 October 16-18, 2026 Werribee Racing Club 2-10 Bulban Rd, Werribee 3030"
+        }
+      ],
+      "year": 2026,
+      "edition": {
+        "year": 2026,
+        "confirmed": true,
+        "start_date": "2026-10-16",
+        "end_date": "2026-10-18",
+        "timezone": "Australia/Melbourne",
+        "venue_reviewed": true,
+        "reviewed_at": "2026-09-22T18:00:00Z",
+        "evidence": [
+          {
+            "source_url": "https://bsm.org.au/events/durgotsav",
+            "source_title": "Bengali Society of Melbourne Durgotsav — organizer announcement",
+            "publisher": "Bengali Society of Melbourne",
+            "quote": "Durga Puja 2026 October 16-18, 2026 Werribee Racing Club 2-10 Bulban Rd, Werribee 3030"
+          }
+        ]
+      }
+    }
+  ]
+}

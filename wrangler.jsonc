@@ -1,5 +1,9 @@
 {
   "name": "food-safety",
   "compatibility_date": "2026-01-01",
-  "assets": { "directory": "./site" }
+  "main": "worker/visits.mjs",
+  "assets": { "directory": "./site", "binding": "ASSETS", "run_worker_first": ["/api/visits"] },
+  "durable_objects": { "bindings": [{ "name": "VISITS", "class_name": "VisitCounter" }] },
+  "migrations": [{ "tag": "visits-v1", "new_sqlite_classes": ["VisitCounter"] }],
+  "observability": { "enabled": false }
 }

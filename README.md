@@ -19,8 +19,8 @@ in Bengal and extending to Bengali communities beyond Bengal.
 
 ## Two distinct experiences
 
-**Puja FoodPath** is the primary seasonal experience, beginning with the **Kolkata
-region** and **California**. Search source-backed Puja listings, explore reviewed
+**Puja FoodPath** is the primary seasonal experience across **Kolkata region,
+California, London region, Toronto / GTA and Melbourne**. Search source-backed Puja listings, explore reviewed
 geographic anchors, browse named nearby food, and open Google Maps when useful.
 “The Bengal” describes the project's origin and cultural context, not a promise
 of worldwide coverage.
@@ -42,6 +42,13 @@ map imagery. [Artwork and screenshot provenance](docs/assets/ASSET_PROVENANCE.md
 ## Discover a Puja and nearby food
 
 - Choose a region; search locally by name, sourced alias, neighbourhood, area or city.
+- **Find Puja near me** asks for location only after a click, calculates locally,
+  and never stores or sends that location. Results are limited to published anchors
+  within 100 km—not a claim that other events do not exist.
+- Switch the optional map between selected region and **World Puja map**. Both
+  reuse one lazy map; world view contains Puja anchors only.
+- Share a Puja link, report a venue/date change, or get directions where a precise
+  annual venue has been reviewed. Source checks and edition confirmation are distinct.
 - Featured Pujas are curated shortcuts with reviewed geography and meaningful named
   food coverage, never rankings. There are at most six per region.
 - Select a Puja to browse up to 20 named food places, initially 12. Ordering is by
@@ -69,13 +76,14 @@ Regional food snapshots → normalized provider-neutral POIs
 ~~~
 
 **Kolkata uses hybrid discovery:** OSM names and local associations alongside retained
-Google discovery/enrichment data. **California currently uses OSM** for nearby-food
+Google discovery/enrichment data. **California and the three new regions use OSM** for nearby-food
 lists, with optional operator-side Google identity suggestions. OSM has not replaced
 Google everywhere; coverage differs substantially by region.
 
-A verified Google place ID takes precedence in the handoff. Otherwise the URL targets
-the OSM latitude/longitude directly, avoiding a broad chain-name search. A coordinate
-pin is not a claim of exact Google business identity. ID-only search suggestions cannot
+A verified Google place ID takes precedence in the handoff. Otherwise named records
+retain the name, sourced locality and exact OSM coordinate in the search query.
+Google may still show multiple local results; only unnamed locations use a raw pin.
+A coordinate pin is not a claim of exact Google business identity. ID-only search suggestions cannot
 verify that identity by themselves and never publish automatically.
 
 Gemini assists bounded source extraction, not identity matching or coordinate invention.
@@ -85,16 +93,16 @@ Puja publication requires reviewed source-backed configuration. Full technical d
 
 ## Coverage snapshot
 
-Development data checked **2026-09-19**; the live site changes after release.
+Development data checked **2026-09-22** (local date); the live site changes after release.
 
-| Dataset | Kolkata region | California |
-| --- | --- | --- |
-| Source-backed Puja listings | 223 | 6 |
-| Reviewed map anchors | 14 | 4 |
-| Normalized OSM food POIs | 652 | 263 retained regional catchment POIs |
-| Named OSM POIs | 618 | 246 |
-| Distinct named associated food places | 63 | 72 |
-| OSM snapshot | 2026-09-16 | 2026-09-18 |
+| Dataset | Kolkata region | California | London region | Toronto / GTA | Melbourne |
+| --- | --- | --- | --- | --- | --- |
+| Source-backed Puja listings | 223 | 6 | 2 | 2 | 2 |
+| Reviewed map anchors | 14 | 4 | 2 | 2 | 2 |
+| Normalized catchment food POIs | 652 | 263 | 336 | 128 | 34 |
+| Named OSM POIs | 618 | 246 | 332 | 128 | 34 |
+| Distinct named associated food places | 62 | 72 | 31 | 54 | 0 |
+| OSM snapshot | 2026-09-16 | 2026-09-18 | 2026-09-22 | 2026-09-22 | 2026-09-22 |
 
 These are snapshot counts, not complete directories. Overlapping Puja catchments can
 share food places. Many Kolkata listings come from 2025 directory rows; California
@@ -120,8 +128,11 @@ limits, retry accounting and dry runs. Maps JavaScript billing is separate and h
 no project-side monthly ledger. No Google tiles or map imagery are stored for reuse.
 [Browser configuration and cost controls](docs/BROWSER_MAP.md).
 
-There is no project analytics, tracking, account system, public write API or visitor
-database. Hosting and external-provider policies still apply.
+An optional same-origin aggregate counter reports approximate **site visits**, not
+unique people. One eligible visible tab session attempts one increment; no identity,
+location or browsing history is stored. It is not a general analytics system.
+Counter failure never blocks the static site. [Definition and operation](docs/VISIT_COUNTER.md).
+There are no accounts, profiling or application cookies. Hosting and external-provider policies still apply.
 [Privacy](PRIVACY.md) · [Current controls](SECURITY.md).
 
 ## Food Safety evidence workflow
@@ -145,7 +156,8 @@ python -m food_safety.cli build
 python -m http.server 8000 --bind 127.0.0.1 --directory site
 ~~~
 
-Open http://127.0.0.1:8000/ or add `?region=california`, `?lang=bn`, or
+Open http://127.0.0.1:8000/ or add `?region=london`, `?region=toronto`,
+`?region=melbourne`, `?region=california`, `?lang=bn`, or
 `?module=safety`. Tracked `site/maps-config.json` is deliberately blank.
 **An ordinary local static server shows the live-map fallback, even with a local
 .env file.** This is expected. Use the isolated deployment-artifact procedure in
@@ -177,9 +189,12 @@ are explicit operator actions, separate from visitors and scheduled evidence upd
 | `data/` → `site/data/` | Validated static public datasets |
 | `site/` → ignored `dist/site/` | Tracked static source → configured deployment artifact |
 
-No database server or frontend framework is required. Scheduled evidence refresh is
-bounded; Puja research is due roughly four times/day, without an automatic Places
-sweep. `develop` is implementation; `main` is production. Releases use owner-approved
+No database server or frontend framework is required. The optional aggregate counter
+uses one SQLite-backed Durable Object; food and Puja serving remain static.
+Scheduled evidence refresh is unchanged. Puja source monitoring is due daily in
+September–October and weekly otherwise, with **zero scheduled Puja LLM calls**.
+Changes wait for review; no automatic Places sweep occurs.
+`develop` is implementation; `main` is production. Releases use owner-approved
 merge commits. [Maintainer guide](docs/MAINTAINER_GUIDE.md) ·
 [Deployment](docs/DEPLOYMENT.md) · [Repository audit](docs/PUBLIC_REPOSITORY_AUDIT.md).
 

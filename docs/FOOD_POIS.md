@@ -13,6 +13,18 @@ dataset paths. Kolkata uses `config/food.yml` in **hybrid** mode; California use
 `config/food-california.yml` in **osm** mode. Google-only and hybrid modes remain
 available for comparison/rollback. Google data is never relabeled OSM.
 
+London, Toronto / GTA and Melbourne also use `osm` mode, with separate config and
+approved public subsets. Current Geofabrik sources are Greater London, Ontario and
+Victoria respectively; Ontario is a parent extract, not a claim of province-wide
+published coverage. Each was downloaded once and filtered to 1,500 m circles around
+the sourced Puja anchors; association remains 600 m. Regional framing never becomes
+a fabricated venue. World map and Near Me use Puja anchors, not restaurant markers.
+
+The 2026-09-22 snapshots yield London336POIs/332named/31distinct named associated,
+Toronto128/128/54, Melbourne34/34/0. Melbourne's school/racecourse catchments are
+sparse at the current radius; zero named matches does not mean no food exists.
+No Google discovery was run for these regions.
+
 Geofabrik Eastern Zone supplies the Kolkata research bbox; Geofabrik California
 supplies the independently mapped California catchments. Raw PBF files and normalized
 operator snapshots stay ignored. The retained California subset covers bounded
@@ -63,12 +75,13 @@ handoff. “No named snapshot listings” is not “no restaurants exist.”
 ## Handoff hierarchy
 
 1. **Verified identity crosswalk:** Google Maps search URL with `api=1`,
-   coordinate `query`, and `query_place_id`.
-2. **No verified identity:** the same documented URL with `query=latitude,longitude`
-   only. This opens the independently sourced OSM location, rather than a broad chain
-   search. It does not assert Google's business identity or guarantee listing details.
+   human-readable `query`, and `query_place_id`.
+2. **Named record without verified identity:** the query retains name, sourced
+   locality and exact OSM coordinates. This preserves identity and local context,
+   but Google may still show multiple results. No exact Google identity is claimed.
+3. **Unnamed location:** coordinate-only query; it is not a named business assertion.
 
-Names stay visible in FoodPath; they are not needed in the coordinate URL. Parameters
+Names remain visible in FoodPath and in named handoff queries. Parameters
 are URL-encoded. Generating/following these links requires no FoodPath API key or
 visitor Places request. [Official URL semantics](https://developers.google.com/maps/documentation/urls/get-started).
 

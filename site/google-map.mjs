@@ -39,7 +39,7 @@ export function boot(win = window, doc = document) {
     info?.close?.();
     map.data.forEach(f => map.data.remove(f));
     map.data.addGeoJson({ type: 'FeatureCollection', features: markers.map(m => ({ type: 'Feature', id: m.id,
-      properties: { kind: m.kind, label: m.label, count: m.count }, geometry: { type: 'Point', coordinates: [m.lng, m.lat] } })) });
+      properties: { kind: m.kind, label: m.label, count: m.count, precision: m.precision }, geometry: { type: 'Point', coordinates: [m.lng, m.lat] } })) });
     focusSelected();
   }
   win.foodpathMapLoaded = () => {
@@ -49,13 +49,15 @@ export function boot(win = window, doc = document) {
         streetViewControl: false, mapTypeControl: false, fullscreenControl: true, clickableIcons: false, gestureHandling: 'cooperative' });
       info = new win.google.maps.InfoWindow();
       markerStyle = feature => ({ visible: doc.getElementById(feature.getProperty('kind') === 'area' ? 'areas-layer' : 'pandals-layer').checked,
-        title: feature.getProperty('label'), icon: { path: feature.getProperty('kind') === 'area' ? win.google.maps.SymbolPath.CIRCLE : 'M 0,-7 7,0 0,7 -7,0 z',
-          scale: feature.getProperty('kind') === 'area' ? 7 : (feature.getId() === selectedId ? 1.5 : 1), fillColor: feature.getProperty('kind') === 'area' ? '#426b7c' : '#a77422', fillOpacity: 1, strokeColor: feature.getId() === selectedId ? '#243536' : '#fff', strokeWeight: feature.getId() === selectedId ? 3 : 2 } });
+        title: feature.getProperty('label'), icon: { path: win.google.maps.SymbolPath.CIRCLE,
+          scale: feature.getProperty('kind') === 'area' ? 7 : (feature.getId() === selectedId ? 9 : 7), fillColor: '#fffaf4', fillOpacity: 1, strokeColor: feature.getProperty('kind') === 'area' ? '#426b7c' : '#b65a42', strokeWeight: feature.getId() === selectedId ? 5 : 4 } });
       map.data.setStyle(markerStyle);
       for (const id of ['areas-layer', 'pandals-layer']) doc.getElementById(id).addEventListener('change', () => map.data.setStyle(markerStyle));
       map.data.addListener('click', event => {
         const feature = event.feature; const content = doc.createElement('div'); const heading = doc.createElement('h3'); heading.textContent = feature.getProperty('label'); content.append(heading);
-        const notice = doc.createElement('p'); notice.textContent = language === 'bn' ? 'এলাকার আনুমানিক অবস্থান। রেস্তরাঁর সুরক্ষা নির্দেশক নয়।' : 'Coarse geographic anchor. Not an establishment address or safety rating.'; content.append(notice);
+        const notice = doc.createElement('p'); notice.textContent = feature.getProperty('precision') === 'venue'
+          ? (language === 'bn' ? 'স্বতন্ত্র উৎসে পাওয়া স্থান। বর্তমান তারিখ ও প্রবেশপথ আয়োজকের কাছে যাচাই করুন।' : 'Independently sourced venue anchor. Check current dates and entrances with the organizer.')
+          : (language === 'bn' ? 'এলাকার আনুমানিক অবস্থান। রেস্তরাঁর সুরক্ষা নির্দেশক নয়।' : 'Approximate geographic anchor, not an exact entrance or safety rating.'); content.append(notice);
         if (feature.getProperty('kind') === 'area') {
           const button = doc.createElement('button'); button.textContent = language === 'bn' ? 'উৎসভিত্তিক নথি দেখুন' : `View ${feature.getProperty('count')} evidence records`;
           button.addEventListener('click', () => notify('foodpath-map-select', { id: feature.getId() })); content.append(button);

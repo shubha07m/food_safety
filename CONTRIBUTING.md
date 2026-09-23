@@ -8,7 +8,8 @@ them with stale development data. See [maintenance](docs/MAINTAINER_GUIDE.md).
 Read [Disclaimer](DISCLAIMER.md), [Methodology](METHODOLOGY.md) and the
 [Code of Conduct](CODE_OF_CONDUCT.md). Useful contributions include:
 
-- Source verification for Puja listings, California community organizers and future
+- Source verification for Puja listings and organizers in Kolkata, California,
+  London, Toronto / GTA, Melbourne and future
   regions; explicitly published venue/year evidence, not unsourced lists.
 - Independent geographic verification with precision and provenance; never guessed
   coordinates or Gemini memory.
@@ -32,6 +33,11 @@ Puja additions require reviewed configuration. Normal Food Safety extraction can
 after objective validation; complex corrections, semantic holds and derived context
 retain explicit maintainer-review requirements. Syndicated copies are not independent
 corroboration.
+
+For annual changes, preserve stable Puja IDs and attach edition-specific date/venue
+evidence. Do not treat a freshness check as review. The selected-Puja report action
+prefills a GitHub issue; contributions remain review-only. Prefer structured source
+extraction before using the explicit bounded model path.
 
 For code, use the project environment, focused changes and synthetic fixtures. Run
 Ruff, Python/frontend tests, schema validation, deterministic build, public-output

@@ -7,6 +7,8 @@ import { resolve } from 'node:path';
 import { setTimeout as delay } from 'node:timers/promises';
 
 const root = resolve(import.meta.dirname, '..');
+const origin = process.env.FOOD_SMOKE_ORIGIN || 'http://127.0.0.1:8000';
+assert.match(origin, /^https?:\/\/127\.0\.0\.1:\d+$/);
 const chrome = '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome';
 assert.ok(existsSync(chrome), 'This optional smoke test requires an already-installed Chrome.');
 const cache = resolve(root, '.cache/browser-smoke');
@@ -17,6 +19,7 @@ const processChrome = spawn(chrome, [
   '--disable-background-networking', '--disable-component-update', '--disable-sync',
   '--disable-extensions', '--disable-breakpad', '--disable-crash-reporter',
   '--disable-domain-reliability', '--metrics-recording-only',
+  ...(origin.startsWith('https:') ? ['--allow-insecure-localhost'] : []),
   '--remote-debugging-port=0', `--user-data-dir=${profile}`,
   `--disk-cache-dir=${cache}/disk`, 'about:blank',
 ], { stdio: 'ignore', env: { ...process.env, TMPDIR: resolve(root, '.cache/tmp'),
@@ -26,7 +29,7 @@ let nextId = 0;
 const requests = new Map();
 const runtimeErrors = [];
 let mapScriptLoads = 0; let placesRequests = 0; let osmRequests = 0;
-let intercept = false; let foodFixture = false;
+let intercept = false; let foodFixture = false; let mapFixture = false;
 const osmFixture = JSON.parse(readFileSync(resolve(root, 'site/data/osm_food.json'), 'utf8'));
 const template = osmFixture.pois.find(p => p.name);
 osmFixture.pois = Array.from({ length: 30 }, (_, i) => ({ ...template,
@@ -65,6 +68,8 @@ fixtureRows[0].last_successful_evidence_check_at = at;
 const fixtureData = { ...original, record_count: 2, records: fixtureRows };
 
 function command(method, params = {}) {
+  if (params.url?.startsWith('http://127.0.0.1:8000')) params = {...params,url:params.url.replace('http://127.0.0.1:8000',origin)};
+  if (params.origin === 'http://127.0.0.1:8000') params = {...params,origin};
   const id = ++nextId;
   return new Promise((resolvePromise, reject) => {
     const timer = setTimeout(() => { requests.delete(id); reject(new Error(`Timeout: ${method}`)); }, 10000);
@@ -74,7 +79,7 @@ function command(method, params = {}) {
 }
 async function evaluate(expression) {
   const result = await command('Runtime.evaluate', { expression, returnByValue: true, awaitPromise: true });
-  if (result.exceptionDetails) throw new Error('Browser evaluation failed');
+  if (result.exceptionDetails) throw new Error('Browser evaluation failed: ' + String(result.exceptionDetails.exception?.description || result.exceptionDetails.text).replace(/AIza[\w-]+/g, '[browser config]'));
   return result.result.value;
 }
 async function waitFor(expression) {
@@ -120,6 +125,12 @@ try {
     if (message.method === 'Runtime.consoleAPICalled' && message.params.type === 'error') runtimeErrors.push(message.params.args.map(arg => arg.description || arg.value));
     if (message.method === 'Fetch.requestPaused') {
       const { requestId, request } = message.params;
+      if (mapFixture && (request.url.includes('/maps-config.json') || request.url.includes('maps.googleapis.com/maps/api/js'))) {
+        const config = request.url.includes('/maps-config.json');
+        const body = config ? JSON.stringify({browser_key:'AIza'+'f'.repeat(35)}) : readFileSync(resolve(root,'tests/fixtures/maps_transport_stub.js'),'utf8');
+        await command('Fetch.fulfillRequest', {requestId,responseCode:200,responseHeaders:[{name:'Content-Type',value:config?'application/json':'text/javascript'}],body:Buffer.from(body).toString('base64')});
+        return;
+      }
       const payload = foodFixture && new URL(request.url).pathname === '/data/osm_food.json'
         ? osmFixture : intercept && new URL(request.url).pathname === '/data/events.json' ? fixtureData : null;
       if (payload) {
@@ -135,6 +146,18 @@ try {
   await command('Page.navigate', { url: 'http://127.0.0.1:8000/' });
   await waitFor(`document.getElementById('metric-events')?.textContent === '${original.record_count}'`);
   await waitFor("document.querySelectorAll('#featured-pandals button').length > 0");
+  if (process.env.FOOD_COUNTER_SMOKE === '1') {
+    await waitFor("!document.getElementById('site-visits').hidden");
+    const count = await evaluate("document.getElementById('site-visits').textContent");
+    await command('Page.reload');
+    await waitFor("!document.getElementById('site-visits').hidden");
+    assert.equal(await evaluate("document.getElementById('site-visits').textContent"),count);
+    await evaluate("sessionStorage.removeItem('foodpath-visit-v1')");
+    await command('Page.reload');
+    await waitFor("!document.getElementById('site-visits').hidden");
+    assert.notEqual(await evaluate("document.getElementById('site-visits').textContent"),count);
+    await waitFor("document.querySelectorAll('#featured-pandals button').length > 0");
+  }
   assert.equal(await evaluate("document.body.classList.contains('puja-route')"), true);
   assert.equal(await evaluate("document.querySelector('.safety-only').hidden"), true);
   assert.equal(await evaluate("document.getElementById('headline').textContent.includes('PUJA')"), true);
@@ -279,7 +302,7 @@ try {
   for (const width of [390, 768, 1440]) {
     await command('Emulation.setDeviceMetricsOverride', { width, height: 1000, deviceScaleFactor: 1, mobile: width < 600 });
     assert.equal(await evaluate('document.documentElement.scrollWidth <= innerWidth'), true);
-    assert.equal(await evaluate("[...document.querySelectorAll('.region-tab')].every(b => b.getBoundingClientRect().height >= 44 && b.getBoundingClientRect().right <= innerWidth)"), true);
+    assert.equal(await evaluate("innerWidth <= 650 ? document.getElementById('region-select').getBoundingClientRect().height >= 44 : [...document.querySelectorAll('.region-tab')].every(b => b.getBoundingClientRect().height >= 44 && b.getBoundingClientRect().right <= innerWidth)"), true);
   }
   await screenshot('california-food-desktop', false);
   await evaluate("document.getElementById('puja').scrollIntoView({block:'start'})");
@@ -295,6 +318,51 @@ try {
   assert.equal(await evaluate("document.getElementById('selected-pandal').hidden"), true);
   assert.equal(await evaluate("document.querySelector('[data-region=kolkata]').getAttribute('aria-selected')"), 'true');
   assert.equal(await evaluate("document.getElementById('food-view-tabs').hidden && document.getElementById('regional-food-discovery').hidden"), true);
+  // Five-region selection reuses the same public state, including sparse catchments.
+  for (const [region, ids] of [['london', ['london-camden','london-bcsc']], ['toronto', ['gta-durba','gta-apcat']], ['melbourne', ['melbourne-melba','melbourne-bsm']]]) {
+    for (const id of ids) {
+      await evaluate(`document.dispatchEvent(new CustomEvent('foodpath-select-pandal',{detail:${JSON.stringify(id)}}))`);
+      await waitFor(`new URL(location.href).searchParams.get('pandal') === '${id}' && !document.getElementById('selected-pandal').hidden`);
+      assert.equal(await evaluate("new URL(location.href).searchParams.get('region')"), region);
+      assert.equal(await evaluate("document.getElementById('region-count').textContent.includes('2 source-backed')"), true);
+      assert.equal(await evaluate("document.getElementById('selected-pandal').textContent.includes('Restaurant on Google Maps')"), false);
+      assert.equal(await evaluate("document.querySelectorAll('#featured-pandals button').length <= 6"), true);
+      assert.equal(await evaluate("document.querySelectorAll('.restaurant-links li').length <= 20"), true);
+      assert.equal(await evaluate("[...document.querySelectorAll('.puja-actions a')].some(a=>a.textContent.includes('Report changed'))"), true);
+      for (const width of [390,768,1440]) {
+        await command('Emulation.setDeviceMetricsOverride', {width,height:1000,deviceScaleFactor:1,mobile:width<600});
+        assert.equal(await evaluate('document.documentElement.scrollWidth <= innerWidth'), true);
+      }
+    }
+    await screenshot(`global-${region}`, false);
+  }
+  assert.equal(await evaluate("[...document.querySelectorAll('.puja-actions a')].some(a=>a.textContent.includes('Directions'))"), false); // Approximate racecourse anchor.
+  await command('Browser.grantPermissions', {origin:'http://127.0.0.1:8000',permissions:['geolocation']});
+  await command('Emulation.setGeolocationOverride', {latitude:51.5423492,longitude:-0.1732779,accuracy:50});
+  await evaluate("document.getElementById('puja-near-me').click()");
+  await waitFor("document.querySelectorAll('#near-me-results button').length > 0");
+  assert.equal(await evaluate("document.querySelector('#near-me-results button').textContent.includes('Camden')"),true);
+  await evaluate("document.querySelector('#near-me-results button').click()");
+  await waitFor("new URL(location.href).searchParams.get('pandal') === 'london-camden'");
+  assert.equal(await evaluate("new URL(location.href).searchParams.get('region')"),'london');
+  assert.equal(await evaluate("location.href.includes('51.542') || JSON.stringify({...localStorage,...sessionStorage}).includes('51.542')"),false);
+  await command('Emulation.setGeolocationOverride', {latitude:0,longitude:0,accuracy:50});
+  await evaluate("document.getElementById('puja-near-me').click()");
+  await waitFor("document.getElementById('near-me-status').textContent.includes('No mapped FoodPath')");
+  await command('Emulation.setGeolocationOverride', {});
+  await evaluate("document.getElementById('puja-near-me').click()");
+  await waitFor("document.getElementById('near-me-status').textContent.includes('Could not obtain')");
+  await command('Browser.setPermission', {origin:'http://127.0.0.1:8000',permission:{name:'geolocation'},setting:'denied'});
+  await evaluate("document.getElementById('puja-near-me').click()");
+  await waitFor("document.getElementById('near-me-status').textContent.includes('permission was not granted')");
+  await evaluate("document.querySelector('[data-map-scope=world]').click()");
+  assert.equal(await evaluate("document.getElementById('map-coverage').textContent.startsWith('24 ')") , true);
+  assert.equal(await evaluate("document.querySelectorAll('#google-map-host iframe').length"),0);
+  assert.equal(await evaluate("[...document.querySelectorAll('[data-safety-context]')].every(n=>n.hidden)"),true);
+  await evaluate("document.querySelector('[data-map-scope=region]').click()");
+  assert.equal(await evaluate("document.getElementById('map-coverage').textContent.startsWith('2 ')") , true);
+  await evaluate("document.dispatchEvent(new CustomEvent('foodpath-select-pandal',{detail:'bagbazar-sarbojanin'}))");
+  await waitFor("new URL(location.href).searchParams.get('region') === 'kolkata'");
   if (foodMode !== 'google') {
     foodFixture = true;
     await command('Fetch.enable', { patterns: [{ urlPattern: '*data/osm_food.json*' }] });
@@ -408,6 +476,29 @@ try {
   await waitFor("document.getElementById('dashboard-view')?.hidden === false && document.querySelector('.record-link') !== null");
   assert.equal(await evaluate("document.body.classList.contains('safety-route')"), true);
   assert.equal(await evaluate("document.getElementById('record-detail').hidden"), true);
+  if (process.env.FOOD_MOCK_GLOBAL_MAP === '1') {
+    intercept = false; mapFixture = true;
+    await command('Fetch.enable',{patterns:[{urlPattern:'*maps-config.json*'},{urlPattern:'*maps.googleapis.com/maps/api/js*'}]});
+    await command('Page.navigate',{url:'http://127.0.0.1:8000/?region=london'});
+    await waitFor("!document.getElementById('load-google-map').hidden && !document.getElementById('load-google-map').disabled && document.getElementById('region-count').textContent.includes('London')");
+    await evaluate("document.querySelector('[data-map-scope=world]').click()");
+    assert.equal(await evaluate("document.querySelectorAll('#google-map-host iframe').length"),0);
+    await evaluate("document.getElementById('load-google-map').click();document.getElementById('load-google-map').click()");
+    await waitFor("(()=>{try{return document.querySelector('#google-map-host iframe')?.contentWindow.__foodpathTestMap?.data.features.length === 24}catch{return false}})()");
+    assert.equal(await evaluate("document.querySelector('#google-map-host iframe').contentWindow.__foodpathMapInstances"),1);
+    assert.equal(await evaluate("document.querySelector('#google-map-host iframe').contentWindow.__foodpathTestMap.data.features.every(f=>f.properties.kind==='pandal')"),true);
+    assert.equal(await evaluate("document.querySelector('#google-map-host iframe').contentWindow.__foodpathTestMap.bounds.length"),24);
+    for (const [id,region] of [['ca-pashchimi','california'],['gta-apcat','toronto'],['melbourne-melba','melbourne'],['london-bcsc','london'],['ekdalia-evergreen-club-durga-puja','kolkata']]) {
+      await evaluate(`(()=>{const w=document.querySelector('#google-map-host iframe').contentWindow;const f=w.__foodpathTestMap.data.features.find(f=>f.id==='pandal-${id}');w.__foodpathTestMap.data.listeners.click({feature:f,latLng:{}});w.__foodpathInfo.content.querySelector('button').click();})()`);
+      await waitFor(`new URL(location.href).searchParams.get('pandal') === '${id}' && new URL(location.href).searchParams.get('region') === '${region}'`);
+      assert.equal(await evaluate("document.querySelector('#google-map-host iframe').contentWindow.__foodpathTestMap.zoom"),14);
+    }
+    await evaluate("document.querySelector('[data-map-scope=region]').click()");
+    await waitFor("document.querySelector('#google-map-host iframe').contentWindow.__foodpathTestMap.data.features.filter(f=>f.properties.kind==='pandal').length === 14");
+    assert.equal(await evaluate("document.querySelector('#google-map-host iframe').contentWindow.__foodpathMapInstances"),1);
+    assert.equal(await evaluate("document.querySelector('#google-map-host iframe').contentDocument.querySelectorAll('script[src*=maps]').length"),1);
+    console.log('Configured browser map transport: synthetic Google fixture; all five world-marker selections passed, one map instance/script.');
+  }
   assert.deepEqual(runtimeErrors, []);
   assert.equal(placesRequests, 0);
   assert.equal(osmRequests, 0);
