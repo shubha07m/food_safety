@@ -1,6 +1,6 @@
 {
   "context_notice": "Independent, non-governmental public-source research. Inclusion is not a finding of wrongdoing. Counts describe records in this tracker, not official totals, prevalence, compliance, risk or group behavior. Read the sources and preserve this context when sharing.",
-  "generated_at": "2026-09-23T13:37:58.091561+00:00",
+  "generated_at": "2026-09-23T18:24:35.320124+00:00",
   "pipeline_version": "0.3.0",
   "record_count": 48,
   "records": [
@@ -6201,11 +6201,17 @@
           "note": "Supporting source context revalidated; original evidence retained.",
           "previous_record_sha256": "96f057a46dc14523dae36895c14b0c2ab7cbd4d8e55cb5ddc01bac69117ae253",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-23T18:24:35.320124Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "d993caf7673fca9778a5067b34be6305c508570707b0c37683b1ff3955c22ead",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-09-22T21:17:07.091471Z",
-      "last_successful_evidence_check_at": "2026-09-22T21:17:07.091471Z",
+      "last_source_checked_at": "2026-09-23T18:24:35.320124Z",
+      "last_successful_evidence_check_at": "2026-09-23T18:24:35.320124Z",
       "llm": {
         "fields_proposed": [],
         "llm_model": null,
@@ -6225,7 +6231,7 @@
       "record_class": "inspection_evidence",
       "record_created_at": "2026-09-09T23:09:01.232782Z",
       "record_scope": "area_operation",
-      "record_updated_at": "2026-09-22T21:17:07.091471Z",
+      "record_updated_at": "2026-09-23T18:24:35.320124Z",
       "related_record_ids": [],
       "reported_fact": {
         "area": "কলকাতা",
@@ -6436,11 +6442,17 @@
           "note": "Supporting source context revalidated; original evidence retained.",
           "previous_record_sha256": "3d9ddbf2ea80f4b9e194d376f72b29cf8c25321d26b9603281c05988cbe2cd94",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-23T18:24:35.320124Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "77277b3c4b55e95bc2f5bd6bd1399c92b58c5906cf6bff534d15acd25d88859a",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-09-23T00:30:34.974799Z",
-      "last_successful_evidence_check_at": "2026-09-23T00:30:34.974799Z",
+      "last_source_checked_at": "2026-09-23T18:24:35.320124Z",
+      "last_successful_evidence_check_at": "2026-09-23T18:24:35.320124Z",
       "llm": {
         "fields_proposed": [
           "area",
@@ -6465,7 +6477,7 @@
       "record_class": "inspection_evidence",
       "record_created_at": "2026-09-11T00:09:16.296804Z",
       "record_scope": "area_operation",
-      "record_updated_at": "2026-09-23T00:30:34.974799Z",
+      "record_updated_at": "2026-09-23T18:24:35.320124Z",
       "related_record_ids": [
         "WBFS-c391d02b3d97"
       ],
@@ -6520,11 +6532,11 @@
           "source_language": "bn",
           "source_publisher": "ABP Ananda",
           "source_relationship": "unknown",
-          "source_revision_id": "60517601ba3d94ad4c050ff3cc3e4e193df020baab8d8c1051e9bcc19b6fe7a1",
+          "source_revision_id": "4cb9629e66918aab2b32210894500dbabbe2636204411a6a6060133599d9826a",
           "source_title": "Food Safety: বনগাঁয় খাদ্য সুরক্ষা দফতরের হানা, বাসি মাংস, খারাপ আলু দেখে স্বেচ্ছায় দোকান বন্ধ রেখে পরিস্কারের নির্দেশ",
           "source_type": "news",
           "source_url": "https://bengali.abplive.com/district/north-24-paraganas/food-safety-authority-raids-bongaoan-restaurant-asks-to-clear-shop-closing-it-1191576",
-          "text_sha256": "60517601ba3d94ad4c050ff3cc3e4e193df020baab8d8c1051e9bcc19b6fe7a1",
+          "text_sha256": "4cb9629e66918aab2b32210894500dbabbe2636204411a6a6060133599d9826a",
           "tier": "B"
         }
       ],
@@ -7011,11 +7023,17 @@
           "note": "Supporting source context revalidated; original evidence retained.",
           "previous_record_sha256": "9981a585187e00ee2b07989214364fd320fdeebbcbe71f70d7589dc6e6c4cd40",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-23T18:24:35.320124Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "eefa31ce5353a29d12c79045ebe30bc304c3d47d40301a990da69fb67063bb80",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-09-22T04:52:38.950631Z",
-      "last_successful_evidence_check_at": "2026-09-22T04:52:38.950631Z",
+      "last_source_checked_at": "2026-09-23T18:24:35.320124Z",
+      "last_successful_evidence_check_at": "2026-09-23T18:24:35.320124Z",
       "llm": {
         "fields_proposed": [
           "area",
@@ -7041,7 +7059,7 @@
       "record_class": "inspection_evidence",
       "record_created_at": "2026-09-11T00:09:16.296804Z",
       "record_scope": "establishment_event",
-      "record_updated_at": "2026-09-22T04:52:38.950631Z",
+      "record_updated_at": "2026-09-23T18:24:35.320124Z",
       "related_record_ids": [],
       "reported_fact": {
         "area": "মধ্যমগ্রামের স্টার মলে",
@@ -7098,11 +7116,11 @@
           "source_language": "bn",
           "source_publisher": "ABP Ananda",
           "source_relationship": "unknown",
-          "source_revision_id": "e4a196c45c0774ac0823cbe722ea4adce4d781e3fbe2fc94931e3d90aa36bd00",
+          "source_revision_id": "6ad216b3713b49babb29451b17c3cba1b3224d4d96fd978f4cf2f6a73412a4a1",
           "source_title": "Food Safety: অ্যাবসোলিউট বারবেকিউ -এর স্টোররুমে পচা মাংস, লাইসেন্স বাতিল রং দে বাসন্তি ধাবার, একাধিক নামী রেস্তরাঁয় শনিবার অভিযান | Rotten meat in Absolute Barbeque's storeroom Rang De Basanti Dhaba license cancelled raids at multiple renowned restaurants",
           "source_type": "news",
           "source_url": "https://bengali.abplive.com/district/rotten-meat-in-absolute-barbeque-s-storeroom-rang-de-basanti-dhaba-license-cancelled-raids-at-multiple-renowned-restaurants-1191753",
-          "text_sha256": "e4a196c45c0774ac0823cbe722ea4adce4d781e3fbe2fc94931e3d90aa36bd00",
+          "text_sha256": "6ad216b3713b49babb29451b17c3cba1b3224d4d96fd978f4cf2f6a73412a4a1",
           "tier": "B"
         }
       ],
@@ -7784,11 +7802,17 @@
           "note": "Supporting source context revalidated; original evidence retained.",
           "previous_record_sha256": "0ce75674488caad85625338d6c1445dbf75c6a1c3ff493328de1313b23987728",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-23T18:24:35.320124Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "296f10bc4fee238c573a4d35ea4cff58edd2ce007066d7837f7bacf3dae2b793",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-09-23T00:30:34.974799Z",
-      "last_successful_evidence_check_at": "2026-09-23T00:30:34.974799Z",
+      "last_source_checked_at": "2026-09-23T18:24:35.320124Z",
+      "last_successful_evidence_check_at": "2026-09-23T18:24:35.320124Z",
       "llm": {
         "fields_proposed": [
           "area",
@@ -7814,7 +7838,7 @@
       "record_class": "inspection_evidence",
       "record_created_at": "2026-09-11T16:27:14.451761Z",
       "record_scope": "establishment_event",
-      "record_updated_at": "2026-09-23T00:30:34.974799Z",
+      "record_updated_at": "2026-09-23T18:24:35.320124Z",
       "related_record_ids": [],
       "reported_fact": {
         "area": "লেকটাউনের",
@@ -7871,11 +7895,11 @@
           "source_language": "bn",
           "source_publisher": "TV9 Bangla",
           "source_relationship": "unknown",
-          "source_revision_id": "9e925018c778070ffdf7dcfb1d0f14a504fd90d439b962efecd852e4cf8dc9f6",
+          "source_revision_id": "418d5778493eec9136aae0ce11fd408277a5340ee5ed5e77030b1811fd3c0490",
           "source_title": "Kolkata Restaurant Raid: কলকাতার নামী বিরিয়ানির দোকানের রান্নাঘরে ভনভন করছে মাছি! তল্লাশিতে আর কী কী মিলল? | Kolkata Food Safety Raid: Popular Lake Town Biryani Restaurant Inspected, Flies Found in Kitchen; Food Samples Sent for Testing | TV9 Bangla News",
           "source_type": "news",
           "source_url": "https://tv9bangla.com/kolkata/kolkata-food-safety-raid-popular-lake-town-biryani-restaurant-inspected-flies-found-in-kitchen-food-samples-sent-for-testing-1345756.html",
-          "text_sha256": "9e925018c778070ffdf7dcfb1d0f14a504fd90d439b962efecd852e4cf8dc9f6",
+          "text_sha256": "418d5778493eec9136aae0ce11fd408277a5340ee5ed5e77030b1811fd3c0490",
           "tier": "B"
         }
       ],
@@ -8071,11 +8095,17 @@
           "note": "Supporting source context revalidated; original evidence retained.",
           "previous_record_sha256": "5bd3d3e2ab23f2f9e0c33ea1fa5df32db9384280285aa7b84b00924d0086b54c",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-23T18:24:35.320124Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "1a71500f86173c5f25f6bcc96864d2955d666cd7e5758408a7f431957bf2d05c",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-09-23T00:30:34.974799Z",
-      "last_successful_evidence_check_at": "2026-09-23T00:30:34.974799Z",
+      "last_source_checked_at": "2026-09-23T18:24:35.320124Z",
+      "last_successful_evidence_check_at": "2026-09-23T18:24:35.320124Z",
       "llm": {
         "fields_proposed": [
           "area",
@@ -8100,7 +8130,7 @@
       "record_class": "inspection_evidence",
       "record_created_at": "2026-09-10T04:39:32.448783Z",
       "record_scope": "district_operation",
-      "record_updated_at": "2026-09-23T00:30:34.974799Z",
+      "record_updated_at": "2026-09-23T18:24:35.320124Z",
       "related_record_ids": [],
       "reported_fact": {
         "area": "বীরভূমের",
@@ -11441,11 +11471,17 @@
           "note": "Supporting source context revalidated; original evidence retained.",
           "previous_record_sha256": "4e367cd0e8a47d495688be882108e0cbff20f3271c7739eb5348c955ab8b9690",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-09-23T18:24:35.320124Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "3b24193bad1077e4bf2cd164b976311a9560b69d27658f917768d481e2b06a46",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-09-23T00:30:34.974799Z",
-      "last_successful_evidence_check_at": "2026-09-23T00:30:34.974799Z",
+      "last_source_checked_at": "2026-09-23T18:24:35.320124Z",
+      "last_successful_evidence_check_at": "2026-09-23T18:24:35.320124Z",
       "llm": {
         "fields_proposed": [
           "area",
@@ -11470,7 +11506,7 @@
       "record_class": "inspection_evidence",
       "record_created_at": "2026-09-11T00:09:16.296804Z",
       "record_scope": "area_operation",
-      "record_updated_at": "2026-09-23T00:30:34.974799Z",
+      "record_updated_at": "2026-09-23T18:24:35.320124Z",
       "related_record_ids": [
         "WBFS-5ee36b93256b"
       ],
@@ -11525,11 +11561,11 @@
           "source_language": "bn",
           "source_publisher": "ABP Ananda",
           "source_relationship": "unknown",
-          "source_revision_id": "60517601ba3d94ad4c050ff3cc3e4e193df020baab8d8c1051e9bcc19b6fe7a1",
+          "source_revision_id": "4cb9629e66918aab2b32210894500dbabbe2636204411a6a6060133599d9826a",
           "source_title": "Food Safety: বনগাঁয় খাদ্য সুরক্ষা দফতরের হানা, বাসি মাংস, খারাপ আলু দেখে স্বেচ্ছায় দোকান বন্ধ রেখে পরিস্কারের নির্দেশ",
           "source_type": "news",
           "source_url": "https://bengali.abplive.com/district/north-24-paraganas/food-safety-authority-raids-bongaoan-restaurant-asks-to-clear-shop-closing-it-1191576",
-          "text_sha256": "60517601ba3d94ad4c050ff3cc3e4e193df020baab8d8c1051e9bcc19b6fe7a1",
+          "text_sha256": "4cb9629e66918aab2b32210894500dbabbe2636204411a6a6060133599d9826a",
           "tier": "B"
         }
       ],
