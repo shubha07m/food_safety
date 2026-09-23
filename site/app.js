@@ -336,3 +336,5 @@ try {
   $('last-update').textContent = 'Status unavailable'; $('last-scan').textContent = 'Status unavailable'; $('dataset-version').textContent = 'Unavailable'; $('run-status').textContent = 'Could not confirm pipeline status.';
   $('search').disabled = true; $('clear-filter').disabled = true;
 }
+import { initVisits } from './visits.mjs';
+initVisits();

@@ -1,5 +1,6 @@
 from datetime import date
 from typing import Literal
+from zoneinfo import ZoneInfo, ZoneInfoNotFoundError
 
 from pydantic import AwareDatetime, BaseModel, ConfigDict, Field, HttpUrl, model_validator
 
@@ -11,7 +12,6 @@ class Strict(BaseModel):
 
 
 class Settings(Strict):
-    refresh_runs_per_day: int = Field(default=4, ge=1, le=10)
     max_sources_per_run: int = Field(default=5, ge=1, le=10)
     max_model_calls_per_run: int = Field(default=3, ge=0, le=5)
     max_candidates_per_source: int = Field(default=30, ge=1, le=50)
@@ -25,6 +25,8 @@ class SourceSpec(Strict):
     enabled: bool = True
     allow_missing_robots: bool = False
     content_selector: str | None = Field(default=None, max_length=160)
+    region_id: ID = "kolkata"
+    reviewed_revision: str | None = Field(default=None, pattern=r"^[a-f0-9]{64}$")
 
 
 class SourceEvidence(Strict):
@@ -34,6 +36,31 @@ class SourceEvidence(Strict):
     publication_date: date | None = None
     quote: str = Field(min_length=1, max_length=600)
     source_revision_id: str | None = Field(default=None, pattern=r"^[a-f0-9]{64}$")
+
+
+class Edition(Strict):
+    """Reviewed annual facts; stable listing identity is kept on PandalRecord."""
+
+    year: int = Field(ge=1900, le=2100)
+    confirmed: bool = False
+    start_date: date | None = None
+    end_date: date | None = None
+    timezone: str
+    venue_reviewed: bool = False
+    reviewed_at: AwareDatetime
+    evidence: list[SourceEvidence] = Field(min_length=1, max_length=10)
+
+    @model_validator(mode="after")
+    def dates(self):
+        try:
+            ZoneInfo(self.timezone)
+        except ZoneInfoNotFoundError as exc:
+            raise ValueError("invalid_event_timezone") from exc
+        if any(d and d.year != self.year for d in (self.start_date, self.end_date)):
+            raise ValueError("edition_date_year_mismatch")
+        if self.end_date and (not self.start_date or self.end_date < self.start_date):
+            raise ValueError("invalid_edition_date_range")
+        return self
 
 
 class PandalRecord(Strict):
@@ -51,6 +78,7 @@ class PandalRecord(Strict):
     venue: str | None = Field(default=None, max_length=200)
     address: str | None = Field(default=None, max_length=300)
     event_dates: str | None = Field(default=None, max_length=160)
+    edition: Edition | None = None
     district: str | None = Field(default=None, min_length=1, max_length=160)
     location_precision: Literal["locality", "source_zone"] = "locality"
     latitude: Latitude | None = None
@@ -67,6 +95,11 @@ class PandalRecord(Strict):
 
     @model_validator(mode="after")
     def provenance(self):
+        if self.edition:
+            if self.year is not None and self.year != self.edition.year:
+                raise ValueError("edition_year_mismatch")
+            if self.edition.venue_reviewed and not (self.venue and self.address):
+                raise ValueError("reviewed_venue_requires_address")
         if self.name.casefold() in {"puja name", "pandal name", "name"}:
             raise ValueError("table_header_is_not_a_pandal")
         if len({a.casefold() for a in self.aliases + [self.name]}) != len(self.aliases) + 1:
@@ -117,6 +150,9 @@ class Candidate(Strict):
     district: SupportedValue | None = None
     organizer: SupportedValue | None = None
     year: SupportedValue | None = None
+    venue: SupportedValue | None = None
+    address: SupportedValue | None = None
+    event_dates: SupportedValue | None = None
     latitude: SupportedValue | None = None
     longitude: SupportedValue | None = None
 
@@ -126,12 +162,20 @@ class Extraction(Strict):
     candidates: list[Candidate] = Field(default_factory=list, max_length=50)
 
 
+class SourceCheck(Strict):
+    source_id: ID
+    url: HttpUrl
+    last_success: AwareDatetime | None = None
+    pending_change: bool = False
+
+
 class PublicData(Strict):
     schema_version: Literal["puja-1"] = "puja-1"
     generated_from: Literal["source_verified_curated_config"] = "source_verified_curated_config"
     record_count: int = Field(ge=0)
     records: list[PandalRecord]
     coverage: dict = Field(default_factory=dict)
+    source_checks: list[SourceCheck] = Field(default_factory=list)
 
     @model_validator(mode="after")
     def count(self):

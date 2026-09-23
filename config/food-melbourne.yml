@@ -1,0 +1,37 @@
+{
+  "provider": "osm",
+  "initial_display_limit": 12,
+  "osm": {
+    "enabled": true,
+    "source_url": "https://download.geofabrik.de/australia-oceania/australia/victoria-latest.osm.pbf",
+    "source_path": "data/osm-runtime/melbourne/source/melbourne.osm.pbf",
+    "dataset": "Geofabrik Melbourne — curated venue catchments",
+    "max_download_bytes": 1500000000,
+    "bbox": {
+      "west": 144.5,
+      "south": -38,
+      "east": 144.8,
+      "north": -37.7
+    },
+    "bbox_basis": "Reviewed venue-anchor envelope with margin; not full regional coverage",
+    "catchment_radius_m": 1500,
+    "categories": {
+      "amenity": [
+        "restaurant",
+        "cafe",
+        "fast_food",
+        "ice_cream",
+        "food_court"
+      ],
+      "shop": [
+        "bakery",
+        "confectionery"
+      ]
+    }
+  },
+  "google_enrichment": {
+    "enabled": false,
+    "pandal_ids": [],
+    "verified_links": []
+  }
+}

@@ -1,4 +1,11 @@
 # Small organizer-sourced catalog; unknown venue locations remain null.
+sources:
+  - {source_id: ca-pashchimi, region_id: california, url: 'https://pashchimi.org/', publisher: Pashchimi, language: en}
+  - {source_id: ca-sanskriti, region_id: california, url: 'https://www.sanskriti.org/', publisher: Sanskriti Bay Area, language: en}
+  - {source_id: ca-agomoni, region_id: california, url: 'https://agomoni.org/durgapuja-2026/', publisher: Agomoni, language: en}
+  - {source_id: ca-basc, region_id: california, url: 'https://bascweb.org/', publisher: Bengali Association of Southern California, language: en}
+  - {source_id: ca-vbc, region_id: california, url: 'https://durga.valleybengali.org/', publisher: Valley Bengali Community, language: en}
+  - {source_id: ca-ankur, region_id: california, url: 'https://www.ankurinc.org/', publisher: Ankur Inc., language: en}
 published:
   - pandal_id: ca-pashchimi
     region_id: california

@@ -33,8 +33,13 @@ export function buildDeployment(root, env = process.env) {
   if (existsSync(destination)) throw new Error('Deployment directory already exists; use a fresh workspace');
   const wrangler = JSON.parse(readFileSync(resolve(root, 'wrangler.jsonc'), 'utf8'));
   if (wrangler.assets?.directory !== './site') throw new Error('Unexpected static asset directory');
+  if (wrangler.main) {
+    if (wrangler.main !== 'worker/visits.mjs') throw new Error('Unexpected worker entry');
+    checkTree(resolve(root, 'worker'), true);
+  }
   mkdirSync(destination);
   cpSync(source, join(destination, 'site'), { recursive: true });
+  if (wrangler.main) cpSync(resolve(root, 'worker'), join(destination, 'worker'), { recursive: true });
   writeFileSync(join(destination, 'site/maps-config.json'), JSON.stringify({ browser_key: key }, null, 2) + '\n');
   writeFileSync(join(destination, 'wrangler.json'), JSON.stringify(wrangler, null, 2) + '\n');
   return destination;

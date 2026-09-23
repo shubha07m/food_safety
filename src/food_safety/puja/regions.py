@@ -28,7 +28,8 @@ class Region(Strict):
     region_id: ID
     label: str
     country_code: str = Field(pattern=r"^[A-Z]{2}$")
-    admin1: str
+    admin1: str | None = None
+    timezone: str | None = None
     default_map_center: Center
     default_map_zoom: int = Field(ge=1, le=16)
     safety_context: bool = False

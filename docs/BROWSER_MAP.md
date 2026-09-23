@@ -1,8 +1,10 @@
 # Optional browser map and configuration delivery
 
-Puja FoodPath uses region-scoped local search and reviewed map anchors. Kolkata
-and California reuse one optional Google map. Food Safety Evidence remains West
-Bengal-only; its area layer is optional in Kolkata and absent in California.
+Puja FoodPath uses region-scoped local search and reviewed map anchors across five
+regions. Selected-region and world scopes reuse one optional Google map. World mode
+contains Puja anchors only, with restrained coral-ring/cream-centre markers.
+Food Safety Evidence remains West Bengal-only; its optional area layer is absent
+outside Kolkata and in world mode.
 Restaurant coordinates are not sent to this map. Food lists are static; see
 [FOOD_POIS.md](FOOD_POIS.md).
 
@@ -55,7 +57,8 @@ The existing hosting build independently receives `GOOGLE_MAPS_BROWSER_KEY` and 
 node scripts/build_deployment.mjs && npx wrangler deploy --config dist/wrangler.json
 ~~~
 
-Only `dist/site/` is deployed. Preserve the current hosting configuration.
+Static assets come only from `dist/site/`. The isolated artifact also includes the
+aggregate-counter Worker and its binding configuration; it never receives operator keys.
 [Deployment](DEPLOYMENT.md) documents verification and rollback.
 `python scripts/stage_generated.py` validates checkout/index; `--stage` uses the
 explicit allowlist. `python scripts/verify_public_output.py` checks tracked output.
@@ -93,8 +96,16 @@ than impose a spending ceiling. Pricing/quota options can change.
 The main page reads local JSON and keeps strict script policy. Only the opt-in
 `google-map.html` document permits required Google endpoints; it validates message
 origin and sending window. Public anchors are rendered as text, never source HTML.
-It loads no Places library, requests no visitor geolocation and is not initialized
+The map document loads no Places library, requests no visitor geolocation and is not initialized
 on record-detail or policy pages.
+
+The parent Puja page has a separate explicit **Find Puja near me** control.
+`Permissions-Policy` allows geolocation only for the same origin; the map document
+explicitly disables it. One browser request per click feeds local Haversine distance
+against published anchors, showing up to five within 100 km. No coordinate is persisted,
+sent to Maps/counter, or put in the URL. Permission denial and unavailable locations
+fall back to region browsing. HTTPS (or loopback development) is required.
+Near Me, world markers, search and food chips share the global-ID selection resolver.
 
 Textual geography, regional search and food lists remain usable without the live map.
 Puja markers appear first; source labels and precision remain visible. Area anchors

@@ -1,0 +1,37 @@
+{
+  "provider": "osm",
+  "initial_display_limit": 12,
+  "osm": {
+    "enabled": true,
+    "source_url": "https://download.geofabrik.de/europe/united-kingdom/england/greater-london-latest.osm.pbf",
+    "source_path": "data/osm-runtime/london/source/london.osm.pbf",
+    "dataset": "Geofabrik London region — curated venue catchments",
+    "max_download_bytes": 1500000000,
+    "bbox": {
+      "west": -0.3,
+      "south": 51.4,
+      "east": 0.15,
+      "north": 51.75
+    },
+    "bbox_basis": "Reviewed venue-anchor envelope with margin; not full regional coverage",
+    "catchment_radius_m": 1500,
+    "categories": {
+      "amenity": [
+        "restaurant",
+        "cafe",
+        "fast_food",
+        "ice_cream",
+        "food_court"
+      ],
+      "shop": [
+        "bakery",
+        "confectionery"
+      ]
+    }
+  },
+  "google_enrichment": {
+    "enabled": false,
+    "pandal_ids": [],
+    "verified_links": []
+  }
+}

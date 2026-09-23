@@ -61,3 +61,17 @@ test('deployment can require explicit configuration without dotenv', t => {
   assert.throws(() => buildDeployment(root, { REQUIRE_BROWSER_MAP_CONFIG: 'true' }), /required/);
   assert.throws(() => buildDeployment(root, { GOOGLE_MAPS_BROWSER_KEY: 'invalid' }), /format/);
 });
+
+test('aggregate worker is packaged outside assets with only declared bindings', t => {
+  const root = fixture(t);
+  mkdirSync(join(root,'worker'));
+  writeFileSync(join(root,'worker/visits.mjs'),'export default {};');
+  const config=JSON.parse(readFileSync('wrangler.jsonc','utf8'));
+  writeFileSync(join(root,'wrangler.jsonc'),JSON.stringify(config));
+  buildDeployment(root,{});
+  assert.ok(existsSync(join(root,'dist/worker/visits.mjs')));
+  assert.ok(!existsSync(join(root,'dist/site/worker/visits.mjs')));
+  assert.deepEqual(config.assets.run_worker_first,['/api/visits']);
+  assert.deepEqual(config.migrations[0].new_sqlite_classes,['VisitCounter']);
+  assert.equal(config.observability.enabled,false);
+});

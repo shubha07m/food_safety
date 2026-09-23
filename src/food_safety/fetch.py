@@ -47,6 +47,12 @@ class PinnedHTTP(http.client.HTTPConnection):
 
 
 class Fetcher:
+    def conditional_headers(self, url):
+        return {}
+
+    def observe_response(self, url, response):
+        """Optional bounded-source monitoring hook; evidence fetches are unchanged."""
+
     def __init__(self, policies, settings):
         self.domains = {p.domain for p in policies if p.enabled and p.tier != "discovery"}
         self.settings = settings
@@ -71,9 +77,11 @@ class Fetcher:
                     "User-Agent": USER_AGENT,
                     "Accept-Encoding": "identity",
                     "Accept": "text/html,text/plain,application/xhtml+xml",
+                    **self.conditional_headers(url),
                 },
             )
             response = connection.getresponse()
+            self.observe_response(url, response)
             if response.status in {301, 302, 303, 307, 308}:
                 if redirects >= 3 or not response.getheader("Location"):
                     raise FetchError("redirect_limit")

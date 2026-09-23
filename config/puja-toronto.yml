@@ -1,0 +1,112 @@
+{
+  "sources": [
+    {
+      "source_id": "gta-durba",
+      "region_id": "toronto",
+      "url": "https://durbafoundation.ca/",
+      "publisher": "Durba Foundation",
+      "language": "en",
+      "allow_missing_robots": true
+    },
+    {
+      "source_id": "gta-apcat",
+      "region_id": "toronto",
+      "url": "https://www.apcatweb.com/",
+      "publisher": "Amar Pujo Cultural Association of Toronto",
+      "language": "en",
+      "allow_missing_robots": true
+    }
+  ],
+  "published": [
+    {
+      "pandal_id": "gta-durba",
+      "region_id": "toronto",
+      "country_code": "CA",
+      "admin1": "Ontario",
+      "metro_region": "Toronto / GTA",
+      "name": "Durba Foundation Durga Puja",
+      "organizer": "Durba Foundation",
+      "city": "Ajax",
+      "area": "Ajax",
+      "venue": "Ajax High School",
+      "address": "105 Bayly St E, Ajax, ON L1S 1P2",
+      "latitude": 43.8440319,
+      "longitude": -79.0136439,
+      "coordinate_source": "https://www.openstreetmap.org/way/36870007",
+      "coordinate_precision": "venue",
+      "featured": true,
+      "last_verified_at": "2026-09-22T18:00:00Z",
+      "sources": [
+        {
+          "source_url": "https://durbafoundation.ca/",
+          "source_title": "Durba Foundation Durga Puja — organizer announcement",
+          "publisher": "Durba Foundation",
+          "quote": "Durga Puja 2026 Please join Us on October 10,11 Venue: AJAX High School 105 Bayly St E, AJAX, ON L1S 1P2"
+        }
+      ],
+      "year": 2026,
+      "edition": {
+        "year": 2026,
+        "confirmed": true,
+        "start_date": "2026-10-10",
+        "end_date": "2026-10-11",
+        "timezone": "America/Toronto",
+        "venue_reviewed": true,
+        "reviewed_at": "2026-09-22T18:00:00Z",
+        "evidence": [
+          {
+            "source_url": "https://durbafoundation.ca/",
+            "source_title": "Durba Foundation Durga Puja — organizer announcement",
+            "publisher": "Durba Foundation",
+            "quote": "Durga Puja 2026 Please join Us on October 10,11 Venue: AJAX High School 105 Bayly St E, AJAX, ON L1S 1P2"
+          }
+        ]
+      }
+    },
+    {
+      "pandal_id": "gta-apcat",
+      "region_id": "toronto",
+      "country_code": "CA",
+      "admin1": "Ontario",
+      "metro_region": "Toronto / GTA",
+      "name": "APCAT Amar Pujo",
+      "organizer": "Amar Pujo Cultural Association of Toronto",
+      "city": "Mississauga",
+      "area": "Mississauga",
+      "venue": "Pearl Banquet Hall",
+      "address": "1638 Aimco Blvd, Mississauga, ON L4W 1V1",
+      "latitude": 43.6417388,
+      "longitude": -79.621564,
+      "coordinate_source": "https://www.openstreetmap.org/way/72380740",
+      "coordinate_precision": "street",
+      "featured": true,
+      "last_verified_at": "2026-09-22T18:00:00Z",
+      "sources": [
+        {
+          "source_url": "https://www.apcatweb.com/",
+          "source_title": "APCAT Amar Pujo — organizer announcement",
+          "publisher": "Amar Pujo Cultural Association of Toronto",
+          "quote": "Oct 17th & 18th, 2026 Pearl Banquet Hall 1638 Aimco Blvd, Mississauga, ON L4W 1V1"
+        }
+      ],
+      "year": 2026,
+      "edition": {
+        "year": 2026,
+        "confirmed": true,
+        "start_date": "2026-10-17",
+        "end_date": "2026-10-18",
+        "timezone": "America/Toronto",
+        "venue_reviewed": true,
+        "reviewed_at": "2026-09-22T18:00:00Z",
+        "evidence": [
+          {
+            "source_url": "https://www.apcatweb.com/",
+            "source_title": "APCAT Amar Pujo — organizer announcement",
+            "publisher": "Amar Pujo Cultural Association of Toronto",
+            "quote": "Oct 17th & 18th, 2026 Pearl Banquet Hall 1638 Aimco Blvd, Mississauga, ON L4W 1V1"
+          }
+        ]
+      }
+    }
+  ]
+}

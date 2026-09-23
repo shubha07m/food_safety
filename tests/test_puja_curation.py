@@ -54,6 +54,11 @@ class FixtureModel:
 
 
 class FixtureFetcher:
+    metadata = {}
+
+    def prepare(self, url, receipt):
+        pass
+
     def __init__(self, html):
         self.html = html
         self.calls = 0
@@ -143,17 +148,16 @@ def test_refresh_due_guard_cache_receipts_and_daily_cap(tmp_path):
     fetcher = FixtureFetcher(f"<article><p>{quote}</p></article>")
     model = FixtureModel(payload(quote))
     at = datetime(2026, 9, 16, tzinfo=UTC)
-    assert refresh(tmp_path, at, fetcher, model)["model_calls"] == 1
+    assert refresh(tmp_path, at, fetcher, model)["model_calls"] == 0
     assert refresh(tmp_path, at + timedelta(hours=2), fetcher, model)["status"] == "not_due"
     # Simulate an ephemeral runner without private model/source caches.
     shutil.rmtree(tmp_path / ".cache/puja")
-    result = refresh(tmp_path, at + timedelta(hours=6), fetcher, model)
+    result = refresh(tmp_path, at + timedelta(days=1), fetcher, model)
     assert result["unchanged"] == 1 and result["model_calls"] == 0
-    assert model.calls == 1
+    assert model.calls == 0
     state = json.loads((tmp_path / "data/puja_refresh.json").read_text())
-    state["runs_today"] = 10
-    (tmp_path / "data/puja_refresh.json").write_text(json.dumps(state))
-    assert refresh(tmp_path, at + timedelta(hours=12), fetcher, model)["status"] == "not_due"
+    assert all(s["pending_change"] for s in state["sources"].values())
+    assert refresh(tmp_path, at + timedelta(hours=26), fetcher, model)["status"] == "not_due"
 
 
 def test_catalog_search_records_need_no_coordinates_and_stats_match(tmp_path):
@@ -196,17 +200,17 @@ def test_source_table_header_cannot_be_published():
         PandalRecord.model_validate(record)
 
 
-def test_refresh_settings_reject_more_than_ten_runs():
+def test_refresh_settings_keep_bounded_source_batches():
     import pytest
 
     from food_safety.puja.models import Settings
 
-    assert Settings().refresh_runs_per_day == 4
+    assert Settings().max_sources_per_run == 5
     with pytest.raises(ValueError):
-        Settings(refresh_runs_per_day=11)
+        Settings(max_sources_per_run=11)
 
 
-def test_refresh_missing_credentials_does_not_mark_source_as_attempted(tmp_path, monkeypatch):
+def test_monitor_needs_no_model_and_tracks_http_separately(tmp_path, monkeypatch):
     from datetime import UTC, datetime
 
     from food_safety.puja.pipeline import refresh
@@ -218,7 +222,10 @@ def test_refresh_missing_credentials_does_not_mark_source_as_attempted(tmp_path,
     result = refresh(tmp_path, datetime(2026, 9, 16, tzinfo=UTC), fetcher)
     assert result["model_calls"] == 0
     state = json.loads((tmp_path / "data/puja_refresh.json").read_text())
-    assert state["source_revisions"] == {}
+    assert all(
+        s["last_success"] and s["extraction_status"] == "not_requested"
+        for s in state["sources"].values()
+    )
 
 
 def test_refresh_quota_failure_stops_and_is_not_retried_unchanged(tmp_path):
@@ -234,7 +241,7 @@ def test_refresh_quota_failure_stops_and_is_not_retried_unchanged(tmp_path):
     setup_project(tmp_path)
     at = datetime(2026, 9, 16, tzinfo=UTC)
     fetcher = FixtureFetcher("<article><p>Bagbazar Sarbojanin in Kolkata.</p></article>")
-    assert refresh(tmp_path, at, fetcher, QuotaModel())["model_calls"] == 1
+    assert refresh(tmp_path, at, fetcher, QuotaModel())["model_calls"] == 0
     assert refresh(tmp_path, at + timedelta(hours=6), fetcher, QuotaModel())["model_calls"] == 0
 
 

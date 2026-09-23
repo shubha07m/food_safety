@@ -4,6 +4,7 @@ import { text } from './foodpath-copy.mjs';
 import { combineFood, publicFood, foodGeography, pandalFoodURL, INITIAL_FOOD_LIMIT } from './nearby-food.mjs';
 import { parseRegions, regionFromURL, scopeFood, regionURL } from './regions.mjs';
 import { regionalSearches, foodView } from './regional-food.mjs';
+import { initNearMe, resolvePuja, addPujaActions } from './global-puja.mjs';
 
 const validID = value => typeof value === 'string' && /^[A-Za-z0-9_-]{1,255}$/.test(value);
 export const normalize = value => String(value || '').normalize('NFC').toLocaleLowerCase().trim().replace(/\s+/g, ' ');
@@ -133,13 +134,14 @@ export async function initPuja(onData = () => {}) {
       fetch('data/regions.json', { credentials: 'omit' }),
     ]);
     if (!response.ok || !catalogResponse.ok || !regionResponse.ok) throw Error('Unavailable');
-    const allData = parsePlaces(await response.json(), await catalogResponse.json());
+    const catalog = await catalogResponse.json();
+    const allData = parsePlaces(await response.json(), catalog);
     const registry = parseRegions(await regionResponse.json());
     let region = regionFromURL(location.search, registry);
     let data = scopeFood(allData, region, registry.default_region);
     // Missing optional provider files preserve the existing Google-only contract.
     const optional = async path => { try { const r = await fetch(path, { credentials: 'omit' }); return r.ok ? await r.json() : null; } catch { return null; } };
-    const loaded = new Map(); let generation = 0;
+    const loaded = new Map(); let generation = 0; let selectionRequest = 0;
     let matches = []; let active = -1;
     const viewTabs = document.getElementById('food-view-tabs');
     function setFoodView(view, navigate = false) {
@@ -174,10 +176,11 @@ export async function initPuja(onData = () => {}) {
       const heading = el('h3', input.value); heading.id = 'selected-pandal-title'; heading.tabIndex = -1;
       selected.append(heading, el('p', `${p.name_bn && language !== 'bn' ? `${p.name_bn} · ` : ''}${p.neighborhood || p.area} · ${p.city || ''}`, 'pandal-area'));
       if (p.location_precision === 'source_zone') selected.append(el('p', text('Location is the directory’s broad zone, not a verified street address.')));
-      if (p.year) selected.append(el('p', `${text('Source listing year')}: ${p.year}. ${text('This does not confirm this year’s venue or opening times.')}`, 'fine-print'));
+      if (p.year && !p.edition?.confirmed) selected.append(el('p', `${text('Source listing year')}: ${p.year}. ${text('This does not confirm this year’s venue or opening times.')}`, 'fine-print'));
       if (p.subtitle) selected.append(el('p', p.subtitle, 'pandal-subtitle'));
       if (p.venue || p.address) selected.append(el('p', [p.venue, p.address].filter(Boolean).join(' · '), 'pandal-area'));
       if (p.event_dates) selected.append(el('p', p.event_dates, 'fine-print'));
+      addPujaActions(selected, p, catalog.source_checks, language === 'bn');
       const mapReady = Number.isFinite(p.latitude) && Number.isFinite(p.longitude);
       if (!mapReady) selected.append(el('p', text('Map location is not yet independently verified.'), 'notice'));
       else if (p.coordinate_precision === 'street' || p.coordinate_precision === 'neighborhood') selected.append(el('p', text('Map location is an independently sourced approximate anchor.'), 'notice'));
@@ -201,7 +204,7 @@ export async function initPuja(onData = () => {}) {
       matches.forEach((p, i) => {
         const option = el('li'); option.id = `pandal-option-${i}`; option.setAttribute('role', 'option'); option.setAttribute('aria-selected', 'false');
         option.append(el('strong', p.name), el('span', `${p.name_bn || ''} · ${p.area}`));
-        option.addEventListener('pointerdown', e => e.preventDefault()); option.addEventListener('click', () => select(p)); options.append(option);
+        option.addEventListener('pointerdown', e => e.preventDefault()); option.addEventListener('click', () => selectGlobal(p.pandal_id)); options.append(option);
       });
       options.hidden = !matches.length; input.setAttribute('aria-expanded', String(!!matches.length)); input.removeAttribute('aria-activedescendant');
       status.textContent = matches.length ? (language === 'bn' ? `${matches.length}টি ফল দেখানো হচ্ছে। তিরচিহ্ন ও Enter ব্যবহার করুন।` : `${matches.length} matches shown. Use arrow keys and Enter to select.`) : text('No matching pandals. Try another name or area.');
@@ -214,11 +217,14 @@ export async function initPuja(onData = () => {}) {
         [...options.children].forEach((li, i) => li.setAttribute('aria-selected', String(i === active)));
         if (active >= 0) { input.setAttribute('aria-activedescendant', options.children[active].id); options.children[active].scrollIntoView({ block: 'nearest' }); }
       }
-      if (e.key === 'Enter' && !options.hidden && matches.length) { e.preventDefault(); select(matches[Math.max(0, active)]); }
+      if (e.key === 'Enter' && !options.hidden && matches.length) { e.preventDefault(); selectGlobal(matches[Math.max(0, active)].pandal_id); }
     });
     input.addEventListener('blur', close);
     const tabs = document.getElementById('region-tabs');
+    const compact = document.getElementById('region-select');
+    compact.addEventListener('change', () => { const next = registry.regions.find(r => r.region_id === compact.value); if (next) changeRegion(next, true); });
     for (const item of registry.regions) {
+      const option = el('option', text(item.label)); option.value = item.region_id; compact.append(option);
       const button = el('button', text(item.label), 'region-tab'); button.type = 'button'; button.dataset.region = item.region_id;
       button.setAttribute('role', 'tab');
       button.setAttribute('aria-controls', 'puja-discovery');
@@ -250,16 +256,17 @@ export async function initPuja(onData = () => {}) {
       for (const p of picks) {
         const card = el('article', null, 'pandal-card'); card.append(el('p', `${p.area} · ${p.city || region.admin1}`, 'eyebrow'), el('h4', language === 'bn' && p.name_bn ? p.name_bn : p.name));
         if (p.subtitle) card.append(el('p', p.subtitle));
-        const button = el('button', text('Explore nearby food'), 'button secondary'); button.type = 'button'; button.addEventListener('click', () => { select(p); selected.scrollIntoView({ block: 'nearest' }); document.getElementById('selected-pandal-title').focus({ preventScroll: true }); }); card.append(button); featured.append(card);
+        const button = el('button', text('Explore nearby food'), 'button secondary'); button.type = 'button'; button.addEventListener('click', () => selectGlobal(p.pandal_id)); card.append(button); featured.append(card);
       }
       status.textContent = language === 'bn' ? `${data.pandals.length}টি উৎসসমর্থিত মণ্ডপ। নাম বা এলাকা লিখে খুঁজুন।` : `${data.pandals.length} source-backed pandals. Search by name or area; this is not a complete directory.`;
       document.getElementById('region-count').textContent = `${text(region.label)} · ${data.pandals.length} ${text('source-backed Puja listings')}`;
       if (!geography.children.length) geography.append(el('p', text('Verified locations for this region are not yet available.')));
-      onData(data.pandals, region);
+      onData(data.pandals, region, allData.pandals);
       const p = data.pandals.find(p => p.pandal_id === new URLSearchParams(location.search).get('pandal'));
       if (p) select(p, false);
     }
-    async function changeRegion(next, navigate = false) {
+    async function changeRegion(next, navigate = false, fromSelection = false) {
+      if (!fromSelection) selectionRequest++;
       const run = ++generation; region = next; close(); matches = []; input.value = ''; input.disabled = true;
       selected.hidden = true; selected.replaceChildren();
       document.getElementById('featured-pandals').replaceChildren(); document.getElementById('festival-food-entries').replaceChildren();
@@ -279,7 +286,8 @@ export async function initPuja(onData = () => {}) {
       setFoodView(foodView(location.search, region));
       document.getElementById('puja-discovery').setAttribute('aria-busy', 'true');
       document.dispatchEvent(new CustomEvent('foodpath-focus-pandal', { detail: null }));
-      onData(data.pandals, region);
+      onData(data.pandals, region, allData.pandals);
+      compact.value = region.region_id;
       tabs.querySelectorAll('button').forEach(b => { const active = b.dataset.region === region.region_id; b.setAttribute('aria-selected', String(active)); b.tabIndex = active ? 0 : -1; });
       status.textContent = text('Loading curated pandals…');
       if (!loaded.has(region.region_id)) loaded.set(region.region_id, (async () => {
@@ -296,10 +304,19 @@ export async function initPuja(onData = () => {}) {
       finally { if (run === generation) document.getElementById('puja-discovery').setAttribute('aria-busy', 'false'); }
     }
     await changeRegion(region);
+    async function selectGlobal(id) {
+      const request = ++selectionRequest;
+      const resolved = resolvePuja(allData.pandals, registry.regions, id, registry.default_region);
+      if (!resolved) return;
+      if (resolved.region.region_id !== region.region_id) await changeRegion(resolved.region, true, true);
+      else if (input.disabled) { try { await loaded.get(region.region_id); } catch { return; } }
+      if (request !== selectionRequest || region.region_id !== resolved.region.region_id) return;
+      select(resolved.pandal); selected.scrollIntoView({ block: 'start' }); document.getElementById('selected-pandal-title').focus({ preventScroll: true });
+    }
+    initNearMe(allData.pandals, selectGlobal, { bn: language === 'bn' });
     window.addEventListener('popstate', () => changeRegion(regionFromURL(location.search, registry)));
     document.addEventListener('foodpath-select-pandal', event => {
-      const p = data.pandals.find(p => p.pandal_id === event.detail);
-      if (p) { select(p); selected.scrollIntoView({ block: 'start' }); document.getElementById('selected-pandal-title').focus({ preventScroll: true }); }
+      selectGlobal(event.detail);
     });
   } catch { input.disabled = true; status.textContent = text('Pandal data is unavailable. Please try again later.'); }
 }

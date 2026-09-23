@@ -450,3 +450,18 @@ html[lang=bn] .eyebrow, html[lang=bn] .status-strip { letter-spacing: normal; }
 .lifecycle-metrics { display: grid; grid-template-columns: repeat(auto-fit, minmax(145px, 1fr)); gap: 1rem; }
 .lifecycle-metrics dd { margin: .4rem 0; font-size: 1.8rem; font-weight: 700; }
 .source-warning { color: var(--source-warning); border-left: 3px solid currentColor; padding: .6rem; background: #fff6df; }
+:root { --global-accent: #a54d3c; }
+.puja-actions,.map-scopes { display:flex; flex-wrap:wrap; gap:.65rem; margin:1rem 0; }
+.puja-actions .fine-print { flex-basis:100%; overflow-wrap:anywhere; }
+.map-scopes { padding:0 1rem; }
+.map-scopes [aria-pressed="true"] { border-color:var(--global-accent); box-shadow:inset 0 -2px var(--global-accent); }
+.near-me { margin:.8rem 0 1.2rem; }
+.near-me-results { display:flex; flex-wrap:wrap; gap:.5rem; padding:0; list-style:none; }
+.region-compact { display:none; }
+@media(max-width:650px) {
+  #region-tabs { display:none; }
+  .region-compact { display:block; margin:.8rem 0; font-weight:600; }
+  .region-compact select { display:block; width:100%; min-height:44px; padding:.6rem; color:inherit; background:#f2f9fb; border:1px solid #8aabad; border-radius:.7rem; }
+  .puja-actions { align-items:stretch; }
+  .puja-actions .button { flex:1 1 180px; }
+}

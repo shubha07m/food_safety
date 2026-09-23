@@ -8,7 +8,7 @@ Private extraction/diagnostic artifacts stay under ignored `.cache/llm_eval/`; d
 
 The project keeps static deployment. Community intake is an outbound link to a validated HTTPS Google Forms URL, never an embedded public write endpoint. Submitted URLs must separately pass publisher admission and SSRF controls. The optional local CSV importer retains only an allowed source URL and submission type; no raw form response, contact, or reviewer note is public. Retry-After and host failure limits prevent aggressive retries; no anti-bot/TLS bypass is allowed. A source warning never relaxes new-record admission. develop cannot dispatch production ingestion; hosting remains unchanged.
 
-The public site is static HTML/CSS/JavaScript and generated public JSON. There is no public admin endpoint, database write API, login, executable submission content, comments, arbitrary upload or SQL backend. Only the isolated dist/site/ artifact may be deployed after review; tracked site/ is its validated source with blank browser configuration. Never serve the repository root: it contains private pending/history/configuration.
+The public discovery/evidence site is static HTML/CSS/JavaScript and generated JSON. Its only application write route is an empty-payload aggregate visit increment, backed by one SQLite Durable Object; no public arbitrary database, admin, login, upload or publication API exists. Only isolated deployment assets and the explicitly packaged counter Worker may be deployed after review. Tracked site/ remains validated source with blank browser configuration. Never serve the repository root: it contains private pending/history/configuration.
 
 ## Safeguards
 
@@ -21,6 +21,16 @@ Cloudflare _headers supplies CSP, frame-ancestors none, nosniff, no-referrer, re
 Dependencies are pinned and CI includes a lightweight audit. Dependabot proposes updates. Actions use immutable SHAs. PR validation has read-only contents permission and does not receive model keys, run a crawler or consume provider quota. Refresh Food Safety Data runs approximately every two hours or by authenticated manual dispatch. Only that job has contents-write permission; it commits an explicit public-artifact allowlist after tests and validation. It does not upload private queues or snapshots. There is no push-triggered source scan or public refresh endpoint.
 
 ## Regional food and runtime boundaries
+
+Geolocation is allowed for same-origin only and requested on explicit Near Me clicks;
+the map iframe disables it. Coordinates remain in page memory. Counter requests
+contain no location/identity payload and persist aggregate/time buckets only. Origin,
+Fetch-Site, method/body validation and global write limits reduce accidental/cross-site
+abuse, not determined direct-client abuse or all request billing. Failure is nonblocking.
+Review the actual hosting plan before deployment; [counter controls](docs/VISIT_COUNTER.md).
+
+Scheduled Puja monitoring has no model environment and never invokes extraction.
+HTTP availability, revision review and annual venue/date evidence remain separate.
 
 OSM snapshots are imported by operators; visitors read static regional subsets. Google ID-only suggestions remain in ignored revision-keyed caches. A single result is not identity proof, and only explicit verified crosswalks may add public place-ID handoffs. Regional food-search links are validated keyless URLs, not provider responses or restaurant records. No page action invokes Places or OSM APIs.
 

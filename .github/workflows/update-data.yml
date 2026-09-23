@@ -53,10 +53,8 @@ jobs:
           python -m food_safety.cli update --max-articles 20 || result=$?
           # Partial source failure (2) retains validated suspensions; fatal (1) stops.
           test "$result" -eq 0 -o "$result" -eq 2
-      - name: Due-only Puja source research (four runs per day)
+      - name: Due-only Puja source checks (daily Sep–Oct, weekly otherwise)
         if: github.event_name != 'push' && inputs.release_only != true
-        env:
-          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
         run: python -m food_safety.cli puja refresh
       - name: Check candidate output
         env:

@@ -25,6 +25,12 @@ private operator values. Deploy only that isolated artifact.
 Source snapshots, raw provider responses, local notes, caches and operational ledgers
 must stay ignored. Public JSON retains only its allowed provenance/data contract.
 
+Small Puja monitoring receipts are an explicit public-data exception: source URL,
+HTTP validators, hashes and check/review status only, never raw source pages or model
+output. Counter state is runtime aggregate-only storage outside Git. Its Worker is
+packaged beside—not inside—public assets. Near Me must not persist or transmit user
+coordinates. Review counter/body tests and the actual deployment plan before release.
+
 ## GitHub-managed pull refs
 
 Retained `refs/pull/*` are server-managed contribution metadata. Their existence is

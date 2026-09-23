@@ -1,0 +1,94 @@
+{
+  "sources": [
+    {
+      "source_id": "london-camden",
+      "region_id": "london",
+      "url": "https://www.londonpuja.co.uk/",
+      "publisher": "London Durgotsav Committee",
+      "language": "en",
+      "allow_missing_robots": true
+    },
+    {
+      "source_id": "london-bcsc",
+      "region_id": "london",
+      "url": "https://bengali-cultural-social-club.org.uk/london-durga-puja-schedule",
+      "publisher": "Bengali Cultural & Social Club",
+      "language": "en",
+      "allow_missing_robots": true
+    }
+  ],
+  "published": [
+    {
+      "pandal_id": "london-camden",
+      "region_id": "london",
+      "country_code": "GB",
+      "admin1": "England",
+      "metro_region": "London region",
+      "name": "Camden Durga Puja",
+      "organizer": "London Durgotsav Committee",
+      "city": "London",
+      "area": "London",
+      "venue": "Swiss Cottage Library",
+      "address": "88 Avenue Road, London NW3 3HA",
+      "latitude": 51.5423492,
+      "longitude": -0.1732779,
+      "coordinate_source": "https://www.openstreetmap.org/way/124266830",
+      "coordinate_precision": "venue",
+      "featured": true,
+      "last_verified_at": "2026-09-22T18:00:00Z",
+      "sources": [
+        {
+          "source_url": "https://www.londonpuja.co.uk/",
+          "source_title": "Camden Durga Puja — organizer announcement",
+          "publisher": "London Durgotsav Committee",
+          "quote": "Swiss Cottage Library 88 Avenue Road, London NW3 3HA"
+        }
+      ]
+    },
+    {
+      "pandal_id": "london-bcsc",
+      "region_id": "london",
+      "country_code": "GB",
+      "admin1": "England",
+      "metro_region": "London region",
+      "name": "BCSC London Durga Puja",
+      "organizer": "Bengali Cultural & Social Club",
+      "city": "London",
+      "area": "London",
+      "venue": "Swaminarayan Sports World",
+      "address": "Blake Hall Road, London E11 2QW",
+      "latitude": 51.5682309,
+      "longitude": 0.0254103,
+      "coordinate_source": "https://www.openstreetmap.org/way/225631251",
+      "coordinate_precision": "venue",
+      "featured": true,
+      "last_verified_at": "2026-09-22T18:00:00Z",
+      "sources": [
+        {
+          "source_url": "https://bengali-cultural-social-club.org.uk/london-durga-puja-schedule",
+          "source_title": "BCSC London Durga Puja — organizer announcement",
+          "publisher": "Bengali Cultural & Social Club",
+          "quote": "Friday 16th Oct 2026 Tuesday 20th Oct 2026 Swaminarayan Sports World, Blake Hall Road, London, E11 2QW"
+        }
+      ],
+      "year": 2026,
+      "edition": {
+        "year": 2026,
+        "confirmed": true,
+        "start_date": "2026-10-16",
+        "end_date": "2026-10-20",
+        "timezone": "Europe/London",
+        "venue_reviewed": true,
+        "reviewed_at": "2026-09-22T18:00:00Z",
+        "evidence": [
+          {
+            "source_url": "https://bengali-cultural-social-club.org.uk/london-durga-puja-schedule",
+            "source_title": "BCSC London Durga Puja — organizer announcement",
+            "publisher": "Bengali Cultural & Social Club",
+            "quote": "Friday 16th Oct 2026 Tuesday 20th Oct 2026 Swaminarayan Sports World, Blake Hall Road, London, E11 2QW"
+          }
+        ]
+      }
+    }
+  ]
+}

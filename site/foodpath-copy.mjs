@@ -1,6 +1,9 @@
 import { bn, language } from './locale.mjs';
 
 const copy = {
+  'Find Puja near me': 'কাছাকাছি পুজো খুঁজুন',
+  'Optional location permission · calculated here, never stored or sent.': 'অবস্থানের অনুমতি ঐচ্ছিক · হিসাব এখানেই, সংরক্ষণ বা পাঠানো হয় না।',
+  'Puja region': 'পুজোর অঞ্চল',
   'Puja & nearby food': 'পুজো ও কাছাকাছি খাবার',
   'Bengali food': 'বাঙালি খাবার',
   'Bengali food in California': 'ক্যালিফোর্নিয়ায় বাঙালি খাবার',

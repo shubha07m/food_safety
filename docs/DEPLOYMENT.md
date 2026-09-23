@@ -16,7 +16,11 @@ configuration only into that deployment artifact:
 node scripts/build_deployment.mjs && npx wrangler deploy --config dist/wrangler.json
 ~~~
 
-The generated Wrangler file derives existing settings and points at the artifact.
+The generated Wrangler file derives reviewed settings and points at the artifact.
+It includes a small aggregate-only counter Worker, one SQLite-backed Durable Object,
+and asset-first routing; only `/api/visits` explicitly invokes the Worker first.
+No catalog, restaurant or source-fetch API is added. The deployment copies `worker/`
+outside the public asset directory. See [counter setup and plan checks](VISIT_COUNTER.md).
 The hosting build must independently receive `GOOGLE_MAPS_BROWSER_KEY`; Actions
 environment values do not transfer to it. `REQUIRE_BROWSER_MAP_CONFIG=true` requires
 configuration. Neither private operator key belongs in public output. No Python build,
@@ -39,9 +43,17 @@ python scripts/check_deployment.py
 ~~~
 
 Runtime verification needs the same environment used to build that artifact. Check
-HTTPS and response policies on the live domain, then Kolkata/California, English/Bengali,
+HTTPS and response policies on the live domain, then all five regions, English/Bengali,
 food handoffs, optional live map, Food Safety, record details and corrections.
 Ordinary local `site/` serving deliberately uses the map fallback.
+
+Before the first counter deployment, the owner must confirm the Workers plan and
+SQLite Durable Object availability/quota. The `visits-v1` migration creates the
+aggregate binding on an approved deployment; local development and `--dry-run` do
+not provision it. Do not enable a paid plan merely for the counter. On Free, exhausted
+allowances should fail the counter rather than create overage charges; static pages
+must remain usable. On Paid, request/compute/storage overages are possible, including
+abusive traffic. Source code caps writes, not all incoming requests or account billing.
 
 ## Rollback and operations
 
