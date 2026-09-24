@@ -51,7 +51,7 @@
     "ca-vbc": {
       "error": "FetchError",
       "extraction_status": "not_requested",
-      "last_attempt": "2026-09-23T05:24:15.089892+00:00",
+      "last_attempt": "2026-09-24T21:30:23.539930+00:00",
       "last_reviewed_revision": null,
       "status": "unavailable",
       "url": "https://durga.valleybengali.org/"
@@ -107,21 +107,22 @@
     },
     "london-bcsc": {
       "content_hash": "a5cda8c307948fd65c3045fa290206814c332e24acb18361ef0d787b67ebe720",
+      "error": "FetchError",
       "etag": "W/\"196-1790089134;gz\"",
       "extraction_status": "not_requested",
-      "last_attempt": "2026-09-23T05:24:15.089892+00:00",
+      "last_attempt": "2026-09-24T21:30:23.539930+00:00",
       "last_reviewed_revision": null,
       "last_success": "2026-09-23T05:24:15.089892+00:00",
       "pending_change": true,
-      "status": "checked",
+      "status": "unavailable",
       "url": "https://bengali-cultural-social-club.org.uk/london-durga-puja-schedule"
     },
     "london-camden": {
-      "content_hash": "57362cdcf8d485e9cade7887c217cb013da1c126c3094f163d5d2a00a1a3e492",
+      "content_hash": "2082bc95c2a779bc1a7a0d26072aa0ae8dfccf1372bdd17d14bdac261473a04c",
       "extraction_status": "not_requested",
-      "last_attempt": "2026-09-23T05:24:15.089892+00:00",
+      "last_attempt": "2026-09-24T21:30:23.539930+00:00",
       "last_reviewed_revision": null,
-      "last_success": "2026-09-23T05:24:15.089892+00:00",
+      "last_success": "2026-09-24T21:30:23.539930+00:00",
       "pending_change": true,
       "status": "checked",
       "url": "https://www.londonpuja.co.uk/"
@@ -130,20 +131,20 @@
       "content_hash": "d2bfae9354454b19fa92aaeed97dbdab2167a1b58e613d44ea0c90aa58fe3341",
       "etag": "\"6f4a51454276ff629fc04541298b3c6c\"",
       "extraction_status": "not_requested",
-      "last_attempt": "2026-09-23T05:24:15.089892+00:00",
+      "last_attempt": "2026-09-24T21:30:23.539930+00:00",
       "last_modified": "Sun, 20 Sep 2026 07:14:34 GMT",
       "last_reviewed_revision": null,
-      "last_success": "2026-09-23T05:24:15.089892+00:00",
+      "last_success": "2026-09-24T21:30:23.539930+00:00",
       "pending_change": true,
       "status": "checked",
       "url": "https://bsm.org.au/events/durgotsav"
     },
     "melbourne-melba": {
-      "content_hash": "aa1ec143c66a39c61eec24f10babf2c529e08f6fbb139f93464bedca8e750a56",
+      "content_hash": "44e7cfb2d70a5632d9af0608e027cde4904ce0fe8e29d8ded47daad0259d3c26",
       "extraction_status": "not_requested",
-      "last_attempt": "2026-09-23T05:24:15.089892+00:00",
+      "last_attempt": "2026-09-24T21:30:23.539930+00:00",
       "last_reviewed_revision": null,
-      "last_success": "2026-09-23T05:24:15.089892+00:00",
+      "last_success": "2026-09-24T21:30:23.539930+00:00",
       "pending_change": true,
       "status": "checked",
       "url": "https://www.melba.org.au/"
