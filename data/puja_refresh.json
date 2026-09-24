@@ -3,20 +3,21 @@
   "sources": {
     "ca-agomoni": {
       "content_hash": "082a584f50e5ad4a7d417ae67a70c04169b4db85439d01b2bae8fda09e74d143",
+      "error": "TimeoutError",
       "extraction_status": "not_requested",
-      "last_attempt": "2026-09-23T05:23:02.468655+00:00",
+      "last_attempt": "2026-09-24T17:09:01.862959+00:00",
       "last_reviewed_revision": null,
       "last_success": "2026-09-23T05:23:02.468655+00:00",
       "pending_change": true,
-      "status": "checked",
+      "status": "unavailable",
       "url": "https://agomoni.org/durgapuja-2026/"
     },
     "ca-ankur": {
       "content_hash": "7d28d9ffd2fdf2aff68240f661b0d577f9d41291459ff02a588e7c2b3c945b3e",
       "extraction_status": "not_requested",
-      "last_attempt": "2026-09-23T05:23:02.468655+00:00",
+      "last_attempt": "2026-09-24T17:09:01.862959+00:00",
       "last_reviewed_revision": null,
-      "last_success": "2026-09-23T05:23:02.468655+00:00",
+      "last_success": "2026-09-24T17:09:01.862959+00:00",
       "pending_change": true,
       "status": "checked",
       "url": "https://www.ankurinc.org/"
@@ -24,17 +25,17 @@
     "ca-basc": {
       "error": "FetchError",
       "extraction_status": "not_requested",
-      "last_attempt": "2026-09-23T05:23:02.468655+00:00",
+      "last_attempt": "2026-09-24T17:09:01.862959+00:00",
       "last_reviewed_revision": null,
       "status": "unavailable",
       "url": "https://bascweb.org/"
     },
     "ca-pashchimi": {
-      "content_hash": "663916559774ac5ce66c0ff3672fa1435604e5c75062ec92d098006a96008669",
+      "content_hash": "c19a192dff1f2561798a1b02a03e787d3cea382f0730e35cc94c2fb388bcd8cb",
       "extraction_status": "not_requested",
-      "last_attempt": "2026-09-23T05:23:02.468655+00:00",
+      "last_attempt": "2026-09-24T17:09:01.862959+00:00",
       "last_reviewed_revision": null,
-      "last_success": "2026-09-23T05:23:02.468655+00:00",
+      "last_success": "2026-09-24T17:09:01.862959+00:00",
       "pending_change": true,
       "status": "checked",
       "url": "https://pashchimi.org/"
@@ -42,7 +43,7 @@
     "ca-sanskriti": {
       "error": "FetchError",
       "extraction_status": "not_requested",
-      "last_attempt": "2026-09-23T05:23:02.468655+00:00",
+      "last_attempt": "2026-09-24T17:09:01.862959+00:00",
       "last_reviewed_revision": null,
       "status": "unavailable",
       "url": "https://www.sanskriti.org/"
