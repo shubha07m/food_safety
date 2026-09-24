@@ -8,6 +8,14 @@ sources:
   - {source_id: ca-ankur, region_id: california, url: 'https://www.ankurinc.org/', publisher: Ankur Inc., language: en}
 published:
   - pandal_id: ca-pashchimi
+    official_links:
+    - kind: website
+      url: https://pashchimi.org/
+      evidence:
+        source_url: https://pashchimi.org/
+        source_title: Pashchimi — organizer event announcement
+        publisher: Pashchimi
+        quote: 'Venue: 35145 Newark Blvd. Newark CA-94560Oasis Palace'
     region_id: california
     country_code: US
     admin1: California
@@ -31,6 +39,14 @@ published:
         publisher: Pashchimi
         quote: 'Venue: 35145 Newark Blvd. Newark CA-94560Oasis Palace'
   - pandal_id: ca-sanskriti
+    official_links:
+    - kind: website
+      url: https://www.sanskriti.org/
+      evidence:
+        source_url: https://www.sanskriti.org/
+        source_title: Sanskriti — organizer event announcement
+        publisher: Sanskriti Bay Area
+        quote: Newark Pavilion, 6430 Thornton Ave, Newark, CA 94560, USA
     region_id: california
     country_code: US
     admin1: California
@@ -55,6 +71,14 @@ published:
         publisher: Sanskriti Bay Area
         quote: 'Newark Pavilion, 6430 Thornton Ave, Newark, CA 94560, USA'
   - pandal_id: ca-agomoni
+    official_links:
+    - kind: website
+      url: https://agomoni.org/durgapuja-2026/
+      evidence:
+        source_url: https://agomoni.org/durgapuja-2026/
+        source_title: Agomoni — 2026 organizer announcement
+        publisher: Agomoni
+        quote: 'Venue: 2600 Camino Ramon, Parking Lot, San Ramon, CA 94583'
     region_id: california
     country_code: US
     admin1: California
@@ -74,6 +98,15 @@ published:
         publisher: Agomoni
         quote: 'Venue: 2600 Camino Ramon, Parking Lot, San Ramon, CA 94583'
   - pandal_id: ca-basc
+    official_links:
+    - kind: website
+      url: https://bascweb.org/
+      evidence:
+        source_url: https://bascweb.org/
+        source_title: BASC — organizer event announcement
+        publisher: Bengali Association of Southern California
+        quote: Cerritos Center for the Performing Arts 18000 Park Plaza Dr, Cerritos,
+          CA 90703
     region_id: california
     country_code: US
     admin1: California
@@ -97,6 +130,14 @@ published:
         publisher: Bengali Association of Southern California
         quote: 'Cerritos Center for the Performing Arts 18000 Park Plaza Dr, Cerritos, CA 90703'
   - pandal_id: ca-vbc
+    official_links:
+    - kind: website
+      url: https://durga.valleybengali.org/
+      evidence:
+        source_url: https://durga.valleybengali.org/
+        source_title: VBC — 2026 organizer announcement
+        publisher: Valley Bengali Community
+        quote: Canoga Park High School 6850 Topanga Canyon Blvd. Canoga Park
     region_id: california
     country_code: US
     admin1: California
@@ -122,6 +163,14 @@ published:
         publisher: Valley Bengali Community
         quote: 'Canoga Park High School 6850 Topanga Canyon Blvd. Canoga Park'
   - pandal_id: ca-ankur
+    official_links:
+    - kind: website
+      url: https://www.ankurinc.org/
+      evidence:
+        source_url: https://www.ankurinc.org/
+        source_title: Ankur — annual event calendar
+        publisher: Ankur Inc.
+        quote: Sharodotsav · দুর্গা পূজা
     region_id: california
     country_code: US
     admin1: California

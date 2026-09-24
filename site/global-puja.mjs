@@ -1,7 +1,7 @@
 // Geolocation is deliberately local, ephemeral and initiated only by a click.
+import { effectiveLocation } from './puja-location.mjs';
 export function mapped(p) {
-  return Number.isFinite(p.latitude) && Math.abs(p.latitude) <= 90 && Number.isFinite(p.longitude)
-    && Math.abs(p.longitude) <= 180 && !!p.coordinate_source;
+  return effectiveLocation(p).map_eligible;
 }
 export function distanceKm(a, b) {
   const rad = n => n * Math.PI / 180;
@@ -11,7 +11,7 @@ export function distanceKm(a, b) {
 }
 export function nearestPujas(pandals, point, radiusKm = 100) {
   if (!Number.isFinite(point?.latitude) || Math.abs(point.latitude) > 90 || !Number.isFinite(point?.longitude) || Math.abs(point.longitude) > 180) return [];
-  return pandals.filter(mapped).map(p => ({ pandal: p, distance: distanceKm(point, p) }))
+  return pandals.filter(p => effectiveLocation(p).near_me_eligible).map(p => ({ pandal: p, distance: distanceKm(point, effectiveLocation(p)) }))
     .filter(r => r.distance <= radiusKm).sort((a, b) => a.distance - b.distance || a.pandal.pandal_id.localeCompare(b.pandal.pandal_id)).slice(0, 5);
 }
 export function resolvePuja(pandals, regions, id, fallback = 'kolkata') {
@@ -54,8 +54,9 @@ export function pujaLink(p, origin, language = 'en') {
   return url.href;
 }
 export function directionsURL(p) {
-  if (!mapped(p) || p.coordinate_precision !== 'venue' || !p.edition?.venue_reviewed) return null;
-  return 'https://www.google.com/maps/dir/?' + new URLSearchParams({ api: '1', destination: `${p.latitude},${p.longitude}` });
+  const loc = effectiveLocation(p);
+  if (!loc.directions_eligible) return null;
+  return 'https://www.google.com/maps/dir/?' + new URLSearchParams({ api: '1', destination: `${loc.latitude},${loc.longitude}` });
 }
 export function reportURL(p) {
   return 'https://github.com/shubha07m/food_safety/issues/new?' + new URLSearchParams({

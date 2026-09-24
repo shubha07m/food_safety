@@ -50,6 +50,72 @@ this tool is not a bulk geocoder.
 
 ## Publication requirements
 
+### Profiles and two public tiers
+
+The selected Puja is a profile article; nearby food begins below it. The public
+label is derived from reviewed edition data, not a separate confidence score:
+
+- **Source-listed · current venue not reviewed**: identity and region are sourced;
+  no current-edition confirmation is asserted.
+- **YEAR event confirmed**: that edition is explicitly reviewed. **YEAR venue/date
+  reviewed** additionally requires its reviewed location and supported date.
+
+`official_links` retain kind, URL and supporting source evidence. Optional `about`
+contains a short neutral sourced introduction. `edition.programme_notes` holds
+at most three sourced highlights; artist names remain ordinary note text. Notes
+from a previous edition are not displayed as current. Social links need reviewed
+organizer ownership/relationship, not just a plausible account name.
+
+`edition.location` is an atomic venue/address/independent-anchor override. An
+optional edition city prevents an old municipality leaking into a moved venue's
+profile or restaurant handoff; unsupported city context is omitted. An
+edition without this override cannot inherit stable-record coordinates. Prior-year
+edition locations remain historical, not current map, Near Me, directions or food
+anchors. Undated legacy anchors remain visibly last-known. Map anchors can be
+approximate; Near Me requires venue precision. Directions additionally require a
+current, confirmed, venue-reviewed edition. One effective-location contract drives
+both browser behavior and local food association. Food coverage records an anchor
+key, preventing old-catchment results from appearing after a venue move.
+
+### Manual private lead campaign
+
+`puja leads` is an operator CLI action, **not a scheduled workflow**:
+
+```bash
+python -m food_safety.cli puja leads --seeds .cache/puja/seeds.json \
+  --campaign autumn-review --max-calls 5 --dry-run
+python -m food_safety.cli puja leads --seeds .cache/puja/seeds.json \
+  --campaign autumn-review --max-calls 5
+```
+
+Supply a JSON array of at most 40 seeds: `region`, `url`, optional `source_kind`
+and `candidate_name`. Lead mode extracts only identity/locality/source links.
+An explicitly supplied name can be screened against frozen passages without a
+model. `mode: profile` requires `accepted_identity` and requests richer facts only
+for an accepted research subject; this is not publication approval.
+
+JSON-LD Event extraction precedes Gemini. Messy prose uses the existing structured
+adapter, not a bespoke page parser. Optional `content_selector` narrows a reviewed
+page section. `suggest_links` returns bounded one-hop suggestions for operator
+review; it never follows them. An explicit `allow_missing_robots` permits only a
+literal robots 404, not blocked requests. Redirects remain on approved seed hosts.
+
+Private frozen sources, model responses, attempt ledger and review packet live in
+ignored `.cache/puja/campaigns/CAMPAIGN/`. Reuse the same campaign ID to retain its
+hard **20 attempted model calls**, including failures; each invocation allows at
+most five and defaults to zero. HTTP attempts, including robots/redirects, stop at
+120 per campaign. There are no automatic retries. A provider failure stops further
+model work in that batch. Revision/model/task/schema-aware responses are reused.
+Review packets from successive lead/profile batches are retained together.
+
+Packets include literal support, missing fields, duplicate/source warnings,
+date/year/timezone inconsistencies, tentative tier and unreviewed geography.
+Literal matching does **not** prove a fact belongs to the same event or year.
+An owner must approve organizer identity, edition relationships, links, conflicting
+announcements and final publication. Fetch/model failure defers a candidate; no
+code path here writes public catalogs. Publication remains an explicit reviewed
+configuration edit. This campaign is separate from automatic HTTP monitoring.
+
 Every published pandal has a stable ID, name, area, city/region, source URL, title,
 supporting quote and verification timestamp. Coordinates are optional. If present they
 require an independent non-Google source and explicit precision; they are never inferred

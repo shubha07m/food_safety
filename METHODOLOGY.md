@@ -8,7 +8,20 @@ Puja discovery supports Kolkata region, California, London region, Toronto / GTA
 
 Optional edition data separately records supported year, date range, timezone, confirmation and venue review with its own evidence. An old listing or successful HTTP check cannot create a current-year badge. Known-source monitoring uses conditional requests/content hashes, daily in September–October and weekly otherwise. A changed or initially unreviewed revision remains pending review; no scheduled Puja model call or automatic publication occurs.
 
-Near Me compares browser-permissioned, ephemeral coordinates locally against published map anchors within 100 km. It does not transmit the location or establish complete local coverage. World map displays only Puja anchors and reuses the opt-in map. Share links carry only public region/Puja identity. Directions are offered only for precise, edition-reviewed venue anchors; approximate anchors are not presented as exact entrances.
+Near Me compares browser-permissioned, ephemeral coordinates locally against reviewed venue-precision anchors within 100 km. It does not transmit the location or establish complete local coverage. World map can also display reviewed approximate Puja anchors and reuses the opt-in map. Share links carry only public region/Puja identity. Directions require a precise current-edition reviewed venue, not a historical or approximate anchor.
+
+The profile derives two public tiers: source-listed and current-edition reviewed.
+Venue/date wording requires both supported facts; successful source fetching is not
+confirmation. Optional introductions, official links and up to three edition-scoped
+programme notes retain evidence. An edition location override is atomic: missing
+coordinates do not inherit an older venue. Prior-year edition anchors are withheld
+from proximity; undated legacy locations are labelled last-known. Nearby-food
+association uses that same effective anchor, with old-catchment results withheld.
+
+Manual lead campaigns produce private review packets. Structured events bypass the
+model; prose can use bounded Gemini extraction. Exact supporting text, plausible
+dates and duplicate checks assist review but cannot establish that facts belong to
+the same event/year. Owner approval remains necessary before catalog publication.
 
 Coordinates are optional and independently sourced, with explicit precision. No model invents them. Search-only records remain useful without markers or proximity results. Regions scope search, featured shortcuts, map bounds and food associations; California does not broaden Food Safety Evidence. See [Puja curation](docs/PUJA_CURATION.md).
 

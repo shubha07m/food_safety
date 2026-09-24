@@ -257,7 +257,7 @@ try {
   await evaluate("document.querySelector('#featured-pandals button').click()");
   assert.equal(await evaluate("document.getElementById('selected-pandal-title').textContent.includes('Ekdalia')"), true);
   await evaluate("document.getElementById('pandal-search').value='Shibpur Sastitala'; document.getElementById('pandal-search').dispatchEvent(new Event('input')); document.getElementById('pandal-search').dispatchEvent(new KeyboardEvent('keydown',{key:'Enter',bubbles:true}))");
-  assert.equal(await evaluate("document.getElementById('selected-pandal').textContent.includes('Map location is not yet independently verified.')"), true);
+  assert.equal(await evaluate("document.getElementById('selected-pandal').textContent.includes('Current map location is not independently reviewed.')"), true);
   assert.equal(await evaluate("document.querySelectorAll('[data-food-search], .restaurant-links li').length"), 0);
   // Region switches share selection, food, geography and lazy-map state.
   await evaluate("document.querySelector('[data-region=california]').click()");
@@ -282,7 +282,7 @@ try {
   for (const id of ['ca-pashchimi', 'ca-sanskriti', 'ca-basc', 'ca-vbc']) {
     await evaluate(`document.dispatchEvent(new CustomEvent('foodpath-select-pandal',{detail:${JSON.stringify(id)}}))`);
     assert.equal(await evaluate("new URL(location.href).searchParams.get('region')"), 'california');
-    assert.equal(await evaluate("document.getElementById('selected-pandal').textContent.includes('Map location is independently sourced.')"), true);
+    assert.equal(await evaluate("document.querySelector('.puja-profile').textContent.includes('Last-known sourced location')"), true);
     assert.equal(await evaluate("document.querySelectorAll('.restaurant-links li').length <= 20"), true);
     assert.equal(await evaluate("document.getElementById('selected-pandal').textContent.includes('Restaurant on Google Maps')"), false);
   }
@@ -328,7 +328,10 @@ try {
       assert.equal(await evaluate("document.getElementById('selected-pandal').textContent.includes('Restaurant on Google Maps')"), false);
       assert.equal(await evaluate("document.querySelectorAll('#featured-pandals button').length <= 6"), true);
       assert.equal(await evaluate("document.querySelectorAll('.restaurant-links li').length <= 20"), true);
-      assert.equal(await evaluate("[...document.querySelectorAll('.puja-actions a')].some(a=>a.textContent.includes('Report changed'))"), true);
+      assert.equal(await evaluate("document.querySelector('.profile-report').textContent.includes('Report changed')"), true);
+      assert.equal(await evaluate("document.querySelector('.nearby-food-section').previousElementSibling.classList.contains('puja-profile')"), true);
+      assert.equal(await evaluate("document.querySelector('.puja-profile').querySelector('.restaurant-links') === null"), true);
+      assert.equal(await evaluate("[...document.querySelectorAll('.puja-actions a')].some(a=>a.textContent === 'Official site')"), true);
       for (const width of [390,768,1440]) {
         await command('Emulation.setDeviceMetricsOverride', {width,height:1000,deviceScaleFactor:1,mobile:width<600});
         assert.equal(await evaluate('document.documentElement.scrollWidth <= innerWidth'), true);
@@ -498,6 +501,19 @@ try {
     assert.equal(await evaluate("document.querySelector('#google-map-host iframe').contentWindow.__foodpathMapInstances"),1);
     assert.equal(await evaluate("document.querySelector('#google-map-host iframe').contentDocument.querySelectorAll('script[src*=maps]').length"),1);
     console.log('Configured browser map transport: synthetic Google fixture; all five world-marker selections passed, one map instance/script.');
+  }
+  // Rich/historical profile fixtures are browser-memory only, never catalog facts.
+  await command('Page.navigate', {url:origin+'/?region=london&pandal=london-bcsc'});
+  await waitFor("document.querySelector('.puja-profile') && !document.getElementById('selected-pandal').hidden");
+  for (const [width,bn,historical] of [[1440,false,false],[768,false,true],[390,true,false]]) {
+    await command('Emulation.setDeviceMetricsOverride',{width,height:1000,deviceScaleFactor:1,mobile:width<600});
+    await evaluate(`(async()=>{const {renderProfile}=await import('./puja-profile.mjs');const data=await (await fetch('data/pandals.json')).json();const p=structuredClone(data.records.find(p=>p.pandal_id==='london-bcsc'));p.name='Fixture profile — not published';p.edition.year=${historical ? 2025 : 2026};p.edition.programme_notes=[{title:'Fixture programme',text:'Synthetic cultural highlight',evidence:p.sources}];p.about={text:'Synthetic source-grounded introduction fixture',evidence:p.sources};document.querySelector('.puja-profile').replaceWith(renderProfile(p,{label:'London'},[],${bn}));})()`);
+    assert.equal(await evaluate('document.documentElement.scrollWidth <= innerWidth'),true);
+    assert.equal(await evaluate("document.querySelector('.puja-profile').textContent.includes('Fixture programme')"),!historical);
+    if(historical) assert.equal(await evaluate("[...document.querySelectorAll('.puja-actions a')].some(a=>a.textContent==='Directions')"),false);
+    await evaluate("document.querySelector('.profile-more').open=true;document.querySelector('.puja-profile').scrollIntoView({block:'start'})");
+    await delay(500);
+    await screenshot(`profile-${width}-${bn?'bn':'en'}-${historical?'historical':'current'}`,false);
   }
   assert.deepEqual(runtimeErrors, []);
   assert.equal(placesRequests, 0);

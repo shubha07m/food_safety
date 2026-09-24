@@ -16,6 +16,7 @@ from ..documents import DocumentRevision, freeze_document, mapped_text, resolve_
 from ..fetch import Fetcher, FetchError
 from ..storage import dump
 from ..structured_llm import GeminiExtractor, ModelFailure
+from .location import effective_location
 from .models import Candidate, Config, Extraction, PublicData, SupportedValue
 
 TASK_VERSION = "puja_pandal_extraction_v3"
@@ -76,10 +77,21 @@ def load_config(root: Path) -> Config:
                 or (region.admin1 and record.admin1 != region.admin1)
             ):
                 raise ValueError("pandal_region_mismatch")
+            if record.edition and region.timezone and record.edition.timezone != region.timezone:
+                raise ValueError("edition_timezone_region_mismatch")
             if record.latitude is not None:
                 w, s, e, n = region.geocode_bounds
                 if not (w <= record.longitude <= e and s <= record.latitude <= n):
                     raise ValueError("pandal_coordinate_outside_region")
+            if (
+                record.edition
+                and record.edition.location
+                and record.edition.location.latitude is not None
+            ):
+                location = record.edition.location
+                w, s, e, n = region.geocode_bounds
+                if not (w <= location.longitude <= e and s <= location.latitude <= n):
+                    raise ValueError("edition_coordinate_outside_region")
         return config
     return Config.model_validate(raw)
 
@@ -95,7 +107,7 @@ def build_public(root: Path):
     public["source_checks"] = public_checks(root)
     public["coverage"] = {
         "catalog_count": len(records),
-        "map_ready_count": sum(r.latitude is not None for r in records),
+        "map_ready_count": sum(effective_location(r)["map_eligible"] for r in records),
         "cities": dict(Counter(r.city for r in records)),
         "regions": dict(Counter(r.region_id for r in records)),
         "source_count": len({str(s.source_url) for r in records for s in r.sources}),

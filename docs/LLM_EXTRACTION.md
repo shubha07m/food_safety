@@ -34,4 +34,21 @@ The adapter uses a provider-neutral `StructuredExtractor` protocol and Gemini's 
 
 ## Owner setup
 
+### Puja-only manual profiles and leads
+
+`puja leads` reuses this adapter with a separate Puja prompt/schema. Compact lead
+extraction is distinct from richer extraction for an accepted identity. JSON-LD
+and operator-supplied literal identities are screened deterministically first.
+Profiles may propose neutral introductions, venue/date facts, official links and
+up to three sourced programme notes. Missing facts stay unknown; quotes are
+checked against frozen passages. Source text never authorizes publication.
+
+Campaigns are private, manually invoked and limited to 20 attempts including
+failures, at most five per run. Provider failures stop further batch attempts.
+The packet is a review aid, not an autonomous publisher. Known-source monitoring
+does not invoke this path when content changes. See [Puja curation](PUJA_CURATION.md)
+for seed format, cached revisions and the separate owner approval boundary.
+
+### Process configuration
+
 Export `GEMINI_API_KEY` only in the local process, or add it as a GitHub Actions repository secret before enabling model calls in scheduled production. Never commit it, pass it in URLs, or expose it to the static site. Review Google's current terms, data-use settings, pricing and free-tier eligibility before sending public source passages. No Cloudflare secret or frontend key is needed.

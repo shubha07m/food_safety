@@ -23,9 +23,10 @@ def public_paths(root, region_id="kolkata"):
 
 
 def regional_pandals(root, region_id="kolkata"):
-    if region_id == "kolkata":
+    if not (root / "config/regions.yml").exists():
         return [p for p in places_config(root).pandals if p.enabled]
     from ..places.models import Pandal
+    from ..puja.location import effective_location
     from ..puja.pipeline import load_config as catalog
     from ..puja.regions import get_region
 
@@ -36,14 +37,15 @@ def regional_pandals(root, region_id="kolkata"):
             pandal_id=p.pandal_id,
             name=p.name,
             area=p.area,
-            latitude=p.latitude,
-            longitude=p.longitude,
-            coordinate_source=p.coordinate_source,
+            latitude=loc["latitude"],
+            longitude=loc["longitude"],
+            coordinate_source=loc["coordinate_source"],
             restaurant_radius_m=region.restaurant_radius_m,
             enabled=True,
         )
         for p in catalog(root).published
-        if p.region_id == region_id and p.latitude is not None
+        for loc in [effective_location(p)]
+        if p.region_id == region_id and loc["map_eligible"]
     ]
 
 
@@ -107,6 +109,7 @@ def associate(root, snapshot=None, region_id="kolkata"):
                 status="snapshot" if p in eligible else "outside_region",
                 radius_m=p.restaurant_radius_m,
                 association_count=counts[p.pandal_id],
+                anchor_key=f"{p.latitude:.7f},{p.longitude:.7f}",
             )
             for p in sorted(pandals, key=lambda p: p.pandal_id)
         ],

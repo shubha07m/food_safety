@@ -11,7 +11,7 @@ function fixture() {
     coverage: [{ pandal_id: 'p', status: 'snapshot', radius_m: 600 }],
     associations: [1, 2].map(i => ({ pandal_id: 'p', poi_id: `osm:node:${i}`, provider: 'osm', distance_m: 100 / i, source_snapshot: 's' })) };
 }
-const legacy = () => ({ pandals: [{ pandal_id: 'p' }], groups: new Map([['p', [{ id: 'googleID', name: null, url: 'https://www.google.com/maps/search/?api=1&query=restaurant&query_place_id=googleID' }]]]) });
+const legacy = () => ({ pandals: [{ pandal_id: 'p', latitude: 22.5, longitude: 88.35, coordinate_source: 'https://example.org/venue' }], groups: new Map([['p', [{ id: 'googleID', name: null, url: 'https://www.google.com/maps/search/?api=1&query=restaurant&query_place_id=googleID' }]]]) });
 const policy = (provider, google_links = []) => ({ schema_version: 'food-provider-1', provider, initial_display_limit: 15, google_links });
 test('OSM handoff preserves identity and coordinates without claiming Google identity', () => {
   const url = new URL(osmMapsURL(poi()));

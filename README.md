@@ -49,6 +49,10 @@ map imagery. [Artwork and screenshot provenance](docs/assets/ASSET_PROVENANCE.md
   reuse one lazy map; world view contains Puja anchors only.
 - Share a Puja link, report a venue/date change, or get directions where a precise
   annual venue has been reviewed. Source checks and edition confirmation are distinct.
+- A selected **Puja Profile** separates supported dates and venue from nearby food.
+  Expand it for organizer links, sourced introductions, optional edition-specific
+  programme highlights and provenance. Source-listed is distinct from current-edition
+  reviewed; historical venues are never silently carried into a new edition.
 - Featured Pujas are curated shortcuts with reviewed geography and meaningful named
   food coverage, never rankings. There are at most six per region.
 - Select a Puja to browse up to 20 named food places, initially 12. Ordering is by
@@ -87,6 +91,9 @@ A coordinate pin is not a claim of exact Google business identity. ID-only searc
 verify that identity by themselves and never publish automatically.
 
 Gemini assists bounded source extraction, not identity matching or coordinate invention.
+Manual private lead campaigns use structured sources first and Gemini for useful
+prose extraction, with a 20-attempt campaign ceiling. They never publish automatically;
+scheduled Puja monitoring makes no model calls.
 Puja publication requires reviewed source-backed configuration. Full technical details:
 [Food POIs](docs/FOOD_POIS.md) · [Puja curation](docs/PUJA_CURATION.md) ·
 [Google provider](docs/PLACES.md).

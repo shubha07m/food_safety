@@ -31,6 +31,7 @@
   "record_count": 235,
   "records": [
     {
+      "about": null,
       "address": "2600 Camino Ramon, San Ramon, CA 94583",
       "admin1": "California",
       "aliases": [],
@@ -51,6 +52,20 @@
       "name": "Agomoni Durga Puja",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [
+        {
+          "evidence": {
+            "publication_date": null,
+            "publisher": "Agomoni",
+            "quote": "Venue: 2600 Camino Ramon, Parking Lot, San Ramon, CA 94583",
+            "source_revision_id": null,
+            "source_title": "Agomoni — 2026 organizer announcement",
+            "source_url": "https://agomoni.org/durgapuja-2026/"
+          },
+          "kind": "website",
+          "url": "https://agomoni.org/durgapuja-2026/"
+        }
+      ],
       "organizer": "Agomoni",
       "pandal_id": "ca-agomoni",
       "region_id": "california",
@@ -70,6 +85,7 @@
       "year": 2026
     },
     {
+      "about": null,
       "address": "1638 Aimco Blvd, Mississauga, ON L4W 1V1",
       "admin1": "Ontario",
       "aliases": [],
@@ -92,6 +108,26 @@
             "source_url": "https://www.apcatweb.com/"
           }
         ],
+        "location": {
+          "address": "1638 Aimco Blvd, Mississauga, ON L4W 1V1",
+          "city": "Mississauga",
+          "coordinate_precision": "street",
+          "coordinate_source": "https://www.openstreetmap.org/way/72380740",
+          "evidence": [
+            {
+              "publication_date": null,
+              "publisher": "Amar Pujo Cultural Association of Toronto",
+              "quote": "Oct 17th & 18th, 2026 Pearl Banquet Hall 1638 Aimco Blvd, Mississauga, ON L4W 1V1",
+              "source_revision_id": null,
+              "source_title": "APCAT Amar Pujo — organizer announcement",
+              "source_url": "https://www.apcatweb.com/"
+            }
+          ],
+          "latitude": 43.6417388,
+          "longitude": -79.621564,
+          "venue": "Pearl Banquet Hall"
+        },
+        "programme_notes": [],
         "reviewed_at": "2026-09-22T18:00:00Z",
         "start_date": "2026-10-17",
         "timezone": "America/Toronto",
@@ -108,6 +144,20 @@
       "name": "APCAT Amar Pujo",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [
+        {
+          "evidence": {
+            "publication_date": null,
+            "publisher": "Amar Pujo Cultural Association of Toronto",
+            "quote": "Oct 17th & 18th, 2026 Pearl Banquet Hall 1638 Aimco Blvd, Mississauga, ON L4W 1V1",
+            "source_revision_id": null,
+            "source_title": "APCAT Amar Pujo — organizer announcement",
+            "source_url": "https://www.apcatweb.com/"
+          },
+          "kind": "website",
+          "url": "https://www.apcatweb.com/"
+        }
+      ],
       "organizer": "Amar Pujo Cultural Association of Toronto",
       "pandal_id": "gta-apcat",
       "region_id": "toronto",
@@ -127,6 +177,7 @@
       "year": 2026
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [
@@ -149,6 +200,7 @@
       "name": "Bagbazar Sarbojanin Durgotsav",
       "name_bn": "বাগবাজার সর্বজনীন দুর্গোৎসব",
       "neighborhood": "Bagbazar",
+      "official_links": [],
       "organizer": null,
       "pandal_id": "bagbazar-sarbojanin",
       "region_id": "kolkata",
@@ -168,6 +220,7 @@
       "year": null
     },
     {
+      "about": null,
       "address": "18000 Park Plaza Dr, Cerritos, CA 90703",
       "admin1": "California",
       "aliases": [],
@@ -188,6 +241,20 @@
       "name": "BASC Durga Pujo",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [
+        {
+          "evidence": {
+            "publication_date": null,
+            "publisher": "Bengali Association of Southern California",
+            "quote": "Cerritos Center for the Performing Arts 18000 Park Plaza Dr, Cerritos, CA 90703",
+            "source_revision_id": null,
+            "source_title": "BASC — organizer event announcement",
+            "source_url": "https://bascweb.org/"
+          },
+          "kind": "website",
+          "url": "https://bascweb.org/"
+        }
+      ],
       "organizer": "Bengali Association of Southern California",
       "pandal_id": "ca-basc",
       "region_id": "california",
@@ -207,6 +274,7 @@
       "year": 2026
     },
     {
+      "about": null,
       "address": "Blake Hall Road, London E11 2QW",
       "admin1": "England",
       "aliases": [],
@@ -229,6 +297,26 @@
             "source_url": "https://bengali-cultural-social-club.org.uk/london-durga-puja-schedule"
           }
         ],
+        "location": {
+          "address": "Blake Hall Road, London E11 2QW",
+          "city": "London",
+          "coordinate_precision": "venue",
+          "coordinate_source": "https://www.openstreetmap.org/way/225631251",
+          "evidence": [
+            {
+              "publication_date": null,
+              "publisher": "Bengali Cultural & Social Club",
+              "quote": "Friday 16th Oct 2026 Tuesday 20th Oct 2026 Swaminarayan Sports World, Blake Hall Road, London, E11 2QW",
+              "source_revision_id": null,
+              "source_title": "BCSC London Durga Puja — organizer announcement",
+              "source_url": "https://bengali-cultural-social-club.org.uk/london-durga-puja-schedule"
+            }
+          ],
+          "latitude": 51.5682309,
+          "longitude": 0.0254103,
+          "venue": "Swaminarayan Sports World"
+        },
+        "programme_notes": [],
         "reviewed_at": "2026-09-22T18:00:00Z",
         "start_date": "2026-10-16",
         "timezone": "Europe/London",
@@ -245,6 +333,20 @@
       "name": "BCSC London Durga Puja",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [
+        {
+          "evidence": {
+            "publication_date": null,
+            "publisher": "Bengali Cultural & Social Club",
+            "quote": "Friday 16th Oct 2026 Tuesday 20th Oct 2026 Swaminarayan Sports World, Blake Hall Road, London, E11 2QW",
+            "source_revision_id": null,
+            "source_title": "BCSC London Durga Puja — organizer announcement",
+            "source_url": "https://bengali-cultural-social-club.org.uk/london-durga-puja-schedule"
+          },
+          "kind": "website",
+          "url": "https://bengali-cultural-social-club.org.uk/london-durga-puja-schedule"
+        }
+      ],
       "organizer": "Bengali Cultural & Social Club",
       "pandal_id": "london-bcsc",
       "region_id": "london",
@@ -264,6 +366,7 @@
       "year": 2026
     },
     {
+      "about": null,
       "address": "2–10 Bulban Rd, Werribee, VIC 3030",
       "admin1": "Victoria",
       "aliases": [],
@@ -286,6 +389,26 @@
             "source_url": "https://bsm.org.au/events/durgotsav"
           }
         ],
+        "location": {
+          "address": "2–10 Bulban Rd, Werribee, VIC 3030",
+          "city": "Werribee",
+          "coordinate_precision": "neighborhood",
+          "coordinate_source": "https://www.openstreetmap.org/way/173267625",
+          "evidence": [
+            {
+              "publication_date": null,
+              "publisher": "Bengali Society of Melbourne",
+              "quote": "Durga Puja 2026 October 16-18, 2026 Werribee Racing Club 2-10 Bulban Rd, Werribee 3030",
+              "source_revision_id": null,
+              "source_title": "Bengali Society of Melbourne Durgotsav — organizer announcement",
+              "source_url": "https://bsm.org.au/events/durgotsav"
+            }
+          ],
+          "latitude": -37.9028292,
+          "longitude": 144.6453403,
+          "venue": "Werribee Racing Club"
+        },
+        "programme_notes": [],
         "reviewed_at": "2026-09-22T18:00:00Z",
         "start_date": "2026-10-16",
         "timezone": "Australia/Melbourne",
@@ -302,6 +425,20 @@
       "name": "Bengali Society of Melbourne Durgotsav",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [
+        {
+          "evidence": {
+            "publication_date": null,
+            "publisher": "Bengali Society of Melbourne",
+            "quote": "Durga Puja 2026 October 16-18, 2026 Werribee Racing Club 2-10 Bulban Rd, Werribee 3030",
+            "source_revision_id": null,
+            "source_title": "Bengali Society of Melbourne Durgotsav — organizer announcement",
+            "source_url": "https://bsm.org.au/events/durgotsav"
+          },
+          "kind": "website",
+          "url": "https://bsm.org.au/events/durgotsav"
+        }
+      ],
       "organizer": "Bengali Society of Melbourne",
       "pandal_id": "melbourne-bsm",
       "region_id": "melbourne",
@@ -321,6 +458,7 @@
       "year": 2026
     },
     {
+      "about": null,
       "address": "88 Avenue Road, London NW3 3HA",
       "admin1": "England",
       "aliases": [],
@@ -341,6 +479,20 @@
       "name": "Camden Durga Puja",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [
+        {
+          "evidence": {
+            "publication_date": null,
+            "publisher": "London Durgotsav Committee",
+            "quote": "Swiss Cottage Library 88 Avenue Road, London NW3 3HA",
+            "source_revision_id": null,
+            "source_title": "Camden Durga Puja — organizer announcement",
+            "source_url": "https://www.londonpuja.co.uk/"
+          },
+          "kind": "website",
+          "url": "https://www.londonpuja.co.uk/"
+        }
+      ],
       "organizer": "London Durgotsav Committee",
       "pandal_id": "london-camden",
       "region_id": "london",
@@ -360,6 +512,7 @@
       "year": null
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -380,6 +533,7 @@
       "name": "Chetla Agrani Club Durga Puja",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "chetla-agrani-club-durga-puja",
       "region_id": "kolkata",
@@ -399,6 +553,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": "105 Bayly St E, Ajax, ON L1S 1P2",
       "admin1": "Ontario",
       "aliases": [],
@@ -421,6 +576,26 @@
             "source_url": "https://durbafoundation.ca/"
           }
         ],
+        "location": {
+          "address": "105 Bayly St E, Ajax, ON L1S 1P2",
+          "city": "Ajax",
+          "coordinate_precision": "venue",
+          "coordinate_source": "https://www.openstreetmap.org/way/36870007",
+          "evidence": [
+            {
+              "publication_date": null,
+              "publisher": "Durba Foundation",
+              "quote": "Durga Puja 2026 Please join Us on October 10,11 Venue: AJAX High School 105 Bayly St E, AJAX, ON L1S 1P2",
+              "source_revision_id": null,
+              "source_title": "Durba Foundation Durga Puja — organizer announcement",
+              "source_url": "https://durbafoundation.ca/"
+            }
+          ],
+          "latitude": 43.8440319,
+          "longitude": -79.0136439,
+          "venue": "Ajax High School"
+        },
+        "programme_notes": [],
         "reviewed_at": "2026-09-22T18:00:00Z",
         "start_date": "2026-10-10",
         "timezone": "America/Toronto",
@@ -437,6 +612,20 @@
       "name": "Durba Foundation Durga Puja",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [
+        {
+          "evidence": {
+            "publication_date": null,
+            "publisher": "Durba Foundation",
+            "quote": "Durga Puja 2026 Please join Us on October 10,11 Venue: AJAX High School 105 Bayly St E, AJAX, ON L1S 1P2",
+            "source_revision_id": null,
+            "source_title": "Durba Foundation Durga Puja — organizer announcement",
+            "source_url": "https://durbafoundation.ca/"
+          },
+          "kind": "website",
+          "url": "https://durbafoundation.ca/"
+        }
+      ],
       "organizer": "Durba Foundation",
       "pandal_id": "gta-durba",
       "region_id": "toronto",
@@ -456,6 +645,7 @@
       "year": 2026
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -476,6 +666,7 @@
       "name": "Ekdalia Evergreen Club Durga Puja",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "ekdalia-evergreen-club-durga-puja",
       "region_id": "kolkata",
@@ -503,6 +694,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -523,6 +715,7 @@
       "name": "Kashi Bose Lane Durga Puja Committee",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "kashi-bose-lane-durga-puja-committee",
       "region_id": "kolkata",
@@ -550,6 +743,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": "1 Communal Road, Wyndham Vale, VIC 3024",
       "admin1": "Victoria",
       "aliases": [],
@@ -572,6 +766,26 @@
             "source_url": "https://www.melba.org.au/"
           }
         ],
+        "location": {
+          "address": "1 Communal Road, Wyndham Vale, VIC 3024",
+          "city": "Wyndham Vale",
+          "coordinate_precision": "venue",
+          "coordinate_source": "https://www.openstreetmap.org/way/1007516287",
+          "evidence": [
+            {
+              "publication_date": null,
+              "publisher": "Melbourne Bengali Association",
+              "quote": "DURGA PUJA 2026 Date: 17th October – 18th October Riverbend Primary School, 1 Communal Road, Wyndham Vale – 3024",
+              "source_revision_id": null,
+              "source_title": "MELBA Durga Pujo — organizer announcement",
+              "source_url": "https://www.melba.org.au/"
+            }
+          ],
+          "latitude": -37.8753998,
+          "longitude": 144.6266428,
+          "venue": "Riverbend Primary School"
+        },
+        "programme_notes": [],
         "reviewed_at": "2026-09-22T18:00:00Z",
         "start_date": "2026-10-17",
         "timezone": "Australia/Melbourne",
@@ -588,6 +802,20 @@
       "name": "MELBA Durga Pujo",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [
+        {
+          "evidence": {
+            "publication_date": null,
+            "publisher": "Melbourne Bengali Association",
+            "quote": "DURGA PUJA 2026 Date: 17th October – 18th October Riverbend Primary School, 1 Communal Road, Wyndham Vale – 3024",
+            "source_revision_id": null,
+            "source_title": "MELBA Durga Pujo — organizer announcement",
+            "source_url": "https://www.melba.org.au/"
+          },
+          "kind": "website",
+          "url": "https://www.melba.org.au/"
+        }
+      ],
       "organizer": "Melbourne Bengali Association",
       "pandal_id": "melbourne-melba",
       "region_id": "melbourne",
@@ -607,6 +835,7 @@
       "year": 2026
     },
     {
+      "about": null,
       "address": "35145 Newark Blvd, Newark, CA 94560",
       "admin1": "California",
       "aliases": [],
@@ -627,6 +856,20 @@
       "name": "Pashchimi Durga Puja",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [
+        {
+          "evidence": {
+            "publication_date": null,
+            "publisher": "Pashchimi",
+            "quote": "Venue: 35145 Newark Blvd. Newark CA-94560Oasis Palace",
+            "source_revision_id": null,
+            "source_title": "Pashchimi — organizer event announcement",
+            "source_url": "https://pashchimi.org/"
+          },
+          "kind": "website",
+          "url": "https://pashchimi.org/"
+        }
+      ],
       "organizer": "Pashchimi",
       "pandal_id": "ca-pashchimi",
       "region_id": "california",
@@ -646,6 +889,7 @@
       "year": 2026
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -666,6 +910,7 @@
       "name": "Salkia Sadharan Durga Puja",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "salkia-sadharan-durga-puja",
       "region_id": "kolkata",
@@ -693,6 +938,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": "6430 Thornton Ave, Newark, CA 94560",
       "admin1": "California",
       "aliases": [],
@@ -713,6 +959,20 @@
       "name": "Sanskriti Durga Puja",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [
+        {
+          "evidence": {
+            "publication_date": null,
+            "publisher": "Sanskriti Bay Area",
+            "quote": "Newark Pavilion, 6430 Thornton Ave, Newark, CA 94560, USA",
+            "source_revision_id": null,
+            "source_title": "Sanskriti — organizer event announcement",
+            "source_url": "https://www.sanskriti.org/"
+          },
+          "kind": "website",
+          "url": "https://www.sanskriti.org/"
+        }
+      ],
       "organizer": "Sanskriti Bay Area",
       "pandal_id": "ca-sanskriti",
       "region_id": "california",
@@ -732,6 +992,7 @@
       "year": 2026
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -752,6 +1013,7 @@
       "name": "Shibpur Sastitala Durga Puja",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "shibpur-sastitala-durga-puja",
       "region_id": "kolkata",
@@ -771,6 +1033,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": "6850 Topanga Canyon Blvd, Canoga Park, CA",
       "admin1": "California",
       "aliases": [],
@@ -791,6 +1054,20 @@
       "name": "Valley Bengali Community Durgotsav",
       "name_bn": null,
       "neighborhood": "Canoga Park",
+      "official_links": [
+        {
+          "evidence": {
+            "publication_date": null,
+            "publisher": "Valley Bengali Community",
+            "quote": "Canoga Park High School 6850 Topanga Canyon Blvd. Canoga Park",
+            "source_revision_id": null,
+            "source_title": "VBC — 2026 organizer announcement",
+            "source_url": "https://durga.valleybengali.org/"
+          },
+          "kind": "website",
+          "url": "https://durga.valleybengali.org/"
+        }
+      ],
       "organizer": "Valley Bengali Community",
       "pandal_id": "ca-vbc",
       "region_id": "california",
@@ -810,6 +1087,7 @@
       "year": 2026
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -830,6 +1108,7 @@
       "name": "21 Pally Sarbojanin Durgotsab Samiti",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "21-pally-sarbojanin-durgotsab-samiti",
       "region_id": "kolkata",
@@ -849,6 +1128,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -869,6 +1149,7 @@
       "name": "22 Palli Sarodotsav",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "22-palli-sarodotsav",
       "region_id": "kolkata",
@@ -888,6 +1169,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -908,6 +1190,7 @@
       "name": "25 Pally Durga Puja",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "25-pally-durga-puja",
       "region_id": "kolkata",
@@ -927,6 +1210,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -947,6 +1231,7 @@
       "name": "31 Pally Sadharan Durgotsab Samity",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "31-pally-sadharan-durgotsab-samity",
       "region_id": "kolkata",
@@ -966,6 +1251,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -986,6 +1272,7 @@
       "name": "64 Pally Durgotsab Committee",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "64-pally-durgotsab-committee",
       "region_id": "kolkata",
@@ -1005,6 +1292,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -1025,6 +1313,7 @@
       "name": "66 Pally Sarbojanin Durgotsab Committee",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "66-pally-sarbojanin-durgotsab-committee",
       "region_id": "kolkata",
@@ -1044,6 +1333,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -1064,6 +1354,7 @@
       "name": "70 Pally Sarbojanin Durga Puja",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "70-pally-sarbojanin-durga-puja",
       "region_id": "kolkata",
@@ -1083,6 +1374,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -1103,6 +1395,7 @@
       "name": "95 Pally Jodhpur Park Durga Puja",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "95-pally-jodhpur-park-durga-puja",
       "region_id": "kolkata",
@@ -1122,6 +1415,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -1142,6 +1436,7 @@
       "name": "Abasar Sarbojanin Durgotsab Committee",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "abasar-sarbojanin-durgotsab-committee",
       "region_id": "kolkata",
@@ -1161,6 +1456,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -1181,6 +1477,7 @@
       "name": "Abasorika Durgotsav Committee",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "abasorika-durgotsav-committee",
       "region_id": "kolkata",
@@ -1200,6 +1497,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -1220,6 +1518,7 @@
       "name": "Adi Ballygunge Sarbojanin Durga Puja",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "adi-ballygunge-sarbojanin-durga-puja",
       "region_id": "kolkata",
@@ -1239,6 +1538,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -1259,6 +1559,7 @@
       "name": "Adi Dakshin Kalikata Barowari Samittee",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "adi-dakshin-kalikata-barowari-samittee",
       "region_id": "kolkata",
@@ -1278,6 +1579,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -1298,6 +1600,7 @@
       "name": "Agradut Udaya Sangha Durga Puja",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "agradut-udaya-sangha-durga-puja",
       "region_id": "kolkata",
@@ -1317,6 +1620,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -1337,6 +1641,7 @@
       "name": "Ahiritola Jubak Brinda Durga Puja",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "ahiritola-jubak-brinda-durga-puja",
       "region_id": "kolkata",
@@ -1356,6 +1661,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -1376,6 +1682,7 @@
       "name": "Amherst Sarbojanin Durgotsab",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "amherst-sarbojanin-durgotsab",
       "region_id": "kolkata",
@@ -1395,6 +1702,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": null,
       "admin1": "California",
       "aliases": [],
@@ -1415,6 +1723,20 @@
       "name": "Ankur Sharodotsav",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [
+        {
+          "evidence": {
+            "publication_date": null,
+            "publisher": "Ankur Inc.",
+            "quote": "Sharodotsav · দুর্গা পূজা",
+            "source_revision_id": null,
+            "source_title": "Ankur — annual event calendar",
+            "source_url": "https://www.ankurinc.org/"
+          },
+          "kind": "website",
+          "url": "https://www.ankurinc.org/"
+        }
+      ],
       "organizer": "Ankur Inc.",
       "pandal_id": "ca-ankur",
       "region_id": "california",
@@ -1434,6 +1756,7 @@
       "year": 2026
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -1454,6 +1777,7 @@
       "name": "Arabinda Nagar Arabinda Sangha Sarbojanin Durga Utsav",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "arabinda-nagar-arabinda-sangha-sarbojanin-durga-utsav",
       "region_id": "kolkata",
@@ -1473,6 +1797,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -1493,6 +1818,7 @@
       "name": "Arunodaya Adhibashi Brinder Durga Puja",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "arunodaya-adhibashi-brinder-durga-puja",
       "region_id": "kolkata",
@@ -1512,6 +1838,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -1532,6 +1859,7 @@
       "name": "Arupara Sarbojanin Durgotsab Committee",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "arupara-sarbojanin-durgotsab-committee",
       "region_id": "kolkata",
@@ -1551,6 +1879,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -1571,6 +1900,7 @@
       "name": "Aswiningar Sarbojanin Durgotsav",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "aswiningar-sarbojanin-durgotsav",
       "region_id": "kolkata",
@@ -1590,6 +1920,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -1610,6 +1941,7 @@
       "name": "Avijan Gandhi Colony",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "avijan-gandhi-colony",
       "region_id": "kolkata",
@@ -1629,6 +1961,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -1649,6 +1982,7 @@
       "name": "Azad Hind Sangha Durga Puja",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "azad-hind-sangha-durga-puja",
       "region_id": "kolkata",
@@ -1668,6 +2002,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -1688,6 +2023,7 @@
       "name": "Babu Bagan Durga Puja",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "babu-bagan-durga-puja",
       "region_id": "kolkata",
@@ -1707,6 +2043,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -1727,6 +2064,7 @@
       "name": "Bachhri Durga Puja",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "bachhri-durga-puja",
       "region_id": "kolkata",
@@ -1746,6 +2084,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -1766,6 +2105,7 @@
       "name": "Badamtala Ashar Sangha Durga Puja",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "badamtala-ashar-sangha-durga-puja",
       "region_id": "kolkata",
@@ -1785,6 +2125,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -1805,6 +2146,7 @@
       "name": "Baghajatin B and C Block Durgotsav Committee",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "baghajatin-b-and-c-block-durgotsav-committee",
       "region_id": "kolkata",
@@ -1824,6 +2166,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -1844,6 +2187,7 @@
       "name": "Baghajatin Tarun Sangha Durgotsav",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "baghajatin-tarun-sangha-durgotsav",
       "region_id": "kolkata",
@@ -1863,6 +2207,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -1883,6 +2228,7 @@
       "name": "Bagnan Nabaneer Club Durga Puja",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "bagnan-nabaneer-club-durga-puja",
       "region_id": "kolkata",
@@ -1902,6 +2248,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -1922,6 +2269,7 @@
       "name": "Baishnabghata Paschimpara Sarbojanin Durgotsab",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "baishnabghata-paschimpara-sarbojanin-durgotsab",
       "region_id": "kolkata",
@@ -1941,6 +2289,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -1961,6 +2310,7 @@
       "name": "Balitikuri Netaji Balak Sangha",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "balitikuri-netaji-balak-sangha",
       "region_id": "kolkata",
@@ -1980,6 +2330,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -2000,6 +2351,7 @@
       "name": "Ballygunge Cultural Association Durga Puja",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "ballygunge-cultural-association-durga-puja",
       "region_id": "kolkata",
@@ -2019,6 +2371,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -2039,6 +2392,7 @@
       "name": "Ballygunge Pally Sarbojanin Durgotsab Committee",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "ballygunge-pally-sarbojanin-durgotsab-committee",
       "region_id": "kolkata",
@@ -2058,6 +2412,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -2078,6 +2433,7 @@
       "name": "Bandhudal Durgotsob",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "bandhudal-durgotsob",
       "region_id": "kolkata",
@@ -2097,6 +2453,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -2117,6 +2474,7 @@
       "name": "Bansdroni Sammilita Sarbojanin Durgotsab Committee",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "bansdroni-sammilita-sarbojanin-durgotsab-committee",
       "region_id": "kolkata",
@@ -2136,6 +2494,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -2156,6 +2515,7 @@
       "name": "Bantra Mohila Sangha Durga Puja",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "bantra-mohila-sangha-durga-puja",
       "region_id": "kolkata",
@@ -2175,6 +2535,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -2195,6 +2556,7 @@
       "name": "Bantra Nabin Sangha Durga Puja",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "bantra-nabin-sangha-durga-puja",
       "region_id": "kolkata",
@@ -2214,6 +2576,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -2234,6 +2597,7 @@
       "name": "Batore 41er Pally Sarbojanin",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "batore-41er-pally-sarbojanin",
       "region_id": "kolkata",
@@ -2253,6 +2617,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -2273,6 +2638,7 @@
       "name": "Beadon Street Sarbojanin Durgotsav",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "beadon-street-sarbojanin-durgotsav",
       "region_id": "kolkata",
@@ -2292,6 +2658,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -2312,6 +2679,7 @@
       "name": "Bediadanga Sarbojanin Durgotsav Committee",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "bediadanga-sarbojanin-durgotsav-committee",
       "region_id": "kolkata",
@@ -2331,6 +2699,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -2351,6 +2720,7 @@
       "name": "Belepole Adams Club",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "belepole-adams-club",
       "region_id": "kolkata",
@@ -2370,6 +2740,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -2390,6 +2761,7 @@
       "name": "Belgachia Sadharan Durgotsab",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "belgachia-sadharan-durgotsab",
       "region_id": "kolkata",
@@ -2409,6 +2781,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -2429,6 +2802,7 @@
       "name": "Belgachia Yuba Sammilani Durga Puja",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "belgachia-yuba-sammilani-durga-puja",
       "region_id": "kolkata",
@@ -2448,6 +2822,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -2468,6 +2843,7 @@
       "name": "Beltala Sarbojanin Durgotsab",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "beltala-sarbojanin-durgotsab",
       "region_id": "kolkata",
@@ -2487,6 +2863,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -2507,6 +2884,7 @@
       "name": "Bengal United Club Durga Puja",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "bengal-united-club-durga-puja",
       "region_id": "kolkata",
@@ -2526,6 +2904,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -2546,6 +2925,7 @@
       "name": "Bhagabati Park Durga Puja Committee",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "bhagabati-park-durga-puja-committee",
       "region_id": "kolkata",
@@ -2565,6 +2945,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -2585,6 +2966,7 @@
       "name": "Bharatiya Tarun Sangha Durga Puja",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "bharatiya-tarun-sangha-durga-puja",
       "region_id": "kolkata",
@@ -2604,6 +2986,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -2624,6 +3007,7 @@
       "name": "Bhawanipore Mahapuja Samity",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "bhawanipore-mahapuja-samity",
       "region_id": "kolkata",
@@ -2643,6 +3027,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -2663,6 +3048,7 @@
       "name": "Bhowanipore De Bari Durga Puja",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "bhowanipore-de-bari-durga-puja",
       "region_id": "kolkata",
@@ -2682,6 +3068,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -2702,6 +3089,7 @@
       "name": "Bhowanipore Mitra Bari Durga Puja",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "bhowanipore-mitra-bari-durga-puja",
       "region_id": "kolkata",
@@ -2721,6 +3109,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -2741,6 +3130,7 @@
       "name": "Bhowanipur 75 Palli Durga Puja",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "bhowanipur-75-palli-durga-puja",
       "region_id": "kolkata",
@@ -2760,6 +3150,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -2780,6 +3171,7 @@
       "name": "Bhowanipur Muktadal Durga Puja",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "bhowanipur-muktadal-durga-puja",
       "region_id": "kolkata",
@@ -2799,6 +3191,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -2819,6 +3212,7 @@
       "name": "Bhowanipur Ritwik Club Durga Puja Committee",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "bhowanipur-ritwik-club-durga-puja-committee",
       "region_id": "kolkata",
@@ -2838,6 +3232,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -2858,6 +3253,7 @@
       "name": "Bhowanipur Sarbojanin Durgotsav",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "bhowanipur-sarbojanin-durgotsav",
       "region_id": "kolkata",
@@ -2877,6 +3273,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -2897,6 +3294,7 @@
       "name": "Bhowanipur Students Club Sarbojanin Durga Puja",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "bhowanipur-students-club-sarbojanin-durga-puja",
       "region_id": "kolkata",
@@ -2916,6 +3314,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -2936,6 +3335,7 @@
       "name": "Bhowanipur Swadhin Sangha Durga Puja",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "bhowanipur-swadhin-sangha-durga-puja",
       "region_id": "kolkata",
@@ -2955,6 +3355,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -2975,6 +3376,7 @@
       "name": "Bhowanipur Udayan Club Durga Puja",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "bhowanipur-udayan-club-durga-puja",
       "region_id": "kolkata",
@@ -2994,6 +3396,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -3014,6 +3417,7 @@
       "name": "Bidhan Nagar South Atheletics Club",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "bidhan-nagar-south-atheletics-club",
       "region_id": "kolkata",
@@ -3033,6 +3437,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -3053,6 +3458,7 @@
       "name": "Bidhanpally Purbapara Sarbojanin",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "bidhanpally-purbapara-sarbojanin",
       "region_id": "kolkata",
@@ -3072,6 +3478,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -3092,6 +3499,7 @@
       "name": "Biswanath Apartment Sharodutsab",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "biswanath-apartment-sharodutsab",
       "region_id": "kolkata",
@@ -3111,6 +3519,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -3131,6 +3540,7 @@
       "name": "Bosepukur Talbagan Sarbojanin",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "bosepukur-talbagan-sarbojanin",
       "region_id": "kolkata",
@@ -3150,6 +3560,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -3170,6 +3581,7 @@
       "name": "Brahmapur Harisava Sarbojanin Durgotsab",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "brahmapur-harisava-sarbojanin-durgotsab",
       "region_id": "kolkata",
@@ -3189,6 +3601,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -3209,6 +3622,7 @@
       "name": "Brindaban Matri Mandir Durga Puja",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "brindaban-matri-mandir-durga-puja",
       "region_id": "kolkata",
@@ -3228,6 +3642,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -3248,6 +3663,7 @@
       "name": "Brindabon Netaji Balak Sangha Durga Puja",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "brindabon-netaji-balak-sangha-durga-puja",
       "region_id": "kolkata",
@@ -3267,6 +3683,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -3287,6 +3704,7 @@
       "name": "Calcutta Youth Forum",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "calcutta-youth-forum",
       "region_id": "kolkata",
@@ -3306,6 +3724,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -3326,6 +3745,7 @@
       "name": "Campbagan Sadharan Durgotsav",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "campbagan-sadharan-durgotsav",
       "region_id": "kolkata",
@@ -3345,6 +3765,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -3365,6 +3786,7 @@
       "name": "Chaltabagan Lohapatty Durga Puja",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "chaltabagan-lohapatty-durga-puja",
       "region_id": "kolkata",
@@ -3384,6 +3806,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -3404,6 +3827,7 @@
       "name": "Charer Palli Sarbojanin Durgotsab",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "charer-palli-sarbojanin-durgotsab",
       "region_id": "kolkata",
@@ -3423,6 +3847,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -3443,6 +3868,7 @@
       "name": "Chetla Sarbasadharaner Durgotsab",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "chetla-sarbasadharaner-durgotsab",
       "region_id": "kolkata",
@@ -3462,6 +3888,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -3482,6 +3909,7 @@
       "name": "Chorebagan Sarbojanin Durgotsab Samity",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "chorebagan-sarbojanin-durgotsab-samity",
       "region_id": "kolkata",
@@ -3501,6 +3929,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -3521,6 +3950,7 @@
       "name": "Coal India Puja Committee Durga Puja",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "coal-india-puja-committee-durga-puja",
       "region_id": "kolkata",
@@ -3540,6 +3970,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -3560,6 +3991,7 @@
       "name": "Cossipore Shakti Sangha Durga Puja",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "cossipore-shakti-sangha-durga-puja",
       "region_id": "kolkata",
@@ -3579,6 +4011,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -3599,6 +4032,7 @@
       "name": "Dakshin Kolkata Sarbojanin Durgotsab",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "dakshin-kolkata-sarbojanin-durgotsab",
       "region_id": "kolkata",
@@ -3618,6 +4052,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -3638,6 +4073,7 @@
       "name": "Dakshin Kolkata Tarun Samity Durga Puja",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "dakshin-kolkata-tarun-samity-durga-puja",
       "region_id": "kolkata",
@@ -3657,6 +4093,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -3677,6 +4114,7 @@
       "name": "Dakshin Rabindrapally Sarbojanin Durga Puja",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "dakshin-rabindrapally-sarbojanin-durga-puja",
       "region_id": "kolkata",
@@ -3696,6 +4134,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -3716,6 +4155,7 @@
       "name": "Darjeepara Sarbojanin Durgotsab Samity",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "darjeepara-sarbojanin-durgotsab-samity",
       "region_id": "kolkata",
@@ -3735,6 +4175,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -3755,6 +4196,7 @@
       "name": "Daspara Panch Bhai Sangha",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "daspara-panch-bhai-sangha",
       "region_id": "kolkata",
@@ -3774,6 +4216,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -3794,6 +4237,7 @@
       "name": "Deshapriya Park Durga Puja",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "deshapriya-park-durga-puja",
       "region_id": "kolkata",
@@ -3813,6 +4257,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -3833,6 +4278,7 @@
       "name": "Deshbandhunagar Sarbojanin Durgotsab",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "deshbandhunagar-sarbojanin-durgotsab",
       "region_id": "kolkata",
@@ -3852,6 +4298,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -3872,6 +4319,7 @@
       "name": "Dhakuria Pragati Sangha Durga Puja",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "dhakuria-pragati-sangha-durga-puja",
       "region_id": "kolkata",
@@ -3891,6 +4339,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -3911,6 +4360,7 @@
       "name": "Dhakuria Sarbojanin Durgotsab",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "dhakuria-sarbojanin-durgotsab",
       "region_id": "kolkata",
@@ -3930,6 +4380,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -3950,6 +4401,7 @@
       "name": "Dharmatala Durga Puja",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "dharmatala-durga-puja",
       "region_id": "kolkata",
@@ -3969,6 +4421,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -3989,6 +4442,7 @@
       "name": "Dum Dum Park Bharat Chakra Durga Puja",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "dum-dum-park-bharat-chakra-durga-puja",
       "region_id": "kolkata",
@@ -4008,6 +4462,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -4028,6 +4483,7 @@
       "name": "Dum Dum Park Sarbojanin Durga Puja",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "dum-dum-park-sarbojanin-durga-puja",
       "region_id": "kolkata",
@@ -4047,6 +4503,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -4067,6 +4524,7 @@
       "name": "Durbar Mahila Samanya Committee",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "durbar-mahila-samanya-committee",
       "region_id": "kolkata",
@@ -4086,6 +4544,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -4106,6 +4565,7 @@
       "name": "Falguni Sangha Durga Puja",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "falguni-sangha-durga-puja",
       "region_id": "kolkata",
@@ -4125,6 +4585,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -4145,6 +4606,7 @@
       "name": "Garden Lane Sarbojanin Durgotsab",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "garden-lane-sarbojanin-durgotsab",
       "region_id": "kolkata",
@@ -4164,6 +4626,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -4184,6 +4647,7 @@
       "name": "Garfa Sarbojanin Durgotsav",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "garfa-sarbojanin-durgotsav",
       "region_id": "kolkata",
@@ -4203,6 +4667,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -4223,6 +4688,7 @@
       "name": "Ghoshpara Sankalpa Sangha Durga Puja",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "ghoshpara-sankalpa-sangha-durga-puja",
       "region_id": "kolkata",
@@ -4242,6 +4708,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -4262,6 +4729,7 @@
       "name": "Ghoshpara Young Stars Durga Puja",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "ghoshpara-young-stars-durga-puja",
       "region_id": "kolkata",
@@ -4281,6 +4749,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -4301,6 +4770,7 @@
       "name": "Goabagan Sarodatsav Sammilani Durga Puja",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "goabagan-sarodatsav-sammilani-durga-puja",
       "region_id": "kolkata",
@@ -4320,6 +4790,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -4340,6 +4811,7 @@
       "name": "Goala Para Five Star Sporting Club",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "goala-para-five-star-sporting-club",
       "region_id": "kolkata",
@@ -4359,6 +4831,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -4379,6 +4852,7 @@
       "name": "Golaghata Sammilani Durga Puja",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "golaghata-sammilani-durga-puja",
       "region_id": "kolkata",
@@ -4398,6 +4872,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -4418,6 +4893,7 @@
       "name": "Golpark Sarbojanin Durgotsab Committee",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "golpark-sarbojanin-durgotsab-committee",
       "region_id": "kolkata",
@@ -4437,6 +4913,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -4457,6 +4934,7 @@
       "name": "Gopal Nagar Kalyan Sangha Durga Puja",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "gopal-nagar-kalyan-sangha-durga-puja",
       "region_id": "kolkata",
@@ -4476,6 +4954,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -4496,6 +4975,7 @@
       "name": "Grey Street Sarbojanin Durga Puja",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "grey-street-sarbojanin-durga-puja",
       "region_id": "kolkata",
@@ -4515,6 +4995,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -4535,6 +5016,7 @@
       "name": "Guha Road Sarbojanin Mahapuja",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "guha-road-sarbojanin-mahapuja",
       "region_id": "kolkata",
@@ -4554,6 +5036,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -4574,6 +5057,7 @@
       "name": "Halsibagan Sarbojanin Durgotsab",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "halsibagan-sarbojanin-durgotsab",
       "region_id": "kolkata",
@@ -4593,6 +5077,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -4613,6 +5098,7 @@
       "name": "Hari Ghosh Street Sarbojanin",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "hari-ghosh-street-sarbojanin",
       "region_id": "kolkata",
@@ -4632,6 +5118,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -4652,6 +5139,7 @@
       "name": "Hari Ghosh Street Swamiji Sangha Sarbojanin Durga Puja",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "hari-ghosh-street-swamiji-sangha-sarbojanin-durga-puja",
       "region_id": "kolkata",
@@ -4671,6 +5159,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -4691,6 +5180,7 @@
       "name": "Harish Park Sarbojanin Durgotsab Samity",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "harish-park-sarbojanin-durgotsab-samity",
       "region_id": "kolkata",
@@ -4710,6 +5200,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -4730,6 +5221,7 @@
       "name": "Haritaki Bagan Sarbojanin Durgotsab",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "haritaki-bagan-sarbojanin-durgotsab",
       "region_id": "kolkata",
@@ -4749,6 +5241,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -4769,6 +5262,7 @@
       "name": "Hatibagan Nabinpally Sarbojanin Durgotsav",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "hatibagan-nabinpally-sarbojanin-durgotsav",
       "region_id": "kolkata",
@@ -4788,6 +5282,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -4808,6 +5303,7 @@
       "name": "Hindustan Pally Durga Puja Committee",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "hindustan-pally-durga-puja-committee",
       "region_id": "kolkata",
@@ -4827,6 +5323,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -4847,6 +5344,7 @@
       "name": "Howrah Jatiya Sevadal Club Durga Puja",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "howrah-jatiya-sevadal-club-durga-puja",
       "region_id": "kolkata",
@@ -4866,6 +5364,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -4886,6 +5385,7 @@
       "name": "Ichapur Bayam Samity Durga Puja",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "ichapur-bayam-samity-durga-puja",
       "region_id": "kolkata",
@@ -4905,6 +5405,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -4925,6 +5426,7 @@
       "name": "Ichapur Mitali Sangha Durga Puja",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "ichapur-mitali-sangha-durga-puja",
       "region_id": "kolkata",
@@ -4944,6 +5446,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -4964,6 +5467,7 @@
       "name": "Ichapur Sanghamitra Durga Puja",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "ichapur-sanghamitra-durga-puja",
       "region_id": "kolkata",
@@ -4983,6 +5487,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -5003,6 +5508,7 @@
       "name": "Jagaran Club Durga Puja",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "jagaran-club-durga-puja",
       "region_id": "kolkata",
@@ -5022,6 +5528,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -5042,6 +5549,7 @@
       "name": "Jagat Mukherjee Park Durga Puja",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "jagat-mukherjee-park-durga-puja",
       "region_id": "kolkata",
@@ -5061,6 +5569,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -5081,6 +5590,7 @@
       "name": "Jhorehat Pachal Para Puja Committee",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "jhorehat-pachal-para-puja-committee",
       "region_id": "kolkata",
@@ -5100,6 +5610,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -5120,6 +5631,7 @@
       "name": "Jokermath Sarbojonin Durga Puja",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "jokermath-sarbojonin-durga-puja",
       "region_id": "kolkata",
@@ -5139,6 +5651,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -5159,6 +5672,7 @@
       "name": "Jubamaitry Kalighat Durga Puja",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "jubamaitry-kalighat-durga-puja",
       "region_id": "kolkata",
@@ -5178,6 +5692,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -5198,6 +5713,7 @@
       "name": "Kailash Bose Street Durga Puja",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "kailash-bose-street-durga-puja",
       "region_id": "kolkata",
@@ -5217,6 +5733,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -5237,6 +5754,7 @@
       "name": "Kalighat Nepal Bhattacharjee Street Club",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "kalighat-nepal-bhattacharjee-street-club",
       "region_id": "kolkata",
@@ -5256,6 +5774,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -5276,6 +5795,7 @@
       "name": "Kamardanga Sisu Sangha Durga Puja",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "kamardanga-sisu-sangha-durga-puja",
       "region_id": "kolkata",
@@ -5295,6 +5815,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -5315,6 +5836,7 @@
       "name": "Kamardanga Sitalatala Barowari Durga Puja",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "kamardanga-sitalatala-barowari-durga-puja",
       "region_id": "kolkata",
@@ -5334,6 +5856,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -5354,6 +5877,7 @@
       "name": "Kankurgachi Sarbojanin Durgotsab",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "kankurgachi-sarbojanin-durgotsab",
       "region_id": "kolkata",
@@ -5373,6 +5897,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -5393,6 +5918,7 @@
       "name": "Kansaripara Sarbojanin Sarodotsab Committee",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "kansaripara-sarbojanin-sarodotsab-committee",
       "region_id": "kolkata",
@@ -5412,6 +5938,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -5432,6 +5959,7 @@
       "name": "Kasba R.K. Chatterjee Road Adhibasi Brinda Durga Puja",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "kasba-r-k-chatterjee-road-adhibasi-brinda-durga-puja",
       "region_id": "kolkata",
@@ -5451,6 +5979,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -5471,6 +6000,7 @@
       "name": "Kasba Renaissance Club",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "kasba-renaissance-club",
       "region_id": "kolkata",
@@ -5490,6 +6020,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -5510,6 +6041,7 @@
       "name": "Kasba Shakti Sangha Pallybasi Durgotsav Samity",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "kasba-shakti-sangha-pallybasi-durgotsav-samity",
       "region_id": "kolkata",
@@ -5529,6 +6061,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -5549,6 +6082,7 @@
       "name": "Kashipur Yubo Gosthi",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "kashipur-yubo-gosthi",
       "region_id": "kolkata",
@@ -5568,6 +6102,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -5588,6 +6123,7 @@
       "name": "Kazi Bagan Lane Durga Puja",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "kazi-bagan-lane-durga-puja",
       "region_id": "kolkata",
@@ -5607,6 +6143,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -5627,6 +6164,7 @@
       "name": "Ketopole Sammilani Durga Puja",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "ketopole-sammilani-durga-puja",
       "region_id": "kolkata",
@@ -5646,6 +6184,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -5666,6 +6205,7 @@
       "name": "Keyatala Pally Samity Durga Puja",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "keyatala-pally-samity-durga-puja",
       "region_id": "kolkata",
@@ -5685,6 +6225,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -5705,6 +6246,7 @@
       "name": "Kheyali Sangha Durga Puja",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "kheyali-sangha-durga-puja",
       "region_id": "kolkata",
@@ -5724,6 +6266,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -5744,6 +6287,7 @@
       "name": "Khidderpore Sarbojanin Durgotsab",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "khidderpore-sarbojanin-durgotsab",
       "region_id": "kolkata",
@@ -5763,6 +6307,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -5783,6 +6328,7 @@
       "name": "Khidderpur 75 Pally Sarbojanin Durgotsab Committee",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "khidderpur-75-pally-sarbojanin-durgotsab-committee",
       "region_id": "kolkata",
@@ -5802,6 +6348,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -5822,6 +6369,7 @@
       "name": "Kidderpore Jubaghosthi Durga Puja",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "kidderpore-jubaghosthi-durga-puja",
       "region_id": "kolkata",
@@ -5841,6 +6389,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -5861,6 +6410,7 @@
       "name": "Kidderpore Pally Saradiya Durga Puja",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "kidderpore-pally-saradiya-durga-puja",
       "region_id": "kolkata",
@@ -5880,6 +6430,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -5900,6 +6451,7 @@
       "name": "Kishor Sangsad Club Durga Puja",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "kishor-sangsad-club-durga-puja",
       "region_id": "kolkata",
@@ -5919,6 +6471,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -5939,6 +6492,7 @@
       "name": "Kumartuli Park Sarbojanin Durgotsab Committee",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "kumartuli-park-sarbojanin-durgotsab-committee",
       "region_id": "kolkata",
@@ -5958,6 +6512,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -5978,6 +6533,7 @@
       "name": "Kumartuli Sarbojanin Durgotsab",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "kumartuli-sarbojanin-durgotsab",
       "region_id": "kolkata",
@@ -5997,6 +6553,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -6017,6 +6574,7 @@
       "name": "Lake Gardens Peoples Association Durga Puja",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "lake-gardens-peoples-association-durga-puja",
       "region_id": "kolkata",
@@ -6036,6 +6594,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -6056,6 +6615,7 @@
       "name": "Lake View Park Sarbojanin Durgotsav Samity",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "lake-view-park-sarbojanin-durgotsav-samity",
       "region_id": "kolkata",
@@ -6075,6 +6635,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -6095,6 +6656,7 @@
       "name": "Lake Youth Corner Durga Puja",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "lake-youth-corner-durga-puja",
       "region_id": "kolkata",
@@ -6114,6 +6676,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -6134,6 +6697,7 @@
       "name": "Madhusudan Das Lane & Bye Lane Sarbojanin Durgotsab",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "madhusudan-das-lane-bye-lane-sarbojanin-durgotsab",
       "region_id": "kolkata",
@@ -6153,6 +6717,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -6173,6 +6738,7 @@
       "name": "Mahalla Sarbojanin Durgautsab Samity",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "mahalla-sarbojanin-durgautsab-samity",
       "region_id": "kolkata",
@@ -6192,6 +6758,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -6212,6 +6779,7 @@
       "name": "Mahamayatala Sarbojanin Durgotsab",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "mahamayatala-sarbojanin-durgotsab",
       "region_id": "kolkata",
@@ -6231,6 +6799,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -6251,6 +6820,7 @@
       "name": "Makardah Karuri Para Sarbojanin Durgotsav",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "makardah-karuri-para-sarbojanin-durgotsav",
       "region_id": "kolkata",
@@ -6270,6 +6840,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -6290,6 +6861,7 @@
       "name": "Megacity Residents Puja Committee",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "megacity-residents-puja-committee",
       "region_id": "kolkata",
@@ -6309,6 +6881,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -6329,6 +6902,7 @@
       "name": "Mitali Kankurgachi Durga Puja",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "mitali-kankurgachi-durga-puja",
       "region_id": "kolkata",
@@ -6348,6 +6922,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -6368,6 +6943,7 @@
       "name": "Mohan Bagan Barwari Durga Puja",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "mohan-bagan-barwari-durga-puja",
       "region_id": "kolkata",
@@ -6387,6 +6963,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -6407,6 +6984,7 @@
       "name": "Mohila Mahal Club Durga Puja",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "mohila-mahal-club-durga-puja",
       "region_id": "kolkata",
@@ -6426,6 +7004,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -6446,6 +7025,7 @@
       "name": "Mondal Para Sporting Club Durga Puja",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "mondal-para-sporting-club-durga-puja",
       "region_id": "kolkata",
@@ -6465,6 +7045,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -6485,6 +7066,7 @@
       "name": "Monohar Pukur Baisakhi Sangha",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "monohar-pukur-baisakhi-sangha",
       "region_id": "kolkata",
@@ -6504,6 +7086,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -6524,6 +7107,7 @@
       "name": "Mudiali Club Sarbojanin Durga Puja",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "mudiali-club-sarbojanin-durga-puja",
       "region_id": "kolkata",
@@ -6543,6 +7127,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -6563,6 +7148,7 @@
       "name": "N.S.C. Sports Club Durga Puja",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "n-s-c-sports-club-durga-puja",
       "region_id": "kolkata",
@@ -6582,6 +7168,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -6602,6 +7189,7 @@
       "name": "Nabanagar Badamtala Sarbojanin Durgotsab",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "nabanagar-badamtala-sarbojanin-durgotsab",
       "region_id": "kolkata",
@@ -6621,6 +7209,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -6641,6 +7230,7 @@
       "name": "Nainan Para & Jogendra Basak Road Sarbojanin Shree Shree Durgapuja",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "nainan-para-jogendra-basak-road-sarbojanin-shree-shree-durgapuja",
       "region_id": "kolkata",
@@ -6660,6 +7250,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -6680,6 +7271,7 @@
       "name": "Naktala Udayan Sangha Durga Puja",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "naktala-udayan-sangha-durga-puja",
       "region_id": "kolkata",
@@ -6699,6 +7291,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -6719,6 +7312,7 @@
       "name": "Nalin Sarkar Street Sarbojanin Durgotsab",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "nalin-sarkar-street-sarbojanin-durgotsab",
       "region_id": "kolkata",
@@ -6738,6 +7332,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -6758,6 +7353,7 @@
       "name": "Naskarpara Sarbojanin Durgotsav",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "naskarpara-sarbojanin-durgotsav",
       "region_id": "kolkata",
@@ -6777,6 +7373,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -6797,6 +7394,7 @@
       "name": "New Alipore Suruchi Sangha Durga Puja",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "new-alipore-suruchi-sangha-durga-puja",
       "region_id": "kolkata",
@@ -6816,6 +7414,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -6836,6 +7435,7 @@
       "name": "New Santoshpur Adi Durgotsab",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "new-santoshpur-adi-durgotsab",
       "region_id": "kolkata",
@@ -6855,6 +7455,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -6875,6 +7476,7 @@
       "name": "Nimta Boy's Athletic Club Sarbojanin Durgotsav",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "nimta-boy-s-athletic-club-sarbojanin-durgotsav",
       "region_id": "kolkata",
@@ -6894,6 +7496,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -6914,6 +7517,7 @@
       "name": "Nimtala Sarbojanin Durgotsab",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "nimtala-sarbojanin-durgotsab",
       "region_id": "kolkata",
@@ -6933,6 +7537,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -6953,6 +7558,7 @@
       "name": "North Tangra Durga Puja",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "north-tangra-durga-puja",
       "region_id": "kolkata",
@@ -6972,6 +7578,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -6992,6 +7599,7 @@
       "name": "North Tridhara Sarbojanin Durga Puja",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "north-tridhara-sarbojanin-durga-puja",
       "region_id": "kolkata",
@@ -7011,6 +7619,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -7031,6 +7640,7 @@
       "name": "Nutan Pally Sarbojanin Durgotsab",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "nutan-pally-sarbojanin-durgotsab",
       "region_id": "kolkata",
@@ -7050,6 +7660,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -7070,6 +7681,7 @@
       "name": "Paddapukur Barwari Samity",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "paddapukur-barwari-samity",
       "region_id": "kolkata",
@@ -7089,6 +7701,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -7109,6 +7722,7 @@
       "name": "Paddapukur Youth Association Durga Puja",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "paddapukur-youth-association-durga-puja",
       "region_id": "kolkata",
@@ -7128,6 +7742,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -7148,6 +7763,7 @@
       "name": "Pally Mangal Samity Durga Puja",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "pally-mangal-samity-durga-puja",
       "region_id": "kolkata",
@@ -7167,6 +7783,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -7187,6 +7804,7 @@
       "name": "Panchanna Gram Adhibasibrinda",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "panchanna-gram-adhibasibrinda",
       "region_id": "kolkata",
@@ -7206,6 +7824,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -7226,6 +7845,7 @@
       "name": "Paschim Putiary Sarbojanin Nabo Durgotsav",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "paschim-putiary-sarbojanin-nabo-durgotsav",
       "region_id": "kolkata",
@@ -7245,6 +7865,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -7265,6 +7886,7 @@
       "name": "Pathuria Ghata Pancher Palli Sarbojanin",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "pathuria-ghata-pancher-palli-sarbojanin",
       "region_id": "kolkata",
@@ -7284,6 +7906,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -7304,6 +7927,7 @@
       "name": "Patuli Sarbojanin Durgotsab",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "patuli-sarbojanin-durgotsab",
       "region_id": "kolkata",
@@ -7323,6 +7947,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -7343,6 +7968,7 @@
       "name": "Peyarabagan Sarbojanin Durgotsab",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "peyarabagan-sarbojanin-durgotsab",
       "region_id": "kolkata",
@@ -7362,6 +7988,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -7382,6 +8009,7 @@
       "name": "Picnic Sunrise Club",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "picnic-sunrise-club",
       "region_id": "kolkata",
@@ -7401,6 +8029,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -7421,6 +8050,7 @@
       "name": "Purbachal Residents Sarbojanin Durgotsav",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "purbachal-residents-sarbojanin-durgotsav",
       "region_id": "kolkata",
@@ -7440,6 +8070,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -7460,6 +8091,7 @@
       "name": "Putiary Sarbojanin Durgotsab Committee",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "putiary-sarbojanin-durgotsab-committee",
       "region_id": "kolkata",
@@ -7479,6 +8111,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -7499,6 +8132,7 @@
       "name": "Ramesh Dutta Street Sarbojanin Durgotsab",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "ramesh-dutta-street-sarbojanin-durgotsab",
       "region_id": "kolkata",
@@ -7518,6 +8152,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -7538,6 +8173,7 @@
       "name": "Ramgarh Satapally Sarbojanin Durgotsav Committee",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "ramgarh-satapally-sarbojanin-durgotsav-committee",
       "region_id": "kolkata",
@@ -7557,6 +8193,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -7577,6 +8214,7 @@
       "name": "Rammohan Sammilani Durga Puja",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "rammohan-sammilani-durga-puja",
       "region_id": "kolkata",
@@ -7596,6 +8234,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -7616,6 +8255,7 @@
       "name": "Rashbehari Suhrid Sangha",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "rashbehari-suhrid-sangha",
       "region_id": "kolkata",
@@ -7635,6 +8275,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -7655,6 +8296,7 @@
       "name": "Russa Madhyapally Sarbojanin Durgotsav",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "russa-madhyapally-sarbojanin-durgotsav",
       "region_id": "kolkata",
@@ -7674,6 +8316,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -7694,6 +8337,7 @@
       "name": "Sadhukhan Bari Durga Puja",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "sadhukhan-bari-durga-puja",
       "region_id": "kolkata",
@@ -7713,6 +8357,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -7733,6 +8378,7 @@
       "name": "Sahapur Suhrid Sangha Durga Puja Committee",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "sahapur-suhrid-sangha-durga-puja-committee",
       "region_id": "kolkata",
@@ -7752,6 +8398,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -7772,6 +8419,7 @@
       "name": "Salap Utsahi Sangha Durga Puja",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "salap-utsahi-sangha-durga-puja",
       "region_id": "kolkata",
@@ -7791,6 +8439,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -7811,6 +8460,7 @@
       "name": "Salkia Baroari Durgatsob",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "salkia-baroari-durgatsob",
       "region_id": "kolkata",
@@ -7830,6 +8480,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -7850,6 +8501,7 @@
       "name": "Salkia Chatra Bayam Samity Sarbojanin",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "salkia-chatra-bayam-samity-sarbojanin",
       "region_id": "kolkata",
@@ -7869,6 +8521,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -7889,6 +8542,7 @@
       "name": "Salkia Sitalatala Sarbojanin Durgotsab",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "salkia-sitalatala-sarbojanin-durgotsab",
       "region_id": "kolkata",
@@ -7908,6 +8562,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -7928,6 +8583,7 @@
       "name": "Sammilita Lalabagan Sarbojanin Durga Puja",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "sammilita-lalabagan-sarbojanin-durga-puja",
       "region_id": "kolkata",
@@ -7947,6 +8603,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -7967,6 +8624,7 @@
       "name": "Sanghasree Kalighat Durga Puja",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "sanghasree-kalighat-durga-puja",
       "region_id": "kolkata",
@@ -7986,6 +8644,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -8006,6 +8665,7 @@
       "name": "Santoshpur Avenue South",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "santoshpur-avenue-south",
       "region_id": "kolkata",
@@ -8025,6 +8685,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -8045,6 +8706,7 @@
       "name": "Santoshpur Lake Pally Durga Puja",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "santoshpur-lake-pally-durga-puja",
       "region_id": "kolkata",
@@ -8064,6 +8726,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -8084,6 +8747,7 @@
       "name": "Santoshpur Trikon Park Durgotsab",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "santoshpur-trikon-park-durgotsab",
       "region_id": "kolkata",
@@ -8103,6 +8767,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -8123,6 +8788,7 @@
       "name": "Sarkar Bagan Sammilita Sangha Durga Puja",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "sarkar-bagan-sammilita-sangha-durga-puja",
       "region_id": "kolkata",
@@ -8142,6 +8808,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -8162,6 +8829,7 @@
       "name": "Sater Palli Sarbojanin Durgotsav",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "sater-palli-sarbojanin-durgotsav",
       "region_id": "kolkata",
@@ -8181,6 +8849,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -8201,6 +8870,7 @@
       "name": "Shaktimoyee Sarbojanin Durgotsab Committee",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "shaktimoyee-sarbojanin-durgotsab-committee",
       "region_id": "kolkata",
@@ -8220,6 +8890,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -8240,6 +8911,7 @@
       "name": "Shibmandir Sarbojanin Durgotsab Samiti",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "shibmandir-sarbojanin-durgotsab-samiti",
       "region_id": "kolkata",
@@ -8259,6 +8931,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -8279,6 +8952,7 @@
       "name": "Shyambazar Nabin Sangha Durga Puja",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "shyambazar-nabin-sangha-durga-puja",
       "region_id": "kolkata",
@@ -8298,6 +8972,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -8318,6 +8993,7 @@
       "name": "Signum Aristo Residential Puja",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "signum-aristo-residential-puja",
       "region_id": "kolkata",
@@ -8337,6 +9013,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -8357,6 +9034,7 @@
       "name": "Sikdar Bagan Sadharan Durgotsov",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "sikdar-bagan-sadharan-durgotsov",
       "region_id": "kolkata",
@@ -8376,6 +9054,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -8396,6 +9075,7 @@
       "name": "Simla Sporting Club Durga Puja",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "simla-sporting-club-durga-puja",
       "region_id": "kolkata",
@@ -8415,6 +9095,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -8435,6 +9116,7 @@
       "name": "Singhi Park Sarbojanin Durga Puja",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "singhi-park-sarbojanin-durga-puja",
       "region_id": "kolkata",
@@ -8454,6 +9136,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -8474,6 +9157,7 @@
       "name": "Sonarpur Sarbojanin Durgotsav Puja Committee",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "sonarpur-sarbojanin-durgotsav-puja-committee",
       "region_id": "kolkata",
@@ -8493,6 +9177,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -8513,6 +9198,7 @@
       "name": "Sovabazar Sarbojanin Durgotsav",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "sovabazar-sarbojanin-durgotsav",
       "region_id": "kolkata",
@@ -8532,6 +9218,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -8552,6 +9239,7 @@
       "name": "Sreebhumi Sporting Club Durga Puja",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "sreebhumi-sporting-club-durga-puja",
       "region_id": "kolkata",
@@ -8571,6 +9259,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -8591,6 +9280,7 @@
       "name": "Subhaspally Shaktinagar Sarbojanin Durgatsav",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "subhaspally-shaktinagar-sarbojanin-durgatsav",
       "region_id": "kolkata",
@@ -8610,6 +9300,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -8630,6 +9321,7 @@
       "name": "Surya Nagar Sarbojanin Durga Puja",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "surya-nagar-sarbojanin-durga-puja",
       "region_id": "kolkata",
@@ -8649,6 +9341,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -8669,6 +9362,7 @@
       "name": "Tala Barowari Durgotsab",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "tala-barowari-durgotsab",
       "region_id": "kolkata",
@@ -8688,6 +9382,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -8708,6 +9403,7 @@
       "name": "Tala Dakshin Pally Durgotsav Committee",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "tala-dakshin-pally-durgotsav-committee",
       "region_id": "kolkata",
@@ -8727,6 +9423,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -8747,6 +9444,7 @@
       "name": "Tala Park 15 Pally Durga Puja",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "tala-park-15-pally-durga-puja",
       "region_id": "kolkata",
@@ -8766,6 +9464,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -8786,6 +9485,7 @@
       "name": "Telengabagan Sarbojanin Durgotsab",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "telengabagan-sarbojanin-durgotsab",
       "region_id": "kolkata",
@@ -8805,6 +9505,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -8825,6 +9526,7 @@
       "name": "Torpedo Welfare Society Durga Puja",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "torpedo-welfare-society-durga-puja",
       "region_id": "kolkata",
@@ -8844,6 +9546,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -8864,6 +9567,7 @@
       "name": "Tridhara Sammilani Durga Puja",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "tridhara-sammilani-durga-puja",
       "region_id": "kolkata",
@@ -8883,6 +9587,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -8903,6 +9608,7 @@
       "name": "Tulipians Durgotsav",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "tulipians-durgotsav",
       "region_id": "kolkata",
@@ -8922,6 +9628,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -8942,6 +9649,7 @@
       "name": "Udayan Kidderpore Durga Puja",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "udayan-kidderpore-durga-puja",
       "region_id": "kolkata",
@@ -8961,6 +9669,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -8981,6 +9690,7 @@
       "name": "Ultadanga Jagarani Sangha Durga Puja",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "ultadanga-jagarani-sangha-durga-puja",
       "region_id": "kolkata",
@@ -9000,6 +9710,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -9020,6 +9731,7 @@
       "name": "Ultadanga Pallyshree Durga Puja",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "ultadanga-pallyshree-durga-puja",
       "region_id": "kolkata",
@@ -9039,6 +9751,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -9059,6 +9772,7 @@
       "name": "Ultadanga Sangrami Durga Puja",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "ultadanga-sangrami-durga-puja",
       "region_id": "kolkata",
@@ -9078,6 +9792,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -9098,6 +9813,7 @@
       "name": "Upohar Utsav Committee",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "upohar-utsav-committee",
       "region_id": "kolkata",
@@ -9117,6 +9833,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -9137,6 +9854,7 @@
       "name": "Uttar Bantra Kumar Para Baroary Samity Durga Puja",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "uttar-bantra-kumar-para-baroary-samity-durga-puja",
       "region_id": "kolkata",
@@ -9156,6 +9874,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -9176,6 +9895,7 @@
       "name": "Uttar Salkia Sarbojanin Durgotsab",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "uttar-salkia-sarbojanin-durgotsab",
       "region_id": "kolkata",
@@ -9195,6 +9915,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -9215,6 +9936,7 @@
       "name": "VIP Nagar Sarbojanin Durga Puja Committee",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "vip-nagar-sarbojanin-durga-puja-committee",
       "region_id": "kolkata",
@@ -9234,6 +9956,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -9254,6 +9977,7 @@
       "name": "Westend Park Sarbojanin Durga Puja",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "westend-park-sarbojanin-durga-puja",
       "region_id": "kolkata",
@@ -9273,6 +9997,7 @@
       "year": 2025
     },
     {
+      "about": null,
       "address": null,
       "admin1": "West Bengal",
       "aliases": [],
@@ -9293,6 +10018,7 @@
       "name": "Young Citizens Club Durga Puja",
       "name_bn": null,
       "neighborhood": null,
+      "official_links": [],
       "organizer": null,
       "pandal_id": "young-citizens-club-durga-puja",
       "region_id": "kolkata",

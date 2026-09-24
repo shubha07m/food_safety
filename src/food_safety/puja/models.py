@@ -2,7 +2,15 @@ from datetime import date
 from typing import Literal
 from zoneinfo import ZoneInfo, ZoneInfoNotFoundError
 
-from pydantic import AwareDatetime, BaseModel, ConfigDict, Field, HttpUrl, model_validator
+from pydantic import (
+    AwareDatetime,
+    BaseModel,
+    ConfigDict,
+    Field,
+    HttpUrl,
+    field_validator,
+    model_validator,
+)
 
 from ..places.models import ID, Latitude, Longitude
 
@@ -26,6 +34,9 @@ class SourceSpec(Strict):
     allow_missing_robots: bool = False
     content_selector: str | None = Field(default=None, max_length=160)
     region_id: ID = "kolkata"
+    source_kind: Literal[
+        "organizer", "association", "venue", "event", "directory", "social", "unknown"
+    ] = "unknown"
     reviewed_revision: str | None = Field(default=None, pattern=r"^[a-f0-9]{64}$")
 
 
@@ -36,6 +47,53 @@ class SourceEvidence(Strict):
     publication_date: date | None = None
     quote: str = Field(min_length=1, max_length=600)
     source_revision_id: str | None = Field(default=None, pattern=r"^[a-f0-9]{64}$")
+
+
+class SourcedText(Strict):
+    text: str = Field(min_length=1, max_length=450)
+    evidence: list[SourceEvidence] = Field(min_length=1, max_length=3)
+
+
+class OfficialLink(Strict):
+    kind: Literal["website", "facebook", "instagram", "programme", "contact"]
+    url: HttpUrl
+    evidence: SourceEvidence
+
+    @field_validator("url")
+    @classmethod
+    def public_url(cls, value):
+        from ..safety import safe_url
+
+        safe_url(str(value))
+        return value
+
+
+class ProgrammeNote(SourcedText):
+    title: str = Field(min_length=1, max_length=100)
+    when: str | None = Field(default=None, max_length=100)
+
+
+class EditionLocation(Strict):
+    venue: str = Field(min_length=1, max_length=200)
+    address: str = Field(min_length=1, max_length=300)
+    city: str | None = Field(default=None, min_length=1, max_length=160)
+    latitude: Latitude | None = None
+    longitude: Longitude | None = None
+    coordinate_source: HttpUrl | None = None
+    coordinate_precision: Literal["venue", "street", "neighborhood"] | None = None
+    evidence: list[SourceEvidence] = Field(min_length=1, max_length=3)
+
+    @model_validator(mode="after")
+    def anchor(self):
+        if (self.latitude is None) != (self.longitude is None):
+            raise ValueError("coordinate_pair_required")
+        if self.latitude is not None and not (self.coordinate_source and self.coordinate_precision):
+            raise ValueError("coordinate_provenance_required")
+        if self.coordinate_source and any(
+            s in self.coordinate_source.host.lower() for s in ("google", "gstatic", "goo.gl")
+        ):
+            raise ValueError("independent_coordinate_source_required")
+        return self
 
 
 class Edition(Strict):
@@ -49,6 +107,8 @@ class Edition(Strict):
     venue_reviewed: bool = False
     reviewed_at: AwareDatetime
     evidence: list[SourceEvidence] = Field(min_length=1, max_length=10)
+    location: EditionLocation | None = None
+    programme_notes: list[ProgrammeNote] = Field(default_factory=list, max_length=3)
 
     @model_validator(mode="after")
     def dates(self):
@@ -86,6 +146,8 @@ class PandalRecord(Strict):
     coordinate_source: HttpUrl | None = None
     coordinate_precision: Literal["venue", "street", "neighborhood"] | None = None
     organizer: str | None = Field(default=None, max_length=200)
+    official_links: list[OfficialLink] = Field(default_factory=list, max_length=6)
+    about: SourcedText | None = None
     year: int | None = Field(default=None, ge=1900, le=2100)
     featured: bool = False
     subtitle: str | None = Field(default=None, max_length=180)
@@ -98,7 +160,9 @@ class PandalRecord(Strict):
         if self.edition:
             if self.year is not None and self.year != self.edition.year:
                 raise ValueError("edition_year_mismatch")
-            if self.edition.venue_reviewed and not (self.venue and self.address):
+            if self.edition.venue_reviewed and not (
+                self.edition.location or (self.venue and self.address)
+            ):
                 raise ValueError("reviewed_venue_requires_address")
         if self.name.casefold() in {"puja name", "pandal name", "name"}:
             raise ValueError("table_header_is_not_a_pandal")

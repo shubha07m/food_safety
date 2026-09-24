@@ -66,6 +66,13 @@ def main():
     puja_extract = puja_sub.add_parser("extract")
     puja_extract.add_argument("--source")
     puja_extract.add_argument("--max-calls", type=int)
+    leads = puja_sub.add_parser(
+        "leads", help="Manual private lead/profile review packets; never publishes"
+    )
+    leads.add_argument("--seeds", type=Path, required=True)
+    leads.add_argument("--campaign", required=True)
+    leads.add_argument("--max-calls", type=int, default=0)
+    leads.add_argument("--dry-run", action="store_true")
     puja_geocode = puja_sub.add_parser(
         "geocode", help="Bounded private coordinate research; never auto-publishes"
     )
@@ -177,6 +184,10 @@ def main():
                 result = discover_puja(ROOT, args.source)
             elif args.puja_command == "extract":
                 result = extract_puja(ROOT, args.source, args.max_calls)
+            elif args.puja_command == "leads":
+                from .puja.leads import run as review_leads
+
+                result = review_leads(ROOT, args.seeds, args.campaign, args.max_calls, args.dry_run)
             elif args.puja_command == "geocode":
                 from .puja.geocoding import discover as geocode
 
