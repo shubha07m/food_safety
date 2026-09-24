@@ -35,9 +35,15 @@ the frozen passage using exact, NFC or whitespace-normalized matching. A model c
 publish, geocode, rank or create a Google Maps request. Calls are capped per run and cached
 by source revision, model, task and schema.
 
-`review-summary` reports private candidates without printing source bodies. A maintainer
-must inspect citations and add supported values to `published` in `config/puja.yml`.
-`publish` validates provenance, coordinates and IDs before generating public data.
+`review-summary` remains useful for packet diagnostics. The normal owner path is now
+`python -m food_safety.cli puja review`: it opens a localhost-only card queue and
+prepares bounded new leads from public Puja suggestions and changed known sources.
+Each card shows evidence, duplicate warnings and eligible approval tiers. Approve,
+defer or reject is the owner's final action. Approval creates an owner-authored
+GitHub publication request; the scheduled workflow validates it, writes the
+reviewed `config/puja-approved.json` overlay, builds, and commits the static output.
+An invalid request stays open and does not modify the catalog. The older manual
+`puja publish` command remains for direct curation and diagnostics.
 
 `geocode` is an explicit operator research aid for a small named set of already
 source-backed pandals. It uses the public Nominatim service single-threaded at no more
@@ -112,9 +118,10 @@ Packets include literal support, missing fields, duplicate/source warnings,
 date/year/timezone inconsistencies, tentative tier and unreviewed geography.
 Literal matching does **not** prove a fact belongs to the same event or year.
 An owner must approve organizer identity, edition relationships, links, conflicting
-announcements and final publication. Fetch/model failure defers a candidate; no
-code path here writes public catalogs. Publication remains an explicit reviewed
-configuration edit. This campaign is separate from automatic HTTP monitoring.
+announcements and the publication tier. Fetch/model failure leaves a candidate
+pending. Discovery and monitoring never approve a record. Only owner approval
+creates a publication request, which the scheduled workflow validates before any
+catalog change. This campaign remains separate from automatic HTTP monitoring.
 
 Every published pandal has a stable ID, name, area, city/region, source URL, title,
 supporting quote and verification timestamp. Coordinates are optional. If present they

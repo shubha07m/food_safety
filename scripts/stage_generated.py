@@ -9,6 +9,7 @@ from audit_repository import SECRET
 
 ROOT = Path(__file__).resolve().parents[1]
 GENERATED = (
+    "config/puja-approved.json",
     "data/osm_food_london.json",
     "site/data/osm_food_london.json",
     "data/food_provider_london.json",

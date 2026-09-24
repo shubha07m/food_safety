@@ -45,11 +45,13 @@ cookie, account registration or visitor database. Hosting providers
 may process IP addresses and operational logs. Other external source/GitHub links
 are governed by their providers' policies; normal external links use no-referrer.
 
-Community intake is an optional outbound owner-configured Google Form, not an embedded
-write endpoint. Responses must remain private, with no uploads, email collection or
-public response summaries requested by this project. No submission automatically
-publishes. Do not submit unnecessary personal information. Code discussions and
-contributions on this public GitHub repository may be publicly readable.
+Food Safety community intake remains an optional outbound owner-configured Google
+Form, not an embedded write endpoint. Puja suggestions use a public GitHub issue
+form; a GitHub account is required and submitted text is publicly readable. Do not
+include private contact details. The Puja review queue imports only the proposed
+region and source URL, then retrieves the source separately. No public suggestion
+automatically publishes; owner approval is required. Code discussions and
+contributions on this public GitHub repository may also be publicly readable.
 
 Food Safety Evidence remains West Bengal-only. It rejects social-identity inference
 and unnecessary personal information. Business names and coarse reported areas need

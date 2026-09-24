@@ -4,6 +4,7 @@ regions:
     label: Kolkata region
     country_code: IN
     admin1: West Bengal
+    timezone: Asia/Kolkata
     default_map_center: {lat: 22.57, lng: 88.36}
     default_map_zoom: 11
     safety_context: true
@@ -23,6 +24,7 @@ regions:
     label: California
     country_code: US
     admin1: California
+    timezone: America/Los_Angeles
     # Regional framing only; never used as a venue coordinate.
     default_map_center: {lat: 36.5, lng: -119.5}
     default_map_zoom: 6

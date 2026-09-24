@@ -324,7 +324,11 @@ def run(root: Path, file: Path, campaign: str, max_calls=0, dry_run=False, extra
         packets, seen, used, hits = [], set(), 0, 0
         for seed in seeds:
             key = hashlib.sha256(
-                (seed["url"] + seed.get("content_selector", "")).encode()
+                (
+                    seed["url"]
+                    + seed.get("content_selector", "")
+                    + seed.get("refresh_revision", "")
+                ).encode()
             ).hexdigest()
             page_cache = folder / (key + ".page.json")
             try:
@@ -335,10 +339,22 @@ def run(root: Path, file: Path, campaign: str, max_calls=0, dry_run=False, extra
                     doc, links, structured = page_document(
                         html, final_url, seed.get("language", "en"), seed.get("content_selector")
                     )
+                    from types import SimpleNamespace
+
+                    from .freshness import revision as monitor_revision
+
                     page = {
                         "document": doc.model_dump(mode="json"),
                         "links": sorted(links),
                         "structured": structured[1].model_dump(mode="json") if structured else None,
+                        "monitor_revision": monitor_revision(
+                            html,
+                            SimpleNamespace(
+                                url=final_url,
+                                language=seed.get("language", "en"),
+                                content_selector=seed.get("content_selector"),
+                            ),
+                        ),
                     }
                     dump(page_cache, page)
                 doc = DocumentRevision.model_validate(page["document"])
@@ -355,29 +371,6 @@ def run(root: Path, file: Path, campaign: str, max_calls=0, dry_run=False, extra
                 if cache.exists():
                     reply = json.loads(cache.read_text())
                     hits += 1
-                elif seed.get("candidate_name") and seed.get("mode", "lead") == "lead":
-                    # Operator-supplied identity only. Literal support is not event/year approval.
-                    name = seed["candidate_name"]
-                    passage = next((p for p in doc.passages if name in p.original_text), None)
-                    if not passage:
-                        raise ValueError("operator_identity_not_found")
-                    reply = {
-                        "text": json.dumps(
-                            {
-                                "completion_status": "lead_only",
-                                "candidates": [
-                                    {
-                                        "name": {
-                                            "raw_value": name,
-                                            "passage_id": passage.passage_id,
-                                            "original_quote": passage.original_text[:1200],
-                                        },
-                                        "source_kind": seed.get("source_kind", "unknown"),
-                                    }
-                                ],
-                            }
-                        )
-                    }
                 elif page["structured"]:
                     reply = {
                         "text": json.dumps(
@@ -397,9 +390,45 @@ def run(root: Path, file: Path, campaign: str, max_calls=0, dry_run=False, extra
                                         "dates": c.get("event_dates")
                                         if seed.get("mode") == "profile"
                                         else None,
+                                        "start_date": c.get("event_dates")
+                                        if seed.get("mode") == "profile"
+                                        else None,
+                                        "year": (
+                                            {
+                                                **c["event_dates"],
+                                                "raw_value": c["event_dates"]["raw_value"][:4],
+                                            }
+                                            if seed.get("mode") == "profile"
+                                            and c.get("event_dates")
+                                            and c["event_dates"]["raw_value"][:4].isdigit()
+                                            else None
+                                        ),
                                         "source_kind": seed.get("source_kind", "unknown"),
                                     }
                                     for c in page["structured"]["candidates"][:20]
+                                ],
+                            }
+                        )
+                    }
+                elif seed.get("candidate_name") and seed.get("mode", "lead") == "lead":
+                    # Operator-supplied identity only. Literal support is not event/year approval.
+                    name = seed["candidate_name"]
+                    passage = next((p for p in doc.passages if name in p.original_text), None)
+                    if not passage:
+                        raise ValueError("operator_identity_not_found")
+                    reply = {
+                        "text": json.dumps(
+                            {
+                                "completion_status": "lead_only",
+                                "candidates": [
+                                    {
+                                        "name": {
+                                            "raw_value": name,
+                                            "passage_id": passage.passage_id,
+                                            "original_quote": passage.original_text[:1200],
+                                        },
+                                        "source_kind": seed.get("source_kind", "unknown"),
+                                    }
                                 ],
                             }
                         )
@@ -466,6 +495,9 @@ def run(root: Path, file: Path, campaign: str, max_calls=0, dry_run=False, extra
                     {
                         "url": seed["url"],
                         "region": seed["region"],
+                        "origin": seed.get("origin", "manual"),
+                        "source_title": doc.title,
+                        "monitor_revision": page.get("monitor_revision"),
                         "mode": seed.get("mode", "lead"),
                         "status": "screened",
                         "completion": output.completion_status,

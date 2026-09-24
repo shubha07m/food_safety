@@ -55,7 +55,7 @@ class PujaFetcher(Fetcher):
             raise
 
 
-def load_config(root: Path) -> Config:
+def load_config(root: Path, approval_overlay=None) -> Config:
     raw = yaml.safe_load((root / "config/puja.yml").read_text())
     if (root / "config/regions.yml").exists():
         from .regions import load_regions
@@ -66,6 +66,21 @@ def load_config(root: Path) -> Config:
                 extra = yaml.safe_load((root / region.catalog_config).read_text())
                 raw["published"].extend(extra.get("published", []))
                 raw["sources"].extend(extra.get("sources", []))
+        if approval_overlay is None:
+            approved_path = root / "config/puja-approved.json"
+            approval_overlay = (
+                json.loads(approved_path.read_text()) if approved_path.exists() else None
+            )
+        if approval_overlay:
+            if approval_overlay.get("schema_version") != "puja-approvals-1":
+                raise ValueError("invalid_approval_overlay")
+            records = {p["pandal_id"]: p for p in raw["published"]}
+            sources = {s["source_id"]: s for s in raw["sources"]}
+            for item in sorted(approval_overlay["approvals"], key=lambda row: row["issue_number"]):
+                records[item["record"]["pandal_id"]] = item["record"]
+                sources[item["source"]["source_id"]] = item["source"]
+            raw["published"] = list(records.values())
+            raw["sources"] = list(sources.values())
         config = Config.model_validate(raw)
         if any(source.region_id not in registry for source in config.sources):
             raise ValueError("source_region_unknown")

@@ -166,6 +166,36 @@ def test_structured_leads_bypass_model_and_one_hop_is_not_fetched(tmp_path, monk
     assert result["ledger"]["http_attempts"] == 1
 
 
+def test_structured_profile_keeps_supported_edition_without_model(tmp_path, monkeypatch):
+    event = {
+        "@type": "Event",
+        "name": "Fixture Durga Puja",
+        "startDate": "2026-10-17",
+        "location": {
+            "name": "Fixture Hall",
+            "address": {"addressLocality": "London", "streetAddress": "1 Fixture Street"},
+        },
+    }
+    html = '<script type="application/ld+json">' + json.dumps(event) + "</script>"
+    file = campaign(tmp_path, monkeypatch, html)
+    seeds = json.loads(file.read_text())
+    seeds[0]["mode"] = "profile"
+    seeds[0]["accepted_identity"] = "Fixture Durga Puja"
+    seeds[0]["candidate_name"] = "Fixture Durga Puja"
+    file.write_text(json.dumps(seeds))
+    model = Model()
+    model.fail = True
+    result = leads.run(tmp_path, file, "structured-profile", 5, extractor=model)
+    assert result["candidates"] == 1 and model.calls == 0
+    packet = json.loads(
+        (tmp_path / ".cache/puja/campaigns/structured-profile/review.json").read_text()
+    )
+    fields = packet["sources"][0]["candidates"][0]["fields"]
+    assert fields["year"]["value"] == "2026"
+    assert fields["start_date"]["value"] == "2026-10-17"
+    assert fields["venue"]["value"] == "Fixture Hall"
+
+
 def test_candidate_nfc_evidence_duplicates_and_invalid_urls():
     doc, links, _ = leads.page_document(
         "<main><p>Café Durga Puja, London</p></main>", "https://example.org", "en"

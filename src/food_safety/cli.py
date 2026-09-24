@@ -73,6 +73,13 @@ def main():
     leads.add_argument("--campaign", required=True)
     leads.add_argument("--max-calls", type=int, default=0)
     leads.add_argument("--dry-run", action="store_true")
+    owner_review = puja_sub.add_parser("review", help="Local owner-only candidate cards")
+    owner_review.add_argument("--port", type=int, default=0)
+    owner_review.add_argument("--no-browser", action="store_true")
+    owner_review.add_argument("--no-intake", action="store_true")
+    owner_review.add_argument("--max-calls", type=int, default=2)
+    puja_sub.add_parser("publish-approved", help="Consume owner approvals during scheduled build")
+    puja_sub.add_parser("close-approved", help="Close approvals after successful publication push")
     puja_geocode = puja_sub.add_parser(
         "geocode", help="Bounded private coordinate research; never auto-publishes"
     )
@@ -188,6 +195,22 @@ def main():
                 from .puja.leads import run as review_leads
 
                 result = review_leads(ROOT, args.seeds, args.campaign, args.max_calls, args.dry_run)
+            elif args.puja_command == "review":
+                from .puja.intake import prepare
+                from .puja.review_server import serve
+
+                if not args.no_intake:
+                    prepare(ROOT, max_calls=args.max_calls)
+                serve(ROOT, port=args.port, open_browser=not args.no_browser)
+                result = {"review": "closed"}
+            elif args.puja_command == "publish-approved":
+                from .puja.approvals import publish_approved
+
+                result = publish_approved(ROOT)
+            elif args.puja_command == "close-approved":
+                from .puja.approvals import close_published
+
+                result = close_published(ROOT)
             elif args.puja_command == "geocode":
                 from .puja.geocoding import discover as geocode
 
