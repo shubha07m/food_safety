@@ -64,6 +64,7 @@ jobs:
       - name: Check candidate output
         env:
           LLM_ENABLED: 'false'
+          PUJA_SUGGEST_FORM_URL: ${{ vars.PUJA_SUGGEST_FORM_URL }}
         run: |
           mkdir -p .cache
           ruff check .

@@ -38,6 +38,24 @@ by source revision, model, task and schema.
 `review-summary` remains useful for packet diagnostics. The normal owner path is now
 `python -m food_safety.cli puja review`: it opens a localhost-only card queue and
 prepares bounded new leads from public Puja suggestions and changed known sources.
+For Puja suggestions, configure `puja_suggest_form_url` in `config/pipeline.yml`
+or export `PUJA_SUGGEST_FORM_URL` during the static build (the main workflow reads
+the matching GitHub repository variable). Only a published Google Form responder
+URL is accepted. Without one, the public CTA says the form is coming shortly.
+Suggested required Form fields are Puja/organizer name, city/locality, region,
+and official/event URL; venue, dates, note and contact email can be optional.
+Export responses as CSV, keep the raw export outside tracked Git or inside
+ignored `.cache/`, and run:
+
+```bash
+python -m food_safety.cli puja import-suggestions --csv PATH
+```
+
+Only normalized region, source URL and proposed name enter the
+private seed queue; notes/contact email are discarded. The review server starts
+before any optional source/model refresh, so prepared cards remain available
+offline.
+
 Each card shows evidence, duplicate warnings and eligible approval tiers. Approve,
 defer or reject is the owner's final action. Approval creates an owner-authored
 GitHub publication request; the scheduled workflow validates it, writes the

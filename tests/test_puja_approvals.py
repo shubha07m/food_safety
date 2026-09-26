@@ -9,7 +9,7 @@ from urllib.parse import urlencode
 import pytest
 
 from food_safety.puja.approvals import close_published, publish_approved, submit_approval
-from food_safety.puja.intake import submission_seeds
+from food_safety.puja.intake import import_form_csv, submission_seeds
 from food_safety.puja.pipeline import build_public, load_config
 from food_safety.puja.review_queue import (
     candidate_id,
@@ -197,27 +197,34 @@ def test_approval_transport_requires_owner_and_keeps_contact_out(tmp_path):
         submit_approval(value, api=lambda *_: {"login": "other"})
 
 
-def test_suggestion_ingest_keeps_contact_and_untrusted_text_out():
-    body = (
-        "### Puja or organizer name\nRiver Puja\n\n### Region\nLondon region\n\n"
-        "### City or locality\nLondon\n\n### Official or event URL\n"
-        "https://example.org/event\n\n### Contact email\nprivate@example.org\n"
+def test_form_csv_import_keeps_contact_and_notes_out(tmp_path):
+    root = project(tmp_path)
+    private = root / ".cache/puja"
+    private.mkdir(parents=True)
+    path = private / "responses.csv"
+    path.write_text(
+        "Puja / organizer name,Region,City / region,Official organizer / event URL,"
+        "Contact email,Short note\n"
+        "River Puja,London region,London,https://example.org/event,"
+        "private@example.org,private note\n"
     )
-    rows = submission_seeds(
-        api=lambda *_: [
-            {"number": 8, "title": "[Puja suggestion] River", "body": body},
-            {"number": 9, "title": "Puja approval pc-other", "body": body},
-        ]
-    )
+    assert import_form_csv(root, path)["imported"] == 1
+    rows = submission_seeds(root)
     assert rows == [
         {
             "region": "london",
             "url": "https://example.org/event",
-            "origin": "public_suggestion",
-            "submission_issue": 8,
+            "candidate_name": "River Puja",
+            "origin": "google_form",
         }
     ]
     assert "private@example.org" not in json.dumps(rows)
+    assert "private note" not in json.dumps(rows)
+    assert import_form_csv(root, path)["imported"] == 0
+    tracked = root / "responses.csv"
+    tracked.write_text(path.read_text())
+    with pytest.raises(ValueError, match="outside_tracked_tree"):
+        import_form_csv(root, tracked)
 
 
 def test_local_review_http_and_decision_persistence(tmp_path):

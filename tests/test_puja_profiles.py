@@ -159,6 +159,10 @@ def test_structured_leads_bypass_model_and_one_hop_is_not_fetched(tmp_path, monk
         + '</script><a href="https://example.org/other">Other</a>'
     )
     file = campaign(tmp_path, monkeypatch, html)
+    seeds = json.loads(file.read_text())
+    seeds[0]["content_selector"] = None  # SourceSpec serializes this optional field as null.
+    seeds[0]["refresh_revision"] = None
+    file.write_text(json.dumps(seeds))
     model = Model()
     model.fail = True
     result = leads.run(tmp_path, file, "test", 5, extractor=model)

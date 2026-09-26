@@ -326,8 +326,8 @@ def run(root: Path, file: Path, campaign: str, max_calls=0, dry_run=False, extra
             key = hashlib.sha256(
                 (
                     seed["url"]
-                    + seed.get("content_selector", "")
-                    + seed.get("refresh_revision", "")
+                    + (seed.get("content_selector") or "")
+                    + (seed.get("refresh_revision") or "")
                 ).encode()
             ).hexdigest()
             page_cache = folder / (key + ".page.json")

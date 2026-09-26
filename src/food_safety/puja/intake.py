@@ -1,12 +1,11 @@
-"""Turn public suggestions and known changed sources into bounded private seeds."""
+"""Turn private form imports and known changed sources into bounded private seeds."""
 
+import csv
 import json
-import re
 from datetime import UTC, datetime
 from pathlib import Path
 
 from ..storage import dump
-from .approvals import REPO, github
 from .leads import canonical, run
 from .pipeline import load_config
 from .regions import get_region
@@ -19,46 +18,54 @@ LABELS = {
     "Toronto / GTA": "toronto",
     "Melbourne": "melbourne",
 }
+FORM_SEEDS = ".cache/puja/form_suggestions.json"
 
 
-def _answer(body, label):
-    match = re.search(
-        r"(?m)^### " + re.escape(label) + r"\s*\n(.*?)(?=\n### |\Z)", body or "", re.S
-    )
-    return match.group(1).strip() if match else ""
+def submission_seeds(root):
+    path = root / FORM_SEEDS
+    return json.loads(path.read_text()) if path.exists() else []
 
 
-def submission_seeds(api=github):
-    rows = api("GET", f"repos/{REPO}/issues?state=open&per_page=100")
-    if not isinstance(rows, list):
-        raise ValueError("invalid_suggestion_listing")
-    seeds = []
-    for issue in rows:
-        if issue.get("pull_request") or not str(issue.get("title", "")).startswith(
-            "[Puja suggestion]"
-        ):
-            continue
-        body = issue.get("body") or ""
-        region = LABELS.get(_answer(body, "Region"))
-        name = _answer(body, "Puja or organizer name")
-        city = _answer(body, "City or locality")
-        url = _answer(body, "Official or event URL")
-        if not region or not name or not city or not url or len(name) > 200:
+def import_form_csv(root: Path, path: Path):
+    """Import a Google Form CSV without retaining contact, notes, or raw rows."""
+    resolved = path.resolve()
+    if resolved.is_relative_to(root.resolve()) and not resolved.is_relative_to(
+        (root / ".cache").resolve()
+    ):
+        raise ValueError("form_csv_must_be_outside_tracked_tree")
+    if resolved.stat().st_size > 1024 * 1024:
+        raise ValueError("form_csv_too_large")
+    with resolved.open(encoding="utf-8-sig", newline="") as handle:
+        rows = list(csv.DictReader(handle))
+    if len(rows) > 500:
+        raise ValueError("form_csv_too_many_rows")
+    seeds = {(s["region"], s["url"]): s for s in submission_seeds(root)}
+    imported, skipped = 0, 0
+    for row in rows:
+        name = (row.get("Puja / organizer name") or row.get("Puja or organizer name") or "").strip()
+        city = (row.get("City / region") or row.get("City or locality") or "").strip()
+        label = (row.get("Region") or city).strip()
+        region = LABELS.get(label) or (label if label in LABELS.values() else None)
+        raw_url = (
+            row.get("Official organizer / event URL") or row.get("Official or event URL") or ""
+        ).strip()
+        if not name or not city or not region or len(name) > 200:
+            skipped += 1
             continue
         try:
-            url = canonical(url)
+            url = canonical(raw_url)
         except ValueError:
+            skipped += 1
             continue
-        # Submitter contact and notes never enter model input or review packets.
-        seeds.append(
-            {
-                "region": region,
-                "url": url,
-                "origin": "public_suggestion",
-                "submission_issue": issue["number"],
-            }
-        )
-    return seeds[:20]
+        seed = {"region": region, "url": url, "candidate_name": name, "origin": "google_form"}
+        key = (region, url)
+        if key not in seeds:
+            imported += 1
+        seeds[key] = seed
+    if len(seeds) > 500:
+        raise ValueError("form_seed_queue_full")
+    dump(root / FORM_SEEDS, sorted(seeds.values(), key=lambda s: (s["region"], s["url"])))
+    return {"imported": imported, "skipped": skipped, "queued_sources": len(seeds)}
 
 
 def changed_source_seeds(root):
@@ -88,12 +95,9 @@ def changed_source_seeds(root):
     return seeds[:20]
 
 
-def prepare(root: Path, *, max_calls=2, api=github):
+def prepare(root: Path, *, max_calls=2):
     """Review startup sync. Provider failures leave existing cards readable."""
-    try:
-        public = submission_seeds(api)
-    except (RuntimeError, ValueError):
-        public = []
+    public = submission_seeds(root)
     incomplete = [
         {
             "region": item["region"],

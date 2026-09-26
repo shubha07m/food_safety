@@ -146,6 +146,8 @@ try {
   await command('Page.navigate', { url: 'http://127.0.0.1:8000/' });
   await waitFor(`document.getElementById('metric-events')?.textContent === '${original.record_count}'`);
   await waitFor("document.querySelectorAll('#featured-pandals button').length > 0");
+  assert.equal(await evaluate("document.querySelector('#puja-suggest-action a')?.href || null"),
+    process.env.FOOD_SMOKE_FORM_URL || null);
   if (process.env.FOOD_COUNTER_SMOKE === '1') {
     await waitFor("!document.getElementById('site-visits').hidden");
     const count = await evaluate("document.getElementById('site-visits').textContent");

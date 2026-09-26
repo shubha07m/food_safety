@@ -2,6 +2,7 @@
 
 import html
 import secrets
+import threading
 import webbrowser
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from urllib.parse import parse_qs, urlsplit
@@ -191,13 +192,23 @@ def handler(root, nonce, submit=submit_approval):
     return ReviewHandler
 
 
-def serve(root, port=0, open_browser=True, submit=submit_approval):
+def serve(root, port=0, open_browser=True, submit=submit_approval, refresh_queue=None):
     nonce = secrets.token_urlsafe(24)
     server = ThreadingHTTPServer(("127.0.0.1", port), handler(root, nonce, submit))
     url = f"http://127.0.0.1:{server.server_port}/"
-    print("Puja owner review: " + url)
+    print("Puja owner review: " + url, flush=True)
     if open_browser:
         webbrowser.open(url)
+    if refresh_queue:
+
+        def refresh():
+            try:
+                refresh_queue()
+            except Exception as exc:
+                # Existing cards remain available even if optional intake fails.
+                print(f"Candidate intake deferred ({type(exc).__name__}).", flush=True)
+
+        threading.Thread(target=refresh, daemon=True).start()
     try:
         server.serve_forever()
     except KeyboardInterrupt:
