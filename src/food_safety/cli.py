@@ -82,8 +82,6 @@ def main():
         "import-suggestions", help="Fallback/debug: import a private Google Form CSV"
     )
     suggestions.add_argument("--csv", type=Path, required=True)
-    puja_sub.add_parser("publish-approved", help="Consume owner approvals during scheduled build")
-    puja_sub.add_parser("close-approved", help="Close approvals after successful publication push")
     puja_geocode = puja_sub.add_parser(
         "geocode", help="Bounded private coordinate research; never auto-publishes"
     )
@@ -217,7 +215,7 @@ def main():
                         restore_approvals(ROOT)
                         resume_approvals(ROOT)
                     except (RuntimeError, ValueError):
-                        print("GitHub sync unavailable; local decisions retained.", flush=True)
+                        print("Catalog sync unavailable; local decisions retained.", flush=True)
                     prepare(ROOT, max_calls=args.max_calls)
                 serve(
                     ROOT,
@@ -227,18 +225,10 @@ def main():
                     notice=notice,
                 )
                 result = {"review": "closed"}
-            elif args.puja_command == "publish-approved":
-                from .puja.approvals import publish_approved
-
-                result = publish_approved(ROOT)
             elif args.puja_command == "import-suggestions":
                 from .puja.intake import import_form_csv
 
                 result = import_form_csv(ROOT, args.csv)
-            elif args.puja_command == "close-approved":
-                from .puja.approvals import close_published
-
-                result = close_published(ROOT)
             elif args.puja_command == "geocode":
                 from .puja.geocoding import discover as geocode
 

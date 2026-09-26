@@ -2,8 +2,8 @@
 
 The Puja catalog is source-backed project data, separate from food POI discovery.
 `config/regions.yml` declares regions and their additional reviewed catalog files.
-`config/puja.yml`, the registry's regional `config/puja-*.yml` files, and the
-validated `config/puja-approved.json` overlay form the publication boundary.
+`config/puja.yml` and the registry's regional `config/puja-*.yml` files form the
+publication boundary.
 The static build writes
 only validated records to `data/pandals.json` and `site/data/pandals.json`.
 
@@ -15,8 +15,10 @@ python -m food_safety.cli puja review
 
 Startup syncs the private response Sheet; the local cards offer **APPROVE** and
 **REJECT** only. Leave a card untouched to keep it pending. Approval is the final
-editorial action: automatic delivery and scheduled validation/build/publication
-follow without a second owner command. Complete the one-time setup below first.
+editorial action: the app validates and saves the Puja directly into its regional
+catalog, commits only those catalog files, and pushes `develop`. CI and the normal
+develop-to-main release/build/deployment follow; no per-Puja publication command
+or approval PR is needed. Complete the one-time setup below first.
 
 ### Optional research and diagnostic commands
 
@@ -81,9 +83,9 @@ python -m pip install -e '.[review]'
 python -m food_safety.cli puja review
 ```
 
-For automatic approval delivery, install the GitHub CLI and run `gh auth login`
-once as the configured repository owner. Google authorization and GitHub
-publication authorization are separate; the review page itself needs no login.
+Run review from `develop` with Git name/email configured and permission to push
+`origin/develop` using your usual SSH or Git credential setup. Google authorization
+and Git write access are separate; the local review page needs no login.
 
 Authorize read-only spreadsheet access once in the browser, using a Google account
 that can view the Sheet. Authorization returns to a temporary `127.0.0.1` listener.
@@ -107,10 +109,9 @@ the original response store; OAuth tokens are only access authorization. Back up
 private `queue.json`, `review_decisions.json`, campaign packets and `approval_outbox/`
 separately from OAuth files if moving editorial work. Rejections are local editorial
 state, not written to the read-only Sheet; they require that private backup to survive
-machine loss. Delivered approvals can be recovered from the Git request queue or
-the four earlier Issue requests.
-The configured repository owner remains the publication approver; independent Google
-authorization does not grant GitHub publication authority to a co-owner.
+machine loss. Delivered approvals are recognized from reviewed source revisions in
+the canonical Git catalog. Independent Google authorization does not grant Git
+write access to a co-owner.
 
 Each review startup syncs unseen Sheet responses before opening cards. A fingerprint
 uses timestamp and normalized identity/locality/URL, not row number. Equivalent
@@ -141,23 +142,26 @@ is explicitly recorded as an owner attestation, not a quotation from the organiz
 Only event-attached year evidence promotes an edition. Geographic eligibility remains
 separate and does not inherit stale annual venues.
 
-Approval freezes a private outbox payload, then writes one validated publication-safe
-JSON request to `config/puja-requests/` on the dedicated `puja-approvals` Git ref.
-The file contains only the public record, its reviewed source and the IDs/revisions
-needed to validate and deduplicate it. Raw candidates, private responses, rejected
-decisions and OAuth files remain in ignored local storage. The scheduled main workflow
-reads requests, validates each independently, writes the reviewed
-`config/puja-approved.json` overlay, builds and commits the static output. Requests
-remain immutable in the queue ref; their appearance in the overlay marks them
-published. No second publish/build/deploy action is needed. If GitHub is unavailable,
-the outbox retries every minute while review is open and at the next normal review
-startup. Until Git acknowledges the request, closing the laptop pauses delivery.
-Repeated delivery checks the deterministic path before writing, preventing duplicate
-publication. Invalid requests stay queued for diagnosis without corrupting the catalog.
-Four approvals delivered through the earlier Issue path remain supported until the
-workflow publishes them; it closes those legacy Issues only after a successful push.
-The older manual
-`puja publish` command remains for direct curation and diagnostics.
+Approval freezes a private retry copy, then updates the existing regional YAML with
+the validated Puja record and source. Stable record IDs and reviewed source revisions
+prevent duplicate application. The app commits only the intended canonical catalog
+files and pushes only `develop`; it never stages unrelated changes such as
+`site/repository.json`. Staged changes, conflicting catalog edits, an interrupted Git
+operation, divergent remote history, or unpublished code commits pause delivery
+without losing the approval. A failed push retries its existing commit. An interrupted
+file write can recover only its own exact bytes; owner edits are preserved.
+
+Private retry state is not a publication input. Raw submissions, rejected decisions,
+OAuth files and model/debug output stay ignored. The normal static build reads the
+canonical catalogs directly. There is no approval Issue, extra branch, public request
+file, catalog overlay, or separate scheduled approval consumer. `main` is production;
+`develop` is development. The existing release PR covers code and catalog changes;
+the app does not merge it or push to `main`.
+
+Failed delivery retries every minute while review is open and at the next normal
+startup. A persistent unchanged error is reported once; valid approvals continue.
+Closing the laptop pauses an unacknowledged push, preserving the saved decision.
+The older `puja publish` command remains a catalog export/diagnostic utility.
 
 `geocode` is an explicit operator research aid for a small named set of already
 source-backed pandals. It uses the public Nominatim service single-threaded at no more
@@ -235,8 +239,8 @@ The owner checks organizer identity and the displayed evidence, including editio
 relationships, links and conflicting announcements, then approves or rejects the
 card. The system derives the tier; there is no manual tier selector. Fetch/model
 failure leaves a candidate pending. Discovery and monitoring never approve a
-record. Only owner approval creates a publication request, which the scheduled workflow validates before any
-catalog change. This campaign remains separate from automatic HTTP monitoring.
+record. Owner approval writes validated facts into the canonical regional catalog.
+This campaign remains separate from automatic HTTP monitoring.
 
 Every published pandal has a stable ID, name, area, city/region, source URL, title,
 and review provenance. Evidence distinguishes source quotations from explicit
@@ -255,8 +259,9 @@ model responses never enter Git.
 
 ## Five-region catalog and annual editions
 
-California currently has six organizer-source-backed 2026 listings and four reviewed
-OSM venue anchors. Sources include Pashchimi, Sanskriti, BASC, Valley Bengali Community,
+California has six organizer-source-backed 2026 listings, four additional source-listed
+Pujas without reviewed edition dates, and four reviewed OSM venue anchors.
+Sources include Pashchimi, Sanskriti, BASC, Valley Bengali Community,
 Agomoni and Ankur; exact URLs, short support and timestamps live in the reviewed
 California configuration. Missing or tentative venues stay unmapped. An organizer's
 identity does not verify a venue by itself; corroborate the published address and

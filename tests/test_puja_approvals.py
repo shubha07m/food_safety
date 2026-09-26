@@ -1,7 +1,7 @@
-import base64
 import http.client
 import json
 import shutil
+import subprocess
 import threading
 from datetime import UTC, datetime
 from pathlib import Path
@@ -10,12 +10,11 @@ from urllib.parse import urlencode
 import pytest
 
 from food_safety.puja.approvals import (
-    GithubAPIError,
-    close_published,
+    canonical_changes,
     deliver_approval,
-    migrate_outbox,
-    publish_approved,
-    request_path,
+    queue_approval,
+    represented,
+    restore_approvals,
     resume_approvals,
 )
 from food_safety.puja.intake import import_form_csv, submission_seeds
@@ -24,54 +23,12 @@ from food_safety.puja.review_queue import (
     candidate_id,
     candidates,
     compile_record,
-    issue_body,
-    parse_issue_body,
     save_decision,
+    validate_approval,
 )
 from food_safety.puja.review_server import handler, render
 
 ROOT = Path(__file__).resolve().parents[1]
-
-
-class GitQueueAPI:
-    """Only the read/write Git calls needed by the public-safe request queue."""
-
-    def __init__(self):
-        self.branch = False
-        self.files = {}
-        self.writes = 0
-        self.issues = []
-
-    def __call__(self, method, endpoint, payload=None):
-        if endpoint == "user":
-            return {"login": "shubha07m"}
-        if "issues?" in endpoint:
-            return self.issues
-        if endpoint.endswith("/git/ref/heads/main"):
-            return {"object": {"sha": "a" * 40}}
-        if endpoint.endswith("/git/ref/heads/puja-approvals"):
-            if not self.branch:
-                raise GithubAPIError(404)
-            return {"object": {"sha": "b" * 40}}
-        if endpoint.endswith("/git/refs") and method == "POST":
-            self.branch = True
-            return {}
-        if "/contents/config/puja-requests" in endpoint:
-            path = endpoint.split("/contents/", 1)[1].split("?", 1)[0]
-            if method == "PUT":
-                assert payload["branch"] == "puja-approvals"
-                self.files[path] = base64.b64decode(payload["content"]).decode()
-                self.writes += 1
-                return {"content": {"path": path}}
-            if path == "config/puja-requests":
-                return [{"type": "file", "path": p} for p in self.files]
-            if path not in self.files:
-                raise GithubAPIError(404)
-            return {
-                "encoding": "base64",
-                "content": base64.b64encode(self.files[path].encode()).decode(),
-            }
-        raise AssertionError((method, endpoint))
 
 
 def project(tmp_path):
@@ -149,7 +106,7 @@ def test_candidate_id_and_two_approval_tiers(tmp_path):
     assert edition["location"]["latitude"] is None
     assert len(edition["programme_notes"]) == 1
     assert reviewed["source"]["reviewed_revision"] == "b" * 64
-    assert parse_issue_body(issue_body(reviewed)) == reviewed
+    assert validate_approval(reviewed) == reviewed
     with pytest.raises(ValueError, match="current_year_evidence_required"):
         compile_record(
             root,
@@ -177,7 +134,7 @@ def test_known_source_approval_reuses_monitor_entry(tmp_path):
     payload = compile_record(root, item, "source_listed")
     assert payload["source"]["source_id"] == "ca-agomoni"
     assert payload["source"]["reviewed_revision"] == "b" * 64
-    assert parse_issue_body(issue_body(payload)) == payload
+    assert validate_approval(payload) == payload
     item["duplicate_ids"] = []
     item["fields"]["locality"] = None
     with pytest.raises(ValueError, match="identity_region_evidence_incomplete"):
@@ -203,145 +160,259 @@ def test_existing_source_approval_adds_reviewed_revision_without_replacing_old_e
     value = compile_record(root, item, "source_listed")
     assert len(value["record"]["sources"]) == len(base.sources) + 1
     assert value["record"]["sources"][-1]["source_revision_id"] == item["source_revision"]
-    assert parse_issue_body(issue_body(value)) == value
+    assert validate_approval(value) == value
 
 
-def test_legacy_saved_approval_migration_and_once_only_warning(tmp_path, capsys):
+def git(root, *args):
+    return subprocess.check_output(
+        ["git", *args], cwd=root, text=True, stderr=subprocess.PIPE
+    ).strip()
+
+
+def git_project(tmp_path):
     root = project(tmp_path)
-    config = load_config(root)
-    base = next(p for p in config.published if p.pandal_id == "ca-agomoni")
-    source = next(s for s in config.sources if str(s.url) == str(base.sources[0].source_url))
-    candidate_key = "pc-" + "a" * 20
-    original = {
-        "candidate": {"candidate_id": candidate_key, "source_revision": "b" * 64},
-        "payload": {
-            "candidate_id": candidate_key,
-            "source_revision": "b" * 64,
-            "monitor_revision": source.reviewed_revision,
-            "tier": "source_listed",
-            "record": {**base.model_dump(mode="json"), "last_verified_at": "2026-09-26T00:00:00Z"},
-            "source": source.model_dump(mode="json"),
-        },
-    }
-    save_decision(root, original["candidate"], "approved")
-    folder = root / ".cache/puja/approval_outbox"
-    folder.mkdir(parents=True)
-    path = folder / f"{candidate_key}.json"
-    path.write_text(json.dumps(original))
-    bad = folder / ("pc-" + "c" * 20 + ".json")
-    bad.write_text("invalid")
-    report = migrate_outbox(root)
-    assert report["repaired"] == [candidate_key]
-    assert report["invalid"] and report["invalid"][0][0] == bad.stem
-    assert json.loads((root / ".cache/puja/approval_backups" / path.name).read_text()) == original
-    repaired = json.loads(path.read_text())["payload"]
-    assert parse_issue_body(issue_body(repaired)) == repaired
-    assert repaired["record"]["sources"][-1]["evidence_kind"] == "owner_attestation"
-    assert migrate_outbox(root)["repaired"] == []
-    sent = []
-    resume_approvals(root, lambda p: sent.append(p) or request_path(p["candidate_id"]))
-    resume_approvals(root, lambda _: pytest.fail("duplicate delivery"))
-    assert len(sent) == 1
-    assert capsys.readouterr().out.count("needs review") == 1
+    git(root, "init", "--initial-branch=develop")
+    git(root, "config", "user.name", "Fixture owner")
+    git(root, "config", "user.email", "owner@example.org")
+    (root / ".gitignore").write_text(".cache/\n.env\n")
+    (root / "site").mkdir()
+    (root / "site/repository.json").write_text('{"fixture": true}\n')
+    git(root, "add", "--", "config", ".gitignore", "site/repository.json")
+    git(root, "commit", "-m", "fixture")
+    remote = tmp_path / ".cache/remote.git"
+    remote.parent.mkdir()
+    git(root, "init", "--bare", str(remote))
+    git(root, "remote", "add", "origin", str(remote))
+    git(root, "push", "-u", "origin", "develop")
+    return root
+
+
+def test_approve_commits_only_catalog_and_preserves_private_dirty_files(tmp_path):
+    root = git_project(tmp_path)
+    item = candidate()
+    payload = compile_record(
+        root, item, "current_edition_reviewed", at=datetime(2026, 9, 24, tzinfo=UTC)
+    )
+    count = len(load_config(root).published)
+    dirty = root / "site/repository.json"
+    dirty.write_text('{"unrelated": "keep exactly"}\n')
+    private = root / ".cache/puja"
+    private.mkdir()
+    for name in ("oauth-client.json", "oauth-token.json", "queue.json", "sheet.json"):
+        (private / name).write_text('{"private":"must never publish"}')
+    (root / ".env").write_text("PRIVATE_FIXTURE=private")
+    commit = queue_approval(root, item, payload)
+    assert commit == git(root, "rev-parse", "refs/remotes/origin/develop")
+    assert git(root, "show", "--format=", "--name-only", commit) == "config/puja-london.yml"
+    assert git(root, "diff", "--cached", "--name-only") == ""
+    assert dirty.read_text() == '{"unrelated": "keep exactly"}\n'
+    assert ".cache" not in git(root, "ls-tree", "-r", "--name-only", "HEAD")
+    assert ".env" not in git(root, "ls-tree", "-r", "--name-only", "HEAD")
+    assert represented(root, payload)
+    assert canonical_changes(root, payload) == {}
+    assert queue_approval(root, item, payload) == commit
+    resume_approvals(root)
+    assert git(root, "rev-parse", "HEAD") == commit
+    assert build_public(root)["record_count"] == count + 1
+    result = next(
+        p for p in load_config(root).published if p.pandal_id == payload["record"]["pandal_id"]
+    )
+    assert result.edition.confirmed and len(result.edition.programme_notes) == 1
+    assert git(root, "ls-remote", "--heads", "origin").endswith("refs/heads/develop")
+    assert len(git(root, "ls-remote", "--heads", "origin").splitlines()) == 1
+    assert not (root / "config/puja-approved.json").exists()
+    assert not (root / "config/puja-requests").exists()
+
+
+def test_push_failure_retries_existing_commit_without_duplicates(tmp_path, monkeypatch, capsys):
+    from food_safety.puja import approvals
+
+    root = git_project(tmp_path)
+    item = candidate()
+    payload = compile_record(root, item, "source_listed")
+    original = approvals._git
+
+    def offline(root, *args):
+        if args[0] == "push":
+            raise RuntimeError("git_push_failed")
+        return original(root, *args)
+
+    monkeypatch.setattr(approvals, "_git", offline)
+    assert queue_approval(root, item, payload) is None
+    commit = git(root, "rev-parse", "HEAD")
+    resume_approvals(root)
+    assert git(root, "rev-parse", "HEAD") == commit
+    assert capsys.readouterr().out.count("git_push_failed") == 1
+    monkeypatch.setattr(approvals, "_git", original)
+    resume_approvals(root)
+    assert git(root, "rev-parse", "origin/develop") == commit
+    resume_approvals(root)
+    assert git(root, "rev-parse", "HEAD") == commit
     assert (
-        json.loads((root / ".cache/puja/review_decisions.json").read_text())[candidate_key][
+        sum(p.pandal_id == payload["record"]["pandal_id"] for p in load_config(root).published) == 1
+    )
+
+
+def test_reject_and_malformed_outbox_do_not_block_other_approvals(tmp_path, capsys):
+    root = git_project(tmp_path)
+    rejected = candidate()
+    save_decision(root, rejected, "reject")
+    payload = compile_record(root, rejected, "source_listed")
+    with pytest.raises(ValueError, match="rejected_decision_preserved"):
+        queue_approval(root, rejected, payload)
+    assert not represented(root, payload)
+    folder = root / ".cache/puja/approval_outbox"
+    folder.mkdir()
+    (folder / (rejected["candidate_id"] + ".json")).write_text(
+        json.dumps({"candidate": rejected, "payload": payload})
+    )
+    (folder / ("pc-" + "f" * 20 + ".json")).write_text("invalid")
+    good = candidate()
+    good["name"] = "Other River Puja"
+    good["fields"]["name"] = fact(good["name"], "Other River Puja in London")
+    good["candidate_id"] = candidate_id("london", good["source_url"], good["name"])
+    good_payload = compile_record(root, good, "source_listed")
+    (folder / (good["candidate_id"] + ".json")).write_text(
+        json.dumps({"candidate": good, "payload": good_payload})
+    )
+    resume_approvals(root)
+    resume_approvals(root)
+    assert capsys.readouterr().out.count("JSONDecodeError") == 1
+    assert represented(root, good_payload)
+    assert not represented(root, payload)
+    decisions = json.loads((root / ".cache/puja/review_decisions.json").read_text())
+    assert decisions[rejected["candidate_id"]]["decision"] == "reject"
+
+
+@pytest.mark.parametrize("unsafe_state", ["staged", "catalog_dirty", "main", "unpublished_code"])
+def test_unsafe_git_state_is_preserved_for_retry(tmp_path, unsafe_state):
+    root = git_project(tmp_path)
+    item = candidate()
+    payload = compile_record(root, item, "source_listed")
+    target = root / "config/puja-london.yml"
+    if unsafe_state == "staged":
+        (root / "site/repository.json").write_text("unrelated")
+        git(root, "add", "site/repository.json")
+    elif unsafe_state == "catalog_dirty":
+        target.write_text(target.read_text() + "\n# unrelated\n")
+    elif unsafe_state == "main":
+        git(root, "checkout", "-b", "main")
+    else:
+        (root / "site/repository.json").write_text("unpublished code")
+        git(root, "commit", "--only", "-m", "unrelated", "--", "site/repository.json")
+    before = target.read_bytes()
+    index = git(root, "diff", "--cached")
+    head = git(root, "rev-parse", "HEAD")
+    assert queue_approval(root, item, payload) is None
+    assert target.read_bytes() == before
+    assert git(root, "diff", "--cached") == index
+    assert git(root, "rev-parse", "HEAD") == head
+    assert (
+        json.loads((root / ".cache/puja/review_decisions.json").read_text())[item["candidate_id"]][
             "decision"
         ]
         == "approved"
     )
 
 
-def test_publication_skips_bad_issue_and_commits_only_approved(tmp_path):
-    root = project(tmp_path)
-    value = compile_record(root, candidate(), "source_listed", at=datetime(2026, 9, 24, tzinfo=UTC))
-    issue = {
-        "number": 40,
-        "title": "Puja approval " + value["candidate_id"],
-        "body": issue_body(value),
-        "user": {"login": "shubha07m"},
-    }
-    bad = {
-        "number": 41,
-        "title": "Puja approval pc-invalid",
-        "body": "invalid",
-        "user": {"login": "shubha07m"},
-    }
-    untrusted = {
-        "number": 42,
-        "title": issue["title"],
-        "body": issue["body"],
-        "user": {"login": "someone-else"},
-    }
-    closed = []
-
-    def api(method, endpoint, payload=None):
-        if "/contents/" in endpoint:
-            raise GithubAPIError(404)
-        if method == "GET":
-            return [bad, issue, untrusted]
-        closed.append((endpoint, payload))
-        return {}
-
-    first = publish_approved(root, api=api)
-    assert first["approved_added"] == 1 and first["invalid"][0]["issue"] == 41
-    assert load_config(root).published[-1].pandal_id == value["record"]["pandal_id"]
-    assert build_public(root)["record_count"] == 236
-    assert publish_approved(root, api=api)["approved_added"] == 0
-    assert close_published(root, api=api)["closed"] == 1
-    assert closed == [("repos/shubha07m/food_safety/issues/40", {"state": "closed"})]
+def test_legacy_delivery_receipts_do_not_skip_canonical_persistence(tmp_path):
+    root = git_project(tmp_path)
+    item = candidate()
+    payload = compile_record(root, item, "source_listed")
+    folder = root / ".cache/puja/approval_outbox"
+    folder.mkdir(parents=True)
+    path = folder / (item["candidate_id"] + ".json")
+    path.write_text(
+        json.dumps(
+            {
+                "candidate": item,
+                "payload": payload,
+                "issue_number": 24,
+                "request_path": "legacy-path",
+            }
+        )
+    )
+    save_decision(root, item, "approved", issue_number=24)
+    before = (root / ".cache/puja/review_decisions.json").read_bytes()
+    resume_approvals(root)
+    assert represented(root, payload)
+    assert json.loads(path.read_text())["canonical_commit"]
+    assert (root / ".cache/puja/review_decisions.json").read_bytes() == before
+    resume_approvals(root)
 
 
-def test_approval_listing_outage_does_not_change_catalog(tmp_path):
-    root = project(tmp_path)
-
-    def unavailable(*_args):
-        raise RuntimeError("network_unavailable")
-
-    result = publish_approved(root, api=unavailable)
-    assert result["sync"] == "unavailable"
-    assert not (root / "config/puja-approved.json").exists()
-    assert load_config(root).published[-1]
-
-
-def test_git_approval_transport_requires_owner_and_is_idempotent(tmp_path):
-    value = compile_record(project(tmp_path), candidate(), "source_listed")
-    api = GitQueueAPI()
-    path = request_path(value["candidate_id"])
-    assert deliver_approval(value, api=api) == path
-    assert deliver_approval(value, api=api) == path
-    assert api.writes == 1
-    assert json.loads(api.files[path]) == value
-    assert "Contact email" not in api.files[path]
-    assert "oauth" not in api.files[path]
-    changed = {**value, "source_revision": "c" * 64}
-    with pytest.raises(ValueError, match="approval_evidence_missing"):
-        deliver_approval(changed, api=api)
-    with pytest.raises(ValueError, match="github_owner_login_required"):
-        deliver_approval(value, api=lambda *_: {"login": "other"})
+def test_fresh_laptop_restores_approval_from_canonical_evidence(tmp_path):
+    root = git_project(tmp_path)
+    item = candidate()
+    payload = compile_record(root, item, "source_listed")
+    deliver_approval(root, payload)
+    assert not (root / ".cache/puja/review_decisions.json").exists()
+    restore_approvals(root)
+    decisions = json.loads((root / ".cache/puja/review_decisions.json").read_text())
+    assert decisions[item["candidate_id"]]["decision"] == "approved"
+    assert decisions[item["candidate_id"]]["source_revision"] == item["source_revision"]
 
 
-def test_git_queue_publication_skips_malformed_and_avoids_legacy_duplicate(tmp_path):
-    root = project(tmp_path)
-    value = compile_record(root, candidate(), "source_listed")
-    api = GitQueueAPI()
-    path = deliver_approval(value, api=api)
-    malformed = request_path("pc-" + "f" * 20)
-    api.files[malformed] = '{"raw_candidate": "must never publish"}'
-    api.issues = [
-        {
-            "number": 40,
-            "title": "Puja approval " + value["candidate_id"],
-            "body": issue_body(value),
-            "user": {"login": "shubha07m"},
-        }
-    ]
-    result = publish_approved(root, api=api)
-    assert result["approved_added"] == 1
-    assert result["already_published"] == 1
-    assert result["invalid"][0]["request"] == malformed
-    assert len(json.loads((root / "config/puja-approved.json").read_text())["approvals"]) == 1
-    assert publish_approved(root, api=api)["approved_added"] == 0
-    assert json.loads(api.files[path]) == value
+def test_invalid_payload_cannot_modify_canonical_data(tmp_path):
+    root = git_project(tmp_path)
+    payload = compile_record(root, candidate(), "source_listed")
+    original = (root / "config/puja-london.yml").read_bytes()
+    payload["private_queue"] = "private"
+    with pytest.raises(ValueError, match="approval_fields_invalid"):
+        deliver_approval(root, payload)
+    assert (root / "config/puja-london.yml").read_bytes() == original
+
+
+def test_interrupted_catalog_write_is_recovered_on_restart(tmp_path, monkeypatch):
+    from food_safety.puja import approvals
+
+    root = git_project(tmp_path)
+    item = candidate()
+    payload = compile_record(root, item, "source_listed")
+    original = approvals._git
+
+    def interrupted(root, *args):
+        if args[0] == "commit":
+            raise KeyboardInterrupt
+        return original(root, *args)
+
+    monkeypatch.setattr(approvals, "_git", interrupted)
+    with pytest.raises(KeyboardInterrupt):
+        queue_approval(root, item, payload)
+    assert (root / approvals.EDIT).exists()
+    monkeypatch.setattr(approvals, "_git", original)
+    resume_approvals(root)
+    assert represented(root, payload)
+    assert not (root / approvals.EDIT).exists()
+    assert git(root, "rev-parse", "HEAD") == git(root, "rev-parse", "origin/develop")
+
+
+@pytest.mark.parametrize(
+    "identity,record_id",
+    [
+        ("pc-10be5643cfd1691b57d0", "ca-agomoni"),
+        ("pc-18199c10fccc8e0ebb9f", "california-aantorik"),
+        ("pc-1897600f525e7ea136c4", "gta-apcat"),
+        ("pc-231aa72c405daf06467b", "california-aikotaan"),
+        ("pc-59051a3a69ddebdf1e0f", "california-sanatan"),
+        ("pc-683dd31210b05d14cde1", "california-utsav"),
+        ("pc-871cd7aee60e2e285306", "ca-ankur"),
+        ("pc-bdefa95041006bfcc5aa", "ca-pashchimi"),
+    ],
+)
+def test_reconciled_approvals_are_in_normal_catalog(identity, record_id):
+    config = load_config(ROOT)
+    matches = [p for p in config.published if p.pandal_id == record_id]
+    assert len(matches) == 1
+    record = matches[0]
+    assert any(
+        s.source_revision_id
+        and candidate_id(record.region_id, str(s.source_url), record.name) == identity
+        for s in record.sources
+    )
+    if record_id == "gta-apcat":
+        assert record.edition.confirmed and record.edition.year == 2026
+        assert record.edition.location.latitude is not None
 
 
 def test_form_csv_import_keeps_contact_and_notes_out(tmp_path):

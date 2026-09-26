@@ -1,189 +1,364 @@
-# Small organizer-sourced catalog; unknown venue locations remain null.
 sources:
-  - {source_id: ca-pashchimi, region_id: california, url: 'https://pashchimi.org/', publisher: Pashchimi, language: en}
-  - {source_id: ca-sanskriti, region_id: california, url: 'https://www.sanskriti.org/', publisher: Sanskriti Bay Area, language: en}
-  - {source_id: ca-agomoni, region_id: california, url: 'https://agomoni.org/durgapuja-2026/', publisher: Agomoni, language: en}
-  - {source_id: ca-basc, region_id: california, url: 'https://bascweb.org/', publisher: Bengali Association of Southern California, language: en}
-  - {source_id: ca-vbc, region_id: california, url: 'https://durga.valleybengali.org/', publisher: Valley Bengali Community, language: en}
-  - {source_id: ca-ankur, region_id: california, url: 'https://www.ankurinc.org/', publisher: Ankur Inc., language: en}
+- source_id: ca-pashchimi
+  url: https://pashchimi.org/
+  publisher: Pashchimi
+  language: en
+  region_id: california
+  reviewed_revision: 663916559774ac5ce66c0ff3672fa1435604e5c75062ec92d098006a96008669
+- source_id: ca-sanskriti
+  region_id: california
+  url: https://www.sanskriti.org/
+  publisher: Sanskriti Bay Area
+  language: en
+- source_id: ca-agomoni
+  url: https://agomoni.org/durgapuja-2026/
+  publisher: Agomoni
+  language: en
+  region_id: california
+  reviewed_revision: 082a584f50e5ad4a7d417ae67a70c04169b4db85439d01b2bae8fda09e74d143
+- source_id: ca-basc
+  region_id: california
+  url: https://bascweb.org/
+  publisher: Bengali Association of Southern California
+  language: en
+- source_id: ca-vbc
+  region_id: california
+  url: https://durga.valleybengali.org/
+  publisher: Valley Bengali Community
+  language: en
+- source_id: ca-ankur
+  url: https://www.ankurinc.org/
+  publisher: Ankur Inc.
+  language: en
+  region_id: california
+  reviewed_revision: 7d28d9ffd2fdf2aff68240f661b0d577f9d41291459ff02a588e7c2b3c945b3e
+- source_id: approved-pc-18199c10fccc8e0ebb9f
+  url: https://aantorik.org/
+  publisher: aantorik.org
+  region_id: california
+  source_kind: association
+- source_id: approved-pc-231aa72c405daf06467b
+  url: https://aikotaan.org/
+  publisher: aikotaan.org
+  region_id: california
+  source_kind: association
+- source_id: approved-pc-59051a3a69ddebdf1e0f
+  url: https://sanatanbengalisociety.org/
+  publisher: sanatanbengalisociety.org
+  region_id: california
+  source_kind: association
+- source_id: approved-pc-683dd31210b05d14cde1
+  url: https://utsavsac.org/
+  publisher: utsavsac.org
+  region_id: california
+  source_kind: association
 published:
-  - pandal_id: ca-pashchimi
-    official_links:
-    - kind: website
-      url: https://pashchimi.org/
-      evidence:
-        source_url: https://pashchimi.org/
-        source_title: Pashchimi — organizer event announcement
-        publisher: Pashchimi
-        quote: 'Venue: 35145 Newark Blvd. Newark CA-94560Oasis Palace'
-    region_id: california
-    country_code: US
-    admin1: California
-    name: Pashchimi Durga Puja
-    organizer: Pashchimi
-    city: Newark
-    area: Newark
-    venue: Oasis Palace
-    latitude: 37.5483346
-    longitude: -122.048156
-    coordinate_source: https://www.openstreetmap.org/node/5690230329
-    coordinate_precision: venue
-    address: 35145 Newark Blvd, Newark, CA 94560
-    year: 2026
-    event_dates: October 16–20, 2026
-    featured: true
-    last_verified_at: '2026-09-19T16:00:00Z'
-    sources:
-      - source_url: https://pashchimi.org/
-        source_title: Pashchimi — organizer event announcement
-        publisher: Pashchimi
-        quote: 'Venue: 35145 Newark Blvd. Newark CA-94560Oasis Palace'
-  - pandal_id: ca-sanskriti
-    official_links:
-    - kind: website
-      url: https://www.sanskriti.org/
-      evidence:
-        source_url: https://www.sanskriti.org/
-        source_title: Sanskriti — organizer event announcement
-        publisher: Sanskriti Bay Area
-        quote: Newark Pavilion, 6430 Thornton Ave, Newark, CA 94560, USA
-    region_id: california
-    country_code: US
-    admin1: California
-    metro_region: Bay Area
-    name: Sanskriti Durga Puja
-    organizer: Sanskriti Bay Area
-    city: Newark
-    area: Newark
-    venue: Newark Pavilion
-    latitude: 37.5332703
-    longitude: -122.0324619
-    coordinate_source: https://www.openstreetmap.org/node/368167218
-    coordinate_precision: venue
-    address: 6430 Thornton Ave, Newark, CA 94560
-    year: 2026
-    event_dates: October 9–11, 2026
-    featured: true
-    last_verified_at: '2026-09-19T16:00:00Z'
-    sources:
-      - source_url: https://www.sanskriti.org/
-        source_title: Sanskriti — organizer event announcement
-        publisher: Sanskriti Bay Area
-        quote: 'Newark Pavilion, 6430 Thornton Ave, Newark, CA 94560, USA'
-  - pandal_id: ca-agomoni
-    official_links:
-    - kind: website
-      url: https://agomoni.org/durgapuja-2026/
-      evidence:
-        source_url: https://agomoni.org/durgapuja-2026/
-        source_title: Agomoni — 2026 organizer announcement
-        publisher: Agomoni
-        quote: 'Venue: 2600 Camino Ramon, Parking Lot, San Ramon, CA 94583'
-    region_id: california
-    country_code: US
-    admin1: California
-    name: Agomoni Durga Puja
-    organizer: Agomoni
-    city: San Ramon
-    area: San Ramon
-    venue: 2600 Camino Ramon parking lot
-    address: 2600 Camino Ramon, San Ramon, CA 94583
-    year: 2026
-    event_dates: October 16–18, 2026
-    featured: true
-    last_verified_at: '2026-09-19T16:00:00Z'
-    sources:
-      - source_url: https://agomoni.org/durgapuja-2026/
-        source_title: Agomoni — 2026 organizer announcement
-        publisher: Agomoni
-        quote: 'Venue: 2600 Camino Ramon, Parking Lot, San Ramon, CA 94583'
-  - pandal_id: ca-basc
-    official_links:
-    - kind: website
-      url: https://bascweb.org/
-      evidence:
-        source_url: https://bascweb.org/
-        source_title: BASC — organizer event announcement
-        publisher: Bengali Association of Southern California
-        quote: Cerritos Center for the Performing Arts 18000 Park Plaza Dr, Cerritos,
-          CA 90703
-    region_id: california
-    country_code: US
-    admin1: California
-    name: BASC Durga Pujo
-    organizer: Bengali Association of Southern California
-    city: Cerritos
-    area: Cerritos
-    venue: Cerritos Center for the Performing Arts
-    latitude: 33.8675683
-    longitude: -118.0616575
-    coordinate_source: https://www.openstreetmap.org/way/229352083
-    coordinate_precision: venue
-    address: 18000 Park Plaza Dr, Cerritos, CA 90703
-    year: 2026
-    event_dates: October 16–18, 2026
-    featured: true
-    last_verified_at: '2026-09-19T16:00:00Z'
-    sources:
-      - source_url: https://bascweb.org/
-        source_title: BASC — organizer event announcement
-        publisher: Bengali Association of Southern California
-        quote: 'Cerritos Center for the Performing Arts 18000 Park Plaza Dr, Cerritos, CA 90703'
-  - pandal_id: ca-vbc
-    official_links:
-    - kind: website
-      url: https://durga.valleybengali.org/
-      evidence:
-        source_url: https://durga.valleybengali.org/
-        source_title: VBC — 2026 organizer announcement
-        publisher: Valley Bengali Community
-        quote: Canoga Park High School 6850 Topanga Canyon Blvd. Canoga Park
-    region_id: california
-    country_code: US
-    admin1: California
-    metro_region: Greater Los Angeles
-    name: Valley Bengali Community Durgotsav
-    organizer: Valley Bengali Community
-    city: Los Angeles
-    neighborhood: Canoga Park
-    area: Canoga Park
-    venue: Canoga Park High School
-    latitude: 34.1956304
-    longitude: -118.6043728
-    coordinate_source: https://www.openstreetmap.org/way/380023703
-    coordinate_precision: venue
-    address: 6850 Topanga Canyon Blvd, Canoga Park, CA
-    year: 2026
-    event_dates: October 16–18, 2026
-    featured: true
-    last_verified_at: '2026-09-19T16:00:00Z'
-    sources:
-      - source_url: https://durga.valleybengali.org/
-        source_title: VBC — 2026 organizer announcement
-        publisher: Valley Bengali Community
-        quote: 'Canoga Park High School 6850 Topanga Canyon Blvd. Canoga Park'
-  - pandal_id: ca-ankur
-    official_links:
-    - kind: website
-      url: https://www.ankurinc.org/
-      evidence:
-        source_url: https://www.ankurinc.org/
-        source_title: Ankur — annual event calendar
-        publisher: Ankur Inc.
-        quote: Sharodotsav · দুর্গা পূজা
-    region_id: california
-    country_code: US
-    admin1: California
-    name: Ankur Sharodotsav
-    organizer: Ankur Inc.
-    city: Sacramento
-    area: Sacramento
-    location_precision: source_zone
-    year: 2026
-    event_dates: October 23–25, 2026
-    last_verified_at: '2026-09-19T16:00:00Z'
-    sources:
-      - source_url: https://www.ankurinc.org/
-        source_title: Ankur — annual event calendar
-        publisher: Ankur Inc.
-        quote: 'Sharodotsav · দুর্গা পূজা'
+- pandal_id: ca-pashchimi
+  region_id: california
+  country_code: US
+  admin1: California
+  name: Pashchimi Durga Puja
+  area: Newark
+  city: Newark
+  venue: Oasis Palace
+  address: 35145 Newark Blvd, Newark, CA 94560
+  event_dates: October 16–20, 2026
+  latitude: 37.5483346
+  longitude: -122.048156
+  coordinate_source: https://www.openstreetmap.org/node/5690230329
+  coordinate_precision: venue
+  organizer: Pashchimi
+  official_links:
+  - kind: website
+    url: https://pashchimi.org/
+    evidence:
+      source_url: https://pashchimi.org/
+      source_title: Pashchimi — organizer event announcement
+      publisher: Pashchimi
+      quote: 'Venue: 35145 Newark Blvd. Newark CA-94560Oasis Palace'
+  year: 2026
+  featured: true
+  sources:
+  - source_url: https://pashchimi.org/
+    source_title: Pashchimi — organizer event announcement
+    publisher: Pashchimi
+    quote: 'Venue: 35145 Newark Blvd. Newark CA-94560Oasis Palace'
+  - evidence_kind: owner_attestation
+    source_url: https://pashchimi.org/
+    source_title: Pashchimi — organizer event announcement
+    publisher: Pashchimi
+    quote: Owner approved this submitted Puja identity and region; source text was
+      not automatically verified.
+    source_revision_id: 663916559774ac5ce66c0ff3672fa1435604e5c75062ec92d098006a96008669
+  last_verified_at: '2026-09-26T21:36:34.463938Z'
+- pandal_id: ca-sanskriti
+  official_links:
+  - kind: website
+    url: https://www.sanskriti.org/
+    evidence:
+      source_url: https://www.sanskriti.org/
+      source_title: Sanskriti — organizer event announcement
+      publisher: Sanskriti Bay Area
+      quote: Newark Pavilion, 6430 Thornton Ave, Newark, CA 94560, USA
+  region_id: california
+  country_code: US
+  admin1: California
+  metro_region: Bay Area
+  name: Sanskriti Durga Puja
+  organizer: Sanskriti Bay Area
+  city: Newark
+  area: Newark
+  venue: Newark Pavilion
+  latitude: 37.5332703
+  longitude: -122.0324619
+  coordinate_source: https://www.openstreetmap.org/node/368167218
+  coordinate_precision: venue
+  address: 6430 Thornton Ave, Newark, CA 94560
+  year: 2026
+  event_dates: October 9–11, 2026
+  featured: true
+  last_verified_at: '2026-09-19T16:00:00Z'
+  sources:
+  - source_url: https://www.sanskriti.org/
+    source_title: Sanskriti — organizer event announcement
+    publisher: Sanskriti Bay Area
+    quote: Newark Pavilion, 6430 Thornton Ave, Newark, CA 94560, USA
+- pandal_id: ca-agomoni
+  region_id: california
+  country_code: US
+  admin1: California
+  name: Agomoni Durga Puja
+  area: San Ramon
+  city: San Ramon
+  venue: 2600 Camino Ramon parking lot
+  address: 2600 Camino Ramon, San Ramon, CA 94583
+  event_dates: October 16–18, 2026
+  organizer: Agomoni
+  official_links:
+  - kind: website
+    url: https://agomoni.org/durgapuja-2026/
+    evidence:
+      source_url: https://agomoni.org/durgapuja-2026/
+      source_title: Agomoni — 2026 organizer announcement
+      publisher: Agomoni
+      quote: 'Venue: 2600 Camino Ramon, Parking Lot, San Ramon, CA 94583'
+  year: 2026
+  featured: true
+  sources:
+  - source_url: https://agomoni.org/durgapuja-2026/
+    source_title: Agomoni — 2026 organizer announcement
+    publisher: Agomoni
+    quote: 'Venue: 2600 Camino Ramon, Parking Lot, San Ramon, CA 94583'
+  - evidence_kind: owner_attestation
+    source_url: https://agomoni.org/durgapuja-2026/
+    source_title: Agomoni — 2026 organizer announcement
+    publisher: Agomoni
+    quote: Owner approved this submitted Puja identity and region; source text was
+      not automatically verified.
+    source_revision_id: 082a584f50e5ad4a7d417ae67a70c04169b4db85439d01b2bae8fda09e74d143
+  last_verified_at: '2026-09-26T21:35:52.026356Z'
+- pandal_id: ca-basc
+  official_links:
+  - kind: website
+    url: https://bascweb.org/
+    evidence:
+      source_url: https://bascweb.org/
+      source_title: BASC — organizer event announcement
+      publisher: Bengali Association of Southern California
+      quote: Cerritos Center for the Performing Arts 18000 Park Plaza Dr, Cerritos,
+        CA 90703
+  region_id: california
+  country_code: US
+  admin1: California
+  name: BASC Durga Pujo
+  organizer: Bengali Association of Southern California
+  city: Cerritos
+  area: Cerritos
+  venue: Cerritos Center for the Performing Arts
+  latitude: 33.8675683
+  longitude: -118.0616575
+  coordinate_source: https://www.openstreetmap.org/way/229352083
+  coordinate_precision: venue
+  address: 18000 Park Plaza Dr, Cerritos, CA 90703
+  year: 2026
+  event_dates: October 16–18, 2026
+  featured: true
+  last_verified_at: '2026-09-19T16:00:00Z'
+  sources:
+  - source_url: https://bascweb.org/
+    source_title: BASC — organizer event announcement
+    publisher: Bengali Association of Southern California
+    quote: Cerritos Center for the Performing Arts 18000 Park Plaza Dr, Cerritos,
+      CA 90703
+- pandal_id: ca-vbc
+  official_links:
+  - kind: website
+    url: https://durga.valleybengali.org/
+    evidence:
+      source_url: https://durga.valleybengali.org/
+      source_title: VBC — 2026 organizer announcement
+      publisher: Valley Bengali Community
+      quote: Canoga Park High School 6850 Topanga Canyon Blvd. Canoga Park
+  region_id: california
+  country_code: US
+  admin1: California
+  metro_region: Greater Los Angeles
+  name: Valley Bengali Community Durgotsav
+  organizer: Valley Bengali Community
+  city: Los Angeles
+  neighborhood: Canoga Park
+  area: Canoga Park
+  venue: Canoga Park High School
+  latitude: 34.1956304
+  longitude: -118.6043728
+  coordinate_source: https://www.openstreetmap.org/way/380023703
+  coordinate_precision: venue
+  address: 6850 Topanga Canyon Blvd, Canoga Park, CA
+  year: 2026
+  event_dates: October 16–18, 2026
+  featured: true
+  last_verified_at: '2026-09-19T16:00:00Z'
+  sources:
+  - source_url: https://durga.valleybengali.org/
+    source_title: VBC — 2026 organizer announcement
+    publisher: Valley Bengali Community
+    quote: Canoga Park High School 6850 Topanga Canyon Blvd. Canoga Park
+- pandal_id: ca-ankur
+  region_id: california
+  country_code: US
+  admin1: California
+  name: Ankur Sharodotsav
+  area: Sacramento
+  city: Sacramento
+  event_dates: October 23–25, 2026
+  location_precision: source_zone
+  organizer: Ankur Inc.
+  official_links:
+  - kind: website
+    url: https://www.ankurinc.org/
+    evidence:
+      source_url: https://www.ankurinc.org/
+      source_title: Ankur — annual event calendar
+      publisher: Ankur Inc.
+      quote: Sharodotsav · দুর্গা পূজা
+  year: 2026
+  sources:
+  - source_url: https://www.ankurinc.org/
+    source_title: Ankur — annual event calendar
+    publisher: Ankur Inc.
+    quote: Sharodotsav · দুর্গা পূজা
+  - evidence_kind: owner_attestation
+    source_url: https://www.ankurinc.org/
+    source_title: Ankur — annual event calendar
+    publisher: Ankur Inc.
+    quote: Owner approved this submitted Puja identity and region; source text was
+      not automatically verified.
+    source_revision_id: 7d28d9ffd2fdf2aff68240f661b0d577f9d41291459ff02a588e7c2b3c945b3e
+  last_verified_at: '2026-09-26T21:36:15.254402Z'
+- pandal_id: california-aantorik
+  region_id: california
+  country_code: US
+  admin1: California
+  name: Aantorik
+  area: California
+  city: California
+  official_links:
+  - kind: website
+    url: https://aantorik.org/
+    evidence:
+      source_url: https://aantorik.org/
+      source_title: aantorik.org
+      publisher: aantorik.org
+      quote: Based in Folsom, Aantorik celebrates Bengali culture and heritage through
+        Durga Puja, Saraswati Puja, performing arts, volunteering, and year-round
+        community gatherings. Our programs welcome families, friends, and neighbors
+        from across the Sacramento region.
+      source_revision_id: 83c177bdb1e6cebcf4aaedd8d9b5b93133c4decfc0085c5f191b98e9b9d05af1
+  sources:
+  - source_url: https://aantorik.org/
+    source_title: aantorik.org
+    publisher: aantorik.org
+    quote: Based in Folsom, Aantorik celebrates Bengali culture and heritage through
+      Durga Puja, Saraswati Puja, performing arts, volunteering, and year-round community
+      gatherings. Our programs welcome families, friends, and neighbors from across
+      the Sacramento region.
+    source_revision_id: 83c177bdb1e6cebcf4aaedd8d9b5b93133c4decfc0085c5f191b98e9b9d05af1
+  last_verified_at: '2026-09-26T21:35:32.987613Z'
+- pandal_id: california-aikotaan
+  region_id: california
+  country_code: US
+  admin1: California
+  name: Aikotaan
+  area: California
+  city: California
+  official_links:
+  - kind: website
+    url: https://aikotaan.org/
+    evidence:
+      source_url: https://aikotaan.org/
+      source_title: aikotaan.org
+      publisher: aikotaan.org
+      quote: Aikotaan is thrilled to welcome you to our
+      source_revision_id: 5c93bb73d6fd367e8f5849620164d4e4d825b78aaa487dd6ec8f6dfd615eabdb
+  sources:
+  - source_url: https://aikotaan.org/
+    source_title: aikotaan.org
+    publisher: aikotaan.org
+    quote: Aikotaan is thrilled to welcome you to our
+    source_revision_id: 5c93bb73d6fd367e8f5849620164d4e4d825b78aaa487dd6ec8f6dfd615eabdb
+  last_verified_at: '2026-09-26T21:35:56.375087Z'
+- pandal_id: california-sanatan
+  region_id: california
+  country_code: US
+  admin1: California
+  name: Sanatan
+  area: California
+  city: California
+  official_links:
+  - kind: website
+    url: https://sanatanbengalisociety.org/
+    evidence:
+      source_url: https://sanatanbengalisociety.org/
+      source_title: sanatanbengalisociety.org
+      publisher: sanatanbengalisociety.org
+      quote: Sanatan Bengali Society Of California
+      source_revision_id: 8ff3ddb02009aa8dc572fd597c046908b1efb424a956e7ebaf7596bcc65ccd7f
+  sources:
+  - source_url: https://sanatanbengalisociety.org/
+    source_title: sanatanbengalisociety.org
+    publisher: sanatanbengalisociety.org
+    quote: Sanatan Bengali Society Of California
+    source_revision_id: 8ff3ddb02009aa8dc572fd597c046908b1efb424a956e7ebaf7596bcc65ccd7f
+  last_verified_at: '2026-09-26T21:36:49.584276Z'
+- pandal_id: california-utsav
+  region_id: california
+  country_code: US
+  admin1: California
+  name: UTSAV
+  area: California
+  city: California
+  official_links:
+  - kind: website
+    url: https://utsavsac.org/
+    evidence:
+      source_url: https://utsavsac.org/
+      source_title: utsavsac.org
+      publisher: utsavsac.org
+      quote: UTSAV is a vibrant and passionate organization dedicated to celebrating
+        not only iconic Hindu festivals like Durga Puja, Saraswati Puja, and Holi
+        but also showcase the rich traditions and cultural heritage of Bengal to the
+        greater Sacramento area. With a strong commitment to community building, we
+        strive to preserve, promote, and share the essence of Bengali heritage with
+        the world.
+      source_revision_id: b1b143146115925f65f3e6ac6bd6223f2e3511b58fd7b10477ca359cf5357acb
+  sources:
+  - source_url: https://utsavsac.org/
+    source_title: utsavsac.org
+    publisher: utsavsac.org
+    quote: UTSAV is a vibrant and passionate organization dedicated to celebrating
+      not only iconic Hindu festivals like Durga Puja, Saraswati Puja, and Holi but
+      also showcase the rich traditions and cultural heritage of Bengal to the greater
+      Sacramento area. With a strong commitment to community building, we strive to
+      preserve, promote, and share the essence of Bengali heritage with the world.
+    source_revision_id: b1b143146115925f65f3e6ac6bd6223f2e3511b58fd7b10477ca359cf5357acb
+  last_verified_at: '2026-09-26T21:37:22.748498Z'

@@ -38,6 +38,8 @@ osmFixture.pois = Array.from({ length: 30 }, (_, i) => ({ ...template,
 osmFixture.associations = osmFixture.pois.map((p, i) => ({ pandal_id: 'bagbazar-sarbojanin',
   poi_id: p.poi_id, provider: 'osm', distance_m: i + 1, source_snapshot: osmFixture.snapshot_id }));
 const original = JSON.parse(readFileSync(resolve(root, 'site/data/events.json'), 'utf8'));
+const californiaCount = JSON.parse(readFileSync(resolve(root, 'site/data/pandals.json'), 'utf8'))
+  .records.filter(p => p.region_id === 'california').length;
 const at = '2026-01-03T00:00:00Z';
 const makeRow = (id, area, name) => ({
   event_id: id, is_fixture: false, context_notice: original.context_notice,
@@ -265,7 +267,7 @@ try {
   await evaluate("document.querySelector('[data-region=california]').click()");
   await waitFor("document.getElementById('puja-discovery').getAttribute('aria-busy') === 'false'");
   assert.equal(await evaluate("document.getElementById('selected-pandal').hidden && !new URL(location.href).searchParams.has('pandal')"), true);
-  assert.equal(await evaluate("document.getElementById('region-count').textContent.includes('6 source-backed')"), true);
+  assert.equal(await evaluate(`document.getElementById('region-count').textContent.includes('${californiaCount} source-backed')`), true);
   assert.equal(await evaluate("document.getElementById('map-coverage').textContent.startsWith('4 independently')"), true);
   assert.equal(await evaluate("[...document.querySelectorAll('[data-safety-context]')].every(n => n.hidden)"), true);
   assert.equal(await evaluate("[...document.querySelectorAll('[data-food-pandal]')].every(b => b.dataset.foodPandal.startsWith('ca-'))"), true);
@@ -275,7 +277,7 @@ try {
   assert.equal(await evaluate("new URL(location.href).searchParams.get('view')"), 'bengali-food');
   assert.equal(await evaluate("document.querySelectorAll('[data-regional-food-search]').length"), 4);
   assert.equal(await evaluate("[...document.querySelectorAll('[data-regional-food-search]')].every(a => { const u=new URL(a.href); return u.hostname==='www.google.com' && u.searchParams.get('query').includes('Bengali') && !u.searchParams.has('key') && !u.searchParams.has('query_place_id'); })"), true);
-  assert.equal(await evaluate("document.getElementById('region-count').textContent.includes('6 source-backed')"), true);
+  assert.equal(await evaluate(`document.getElementById('region-count').textContent.includes('${californiaCount} source-backed')`), true);
   await screenshot('california-bengali-food-mobile', false);
   await evaluate("document.getElementById('food-view-bengali').dispatchEvent(new KeyboardEvent('keydown',{key:'ArrowLeft',bubbles:true}))");
   assert.equal(await evaluate("document.getElementById('puja-discovery').hidden"), false);
@@ -391,7 +393,7 @@ try {
   await command('Page.navigate', { url: 'http://127.0.0.1:8000/?region=california&lang=bn&pandal=ca-sanskriti' });
   await waitFor("document.getElementById('selected-pandal-title')?.textContent === 'Sanskriti Durga Puja'");
   assert.equal(await evaluate("document.documentElement.lang"), 'bn');
-  assert.equal(await evaluate("document.getElementById('region-count').textContent.includes('6')"), true);
+  assert.equal(await evaluate(`document.getElementById('region-count').textContent.includes('${californiaCount}')`), true);
   assert.equal(await evaluate('document.documentElement.scrollWidth <= innerWidth'), true);
   await screenshot('california-bengali', false);
   await evaluate("document.getElementById('food-view-bengali').click()");

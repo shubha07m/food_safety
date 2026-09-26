@@ -31,7 +31,7 @@ def test_regional_search_handoffs_do_not_change_catalog_or_food_counts(region_ro
         s["maps_url"].startswith("https://www.google.com/maps/search/?api=1&query=")
         for s in searches
     )
-    assert len(load_config(region_root).published) == before == 235
+    assert len(load_config(region_root).published) == before
 
 
 def test_regional_search_rejects_duplicate_area_and_custom_url(region_root):
@@ -61,10 +61,20 @@ def test_migration_keeps_kolkata_ids_and_explicit_california_identity(region_roo
     local = [r for r in records if r.region_id == "kolkata"]
     ca = [r for r in records if r.region_id == "california"]
     assert {r.pandal_id for r in local} == {r["pandal_id"] for r in original}
-    assert len(local) == 223 and len(ca) == 6
+    assert len(local) == 223 and len(ca) == 10
     assert {r.country_code for r in ca} == {"US"}
-    assert {r.city for r in ca} == {"Newark", "San Ramon", "Cerritos", "Los Angeles", "Sacramento"}
-    assert all(r.sources and r.year == 2026 for r in ca)
+    original_ca = [r for r in ca if r.pandal_id.startswith("ca-")]
+    added = [r for r in ca if r.pandal_id.startswith("california-")]
+    assert {r.city for r in original_ca} == {
+        "Newark",
+        "San Ramon",
+        "Cerritos",
+        "Los Angeles",
+        "Sacramento",
+    }
+    assert all(r.sources and r.year == 2026 for r in original_ca)
+    assert len(added) == 4
+    assert all(r.sources and r.year is None and r.latitude is None for r in added)
     assert sum(r.latitude is not None for r in ca) == 4
 
 

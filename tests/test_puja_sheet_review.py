@@ -2,14 +2,12 @@ import json
 from datetime import UTC, datetime
 
 import pytest
-from test_puja_approvals import GitQueueAPI, candidate, project
+from test_puja_approvals import candidate, git_project, project
 
 from food_safety.puja import intake, sheets
 from food_safety.puja.approvals import (
     deliver_approval,
     queue_approval,
-    request_path,
-    restore_approvals,
     resume_approvals,
 )
 from food_safety.puja.queue_store import STORE, ingest_responses, read
@@ -134,31 +132,12 @@ def test_frozen_approval_retries_without_second_owner_action(tmp_path):
     assert queue_approval(root, item, payload, unavailable) is None
     assert candidates(root)[0]["review_state"] == "approved"
     sent = []
-    expected = request_path(item["candidate_id"])
+    expected = "a" * 40
     resume_approvals(root, lambda p: sent.append(p) or expected)
     resume_approvals(root, lambda p: pytest.fail("must not submit twice"))
     assert sent == [payload]
-    assert (
-        json.loads((root / ".cache/puja/review_decisions.json").read_text())[item["candidate_id"]][
-            "request_path"
-        ]
-        == expected
-    )
-
-
-def test_approval_transport_recovers_existing_git_request(tmp_path):
-    root = project(tmp_path)
-    payload = automatic_record(root, candidate())
-    api = GitQueueAPI()
-    assert deliver_approval(payload, api=api) == request_path(payload["candidate_id"])
-    assert deliver_approval(payload, api=api) == request_path(payload["candidate_id"])
-    assert api.writes == 1
-    restore_approvals(root, api=api)
-    decision = json.loads((root / ".cache/puja/review_decisions.json").read_text())[
-        payload["candidate_id"]
-    ]
-    assert decision["decision"] == "approved"
-    assert decision["request_path"] == request_path(payload["candidate_id"])
+    receipt = root / ".cache/puja/approval_outbox" / (item["candidate_id"] + ".json")
+    assert json.loads(receipt.read_text())["canonical_commit"] == expected
 
 
 def test_unknown_city_is_retained_not_assigned_false_region(tmp_path):
@@ -232,20 +211,19 @@ def test_sheets_request_is_bounded_readonly_and_no_contact_retention(tmp_path, m
     assert "must-not-retain" not in (root / STORE).read_text()
 
 
-def test_sparse_sheet_approval_to_scheduled_static_publication(tmp_path):
-    from food_safety.puja.approvals import publish_approved
+def test_sparse_sheet_approval_to_canonical_static_publication(tmp_path):
     from food_safety.puja.pipeline import build_public
 
-    root = project(tmp_path)
+    root = git_project(tmp_path)
     sheets.sync(root, reader=lambda _: [response()])
     item = candidates(root)[0]
     value = automatic_record(root, item)
-    api = GitQueueAPI()
-    queue_approval(root, item, value, lambda p: deliver_approval(p, api=api))
-    assert publish_approved(root, api=api)["approved_added"] == 1
-    assert publish_approved(root, api=api)["approved_added"] == 0
+    assert queue_approval(root, item, value)
+    assert deliver_approval(root, value)
     published = build_public(root)
-    record = next(r for r in published["records"] if r["name"] == "River Puja")
+    records = [r for r in published["records"] if r["name"] == "River Puja"]
+    assert len(records) == 1
+    record = records[0]
     assert record["edition"] is None and record["latitude"] is None
     assert record["sources"][0]["evidence_kind"] == "owner_attestation"
     assert "Contact email" not in json.dumps(published)
