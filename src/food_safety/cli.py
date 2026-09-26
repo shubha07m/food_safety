@@ -79,7 +79,7 @@ def main():
     owner_review.add_argument("--no-intake", action="store_true")
     owner_review.add_argument("--max-calls", type=int, default=2)
     suggestions = puja_sub.add_parser(
-        "import-suggestions", help="Import a private Google Form CSV into the Puja queue"
+        "import-suggestions", help="Fallback/debug: import a private Google Form CSV"
     )
     suggestions.add_argument("--csv", type=Path, required=True)
     puja_sub.add_parser("publish-approved", help="Consume owner approvals during scheduled build")

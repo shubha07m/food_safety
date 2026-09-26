@@ -2,11 +2,25 @@
 
 The Puja catalog is source-backed project data, separate from food POI discovery.
 `config/regions.yml` declares regions and their additional reviewed catalog files.
-`config/puja.yml` plus the registry's regional `config/puja-*.yml` files are the publication boundary.
+`config/puja.yml`, the registry's regional `config/puja-*.yml` files, and the
+validated `config/puja-approved.json` overlay form the publication boundary.
 The static build writes
 only validated records to `data/pandals.json` and `site/data/pandals.json`.
 
-## Commands
+## Normal owner workflow
+
+```bash
+python -m food_safety.cli puja review
+```
+
+Startup syncs the private response Sheet; the local cards offer **APPROVE** and
+**REJECT** only. Leave a card untouched to keep it pending. Approval is the final
+editorial action: automatic delivery and scheduled validation/build/publication
+follow without a second owner command. Complete the one-time setup below first.
+
+### Optional research and diagnostic commands
+
+These tools remain available; they are not steps required after approving a card.
 
 ```bash
 python -m food_safety.cli puja sources validate
@@ -52,7 +66,8 @@ email collection. The linked response Sheet remains private.
    consent for your own account (External with your account as a test user, or
    Internal only if your Workspace organization supports it).
 2. Create an OAuth client of type **Desktop app**. Save its downloaded JSON as
-   `.cache/puja/oauth-client.json`. No service account is used.
+   `.cache/puja/oauth-client.json` (create `.cache/puja/` if needed). No service
+   account is used.
 3. Create `.cache/puja/sheet.json` with your private response Sheet ID and tab:
 
    ```json
@@ -65,6 +80,10 @@ email collection. The linked response Sheet remains private.
 python -m pip install -e '.[review]'
 python -m food_safety.cli puja review
 ```
+
+For automatic approval delivery, install the GitHub CLI and run `gh auth login`
+once as the configured repository owner. Google authorization and GitHub
+publication authorization are separate; the review page itself needs no login.
 
 Authorize read-only spreadsheet access once in the browser, using a Google account
 that can view the Sheet. Authorization returns to a temporary `127.0.0.1` listener.
@@ -99,6 +118,12 @@ decisions. Candidate-first persistence keeps unreadable/sparse sources in the qu
 Unknown regions remain visible but cannot be published under a guessed region.
 Contact and notes are not sent to Gemini or publication. CSV import remains a
 diagnostic fallback, not the normal workflow.
+
+URL intake accepts HTTP/HTTPS with a hostname and rejects obvious localhost,
+private/internal targets and non-web schemes. Invalid URLs stay as private cards
+and are not fetched or made clickable. Ordinary unreadable URLs also retain their
+cards with “Source not automatically readable” after bounded retrieval fails.
+The existing fetcher's robots, redirect and request limits still apply.
 
 Sheet/auth failure prints a warning and still opens existing cards. Source extraction
 runs in the background after the UI starts: structured JSON-LD first, existing bounded
@@ -197,15 +222,19 @@ Review packets from successive lead/profile batches are retained together.
 Packets include literal support, missing fields, duplicate/source warnings,
 date/year/timezone inconsistencies, tentative tier and unreviewed geography.
 Literal matching does **not** prove a fact belongs to the same event or year.
-An owner must approve organizer identity, edition relationships, links, conflicting
-announcements and the publication tier. Fetch/model failure leaves a candidate
-pending. Discovery and monitoring never approve a record. Only owner approval
-creates a publication request, which the scheduled workflow validates before any
+The owner checks organizer identity and the displayed evidence, including edition
+relationships, links and conflicting announcements, then approves or rejects the
+card. The system derives the tier; there is no manual tier selector. Fetch/model
+failure leaves a candidate pending. Discovery and monitoring never approve a
+record. Only owner approval creates a publication request, which the scheduled workflow validates before any
 catalog change. This campaign remains separate from automatic HTTP monitoring.
 
 Every published pandal has a stable ID, name, area, city/region, source URL, title,
-supporting quote and verification timestamp. Coordinates are optional. If present they
-require an independent non-Google source and explicit precision; they are never inferred
+and review provenance. Evidence distinguishes source quotations from explicit
+owner attestations for basic listings whose source could not be read automatically.
+Neither a fetch nor an owner identity attestation proves annual venue/date facts.
+Coordinates are optional. If present they require an independent non-Google
+source and explicit precision; they are never inferred
 from a name or generated by Gemini. District is optional and must not be inferred
 from a publisher's broad regional category.
 
