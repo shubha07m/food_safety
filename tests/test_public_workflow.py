@@ -33,7 +33,12 @@ def test_refresh_is_two_hour_bounded_and_release_push_skips_discovery():
         step.get("env", {}).get("GEMINI_API_KEY") == "${{ secrets.GEMINI_API_KEY }}"
         for step in job["steps"]
     )
-    assert job["permissions"] == {"contents": "write"}
+    assert job["permissions"] == {"contents": "write", "issues": "write"}
+    approval_step = next(
+        s for s in job["steps"] if s.get("name") == "Apply owner-approved Puja catalog updates"
+    )
+    assert approval_step["env"] == {"GH_TOKEN": "${{ github.token }}"}
+    assert "puja publish-approved" in approval_step["run"]
     steps = "\n".join(step.get("run", "") for step in job["steps"])
     assert "--max-articles 20" in steps
     assert "verify_public_output.py" in steps

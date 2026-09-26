@@ -5,7 +5,7 @@ import pytest
 from conftest import AT, FakeFetcher, enable_policy, load
 
 from food_safety.build import build, lifecycle_counts
-from food_safety.config import Settings
+from food_safety.config import Settings, settings
 from food_safety.fetch import FetchError
 from food_safety.lifecycle import availability, due, source_key
 from food_safety.migrate import migrate
@@ -127,6 +127,7 @@ def test_retry_counter_and_retry_after():
 
 def test_no_fake_form_link():
     assert Settings().community_submission_url is None
+    assert Settings().puja_suggest_form_url is None
     for url in [
         "https://example.org/form",
         "https://docs.google.com/forms/d/e/x/edit",
@@ -134,7 +135,18 @@ def test_no_fake_form_link():
     ]:
         with pytest.raises(ValueError):
             Settings(community_submission_url=url)
+        with pytest.raises(ValueError):
+            Settings(puja_suggest_form_url=url)
     assert Settings(community_submission_url="https://forms.gle/abc12345").community_submission_url
+    assert Settings(puja_suggest_form_url="https://forms.gle/abc12345").puja_suggest_form_url
+
+
+def test_puja_form_environment_override(project, monkeypatch):
+    monkeypatch.setenv("PUJA_SUGGEST_FORM_URL", "https://forms.gle/example123")
+    assert settings(project).puja_suggest_form_url == "https://forms.gle/example123"
+    monkeypatch.setenv("PUJA_SUGGEST_FORM_URL", "https://example.org/not-a-form")
+    with pytest.raises(ValueError):
+        settings(project)
 
 
 def test_host_circuit_breaker_stops_repeated_requests(project, policy, monkeypatch):

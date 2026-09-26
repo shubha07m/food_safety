@@ -340,6 +340,7 @@ def build(root):
             "url": counts["repository_url"],
             "site_url": settings(root).site_url,
             "community_submission_url": settings(root).community_submission_url,
+            "puja_suggest_form_url": settings(root).puja_suggest_form_url,
         },
     )
     mapped = [

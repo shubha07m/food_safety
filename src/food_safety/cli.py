@@ -66,6 +66,24 @@ def main():
     puja_extract = puja_sub.add_parser("extract")
     puja_extract.add_argument("--source")
     puja_extract.add_argument("--max-calls", type=int)
+    leads = puja_sub.add_parser(
+        "leads", help="Manual private lead/profile review packets; never publishes"
+    )
+    leads.add_argument("--seeds", type=Path, required=True)
+    leads.add_argument("--campaign", required=True)
+    leads.add_argument("--max-calls", type=int, default=0)
+    leads.add_argument("--dry-run", action="store_true")
+    owner_review = puja_sub.add_parser("review", help="Local owner-only candidate cards")
+    owner_review.add_argument("--port", type=int, default=0)
+    owner_review.add_argument("--no-browser", action="store_true")
+    owner_review.add_argument("--no-intake", action="store_true")
+    owner_review.add_argument("--max-calls", type=int, default=2)
+    suggestions = puja_sub.add_parser(
+        "import-suggestions", help="Import a private Google Form CSV into the Puja queue"
+    )
+    suggestions.add_argument("--csv", type=Path, required=True)
+    puja_sub.add_parser("publish-approved", help="Consume owner approvals during scheduled build")
+    puja_sub.add_parser("close-approved", help="Close approvals after successful publication push")
     puja_geocode = puja_sub.add_parser(
         "geocode", help="Bounded private coordinate research; never auto-publishes"
     )
@@ -177,6 +195,50 @@ def main():
                 result = discover_puja(ROOT, args.source)
             elif args.puja_command == "extract":
                 result = extract_puja(ROOT, args.source, args.max_calls)
+            elif args.puja_command == "leads":
+                from .puja.leads import run as review_leads
+
+                result = review_leads(ROOT, args.seeds, args.campaign, args.max_calls, args.dry_run)
+            elif args.puja_command == "review":
+                from .puja.intake import prepare, retain_seeds
+                from .puja.review_server import serve
+                from .puja.sheets import sync
+
+                notice = "Offline review; Sheet sync skipped."
+                if not args.no_intake:
+                    notice = sync(ROOT)
+                    print(notice, flush=True)
+                    retain_seeds(ROOT)
+
+                def refresh():
+                    from .puja.approvals import restore_approvals, resume_approvals
+
+                    try:
+                        restore_approvals(ROOT)
+                        resume_approvals(ROOT)
+                    except (RuntimeError, ValueError):
+                        print("GitHub sync unavailable; local decisions retained.", flush=True)
+                    prepare(ROOT, max_calls=args.max_calls)
+                serve(
+                    ROOT,
+                    port=args.port,
+                    open_browser=not args.no_browser,
+                    refresh_queue=None if args.no_intake else refresh,
+                    notice=notice,
+                )
+                result = {"review": "closed"}
+            elif args.puja_command == "publish-approved":
+                from .puja.approvals import publish_approved
+
+                result = publish_approved(ROOT)
+            elif args.puja_command == "import-suggestions":
+                from .puja.intake import import_form_csv
+
+                result = import_form_csv(ROOT, args.csv)
+            elif args.puja_command == "close-approved":
+                from .puja.approvals import close_published
+
+                result = close_published(ROOT)
             elif args.puja_command == "geocode":
                 from .puja.geocoding import discover as geocode
 

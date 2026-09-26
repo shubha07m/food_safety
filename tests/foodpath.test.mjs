@@ -69,7 +69,7 @@ test('only independent names and duplicate-free historical associations survive'
   assert.equal(parsePlaces(data).groups.get('bagbazar')[0].name, null);
 });
 test('restaurant state distinguishes not run, current zero, current links, and stale', () => {
-  const p = { pandal_id: 'p', latitude: 22.5, longitude: 88.3 };
+  const p = { pandal_id: 'p', latitude: 22.5, longitude: 88.3, coordinate_source: 'https://example.org/venue' };
   const current = { pandal_id: 'p', observed_at: '2026-09-16T00:00:00Z', expires_at: '2026-09-23T00:00:00Z', candidates_returned: 0, result_limit_reached: false };
   assert.equal(discoveryState(p, null, [], new Date('2026-09-17T00:00:00Z')), 'not_run');
   assert.equal(discoveryState(p, current, [], new Date('2026-09-17T00:00:00Z')), 'current_zero');

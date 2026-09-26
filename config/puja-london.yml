@@ -43,6 +43,18 @@
           "publisher": "London Durgotsav Committee",
           "quote": "Swiss Cottage Library 88 Avenue Road, London NW3 3HA"
         }
+      ],
+      "official_links": [
+        {
+          "kind": "website",
+          "url": "https://www.londonpuja.co.uk/",
+          "evidence": {
+            "source_url": "https://www.londonpuja.co.uk/",
+            "source_title": "Camden Durga Puja — organizer announcement",
+            "publisher": "London Durgotsav Committee",
+            "quote": "Swiss Cottage Library 88 Avenue Road, London NW3 3HA"
+          }
+        }
       ]
     },
     {
@@ -87,8 +99,37 @@
             "publisher": "Bengali Cultural & Social Club",
             "quote": "Friday 16th Oct 2026 Tuesday 20th Oct 2026 Swaminarayan Sports World, Blake Hall Road, London, E11 2QW"
           }
-        ]
-      }
+        ],
+        "location": {
+          "venue": "Swaminarayan Sports World",
+          "address": "Blake Hall Road, London E11 2QW",
+          "latitude": 51.5682309,
+          "longitude": 0.0254103,
+          "coordinate_source": "https://www.openstreetmap.org/way/225631251",
+          "coordinate_precision": "venue",
+          "evidence": [
+            {
+              "source_url": "https://bengali-cultural-social-club.org.uk/london-durga-puja-schedule",
+              "source_title": "BCSC London Durga Puja — organizer announcement",
+              "publisher": "Bengali Cultural & Social Club",
+              "quote": "Friday 16th Oct 2026 Tuesday 20th Oct 2026 Swaminarayan Sports World, Blake Hall Road, London, E11 2QW"
+            }
+          ],
+          "city": "London"
+        }
+      },
+      "official_links": [
+        {
+          "kind": "website",
+          "url": "https://bengali-cultural-social-club.org.uk/london-durga-puja-schedule",
+          "evidence": {
+            "source_url": "https://bengali-cultural-social-club.org.uk/london-durga-puja-schedule",
+            "source_title": "BCSC London Durga Puja — organizer announcement",
+            "publisher": "Bengali Cultural & Social Club",
+            "quote": "Friday 16th Oct 2026 Tuesday 20th Oct 2026 Swaminarayan Sports World, Blake Hall Road, London, E11 2QW"
+          }
+        }
+      ]
     }
   ]
 }

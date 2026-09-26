@@ -4,7 +4,9 @@ import { text } from './foodpath-copy.mjs';
 import { combineFood, publicFood, foodGeography, pandalFoodURL, INITIAL_FOOD_LIMIT } from './nearby-food.mjs';
 import { parseRegions, regionFromURL, scopeFood, regionURL } from './regions.mjs';
 import { regionalSearches, foodView } from './regional-food.mjs';
-import { initNearMe, resolvePuja, addPujaActions } from './global-puja.mjs';
+import { initNearMe, resolvePuja } from './global-puja.mjs';
+import { renderProfile } from './puja-profile.mjs';
+import { effectiveLocation } from './puja-location.mjs';
 
 const validID = value => typeof value === 'string' && /^[A-Za-z0-9_-]{1,255}$/.test(value);
 export const normalize = value => String(value || '').normalize('NFC').toLocaleLowerCase().trim().replace(/\s+/g, ' ');
@@ -49,7 +51,7 @@ export function parsePlaces(data, catalog = null) {
   return { pandals, groups, discoveries, index: pandals.map(p => ({ p, query: normalize(`${p.name} ${p.name_bn || ''} ${(p.aliases || []).join(' ')} ${p.area} ${p.neighborhood || ''} ${p.city || ''} ${p.metro_region || ''} ${p.admin1 || ''}`) })) };
 }
 export function discoveryState(pandal, discovery, rows, now = Date.now()) {
-  if (!Number.isFinite(pandal.latitude) || !Number.isFinite(pandal.longitude)) return 'unavailable';
+  if (!effectiveLocation(pandal).map_eligible) return 'unavailable';
   if (!discovery) return rows.length ? 'stale' : 'not_run';
   if (!Number.isFinite(Date.parse(discovery.expires_at)) || Date.parse(discovery.expires_at) <= now) return 'stale';
   return rows.length ? 'current_nonzero' : 'current_zero';
@@ -172,29 +174,11 @@ export async function initPuja(onData = () => {}) {
       if (updateURL) setFoodView('puja', true);
       close(); input.value = language === 'bn' && p.name_bn ? p.name_bn : p.name;
       selected.hidden = false; selected.replaceChildren();
-      selected.append(el('p', text('Selected pandal'), 'eyebrow'));
-      const heading = el('h3', input.value); heading.id = 'selected-pandal-title'; heading.tabIndex = -1;
-      selected.append(heading, el('p', `${p.name_bn && language !== 'bn' ? `${p.name_bn} · ` : ''}${p.neighborhood || p.area} · ${p.city || ''}`, 'pandal-area'));
-      if (p.location_precision === 'source_zone') selected.append(el('p', text('Location is the directory’s broad zone, not a verified street address.')));
-      if (p.year && !p.edition?.confirmed) selected.append(el('p', `${text('Source listing year')}: ${p.year}. ${text('This does not confirm this year’s venue or opening times.')}`, 'fine-print'));
-      if (p.subtitle) selected.append(el('p', p.subtitle, 'pandal-subtitle'));
-      if (p.venue || p.address) selected.append(el('p', [p.venue, p.address].filter(Boolean).join(' · '), 'pandal-area'));
-      if (p.event_dates) selected.append(el('p', p.event_dates, 'fine-print'));
-      addPujaActions(selected, p, catalog.source_checks, language === 'bn');
-      const mapReady = Number.isFinite(p.latitude) && Number.isFinite(p.longitude);
-      if (!mapReady) selected.append(el('p', text('Map location is not yet independently verified.'), 'notice'));
-      else if (p.coordinate_precision === 'street' || p.coordinate_precision === 'neighborhood') selected.append(el('p', text('Map location is an independently sourced approximate anchor.'), 'notice'));
-      else selected.append(el('p', text('Map location is independently sourced.'), 'notice'));
+      selected.append(renderProfile(p, region, catalog.source_checks, language === 'bn'));
       document.dispatchEvent(new CustomEvent('foodpath-focus-pandal', { detail: p.pandal_id }));
-      const provenance = el('details'); provenance.append(el('summary', text('Read source provenance')));
-      for (const source of p.sources || []) {
-        const paragraph = el('p'); const href = safeExternal(source.source_url);
-        if (href) { const link = el('a', source.source_title || source.publisher); link.href = href; link.target = '_blank'; link.rel = 'noopener noreferrer'; paragraph.append(link); }
-        else paragraph.append(el('span', source.source_title || source.publisher));
-        paragraph.append(document.createTextNode(` — “${source.quote}”`)); provenance.append(paragraph);
-      }
-      selected.append(provenance);
-      const food = renderFood(selected, data, p);
+      const foodSection = el('section', null, 'nearby-food-section');
+      foodSection.setAttribute('aria-label', text('Nearby food')); selected.append(foodSection);
+      const food = renderFood(foodSection, data, p);
       document.querySelectorAll('[data-food-pandal]').forEach(button => button.setAttribute('aria-pressed', String(button.dataset.foodPandal === p.pandal_id)));
       if (updateURL) { const url = new URL(location.href); url.searchParams.set('region', region.region_id); url.searchParams.set('pandal', p.pandal_id); url.hash = 'puja'; history.replaceState(null, '', url); }
       status.textContent = `${input.value} · ${food.named_public_count ? `${food.named_public_count} ${text('named nearby food places')}` : text('Named listings pending')}`;

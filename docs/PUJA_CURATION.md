@@ -35,9 +35,95 @@ the frozen passage using exact, NFC or whitespace-normalized matching. A model c
 publish, geocode, rank or create a Google Maps request. Calls are capped per run and cached
 by source revision, model, task and schema.
 
-`review-summary` reports private candidates without printing source bodies. A maintainer
-must inspect citations and add supported values to `published` in `config/puja.yml`.
-`publish` validates provenance, coordinates and IDs before generating public data.
+`review-summary` remains useful for packet diagnostics. The normal owner path is now
+`python -m food_safety.cli puja review`: it opens a localhost-only card queue and
+prepares bounded new leads from public Puja suggestions and changed known sources.
+For Puja suggestions, configure `puja_suggest_form_url` in `config/pipeline.yml`
+or export `PUJA_SUGGEST_FORM_URL` during the static build (the main workflow reads
+the matching GitHub repository variable). Only a published Google Form responder
+URL is accepted. Without one, the public CTA says the form is coming shortly.
+Required Form question titles: `Puja / organizer name`, `City / region`, and
+`Official organizer or event URL`. `Additional note` is optional. Do not enable
+email collection. The linked response Sheet remains private.
+
+### One-time local Sheet setup
+
+1. In your Google Cloud project, enable **Google Sheets API**. Configure OAuth
+   consent for your own account (External with your account as a test user, or
+   Internal only if your Workspace organization supports it).
+2. Create an OAuth client of type **Desktop app**. Save its downloaded JSON as
+   `.cache/puja/oauth-client.json`. No service account is used.
+3. Create `.cache/puja/sheet.json` with your private response Sheet ID and tab:
+
+   ```json
+   {"spreadsheet_id": "YOUR_SHEET_ID", "response_tab": "Form Responses 1"}
+   ```
+
+4. Install the optional local dependency and run review:
+
+```bash
+python -m pip install -e '.[review]'
+python -m food_safety.cli puja review
+```
+
+Authorize read-only spreadsheet access once in the browser, using a Google account
+that can view the Sheet. Authorization returns to a temporary `127.0.0.1` listener.
+The token is saved locally as `.cache/puja/oauth-token.json` with owner-only file
+permissions. The entire `.cache/` directory is ignored by Git. Nothing is added to
+GitHub Actions for Sheet access. The app reads only the configured tab, but Google's
+read-only Sheets OAuth scope permits reading other spreadsheets that account can
+access; it is not a per-file OAuth scope.
+
+**Consent-screen lifetime:** External apps left in Testing receive refresh tokens
+that expire after seven days for Sheets access. For ongoing use, configure the
+appropriate production consent status and satisfy any Google verification/account
+requirements shown in the console. Revocation, policy changes or long inactivity
+can still require authorization again. See Google's
+[desktop setup](https://developers.google.com/workspace/sheets/api/quickstart/python)
+and [token expiry rules](https://developers.google.com/identity/protocols/oauth2#expiration).
+
+On another laptop, clone, install `.[review]`, add the private client/Sheet config,
+and authorize independently. Never copy user tokens between machines. The Sheet is
+the original response store; OAuth tokens are only access authorization. Back up
+private `queue.json`, `review_decisions.json`, campaign packets and `approval_outbox/`
+separately from OAuth files if moving editorial work. Rejections are local editorial
+state, not written to the read-only Sheet; they require that private backup to survive
+machine loss. Public approvals can be recovered from the existing GitHub requests.
+The configured repository owner remains the publication approver; independent Google
+authorization does not grant GitHub publication authority to a co-owner.
+
+Each review startup syncs unseen Sheet responses before opening cards. A fingerprint
+uses timestamp and normalized identity/locality/URL, not row number. Equivalent
+resubmissions reuse a candidate; changed submissions are flagged without overwriting
+decisions. Candidate-first persistence keeps unreadable/sparse sources in the queue.
+Unknown regions remain visible but cannot be published under a guessed region.
+Contact and notes are not sent to Gemini or publication. CSV import remains a
+diagnostic fallback, not the normal workflow.
+
+Sheet/auth failure prints a warning and still opens existing cards. Source extraction
+runs in the background after the UI starts: structured JSON-LD first, existing bounded
+Gemini passage extraction for messy pages. No URL Context adapter is enabled: the
+current evidence validator requires exact support in independently fetched, frozen
+passages. Unreadable sources are retained instead of manufacturing such passages.
+There is no automatic model retry storm. Attempts remain capped and are remembered
+per candidate revision. `--no-intake` opens offline review without Sheet/source work.
+
+Each card has exactly **APPROVE** and **REJECT**. Untouched cards wait indefinitely.
+Approval derives the strongest supported tier; it never requires dates or coordinates
+for a basic listing. Where source text was unavailable, the basic owner endorsement
+is explicitly recorded as an owner attestation, not a quotation from the organizer.
+Only event-attached year evidence promotes an edition. Geographic eligibility remains
+separate and does not inherit stale annual venues.
+
+Approval freezes a private outbox payload, then creates an owner-authored
+GitHub publication request; the scheduled workflow validates it, writes the
+reviewed `config/puja-approved.json` overlay, builds, and commits the static output.
+No second publish/build/deploy action is needed. If GitHub is unavailable, the outbox
+retries every minute while review is open and at the next normal review startup.
+Until GitHub acknowledges the request, closing the laptop pauses delivery. Repeated
+delivery finds the existing request rather than publishing twice. An invalid request
+stays open and does not modify the catalog. The older manual
+`puja publish` command remains for direct curation and diagnostics.
 
 `geocode` is an explicit operator research aid for a small named set of already
 source-backed pandals. It uses the public Nominatim service single-threaded at no more
@@ -49,6 +135,73 @@ to `config/puja.yml`. Ambiguous and distant name matches must be rejected. Respe
 this tool is not a bulk geocoder.
 
 ## Publication requirements
+
+### Profiles and two public tiers
+
+The selected Puja is a profile article; nearby food begins below it. The public
+label is derived from reviewed edition data, not a separate confidence score:
+
+- **Source-listed · current venue not reviewed**: identity and region are sourced;
+  no current-edition confirmation is asserted.
+- **YEAR event confirmed**: that edition is explicitly reviewed. **YEAR venue/date
+  reviewed** additionally requires its reviewed location and supported date.
+
+`official_links` retain kind, URL and supporting source evidence. Optional `about`
+contains a short neutral sourced introduction. `edition.programme_notes` holds
+at most three sourced highlights; artist names remain ordinary note text. Notes
+from a previous edition are not displayed as current. Social links need reviewed
+organizer ownership/relationship, not just a plausible account name.
+
+`edition.location` is an atomic venue/address/independent-anchor override. An
+optional edition city prevents an old municipality leaking into a moved venue's
+profile or restaurant handoff; unsupported city context is omitted. An
+edition without this override cannot inherit stable-record coordinates. Prior-year
+edition locations remain historical, not current map, Near Me, directions or food
+anchors. Undated legacy anchors remain visibly last-known. Map anchors can be
+approximate; Near Me requires venue precision. Directions additionally require a
+current, confirmed, venue-reviewed edition. One effective-location contract drives
+both browser behavior and local food association. Food coverage records an anchor
+key, preventing old-catchment results from appearing after a venue move.
+
+### Manual private lead campaign
+
+`puja leads` is an operator CLI action, **not a scheduled workflow**:
+
+```bash
+python -m food_safety.cli puja leads --seeds .cache/puja/seeds.json \
+  --campaign autumn-review --max-calls 5 --dry-run
+python -m food_safety.cli puja leads --seeds .cache/puja/seeds.json \
+  --campaign autumn-review --max-calls 5
+```
+
+Supply a JSON array of at most 40 seeds: `region`, `url`, optional `source_kind`
+and `candidate_name`. Lead mode extracts only identity/locality/source links.
+An explicitly supplied name can be screened against frozen passages without a
+model. `mode: profile` requires `accepted_identity` and requests richer facts only
+for an accepted research subject; this is not publication approval.
+
+JSON-LD Event extraction precedes Gemini. Messy prose uses the existing structured
+adapter, not a bespoke page parser. Optional `content_selector` narrows a reviewed
+page section. `suggest_links` returns bounded one-hop suggestions for operator
+review; it never follows them. An explicit `allow_missing_robots` permits only a
+literal robots 404, not blocked requests. Redirects remain on approved seed hosts.
+
+Private frozen sources, model responses, attempt ledger and review packet live in
+ignored `.cache/puja/campaigns/CAMPAIGN/`. Reuse the same campaign ID to retain its
+hard **20 attempted model calls**, including failures; each invocation allows at
+most five and defaults to zero. HTTP attempts, including robots/redirects, stop at
+120 per campaign. There are no automatic retries. A provider failure stops further
+model work in that batch. Revision/model/task/schema-aware responses are reused.
+Review packets from successive lead/profile batches are retained together.
+
+Packets include literal support, missing fields, duplicate/source warnings,
+date/year/timezone inconsistencies, tentative tier and unreviewed geography.
+Literal matching does **not** prove a fact belongs to the same event or year.
+An owner must approve organizer identity, edition relationships, links, conflicting
+announcements and the publication tier. Fetch/model failure leaves a candidate
+pending. Discovery and monitoring never approve a record. Only owner approval
+creates a publication request, which the scheduled workflow validates before any
+catalog change. This campaign remains separate from automatic HTTP monitoring.
 
 Every published pandal has a stable ID, name, area, city/region, source URL, title,
 supporting quote and verification timestamp. Coordinates are optional. If present they
