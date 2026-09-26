@@ -107,7 +107,8 @@ the original response store; OAuth tokens are only access authorization. Back up
 private `queue.json`, `review_decisions.json`, campaign packets and `approval_outbox/`
 separately from OAuth files if moving editorial work. Rejections are local editorial
 state, not written to the read-only Sheet; they require that private backup to survive
-machine loss. Public approvals can be recovered from the existing GitHub requests.
+machine loss. Delivered approvals can be recovered from the Git request queue or
+the four earlier Issue requests.
 The configured repository owner remains the publication approver; independent Google
 authorization does not grant GitHub publication authority to a co-owner.
 
@@ -140,14 +141,22 @@ is explicitly recorded as an owner attestation, not a quotation from the organiz
 Only event-attached year evidence promotes an edition. Geographic eligibility remains
 separate and does not inherit stale annual venues.
 
-Approval freezes a private outbox payload, then creates an owner-authored
-GitHub publication request; the scheduled workflow validates it, writes the
-reviewed `config/puja-approved.json` overlay, builds, and commits the static output.
-No second publish/build/deploy action is needed. If GitHub is unavailable, the outbox
-retries every minute while review is open and at the next normal review startup.
-Until GitHub acknowledges the request, closing the laptop pauses delivery. Repeated
-delivery finds the existing request rather than publishing twice. An invalid request
-stays open and does not modify the catalog. The older manual
+Approval freezes a private outbox payload, then writes one validated publication-safe
+JSON request to `config/puja-requests/` on the dedicated `puja-approvals` Git ref.
+The file contains only the public record, its reviewed source and the IDs/revisions
+needed to validate and deduplicate it. Raw candidates, private responses, rejected
+decisions and OAuth files remain in ignored local storage. The scheduled main workflow
+reads requests, validates each independently, writes the reviewed
+`config/puja-approved.json` overlay, builds and commits the static output. Requests
+remain immutable in the queue ref; their appearance in the overlay marks them
+published. No second publish/build/deploy action is needed. If GitHub is unavailable,
+the outbox retries every minute while review is open and at the next normal review
+startup. Until Git acknowledges the request, closing the laptop pauses delivery.
+Repeated delivery checks the deterministic path before writing, preventing duplicate
+publication. Invalid requests stay queued for diagnosis without corrupting the catalog.
+Four approvals delivered through the earlier Issue path remain supported until the
+workflow publishes them; it closes those legacy Issues only after a successful push.
+The older manual
 `puja publish` command remains for direct curation and diagnostics.
 
 `geocode` is an explicit operator research aid for a small named set of already

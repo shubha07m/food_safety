@@ -57,7 +57,7 @@ jobs:
       - name: Due-only Puja source checks (daily Sep–Oct, weekly otherwise)
         if: github.event_name != 'push' && inputs.release_only != true
         run: python -m food_safety.cli puja refresh
-      - name: Apply owner-approved Puja catalog updates
+      - name: Apply reviewed Puja requests and existing approvals
         env:
           GH_TOKEN: ${{ github.token }}
         run: python -m food_safety.cli puja publish-approved
@@ -83,7 +83,7 @@ jobs:
           git -c user.name='github-actions[bot]' -c user.email='41898282+github-actions[bot]@users.noreply.github.com' commit -m 'data: validated refresh [automated-refresh]'
           git -c credential.helper='!f() { echo username=x-access-token; echo "password=$GH_TOKEN"; }; f' push origin HEAD:main
           # GITHUB_TOKEN pushes do not trigger another Actions run.
-      - name: Close published Puja approval requests
+      - name: Close published legacy approval issues
         env:
           GH_TOKEN: ${{ github.token }}
         run: python -m food_safety.cli puja close-approved

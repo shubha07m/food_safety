@@ -76,7 +76,10 @@ def load_config(root: Path, approval_overlay=None) -> Config:
                 raise ValueError("invalid_approval_overlay")
             records = {p["pandal_id"]: p for p in raw["published"]}
             sources = {s["source_id"]: s for s in raw["sources"]}
-            for item in sorted(approval_overlay["approvals"], key=lambda row: row["issue_number"]):
+            for item in sorted(
+                approval_overlay["approvals"],
+                key=lambda row: (row["record"]["last_verified_at"], row["candidate_id"]),
+            ):
                 records[item["record"]["pandal_id"]] = item["record"]
                 sources[item["source"]["source_id"]] = item["source"]
             raw["published"] = list(records.values())

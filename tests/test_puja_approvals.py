@@ -1,3 +1,4 @@
+import base64
 import http.client
 import json
 import shutil
@@ -8,7 +9,15 @@ from urllib.parse import urlencode
 
 import pytest
 
-from food_safety.puja.approvals import close_published, publish_approved, submit_approval
+from food_safety.puja.approvals import (
+    GithubAPIError,
+    close_published,
+    deliver_approval,
+    migrate_outbox,
+    publish_approved,
+    request_path,
+    resume_approvals,
+)
 from food_safety.puja.intake import import_form_csv, submission_seeds
 from food_safety.puja.pipeline import build_public, load_config
 from food_safety.puja.review_queue import (
@@ -17,10 +26,52 @@ from food_safety.puja.review_queue import (
     compile_record,
     issue_body,
     parse_issue_body,
+    save_decision,
 )
 from food_safety.puja.review_server import handler, render
 
 ROOT = Path(__file__).resolve().parents[1]
+
+
+class GitQueueAPI:
+    """Only the read/write Git calls needed by the public-safe request queue."""
+
+    def __init__(self):
+        self.branch = False
+        self.files = {}
+        self.writes = 0
+        self.issues = []
+
+    def __call__(self, method, endpoint, payload=None):
+        if endpoint == "user":
+            return {"login": "shubha07m"}
+        if "issues?" in endpoint:
+            return self.issues
+        if endpoint.endswith("/git/ref/heads/main"):
+            return {"object": {"sha": "a" * 40}}
+        if endpoint.endswith("/git/ref/heads/puja-approvals"):
+            if not self.branch:
+                raise GithubAPIError(404)
+            return {"object": {"sha": "b" * 40}}
+        if endpoint.endswith("/git/refs") and method == "POST":
+            self.branch = True
+            return {}
+        if "/contents/config/puja-requests" in endpoint:
+            path = endpoint.split("/contents/", 1)[1].split("?", 1)[0]
+            if method == "PUT":
+                assert payload["branch"] == "puja-approvals"
+                self.files[path] = base64.b64decode(payload["content"]).decode()
+                self.writes += 1
+                return {"content": {"path": path}}
+            if path == "config/puja-requests":
+                return [{"type": "file", "path": p} for p in self.files]
+            if path not in self.files:
+                raise GithubAPIError(404)
+            return {
+                "encoding": "base64",
+                "content": base64.b64encode(self.files[path].encode()).decode(),
+            }
+        raise AssertionError((method, endpoint))
 
 
 def project(tmp_path):
@@ -133,6 +184,73 @@ def test_known_source_approval_reuses_monitor_entry(tmp_path):
         compile_record(root, item, "source_listed")
 
 
+def test_existing_source_approval_adds_reviewed_revision_without_replacing_old_evidence(tmp_path):
+    root = project(tmp_path)
+    base = next(p for p in load_config(root).published if p.pandal_id == "ca-agomoni")
+    item = candidate()
+    item.update(
+        name=base.name,
+        region="california",
+        source_url=str(base.sources[0].source_url),
+        candidate_id=candidate_id("california", str(base.sources[0].source_url), base.name),
+        duplicate_ids=[base.pandal_id],
+        same_source_listing_ids=[base.pandal_id],
+    )
+    item["fields"] = {
+        "name": fact(base.name, f"{base.name} organizer page"),
+        "locality": {"value": base.city},
+    }
+    value = compile_record(root, item, "source_listed")
+    assert len(value["record"]["sources"]) == len(base.sources) + 1
+    assert value["record"]["sources"][-1]["source_revision_id"] == item["source_revision"]
+    assert parse_issue_body(issue_body(value)) == value
+
+
+def test_legacy_saved_approval_migration_and_once_only_warning(tmp_path, capsys):
+    root = project(tmp_path)
+    config = load_config(root)
+    base = next(p for p in config.published if p.pandal_id == "ca-agomoni")
+    source = next(s for s in config.sources if str(s.url) == str(base.sources[0].source_url))
+    candidate_key = "pc-" + "a" * 20
+    original = {
+        "candidate": {"candidate_id": candidate_key, "source_revision": "b" * 64},
+        "payload": {
+            "candidate_id": candidate_key,
+            "source_revision": "b" * 64,
+            "monitor_revision": source.reviewed_revision,
+            "tier": "source_listed",
+            "record": {**base.model_dump(mode="json"), "last_verified_at": "2026-09-26T00:00:00Z"},
+            "source": source.model_dump(mode="json"),
+        },
+    }
+    save_decision(root, original["candidate"], "approved")
+    folder = root / ".cache/puja/approval_outbox"
+    folder.mkdir(parents=True)
+    path = folder / f"{candidate_key}.json"
+    path.write_text(json.dumps(original))
+    bad = folder / ("pc-" + "c" * 20 + ".json")
+    bad.write_text("invalid")
+    report = migrate_outbox(root)
+    assert report["repaired"] == [candidate_key]
+    assert report["invalid"] and report["invalid"][0][0] == bad.stem
+    assert json.loads((root / ".cache/puja/approval_backups" / path.name).read_text()) == original
+    repaired = json.loads(path.read_text())["payload"]
+    assert parse_issue_body(issue_body(repaired)) == repaired
+    assert repaired["record"]["sources"][-1]["evidence_kind"] == "owner_attestation"
+    assert migrate_outbox(root)["repaired"] == []
+    sent = []
+    resume_approvals(root, lambda p: sent.append(p) or request_path(p["candidate_id"]))
+    resume_approvals(root, lambda _: pytest.fail("duplicate delivery"))
+    assert len(sent) == 1
+    assert capsys.readouterr().out.count("needs review") == 1
+    assert (
+        json.loads((root / ".cache/puja/review_decisions.json").read_text())[candidate_key][
+            "decision"
+        ]
+        == "approved"
+    )
+
+
 def test_publication_skips_bad_issue_and_commits_only_approved(tmp_path):
     root = project(tmp_path)
     value = compile_record(root, candidate(), "source_listed", at=datetime(2026, 9, 24, tzinfo=UTC))
@@ -157,13 +275,15 @@ def test_publication_skips_bad_issue_and_commits_only_approved(tmp_path):
     closed = []
 
     def api(method, endpoint, payload=None):
+        if "/contents/" in endpoint:
+            raise GithubAPIError(404)
         if method == "GET":
             return [bad, issue, untrusted]
         closed.append((endpoint, payload))
         return {}
 
     first = publish_approved(root, api=api)
-    assert first["approved_added"] == 1 and first["invalid"][0]["issue_number"] == 41
+    assert first["approved_added"] == 1 and first["invalid"][0]["issue"] == 41
     assert load_config(root).published[-1].pandal_id == value["record"]["pandal_id"]
     assert build_public(root)["record_count"] == 236
     assert publish_approved(root, api=api)["approved_added"] == 0
@@ -183,20 +303,45 @@ def test_approval_listing_outage_does_not_change_catalog(tmp_path):
     assert load_config(root).published[-1]
 
 
-def test_approval_transport_requires_owner_and_keeps_contact_out(tmp_path):
+def test_git_approval_transport_requires_owner_and_is_idempotent(tmp_path):
     value = compile_record(project(tmp_path), candidate(), "source_listed")
-    calls = []
-
-    def api(method, endpoint, payload=None):
-        calls.append((method, endpoint, payload))
-        if "issues?" in endpoint:
-            return []
-        return {"login": "shubha07m"} if endpoint == "user" else {"number": 7}
-
-    assert submit_approval(value, api=api) == 7
-    assert calls[-1][2]["body"].startswith("<!-- foodpath-puja-approval-v1 -->")
+    api = GitQueueAPI()
+    path = request_path(value["candidate_id"])
+    assert deliver_approval(value, api=api) == path
+    assert deliver_approval(value, api=api) == path
+    assert api.writes == 1
+    assert json.loads(api.files[path]) == value
+    assert "Contact email" not in api.files[path]
+    assert "oauth" not in api.files[path]
+    changed = {**value, "source_revision": "c" * 64}
+    with pytest.raises(ValueError, match="approval_evidence_missing"):
+        deliver_approval(changed, api=api)
     with pytest.raises(ValueError, match="github_owner_login_required"):
-        submit_approval(value, api=lambda *_: {"login": "other"})
+        deliver_approval(value, api=lambda *_: {"login": "other"})
+
+
+def test_git_queue_publication_skips_malformed_and_avoids_legacy_duplicate(tmp_path):
+    root = project(tmp_path)
+    value = compile_record(root, candidate(), "source_listed")
+    api = GitQueueAPI()
+    path = deliver_approval(value, api=api)
+    malformed = request_path("pc-" + "f" * 20)
+    api.files[malformed] = '{"raw_candidate": "must never publish"}'
+    api.issues = [
+        {
+            "number": 40,
+            "title": "Puja approval " + value["candidate_id"],
+            "body": issue_body(value),
+            "user": {"login": "shubha07m"},
+        }
+    ]
+    result = publish_approved(root, api=api)
+    assert result["approved_added"] == 1
+    assert result["already_published"] == 1
+    assert result["invalid"][0]["request"] == malformed
+    assert len(json.loads((root / "config/puja-approved.json").read_text())["approvals"]) == 1
+    assert publish_approved(root, api=api)["approved_added"] == 0
+    assert json.loads(api.files[path]) == value
 
 
 def test_form_csv_import_keeps_contact_and_notes_out(tmp_path):

@@ -7,7 +7,7 @@ import webbrowser
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from urllib.parse import parse_qs, urlsplit
 
-from .approvals import queue_approval, submit_approval
+from .approvals import deliver_approval, queue_approval
 from .review_queue import automatic_record, candidates, save_decision
 
 DECISION_LOCK = threading.Lock()
@@ -124,12 +124,12 @@ def render(root, nonce, notice=""):
         ".actions{display:flex;flex-wrap:wrap}details{margin:1rem 0;overflow-wrap:anywhere}"
         "li{margin:.4rem 0}</style>"
         "<main><h1>Puja owner review</h1>"
-        "<p>Pending candidates stay private. Approval creates a GitHub publication request.</p>"
+        "<p>Pending candidates stay private. Approval queues a reviewed publication request.</p>"
         f"<p role='status'>{_escape(notice)}</p>{body}</main></html>"
     )
 
 
-def handler(root, nonce, submit=submit_approval):
+def handler(root, nonce, submit=deliver_approval):
     class ReviewHandler(BaseHTTPRequestHandler):
         def log_message(self, _format, *_args):
             pass  # Never log candidate content or request metadata.
@@ -193,11 +193,11 @@ def handler(root, nonce, submit=submit_approval):
                 action = one("action")
                 if action == "approve":
                     payload = automatic_record(root, chosen)
-                    issue = queue_approval(root, chosen, payload, submit)
+                    request = queue_approval(root, chosen, payload, submit)
                     notice = (
-                        f"Approved and queued in GitHub issue {issue}."
-                        if issue
-                        else "Approved locally; GitHub unavailable. "
+                        "Approved and queued for publication."
+                        if request
+                        else "Approved locally; delivery unavailable. "
                         "Automatic retry while review is open."
                     )
                 elif action == "reject":
@@ -214,7 +214,7 @@ def handler(root, nonce, submit=submit_approval):
     return ReviewHandler
 
 
-def serve(root, port=0, open_browser=True, submit=submit_approval, refresh_queue=None, notice=""):
+def serve(root, port=0, open_browser=True, submit=deliver_approval, refresh_queue=None, notice=""):
     nonce = secrets.token_urlsafe(24)
     server = ThreadingHTTPServer(("127.0.0.1", port), handler(root, nonce, submit))
     server.notice = notice

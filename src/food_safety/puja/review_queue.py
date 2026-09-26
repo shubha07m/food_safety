@@ -305,7 +305,13 @@ def compile_record(root, item, tier, *, at=None):
         }
     )
     values["last_verified_at"] = now.isoformat()
-    if str(source.source_url) not in {s["source_url"] for s in values["sources"]}:
+    # An older listing may already cite this URL without identifying the revision
+    # reviewed today. Keep its original evidence and add this distinct approval.
+    if not any(
+        s["source_url"] == str(source.source_url)
+        and s.get("source_revision_id") == item["source_revision"]
+        for s in values["sources"]
+    ):
         values["sources"].append(source.model_dump(mode="json"))
     if _field(item, "organizer"):
         values["organizer"] = _field(item, "organizer")
@@ -421,16 +427,12 @@ def issue_body(payload):
     )
 
 
-def parse_issue_body(body):
-    if (
-        not isinstance(body, str)
-        or not body.startswith(ISSUE_MARKER + "\n")
-        or not body.endswith("\n" + ISSUE_END)
-    ):
-        raise ValueError("invalid_approval_issue")
-    if len(body) > 60000:
-        raise ValueError("approval_issue_too_large")
-    value = json.loads(body[len(ISSUE_MARKER) + 1 : -len(ISSUE_END) - 1])
+def validate_approval(value):
+    """Validate only fields that can be committed as a public Puja record."""
+    if not isinstance(value, dict):
+        raise ValueError("approval_fields_invalid")
+    if len(json.dumps(value, ensure_ascii=False)) > 60000:
+        raise ValueError("approval_payload_too_large")
     if set(value) != {
         "candidate_id",
         "source_revision",
@@ -440,10 +442,19 @@ def parse_issue_body(body):
         "source",
     }:
         raise ValueError("approval_fields_invalid")
+    if not re.fullmatch(r"pc-[a-f0-9]{20}", value["candidate_id"]):
+        raise ValueError("approval_candidate_id_invalid")
+    if not re.fullmatch(r"[a-f0-9]{64}", value["source_revision"]):
+        raise ValueError("approval_revision_invalid")
     if value["tier"] not in {"source_listed", "current_edition_reviewed"}:
         raise ValueError("approval_tier_invalid")
     record = PandalRecord.model_validate(value["record"])
     source = SourceSpec.model_validate(value["source"])
+    from ..safety import safe_url
+
+    safe_url(str(source.url))
+    for evidence in record.sources:
+        safe_url(str(evidence.source_url))
     if (
         source.region_id != record.region_id
         or source.reviewed_revision != value["monitor_revision"]
@@ -459,3 +470,16 @@ def parse_issue_body(body):
     ):
         raise ValueError("approval_edition_missing")
     return value
+
+
+def parse_issue_body(body):
+    if (
+        not isinstance(body, str)
+        or not body.startswith(ISSUE_MARKER + "\n")
+        or not body.endswith("\n" + ISSUE_END)
+    ):
+        raise ValueError("invalid_approval_issue")
+    if len(body) > 60000:
+        raise ValueError("approval_issue_too_large")
+    value = json.loads(body[len(ISSUE_MARKER) + 1 : -len(ISSUE_END) - 1])
+    return validate_approval(value)

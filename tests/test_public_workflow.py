@@ -35,7 +35,9 @@ def test_refresh_is_two_hour_bounded_and_release_push_skips_discovery():
     )
     assert job["permissions"] == {"contents": "write", "issues": "write"}
     approval_step = next(
-        s for s in job["steps"] if s.get("name") == "Apply owner-approved Puja catalog updates"
+        s
+        for s in job["steps"]
+        if s.get("name") == "Apply reviewed Puja requests and existing approvals"
     )
     assert approval_step["env"] == {"GH_TOKEN": "${{ github.token }}"}
     assert "puja publish-approved" in approval_step["run"]

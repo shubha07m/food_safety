@@ -2,10 +2,16 @@ import json
 from datetime import UTC, datetime
 
 import pytest
-from test_puja_approvals import candidate, project
+from test_puja_approvals import GitQueueAPI, candidate, project
 
 from food_safety.puja import intake, sheets
-from food_safety.puja.approvals import queue_approval, resume_approvals, submit_approval
+from food_safety.puja.approvals import (
+    deliver_approval,
+    queue_approval,
+    request_path,
+    restore_approvals,
+    resume_approvals,
+)
 from food_safety.puja.queue_store import STORE, ingest_responses, read
 from food_safety.puja.review_queue import automatic_record, candidates, save_decision
 from food_safety.puja.review_server import render
@@ -128,37 +134,31 @@ def test_frozen_approval_retries_without_second_owner_action(tmp_path):
     assert queue_approval(root, item, payload, unavailable) is None
     assert candidates(root)[0]["review_state"] == "approved"
     sent = []
-    resume_approvals(root, lambda p: sent.append(p) or 99)
+    expected = request_path(item["candidate_id"])
+    resume_approvals(root, lambda p: sent.append(p) or expected)
     resume_approvals(root, lambda p: pytest.fail("must not submit twice"))
     assert sent == [payload]
     assert (
         json.loads((root / ".cache/puja/review_decisions.json").read_text())[item["candidate_id"]][
-            "issue_number"
+            "request_path"
         ]
-        == 99
+        == expected
     )
 
 
-def test_approval_transport_recovers_existing_issue(tmp_path):
-    from food_safety.puja.review_queue import issue_body
-
+def test_approval_transport_recovers_existing_git_request(tmp_path):
     root = project(tmp_path)
     payload = automatic_record(root, candidate())
-
-    def api(method, endpoint, payload_unused=None):
-        assert method == "GET"
-        if endpoint == "user":
-            return {"login": "shubha07m"}
-        return [
-            {
-                "number": 99,
-                "user": {"login": "shubha07m"},
-                "title": "Puja approval " + payload["candidate_id"],
-                "body": issue_body(payload),
-            }
-        ]
-
-    assert submit_approval(payload, api=api) == 99
+    api = GitQueueAPI()
+    assert deliver_approval(payload, api=api) == request_path(payload["candidate_id"])
+    assert deliver_approval(payload, api=api) == request_path(payload["candidate_id"])
+    assert api.writes == 1
+    restore_approvals(root, api=api)
+    decision = json.loads((root / ".cache/puja/review_decisions.json").read_text())[
+        payload["candidate_id"]
+    ]
+    assert decision["decision"] == "approved"
+    assert decision["request_path"] == request_path(payload["candidate_id"])
 
 
 def test_unknown_city_is_retained_not_assigned_false_region(tmp_path):
@@ -235,27 +235,15 @@ def test_sheets_request_is_bounded_readonly_and_no_contact_retention(tmp_path, m
 def test_sparse_sheet_approval_to_scheduled_static_publication(tmp_path):
     from food_safety.puja.approvals import publish_approved
     from food_safety.puja.pipeline import build_public
-    from food_safety.puja.review_queue import issue_body
 
     root = project(tmp_path)
     sheets.sync(root, reader=lambda _: [response()])
     item = candidates(root)[0]
     value = automatic_record(root, item)
-    issues = []
-
-    def submit(payload):
-        issues.append(
-            {
-                "number": 100,
-                "title": "Puja approval " + payload["candidate_id"],
-                "body": issue_body(payload),
-                "user": {"login": "shubha07m"},
-            }
-        )
-        return 100
-
-    queue_approval(root, item, value, submit)
-    assert publish_approved(root, api=lambda *_: issues)["approved_added"] == 1
+    api = GitQueueAPI()
+    queue_approval(root, item, value, lambda p: deliver_approval(p, api=api))
+    assert publish_approved(root, api=api)["approved_added"] == 1
+    assert publish_approved(root, api=api)["approved_added"] == 0
     published = build_public(root)
     record = next(r for r in published["records"] if r["name"] == "River Puja")
     assert record["edition"] is None and record["latitude"] is None
