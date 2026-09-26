@@ -41,6 +41,9 @@ class SourceSpec(Strict):
 
 
 class SourceEvidence(Strict):
+    evidence_kind: Literal["source_quote", "owner_attestation"] = Field(
+        default="source_quote", exclude_if=lambda value: value == "source_quote"
+    )
     source_url: HttpUrl
     source_title: str = Field(min_length=1, max_length=300)
     publisher: str = Field(min_length=1, max_length=160)

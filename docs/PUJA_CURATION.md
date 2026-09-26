@@ -42,25 +42,87 @@ For Puja suggestions, configure `puja_suggest_form_url` in `config/pipeline.yml`
 or export `PUJA_SUGGEST_FORM_URL` during the static build (the main workflow reads
 the matching GitHub repository variable). Only a published Google Form responder
 URL is accepted. Without one, the public CTA says the form is coming shortly.
-Suggested required Form fields are Puja/organizer name, city/locality, region,
-and official/event URL; venue, dates, note and contact email can be optional.
-Export responses as CSV, keep the raw export outside tracked Git or inside
-ignored `.cache/`, and run:
+Required Form question titles: `Puja / organizer name`, `City / region`, and
+`Official organizer or event URL`. `Additional note` is optional. Do not enable
+email collection. The linked response Sheet remains private.
+
+### One-time local Sheet setup
+
+1. In your Google Cloud project, enable **Google Sheets API**. Configure OAuth
+   consent for your own account (External with your account as a test user, or
+   Internal only if your Workspace organization supports it).
+2. Create an OAuth client of type **Desktop app**. Save its downloaded JSON as
+   `.cache/puja/oauth-client.json`. No service account is used.
+3. Create `.cache/puja/sheet.json` with your private response Sheet ID and tab:
+
+   ```json
+   {"spreadsheet_id": "YOUR_SHEET_ID", "response_tab": "Form Responses 1"}
+   ```
+
+4. Install the optional local dependency and run review:
 
 ```bash
-python -m food_safety.cli puja import-suggestions --csv PATH
+python -m pip install -e '.[review]'
+python -m food_safety.cli puja review
 ```
 
-Only normalized region, source URL and proposed name enter the
-private seed queue; notes/contact email are discarded. The review server starts
-before any optional source/model refresh, so prepared cards remain available
-offline.
+Authorize read-only spreadsheet access once in the browser, using a Google account
+that can view the Sheet. Authorization returns to a temporary `127.0.0.1` listener.
+The token is saved locally as `.cache/puja/oauth-token.json` with owner-only file
+permissions. The entire `.cache/` directory is ignored by Git. Nothing is added to
+GitHub Actions for Sheet access. The app reads only the configured tab, but Google's
+read-only Sheets OAuth scope permits reading other spreadsheets that account can
+access; it is not a per-file OAuth scope.
 
-Each card shows evidence, duplicate warnings and eligible approval tiers. Approve,
-defer or reject is the owner's final action. Approval creates an owner-authored
+**Consent-screen lifetime:** External apps left in Testing receive refresh tokens
+that expire after seven days for Sheets access. For ongoing use, configure the
+appropriate production consent status and satisfy any Google verification/account
+requirements shown in the console. Revocation, policy changes or long inactivity
+can still require authorization again. See Google's
+[desktop setup](https://developers.google.com/workspace/sheets/api/quickstart/python)
+and [token expiry rules](https://developers.google.com/identity/protocols/oauth2#expiration).
+
+On another laptop, clone, install `.[review]`, add the private client/Sheet config,
+and authorize independently. Never copy user tokens between machines. The Sheet is
+the original response store; OAuth tokens are only access authorization. Back up
+private `queue.json`, `review_decisions.json`, campaign packets and `approval_outbox/`
+separately from OAuth files if moving editorial work. Rejections are local editorial
+state, not written to the read-only Sheet; they require that private backup to survive
+machine loss. Public approvals can be recovered from the existing GitHub requests.
+The configured repository owner remains the publication approver; independent Google
+authorization does not grant GitHub publication authority to a co-owner.
+
+Each review startup syncs unseen Sheet responses before opening cards. A fingerprint
+uses timestamp and normalized identity/locality/URL, not row number. Equivalent
+resubmissions reuse a candidate; changed submissions are flagged without overwriting
+decisions. Candidate-first persistence keeps unreadable/sparse sources in the queue.
+Unknown regions remain visible but cannot be published under a guessed region.
+Contact and notes are not sent to Gemini or publication. CSV import remains a
+diagnostic fallback, not the normal workflow.
+
+Sheet/auth failure prints a warning and still opens existing cards. Source extraction
+runs in the background after the UI starts: structured JSON-LD first, existing bounded
+Gemini passage extraction for messy pages. No URL Context adapter is enabled: the
+current evidence validator requires exact support in independently fetched, frozen
+passages. Unreadable sources are retained instead of manufacturing such passages.
+There is no automatic model retry storm. Attempts remain capped and are remembered
+per candidate revision. `--no-intake` opens offline review without Sheet/source work.
+
+Each card has exactly **APPROVE** and **REJECT**. Untouched cards wait indefinitely.
+Approval derives the strongest supported tier; it never requires dates or coordinates
+for a basic listing. Where source text was unavailable, the basic owner endorsement
+is explicitly recorded as an owner attestation, not a quotation from the organizer.
+Only event-attached year evidence promotes an edition. Geographic eligibility remains
+separate and does not inherit stale annual venues.
+
+Approval freezes a private outbox payload, then creates an owner-authored
 GitHub publication request; the scheduled workflow validates it, writes the
 reviewed `config/puja-approved.json` overlay, builds, and commits the static output.
-An invalid request stays open and does not modify the catalog. The older manual
+No second publish/build/deploy action is needed. If GitHub is unavailable, the outbox
+retries every minute while review is open and at the next normal review startup.
+Until GitHub acknowledges the request, closing the laptop pauses delivery. Repeated
+delivery finds the existing request rather than publishing twice. An invalid request
+stays open and does not modify the catalog. The older manual
 `puja publish` command remains for direct curation and diagnostics.
 
 `geocode` is an explicit operator research aid for a small named set of already

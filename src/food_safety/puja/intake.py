@@ -95,22 +95,78 @@ def changed_source_seeds(root):
     return seeds[:20]
 
 
-def prepare(root: Path, *, max_calls=2):
-    """Review startup sync. Provider failures leave existing cards readable."""
-    public = submission_seeds(root)
-    incomplete = [
-        {
-            "region": item["region"],
-            "url": item["source_url"],
-            "mode": "profile",
-            "accepted_identity": item["name"],
-            "origin": item["origin"],
+def retain_seeds(root):
+    """Persist manual/imported/monitor seeds before retrieval; never drops bad URLs."""
+    from .queue_store import STORE, add, read
+
+    state = read(root)
+    for seed in [*submission_seeds(root), *changed_source_seeds(root)]:
+        name = seed.get("candidate_name") or next(
+            (
+                p.name
+                for p in load_config(root).published
+                if any(str(s.source_url) == seed["url"] for s in p.sources)
+            ),
+            "",
+        )
+        item = add(
+            state,
+            region=seed.get("region"),
+            url=seed["url"],
+            name=name,
+            origin=seed.get("origin", "manual"),
+            revision=seed.get("refresh_revision"),
+        )
+        item["fetch_options"] = {
+            k: seed[k]
+            for k in ("allow_missing_robots", "content_selector", "refresh_revision")
+            if k in seed
         }
-        for item in candidates(root)
-        if item["review_state"] == "pending"
-        and not (item.get("fields", {}).get("locality") or {}).get("value")
+        revision = seed.get("refresh_revision")
+        if revision and item.get("monitor_revision") != revision:
+            item["enrichment_attempted"] = False
+            item["monitor_revision"] = revision
+    dump(root / STORE, state)
+
+
+def prepare(root: Path, *, max_calls=2):
+    """One attempt per relevant revision, using the existing bounded extractor."""
+    from .queue_store import STORE, read
+
+    retain_seeds(root)
+    state = read(root)
+    # Legacy campaign cards join the same durable queue without losing their IDs/evidence.
+    for item in candidates(root):
+        if item["candidate_id"] not in state["candidates"]:
+            state["candidates"][item["candidate_id"]] = item
+    pending = [
+        i
+        for i in candidates(root)
+        if i["review_state"] == "pending"
+        and i.get("region")
+        and i.get("name")
+        and i.get("url_usable", True)
+        and not state["candidates"][i["candidate_id"]].get("enrichment_attempted")
     ]
-    seeds = [*public, *changed_source_seeds(root), *incomplete]
+    # Small deterministic batches. Unattempted candidates remain for the next startup.
+    pending = pending[: max(1, min(5, max_calls))]
+    seeds = [
+        {
+            "region": i["region"],
+            "url": i["source_url"],
+            "mode": "profile",
+            "accepted_identity": i["name"],
+            "origin": i["origin"],
+            **i.get("fetch_options", {}),
+        }
+        for i in pending
+    ]
+    for item in pending:
+        state["candidates"][item["candidate_id"]]["enrichment_attempted"] = True
+        state["candidates"][item["candidate_id"]]["enrichment_notice"] = (
+            "Source not automatically readable"
+        )
+    dump(root / STORE, state)
     if not seeds:
         return {"seeds": 0, "model_calls": 0}
     # A monthly campaign bounds repeated startup attempts; revision-aware caches
@@ -118,4 +174,19 @@ def prepare(root: Path, *, max_calls=2):
     campaign = "review-intake-" + datetime.now(UTC).strftime("%Y-%m")
     path = root / ".cache/puja/review_intake_seeds.json"
     dump(path, seeds[:40])
-    return run(root, path, campaign, max_calls=max_calls)
+    result = run(root, path, campaign, max_calls=max_calls)
+    # Freeze supported facts onto the candidate. Rendering never depends on a successful run.
+    report = root / ".cache/puja/campaigns" / campaign / "review.json"
+    if report.exists():
+        for source in json.loads(report.read_text()).get("sources", []):
+            for extracted in source.get("candidates", []):
+                for item in pending:
+                    if source["url"] == item["source_url"] and (
+                        extracted.get("name", "").casefold() == item["name"].casefold()
+                    ):
+                        state["candidates"][item["candidate_id"]].update(extracted)
+                        state["candidates"][item["candidate_id"]]["enrichment_notice"] = (
+                            "Source facts extracted; owner approval required"
+                        )
+        dump(root / STORE, state)
+    return result

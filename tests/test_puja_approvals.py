@@ -189,6 +189,8 @@ def test_approval_transport_requires_owner_and_keeps_contact_out(tmp_path):
 
     def api(method, endpoint, payload=None):
         calls.append((method, endpoint, payload))
+        if "issues?" in endpoint:
+            return []
         return {"login": "shubha07m"} if endpoint == "user" else {"number": 7}
 
     assert submit_approval(value, api=api) == 7
@@ -269,7 +271,7 @@ def test_local_review_http_and_decision_persistence(tmp_path):
                 "token": "token",
                 "candidate_id": candidates(root)[0]["candidate_id"],
                 "revision": item["source_revision"],
-                "action": "defer",
+                "action": "reject",
             }
         )
         connection.request(
@@ -282,17 +284,20 @@ def test_local_review_http_and_decision_persistence(tmp_path):
             },
         )
         assert connection.getresponse().status == 303
-        assert candidates(root)[0]["review_state"] == "defer"
-        # A changed source revision reopens the editorial choice.
+        assert candidates(root)[0]["review_state"] == "reject"
+        # A changed source revision does not resurrect rejected candidates.
         raw = json.loads((campaign / "review.json").read_text())
         raw["sources"][0]["candidates"][0]["source_revision"] = "c" * 64
         (campaign / "review.json").write_text(json.dumps(raw))
+        assert candidates(root)[0]["review_state"] == "reject"
+        # Simulate a separate pending decision for the approval HTTP path.
+        (root / ".cache/puja/review_decisions.json").write_text("{}")
         form = urlencode(
             {
                 "token": "token",
                 "candidate_id": candidates(root)[0]["candidate_id"],
                 "revision": "c" * 64,
-                "action": "source_listed",
+                "action": "approve",
             }
         )
         connection.request(

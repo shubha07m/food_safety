@@ -80,7 +80,9 @@ export function renderProfile(p, region, checks, bn = false, doc = document) {
   const seen = new Set();
   for (const s of evidence) { const key = `${s.source_url}/${s.quote}`; if (seen.has(key)) continue; seen.add(key);
     const paragraph = node(doc, 'p'); const a = link(doc, s.source_title || s.publisher, s.source_url);
-    if (a) paragraph.append(a); paragraph.append(doc.createTextNode(` — “${s.quote}”`)); provenance.append(paragraph);
+    if (a) paragraph.append(a);
+    paragraph.append(doc.createTextNode(s.evidence_kind === 'owner_attestation'
+      ? ` — Owner review: ${s.quote}` : ` — “${s.quote}”`)); provenance.append(paragraph);
   }
   more.append(provenance); card.append(more); return card;
 }

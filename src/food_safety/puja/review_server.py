@@ -7,8 +7,20 @@ import webbrowser
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from urllib.parse import parse_qs, urlsplit
 
-from .approvals import submit_approval
-from .review_queue import candidates, compile_record, save_decision
+from .approvals import queue_approval, submit_approval
+from .review_queue import automatic_record, candidates, save_decision
+
+DECISION_LOCK = threading.Lock()
+
+
+def friendly(value):
+    return (
+        str(value or "Not yet available")
+        .replace("_", " ")
+        .replace("candidate", "")
+        .strip()
+        .capitalize()
+    )
 
 
 def _escape(value):
@@ -62,26 +74,26 @@ def render(root, nonce, notice=""):
         buttons = ""
         if item["review_state"] == "pending":
             for action, label in (
-                ("current_edition_reviewed", "Approve reviewed"),
-                ("source_listed", "Approve source-listed"),
-                ("defer", "Defer"),
-                ("reject", "Reject"),
+                ("approve", "APPROVE"),
+                ("reject", "REJECT"),
             ):
                 disabled = ""
-                if action.endswith("reviewed") or action == "source_listed":
+                if action == "approve":
                     try:
-                        compile_record(root, item, action)
+                        automatic_record(root, item)
                     except (ValueError, KeyError):
                         disabled = " disabled title='Required supported facts are missing'"
                 buttons += f'<button name="action" value="{action}"{disabled}>{label}</button>'
+        source_href = _escape(item["source_url"]) if item.get("url_usable", True) else "#"
         cards.append(
-            f'<article><p class="eyebrow">{_escape(item["region"])} · '
-            f"{_escape(item['review_state'])}</p>"
+            f'<article><p class="eyebrow">{_escape(friendly(item["region"]))} · '
+            f"{_escape(friendly(item['review_state']))}</p>"
             f"<h2>{_escape(item['name'])}</h2><p>{_escape(summary)}</p>"
-            f"<p><strong>Proposed:</strong> {_escape(item.get('proposed_tier'))} · "
-            f"<strong>Location:</strong> {_escape(item.get('map_eligibility'))}</p>"
+            f"<p><strong>Proposed:</strong> {_escape(friendly(item.get('proposed_tier')))} · "
+            f"<strong>Location:</strong> {_escape(friendly(item.get('map_eligibility')))}</p>"
+            f"<p>{_escape(item.get('enrichment_notice'))}</p>"
             f"<p><strong>Possible duplicate:</strong> {_escape(duplicate)}</p>{detail}"
-            f'<p><a href="{_escape(item["source_url"])}" target="_blank" '
+            f'<p><a href="{source_href}" target="_blank" '
             'rel="noopener noreferrer">Open source ↗</a></p>'
             f"<details><summary>Show exact evidence and warnings</summary><ul>{evidence}</ul>"
             f"<p>{_escape(', '.join(item.get('warnings', [])))}</p></details>"
@@ -135,7 +147,9 @@ def handler(root, nonce, submit=submit_approval):
             if self.headers.get("Host") != f"127.0.0.1:{self.server.server_port}":
                 self.send_error(403)
                 return
-            notice = parse_qs(urlsplit(self.path).query).get("notice", [""])[0][:120]
+            notice = parse_qs(urlsplit(self.path).query).get(
+                "notice", [getattr(self.server, "notice", "")]
+            )[0][:200]
             value = render(root, nonce, notice).encode()
             self.send_response(200)
             self.send_header("Content-Type", "text/html; charset=utf-8")
@@ -150,6 +164,10 @@ def handler(root, nonce, submit=submit_approval):
             self.wfile.write(value)
 
         def do_POST(self):
+            with DECISION_LOCK:
+                self._decision()
+
+        def _decision(self):
             if self.path != "/decision" or not self._same_origin():
                 self.send_error(403)
                 return
@@ -173,12 +191,16 @@ def handler(root, nonce, submit=submit_approval):
                 ):
                     raise ValueError("candidate_revision_changed")
                 action = one("action")
-                if action in {"source_listed", "current_edition_reviewed"}:
-                    payload = compile_record(root, chosen, action)
-                    issue = submit(payload)
-                    save_decision(root, chosen, "approved", issue_number=issue, tier=action)
-                    notice = f"Approved and queued in GitHub issue {issue}."
-                elif action in {"defer", "reject"}:
+                if action == "approve":
+                    payload = automatic_record(root, chosen)
+                    issue = queue_approval(root, chosen, payload, submit)
+                    notice = (
+                        f"Approved and queued in GitHub issue {issue}."
+                        if issue
+                        else "Approved locally; GitHub unavailable. "
+                        "Automatic retry while review is open."
+                    )
+                elif action == "reject":
                     save_decision(root, chosen, action)
                     notice = action.capitalize() + "."
                 else:
@@ -192,9 +214,10 @@ def handler(root, nonce, submit=submit_approval):
     return ReviewHandler
 
 
-def serve(root, port=0, open_browser=True, submit=submit_approval, refresh_queue=None):
+def serve(root, port=0, open_browser=True, submit=submit_approval, refresh_queue=None, notice=""):
     nonce = secrets.token_urlsafe(24)
     server = ThreadingHTTPServer(("127.0.0.1", port), handler(root, nonce, submit))
+    server.notice = notice
     url = f"http://127.0.0.1:{server.server_port}/"
     print("Puja owner review: " + url, flush=True)
     if open_browser:
@@ -209,9 +232,23 @@ def serve(root, port=0, open_browser=True, submit=submit_approval, refresh_queue
                 print(f"Candidate intake deferred ({type(exc).__name__}).", flush=True)
 
         threading.Thread(target=refresh, daemon=True).start()
+    stopped = threading.Event()
+
+    def retry_approvals():
+        from .approvals import resume_approvals
+
+        while not stopped.wait(60):
+            try:
+                with DECISION_LOCK:
+                    resume_approvals(root, submit)
+            except Exception:
+                pass  # Durable outbox survives shutdown; no private exception text in logs.
+
+    threading.Thread(target=retry_approvals, daemon=True).start()
     try:
         server.serve_forever()
     except KeyboardInterrupt:
         pass
     finally:
+        stopped.set()
         server.server_close()

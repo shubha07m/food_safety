@@ -7,7 +7,7 @@ from pathlib import Path
 from ..storage import dump
 from .leads import canonical
 from .models import PandalRecord, SourceSpec
-from .review_queue import OWNER, REPO, parse_issue_body
+from .review_queue import OWNER, REPO, issue_body, parse_issue_body
 
 OVERLAY = "config/puja-approved.json"
 RECEIPT = ".cache/puja/published_issues.json"
@@ -17,14 +17,17 @@ def github(method, endpoint, payload=None):
     args = ["gh", "api", "--method", method, endpoint]
     if payload is not None:
         args += ["--input", "-"]
-    result = subprocess.run(
-        args,
-        input=json.dumps(payload) if payload is not None else None,
-        text=True,
-        capture_output=True,
-        timeout=25,
-        check=False,
-    )
+    try:
+        result = subprocess.run(
+            args,
+            input=json.dumps(payload) if payload is not None else None,
+            text=True,
+            capture_output=True,
+            timeout=25,
+            check=False,
+        )
+    except (OSError, subprocess.TimeoutExpired) as exc:
+        raise RuntimeError("github_request_unavailable") from exc
     if result.returncode:
         # gh stderr may include request data; never forward it into UI or logs.
         raise RuntimeError("github_request_failed")
@@ -42,6 +45,17 @@ def submit_approval(payload, api=github):
     body = issue_body(payload)
     parse_issue_body(body)
     owner_login(api)
+    # Lost HTTP responses/restarts must not create duplicate publication requests.
+    for issue in approval_issues(api, state="all"):
+        try:
+            prior = parse_issue_body(issue.get("body"))
+        except (ValueError, TypeError):
+            continue
+        if (prior["candidate_id"], prior["source_revision"]) == (
+            payload["candidate_id"],
+            payload["source_revision"],
+        ):
+            return issue["number"]
     result = api(
         "POST",
         f"repos/{REPO}/issues",
@@ -52,10 +66,10 @@ def submit_approval(payload, api=github):
     return result["number"]
 
 
-def approval_issues(api=github):
+def approval_issues(api=github, state="open"):
     page = 1
     while page <= 10:
-        rows = api("GET", f"repos/{REPO}/issues?state=open&per_page=100&page={page}")
+        rows = api("GET", f"repos/{REPO}/issues?state={state}&per_page=100&page={page}")
         if not isinstance(rows, list):
             raise ValueError("invalid_issue_listing")
         for row in rows:
@@ -68,6 +82,60 @@ def approval_issues(api=github):
         if len(rows) < 100:
             break
         page += 1
+
+
+def queue_approval(root, item, payload, submit=submit_approval):
+    """Freeze editorial approval before network work; retry from the local outbox."""
+    from .review_queue import save_decision
+
+    path = root / ".cache/puja/approval_outbox" / (item["candidate_id"] + ".json")
+    if not path.exists():
+        dump(
+            path,
+            {
+                "candidate": {
+                    "candidate_id": item["candidate_id"],
+                    "source_revision": item["source_revision"],
+                },
+                "payload": payload,
+            },
+        )
+    frozen = json.loads(path.read_text())
+    save_decision(root, frozen["candidate"], "approved", tier=frozen["payload"]["tier"])
+    try:
+        number = frozen.get("issue_number") or submit(frozen["payload"])
+    except (RuntimeError, ValueError):
+        return None
+    dump(path, {**frozen, "issue_number": number})
+    save_decision(
+        root, frozen["candidate"], "approved", issue_number=number, tier=frozen["payload"]["tier"]
+    )
+    return number
+
+
+def resume_approvals(root, submit=submit_approval):
+    for path in sorted((root / ".cache/puja/approval_outbox").glob("*.json")):
+        try:
+            value = json.loads(path.read_text())
+            parse_issue_body(issue_body(value["payload"]))
+            if not value.get("issue_number"):
+                queue_approval(root, value["candidate"], value["payload"], submit)
+        except (OSError, ValueError, KeyError, TypeError):
+            print("A saved approval is invalid; other approvals continue.", flush=True)
+
+
+def restore_approvals(root, api=github):
+    """A fresh laptop can recover public approvals without copying OAuth tokens."""
+    from .review_queue import load_decisions, save_decision
+
+    known = load_decisions(root)
+    for issue in approval_issues(api, state="all"):
+        try:
+            value = parse_issue_body(issue.get("body"))
+        except (ValueError, TypeError):
+            continue
+        if value["candidate_id"] not in known:
+            save_decision(root, value, "approved", issue_number=issue["number"], tier=value["tier"])
 
 
 def _read_overlay(root):

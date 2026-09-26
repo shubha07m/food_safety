@@ -93,8 +93,9 @@ verify that identity by themselves and never publish automatically.
 Gemini assists bounded source extraction, not identity matching or coordinate invention.
 Manual private lead campaigns use structured sources first and Gemini for useful
 prose extraction, with a 20-attempt campaign ceiling. Scheduled Puja monitoring
-makes no model calls. The localhost review queue lets the owner approve, defer or
-reject grounded candidates; only owner-approved candidates enter the scheduled,
+makes no model calls. Local review automatically reads the private Form response Sheet
+using desktop OAuth. The owner only approves or rejects; supported facts determine
+the tier. Pending cards wait, and only owner-approved candidates enter the scheduled,
 validated catalog publication flow. Full technical details:
 [Food POIs](docs/FOOD_POIS.md) · [Puja curation](docs/PUJA_CURATION.md) ·
 [Google provider](docs/PLACES.md).

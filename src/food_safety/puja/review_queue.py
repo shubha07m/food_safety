@@ -115,6 +115,8 @@ def save_decision(root, candidate, decision, **details):
 
 
 def candidates(root):
+    from .queue_store import read
+
     state = load_decisions(root)
     rows = {}
     for item in (*_legacy_candidates(root), *_packet_candidates(root)):
@@ -125,6 +127,10 @@ def candidates(root):
             prior["source_revision"],
         ):
             rows[key] = item
+    for key, item in read(root)["candidates"].items():
+        # Enriched campaign facts win; candidate-first rows supply missing intake context.
+        legacy = rows.get(key, {})
+        rows[key] = {**item, **legacy} if not item.get("fields") else {**legacy, **item}
     known = load_config(root).published
     for item in rows.values():
         if not item.get("duplicate_ids"):
@@ -134,7 +140,7 @@ def candidates(root):
                 if p.region_id == item["region"]
                 and norm(item["name"]) in {norm(p.name), *(norm(a) for a in p.aliases)}
             ]
-        if not item.get("same_source_listing_ids"):
+        if not item.get("same_source_listing_ids") and item.get("url_usable", True):
             item["same_source_listing_ids"] = [
                 p.pandal_id
                 for p in known
@@ -144,15 +150,73 @@ def candidates(root):
                 )
             ]
         decision = state.get(item["candidate_id"], {})
-        item["review_state"] = (
-            decision.get("decision", "pending")
-            if decision.get("source_revision") == item["source_revision"]
-            else "pending"
-        )
+        # Repeated submissions/source refreshes never resurrect an editorial decision.
+        item["review_state"] = decision.get("decision", "pending")
+        if item["review_state"] == "defer":
+            item["review_state"] = "pending"  # Legacy data migration, no third action.
+        if decision and decision.get("source_revision") != item["source_revision"]:
+            item["warnings"] = [*item.get("warnings", []), "Source changed since decision"]
     return sorted(
         rows.values(),
-        key=lambda row: (row["review_state"] != "pending", row["region"], row["name"].casefold()),
+        key=lambda row: (
+            row["review_state"] != "pending",
+            row["region"] or "",
+            row["name"].casefold(),
+        ),
     )
+
+
+def automatic_record(root, item, *, at=None):
+    """One editorial approval; supported annual facts select the strongest tier."""
+    from copy import deepcopy
+
+    item = deepcopy(item)
+    canonical(item["source_url"])
+    region = get_region(root, item["region"])
+    if not item.get("name", "").strip():
+        raise ValueError("Puja identity is missing")
+    now = at or datetime.now(UTC)
+    fields = item.setdefault("fields", {})
+    # Owner approval can attest basic identity/region, never invent a source quotation.
+    if not fields.get("name"):
+        item["owner_attestation"] = True
+        fields["name"] = {
+            "value": item["name"],
+            "evidence": {
+                "original_quote": "Owner approved this submitted Puja identity and region; "
+                "source text was not automatically verified."
+            },
+        }
+    if not fields.get("locality"):
+        fields["locality"] = {"value": item.get("locality") or region.label}
+    warnings = item.get("warnings", [])
+    conflict = any(
+        w in warnings
+        for w in ("date_year_conflict", "timezone_region_mismatch", "country_code_region_mismatch")
+    )
+    year = _field(item, "year")
+    year_quote = ((fields.get("year") or {}).get("evidence") or {}).get("original_quote", "")
+    attached_year = norm(item["name"]) in norm(year_quote) and str(year) in year_quote
+    tier = (
+        "current_edition_reviewed"
+        if year == str(now.year) and attached_year and not conflict
+        else "source_listed"
+    )
+    if conflict:
+        # Discard contradictory optional facts, not a legitimate basic listing.
+        for key in ("year", "start_date", "end_date", "venue", "address", "timezone"):
+            fields[key] = None
+        item["warnings"] = [
+            w
+            for w in warnings
+            if w
+            not in {
+                "date_year_conflict",
+                "timezone_region_mismatch",
+                "country_code_region_mismatch",
+            }
+        ]
+    return compile_record(root, item, tier, at=now)
 
 
 def _field(item, key):
@@ -166,6 +230,7 @@ def _evidence(item, supported):
     if not quote or len(quote) > 600:
         raise ValueError("evidence_quote_requires_review")
     return SourceEvidence(
+        evidence_kind="owner_attestation" if item.get("owner_attestation") else "source_quote",
         source_url=item["source_url"],
         source_title=item["source_title"],
         publisher=urlsplit(item["source_url"]).hostname,

@@ -68,6 +68,13 @@ class Element {
 }
 const doc={createElement:tag=>new Element(tag),createTextNode:text=>({textContent:text,children:[]})};
 const flatten=n=>[n,...n.children.flatMap(flatten)];
+test('owner endorsement is not rendered as an organizer quotation',()=>{
+  const source={...evidence,evidence_kind:'owner_attestation',quote:'Owner approved submitted identity.'};
+  const text=flatten(renderProfile({...p,edition:null,sources:[source]}, {label:'London'},[],false,doc))
+    .map(n=>n.textContent).join(' ');
+  assert.match(text,/Owner review: Owner approved submitted identity/);
+  assert.ok(!text.includes('“Owner approved'));
+});
 test('profile article, actions, nested provenance and programme are not restaurant rows',()=>{
   const rich={...p,about:{text:'Source-backed introduction',evidence:[evidence]},organizer:'Fixture Association',official_links:[{kind:'website',url:'https://example.org',evidence}],edition:{...p.edition,programme_notes:[{title:'Music',text:'Sourced concert',evidence:[evidence]}]}};
   const card=renderProfile(rich,{label:'London'},[],false,doc); const nodes=flatten(card); const text=nodes.map(n=>n.textContent).join(' ');

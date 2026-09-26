@@ -288,6 +288,18 @@ def run(root: Path, file: Path, campaign: str, max_calls=0, dry_run=False, extra
             "http_hard_cap": 120,
             "publication": "private_only",
         }
+    from .queue_store import STORE, add, read
+
+    queue = read(root)
+    for seed in seeds:
+        add(
+            queue,
+            region=seed["region"],
+            url=seed["url"],
+            name=seed.get("candidate_name") or seed.get("accepted_identity") or "",
+            origin=seed.get("origin", "discovery"),
+        )
+    dump(root / STORE, queue)
     folder.mkdir(parents=True, exist_ok=True)
     with (folder / "run.lock").open("a") as handle:
         fcntl.flock(handle, fcntl.LOCK_EX)

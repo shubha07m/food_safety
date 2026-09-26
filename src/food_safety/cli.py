@@ -200,17 +200,31 @@ def main():
 
                 result = review_leads(ROOT, args.seeds, args.campaign, args.max_calls, args.dry_run)
             elif args.puja_command == "review":
-                from .puja.intake import prepare
+                from .puja.intake import prepare, retain_seeds
                 from .puja.review_server import serve
+                from .puja.sheets import sync
 
-                refresh = (
-                    None if args.no_intake else lambda: prepare(ROOT, max_calls=args.max_calls)
-                )
+                notice = "Offline review; Sheet sync skipped."
+                if not args.no_intake:
+                    notice = sync(ROOT)
+                    print(notice, flush=True)
+                    retain_seeds(ROOT)
+
+                def refresh():
+                    from .puja.approvals import restore_approvals, resume_approvals
+
+                    try:
+                        restore_approvals(ROOT)
+                        resume_approvals(ROOT)
+                    except (RuntimeError, ValueError):
+                        print("GitHub sync unavailable; local decisions retained.", flush=True)
+                    prepare(ROOT, max_calls=args.max_calls)
                 serve(
                     ROOT,
                     port=args.port,
                     open_browser=not args.no_browser,
-                    refresh_queue=refresh,
+                    refresh_queue=None if args.no_intake else refresh,
+                    notice=notice,
                 )
                 result = {"review": "closed"}
             elif args.puja_command == "publish-approved":
