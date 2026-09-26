@@ -2,6 +2,7 @@ import { aggregate, dimensions, filterOptions, filterRows, recordDate, safeExter
 import { strings as t } from './strings.mjs';
 import { initMapHost, renderAreaSummary, setMapPandals } from './map-host.mjs';
 import { initPuja } from './puja.mjs';
+import { showPujaSuggestion } from './puja-suggestion.mjs';
 import './foodpath-copy.mjs';
 import { language, tr, translateStatic, localizedURL } from './locale.mjs';
 import { phase1, sourceWarning, copy as phaseCopy } from './phase1.mjs';
@@ -306,7 +307,9 @@ function detail() {
 function renderAll() { const stats = aggregate(state.rows); charts(stats); renderFilters(); renderRows(); }
 
 try {
-  const [data, status, repository, retired] = await Promise.all([json('data/events.json'), json('status.json'), json('repository.json'), json('data/retired.json')]);
+  const repositoryRequest = json('repository.json');
+  repositoryRequest.then(metadata => showPujaSuggestion($('puja-suggest-action'), metadata.puja_suggest_form_url)).catch(() => {});
+  const [data, status, repository, retired] = await Promise.all([json('data/events.json'), json('status.json'), repositoryRequest, json('data/retired.json')]);
   validateDataset(data); state.rows = data.records; state.retired = retired.records; state.repository = safeExternal(repository.url);
   if (state.repository) document.querySelectorAll('[data-repository]').forEach(anchor => { anchor.href = state.repository; anchor.rel = 'noopener noreferrer'; anchor.target = '_blank'; });
   const stats = aggregate(state.rows);

@@ -1,5 +1,6 @@
 // Static provider composition only. No discovery/geocoding/provider HTTP calls.
 import { foodMapsURL } from './maps-handoff.mjs';
+import { effectiveLocation } from './puja-location.mjs';
 const osmID = /^osm:(node|way|relation):[1-9][0-9]*$/;
 const googleID = /^[A-Za-z0-9_-]{1,255}$/;
 const categories = new Set(['restaurant', 'cafe', 'fast_food', 'ice_cream', 'food_court', 'bakery', 'confectionery']);
@@ -8,8 +9,7 @@ export const MAX_FOOD_LIMIT = 20;
 const normalizedName = value => String(value || '').normalize('NFC').trim().replace(/\s+/g, ' ').toLowerCase();
 const compareText = (a, b) => a < b ? -1 : a > b ? 1 : 0;
 export function mappedPandal(p) {
-  return p.enabled !== false && !!p.coordinate_source && Number.isFinite(p.latitude) && Number.isFinite(p.longitude)
-    && Math.abs(p.latitude) <= 90 && Math.abs(p.longitude) <= 180;
+  return effectiveLocation(p).map_eligible;
 }
 export function publicFood(data, pandal) {
   const all = data.groups.get(pandal.pandal_id) || [];
@@ -31,7 +31,8 @@ export function foodGeography(data) {
 }
 export function pandalFoodURL(pandal) {
   if (!mappedPandal(pandal)) return null;
-  const query = `restaurants near ${pandal.latitude.toFixed(7)},${pandal.longitude.toFixed(7)}`;
+  const loc = effectiveLocation(pandal);
+  const query = `restaurants near ${loc.latitude.toFixed(7)},${loc.longitude.toFixed(7)}`;
   return `https://www.google.com/maps/search/?${new URLSearchParams({ api: '1', query })}`;
 }
 export function osmMapsURL(poi, placeID = null, locality = []) {
@@ -69,17 +70,22 @@ export function combineFood(legacy, osm, policy) {
   const groups = new Map(); const seen = new Set();
   const pandals = new Set(legacy.pandals.map(p => p.pandal_id));
   for (const row of osm.coverage || []) {
-    if (pandals.has(row.pandal_id) && row.status === 'snapshot') result.osmCoverage.set(row.pandal_id, row);
+    const p = anchors.get(row.pandal_id); const loc = p && effectiveLocation(p);
+    const legacyKey = p && Number.isFinite(p.latitude) && Number.isFinite(p.longitude) ? `${p.latitude.toFixed(7)},${p.longitude.toFixed(7)}` : null;
+    if (pandals.has(row.pandal_id) && row.status === 'snapshot' && loc.map_eligible
+      && (row.anchor_key ? row.anchor_key === loc.anchor_key : legacyKey === loc.anchor_key)) result.osmCoverage.set(row.pandal_id, row);
   }
   for (const a of osm.associations) {
     const key = `${a.pandal_id}/${a.poi_id}`;
     if (a.provider !== 'osm' || a.source_snapshot !== osm.snapshot_id || !Number.isFinite(a.distance_m)
       || a.distance_m < 0 || !pois.has(a.poi_id)) throw Error('Invalid OSM association');
     if (!pandals.has(a.pandal_id) || seen.has(key)) continue;
-    if (!result.osmCoverage.has(a.pandal_id) || a.distance_m > result.osmCoverage.get(a.pandal_id).radius_m) throw Error('Invalid OSM catchment');
+    if (!result.osmCoverage.has(a.pandal_id)) continue; // Old venue associations remain internal, never shown for a moved edition.
+    if (a.distance_m > result.osmCoverage.get(a.pandal_id).radius_m) throw Error('Invalid OSM catchment');
     const rows = groups.get(a.pandal_id) || [];
     const anchor = anchors.get(a.pandal_id);
-    const locality = [anchor.neighborhood, anchor.area, anchor.city, anchor.admin1, anchor.country_code];
+    const locality = anchor.edition ? [effectiveLocation(anchor).city, anchor.admin1, anchor.country_code]
+      : [anchor.neighborhood, anchor.area, anchor.city, anchor.admin1, anchor.country_code];
     rows.push({ ...pois.get(a.poi_id), distance: a.distance_m,
       url: osmMapsURL(rawPois.get(a.poi_id), links.get(a.poi_id), locality) });
     groups.set(a.pandal_id, rows); seen.add(key);

@@ -408,7 +408,15 @@ html[lang=bn] .eyebrow, html[lang=bn] .status-strip { letter-spacing: normal; }
 .featured-pandals .pandal-card:nth-child(3n) { background:#fff6df; border-color:#ead5a3; }
 .featured-pandals .pandal-card::after { content:"✦"; position:absolute; right:17px; top:10px; color:#c95f5855; font-size:31px; }
 .featured-pandals .pandal-card:hover { transform:translateY(-2px); box-shadow:0 12px 25px #39747716; }
-.selected-pandal { background:linear-gradient(135deg,#f1faf9,var(--puja-ivory)); border-left-color:var(--puja-coral); box-shadow:0 16px 35px #39747712; animation:selected-reveal .3s ease-out; }
+.selected-pandal { background:none; border:0; box-shadow:none; padding:0; animation:selected-reveal .3s ease-out; }
+.puja-profile { padding:clamp(20px,4vw,32px); background:var(--puja-ivory); border:1px solid #bad8d9; border-top:4px solid var(--puja-coral); border-radius:14px; box-shadow:0 12px 28px #3974770c; }
+.profile-status { display:inline-block; background:var(--puja-sky-soft); color:var(--puja-teal); border-radius:8px; padding:8px 12px; }
+.profile-venue,.profile-dates { font-weight:700; margin-bottom:6px; }
+.profile-address { margin-top:0; overflow-wrap:anywhere; }
+.profile-report { display:inline-block; font-size:.9rem; margin:12px 0; }
+.profile-more { border-top:1px solid #c9dddd; padding-top:14px; margin-top:18px; }
+.profile-links { display:flex; gap:12px 22px; flex-wrap:wrap; padding-left:20px; }
+.nearby-food-section { margin-top:30px; padding:8px 4px; }
 @keyframes selected-reveal { from { opacity:0; transform:translateY(8px); } }
 .geography-intro { margin-top:58px; padding:24px 28px; border-radius:18px 18px 0 0; background:linear-gradient(110deg,#dff2f4,#fff7e8); border:1px solid #b7d9dc; border-bottom:0; }
 .geography-intro .section-heading { margin:0; }

@@ -3,14 +3,18 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { mapped, nearestPujas, distanceKm, resolvePuja, initNearMe, directionsURL, pujaLink, reportURL, freshnessLabels } from '../site/global-puja.mjs';
 import { scopeMarkers, pandalMarkers } from '../site/map-host.mjs';
-const p = (id, lat, lng, region = 'london') => ({ pandal_id: id, name: id, region_id: region, latitude: lat, longitude: lng, coordinate_source: 'https://example.org/venue', coordinate_precision: 'venue', edition: { venue_reviewed: true } });
+const p = (id, lat, lng, region = 'london') => {
+  const location = { latitude: lat, longitude: lng, coordinate_source: 'https://example.org/venue', coordinate_precision: 'venue' };
+  return { pandal_id: id, name: id, region_id: region, ...location,
+    edition: { year: new Date().getUTCFullYear(), confirmed: true, venue_reviewed: true, location } };
+};
 test('local Haversine and bounded nearest ordering across all regions', () => {
   const rows = [p('a', 51.51, 0), p('b', 51.5, 0), p('far', -37, 144, 'melbourne'), { name: 'unmapped' }];
   assert.ok(distanceKm(rows[0], rows[1]) > 1 && distanceKm(rows[0], rows[1]) < 1.2);
   assert.deepEqual(nearestPujas(rows, { latitude:51.5, longitude:0 }).map(r=>r.pandal.pandal_id), ['b','a']);
   assert.deepEqual(nearestPujas(rows, {latitude:0, longitude:0}), []);
   assert.deepEqual(nearestPujas(rows, {latitude:100, longitude:0}), []);
-  assert.ok(!mapped({...rows[0], coordinate_source:null}));
+  assert.ok(!mapped({...rows[0], edition: {...rows[0].edition, location: {...rows[0].edition.location, coordinate_source:null}}}));
 });
 test('one global resolver supports world, Near Me and local selection', () => {
   const regions = [{region_id:'london'},{region_id:'melbourne'}]; const rows = [p('a',51,0), p('b',-37,144,'melbourne')];
@@ -33,7 +37,7 @@ test('location only requested on click, once while pending; errors restore contr
 });
 test('directions only reviewed precise venue; shared links have no user coordinates', () => {
   const row=p('a',51,0); const url=new URL(directionsURL(row)); assert.equal(url.searchParams.get('destination'),'51,0');
-  assert.equal(directionsURL({...row,coordinate_precision:'street'}),null);
+  assert.equal(directionsURL({...row,edition:{...row.edition,location:{...row.edition.location,coordinate_precision:'street'}}}),null);
   assert.equal(directionsURL({...row,edition:null}),null);
   const link=new URL(pujaLink(row,'https://example.org')); assert.equal(link.searchParams.get('pandal'),'a'); assert.equal(link.searchParams.size,2);
   assert.match(new URL(reportURL(row)).searchParams.get('body'),/Region: london/);

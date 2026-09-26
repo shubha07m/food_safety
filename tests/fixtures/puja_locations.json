@@ -1,0 +1,124 @@
+[
+  {
+    "label": "approximate legacy",
+    "record": {
+      "latitude": 22.5,
+      "longitude": 88.3,
+      "coordinate_precision": "street",
+      "coordinate_source": "https://example.org/venue"
+    },
+    "expected": {
+      "map_eligible": true,
+      "near_me_eligible": false,
+      "directions_eligible": false,
+      "status": "last_known"
+    }
+  },
+  {
+    "label": "precise legacy",
+    "record": {
+      "latitude": 22.5,
+      "longitude": 88.3,
+      "coordinate_precision": "venue",
+      "coordinate_source": "https://example.org/venue"
+    },
+    "expected": {
+      "map_eligible": true,
+      "near_me_eligible": true,
+      "directions_eligible": false,
+      "status": "last_known"
+    }
+  },
+  {
+    "label": "unanchored edition",
+    "record": {
+      "latitude": 22.5,
+      "longitude": 88.3,
+      "coordinate_precision": "venue",
+      "coordinate_source": "https://example.org/venue",
+      "edition": {
+        "year": 2026,
+        "confirmed": true,
+        "venue_reviewed": true
+      }
+    },
+    "expected": {
+      "map_eligible": false,
+      "near_me_eligible": false,
+      "directions_eligible": false
+    }
+  },
+  {
+    "label": "current moved edition",
+    "record": {
+      "latitude": 22.5,
+      "longitude": 88.3,
+      "coordinate_precision": "venue",
+      "coordinate_source": "https://example.org/venue",
+      "edition": {
+        "year": 2026,
+        "confirmed": true,
+        "venue_reviewed": true,
+        "location": {
+          "venue": "Fixture",
+          "address": "1 Fixture Rd",
+          "latitude": 51.5,
+          "longitude": 0,
+          "coordinate_precision": "venue",
+          "coordinate_source": "https://example.org/new"
+        }
+      }
+    },
+    "expected": {
+      "map_eligible": true,
+      "near_me_eligible": true,
+      "directions_eligible": true,
+      "latitude": 51.5,
+      "anchor_key": "51.5000000,0.0000000"
+    }
+  },
+  {
+    "label": "historical edition",
+    "record": {
+      "edition": {
+        "year": 2025,
+        "confirmed": true,
+        "venue_reviewed": true,
+        "location": {
+          "latitude": 51.5,
+          "longitude": 0,
+          "coordinate_precision": "venue",
+          "coordinate_source": "https://example.org/new"
+        }
+      }
+    },
+    "expected": {
+      "map_eligible": false,
+      "near_me_eligible": false,
+      "directions_eligible": false,
+      "status": "historical"
+    }
+  },
+  {
+    "label": "future edition",
+    "record": {
+      "edition": {
+        "year": 2027,
+        "confirmed": true,
+        "venue_reviewed": true,
+        "location": {
+          "latitude": 51.5,
+          "longitude": 0,
+          "coordinate_precision": "venue",
+          "coordinate_source": "https://example.org/new"
+        }
+      }
+    },
+    "expected": {
+      "map_eligible": false,
+      "near_me_eligible": false,
+      "directions_eligible": false,
+      "status": "other_edition"
+    }
+  }
+]

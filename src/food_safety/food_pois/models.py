@@ -207,6 +207,7 @@ class Coverage(Strict):
     status: Literal["snapshot", "outside_region"]
     radius_m: float = Field(gt=0, le=50000)
     association_count: int = Field(ge=0)
+    anchor_key: str | None = Field(default=None, max_length=64)
 
 
 class PublicData(Snapshot):

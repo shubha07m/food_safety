@@ -60,8 +60,37 @@
             "publisher": "Durba Foundation",
             "quote": "Durga Puja 2026 Please join Us on October 10,11 Venue: AJAX High School 105 Bayly St E, AJAX, ON L1S 1P2"
           }
-        ]
-      }
+        ],
+        "location": {
+          "venue": "Ajax High School",
+          "address": "105 Bayly St E, Ajax, ON L1S 1P2",
+          "latitude": 43.8440319,
+          "longitude": -79.0136439,
+          "coordinate_source": "https://www.openstreetmap.org/way/36870007",
+          "coordinate_precision": "venue",
+          "evidence": [
+            {
+              "source_url": "https://durbafoundation.ca/",
+              "source_title": "Durba Foundation Durga Puja — organizer announcement",
+              "publisher": "Durba Foundation",
+              "quote": "Durga Puja 2026 Please join Us on October 10,11 Venue: AJAX High School 105 Bayly St E, AJAX, ON L1S 1P2"
+            }
+          ],
+          "city": "Ajax"
+        }
+      },
+      "official_links": [
+        {
+          "kind": "website",
+          "url": "https://durbafoundation.ca/",
+          "evidence": {
+            "source_url": "https://durbafoundation.ca/",
+            "source_title": "Durba Foundation Durga Puja — organizer announcement",
+            "publisher": "Durba Foundation",
+            "quote": "Durga Puja 2026 Please join Us on October 10,11 Venue: AJAX High School 105 Bayly St E, AJAX, ON L1S 1P2"
+          }
+        }
+      ]
     },
     {
       "pandal_id": "gta-apcat",
@@ -105,8 +134,37 @@
             "publisher": "Amar Pujo Cultural Association of Toronto",
             "quote": "Oct 17th & 18th, 2026 Pearl Banquet Hall 1638 Aimco Blvd, Mississauga, ON L4W 1V1"
           }
-        ]
-      }
+        ],
+        "location": {
+          "venue": "Pearl Banquet Hall",
+          "address": "1638 Aimco Blvd, Mississauga, ON L4W 1V1",
+          "latitude": 43.6417388,
+          "longitude": -79.621564,
+          "coordinate_source": "https://www.openstreetmap.org/way/72380740",
+          "coordinate_precision": "street",
+          "evidence": [
+            {
+              "source_url": "https://www.apcatweb.com/",
+              "source_title": "APCAT Amar Pujo — organizer announcement",
+              "publisher": "Amar Pujo Cultural Association of Toronto",
+              "quote": "Oct 17th & 18th, 2026 Pearl Banquet Hall 1638 Aimco Blvd, Mississauga, ON L4W 1V1"
+            }
+          ],
+          "city": "Mississauga"
+        }
+      },
+      "official_links": [
+        {
+          "kind": "website",
+          "url": "https://www.apcatweb.com/",
+          "evidence": {
+            "source_url": "https://www.apcatweb.com/",
+            "source_title": "APCAT Amar Pujo — organizer announcement",
+            "publisher": "Amar Pujo Cultural Association of Toronto",
+            "quote": "Oct 17th & 18th, 2026 Pearl Banquet Hall 1638 Aimco Blvd, Mississauga, ON L4W 1V1"
+          }
+        }
+      ]
     }
   ]
 }

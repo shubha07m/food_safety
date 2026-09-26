@@ -1,6 +1,7 @@
 import { mappedRows } from './geography.mjs';
 import { language } from './locale.mjs';
 import { text } from './foodpath-copy.mjs';
+import { effectiveLocation } from './puja-location.mjs';
 
 export function areaMarkers(rows) {
   const groups = new Map();
@@ -13,9 +14,8 @@ export function areaMarkers(rows) {
   return [...groups.values()];
 }
 export function pandalMarkers(pandals) {
-  return pandals.filter(p => p.enabled !== false && Number.isFinite(p.latitude) && Number.isFinite(p.longitude)
-    && Math.abs(p.latitude) <= 90 && Math.abs(p.longitude) <= 180 && p.coordinate_source)
-    .map(p => ({ id: `pandal-${p.pandal_id}`, kind: 'pandal', label: p.name, lat: p.latitude, lng: p.longitude, precision: p.coordinate_precision || 'neighborhood', count: 0 }));
+  return pandals.map(p => ({ p, loc: effectiveLocation(p) })).filter(({ loc }) => loc.map_eligible)
+    .map(({ p, loc }) => ({ id: `pandal-${p.pandal_id}`, kind: 'pandal', label: p.name, lat: loc.latitude, lng: loc.longitude, precision: loc.coordinate_precision || 'neighborhood', count: 0 }));
 }
 let areas = []; let pandals = []; let frame = null; let key = ''; let chooseArea = () => {}; let started = false; let initialized = false; let selectedPandal = null;
 let regionConfig = null;

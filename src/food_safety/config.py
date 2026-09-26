@@ -1,3 +1,4 @@
+import os
 from pathlib import Path
 from typing import Literal
 
@@ -60,24 +61,31 @@ class Settings(StrictModel):
     archive_after_days: int = Field(default=30, ge=7, le=90)
     review_after_days: int = Field(default=7, ge=1, le=30)
     community_submission_url: URL | None = None
+    puja_suggest_form_url: URL | None = None
     repository_url: URL | None = None
     site_url: URL = "https://foodsafety.nemoneek.com/"
     search_provider: Literal["none", "brave"] = "none"
     max_search_queries_per_run: int = Field(default=4, ge=0, le=6)
 
-    @field_validator("community_submission_url")
+    @field_validator("community_submission_url", "puja_suggest_form_url")
     @classmethod
     def google_form_only(cls, value):
         from urllib.parse import urlsplit
 
         if value:
             parsed = urlsplit(value)
-            if parsed.scheme != "https" or not (
-                (parsed.hostname == "forms.gle" and len(parsed.path) > 5)
-                or (
-                    parsed.hostname == "docs.google.com"
-                    and parsed.path.startswith("/forms/d/e/")
-                    and parsed.path.endswith("/viewform")
+            if (
+                parsed.scheme != "https"
+                or parsed.username
+                or parsed.password
+                or parsed.fragment
+                or not (
+                    (parsed.hostname == "forms.gle" and len(parsed.path) > 5)
+                    or (
+                        parsed.hostname == "docs.google.com"
+                        and parsed.path.startswith("/forms/d/e/")
+                        and parsed.path.endswith("/viewform")
+                    )
                 )
             ):
                 raise ValueError("expected_published_google_form_url")
@@ -85,7 +93,11 @@ class Settings(StrictModel):
 
 
 def settings(root=ROOT):
-    return Settings.model_validate(yaml.safe_load((root / "config/pipeline.yml").read_text()))
+    values = yaml.safe_load((root / "config/pipeline.yml").read_text())
+    form_url = os.environ.get("PUJA_SUGGEST_FORM_URL", "").strip()
+    if form_url:
+        values["puja_suggest_form_url"] = form_url
+    return Settings.model_validate(values)
 
 
 def sources(root=ROOT):
