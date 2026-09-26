@@ -22,10 +22,6 @@ from .pipeline import load_config
 from .regions import get_region
 
 DECISIONS = ".cache/puja/review_decisions.json"
-ISSUE_MARKER = "<!-- foodpath-puja-approval-v1 -->"
-ISSUE_END = "<!-- /foodpath-puja-approval-v1 -->"
-OWNER = "shubha07m"
-REPO = "shubha07m/food_safety"
 
 
 def candidate_id(region, source_url, name):
@@ -257,7 +253,7 @@ def _date(value):
 
 
 def compile_record(root, item, tier, *, at=None):
-    """Owner approval chooses the tier; code includes only evidence-backed facts."""
+    """Compile the derived tier using only evidence-backed facts."""
     if tier not in {"source_listed", "current_edition_reviewed"}:
         raise ValueError("invalid_approval_tier")
     region = get_region(root, item["region"])
@@ -417,16 +413,6 @@ def compile_record(root, item, tier, *, at=None):
     }
 
 
-def issue_body(payload):
-    return (
-        ISSUE_MARKER
-        + "\n"
-        + json.dumps(payload, ensure_ascii=False, sort_keys=True)
-        + "\n"
-        + ISSUE_END
-    )
-
-
 def validate_approval(value):
     """Validate only fields that can be committed as a public Puja record."""
     if not isinstance(value, dict):
@@ -470,16 +456,3 @@ def validate_approval(value):
     ):
         raise ValueError("approval_edition_missing")
     return value
-
-
-def parse_issue_body(body):
-    if (
-        not isinstance(body, str)
-        or not body.startswith(ISSUE_MARKER + "\n")
-        or not body.endswith("\n" + ISSUE_END)
-    ):
-        raise ValueError("invalid_approval_issue")
-    if len(body) > 60000:
-        raise ValueError("approval_issue_too_large")
-    value = json.loads(body[len(ISSUE_MARKER) + 1 : -len(ISSUE_END) - 1])
-    return validate_approval(value)

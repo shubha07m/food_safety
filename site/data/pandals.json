@@ -1,8 +1,9 @@
 {
   "coverage": {
-    "catalog_count": 235,
+    "catalog_count": 239,
     "cities": {
       "Ajax": 1,
+      "California": 4,
       "Cerritos": 1,
       "Howrah": 40,
       "Kolkata": 183,
@@ -16,19 +17,19 @@
       "Wyndham Vale": 1
     },
     "featured_count": 6,
-    "last_catalog_update": "2026-09-22T18:00:00+00:00",
+    "last_catalog_update": "2026-09-26T21:38:15.798518+00:00",
     "map_ready_count": 24,
     "regions": {
-      "california": 6,
+      "california": 10,
       "kolkata": 223,
       "london": 2,
       "melbourne": 2,
       "toronto": 2
     },
-    "source_count": 19
+    "source_count": 23
   },
   "generated_from": "source_verified_curated_config",
-  "record_count": 235,
+  "record_count": 239,
   "records": [
     {
       "about": null,
@@ -44,7 +45,7 @@
       "edition": null,
       "event_dates": "October 16–18, 2026",
       "featured": true,
-      "last_verified_at": "2026-09-19T16:00:00Z",
+      "last_verified_at": "2026-09-26T21:35:52.026356Z",
       "latitude": null,
       "location_precision": "locality",
       "longitude": null,
@@ -75,6 +76,15 @@
           "publisher": "Agomoni",
           "quote": "Venue: 2600 Camino Ramon, Parking Lot, San Ramon, CA 94583",
           "source_revision_id": null,
+          "source_title": "Agomoni — 2026 organizer announcement",
+          "source_url": "https://agomoni.org/durgapuja-2026/"
+        },
+        {
+          "evidence_kind": "owner_attestation",
+          "publication_date": null,
+          "publisher": "Agomoni",
+          "quote": "Owner approved this submitted Puja identity and region; source text was not automatically verified.",
+          "source_revision_id": "082a584f50e5ad4a7d417ae67a70c04169b4db85439d01b2bae8fda09e74d143",
           "source_title": "Agomoni — 2026 organizer announcement",
           "source_url": "https://agomoni.org/durgapuja-2026/"
         }
@@ -136,7 +146,7 @@
       },
       "event_dates": null,
       "featured": true,
-      "last_verified_at": "2026-09-22T18:00:00Z",
+      "last_verified_at": "2026-09-26T21:38:15.798518Z",
       "latitude": 43.6417388,
       "location_precision": "locality",
       "longitude": -79.621564,
@@ -167,6 +177,15 @@
           "publisher": "Amar Pujo Cultural Association of Toronto",
           "quote": "Oct 17th & 18th, 2026 Pearl Banquet Hall 1638 Aimco Blvd, Mississauga, ON L4W 1V1",
           "source_revision_id": null,
+          "source_title": "APCAT Amar Pujo — organizer announcement",
+          "source_url": "https://www.apcatweb.com/"
+        },
+        {
+          "evidence_kind": "owner_attestation",
+          "publication_date": null,
+          "publisher": "Amar Pujo Cultural Association of Toronto",
+          "quote": "Owner approved this submitted Puja identity and region; source text was not automatically verified.",
+          "source_revision_id": "f30d4e3fddd7af1888699f96752931e18c57302abf5583bf76736fed1825fe95",
           "source_title": "APCAT Amar Pujo — organizer announcement",
           "source_url": "https://www.apcatweb.com/"
         }
@@ -848,7 +867,7 @@
       "edition": null,
       "event_dates": "October 16–20, 2026",
       "featured": true,
-      "last_verified_at": "2026-09-19T16:00:00Z",
+      "last_verified_at": "2026-09-26T21:36:34.463938Z",
       "latitude": 37.5483346,
       "location_precision": "locality",
       "longitude": -122.048156,
@@ -879,6 +898,15 @@
           "publisher": "Pashchimi",
           "quote": "Venue: 35145 Newark Blvd. Newark CA-94560Oasis Palace",
           "source_revision_id": null,
+          "source_title": "Pashchimi — organizer event announcement",
+          "source_url": "https://pashchimi.org/"
+        },
+        {
+          "evidence_kind": "owner_attestation",
+          "publication_date": null,
+          "publisher": "Pashchimi",
+          "quote": "Owner approved this submitted Puja identity and region; source text was not automatically verified.",
+          "source_revision_id": "663916559774ac5ce66c0ff3672fa1435604e5c75062ec92d098006a96008669",
           "source_title": "Pashchimi — organizer event announcement",
           "source_url": "https://pashchimi.org/"
         }
@@ -1417,6 +1445,60 @@
     {
       "about": null,
       "address": null,
+      "admin1": "California",
+      "aliases": [],
+      "area": "California",
+      "city": "California",
+      "coordinate_precision": null,
+      "coordinate_source": null,
+      "country_code": "US",
+      "district": null,
+      "edition": null,
+      "event_dates": null,
+      "featured": false,
+      "last_verified_at": "2026-09-26T21:35:32.987613Z",
+      "latitude": null,
+      "location_precision": "locality",
+      "longitude": null,
+      "metro_region": null,
+      "name": "Aantorik",
+      "name_bn": null,
+      "neighborhood": null,
+      "official_links": [
+        {
+          "evidence": {
+            "publication_date": null,
+            "publisher": "aantorik.org",
+            "quote": "Based in Folsom, Aantorik celebrates Bengali culture and heritage through Durga Puja, Saraswati Puja, performing arts, volunteering, and year-round community gatherings. Our programs welcome families, friends, and neighbors from across the Sacramento region.",
+            "source_revision_id": "83c177bdb1e6cebcf4aaedd8d9b5b93133c4decfc0085c5f191b98e9b9d05af1",
+            "source_title": "aantorik.org",
+            "source_url": "https://aantorik.org/"
+          },
+          "kind": "website",
+          "url": "https://aantorik.org/"
+        }
+      ],
+      "organizer": null,
+      "pandal_id": "california-aantorik",
+      "region_id": "california",
+      "sources": [
+        {
+          "publication_date": null,
+          "publisher": "aantorik.org",
+          "quote": "Based in Folsom, Aantorik celebrates Bengali culture and heritage through Durga Puja, Saraswati Puja, performing arts, volunteering, and year-round community gatherings. Our programs welcome families, friends, and neighbors from across the Sacramento region.",
+          "source_revision_id": "83c177bdb1e6cebcf4aaedd8d9b5b93133c4decfc0085c5f191b98e9b9d05af1",
+          "source_title": "aantorik.org",
+          "source_url": "https://aantorik.org/"
+        }
+      ],
+      "subtitle": null,
+      "venue": null,
+      "verification_status": "SOURCE VERIFIED",
+      "year": null
+    },
+    {
+      "about": null,
+      "address": null,
       "admin1": "West Bengal",
       "aliases": [],
       "area": "South Kolkata",
@@ -1663,6 +1745,60 @@
     {
       "about": null,
       "address": null,
+      "admin1": "California",
+      "aliases": [],
+      "area": "California",
+      "city": "California",
+      "coordinate_precision": null,
+      "coordinate_source": null,
+      "country_code": "US",
+      "district": null,
+      "edition": null,
+      "event_dates": null,
+      "featured": false,
+      "last_verified_at": "2026-09-26T21:35:56.375087Z",
+      "latitude": null,
+      "location_precision": "locality",
+      "longitude": null,
+      "metro_region": null,
+      "name": "Aikotaan",
+      "name_bn": null,
+      "neighborhood": null,
+      "official_links": [
+        {
+          "evidence": {
+            "publication_date": null,
+            "publisher": "aikotaan.org",
+            "quote": "Aikotaan is thrilled to welcome you to our",
+            "source_revision_id": "5c93bb73d6fd367e8f5849620164d4e4d825b78aaa487dd6ec8f6dfd615eabdb",
+            "source_title": "aikotaan.org",
+            "source_url": "https://aikotaan.org/"
+          },
+          "kind": "website",
+          "url": "https://aikotaan.org/"
+        }
+      ],
+      "organizer": null,
+      "pandal_id": "california-aikotaan",
+      "region_id": "california",
+      "sources": [
+        {
+          "publication_date": null,
+          "publisher": "aikotaan.org",
+          "quote": "Aikotaan is thrilled to welcome you to our",
+          "source_revision_id": "5c93bb73d6fd367e8f5849620164d4e4d825b78aaa487dd6ec8f6dfd615eabdb",
+          "source_title": "aikotaan.org",
+          "source_url": "https://aikotaan.org/"
+        }
+      ],
+      "subtitle": null,
+      "venue": null,
+      "verification_status": "SOURCE VERIFIED",
+      "year": null
+    },
+    {
+      "about": null,
+      "address": null,
       "admin1": "West Bengal",
       "aliases": [],
       "area": "North Kolkata",
@@ -1715,7 +1851,7 @@
       "edition": null,
       "event_dates": "October 23–25, 2026",
       "featured": false,
-      "last_verified_at": "2026-09-19T16:00:00Z",
+      "last_verified_at": "2026-09-26T21:36:15.254402Z",
       "latitude": null,
       "location_precision": "source_zone",
       "longitude": null,
@@ -1746,6 +1882,15 @@
           "publisher": "Ankur Inc.",
           "quote": "Sharodotsav · দুর্গা পূজা",
           "source_revision_id": null,
+          "source_title": "Ankur — annual event calendar",
+          "source_url": "https://www.ankurinc.org/"
+        },
+        {
+          "evidence_kind": "owner_attestation",
+          "publication_date": null,
+          "publisher": "Ankur Inc.",
+          "quote": "Owner approved this submitted Puja identity and region; source text was not automatically verified.",
+          "source_revision_id": "7d28d9ffd2fdf2aff68240f661b0d577f9d41291459ff02a588e7c2b3c945b3e",
           "source_title": "Ankur — annual event calendar",
           "source_url": "https://www.ankurinc.org/"
         }
@@ -8605,6 +8750,60 @@
     {
       "about": null,
       "address": null,
+      "admin1": "California",
+      "aliases": [],
+      "area": "California",
+      "city": "California",
+      "coordinate_precision": null,
+      "coordinate_source": null,
+      "country_code": "US",
+      "district": null,
+      "edition": null,
+      "event_dates": null,
+      "featured": false,
+      "last_verified_at": "2026-09-26T21:36:49.584276Z",
+      "latitude": null,
+      "location_precision": "locality",
+      "longitude": null,
+      "metro_region": null,
+      "name": "Sanatan",
+      "name_bn": null,
+      "neighborhood": null,
+      "official_links": [
+        {
+          "evidence": {
+            "publication_date": null,
+            "publisher": "sanatanbengalisociety.org",
+            "quote": "Sanatan Bengali Society Of California",
+            "source_revision_id": "8ff3ddb02009aa8dc572fd597c046908b1efb424a956e7ebaf7596bcc65ccd7f",
+            "source_title": "sanatanbengalisociety.org",
+            "source_url": "https://sanatanbengalisociety.org/"
+          },
+          "kind": "website",
+          "url": "https://sanatanbengalisociety.org/"
+        }
+      ],
+      "organizer": null,
+      "pandal_id": "california-sanatan",
+      "region_id": "california",
+      "sources": [
+        {
+          "publication_date": null,
+          "publisher": "sanatanbengalisociety.org",
+          "quote": "Sanatan Bengali Society Of California",
+          "source_revision_id": "8ff3ddb02009aa8dc572fd597c046908b1efb424a956e7ebaf7596bcc65ccd7f",
+          "source_title": "sanatanbengalisociety.org",
+          "source_url": "https://sanatanbengalisociety.org/"
+        }
+      ],
+      "subtitle": null,
+      "venue": null,
+      "verification_status": "SOURCE VERIFIED",
+      "year": null
+    },
+    {
+      "about": null,
+      "address": null,
       "admin1": "West Bengal",
       "aliases": [],
       "area": "South Kolkata",
@@ -9831,6 +10030,60 @@
       "venue": null,
       "verification_status": "SOURCE VERIFIED",
       "year": 2025
+    },
+    {
+      "about": null,
+      "address": null,
+      "admin1": "California",
+      "aliases": [],
+      "area": "California",
+      "city": "California",
+      "coordinate_precision": null,
+      "coordinate_source": null,
+      "country_code": "US",
+      "district": null,
+      "edition": null,
+      "event_dates": null,
+      "featured": false,
+      "last_verified_at": "2026-09-26T21:37:22.748498Z",
+      "latitude": null,
+      "location_precision": "locality",
+      "longitude": null,
+      "metro_region": null,
+      "name": "UTSAV",
+      "name_bn": null,
+      "neighborhood": null,
+      "official_links": [
+        {
+          "evidence": {
+            "publication_date": null,
+            "publisher": "utsavsac.org",
+            "quote": "UTSAV is a vibrant and passionate organization dedicated to celebrating not only iconic Hindu festivals like Durga Puja, Saraswati Puja, and Holi but also showcase the rich traditions and cultural heritage of Bengal to the greater Sacramento area. With a strong commitment to community building, we strive to preserve, promote, and share the essence of Bengali heritage with the world.",
+            "source_revision_id": "b1b143146115925f65f3e6ac6bd6223f2e3511b58fd7b10477ca359cf5357acb",
+            "source_title": "utsavsac.org",
+            "source_url": "https://utsavsac.org/"
+          },
+          "kind": "website",
+          "url": "https://utsavsac.org/"
+        }
+      ],
+      "organizer": null,
+      "pandal_id": "california-utsav",
+      "region_id": "california",
+      "sources": [
+        {
+          "publication_date": null,
+          "publisher": "utsavsac.org",
+          "quote": "UTSAV is a vibrant and passionate organization dedicated to celebrating not only iconic Hindu festivals like Durga Puja, Saraswati Puja, and Holi but also showcase the rich traditions and cultural heritage of Bengal to the greater Sacramento area. With a strong commitment to community building, we strive to preserve, promote, and share the essence of Bengali heritage with the world.",
+          "source_revision_id": "b1b143146115925f65f3e6ac6bd6223f2e3511b58fd7b10477ca359cf5357acb",
+          "source_title": "utsavsac.org",
+          "source_url": "https://utsavsac.org/"
+        }
+      ],
+      "subtitle": null,
+      "venue": null,
+      "verification_status": "SOURCE VERIFIED",
+      "year": null
     },
     {
       "about": null,

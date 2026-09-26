@@ -55,35 +55,29 @@ class PujaFetcher(Fetcher):
             raise
 
 
-def load_config(root: Path, approval_overlay=None) -> Config:
-    raw = yaml.safe_load((root / "config/puja.yml").read_text())
+def load_config(root: Path, catalog_overrides=None) -> Config:
+    # In-memory prospective edits use the same validation as the tracked catalog.
+    from copy import deepcopy
+
+    overrides = catalog_overrides or {}
+
+    def read_catalog(path):
+        return (
+            deepcopy(overrides[path])
+            if path in overrides
+            else yaml.safe_load((root / path).read_text())
+        )
+
+    raw = read_catalog("config/puja.yml")
     if (root / "config/regions.yml").exists():
         from .regions import load_regions
 
         registry = {r.region_id: r for r in load_regions(root).regions}
         for region in registry.values():
             if region.catalog_config:
-                extra = yaml.safe_load((root / region.catalog_config).read_text())
+                extra = read_catalog(region.catalog_config)
                 raw["published"].extend(extra.get("published", []))
                 raw["sources"].extend(extra.get("sources", []))
-        if approval_overlay is None:
-            approved_path = root / "config/puja-approved.json"
-            approval_overlay = (
-                json.loads(approved_path.read_text()) if approved_path.exists() else None
-            )
-        if approval_overlay:
-            if approval_overlay.get("schema_version") != "puja-approvals-1":
-                raise ValueError("invalid_approval_overlay")
-            records = {p["pandal_id"]: p for p in raw["published"]}
-            sources = {s["source_id"]: s for s in raw["sources"]}
-            for item in sorted(
-                approval_overlay["approvals"],
-                key=lambda row: (row["record"]["last_verified_at"], row["candidate_id"]),
-            ):
-                records[item["record"]["pandal_id"]] = item["record"]
-                sources[item["source"]["source_id"]] = item["source"]
-            raw["published"] = list(records.values())
-            raw["sources"] = list(sources.values())
         config = Config.model_validate(raw)
         if any(source.region_id not in registry for source in config.sources):
             raise ValueError("source_region_unknown")

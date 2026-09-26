@@ -95,18 +95,20 @@ Manual private lead campaigns use structured sources first and Gemini for useful
 prose extraction, with a 20-attempt campaign ceiling. Scheduled Puja monitoring
 makes no model calls. Local review automatically reads the private Form response Sheet
 using desktop OAuth. The owner only approves or rejects; supported facts determine
-the tier. Pending cards wait, and only owner-approved candidates enter the scheduled,
-validated catalog publication flow. Full technical details:
+the tier. Pending cards wait. Approval saves the reviewed record directly to the
+regional catalog and automatically commits/pushes only those files to develop.
+The normal release validation and main deployment publish the catalog. Full technical details:
 [Food POIs](docs/FOOD_POIS.md) · [Puja curation](docs/PUJA_CURATION.md) ·
 [Google provider](docs/PLACES.md).
 
 ## Coverage snapshot
 
-Development data checked **2026-09-22** (local date); the live site changes after release.
+Puja counts reconciled **2026-09-26**; food snapshots checked **2026-09-22**.
+The live site changes after release.
 
 | Dataset | Kolkata region | California | London region | Toronto / GTA | Melbourne |
 | --- | --- | --- | --- | --- | --- |
-| Source-backed Puja listings | 223 | 6 | 2 | 2 | 2 |
+| Source-backed Puja listings | 223 | 10 | 2 | 2 | 2 |
 | Reviewed map anchors | 14 | 4 | 2 | 2 | 2 |
 | Normalized catchment food POIs | 652 | 263 | 336 | 128 | 34 |
 | Named OSM POIs | 618 | 246 | 332 | 128 | 34 |
@@ -115,7 +117,8 @@ Development data checked **2026-09-22** (local date); the live site changes afte
 
 These are snapshot counts, not complete directories. Overlapping Puja catchments can
 share food places. Many Kolkata listings come from 2025 directory rows; California
-uses organizer sources for 2026. Only independently located Pujas receive spatial
+includes six 2026 organizer listings and four additional source-listed Pujas without
+reviewed edition dates. Only independently located Pujas receive spatial
 associations. Featured counts and available lists are generated from current coverage.
 
 Food Safety Evidence currently contains **48 active published records**, **36 area
