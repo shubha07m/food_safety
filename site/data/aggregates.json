@@ -1,7 +1,7 @@
 {
   "actions": {
     "inspection / visit only": 25,
-    "not reported": 16,
+    "not reported": 15,
     "other": 7
   },
   "areas": {
@@ -33,7 +33,6 @@
     "পূর্ব মেদিনীপুর": 1,
     "বকখালি": 1,
     "বাদুড়িয়া": 1,
-    "বীরভূমের": 1,
     "মধ্যমগ্রামের": 1,
     "মধ্যমগ্রামের স্টার মলে": 1,
     "মধ‌্যমগ্রামের": 1,
@@ -43,9 +42,9 @@
     "সেক্টর ফাইভের আরডিবি মলের": 1,
     "সোদপুরের": 1
   },
-  "areas_count": 37,
+  "areas_count": 36,
   "business_formats": {
-    "unknown": 48
+    "unknown": 47
   },
   "context_notice": "Independent, non-governmental public-source research. Inclusion is not a finding of wrongdoing. Counts describe records in this tracker, not official totals, prevalence, compliance, risk or group behavior. Read the sources and preserve this context when sharing.",
   "coverage": {
@@ -54,7 +53,7 @@
     "establishment_context": 32,
     "menu_context": 0,
     "named_establishment": 30,
-    "reported_action": 33,
+    "reported_action": 32,
     "reported_quantity": 6
   },
   "establishments": {
@@ -63,34 +62,34 @@
     "market / vendor": 3,
     "restaurant / eatery": 18,
     "sweet shop / bakery": 3,
-    "unknown": 16
+    "unknown": 15
   },
   "establishments_count": 30,
-  "generated_at": "2026-09-27T13:57:04.711043+00:00",
+  "generated_at": "2026-09-27T18:22:31.158745+00:00",
   "map_coverage": {
     "mapped_records": 23,
     "precision": {
       "city": 3,
       "neighborhood": 16,
-      "not mapped": 25,
+      "not mapped": 24,
       "street": 4
     }
   },
   "menus": {
-    "unknown": 48
+    "unknown": 47
   },
   "pipeline_version": "0.3.0",
   "publishers": {
-    "ABP Ananda": 6,
+    "ABP Ananda": 5,
     "Business Today": 5,
     "Indian Express Bangla": 4,
     "TV9 Bangla": 7,
     "The Times of India": 25,
     "UNI India": 1
   },
-  "record_count": 48,
+  "record_count": 47,
   "schema_version": "1.2.0",
-  "sources_count": 19,
+  "sources_count": 18,
   "timeline": {
     "2025-04-25": 1,
     "2026-09-02": 2,
@@ -100,12 +99,11 @@
     "2026-09-06": 10,
     "2026-09-07": 3,
     "2026-09-08": 1,
-    "2026-09-09": 1,
     "2026-09-11": 1,
     "2026-09-15": 1
   },
-  "total": 48,
+  "total": 47,
   "verification": {
-    "SOURCE VERIFIED": 48
+    "SOURCE VERIFIED": 47
   }
 }
