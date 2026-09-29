@@ -17,6 +17,11 @@ sources:
   publisher: www.londondurgapuja.com
   region_id: london
   source_kind: association
+- source_id: approved-pc-618b4ad63a9589692143
+  url: https://utsavclub.co.uk/
+  publisher: utsavclub.co.uk
+  region_id: london
+  source_kind: association
 published:
 - pandal_id: london-camden
   region_id: london
@@ -139,3 +144,26 @@ published:
     quote: Sanatan Association (North London & Herts)
     source_revision_id: 47e79fa33432390088b579244e7d8febb690e3a57c27901366816231dccce61a
   last_verified_at: '2026-09-29T02:53:14.148242Z'
+- pandal_id: london-utsav
+  region_id: london
+  country_code: GB
+  admin1: England
+  name: Utsav
+  area: London region
+  city: London region
+  official_links:
+  - kind: website
+    url: https://utsavclub.co.uk/
+    evidence:
+      source_url: https://utsavclub.co.uk/
+      source_title: utsavclub.co.uk
+      publisher: utsavclub.co.uk
+      quote: 'Utsav- The celebration of life:'
+      source_revision_id: 1cc7945b31deff38a33ad9b39f7a73ece5477d752ed3542c1cae33bde436f86b
+  sources:
+  - source_url: https://utsavclub.co.uk/
+    source_title: utsavclub.co.uk
+    publisher: utsavclub.co.uk
+    quote: 'Utsav- The celebration of life:'
+    source_revision_id: 1cc7945b31deff38a33ad9b39f7a73ece5477d752ed3542c1cae33bde436f86b
+  last_verified_at: '2026-09-29T02:53:27.058751Z'
