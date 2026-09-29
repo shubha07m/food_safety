@@ -12,6 +12,11 @@ sources:
   allow_missing_robots: true
   region_id: london
   reviewed_revision: 8a2949568c055819998a6ccce777aa1aae8aaa068b491c4dd9057e709013f0f6
+- source_id: approved-pc-9f086c95bacabad174cf
+  url: https://www.londondurgapuja.com/
+  publisher: www.londondurgapuja.com
+  region_id: london
+  source_kind: association
 published:
 - pandal_id: london-camden
   region_id: london
@@ -111,3 +116,26 @@ published:
       not automatically verified.
     source_revision_id: a5cda8c307948fd65c3045fa290206814c332e24acb18361ef0d787b67ebe720
   last_verified_at: '2026-09-29T02:52:53.136660Z'
+- pandal_id: london-sanatan
+  region_id: london
+  country_code: GB
+  admin1: England
+  name: Sanatan
+  area: London region
+  city: London region
+  official_links:
+  - kind: website
+    url: https://www.londondurgapuja.com/
+    evidence:
+      source_url: https://www.londondurgapuja.com/
+      source_title: www.londondurgapuja.com
+      publisher: www.londondurgapuja.com
+      quote: Sanatan Association (North London & Herts)
+      source_revision_id: 47e79fa33432390088b579244e7d8febb690e3a57c27901366816231dccce61a
+  sources:
+  - source_url: https://www.londondurgapuja.com/
+    source_title: www.londondurgapuja.com
+    publisher: www.londondurgapuja.com
+    quote: Sanatan Association (North London & Herts)
+    source_revision_id: 47e79fa33432390088b579244e7d8febb690e3a57c27901366816231dccce61a
+  last_verified_at: '2026-09-29T02:53:14.148242Z'
