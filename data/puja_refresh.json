@@ -1,41 +1,82 @@
 {
   "schema_version": "puja-monitor-1",
   "sources": {
+    "approved-pc-18199c10fccc8e0ebb9f": {
+      "content_hash": "0a333a424c1e491859f9e3355173b7ad50d0df917472263ae32512836694990b",
+      "etag": "\"6ab3490a-67e0\"",
+      "extraction_status": "not_requested",
+      "last_attempt": "2026-09-28T05:21:02.048909+00:00",
+      "last_modified": "Wed, 23 Sep 2026 03:35:38 GMT",
+      "last_reviewed_revision": null,
+      "last_success": "2026-09-28T05:21:02.048909+00:00",
+      "pending_change": true,
+      "status": "checked",
+      "url": "https://aantorik.org/"
+    },
+    "approved-pc-231aa72c405daf06467b": {
+      "error": "OSError",
+      "extraction_status": "not_requested",
+      "last_attempt": "2026-09-28T05:21:02.048909+00:00",
+      "last_reviewed_revision": null,
+      "status": "unavailable",
+      "url": "https://aikotaan.org/"
+    },
+    "approved-pc-59051a3a69ddebdf1e0f": {
+      "content_hash": "0c1f974b314b7b51b1fbc33cff1757d76de413447c2222f0a3d200f29520f152",
+      "extraction_status": "not_requested",
+      "last_attempt": "2026-09-28T05:21:02.048909+00:00",
+      "last_reviewed_revision": null,
+      "last_success": "2026-09-28T05:21:02.048909+00:00",
+      "pending_change": true,
+      "status": "checked",
+      "url": "https://sanatanbengalisociety.org/"
+    },
+    "approved-pc-683dd31210b05d14cde1": {
+      "content_hash": "17b4a5268ea7dc9809f5b3c353fc85d2331d4e359d83f1c11d145d5fd4f740bd",
+      "extraction_status": "not_requested",
+      "last_attempt": "2026-09-28T05:21:02.048909+00:00",
+      "last_modified": "Fri, 25 Sep 2026 21:31:25 GMT",
+      "last_reviewed_revision": null,
+      "last_success": "2026-09-28T05:21:02.048909+00:00",
+      "pending_change": true,
+      "status": "checked",
+      "url": "https://utsavsac.org/"
+    },
     "ca-agomoni": {
       "content_hash": "082a584f50e5ad4a7d417ae67a70c04169b4db85439d01b2bae8fda09e74d143",
       "error": "TimeoutError",
       "extraction_status": "not_requested",
-      "last_attempt": "2026-09-26T21:08:39.019394+00:00",
-      "last_reviewed_revision": null,
-      "last_success": "2026-09-26T21:08:39.019394+00:00",
-      "pending_change": true,
+      "last_attempt": "2026-09-29T01:56:34.119377+00:00",
+      "last_reviewed_revision": "082a584f50e5ad4a7d417ae67a70c04169b4db85439d01b2bae8fda09e74d143",
+      "last_success": "2026-09-29T01:56:34.119377+00:00",
+      "pending_change": false,
       "status": "checked",
       "url": "https://agomoni.org/durgapuja-2026/"
     },
     "ca-ankur": {
       "content_hash": "7d28d9ffd2fdf2aff68240f661b0d577f9d41291459ff02a588e7c2b3c945b3e",
       "extraction_status": "not_requested",
-      "last_attempt": "2026-09-26T21:08:39.019394+00:00",
-      "last_reviewed_revision": null,
-      "last_success": "2026-09-26T21:08:39.019394+00:00",
-      "pending_change": true,
+      "last_attempt": "2026-09-29T01:56:34.119377+00:00",
+      "last_reviewed_revision": "7d28d9ffd2fdf2aff68240f661b0d577f9d41291459ff02a588e7c2b3c945b3e",
+      "last_success": "2026-09-29T01:56:34.119377+00:00",
+      "pending_change": false,
       "status": "checked",
       "url": "https://www.ankurinc.org/"
     },
     "ca-basc": {
       "error": "FetchError",
       "extraction_status": "not_requested",
-      "last_attempt": "2026-09-26T21:08:39.019394+00:00",
+      "last_attempt": "2026-09-29T01:56:34.119377+00:00",
       "last_reviewed_revision": null,
       "status": "unavailable",
       "url": "https://bascweb.org/"
     },
     "ca-pashchimi": {
-      "content_hash": "663916559774ac5ce66c0ff3672fa1435604e5c75062ec92d098006a96008669",
+      "content_hash": "7eff6c576644d44dc8e21c9a22192f96254b551468ec38b2dfdf6897cd4d42b0",
       "extraction_status": "not_requested",
-      "last_attempt": "2026-09-26T21:08:39.019394+00:00",
-      "last_reviewed_revision": null,
-      "last_success": "2026-09-26T21:08:39.019394+00:00",
+      "last_attempt": "2026-09-29T01:56:34.119377+00:00",
+      "last_reviewed_revision": "663916559774ac5ce66c0ff3672fa1435604e5c75062ec92d098006a96008669",
+      "last_success": "2026-09-29T01:56:34.119377+00:00",
       "pending_change": true,
       "status": "checked",
       "url": "https://pashchimi.org/"
@@ -43,7 +84,7 @@
     "ca-sanskriti": {
       "error": "FetchError",
       "extraction_status": "not_requested",
-      "last_attempt": "2026-09-26T21:08:39.019394+00:00",
+      "last_attempt": "2026-09-29T01:56:34.119377+00:00",
       "last_reviewed_revision": null,
       "status": "unavailable",
       "url": "https://www.sanskriti.org/"
@@ -51,18 +92,18 @@
     "ca-vbc": {
       "error": "FetchError",
       "extraction_status": "not_requested",
-      "last_attempt": "2026-09-25T23:18:01.856243+00:00",
+      "last_attempt": "2026-09-28T05:21:02.048909+00:00",
       "last_reviewed_revision": null,
       "status": "unavailable",
       "url": "https://durga.valleybengali.org/"
     },
     "gta-apcat": {
       "content_hash": "d6b1ef3e9c15551628a9cdd3995f4990c94190aa0314f9dc2a37a9939700766b",
-      "etag": "W/\"757c4a60f6d0c2db2ebe42f2b71d9552\"",
+      "etag": "W/\"082a3e3748b4b5f08293909096967f26\"",
       "extraction_status": "not_requested",
-      "last_attempt": "2026-09-26T16:22:09.289550+00:00",
-      "last_reviewed_revision": null,
-      "last_success": "2026-09-26T16:22:09.289550+00:00",
+      "last_attempt": "2026-09-28T20:33:50.175921+00:00",
+      "last_reviewed_revision": "f30d4e3fddd7af1888699f96752931e18c57302abf5583bf76736fed1825fe95",
+      "last_success": "2026-09-28T20:33:50.175921+00:00",
       "pending_change": true,
       "status": "checked",
       "url": "https://www.apcatweb.com/"
@@ -70,7 +111,7 @@
     "gta-durba": {
       "error": "FetchError",
       "extraction_status": "not_requested",
-      "last_attempt": "2026-09-26T16:22:09.289550+00:00",
+      "last_attempt": "2026-09-28T20:33:50.175921+00:00",
       "last_reviewed_revision": null,
       "status": "unavailable",
       "url": "https://durbafoundation.ca/"
@@ -78,9 +119,9 @@
     "ifd-howrah": {
       "content_hash": "307191eb7e8d7915d1cbb60248a2ca5494f0cc48457c74b867802282cbf9103c",
       "extraction_status": "not_requested",
-      "last_attempt": "2026-09-26T16:22:09.289550+00:00",
+      "last_attempt": "2026-09-28T20:33:50.175921+00:00",
       "last_reviewed_revision": null,
-      "last_success": "2026-09-26T16:22:09.289550+00:00",
+      "last_success": "2026-09-28T20:33:50.175921+00:00",
       "pending_change": true,
       "status": "checked",
       "url": "https://www.indianfestivaldiary.com/durgapuja/howrah.php"
@@ -88,9 +129,9 @@
     "ifd-north-kolkata": {
       "content_hash": "704c37ac8f00976b1c33e6060b39879c5e0a6c75fcc23383a7e2ed0946151b88",
       "extraction_status": "not_requested",
-      "last_attempt": "2026-09-26T16:22:09.289550+00:00",
+      "last_attempt": "2026-09-28T20:33:50.175921+00:00",
       "last_reviewed_revision": null,
-      "last_success": "2026-09-26T16:22:09.289550+00:00",
+      "last_success": "2026-09-28T20:33:50.175921+00:00",
       "pending_change": true,
       "status": "checked",
       "url": "https://www.indianfestivaldiary.com/durgapuja/north_kolkata.php"
@@ -98,9 +139,9 @@
     "ifd-south-kolkata": {
       "content_hash": "0a023cfd9ff6ce53a2a2175c7cb745011aa09eb7345bff65ec1a3a851a6a3b34",
       "extraction_status": "not_requested",
-      "last_attempt": "2026-09-26T16:22:09.289550+00:00",
+      "last_attempt": "2026-09-28T20:33:50.175921+00:00",
       "last_reviewed_revision": null,
-      "last_success": "2026-09-26T16:22:09.289550+00:00",
+      "last_success": "2026-09-28T20:33:50.175921+00:00",
       "pending_change": true,
       "status": "checked",
       "url": "https://www.indianfestivaldiary.com/durgapuja/south_kolkata.php"
@@ -108,11 +149,11 @@
     "london-bcsc": {
       "content_hash": "8a2949568c055819998a6ccce777aa1aae8aaa068b491c4dd9057e709013f0f6",
       "error": "FetchError",
-      "etag": "W/\"252-1790363497;gz\"",
+      "etag": "W/\"269-1790553919;gz\"",
       "extraction_status": "not_requested",
-      "last_attempt": "2026-09-25T23:18:01.856243+00:00",
+      "last_attempt": "2026-09-28T13:50:33.930754+00:00",
       "last_reviewed_revision": null,
-      "last_success": "2026-09-25T23:18:01.856243+00:00",
+      "last_success": "2026-09-28T13:50:33.930754+00:00",
       "pending_change": true,
       "status": "checked",
       "url": "https://bengali-cultural-social-club.org.uk/london-durga-puja-schedule"
@@ -120,9 +161,9 @@
     "london-camden": {
       "content_hash": "2082bc95c2a779bc1a7a0d26072aa0ae8dfccf1372bdd17d14bdac261473a04c",
       "extraction_status": "not_requested",
-      "last_attempt": "2026-09-25T23:18:01.856243+00:00",
+      "last_attempt": "2026-09-28T13:50:33.930754+00:00",
       "last_reviewed_revision": null,
-      "last_success": "2026-09-25T23:18:01.856243+00:00",
+      "last_success": "2026-09-28T13:50:33.930754+00:00",
       "pending_change": true,
       "status": "checked",
       "url": "https://www.londonpuja.co.uk/"
@@ -131,10 +172,10 @@
       "content_hash": "d2bfae9354454b19fa92aaeed97dbdab2167a1b58e613d44ea0c90aa58fe3341",
       "etag": "\"6f4a51454276ff629fc04541298b3c6c\"",
       "extraction_status": "not_requested",
-      "last_attempt": "2026-09-25T23:18:01.856243+00:00",
+      "last_attempt": "2026-09-28T13:50:33.930754+00:00",
       "last_modified": "Sun, 20 Sep 2026 07:14:34 GMT",
       "last_reviewed_revision": null,
-      "last_success": "2026-09-25T23:18:01.856243+00:00",
+      "last_success": "2026-09-28T13:50:33.930754+00:00",
       "pending_change": true,
       "status": "checked",
       "url": "https://bsm.org.au/events/durgotsav"
@@ -142,9 +183,9 @@
     "melbourne-melba": {
       "content_hash": "44e7cfb2d70a5632d9af0608e027cde4904ce0fe8e29d8ded47daad0259d3c26",
       "extraction_status": "not_requested",
-      "last_attempt": "2026-09-25T23:18:01.856243+00:00",
+      "last_attempt": "2026-09-28T13:50:33.930754+00:00",
       "last_reviewed_revision": null,
-      "last_success": "2026-09-25T23:18:01.856243+00:00",
+      "last_success": "2026-09-28T13:50:33.930754+00:00",
       "pending_change": true,
       "status": "checked",
       "url": "https://www.melba.org.au/"
