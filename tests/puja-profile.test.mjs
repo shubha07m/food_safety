@@ -43,6 +43,26 @@ test('missing override coordinates do not inherit previous venue; historical fac
   assert.equal(effectiveLocation(next).venue,'New hall');
   assert.equal(effectiveLocation(p,year+1).status,'historical');
 });
+test('reviewed edition address gives keyless directions without inheriting legacy coordinates',()=>{
+  const location={venue:'St. Mary’s & Community Hall',address:'12 Church Road, London SW1 1AA',city:'London',evidence:[evidence]};
+  const addressOnly={...p,edition:{...p.edition,location}};
+  const url=new URL(directionsURL(addressOnly));
+  assert.equal(url.origin,'https://www.google.com');
+  assert.equal(url.pathname,'/maps/dir/');
+  assert.deepEqual([...url.searchParams.keys()],['api','destination']);
+  assert.equal(url.searchParams.get('api'),'1');
+  assert.equal(url.searchParams.get('destination'),`${location.venue}, ${location.address}, London`);
+  assert.equal(effectiveLocation(addressOnly).map_eligible,false);
+  for(const record of [
+    {...addressOnly,enabled:false},
+    {...addressOnly,edition:{...addressOnly.edition,confirmed:false}},
+    {...addressOnly,edition:{...addressOnly.edition,venue_reviewed:false}},
+    {...addressOnly,edition:{...addressOnly.edition,year:year-1}},
+    {...addressOnly,edition:{...addressOnly.edition,location:{...location,evidence:[]}}},
+    {...addressOnly,edition:{...addressOnly.edition,location:{...location,address:''}}},
+    {...addressOnly,edition:{...addressOnly.edition,location:{...location,latitude:51.5}}},
+  ]) assert.equal(directionsURL(record),null);
+});
 test('profile hides stale programme notes and absent optional facts',()=>{
   const notes=[{title:'Programme',text:'Fixture',evidence:[evidence]}];
   const rich={...p,edition:{...p.edition,programme_notes:notes},official_links:[{kind:'website',url:'https://example.org',evidence}]};
@@ -68,6 +88,22 @@ class Element {
 }
 const doc={createElement:tag=>new Element(tag),createTextNode:text=>({textContent:text,children:[]})};
 const flatten=n=>[n,...n.children.flatMap(flatten)];
+test('profile shows Directions only for qualified current locations and keeps all other actions',()=>{
+  const official_links=[{kind:'website',url:'https://example.org',evidence}];
+  for(const edition of [p.edition,null,{...p.edition,year:year-1},{...p.edition,venue_reviewed:false},{...p.edition,location:null}]) {
+    const nodes=flatten(renderProfile({...p,edition,official_links},{label:'London'},[],false,doc));
+    const direction=nodes.find(n=>n.textContent==='Directions');
+    assert.equal(!!direction,edition===p.edition);
+    if(direction) {
+      assert.equal(new URL(direction.href).searchParams.get('destination'),'51.5,0');
+      assert.equal(direction.target,'_blank');
+      assert.equal(direction.rel,'noopener noreferrer');
+    }
+    assert.equal(nodes.find(n=>n.textContent==='Official site').href,'https://example.org/');
+    assert.ok(nodes.some(n=>n.textContent==='Share Puja'));
+    assert.ok(nodes.some(n=>n.textContent==='Report changed venue/date'));
+  }
+});
 test('owner endorsement is not rendered as an organizer quotation',()=>{
   const source={...evidence,evidence_kind:'owner_attestation',quote:'Owner approved submitted identity.'};
   const text=flatten(renderProfile({...p,edition:null,sources:[source]}, {label:'London'},[],false,doc))

@@ -4,6 +4,11 @@ import test from 'node:test';
 
 import { googleFormURL, showPujaSuggestion } from '../site/puja-suggestion.mjs';
 
+test('public build exposes the configured owner suggestion form', () => {
+  const repository = JSON.parse(readFileSync('site/repository.json', 'utf8'));
+  assert.equal(googleFormURL(repository.puja_suggest_form_url), 'https://forms.gle/DfebWArXd7AFtH9d7');
+});
+
 test('Puja suggestion handoff accepts only published Google Form URLs', () => {
   assert.equal(googleFormURL('https://forms.gle/example123'), 'https://forms.gle/example123');
   assert.equal(googleFormURL('https://docs.google.com/forms/d/e/example/viewform'), 'https://docs.google.com/forms/d/e/example/viewform');

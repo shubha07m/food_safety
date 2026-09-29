@@ -1,6 +1,6 @@
 {
   "coverage": {
-    "catalog_count": 239,
+    "catalog_count": 243,
     "cities": {
       "Ajax": 1,
       "California": 4,
@@ -8,28 +8,31 @@
       "Howrah": 40,
       "Kolkata": 183,
       "London": 2,
+      "London region": 2,
       "Los Angeles": 1,
+      "Melbourne": 1,
       "Mississauga": 1,
       "Newark": 2,
       "Sacramento": 1,
       "San Ramon": 1,
+      "Toronto / GTA": 1,
       "Werribee": 1,
       "Wyndham Vale": 1
     },
     "featured_count": 6,
-    "last_catalog_update": "2026-09-26T21:38:15.798518+00:00",
+    "last_catalog_update": "2026-09-29T02:54:36.033272+00:00",
     "map_ready_count": 24,
     "regions": {
       "california": 10,
       "kolkata": 223,
-      "london": 2,
-      "melbourne": 2,
-      "toronto": 2
+      "london": 4,
+      "melbourne": 3,
+      "toronto": 3
     },
-    "source_count": 23
+    "source_count": 27
   },
   "generated_from": "source_verified_curated_config",
-  "record_count": 239,
+  "record_count": 243,
   "records": [
     {
       "about": null,
@@ -344,7 +347,7 @@
       },
       "event_dates": null,
       "featured": true,
-      "last_verified_at": "2026-09-22T18:00:00Z",
+      "last_verified_at": "2026-09-29T02:52:53.136660Z",
       "latitude": 51.5682309,
       "location_precision": "locality",
       "longitude": 0.0254103,
@@ -376,6 +379,15 @@
           "quote": "Friday 16th Oct 2026 Tuesday 20th Oct 2026 Swaminarayan Sports World, Blake Hall Road, London, E11 2QW",
           "source_revision_id": null,
           "source_title": "BCSC London Durga Puja — organizer announcement",
+          "source_url": "https://bengali-cultural-social-club.org.uk/london-durga-puja-schedule"
+        },
+        {
+          "evidence_kind": "owner_attestation",
+          "publication_date": null,
+          "publisher": "bengali-cultural-social-club.org.uk",
+          "quote": "Owner approved this submitted Puja identity and region; source text was not automatically verified.",
+          "source_revision_id": "a5cda8c307948fd65c3045fa290206814c332e24acb18361ef0d787b67ebe720",
+          "source_title": "Owner-submitted Puja source",
           "source_url": "https://bengali-cultural-social-club.org.uk/london-durga-puja-schedule"
         }
       ],
@@ -436,7 +448,7 @@
       },
       "event_dates": null,
       "featured": true,
-      "last_verified_at": "2026-09-22T18:00:00Z",
+      "last_verified_at": "2026-09-29T02:53:35.858147Z",
       "latitude": -37.9028292,
       "location_precision": "locality",
       "longitude": 144.6453403,
@@ -468,6 +480,15 @@
           "quote": "Durga Puja 2026 October 16-18, 2026 Werribee Racing Club 2-10 Bulban Rd, Werribee 3030",
           "source_revision_id": null,
           "source_title": "Bengali Society of Melbourne Durgotsav — organizer announcement",
+          "source_url": "https://bsm.org.au/events/durgotsav"
+        },
+        {
+          "evidence_kind": "owner_attestation",
+          "publication_date": null,
+          "publisher": "bsm.org.au",
+          "quote": "Owner approved this submitted Puja identity and region; source text was not automatically verified.",
+          "source_revision_id": "d2bfae9354454b19fa92aaeed97dbdab2167a1b58e613d44ea0c90aa58fe3341",
+          "source_title": "Owner-submitted Puja source",
           "source_url": "https://bsm.org.au/events/durgotsav"
         }
       ],
@@ -1659,6 +1680,60 @@
       "venue": null,
       "verification_status": "SOURCE VERIFIED",
       "year": 2025
+    },
+    {
+      "about": null,
+      "address": null,
+      "admin1": "Ontario",
+      "aliases": [],
+      "area": "Toronto / GTA",
+      "city": "Toronto / GTA",
+      "coordinate_precision": null,
+      "coordinate_source": null,
+      "country_code": "CA",
+      "district": null,
+      "edition": null,
+      "event_dates": null,
+      "featured": false,
+      "last_verified_at": "2026-09-29T02:54:36.033272Z",
+      "latitude": null,
+      "location_precision": "locality",
+      "longitude": null,
+      "metro_region": null,
+      "name": "Agomoni",
+      "name_bn": null,
+      "neighborhood": null,
+      "official_links": [
+        {
+          "evidence": {
+            "publication_date": null,
+            "publisher": "www.agomoni.ca",
+            "quote": "Agomoni Cultural Association of Durham is a non-profit organization registered in Canada to promote Bengali culture and welcome members from every nationality, race, age, and religion.",
+            "source_revision_id": "9f396e2116e5725eec259df5df9e0704b662d1aa488a15f4118e6b525a5feab2",
+            "source_title": "www.agomoni.ca",
+            "source_url": "https://www.agomoni.ca/"
+          },
+          "kind": "website",
+          "url": "https://www.agomoni.ca/"
+        }
+      ],
+      "organizer": null,
+      "pandal_id": "toronto-agomoni",
+      "region_id": "toronto",
+      "sources": [
+        {
+          "publication_date": null,
+          "publisher": "www.agomoni.ca",
+          "quote": "Agomoni Cultural Association of Durham is a non-profit organization registered in Canada to promote Bengali culture and welcome members from every nationality, race, age, and religion.",
+          "source_revision_id": "9f396e2116e5725eec259df5df9e0704b662d1aa488a15f4118e6b525a5feab2",
+          "source_title": "www.agomoni.ca",
+          "source_url": "https://www.agomoni.ca/"
+        }
+      ],
+      "subtitle": null,
+      "venue": null,
+      "verification_status": "SOURCE VERIFIED",
+      "year": null
     },
     {
       "about": null,
@@ -3662,6 +3737,60 @@
       "venue": null,
       "verification_status": "SOURCE VERIFIED",
       "year": 2025
+    },
+    {
+      "about": null,
+      "address": null,
+      "admin1": "Victoria",
+      "aliases": [],
+      "area": "Melbourne",
+      "city": "Melbourne",
+      "coordinate_precision": null,
+      "coordinate_source": null,
+      "country_code": "AU",
+      "district": null,
+      "edition": null,
+      "event_dates": null,
+      "featured": false,
+      "last_verified_at": "2026-09-29T02:53:47.521187Z",
+      "latitude": null,
+      "location_precision": "locality",
+      "longitude": null,
+      "metro_region": null,
+      "name": "Bongosathi",
+      "name_bn": null,
+      "neighborhood": null,
+      "official_links": [
+        {
+          "evidence": {
+            "publication_date": null,
+            "publisher": "www.wmdurgautsav.org",
+            "quote": "Welcome to Bongosathi",
+            "source_revision_id": "133d98c4c028723cd0b151ce973f37c4ed7cd99bbad0069e3df7a136c4901497",
+            "source_title": "www.wmdurgautsav.org",
+            "source_url": "https://www.wmdurgautsav.org/bongosathi"
+          },
+          "kind": "website",
+          "url": "https://www.wmdurgautsav.org/bongosathi"
+        }
+      ],
+      "organizer": null,
+      "pandal_id": "melbourne-bongosathi",
+      "region_id": "melbourne",
+      "sources": [
+        {
+          "publication_date": null,
+          "publisher": "www.wmdurgautsav.org",
+          "quote": "Welcome to Bongosathi",
+          "source_revision_id": "133d98c4c028723cd0b151ce973f37c4ed7cd99bbad0069e3df7a136c4901497",
+          "source_title": "www.wmdurgautsav.org",
+          "source_url": "https://www.wmdurgautsav.org/bongosathi"
+        }
+      ],
+      "subtitle": null,
+      "venue": null,
+      "verification_status": "SOURCE VERIFIED",
+      "year": null
     },
     {
       "about": null,
@@ -8804,6 +8933,60 @@
     {
       "about": null,
       "address": null,
+      "admin1": "England",
+      "aliases": [],
+      "area": "London region",
+      "city": "London region",
+      "coordinate_precision": null,
+      "coordinate_source": null,
+      "country_code": "GB",
+      "district": null,
+      "edition": null,
+      "event_dates": null,
+      "featured": false,
+      "last_verified_at": "2026-09-29T02:53:14.148242Z",
+      "latitude": null,
+      "location_precision": "locality",
+      "longitude": null,
+      "metro_region": null,
+      "name": "Sanatan",
+      "name_bn": null,
+      "neighborhood": null,
+      "official_links": [
+        {
+          "evidence": {
+            "publication_date": null,
+            "publisher": "www.londondurgapuja.com",
+            "quote": "Sanatan Association (North London & Herts)",
+            "source_revision_id": "47e79fa33432390088b579244e7d8febb690e3a57c27901366816231dccce61a",
+            "source_title": "www.londondurgapuja.com",
+            "source_url": "https://www.londondurgapuja.com/"
+          },
+          "kind": "website",
+          "url": "https://www.londondurgapuja.com/"
+        }
+      ],
+      "organizer": null,
+      "pandal_id": "london-sanatan",
+      "region_id": "london",
+      "sources": [
+        {
+          "publication_date": null,
+          "publisher": "www.londondurgapuja.com",
+          "quote": "Sanatan Association (North London & Herts)",
+          "source_revision_id": "47e79fa33432390088b579244e7d8febb690e3a57c27901366816231dccce61a",
+          "source_title": "www.londondurgapuja.com",
+          "source_url": "https://www.londondurgapuja.com/"
+        }
+      ],
+      "subtitle": null,
+      "venue": null,
+      "verification_status": "SOURCE VERIFIED",
+      "year": null
+    },
+    {
+      "about": null,
+      "address": null,
       "admin1": "West Bengal",
       "aliases": [],
       "area": "South Kolkata",
@@ -10078,6 +10261,60 @@
           "source_revision_id": "b1b143146115925f65f3e6ac6bd6223f2e3511b58fd7b10477ca359cf5357acb",
           "source_title": "utsavsac.org",
           "source_url": "https://utsavsac.org/"
+        }
+      ],
+      "subtitle": null,
+      "venue": null,
+      "verification_status": "SOURCE VERIFIED",
+      "year": null
+    },
+    {
+      "about": null,
+      "address": null,
+      "admin1": "England",
+      "aliases": [],
+      "area": "London region",
+      "city": "London region",
+      "coordinate_precision": null,
+      "coordinate_source": null,
+      "country_code": "GB",
+      "district": null,
+      "edition": null,
+      "event_dates": null,
+      "featured": false,
+      "last_verified_at": "2026-09-29T02:53:27.058751Z",
+      "latitude": null,
+      "location_precision": "locality",
+      "longitude": null,
+      "metro_region": null,
+      "name": "Utsav",
+      "name_bn": null,
+      "neighborhood": null,
+      "official_links": [
+        {
+          "evidence": {
+            "publication_date": null,
+            "publisher": "utsavclub.co.uk",
+            "quote": "Utsav- The celebration of life:",
+            "source_revision_id": "1cc7945b31deff38a33ad9b39f7a73ece5477d752ed3542c1cae33bde436f86b",
+            "source_title": "utsavclub.co.uk",
+            "source_url": "https://utsavclub.co.uk/"
+          },
+          "kind": "website",
+          "url": "https://utsavclub.co.uk/"
+        }
+      ],
+      "organizer": null,
+      "pandal_id": "london-utsav",
+      "region_id": "london",
+      "sources": [
+        {
+          "publication_date": null,
+          "publisher": "utsavclub.co.uk",
+          "quote": "Utsav- The celebration of life:",
+          "source_revision_id": "1cc7945b31deff38a33ad9b39f7a73ece5477d752ed3542c1cae33bde436f86b",
+          "source_title": "utsavclub.co.uk",
+          "source_url": "https://utsavclub.co.uk/"
         }
       ],
       "subtitle": null,

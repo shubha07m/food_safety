@@ -176,6 +176,19 @@ Open http://127.0.0.1:8000/ or add `?region=london`, `?region=toronto`,
 [BROWSER_MAP.md](docs/BROWSER_MAP.md) for deliberate live-map testing; never populate
 the tracked configuration.
 
+### Owner review
+
+~~~bash
+python -m food_safety.cli puja review
+~~~
+
+This syncs the private Google Form response Sheet and opens the local Puja review
+UI. The owner chooses **APPROVE** or **REJECT**; approved records enter the
+canonical regional Puja catalog through the normal `develop` workflow.
+See [Puja curation setup](docs/PUJA_CURATION.md) for one-time setup.
+
+### Local checks
+
 ~~~bash
 python -m food_safety.cli osm --region california stats
 python -m food_safety.cli osm --region california associate
