@@ -24,10 +24,19 @@ def test_five_regions_with_provenance_and_edition_distinction():
         "melbourne",
     }
     config = load_config(ROOT)
-    for region in ("london", "toronto", "melbourne"):
+    for region, initial_ids in {
+        "london": {"london-camden", "london-bcsc"},
+        "toronto": {"gta-durba", "gta-apcat"},
+        "melbourne": {"melbourne-melba", "melbourne-bsm"},
+    }.items():
         records = [r for r in config.published if r.region_id == region]
-        assert len(records) == 2
-        assert all(r.sources and r.coordinate_source and r.address for r in records)
+        assert initial_ids <= {r.pandal_id for r in records}
+        assert all(r.sources for r in records)
+        assert all(
+            r.coordinate_source and r.address
+            for r in records
+            if r.pandal_id in initial_ids or r.latitude is not None
+        )
     camden = next(r for r in config.published if r.pandal_id == "london-camden")
     assert camden.edition is None
     assert all(not r.safety_context for r in registry.regions if r.region_id != "kolkata")

@@ -1,5 +1,41 @@
 [
   {
+    "label": "reviewed current address without coordinates",
+    "record": {
+      "latitude": 22.5,
+      "longitude": 88.3,
+      "edition": {
+        "year": 2026,
+        "confirmed": true,
+        "venue_reviewed": true,
+        "location": {
+          "venue": "Reviewed Hall",
+          "address": "1 Fixture Road, London",
+          "evidence": [{"source_url": "https://example.org", "quote": "Reviewed Hall, 1 Fixture Road"}]
+        }
+      }
+    },
+    "expected": {
+      "map_eligible": false,
+      "near_me_eligible": false,
+      "directions_eligible": true,
+      "latitude": null,
+      "status": "current"
+    }
+  },
+  {
+    "label": "unsubstantiated address does not enable directions",
+    "record": {
+      "edition": {
+        "year": 2026,
+        "confirmed": true,
+        "venue_reviewed": true,
+        "location": {"venue": "Fixture", "address": "1 Fixture Road"}
+      }
+    },
+    "expected": {"map_eligible": false, "near_me_eligible": false, "directions_eligible": false}
+  },
+  {
     "label": "approximate legacy",
     "record": {
       "latitude": 22.5,

@@ -56,7 +56,9 @@ export function pujaLink(p, origin, language = 'en') {
 export function directionsURL(p) {
   const loc = effectiveLocation(p);
   if (!loc.directions_eligible) return null;
-  return 'https://www.google.com/maps/dir/?' + new URLSearchParams({ api: '1', destination: `${loc.latitude},${loc.longitude}` });
+  const destination = loc.map_eligible ? `${loc.latitude},${loc.longitude}`
+    : [loc.venue, loc.address, loc.city].filter(Boolean).join(', ');
+  return 'https://www.google.com/maps/dir/?' + new URLSearchParams({ api: '1', destination });
 }
 export function reportURL(p) {
   return 'https://github.com/shubha07m/food_safety/issues/new?' + new URLSearchParams({

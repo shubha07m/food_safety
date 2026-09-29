@@ -5,6 +5,28 @@ import yaml
 ROOT = Path(__file__).resolve().parents[1]
 
 
+def test_owner_review_command_is_visible_in_run_locally():
+    section = (ROOT / "README.md").read_text().split("## Run locally", 1)[1]
+    section = section.split("## Structure and maintenance", 1)[0]
+    assert "python -m food_safety.cli puja review" in section
+    assert "docs/PUJA_CURATION.md" in section
+    assert "APPROVE" in section and "REJECT" in section
+
+
+def test_build_preserves_public_suggestion_form(project, monkeypatch):
+    import json
+
+    from food_safety.build import build
+
+    monkeypatch.delenv("PUJA_SUGGEST_FORM_URL", raising=False)
+    expected = "https://forms.gle/DfebWArXd7AFtH9d7"
+    config = yaml.safe_load((ROOT / "config/pipeline.yml").read_text())
+    assert config["puja_suggest_form_url"] == expected
+    build(project)
+    repository = json.loads((project / "site/repository.json").read_text())
+    assert repository["puja_suggest_form_url"] == expected
+
+
 def test_refresh_is_two_hour_bounded_and_release_push_skips_discovery():
     workflow = yaml.load(
         (ROOT / ".github/workflows/update-data.yml").read_text(), Loader=yaml.BaseLoader

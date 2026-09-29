@@ -38,8 +38,9 @@ osmFixture.pois = Array.from({ length: 30 }, (_, i) => ({ ...template,
 osmFixture.associations = osmFixture.pois.map((p, i) => ({ pandal_id: 'bagbazar-sarbojanin',
   poi_id: p.poi_id, provider: 'osm', distance_m: i + 1, source_snapshot: osmFixture.snapshot_id }));
 const original = JSON.parse(readFileSync(resolve(root, 'site/data/events.json'), 'utf8'));
-const californiaCount = JSON.parse(readFileSync(resolve(root, 'site/data/pandals.json'), 'utf8'))
-  .records.filter(p => p.region_id === 'california').length;
+const pujaRecords = JSON.parse(readFileSync(resolve(root, 'site/data/pandals.json'), 'utf8')).records;
+const regionCount = region => pujaRecords.filter(p => p.region_id === region).length;
+const californiaCount = regionCount('california');
 const at = '2026-01-03T00:00:00Z';
 const makeRow = (id, area, name) => ({
   event_id: id, is_fixture: false, context_notice: original.context_notice,
@@ -149,7 +150,7 @@ try {
   await waitFor(`document.getElementById('metric-events')?.textContent === '${original.record_count}'`);
   await waitFor("document.querySelectorAll('#featured-pandals button').length > 0");
   assert.equal(await evaluate("document.querySelector('#puja-suggest-action a')?.href || null"),
-    process.env.FOOD_SMOKE_FORM_URL || null);
+    process.env.FOOD_SMOKE_FORM_URL || JSON.parse(readFileSync(resolve(root, 'site/repository.json'), 'utf8')).puja_suggest_form_url);
   if (process.env.FOOD_COUNTER_SMOKE === '1') {
     await waitFor("!document.getElementById('site-visits').hidden");
     const count = await evaluate("document.getElementById('site-visits').textContent");
@@ -328,7 +329,7 @@ try {
       await evaluate(`document.dispatchEvent(new CustomEvent('foodpath-select-pandal',{detail:${JSON.stringify(id)}}))`);
       await waitFor(`new URL(location.href).searchParams.get('pandal') === '${id}' && !document.getElementById('selected-pandal').hidden`);
       assert.equal(await evaluate("new URL(location.href).searchParams.get('region')"), region);
-      assert.equal(await evaluate("document.getElementById('region-count').textContent.includes('2 source-backed')"), true);
+      assert.equal(await evaluate(`document.getElementById('region-count').textContent.includes('${regionCount(region)} source-backed')`), true);
       assert.equal(await evaluate("document.getElementById('selected-pandal').textContent.includes('Restaurant on Google Maps')"), false);
       assert.equal(await evaluate("document.querySelectorAll('#featured-pandals button').length <= 6"), true);
       assert.equal(await evaluate("document.querySelectorAll('.restaurant-links li').length <= 20"), true);
@@ -509,6 +510,21 @@ try {
   // Rich/historical profile fixtures are browser-memory only, never catalog facts.
   await command('Page.navigate', {url:origin+'/?region=london&pandal=london-bcsc'});
   await waitFor("document.querySelector('.puja-profile') && !document.getElementById('selected-pandal').hidden");
+  const profileActions = await evaluate(`(async()=>{
+    const data=await (await fetch('data/pandals.json')).json();
+    const p=data.records.find(p=>p.pandal_id==='london-bcsc');
+    const anchors=[...document.querySelectorAll('.puja-actions a')];
+    const direction=anchors.find(a=>a.textContent==='Directions');
+    return {destination:new URL(direction.href).searchParams.get('destination'),
+      expected:p.edition.location.latitude+','+p.edition.location.longitude,
+      target:direction.target,rel:direction.rel,
+      official:anchors.some(a=>a.textContent==='Official site'),
+      share:[...document.querySelectorAll('.puja-actions button')].some(b=>b.textContent==='Share Puja')};
+  })()`);
+  assert.equal(profileActions.destination,profileActions.expected);
+  assert.equal(profileActions.target,'_blank');
+  assert.equal(profileActions.rel,'noopener noreferrer');
+  assert.ok(profileActions.official && profileActions.share);
   for (const [width,bn,historical] of [[1440,false,false],[768,false,true],[390,true,false]]) {
     await command('Emulation.setDeviceMetricsOverride',{width,height:1000,deviceScaleFactor:1,mobile:width<600});
     await evaluate(`(async()=>{const {renderProfile}=await import('./puja-profile.mjs');const data=await (await fetch('data/pandals.json')).json();const p=structuredClone(data.records.find(p=>p.pandal_id==='london-bcsc'));p.name='Fixture profile — not published';p.edition.year=${historical ? 2025 : 2026};p.edition.programme_notes=[{title:'Fixture programme',text:'Synthetic cultural highlight',evidence:p.sources}];p.about={text:'Synthetic source-grounded introduction fixture',evidence:p.sources};document.querySelector('.puja-profile').replaceWith(renderProfile(p,{label:'London'},[],${bn}));})()`);
@@ -519,6 +535,18 @@ try {
     await delay(500);
     await screenshot(`profile-${width}-${bn?'bn':'en'}-${historical?'historical':'current'}`,false);
   }
+  // Address-only reviewed edition: no fabricated marker or inherited old coordinates.
+  const addressTarget = await evaluate(`(async()=>{
+    const {renderProfile}=await import('./puja-profile.mjs');
+    const data=await (await fetch('data/pandals.json')).json();
+    const p=structuredClone(data.records.find(p=>p.pandal_id==='london-bcsc'));
+    p.edition.location.latitude=null;p.edition.location.longitude=null;
+    document.querySelector('.puja-profile').replaceWith(renderProfile(p,{label:'London'},[],false));
+    const a=[...document.querySelectorAll('.puja-actions a')].find(a=>a.textContent==='Directions');
+    return {actual:new URL(a.href).searchParams.get('destination'),
+      expected:[p.edition.location.venue,p.edition.location.address,p.edition.location.city].filter(Boolean).join(', ')};
+  })()`);
+  assert.equal(addressTarget.actual,addressTarget.expected);
   assert.deepEqual(runtimeErrors, []);
   assert.equal(placesRequests, 0);
   assert.equal(osmRequests, 0);

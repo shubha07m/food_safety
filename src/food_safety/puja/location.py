@@ -34,6 +34,15 @@ def effective_location(record, year=None):
         and bool(source.get("coordinate_source"))
     )
     precision = source.get("coordinate_precision")
+    # Address-only directions must use this edition's evidenced override.
+    reviewed_address = bool(
+        override
+        and lat is None
+        and lon is None
+        and (source.get("venue") or "").strip()
+        and (source.get("address") or "").strip()
+        and source.get("evidence")
+    )
     return {
         "venue": source.get("venue"),
         "address": source.get("address"),
@@ -50,7 +59,10 @@ def effective_location(record, year=None):
         "map_eligible": bool(mapped),
         "near_me_eligible": bool(mapped and precision == "venue"),
         "directions_eligible": bool(
-            mapped and current and edition.get("venue_reviewed") and precision == "venue"
+            p.get("enabled") is not False
+            and current
+            and edition.get("venue_reviewed") is True
+            and ((mapped and precision == "venue") or reviewed_address)
         ),
         "anchor_key": f"{lat:.7f},{lon:.7f}" if mapped else None,
     }
