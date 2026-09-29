@@ -73,6 +73,40 @@ def test_refresh_is_two_hour_bounded_and_release_push_skips_discovery():
     assert "git add" not in steps
 
 
+def test_generated_commit_step_noop_completes_without_early_login_shell_exit():
+    import subprocess
+
+    workflow = yaml.load(
+        (ROOT / ".github/workflows/update-data.yml").read_text(), Loader=yaml.BaseLoader
+    )
+    script = next(
+        s["run"]
+        for s in workflow["jobs"]["candidates"]["steps"]
+        if s.get("name") == "Commit approved artifacts only"
+    )
+    # Execute the real shell step with local-only command doubles. An explicit
+    # exit on the no-op path bypasses normal completion of a login-shell script.
+    for diff_status in (0, 1):
+        prelude = f"""
+python() {{ return 0; }}
+git() {{
+  if [ "$1" = diff ]; then return {diff_status}; fi
+  case "$*" in
+    *" commit "*) echo committed ;;
+    *" push "*) echo pushed ;;
+    *) return 99 ;;
+  esac
+}}
+"""
+        result = subprocess.run(
+            ["bash", "-e", "-c", prelude + script + "\necho completed"],
+            text=True, capture_output=True, check=True,
+        )
+        assert result.stdout.splitlines() == (
+            ["completed"] if diff_status == 0 else ["committed", "pushed", "completed"]
+        )
+
+
 def test_canonical_urls_and_readme_assets_exist():
     import re
 
