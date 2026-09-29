@@ -12,6 +12,11 @@ sources:
   allow_missing_robots: true
   region_id: toronto
   reviewed_revision: f30d4e3fddd7af1888699f96752931e18c57302abf5583bf76736fed1825fe95
+- source_id: approved-pc-614bd27700c3febd5df7
+  url: https://www.agomoni.ca/
+  publisher: www.agomoni.ca
+  region_id: toronto
+  source_kind: association
 published:
 - pandal_id: gta-durba
   region_id: toronto
@@ -142,3 +147,30 @@ published:
       not automatically verified.
     source_revision_id: f30d4e3fddd7af1888699f96752931e18c57302abf5583bf76736fed1825fe95
   last_verified_at: '2026-09-26T21:38:15.798518Z'
+- pandal_id: toronto-agomoni
+  region_id: toronto
+  country_code: CA
+  admin1: Ontario
+  name: Agomoni
+  area: Toronto / GTA
+  city: Toronto / GTA
+  official_links:
+  - kind: website
+    url: https://www.agomoni.ca/
+    evidence:
+      source_url: https://www.agomoni.ca/
+      source_title: www.agomoni.ca
+      publisher: www.agomoni.ca
+      quote: Agomoni Cultural Association of Durham is a non-profit organization registered
+        in Canada to promote Bengali culture and welcome members from every nationality,
+        race, age, and religion.
+      source_revision_id: 9f396e2116e5725eec259df5df9e0704b662d1aa488a15f4118e6b525a5feab2
+  sources:
+  - source_url: https://www.agomoni.ca/
+    source_title: www.agomoni.ca
+    publisher: www.agomoni.ca
+    quote: Agomoni Cultural Association of Durham is a non-profit organization registered
+      in Canada to promote Bengali culture and welcome members from every nationality,
+      race, age, and religion.
+    source_revision_id: 9f396e2116e5725eec259df5df9e0704b662d1aa488a15f4118e6b525a5feab2
+  last_verified_at: '2026-09-29T02:54:36.033272Z'
