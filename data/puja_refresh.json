@@ -5,10 +5,10 @@
       "content_hash": "0a333a424c1e491859f9e3355173b7ad50d0df917472263ae32512836694990b",
       "etag": "\"6ab3490a-67e0\"",
       "extraction_status": "not_requested",
-      "last_attempt": "2026-09-30T16:25:08.650431+00:00",
+      "last_attempt": "2026-10-01T17:02:06.876403+00:00",
       "last_modified": "Wed, 23 Sep 2026 03:35:38 GMT",
       "last_reviewed_revision": null,
-      "last_success": "2026-09-30T16:25:08.650431+00:00",
+      "last_success": "2026-10-01T17:02:06.876403+00:00",
       "pending_change": true,
       "status": "checked",
       "url": "https://aantorik.org/"
@@ -33,11 +33,11 @@
     },
     "approved-pc-5eab5ce748be011628eb": {
       "content_hash": "c018f78c00691acd0be33be510baab9683d55b777946eb0c55eaea20230fc730",
-      "etag": "W/\"ab5b4c97c30e6a596604c2be766bb5af--gzip\"",
+      "etag": "W/\"d059224d6975989fe14001b93df989cd--gzip\"",
       "extraction_status": "not_requested",
-      "last_attempt": "2026-09-30T16:25:08.650431+00:00",
+      "last_attempt": "2026-10-01T17:02:06.876403+00:00",
       "last_reviewed_revision": null,
-      "last_success": "2026-09-30T16:25:08.650431+00:00",
+      "last_success": "2026-10-01T17:02:06.876403+00:00",
       "pending_change": true,
       "status": "checked",
       "url": "https://www.wmdurgautsav.org/bongosathi"
@@ -105,7 +105,7 @@
     "ca-basc": {
       "error": "FetchError",
       "extraction_status": "not_requested",
-      "last_attempt": "2026-09-30T08:31:37.592880+00:00",
+      "last_attempt": "2026-10-01T17:02:06.876403+00:00",
       "last_reviewed_revision": null,
       "status": "unavailable",
       "url": "https://bascweb.org/"
@@ -113,9 +113,9 @@
     "ca-pashchimi": {
       "content_hash": "7eff6c576644d44dc8e21c9a22192f96254b551468ec38b2dfdf6897cd4d42b0",
       "extraction_status": "not_requested",
-      "last_attempt": "2026-09-30T08:31:37.592880+00:00",
+      "last_attempt": "2026-10-01T17:02:06.876403+00:00",
       "last_reviewed_revision": "663916559774ac5ce66c0ff3672fa1435604e5c75062ec92d098006a96008669",
-      "last_success": "2026-09-30T08:31:37.592880+00:00",
+      "last_success": "2026-10-01T17:02:06.876403+00:00",
       "pending_change": true,
       "status": "checked",
       "url": "https://pashchimi.org/"
@@ -123,7 +123,7 @@
     "ca-sanskriti": {
       "error": "FetchError",
       "extraction_status": "not_requested",
-      "last_attempt": "2026-09-30T08:31:37.592880+00:00",
+      "last_attempt": "2026-10-01T17:02:06.876403+00:00",
       "last_reviewed_revision": null,
       "status": "unavailable",
       "url": "https://www.sanskriti.org/"
