@@ -45,21 +45,21 @@
     "approved-pc-614bd27700c3febd5df7": {
       "error": "FetchError",
       "extraction_status": "not_requested",
-      "last_attempt": "2026-10-01T22:40:17.030581+00:00",
+      "last_attempt": "2026-10-03T05:16:00.099546+00:00",
       "last_reviewed_revision": null,
       "status": "unavailable",
       "url": "https://www.agomoni.ca/"
     },
     "approved-pc-618b4ad63a9589692143": {
       "content_hash": "44b52c210c399b3adb0c68e6090aa06d1d2670274df6afd7e479125afc875071",
-      "error": "OSError",
+      "error": "TimeoutError",
       "etag": "\"77-1790724479;gz\"",
       "extraction_status": "not_requested",
-      "last_attempt": "2026-10-01T22:40:17.030581+00:00",
+      "last_attempt": "2026-10-03T05:16:00.099546+00:00",
       "last_reviewed_revision": null,
       "last_success": "2026-10-01T22:40:17.030581+00:00",
       "pending_change": true,
-      "status": "checked",
+      "status": "unavailable",
       "url": "https://utsavclub.co.uk/"
     },
     "approved-pc-683dd31210b05d14cde1": {
@@ -76,7 +76,7 @@
     "approved-pc-9f086c95bacabad174cf": {
       "error": "OSError",
       "extraction_status": "not_requested",
-      "last_attempt": "2026-10-01T22:40:17.030581+00:00",
+      "last_attempt": "2026-10-03T05:16:00.099546+00:00",
       "last_reviewed_revision": null,
       "status": "unavailable",
       "url": "https://www.londondurgapuja.com/"
