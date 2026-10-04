@@ -46,7 +46,7 @@
     "approved-pc-614bd27700c3febd5df7": {
       "error": "FetchError",
       "extraction_status": "not_requested",
-      "last_attempt": "2026-10-03T05:16:00.099546+00:00",
+      "last_attempt": "2026-10-04T12:19:08.078742+00:00",
       "last_reviewed_revision": null,
       "status": "unavailable",
       "url": "https://www.agomoni.ca/"
@@ -56,7 +56,7 @@
       "error": "TimeoutError",
       "etag": "\"77-1790724479;gz\"",
       "extraction_status": "not_requested",
-      "last_attempt": "2026-10-03T05:16:00.099546+00:00",
+      "last_attempt": "2026-10-04T12:19:08.078742+00:00",
       "last_reviewed_revision": null,
       "last_success": "2026-10-01T22:40:17.030581+00:00",
       "pending_change": true,
@@ -66,10 +66,10 @@
     "approved-pc-683dd31210b05d14cde1": {
       "content_hash": "1166967f9b228828474ea519c7a14ca38b0b98d78afea8888419d2764ff5d1b0",
       "extraction_status": "not_requested",
-      "last_attempt": "2026-10-03T11:37:24.742078+00:00",
-      "last_modified": "Sat, 03 Oct 2026 08:56:41 GMT",
+      "last_attempt": "2026-10-04T12:19:08.078742+00:00",
+      "last_modified": "Sat, 03 Oct 2026 16:31:00 GMT",
       "last_reviewed_revision": null,
-      "last_success": "2026-10-03T11:37:24.742078+00:00",
+      "last_success": "2026-10-04T12:19:08.078742+00:00",
       "pending_change": true,
       "status": "checked",
       "url": "https://utsavsac.org/"
@@ -77,7 +77,7 @@
     "approved-pc-9f086c95bacabad174cf": {
       "error": "OSError",
       "extraction_status": "not_requested",
-      "last_attempt": "2026-10-03T05:16:00.099546+00:00",
+      "last_attempt": "2026-10-04T12:19:08.078742+00:00",
       "last_reviewed_revision": null,
       "status": "unavailable",
       "url": "https://www.londondurgapuja.com/"
@@ -132,7 +132,7 @@
     "ca-vbc": {
       "error": "FetchError",
       "extraction_status": "not_requested",
-      "last_attempt": "2026-10-03T11:37:24.742078+00:00",
+      "last_attempt": "2026-10-04T12:19:08.078742+00:00",
       "last_reviewed_revision": null,
       "status": "unavailable",
       "url": "https://durga.valleybengali.org/"
