@@ -83,22 +83,22 @@
       "url": "https://www.londondurgapuja.com/"
     },
     "ca-agomoni": {
-      "content_hash": "082a584f50e5ad4a7d417ae67a70c04169b4db85439d01b2bae8fda09e74d143",
+      "content_hash": "28e4a1a089bb2890c87659ea02e45150350d86a409929ac1b290b324afa030a7",
       "error": "TimeoutError",
       "extraction_status": "not_requested",
-      "last_attempt": "2026-10-04T18:09:38.568806+00:00",
+      "last_attempt": "2026-10-06T01:18:06.527065+00:00",
       "last_reviewed_revision": "082a584f50e5ad4a7d417ae67a70c04169b4db85439d01b2bae8fda09e74d143",
-      "last_success": "2026-10-04T18:09:38.568806+00:00",
-      "pending_change": false,
+      "last_success": "2026-10-06T01:18:06.527065+00:00",
+      "pending_change": true,
       "status": "checked",
       "url": "https://agomoni.org/durgapuja-2026/"
     },
     "ca-ankur": {
       "content_hash": "7d28d9ffd2fdf2aff68240f661b0d577f9d41291459ff02a588e7c2b3c945b3e",
       "extraction_status": "not_requested",
-      "last_attempt": "2026-10-04T18:09:38.568806+00:00",
+      "last_attempt": "2026-10-06T01:18:06.527065+00:00",
       "last_reviewed_revision": "7d28d9ffd2fdf2aff68240f661b0d577f9d41291459ff02a588e7c2b3c945b3e",
-      "last_success": "2026-10-04T18:09:38.568806+00:00",
+      "last_success": "2026-10-06T01:18:06.527065+00:00",
       "pending_change": false,
       "status": "checked",
       "url": "https://www.ankurinc.org/"
@@ -139,11 +139,11 @@
     },
     "gta-apcat": {
       "content_hash": "d6b1ef3e9c15551628a9cdd3995f4990c94190aa0314f9dc2a37a9939700766b",
-      "etag": "W/\"cbbda06df314a5440bb08cdfc74887e0\"",
+      "etag": "W/\"6e02b43c3e5cea1ec60da7df4ddda0a5\"",
       "extraction_status": "not_requested",
-      "last_attempt": "2026-10-04T18:09:38.568806+00:00",
+      "last_attempt": "2026-10-06T01:18:06.527065+00:00",
       "last_reviewed_revision": "f30d4e3fddd7af1888699f96752931e18c57302abf5583bf76736fed1825fe95",
-      "last_success": "2026-10-04T18:09:38.568806+00:00",
+      "last_success": "2026-10-06T01:18:06.527065+00:00",
       "pending_change": true,
       "status": "checked",
       "url": "https://www.apcatweb.com/"
@@ -151,7 +151,7 @@
     "gta-durba": {
       "error": "FetchError",
       "extraction_status": "not_requested",
-      "last_attempt": "2026-10-04T18:09:38.568806+00:00",
+      "last_attempt": "2026-10-06T01:18:06.527065+00:00",
       "last_reviewed_revision": null,
       "status": "unavailable",
       "url": "https://durbafoundation.ca/"
@@ -189,11 +189,11 @@
     "london-bcsc": {
       "content_hash": "8a2949568c055819998a6ccce777aa1aae8aaa068b491c4dd9057e709013f0f6",
       "error": "OSError",
-      "etag": "W/\"281-1790797600;gz\"",
+      "etag": "W/\"357-1791236506;gz\"",
       "extraction_status": "not_requested",
-      "last_attempt": "2026-10-04T18:09:38.568806+00:00",
+      "last_attempt": "2026-10-06T01:18:06.527065+00:00",
       "last_reviewed_revision": "8a2949568c055819998a6ccce777aa1aae8aaa068b491c4dd9057e709013f0f6",
-      "last_success": "2026-10-04T18:09:38.568806+00:00",
+      "last_success": "2026-10-06T01:18:06.527065+00:00",
       "pending_change": false,
       "status": "checked",
       "url": "https://bengali-cultural-social-club.org.uk/london-durga-puja-schedule"
