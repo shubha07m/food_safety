@@ -44,19 +44,19 @@
       "url": "https://www.wmdurgautsav.org/bongosathi"
     },
     "approved-pc-614bd27700c3febd5df7": {
-      "error": "OSError",
+      "error": "FetchError",
       "extraction_status": "not_requested",
-      "last_attempt": "2026-10-05T19:23:26.279440+00:00",
+      "last_attempt": "2026-10-06T22:39:16.333770+00:00",
       "last_reviewed_revision": null,
       "status": "unavailable",
       "url": "https://www.agomoni.ca/"
     },
     "approved-pc-618b4ad63a9589692143": {
       "content_hash": "44b52c210c399b3adb0c68e6090aa06d1d2670274df6afd7e479125afc875071",
-      "error": "FetchError",
+      "error": "OSError",
       "etag": "\"77-1790724479;gz\"",
       "extraction_status": "not_requested",
-      "last_attempt": "2026-10-05T19:23:26.279440+00:00",
+      "last_attempt": "2026-10-06T22:39:16.333770+00:00",
       "last_reviewed_revision": null,
       "last_success": "2026-10-01T22:40:17.030581+00:00",
       "pending_change": true,
@@ -104,9 +104,9 @@
       "url": "https://www.ankurinc.org/"
     },
     "ca-basc": {
-      "error": "FetchError",
+      "error": "TimeoutError",
       "extraction_status": "not_requested",
-      "last_attempt": "2026-10-05T09:01:16.821496+00:00",
+      "last_attempt": "2026-10-06T22:39:16.333770+00:00",
       "last_reviewed_revision": null,
       "status": "unavailable",
       "url": "https://bascweb.org/"
@@ -114,9 +114,9 @@
     "ca-pashchimi": {
       "content_hash": "7eff6c576644d44dc8e21c9a22192f96254b551468ec38b2dfdf6897cd4d42b0",
       "extraction_status": "not_requested",
-      "last_attempt": "2026-10-05T09:01:16.821496+00:00",
+      "last_attempt": "2026-10-06T22:39:16.333770+00:00",
       "last_reviewed_revision": "663916559774ac5ce66c0ff3672fa1435604e5c75062ec92d098006a96008669",
-      "last_success": "2026-10-05T09:01:16.821496+00:00",
+      "last_success": "2026-10-06T22:39:16.333770+00:00",
       "pending_change": true,
       "status": "checked",
       "url": "https://pashchimi.org/"
@@ -124,7 +124,7 @@
     "ca-sanskriti": {
       "error": "FetchError",
       "extraction_status": "not_requested",
-      "last_attempt": "2026-10-05T09:01:16.821496+00:00",
+      "last_attempt": "2026-10-06T22:39:16.333770+00:00",
       "last_reviewed_revision": null,
       "status": "unavailable",
       "url": "https://www.sanskriti.org/"
