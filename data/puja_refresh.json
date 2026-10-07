@@ -66,10 +66,10 @@
     "approved-pc-683dd31210b05d14cde1": {
       "content_hash": "1166967f9b228828474ea519c7a14ca38b0b98d78afea8888419d2764ff5d1b0",
       "extraction_status": "not_requested",
-      "last_attempt": "2026-10-05T19:23:26.279440+00:00",
-      "last_modified": "Sat, 03 Oct 2026 16:31:00 GMT",
+      "last_attempt": "2026-10-07T05:56:20.344018+00:00",
+      "last_modified": "Wed, 07 Oct 2026 05:56:20 GMT",
       "last_reviewed_revision": null,
-      "last_success": "2026-10-05T19:23:26.279440+00:00",
+      "last_success": "2026-10-07T05:56:20.344018+00:00",
       "pending_change": true,
       "status": "checked",
       "url": "https://utsavsac.org/"
@@ -77,18 +77,18 @@
     "approved-pc-9f086c95bacabad174cf": {
       "error": "OSError",
       "extraction_status": "not_requested",
-      "last_attempt": "2026-10-05T19:23:26.279440+00:00",
+      "last_attempt": "2026-10-07T05:56:20.344018+00:00",
       "last_reviewed_revision": null,
       "status": "unavailable",
       "url": "https://www.londondurgapuja.com/"
     },
     "ca-agomoni": {
-      "content_hash": "28e4a1a089bb2890c87659ea02e45150350d86a409929ac1b290b324afa030a7",
+      "content_hash": "72231c411993a12d02ac8fb01edc7b1358d648427c14bd1ed937123202eb57f3",
       "error": "TimeoutError",
       "extraction_status": "not_requested",
-      "last_attempt": "2026-10-06T01:18:06.527065+00:00",
+      "last_attempt": "2026-10-07T05:56:20.344018+00:00",
       "last_reviewed_revision": "082a584f50e5ad4a7d417ae67a70c04169b4db85439d01b2bae8fda09e74d143",
-      "last_success": "2026-10-06T01:18:06.527065+00:00",
+      "last_success": "2026-10-07T05:56:20.344018+00:00",
       "pending_change": true,
       "status": "checked",
       "url": "https://agomoni.org/durgapuja-2026/"
@@ -96,9 +96,9 @@
     "ca-ankur": {
       "content_hash": "7d28d9ffd2fdf2aff68240f661b0d577f9d41291459ff02a588e7c2b3c945b3e",
       "extraction_status": "not_requested",
-      "last_attempt": "2026-10-06T01:18:06.527065+00:00",
+      "last_attempt": "2026-10-07T05:56:20.344018+00:00",
       "last_reviewed_revision": "7d28d9ffd2fdf2aff68240f661b0d577f9d41291459ff02a588e7c2b3c945b3e",
-      "last_success": "2026-10-06T01:18:06.527065+00:00",
+      "last_success": "2026-10-07T05:56:20.344018+00:00",
       "pending_change": false,
       "status": "checked",
       "url": "https://www.ankurinc.org/"
@@ -132,7 +132,7 @@
     "ca-vbc": {
       "error": "FetchError",
       "extraction_status": "not_requested",
-      "last_attempt": "2026-10-05T19:23:26.279440+00:00",
+      "last_attempt": "2026-10-07T05:56:20.344018+00:00",
       "last_reviewed_revision": null,
       "status": "unavailable",
       "url": "https://durga.valleybengali.org/"
