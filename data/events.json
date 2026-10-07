@@ -1,6 +1,6 @@
 {
   "context_notice": "Independent, non-governmental public-source research. Inclusion is not a finding of wrongdoing. Counts describe records in this tracker, not official totals, prevalence, compliance, risk or group behavior. Read the sources and preserve this context when sharing.",
-  "generated_at": "2026-10-07T05:56:10.954343+00:00",
+  "generated_at": "2026-10-07T13:18:51.177001+00:00",
   "pipeline_version": "0.3.0",
   "record_count": 47,
   "records": [
@@ -700,11 +700,17 @@
           "note": "Supporting source context revalidated; original evidence retained.",
           "previous_record_sha256": "c0677b0ce016348fcf79281ddec24eb4157d2e5330bc34ac7c3fac7aaf18adcb",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-10-07T13:18:51.177001Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "f960b315090c860e45290deb4039d0c442f87840ecbdc9fbd284e7905921558b",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-10-06T16:48:15.623380Z",
-      "last_successful_evidence_check_at": "2026-10-06T16:48:15.623380Z",
+      "last_source_checked_at": "2026-10-07T13:18:51.177001Z",
+      "last_successful_evidence_check_at": "2026-10-07T13:18:51.177001Z",
       "llm": {
         "fields_proposed": [],
         "llm_model": null,
@@ -724,7 +730,7 @@
       "record_class": "inspection_evidence",
       "record_created_at": "2026-09-09T23:11:25.626009Z",
       "record_scope": "area_operation",
-      "record_updated_at": "2026-10-06T16:48:15.623380Z",
+      "record_updated_at": "2026-10-07T13:18:51.177001Z",
       "related_record_ids": [],
       "reported_fact": {
         "area": "ডেকার্স লেন",
@@ -1059,11 +1065,17 @@
           "note": "Supporting source context revalidated; original evidence retained.",
           "previous_record_sha256": "d936b36348bbbf0b457ec49161f695462594a58a188e2af1617041799a25400c",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-10-07T13:18:51.177001Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "2da7bf1c8b1386897614600a0fa12f87be78b02f6bd240629c9f02af4d83ea89",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-10-06T16:48:15.623380Z",
-      "last_successful_evidence_check_at": "2026-10-06T16:48:15.623380Z",
+      "last_source_checked_at": "2026-10-07T13:18:51.177001Z",
+      "last_successful_evidence_check_at": "2026-10-07T13:18:51.177001Z",
       "llm": {
         "fields_proposed": [
           "area",
@@ -1090,7 +1102,7 @@
       "record_class": "inspection_evidence",
       "record_created_at": "2026-09-11T11:18:01.816017Z",
       "record_scope": "establishment_event",
-      "record_updated_at": "2026-10-06T16:48:15.623380Z",
+      "record_updated_at": "2026-10-07T13:18:51.177001Z",
       "related_record_ids": [],
       "reported_fact": {
         "area": "বাদুড়িয়া",
@@ -1423,11 +1435,17 @@
           "note": "Supporting source context revalidated; original evidence retained.",
           "previous_record_sha256": "c8e044b023dcd213b922d111a2e529763cc4d6360ade9d6a860fa649987d3e28",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-10-07T13:18:51.177001Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "a82a32b7f099ed233f09f0728a1c72a08e7c9de671591130b3df30873e2e3baa",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-10-05T19:23:15.807606Z",
-      "last_successful_evidence_check_at": "2026-10-05T19:23:15.807606Z",
+      "last_source_checked_at": "2026-10-07T13:18:51.177001Z",
+      "last_successful_evidence_check_at": "2026-10-07T13:18:51.177001Z",
       "llm": {
         "fields_proposed": [
           "area",
@@ -1454,7 +1472,7 @@
       "record_class": "inspection_evidence",
       "record_created_at": "2026-09-11T04:37:44.799127Z",
       "record_scope": "establishment_event",
-      "record_updated_at": "2026-10-05T19:23:15.807606Z",
+      "record_updated_at": "2026-10-07T13:18:51.177001Z",
       "related_record_ids": [],
       "reported_fact": {
         "area": "ট্যাংরার",
@@ -4530,11 +4548,17 @@
           "note": "Supporting source context revalidated; original evidence retained.",
           "previous_record_sha256": "0c9963537d20ce792a9b981189cb1e6da8e87914b766e22c0c8259a088aa4a81",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-10-07T13:18:51.177001Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "837bca51e1f140b2e9e8c855507542d2ac3eac258fcc0bf89d8820d7ecc7e7a3",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-10-06T16:48:15.623380Z",
-      "last_successful_evidence_check_at": "2026-10-06T16:48:15.623380Z",
+      "last_source_checked_at": "2026-10-07T13:18:51.177001Z",
+      "last_successful_evidence_check_at": "2026-10-07T13:18:51.177001Z",
       "llm": {
         "fields_proposed": [
           "area",
@@ -4560,7 +4584,7 @@
       "record_class": "inspection_evidence",
       "record_created_at": "2026-09-13T11:48:42.474489Z",
       "record_scope": "statewide_operation",
-      "record_updated_at": "2026-10-06T16:48:15.623380Z",
+      "record_updated_at": "2026-10-07T13:18:51.177001Z",
       "related_record_ids": [],
       "reported_fact": {
         "area": "across the state",
@@ -13676,11 +13700,17 @@
           "note": "Supporting source context revalidated; original evidence retained.",
           "previous_record_sha256": "e1742f4d36953833d8d3251a6c73d2029908cb93566917449b77f30eec544180",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-10-07T13:18:51.177001Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "b3cca8ab1772f8823a8ab2af7c1e09830a8019be507aabb4f458db39d6bf066e",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-10-05T19:23:15.807606Z",
-      "last_successful_evidence_check_at": "2026-10-05T19:23:15.807606Z",
+      "last_source_checked_at": "2026-10-07T13:18:51.177001Z",
+      "last_successful_evidence_check_at": "2026-10-07T13:18:51.177001Z",
       "llm": {
         "fields_proposed": [
           "area",
@@ -13706,7 +13736,7 @@
       "record_class": "inspection_evidence",
       "record_created_at": "2026-09-11T16:27:14.451761Z",
       "record_scope": "district_operation",
-      "record_updated_at": "2026-10-05T19:23:15.807606Z",
+      "record_updated_at": "2026-10-07T13:18:51.177001Z",
       "related_record_ids": [],
       "reported_fact": {
         "area": "পূর্ব মেদিনীপুর",
