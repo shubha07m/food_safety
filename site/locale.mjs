@@ -1,6 +1,19 @@
 // Static editorial UI translations. Source evidence is never sent to a translation API.
 export const language = new URLSearchParams(globalThis.location?.search || '').get('lang') === 'bn' ? 'bn' : 'en';
 export const bn = {
+  'FOODPATH / CORRECTIONS': 'ফুডপাথ / সংশোধন',
+  'Help keep sources and listings accurate.': 'উৎস ও তালিকার তথ্য নির্ভুল রাখতে সাহায্য করুন।',
+  'Puja and nearby food': 'পুজো ও কাছাকাছি খাবার',
+  'Suggest a Puja, report a changed venue/date, or correct a listing using our existing Google Form — no GitHub account needed.': 'নতুন পুজোর পরামর্শ, স্থান/তারিখের পরিবর্তন বা তালিকার সংশোধন জানান আমাদের বর্তমান Google Form-এ — GitHub অ্যাকাউন্টের প্রয়োজন নেই।',
+  'Provide the Puja name, city/region and public source URL. Describe the correction or nearby-food detail in Additional note. Do not include private information. The owner reviews submissions; nothing publishes automatically.': 'পুজোর নাম, শহর/অঞ্চল ও প্রকাশ্য উৎসের URL দিন। Additional note ঘরে সংশোধন বা কাছাকাছি খাবারের তথ্য লিখুন। ব্যক্তিগত তথ্য দেবেন না। মালিক জমা পড়া তথ্য পর্যালোচনা করেন; কিছুই নিজে থেকে প্রকাশিত হয় না।',
+  'Correction form is temporarily unavailable. Please try again later.': 'সংশোধনের ফর্ম এই মুহূর্তে পাওয়া যাচ্ছে না। পরে আবার চেষ্টা করুন।',
+  'Food Safety Evidence · West Bengal': 'খাদ্য সুরক্ষার উৎসভিত্তিক নথি · পশ্চিমবঙ্গ',
+  'Play dhaak': 'ঢাক বাজান',
+  'Stop dhaak': 'ঢাক থামান',
+  'Public Food Safety correction submissions are temporarily closed while the intake process is being finalized.': 'গ্রহণের প্রক্রিয়া চূড়ান্ত করার সময় খাদ্য সুরক্ষা সংক্রান্ত সংশোধনের প্রকাশ্য অনুরোধ সাময়িকভাবে বন্ধ রয়েছে।',
+  'The correction and source-review policy remains available below.': 'সংশোধন ও উৎস পর্যালোচনার নীতি নীচে দেওয়া আছে।',
+  'Read the correction and source-review policy →': 'সংশোধন ও উৎস পর্যালোচনার নীতি পড়ুন →',
+  'Source-review expectations': 'উৎস পর্যালোচনার শর্ত',
   'FOODPATH': 'ফুডপাথ',
   'FOODPATH · SOURCE-CONSCIOUS DISCOVERY': 'ফুডপাথ · উৎসসচেতন খোঁজ',
   'Source-conscious Puja and nearby-food discovery. Nearby does not mean recommended, inspected or safety-rated.': 'উৎসসচেতন পুজো ও কাছাকাছি খাবারের খোঁজ। কাছে থাকা মানেই সুপারিশপ্রাপ্ত, পরিদর্শিত বা নিরাপদ বলে চিহ্নিত নয়।',

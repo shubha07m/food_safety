@@ -33,3 +33,10 @@ test('configured Puja form opens a new tab; missing config stays unavailable', (
   assert.match(html, /Suggestion form coming shortly/);
   assert.doesNotMatch(html, /issues\/new\?template=suggest_puja/);
 });
+test('corrections reuse the same form helper with a localized action label and no context payload',()=>{
+  const container={ownerDocument:{createElement:()=>({})},replaceChildren(...children){this.children=children;}};
+  assert.equal(showPujaSuggestion(container,'https://forms.gle/DfebWArXd7AFtH9d7','পুজোর পরামর্শ বা সংশোধন জানান ↗'),true);
+  assert.equal(container.children[0].textContent,'পুজোর পরামর্শ বা সংশোধন জানান ↗');
+  assert.equal(container.children[0].href,'https://forms.gle/DfebWArXd7AFtH9d7');
+  assert.equal(new URL(container.children[0].href).search,'');
+});

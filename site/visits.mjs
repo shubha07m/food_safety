@@ -14,16 +14,22 @@ export async function visitCount({ fetcher = fetch, storage } = {}) {
     return Number.isSafeInteger(data.count) && data.count >= 0 ? data.count : null;
   } catch { return null; }
 }
-export function initVisits(doc = document) {
+export function visitCopy(count, bn = false) {
+  const n = count.toLocaleString(bn ? 'bn-BD' : 'en-US');
+  return { label: bn ? `${n} সাইট ভিজিট — গণনা চলছে` : `${n} site visits and counting`,
+    description: bn ? 'আনুমানিক ব্রাউজার-ট্যাব সেশনের সংখ্যা; স্বতন্ত্র মানুষের সংখ্যা নয়'
+      : 'Approximate counted browser-tab sessions, not unique people' };
+}
+export function initVisits(doc = document, { countVisit = visitCount, schedule = setTimeout } = {}) {
   const node = doc.getElementById('site-visits'); if (!node) return;
   const start = () => {
     if (doc.visibilityState === 'hidden') return;
     doc.removeEventListener('visibilitychange', start);
-    setTimeout(async () => {
+    schedule(async () => {
       if (doc.visibilityState === 'hidden') { doc.addEventListener('visibilitychange', start); return; }
       let count = null;
-      try { count = await visitCount(); } catch { /* Storage may be unavailable. */ }
-      if (count !== null) { node.textContent = `${count.toLocaleString()} ${doc.documentElement.lang === 'bn' ? 'সাইট ভিজিট' : 'site visits'}`; node.title = 'Approximate counted browser-tab sessions, not unique people'; node.hidden = false; }
+      try { count = await countVisit(); } catch { /* Storage may be unavailable. */ }
+      if (count !== null) { const copy = visitCopy(count, doc.documentElement.lang === 'bn'); node.textContent = copy.label; node.title = copy.description; node.hidden = false; }
     }, 1500);
   };
   if (doc.visibilityState === 'hidden') doc.addEventListener('visibilitychange', start); else start();

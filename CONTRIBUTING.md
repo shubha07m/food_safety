@@ -22,10 +22,11 @@ Puja, food discovery and Food Safety are separate datasets. A nearby business is
 inspected, recommended or safety-rated. Regional food-search links are not restaurant
 records. An ID-only provider suggestion is not verified cross-provider identity.
 
-Use public PRs for code and non-sensitive data proposals. Source/correction intake may
-use the configured private-response Google Form or the controlled issue templates as
-appropriate; never post private information, unsupported allegations, full copyrighted
-articles or raw provider responses. Nothing submitted publishes automatically.
+Use public PRs for code and non-sensitive data proposals. Puja suggestions and
+corrections use the configured private-response Google Form. Public Food Safety
+correction intake is temporarily closed; its correction and source-review policy
+remains available. Never post private information, unsupported allegations, full
+copyrighted articles or raw provider responses. Nothing submitted publishes automatically.
 
 For source-backed data, include canonical URLs, source title/date where known,
 retrieval time and minimal exact support. Preserve stable IDs and unknown values.
@@ -36,7 +37,7 @@ corroboration.
 
 For annual changes, preserve stable Puja IDs and attach edition-specific date/venue
 evidence. Do not treat a freshness check as review. The selected-Puja report action
-prefills a GitHub issue; contributions remain review-only. Prefer structured source
+opens the existing Google Form; contributions remain review-only. Prefer structured source
 extraction before using the explicit bounded model path.
 
 For code, use the project environment, focused changes and synthetic fixtures. Run

@@ -1,5 +1,35 @@
 # Visual asset provenance
 
+## Optional Dhaak recording
+
+- File: `site/assets/puja/dhaak.mp3` (repository-root relative).
+- Added: 2026-10-09; supplied by the project maintainer, unchanged.
+- Per the maintainer, generated specifically for this project using Google Gemini
+  audio generation / their generation workflow. No generation API is used by the site.
+- Intended use: optional, explicitly user-started Puja ambience; looping stops on
+  user request, navigation away, or when the page is hidden. No autoplay.
+- MP3, stereo, 44.1 kHz, 192 kbps; approximately 60.45 seconds; 1,456,860 bytes.
+- SHA-256: `3739d5a86272f64058a9bd146df345e3fb1ad6f5ecfb8b138c382e8394f5dfa0`.
+- Rights/provenance established here are project-generated / user-supplied and
+  intentionally supplied for this use. No separate license or generation receipt
+  was supplied; this is not a claim of exclusive ownership, CC licensing, or MIT
+  coverage of the recording.
+
+## Optional Dhaak animation
+
+- File: `site/assets/puja/dhaak-playing.mp4` (repository-root relative).
+- Added: 2026-10-09; supplied by the maintainer as a Google Gemini-generated
+  decorative Dhaak animation. Original bytes retained; no re-encoding or audio
+  stripping (ffmpeg unavailable locally).
+- SHA-256: `2ddce497a3fa9a0a704173e9e06008a307ab4355dbfaf43ecb863147216785cb`.
+- Browser-decoded metadata: 1280 × 720, 10.005 seconds; 1,791,941 bytes.
+- The original contains audio, but the site always mutes it in markup and JavaScript,
+  also setting video volume to zero. Only `dhaak.mp3` supplies audible playback.
+- Loads only after explicitly starting the Dhaak sound; loops while sound plays,
+  resets on stop/navigation, and stays hidden/paused for reduced-motion preferences.
+- Provenance is project-generated / user-supplied for this use. No separate license
+  or generation receipt supplied; no claim of CC licensing or MIT media coverage.
+
 ## Social preview
 
 - `site/assets/social-preview.svg`: existing project-authored vector layout;

@@ -63,6 +63,17 @@ published:
   venue: Oasis Palace
   address: 35145 Newark Blvd, Newark, CA 94560
   event_dates: October 16–20, 2026
+  reviewed_dates:
+    start_date: '2026-10-16'
+    end_date: '2026-10-20'
+    timezone: America/Los_Angeles
+    reviewed_at: '2026-10-09T07:28:00Z'
+    evidence:
+    - source_url: https://pashchimi.org/
+      source_title: Pashchimi — Durga Puja 2026 event dates
+      publisher: Pashchimi
+      quote: "Friday, October 16th, 2026\nto\nTuesday, October 20th, 2026"
+      source_revision_id: c22b850d93f6ac62ac90957cb2d1fce69a9bb3140bda477eebf610e17f45d78f
   latitude: 37.5483346
   longitude: -122.048156
   coordinate_source: https://www.openstreetmap.org/node/5690230329
@@ -133,6 +144,17 @@ published:
   venue: 2600 Camino Ramon parking lot
   address: 2600 Camino Ramon, San Ramon, CA 94583
   event_dates: October 16–18, 2026
+  reviewed_dates:
+    start_date: '2026-10-16'
+    end_date: '2026-10-18'
+    timezone: America/Los_Angeles
+    reviewed_at: '2026-10-09T07:28:00Z'
+    evidence:
+    - source_url: https://agomoni.org/durgapuja-2026/
+      source_title: Agomoni — Durga Puja 2026 event dates
+      publisher: Agomoni
+      quote: 'Date: October 16 (Fri), 17 (Sat) & 18 (Sun), 2026'
+      source_revision_id: bdc23a68486be0f75c005ba8db5b4e196f8ccf1a9ef4650f12e20c7017ab1508
   organizer: Agomoni
   official_links:
   - kind: website
@@ -231,6 +253,17 @@ published:
   area: Sacramento
   city: Sacramento
   event_dates: October 23–25, 2026
+  reviewed_dates:
+    start_date: '2026-10-23'
+    end_date: '2026-10-25'
+    timezone: America/Los_Angeles
+    reviewed_at: '2026-10-09T07:28:00Z'
+    evidence:
+    - source_url: https://www.ankurinc.org/
+      source_title: Ankur — Sharodotsav 2026 event dates
+      publisher: Ankur Inc.
+      quote: "Sharodotsav\n🕐 23-Oct-2026, 3-Days(23-25 Oct) 📍 Sacramento Venue"
+      source_revision_id: fe035d8bff2d5a213c477915ebf71a9db181b664208a7fd7d256a25f12480d49
   location_precision: source_zone
   organizer: Ankur Inc.
   official_links:

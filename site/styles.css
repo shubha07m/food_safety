@@ -383,6 +383,35 @@ html[lang=bn] .eyebrow, html[lang=bn] .status-strip { letter-spacing: normal; }
 .puja-hero { min-height:570px; display:grid; grid-template-columns:.9fr 1.1fr; gap:clamp(28px,4vw,62px); align-items:center; padding:58px 0 48px; position:relative; }
 .puja-hero::before { content:""; position:absolute; inset:19px 0; pointer-events:none; border-block:1px solid #d2a13b40; background:repeating-linear-gradient(90deg,transparent 0 39px,#b9dde829 40px 41px,transparent 42px 80px); mask:linear-gradient(black 0 7px,transparent 7px calc(100% - 7px),black calc(100% - 7px)); }
 .puja-hero-copy { position:relative; z-index:1; }
+.dhaak-control { grid-column:1; grid-row:2; display:flex; flex-wrap:wrap; align-items:center; gap:10px; margin-top:-40px; }
+.puja-hero-art { grid-column:2; grid-row:1 / span 2; }
+#dhaak-toggle { display:inline-grid; place-items:center; padding:0; border:0; border-radius:24px; background:transparent; color:var(--puja-teal); overflow:hidden; }
+#dhaak-toggle:hover { background:var(--puja-sky-soft); }
+.dhaak-visual { position:relative; display:grid; place-items:center; width:96px; height:64px; flex:none; overflow:hidden; border-radius:24px; }
+#dhaak-toggle[data-animated="true"] .dhaak-idle-icon { visibility:hidden; }
+#dhaak-toggle[aria-pressed="true"] { color:var(--puja-coral); }
+#dhaak-video { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; transform:scale(1.7); visibility:hidden; pointer-events:none; }
+@media(prefers-reduced-motion:reduce) { #dhaak-video { visibility:hidden !important; } #dhaak-toggle .dhaak-idle-icon { visibility:visible; } }
+.puja-calendar { margin:26px 0; padding:22px 26px; border:1px solid #b6d7da; border-left:3px solid var(--puja-gold); border-radius:14px; background:var(--puja-sky-soft); }
+.puja-calendar h3 { margin:0 0 8px; color:var(--puja-teal); }
+.calendar-ranges, .calendar-pujas { list-style:none; margin:0; padding:0; }
+.calendar-range { display:grid; grid-template-columns:minmax(175px, .7fr) 1fr; gap:14px 24px; padding:16px 0; border-top:1px solid #b6d7da; }
+.calendar-range:last-child { padding-bottom:0; }
+.calendar-date { display:flex; flex-direction:column; gap:5px; }
+.calendar-date strong { font-family:var(--serif); font-size:21px; }
+.calendar-pujas li { display:flex; flex-wrap:wrap; align-items:baseline; gap:4px 12px; }
+.calendar-select { border:0; background:none; padding:9px 0; color:var(--puja-teal); font:inherit; font-weight:700; text-align:left; cursor:pointer; text-decoration:underline; text-underline-offset:4px; }
+.calendar-source { font-size:12px; color:var(--puja-muted); padding:8px 0; }
+.calendar-empty { margin-bottom:0; }
+@media(max-width:800px) {
+  .dhaak-control { grid-column:auto; grid-row:auto; margin-top:-12px; }
+  .puja-hero-art { grid-column:auto; grid-row:auto; }
+}
+@media(max-width:520px) {
+  .dhaak-visual { width:76px; height:56px; }
+  .puja-calendar { padding:20px; }
+  .calendar-range { grid-template-columns:1fr; gap:6px; }
+}
 .puja-hero h1 { font-size:clamp(64px,7.4vw,108px); line-height:.8; letter-spacing:-5px; margin:22px 0 32px; color:var(--puja-ink); }
 .puja-hero h1 span { color:var(--puja-coral); font-style:italic; }
 .puja-hero .brand-tagline { font:clamp(27px,3vw,41px)/1.22 var(--serif); color:#225f62; }

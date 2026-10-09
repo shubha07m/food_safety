@@ -1,5 +1,6 @@
 // Geolocation is deliberately local, ephemeral and initiated only by a click.
 import { effectiveLocation } from './puja-location.mjs';
+import { googleFormURL } from './puja-suggestion.mjs';
 export function mapped(p) {
   return effectiveLocation(p).map_eligible;
 }
@@ -60,10 +61,9 @@ export function directionsURL(p) {
     : [loc.venue, loc.address, loc.city].filter(Boolean).join(', ');
   return 'https://www.google.com/maps/dir/?' + new URLSearchParams({ api: '1', destination });
 }
-export function reportURL(p) {
-  return 'https://github.com/shubha07m/food_safety/issues/new?' + new URLSearchParams({
-    title: `Puja venue/date review: ${p.name}`, body: `Puja ID: ${p.pandal_id}\nRegion: ${p.region_id || 'kolkata'}\nName: ${p.name}\nSource: ${p.sources?.[0]?.source_url || ''}\n\nSuggested correction and supporting public source:\n`,
-  });
+export function reportURL(formURL) {
+  // No invented form field IDs or private/candidate context in the public handoff.
+  return googleFormURL(formURL);
 }
 export function freshnessLabels(p, checks, now = new Date()) {
   const labels = []; const e = p.edition;

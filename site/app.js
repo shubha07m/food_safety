@@ -7,12 +7,14 @@ import './foodpath-copy.mjs';
 import { language, tr, translateStatic, localizedURL } from './locale.mjs';
 import { phase1, sourceWarning, copy as phaseCopy } from './phase1.mjs';
 import { applyRoute, safetyRoute } from './routes.mjs';
+import { initDhaak } from './dhaak.mjs';
 
 translateStatic();
 const pujaHero = document.getElementById('puja-hero-image');
 if (pujaHero) pujaHero.addEventListener('error', () => pujaHero.closest('.puja-hero-art')?.classList.add('image-unavailable'));
 const isRecordRoute = applyRoute(document, location.search);
 const isSafetyRoute = safetyRoute(location.search);
+initDhaak();
 if (isSafetyRoute) {
   document.title = 'Food Safety Evidence · FoodPath';
 }
@@ -299,7 +301,7 @@ function detail() {
   for (const revision of record.history) history.append(node('li', `${dateText(revision.at, true)} · ${revision.status} · ${revision.note}`)); historySection.append(history);
   const disclaimer = detailSection(container, 'DISCLAIMER', 'Interpret with the source and context');
   disclaimer.append(node('p', 'Inclusion is not a finding of wrongdoing. This record is not a safety rating or recommendation. Preserve its source link and context when sharing.', 'notice'));
-  const correction = node('a', 'Request a correction for this record', 'button secondary'); correction.href = localizedURL(`corrections.html?event=${encodeURIComponent(record.event_id)}`); disclaimer.append(correction);
+  const correction = node('a', 'Read the correction and source-review policy →', 'text-link'); correction.href = localizedURL(`corrections.html?event=${encodeURIComponent(record.event_id)}#evidence-corrections-heading`); disclaimer.append(correction);
   document.title = `${record.event_id} · Source-attributed record · WB Evidence Tracker`;
 }
 function renderAll() { const stats = aggregate(state.rows); charts(stats); renderFilters(); renderRows(); }

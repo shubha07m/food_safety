@@ -126,6 +126,28 @@ class Edition(Strict):
         return self
 
 
+class ReviewedDates(Strict):
+    """Date-only review, independent of edition/venue and geographic eligibility."""
+
+    start_date: date
+    end_date: date
+    timezone: str
+    reviewed_at: AwareDatetime
+    evidence: list[SourceEvidence] = Field(min_length=1, max_length=3)
+
+    @model_validator(mode="after")
+    def supported_range(self):
+        if self.end_date < self.start_date:
+            raise ValueError("invalid_reviewed_date_range")
+        try:
+            ZoneInfo(self.timezone)
+        except ZoneInfoNotFoundError as exc:
+            raise ValueError("invalid_event_timezone") from exc
+        if any(e.evidence_kind != "source_quote" for e in self.evidence):
+            raise ValueError("date_review_requires_source_quote")
+        return self
+
+
 class PandalRecord(Strict):
     pandal_id: ID
     region_id: ID = "kolkata"
@@ -141,6 +163,7 @@ class PandalRecord(Strict):
     venue: str | None = Field(default=None, max_length=200)
     address: str | None = Field(default=None, max_length=300)
     event_dates: str | None = Field(default=None, max_length=160)
+    reviewed_dates: ReviewedDates | None = Field(default=None, exclude_if=lambda v: v is None)
     edition: Edition | None = None
     district: str | None = Field(default=None, min_length=1, max_length=160)
     location_precision: Literal["locality", "source_zone"] = "locality"
@@ -160,6 +183,18 @@ class PandalRecord(Strict):
 
     @model_validator(mode="after")
     def provenance(self):
+        if self.reviewed_dates:
+            dates = self.reviewed_dates
+            if self.year is not None and dates.start_date.year != self.year:
+                raise ValueError("reviewed_date_year_mismatch")
+            if not {e.source_url for e in dates.evidence} <= {e.source_url for e in self.sources}:
+                raise ValueError("reviewed_date_source_missing")
+            if self.edition and (
+                self.edition.year != dates.start_date.year
+                or (self.edition.start_date and self.edition.start_date != dates.start_date)
+                or (self.edition.end_date and self.edition.end_date != dates.end_date)
+            ):
+                raise ValueError("reviewed_date_edition_conflict")
         if self.edition:
             if self.year is not None and self.year != self.edition.year:
                 raise ValueError("edition_year_mismatch")

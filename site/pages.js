@@ -1,6 +1,7 @@
 import { safeExternal } from './data.mjs';
 import { translateStatic, language } from './locale.mjs';
 import { phase1 } from './phase1.mjs';
+import { showPujaSuggestion } from './puja-suggestion.mjs';
 
 translateStatic();
 const evidenceContext = document.querySelector('[data-evidence-context]');
@@ -13,24 +14,16 @@ if (language === 'bn' && evidenceContext) {
 try {
   const response = await fetch(new URL('repository.json', import.meta.url), { credentials: 'omit' });
   if (!response.ok) throw new Error('Unavailable');
-  const repository = (await response.json()).url;
+  const metadata = await response.json();
+  showPujaSuggestion(document.getElementById('puja-correction-action'), metadata.puja_suggest_form_url,
+    language === 'bn' ? 'পুজোর পরামর্শ বা সংশোধন জানান ↗' : 'Suggest or correct a Puja ↗');
+  const repository = metadata.url;
   const safe = safeExternal(repository);
   if (safe && new URL(safe).hostname === 'github.com') {
     const base = safe.replace(/\/$/, '');
     for (const link of document.querySelectorAll('[data-repository]')) {
       link.href = base; link.textContent = 'GitHub ↗';
       link.rel = 'noopener noreferrer'; link.target = '_blank';
-    }
-    const id = new URLSearchParams(location.search).get('event');
-    const correction = document.getElementById('correction-link');
-    const source = document.getElementById('source-link');
-    if (correction) {
-      correction.href = base + '/issues/new?template=correction.yml' + (/^WBFS-[a-f0-9]{12}$/.test(id || '') ? '&record_id=' + encodeURIComponent(id) : '');
-      correction.rel = 'noopener noreferrer'; correction.target = '_blank';
-    }
-    if (source) {
-      source.href = base + '/issues/new?template=source_submission.yml';
-      source.rel = 'noopener noreferrer'; source.target = '_blank';
     }
   }
 } catch { /* The visible local correction instructions remain available. */ }

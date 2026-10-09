@@ -40,7 +40,9 @@ test('directions only reviewed precise venue; shared links have no user coordina
   assert.equal(directionsURL({...row,edition:{...row.edition,location:{...row.edition.location,coordinate_precision:'street'}}}),null);
   assert.equal(directionsURL({...row,edition:null}),null);
   const link=new URL(pujaLink(row,'https://example.org')); assert.equal(link.searchParams.get('pandal'),'a'); assert.equal(link.searchParams.size,2);
-  assert.match(new URL(reportURL(row)).searchParams.get('body'),/Region: london/);
+  assert.equal(reportURL('https://forms.gle/DfebWArXd7AFtH9d7'),'https://forms.gle/DfebWArXd7AFtH9d7');
+  assert.equal(reportURL(null),null);
+  assert.equal(reportURL('https://github.com/example/issues/new'),null);
 });
 test('source checks cannot imply current-year confirmation', () => {
   const row={year:2026,sources:[{source_url:'https://example.org'}]};

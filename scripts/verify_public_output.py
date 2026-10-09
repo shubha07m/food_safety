@@ -164,12 +164,21 @@ def main(*, runtime=False) -> None:
             ".svg",
             ".png",
             ".webp",
+            ".mp3",
+            ".mp4",
             ".md",
             ".txt",
         } and path.name not in {"_headers", "sitemap.xml"}:
             present.append("unexpected public asset type")
+        if path.suffix == ".mp3" and path.relative_to(SITE).as_posix() != "assets/puja/dhaak.mp3":
+            present.append("unexpected public audio asset")
+        if (
+            path.suffix == ".mp4"
+            and path.relative_to(SITE).as_posix() != "assets/puja/dhaak-playing.mp4"
+        ):
+            present.append("unexpected public video asset")
         if path.suffix not in {".png", ".webp"}:
-            text = path.read_text()
+            text = path.read_text(errors="replace" if path.suffix in {".mp3", ".mp4"} else "strict")
             if path == SITE / "maps-config.json":
                 if json.loads(text) != expected_maps:
                     present.append("unexpected browser Maps configuration")

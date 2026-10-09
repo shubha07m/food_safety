@@ -7,6 +7,7 @@ import { regionalSearches, foodView } from './regional-food.mjs';
 import { initNearMe, resolvePuja } from './global-puja.mjs';
 import { renderProfile } from './puja-profile.mjs';
 import { effectiveLocation } from './puja-location.mjs';
+import { renderCalendar } from './puja-calendar.mjs';
 
 const validID = value => typeof value === 'string' && /^[A-Za-z0-9_-]{1,255}$/.test(value);
 export const normalize = value => String(value || '').normalize('NFC').toLocaleLowerCase().trim().replace(/\s+/g, ' ');
@@ -143,6 +144,7 @@ export async function initPuja(onData = () => {}) {
     let data = scopeFood(allData, region, registry.default_region);
     // Missing optional provider files preserve the existing Google-only contract.
     const optional = async path => { try { const r = await fetch(path, { credentials: 'omit' }); return r.ok ? await r.json() : null; } catch { return null; } };
+    const metadata = await optional('repository.json');
     const loaded = new Map(); let generation = 0; let selectionRequest = 0;
     let matches = []; let active = -1;
     const viewTabs = document.getElementById('food-view-tabs');
@@ -174,7 +176,7 @@ export async function initPuja(onData = () => {}) {
       if (updateURL) setFoodView('puja', true);
       close(); input.value = language === 'bn' && p.name_bn ? p.name_bn : p.name;
       selected.hidden = false; selected.replaceChildren();
-      selected.append(renderProfile(p, region, catalog.source_checks, language === 'bn'));
+      selected.append(renderProfile(p, region, catalog.source_checks, language === 'bn', document, metadata?.puja_suggest_form_url));
       document.dispatchEvent(new CustomEvent('foodpath-focus-pandal', { detail: p.pandal_id }));
       const foodSection = el('section', null, 'nearby-food-section');
       foodSection.setAttribute('aria-label', text('Nearby food')); selected.append(foodSection);
@@ -224,6 +226,7 @@ export async function initPuja(onData = () => {}) {
       tabs.append(button);
     }
     function renderRegion() {
+      renderCalendar(document.getElementById('puja-calendar'), data.pandals, region.region_id, selectGlobal, { bn: language === 'bn' });
       const geography = document.getElementById('festival-food-entries');
       geography.replaceChildren();
       for (const { pandal, count } of foodGeography(data)) {
@@ -252,6 +255,7 @@ export async function initPuja(onData = () => {}) {
     async function changeRegion(next, navigate = false, fromSelection = false) {
       if (!fromSelection) selectionRequest++;
       const run = ++generation; region = next; close(); matches = []; input.value = ''; input.disabled = true;
+      document.getElementById('puja-calendar').hidden = true;
       selected.hidden = true; selected.replaceChildren();
       document.getElementById('featured-pandals').replaceChildren(); document.getElementById('festival-food-entries').replaceChildren();
       document.getElementById('featured-heading').hidden = true;

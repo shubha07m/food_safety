@@ -19,6 +19,7 @@ const processChrome = spawn(chrome, [
   '--disable-background-networking', '--disable-component-update', '--disable-sync',
   '--disable-extensions', '--disable-breakpad', '--disable-crash-reporter',
   '--disable-domain-reliability', '--metrics-recording-only',
+  '--mute-audio', // Exercise real decoding/playback without playing through the operator's speakers.
   ...(origin.startsWith('https:') ? ['--allow-insecure-localhost'] : []),
   '--remote-debugging-port=0', `--user-data-dir=${profile}`,
   `--disk-cache-dir=${cache}/disk`, 'about:blank',
@@ -29,6 +30,7 @@ let nextId = 0;
 const requests = new Map();
 const runtimeErrors = [];
 let mapScriptLoads = 0; let placesRequests = 0; let osmRequests = 0;
+let dhaakRequests = 0; let dhaakVideoRequests = 0;
 let intercept = false; let foodFixture = false; let mapFixture = false;
 const osmFixture = JSON.parse(readFileSync(resolve(root, 'site/data/osm_food.json'), 'utf8'));
 const template = osmFixture.pois.find(p => p.name);
@@ -115,6 +117,8 @@ try {
     const message = JSON.parse(data);
     if (message.method === 'Network.requestWillBeSent') {
       const url = new URL(message.params.request.url);
+      if (url.pathname.endsWith('/dhaak.mp3')) { dhaakRequests++; assert.equal(url.origin, origin); }
+      if (url.pathname.endsWith('/dhaak-playing.mp4')) { dhaakVideoRequests++; assert.equal(url.origin, origin); }
       if (url.hostname === 'maps.googleapis.com' && url.pathname === '/maps/api/js') mapScriptLoads++;
       if (url.hostname === 'places.googleapis.com' || /searchNearby|place\/nearbysearch/.test(url.pathname)) placesRequests++;
       if (url.hostname.endsWith('openstreetmap.org') || url.hostname.includes('overpass') || url.hostname === 'download.geofabrik.de') osmRequests++;
@@ -415,7 +419,7 @@ try {
   assert.equal(await evaluate("document.getElementById('puja').hidden"), true);
   assert.equal(await evaluate("document.querySelector('.area-summary').hidden"), false);
   assert.equal(await evaluate("document.getElementById('festival-food-geography').hidden"), true);
-  assert.equal(await evaluate("document.getElementById('phase1-help').textContent.includes('Submission form coming shortly')"), true);
+  assert.equal(await evaluate("document.getElementById('phase1-help').textContent.includes('Public Food Safety correction submissions are temporarily closed')"), true);
   // README preview is captured from the Puja homepage above.
   await evaluate("document.querySelector('.map-panel').scrollIntoView({block:'start'})");
   await screenshot('map-desktop');
@@ -476,6 +480,17 @@ try {
         assert.equal(await evaluate("document.querySelector('main > aside.notice') === null"), true);
       }
       if (page === 'methodology' || page === 'policies/privacy') await screenshot(`launch-${page.replace('/', '-')}-${lang ? 'bn' : 'en'}`);
+      if (page === 'corrections') {
+        await waitFor("document.querySelector('#puja-correction-action a') !== null");
+        assert.equal(await evaluate("document.querySelector('#puja-correction-action a').href"),'https://forms.gle/DfebWArXd7AFtH9d7');
+        assert.equal(await evaluate("document.querySelector('#puja-correction-action a').target"),'_blank');
+        assert.equal(await evaluate("document.querySelectorAll('#puja-corrections a[href*=github]').length"),0);
+        assert.equal(await evaluate("document.querySelectorAll('#correction-link,#source-link,#github,a[href*=\"issues/new\"]').length"),0);
+        assert.equal(await evaluate("document.querySelector('[data-evidence-context]').textContent.includes('temporarily closed') || document.querySelector('[data-evidence-context]').textContent.includes('সাময়িকভাবে বন্ধ')"),true);
+        await screenshot(`corrections-mobile-${lang?'bn':'en'}`,false);
+        await evaluate("document.getElementById('evidence-corrections-heading').scrollIntoView()");
+        await screenshot(`corrections-evidence-${lang?'bn':'en'}`,false);
+      }
     }
   }
   intercept = true;
@@ -570,6 +585,106 @@ try {
       expected:[p.edition.location.venue,p.edition.location.address,p.edition.location.city].filter(Boolean).join(', ')};
   })()`);
   assert.equal(addressTarget.actual,addressTarget.expected);
+  // Optional Puja delights: real audio decoding, no preload, fixture-only counter count.
+  assert.equal(dhaakRequests, 0, 'No audio request before an explicit play gesture');
+  assert.equal(dhaakVideoRequests, 0, 'No video request before an explicit play gesture');
+  await command('Emulation.setEmulatedMedia', { features: [{ name: 'prefers-reduced-motion', value: 'no-preference' }] });
+  await command('Emulation.setDeviceMetricsOverride', { width: 1440, height: 1000, deviceScaleFactor: 1, mobile: false });
+  await command('Page.navigate', { url: 'http://127.0.0.1:8000/?region=california' });
+  await waitFor("!document.getElementById('puja-calendar').hidden");
+  assert.equal(await evaluate("document.getElementById('dhaak-audio').getAttribute('src')"), null);
+  assert.equal(await evaluate("document.getElementById('dhaak-audio').autoplay"), false);
+  await screenshot('delight-dhaak-idle', false);
+  const idleFootprint = await evaluate("JSON.stringify(document.querySelector('#dhaak-toggle').getBoundingClientRect().toJSON())");
+  assert.equal(await evaluate("document.getElementById('dhaak-toggle').contains(document.getElementById('dhaak-video'))"),true);
+  assert.equal(await evaluate("document.getElementById('dhaak-toggle').innerText.trim()"),'');
+  assert.equal(await evaluate("document.getElementById('dhaak-toggle').getAttribute('aria-label')"),'Play dhaak');
+  const playDhaak = async () => {
+    await evaluate("document.getElementById('dhaak-toggle').focus()");
+    await command('Input.dispatchKeyEvent', {type:'keyDown',key:'Enter',code:'Enter',text:'\r',windowsVirtualKeyCode:13});
+    await command('Input.dispatchKeyEvent', {type:'keyUp',key:'Enter',code:'Enter',windowsVirtualKeyCode:13});
+    await waitFor("!document.getElementById('dhaak-audio').paused && document.getElementById('dhaak-audio').currentTime > 0");
+  };
+  await playDhaak();
+  assert.equal(await evaluate("document.getElementById('dhaak-toggle').matches(':focus-visible')"),true);
+  assert.equal(await evaluate("getComputedStyle(document.getElementById('dhaak-toggle')).outlineStyle"),'solid');
+  await waitFor("document.getElementById('dhaak-video').style.visibility === 'visible' && document.getElementById('dhaak-video').currentTime > 0");
+  assert.equal(await evaluate("JSON.stringify(document.querySelector('#dhaak-toggle').getBoundingClientRect().toJSON())"),idleFootprint,'Playback must not shift the integrated button');
+  const videoMetadata=await evaluate("(()=>{const v=document.getElementById('dhaak-video');return {duration:v.duration,width:v.videoWidth,height:v.videoHeight,muted:v.muted,volume:v.volume,loop:v.loop,controls:v.controls,autoplay:v.autoplay}})()");
+  assert.ok(videoMetadata.duration>0 && videoMetadata.width>0 && videoMetadata.height>0);
+  assert.deepEqual([videoMetadata.muted,videoMetadata.volume,videoMetadata.loop,videoMetadata.controls,videoMetadata.autoplay],[true,0,true,false,false]);
+  console.log('Dhaak video metadata:',JSON.stringify(videoMetadata));
+  assert.equal(await evaluate("document.getElementById('dhaak-audio').loop"),true);
+  assert.equal(await evaluate("document.getElementById('dhaak-audio').volume"),0.22);
+  assert.equal(await evaluate("document.getElementById('dhaak-toggle').getAttribute('aria-pressed')"),'true');
+  const duration = await evaluate("document.getElementById('dhaak-audio').duration");
+  assert.ok(duration > 59 && duration < 62, 'Supplied MP3 decodes as a one-minute recording');
+  await screenshot('delight-dhaak-playing', false);
+  await evaluate("document.getElementById('dhaak-toggle').click()");
+  assert.equal(await evaluate("document.getElementById('dhaak-audio').currentTime"),0);
+  assert.equal(await evaluate("document.getElementById('dhaak-video').paused && document.getElementById('dhaak-video').currentTime === 0 && document.getElementById('dhaak-video').style.visibility === 'hidden'"),true);
+  await screenshot('delight-dhaak-stopped',false);
+  await command('Emulation.setEmulatedMedia', {features:[{name:'prefers-reduced-motion',value:'reduce'}]});
+  await playDhaak();
+  assert.equal(await evaluate("document.getElementById('dhaak-video').paused && document.getElementById('dhaak-video').style.visibility === 'hidden'"),true);
+  await screenshot('delight-dhaak-reduced-motion',false);
+  await evaluate("document.getElementById('dhaak-toggle').click()");
+  await command('Emulation.setEmulatedMedia', {features:[{name:'prefers-reduced-motion',value:'no-preference'}]});
+  await playDhaak();
+  await evaluate("import('./routes.mjs').then(({applyRoute})=>applyRoute(document,'?module=safety'))");
+  await waitFor("document.getElementById('dhaak-audio').paused && !document.getElementById('dhaak-audio').loop");
+  assert.equal(await evaluate("document.getElementById('dhaak-audio').currentTime"),0);
+  assert.equal(await evaluate("document.getElementById('dhaak-video').paused && document.getElementById('dhaak-video').currentTime === 0 && document.getElementById('dhaak-video').style.visibility === 'hidden'"),true);
+  await command('Page.navigate', {url:'http://127.0.0.1:8000/?module=safety'});
+  await waitFor("document.body.classList.contains('safety-route')");
+  assert.equal(await evaluate("document.getElementById('dhaak-audio').getAttribute('src')"),null);
+  await screenshot('delight-safety-after-audio',false);
+  for(const [width,bn] of [[1440,false],[780,false],[390,false],[390,true]]) {
+    await command('Emulation.setDeviceMetricsOverride',{width,height:1000,deviceScaleFactor:1,mobile:width<500});
+    await command('Page.navigate',{url:`http://127.0.0.1:8000/?region=california${bn?'&lang=bn':''}`});
+    await waitFor("!document.getElementById('puja-calendar').hidden");
+    // Fixed date ensures screenshots/tests do not become empty merely as the season passes.
+    await evaluate(`(async()=>{const {renderCalendar}=await import('./puja-calendar.mjs');const {records}=await(await fetch('data/pandals.json')).json();renderCalendar(document.getElementById('puja-calendar'),records,'california',id=>document.dispatchEvent(new CustomEvent('foodpath-select-pandal',{detail:id})),{bn:${bn},today:'2026-10-09'});})()`);
+    assert.equal(await evaluate("document.querySelectorAll('.calendar-select').length"),3);
+    await evaluate("document.getElementById('puja-calendar').scrollIntoView({block:'center'})");
+    await screenshot(`delight-calendar-${width}-${bn?'bn':'en'}`,false);
+    assert.equal(await evaluate("document.documentElement.scrollWidth <= innerWidth"),true);
+    await evaluate("document.querySelector('.calendar-select').click()");
+    await waitFor("new URL(location.href).searchParams.get('pandal') === 'ca-agomoni'");
+    assert.equal(await evaluate("document.querySelector('.profile-report').href"),'https://forms.gle/DfebWArXd7AFtH9d7');
+    assert.equal(await evaluate("document.querySelector('.profile-report').rel"),'noopener noreferrer');
+    assert.equal(await evaluate("[...document.querySelectorAll('.puja-actions a')].some(a=>a.textContent==='Directions'||a.textContent==='যাতায়াতের পথ')"),false);
+    await evaluate(`(async()=>{const {renderCalendar}=await import('./puja-calendar.mjs');renderCalendar(document.getElementById('puja-calendar'),[],'california',()=>{},{bn:${bn}});document.getElementById('puja-calendar').scrollIntoView({block:'center'});})()`);
+    assert.equal(await evaluate("document.querySelectorAll('.calendar-empty').length"),1);
+    await delay(350); // Let the existing selected-profile reveal settle before visual QA.
+    await screenshot(`delight-calendar-empty-${width}-${bn?'bn':'en'}`,false);
+    await evaluate("import('./visits.mjs').then(({initVisits})=>initVisits(document,{countVisit:async()=>12483,schedule:fn=>fn()}))");
+    await waitFor("!document.getElementById('site-visits').hidden");
+    await evaluate("document.querySelector('footer').scrollIntoView({block:'end'})");
+    assert.match(await evaluate("document.getElementById('site-visits').textContent"),bn?/গণনা চলছে/:/site visits and counting/);
+    await screenshot(`delight-counter-fixture-${width}-${bn?'bn':'en'}`,false);
+    await evaluate("window.scrollTo(0,0)");
+    await screenshot(`delight-hero-${width}-${bn?'bn':'en'}`,false);
+    const mobileIdle=await evaluate("JSON.stringify(document.getElementById('dhaak-toggle').getBoundingClientRect().toJSON())");
+    await playDhaak();
+    await waitFor("document.getElementById('dhaak-video').style.visibility === 'visible'");
+    assert.equal(await evaluate("JSON.stringify(document.getElementById('dhaak-toggle').getBoundingClientRect().toJSON())"),mobileIdle);
+    assert.equal(await evaluate("getComputedStyle(document.querySelector('.dhaak-idle-icon')).visibility"),'hidden');
+    assert.equal(await evaluate("document.documentElement.scrollWidth <= innerWidth"),true);
+    assert.equal(await evaluate("document.getElementById('dhaak-toggle').getAttribute('aria-label')"),bn?'ঢাক থামান':'Stop dhaak');
+    assert.equal(await evaluate("document.getElementById('dhaak-toggle').innerText.trim()"),'');
+    await screenshot(`delight-animation-${width}-${bn?'bn':'en'}`,false);
+    await evaluate("document.getElementById('dhaak-toggle').click()");
+  }
+  assert.ok(dhaakRequests>0);
+  assert.ok(dhaakVideoRequests>0);
+  await command('Emulation.setDeviceMetricsOverride',{width:1440,height:1000,deviceScaleFactor:1,mobile:false});
+  await command('Page.navigate',{url:'http://127.0.0.1:8000/corrections.html?event=WBFS-aaaaaaaaaaaa'});
+  await waitFor("document.querySelector('#puja-correction-action a') !== null");
+  assert.equal(await evaluate("new URL(location.href).searchParams.get('event')"),'WBFS-aaaaaaaaaaaa');
+  assert.equal(await evaluate("document.querySelectorAll('#correction-link,#source-link,a[href*=\"issues/new\"]').length"),0);
+  assert.equal(await evaluate("document.querySelector('[data-evidence-context]').textContent.includes('Public Food Safety correction submissions are temporarily closed')"),true);
+  await screenshot('corrections-desktop',false);
   assert.deepEqual(runtimeErrors, []);
   assert.equal(placesRequests, 0);
   assert.equal(osmRequests, 0);
