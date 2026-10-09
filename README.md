@@ -1,16 +1,16 @@
-# The Bengal FoodPath
+# FoodPath
 
 **Find a Puja. Find nearby food. From Kolkata to California.**
 
-A source-conscious, static-first food and festival discovery project originating
-in Bengal and extending to Bengali communities beyond Bengal.
+FoodPath is a source-conscious, static-first festival and nearby-food discovery
+project. Puja FoodPath is its current primary seasonal experience.
 
 [![CI](https://github.com/shubha07m/food_safety/actions/workflows/ci.yml/badge.svg)](https://github.com/shubha07m/food_safety/actions/workflows/ci.yml)
 
-[Explore Puja FoodPath](https://foodsafety.nemoneek.com/) ·
-[California](https://foodsafety.nemoneek.com/?region=california) ·
-[বাংলা](https://foodsafety.nemoneek.com/?lang=bn) ·
-[Food Safety Evidence](https://foodsafety.nemoneek.com/?module=safety)
+[Explore Puja FoodPath](https://foodpath.nemoneek.com/) ·
+[California](https://foodpath.nemoneek.com/?region=california) ·
+[বাংলা](https://foodpath.nemoneek.com/?lang=bn) ·
+[Food Safety Evidence](https://foodpath.nemoneek.com/?module=safety)
 
 > Independent and non-governmental. Nearby food is not a recommendation, inspection,
 > or safety rating. Food Safety Evidence is a separate West Bengal research module:
@@ -22,8 +22,8 @@ in Bengal and extending to Bengali communities beyond Bengal.
 **Puja FoodPath** is the primary seasonal experience across **Kolkata region,
 California, London region, Toronto / GTA and Melbourne**. Search source-backed Puja listings, explore reviewed
 geographic anchors, browse named nearby food, and open Google Maps when useful.
-“The Bengal” describes the project's origin and cultural context, not a promise
-of worldwide coverage.
+Coverage is limited to these published regions. Other festival families are not
+implemented.
 
 **Food Safety Evidence** remains **West Bengal only**. It organizes source-linked
 reporting, original evidence, reporting geography, publication history and corrections.
@@ -123,7 +123,7 @@ associations. Featured counts and available lists are generated from current cov
 
 Food Safety Evidence currently contains **48 active published records**, **36 area
 labels** and **19 source URLs**. These measure indexed reporting, not incidence or
-official inspection totals. [Public data](https://foodsafety.nemoneek.com/data/events.json)
+official inspection totals. [Public data](https://foodpath.nemoneek.com/data/events.json)
 and [methodology](METHODOLOGY.md) provide context.
 
 ## Maps, APIs and privacy
@@ -246,11 +246,11 @@ independent legal review remains outstanding. [Full disclaimer](DISCLAIMER.md).
 ## Professional independence
 
 Created and maintained by **Shubhabrata Mukherjee** ([@shubha07m](https://github.com/shubha07m)).
-The Bengal FoodPath is a personal, independent project. It is
+FoodPath is a personal, independent project. It is
 not affiliated with, sponsored by, endorsed by, or produced on behalf of
 Lawrence Berkeley National Laboratory (Berkeley Lab), the University of California, the U.S. Department of Energy,
 or any current or former employer or professional affiliation of the maintainer.
 Project decisions and views belong to the maintainer and contributors, not those
 organizations. Third-party content and trademarks remain subject to their respective rights.
 
-© 2026 Shubhabrata Mukherjee · The Bengal FoodPath.
+© 2026 Shubhabrata Mukherjee · FoodPath.

@@ -1,6 +1,41 @@
 # Static deployment
 
-Canonical site: https://foodsafety.nemoneek.com/
+Canonical site: https://foodpath.nemoneek.com/
+
+## Hostname cutover (owner-controlled)
+
+The legacy hostname is `https://foodsafety.nemoneek.com/`. Repository metadata
+is prepared for the new origin; do not merge this migration until the owner has
+attached the new custom domain to the existing Worker, verified DNS/TLS and added
+the new origin to the browser Maps key's referrer allowlist (retain the old one).
+No key, Worker identity, storage binding, workflow or deployment model changes.
+
+Enforce HTTPS at Cloudflare for the new hostname. After the production merge and
+successful deployment, permanently redirect the old hostname to the new one,
+preserving the path and complete query string. Use a hostname-scoped Cloudflare
+redirect rule, not application redirects; keep old DNS/TLS active. Verify region,
+language, module, pandal and safety-event links. Update GitHub's homepage/About
+manually. In Search Console verify both properties, submit the new sitemap and
+use Change of Address only after redirects work; retain the old property and do
+not use the removal tool. Retain redirects long-term. Roll back via normal Git
+revert/release and dashboard redirect reversal, never reciprocal redirects.
+
+## Canonical policy
+
+This static app has one indexable application URL: `https://foodpath.nemoneek.com/`.
+Food Safety (`module=safety`), Bengali (`lang=bn`), regions, selected Pujas and
+safety record details remain shareable UI states, not separate SEO landing pages.
+Every state receives the same initial canonical and Open Graph URL; JavaScript
+does not change either. There are no SEO hreflang alternates for these consolidated
+states; language navigation and accessible language labels remain unchanged.
+
+Indexable support pages and generated full policy pages self-canonicalize to their
+extensionless URLs, matching hosting normalization. Summaries and full policies
+are distinct documents. The intentionally small sitemap lists only the app root;
+it omits artificial lastmod dates. Support pages remain discoverable through links.
+The map iframe stays noindex. Robots permits crawling canonical signals; it is not
+an access-control mechanism. These changes do not prove resolution of specific
+Search Console exclusions without inspecting the affected URLs.
 
 `main` is production; `develop` is implementation. Preserve the existing hosting
 integration and reconcile newer scheduled production data before an owner-approved

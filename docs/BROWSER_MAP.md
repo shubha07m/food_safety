@@ -79,7 +79,8 @@ abuse boundary. No Google map tiles or rendered imagery are cached for offline r
 Recommended Google Cloud configuration (owner-controlled):
 
 1. Restrict the browser key to **Maps JavaScript API only**.
-2. Restrict website referrers to `https://foodsafety.nemoneek.com/*`; allow
+2. Restrict website referrers to `https://foodpath.nemoneek.com/*`; retain the
+   legacy `https://foodsafety.nemoneek.com/*` during hostname migration. Allow
    `http://localhost:8000/*` and `http://127.0.0.1:8000/*` only if needed.
 3. In Google Maps Platform quotas, inspect Maps JavaScript's map-loads-per-minute
    quota. Request a conservative 5–10/minute if that editable quota is available;

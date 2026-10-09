@@ -2,7 +2,7 @@
 
 import httpx
 
-URL = "https://foodsafety.nemoneek.com/"
+URL = "https://foodpath.nemoneek.com/"
 
 
 def main():

@@ -4,7 +4,7 @@
 
 - Added passage-aware multilingual model candidates, exact/NFC/whitespace evidence resolution, field-level decisions and a guarded automatic-publication path using independent semantic/publication checks. Human review is for exceptions; default runtime remains shadow pending real evaluation.
 - Added one provisional lightweight Gemini adapter, bounded calls/costs, private revision caching/evaluation and model-failure isolation. No live model calls, training or new dependencies.
-- Made The Bengal FoodPath the primary heading, retained the tracker/module identity, and isolated English/Bengali record-detail routes from dashboard content.
+- Made the umbrella product the primary heading, retained the tracker/module identity, and isolated English/Bengali record-detail routes from dashboard content.
 - Updated extraction/privacy disclosures; public dataset and production infrastructure remain unchanged.
 
 ## Discovery and public-repository audit — 2026-09-09
@@ -25,7 +25,7 @@ change, model call, external map runtime or new runtime dependency.
 
 ## 0.3.0 — Evidence lifecycle and bilingual foundation
 
-Separated transport availability, dated evidence support and publication state. Added retries, expiry, record-specific change checks, legacy recovery audit, lifecycle counts, Bengali narrow extraction, reviewed cross-source provenance, private-form configuration, compliance-document schema and Bengal FoodPath umbrella. No Cloudflare changes, public release, model calls or database introduced.
+Separated transport availability, dated evidence support and publication state. Added retries, expiry, record-specific change checks, legacy recovery audit, lifecycle counts, Bengali narrow extraction, reviewed cross-source provenance, private-form configuration, compliance-document schema and umbrella product branding. No Cloudflare changes, public release, model calls or database introduced.
 
 ## 0.2.0 — Initial evaluated dataset
 

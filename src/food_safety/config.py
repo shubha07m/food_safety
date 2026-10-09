@@ -63,7 +63,7 @@ class Settings(StrictModel):
     community_submission_url: URL | None = None
     puja_suggest_form_url: URL | None = None
     repository_url: URL | None = None
-    site_url: URL = "https://foodsafety.nemoneek.com/"
+    site_url: URL = "https://foodpath.nemoneek.com/"
     search_provider: Literal["none", "brave"] = "none"
     max_search_queries_per_run: int = Field(default=4, ge=0, le=6)
 

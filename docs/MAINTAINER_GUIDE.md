@@ -34,7 +34,7 @@ the mandatory hosting-plan check. Never run provider discovery to validate a UI 
 
 ## Private Google Form — owner setup
 
-Title: **The Bengal FoodPath — Source & Correction Intake**.
+Title: **FoodPath — Source & Correction Intake**.
 
 Description: **Independent public-source research, not an allegation or restaurant-review platform. Responses remain private to maintainers and never publish automatically. Send public URLs only. Do not include personal information, private documents, files, harassment or unsupported allegations.**
 

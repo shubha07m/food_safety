@@ -16,7 +16,7 @@ export const copy = {
     warningText: 'Source access warning. Last evidence check:',
     nonActive: 'This record is outside active analytics. Historical status is not a finding that reporting was false.',
     precision: 'Location precision: city, neighborhood and street reference anchors, not establishment addresses. Select a marker to see its evidence.',
-    authorship: '© 2026 Shubhabrata Mukherjee · The Bengal FoodPath. Independent public-interest data project. Project code is MIT-licensed where stated. Third-party content and trademarks remain subject to their respective rights.',
+    authorship: '© 2026 Shubhabrata Mukherjee · FoodPath. Independent public-interest data project. Project code is MIT-licensed where stated. Third-party content and trademarks remain subject to their respective rights.',
   },
   bn: {
     heading: 'নথির উৎস কীভাবে যাচাই করা হয়',
@@ -32,7 +32,7 @@ export const copy = {
     warningText: 'উৎসে প্রবেশের সতর্কতা। শেষ তথ্য যাচাই:',
     nonActive: 'এই নথি সক্রিয় পরিসংখ্যানের বাইরে। এই ঐতিহাসিক অবস্থা প্রতিবেদন মিথ্যা হওয়ার সিদ্ধান্ত নয়।',
     precision: 'অবস্থানের নির্ভুলতা: শহর, পাড়া ও রাস্তার আনুমানিক কেন্দ্র—প্রতিষ্ঠানের ঠিকানা নয়। উৎসভিত্তিক নথি দেখতে চিহ্ন নির্বাচন করুন।',
-    authorship: '© ২০২৬ শুভব্রত মুখার্জী · The Bengal FoodPath। স্বাধীন জনস্বার্থমূলক তথ্য প্রকল্প। যেখানে উল্লেখ আছে, প্রকল্পের কোড MIT লাইসেন্সের আওতায়। তৃতীয় পক্ষের বিষয়বস্তু ও ট্রেডমার্কের অধিকার সংশ্লিষ্ট পক্ষের।',
+    authorship: '© ২০২৬ শুভব্রত মুখার্জী · FoodPath। স্বাধীন জনস্বার্থমূলক তথ্য প্রকল্প। যেখানে উল্লেখ আছে, প্রকল্পের কোড MIT লাইসেন্সের আওতায়। তৃতীয় পক্ষের বিষয়বস্তু ও ট্রেডমার্কের অধিকার সংশ্লিষ্ট পক্ষের।',
   },
 };
 const t = copy[language];
