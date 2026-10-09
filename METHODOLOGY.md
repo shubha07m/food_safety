@@ -1,6 +1,6 @@
 # Methodology
 
-Public beta at https://foodsafety.nemoneek.com/ . Puja FoodPath and Food Safety Evidence have distinct units of observation and publication rules. The preserved HTML prototype and synthetic test fixtures are not evidence.
+Public beta at https://foodpath.nemoneek.com/ . Puja FoodPath and Food Safety Evidence have distinct units of observation and publication rules. The preserved HTML prototype and synthetic test fixtures are not evidence.
 
 ## Puja FoodPath: catalog and geographic provenance
 

@@ -1,5 +1,14 @@
 # Visual asset provenance
 
+## Social preview
+
+- `site/assets/social-preview.svg`: existing project-authored vector layout;
+  text updated for The Bengal FoodPath, Puja discovery and five-region scope.
+- `site/assets/social-preview.png`: rendered from that SVG with the existing
+  local browser-smoke screenshot process (`FOOD_UPDATE_SOCIAL_PREVIEW=1 node
+  scripts/browser_smoke.mjs`, with the local static server running). No new artwork generation, external
+  assets, Google imagery or credentials. Food Safety remains West Bengal-only.
+
 ## Current product screenshots
 
 - `puja_preview.png` and `california_food_preview.png`: captured from the local

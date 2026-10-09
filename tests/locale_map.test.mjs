@@ -8,9 +8,9 @@ import { filterRows } from '../site/data.mjs';
 test('English default, Bengali core UI, stable record URLs', () => {
   assert.equal(language, 'en');
   for (const label of ['Reported events over time', 'Area', 'Clear filters', 'Original source text', 'Disclaimer']) assert.match(bn[label], /[\u0980-\u09ff]/);
-  const url = localizedURL('https://foodsafety.nemoneek.com/?event=WBFS-0123456789ab', 'bn');
+  const url = localizedURL('https://foodpath.nemoneek.com/?event=WBFS-0123456789ab', 'bn');
   assert.match(url, /event=WBFS-0123456789ab/); assert.match(url, /lang=bn/);
-  assert.doesNotMatch(localizedURL('https://foodsafety.nemoneek.com/?lang=bn', 'en'), /lang=/);
+  assert.doesNotMatch(localizedURL('https://foodpath.nemoneek.com/?lang=bn', 'en'), /lang=/);
 });
 test('Pinned West Bengal geometry is locally served', () => {
   const feature = JSON.parse(readFileSync('site/assets/west-bengal.geojson'));

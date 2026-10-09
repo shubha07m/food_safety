@@ -4,7 +4,7 @@ export const bn = {
   'THE BENGAL': 'দ্য বেঙ্গল', 'FOODPATH': 'ফুডপাথ',
   'THE BENGAL FOODPATH': 'দ্য বেঙ্গল ফুডপাথ',
   'The Bengal FoodPath uses a bounded language model to extract structured candidate records from public source documents. Published records must pass schema, source, exact evidence-grounding, safety, date, duplicate and publication checks; unsupported candidates are not published.': 'দ্য বেঙ্গল ফুডপাথ প্রকাশ্য উৎসের নথি থেকে কাঠামোবদ্ধ সম্ভাব্য রেকর্ড তৈরিতে সীমিত ব্যবহারের ভাষা মডেল ব্যবহার করে। প্রকাশিত রেকর্ডকে কাঠামো, উৎস, হুবহু প্রমাণ, নিরাপত্তা, তারিখ, নকল ও প্রকাশনার সব যাচাই পেরোতে হয়; অসমর্থিত রেকর্ড প্রকাশিত হয় না।',
-  'Independent food-information research for West Bengal': 'পশ্চিমবঙ্গের খাদ্যসংক্রান্ত তথ্য নিয়ে স্বাধীন গবেষণা',
+  'Source-conscious festival and food discovery': 'উৎসসচেতন উৎসব ও খাবারের খোঁজ',
   'Food Safety & Inspection Evidence': 'খাদ্য সুরক্ষা ও পরিদর্শনের উৎসভিত্তিক নথি',
   'Methodology': 'পদ্ধতি', 'Disclaimer': 'দায়-সীমা ও ব্যাখ্যা', 'Corrections': 'সংশোধন',
   'Data': 'তথ্য', 'Privacy': 'গোপনীয়তা', 'Contribute': 'অবদান রাখুন', 'Tracker': 'ট্র্যাকার',
@@ -95,7 +95,7 @@ export const bn = {
 };
 export function tr(value) { return language === 'bn' ? (bn[value] ?? value) : value; }
 export function localizedURL(href, lang = language) {
-  const url = new URL(href, globalThis.location?.href || 'https://foodsafety.nemoneek.com/');
+  const url = new URL(href, globalThis.location?.href || 'https://foodpath.nemoneek.com/');
   if (lang === 'bn') url.searchParams.set('lang', 'bn'); else url.searchParams.delete('lang');
   return url.pathname + url.search + url.hash;
 }

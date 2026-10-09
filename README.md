@@ -7,10 +7,10 @@ in Bengal and extending to Bengali communities beyond Bengal.
 
 [![CI](https://github.com/shubha07m/food_safety/actions/workflows/ci.yml/badge.svg)](https://github.com/shubha07m/food_safety/actions/workflows/ci.yml)
 
-[Explore Puja FoodPath](https://foodsafety.nemoneek.com/) ·
-[California](https://foodsafety.nemoneek.com/?region=california) ·
-[বাংলা](https://foodsafety.nemoneek.com/?lang=bn) ·
-[Food Safety Evidence](https://foodsafety.nemoneek.com/?module=safety)
+[Explore Puja FoodPath](https://foodpath.nemoneek.com/) ·
+[California](https://foodpath.nemoneek.com/?region=california) ·
+[বাংলা](https://foodpath.nemoneek.com/?lang=bn) ·
+[Food Safety Evidence](https://foodpath.nemoneek.com/?module=safety)
 
 > Independent and non-governmental. Nearby food is not a recommendation, inspection,
 > or safety rating. Food Safety Evidence is a separate West Bengal research module:
@@ -123,7 +123,7 @@ associations. Featured counts and available lists are generated from current cov
 
 Food Safety Evidence currently contains **48 active published records**, **36 area
 labels** and **19 source URLs**. These measure indexed reporting, not incidence or
-official inspection totals. [Public data](https://foodsafety.nemoneek.com/data/events.json)
+official inspection totals. [Public data](https://foodpath.nemoneek.com/data/events.json)
 and [methodology](METHODOLOGY.md) provide context.
 
 ## Maps, APIs and privacy

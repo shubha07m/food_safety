@@ -15,8 +15,6 @@ const isRecordRoute = applyRoute(document, location.search);
 const isSafetyRoute = safetyRoute(location.search);
 if (isSafetyRoute) {
   document.title = 'Food Safety Evidence · The Bengal FoodPath';
-  const canonical = document.querySelector('link[rel=canonical]');
-  if (canonical) canonical.href = 'https://foodsafety.nemoneek.com/?module=safety';
 }
 if (!isRecordRoute) {
   if (!isSafetyRoute) {

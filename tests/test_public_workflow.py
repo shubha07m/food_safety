@@ -114,7 +114,7 @@ def test_canonical_urls_and_readme_assets_exist():
     for path in re.findall(r"!\[[^]]*\]\((docs/assets/[^)]+)\)", text):
         assert (ROOT / path).is_file()
     html = (ROOT / "site/index.html").read_text()
-    assert "https://foodsafety.nemoneek.com/" in html
+    assert "https://foodpath.nemoneek.com/" in html
     assert 'property="og:image"' in html
     assert (ROOT / "site/assets/social-preview.png").is_file()
     config = (ROOT / "wrangler.jsonc").read_text()

@@ -98,7 +98,8 @@ async function screenshot(name, full = true) {
   writeFileSync(resolve(cache, name + '.png'), Buffer.from(result.data, 'base64'));
 }
 async function publicScreenshot(path) {
-  if (process.env.FOOD_UPDATE_PREVIEWS !== '1' || process.env.FOOD_LIVE_MAP_SMOKE === '1') return;
+  const socialOnly = process.env.FOOD_UPDATE_SOCIAL_PREVIEW === '1' && path === 'site/assets/social-preview.png';
+  if ((!socialOnly && process.env.FOOD_UPDATE_PREVIEWS !== '1') || process.env.FOOD_LIVE_MAP_SMOKE === '1') return;
   const result = await command('Page.captureScreenshot', { format: 'png', captureBeyondViewport: false });
   writeFileSync(resolve(root, path), Buffer.from(result.data, 'base64'));
 }
@@ -148,6 +149,7 @@ try {
   await command('Emulation.setDeviceMetricsOverride', { width: 1440, height: 1000, deviceScaleFactor: 1, mobile: false });
   await command('Page.navigate', { url: 'http://127.0.0.1:8000/' });
   await waitFor(`document.getElementById('metric-events')?.textContent === '${original.record_count}'`);
+  assert.equal(await evaluate("document.querySelector('link[rel=canonical]').href"), 'https://foodpath.nemoneek.com/');
   await waitFor("document.querySelectorAll('#featured-pandals button').length > 0");
   assert.equal(await evaluate("document.querySelector('#puja-suggest-action a')?.href || null"),
     process.env.FOOD_SMOKE_FORM_URL || JSON.parse(readFileSync(resolve(root, 'site/repository.json'), 'utf8')).puja_suggest_form_url);
@@ -394,6 +396,7 @@ try {
   await command('Page.navigate', { url: 'http://127.0.0.1:8000/?region=california&lang=bn&pandal=ca-sanskriti' });
   await waitFor("document.getElementById('selected-pandal-title')?.textContent === 'Sanskriti Durga Puja'");
   assert.equal(await evaluate("document.documentElement.lang"), 'bn');
+  assert.equal(await evaluate("document.querySelector('link[rel=canonical]').href"), 'https://foodpath.nemoneek.com/');
   assert.equal(await evaluate(`document.getElementById('region-count').textContent.includes('${californiaCount}')`), true);
   assert.equal(await evaluate('document.documentElement.scrollWidth <= innerWidth'), true);
   await screenshot('california-bengali', false);
@@ -446,6 +449,9 @@ try {
   await waitFor(`document.getElementById('metric-events')?.textContent === '${original.record_count}'`);
   assert.equal(await evaluate("document.getElementById('empty-evidence').hidden"), original.record_count > 0);
   assert.equal(await evaluate("document.querySelector('.evidence-banner').textContent.includes('Inclusion is not a finding of wrongdoing')"), true);
+  assert.equal(await evaluate("document.querySelectorAll('link[rel=canonical]').length"), 1);
+  assert.equal(await evaluate("document.querySelector('link[rel=canonical]').href"), 'https://foodpath.nemoneek.com/');
+  assert.equal(await evaluate("document.querySelectorAll('link[rel=alternate][hreflang]').length"), 0);
   await screenshot('zero-desktop');
   await command('Emulation.setDeviceMetricsOverride', { width: 390, height: 844, deviceScaleFactor: 1, mobile: true });
   assert.equal(await evaluate('document.documentElement.scrollWidth <= window.innerWidth'), true);
