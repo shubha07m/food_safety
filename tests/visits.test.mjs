@@ -1,8 +1,24 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import worker, { VisitCounter, allowed } from '../worker/visits.mjs';
-import { visitCount } from '../site/visits.mjs';
+import { visitCount, visitCopy, initVisits } from '../site/visits.mjs';
 const store = () => { const rows=new Map(); return {getItem:k=>rows.get(k),setItem:(k,v)=>rows.set(k,v)}; };
+test('dynamic human wording and Bengali description',()=>{
+  assert.equal(visitCopy(12483).label,'12,483 site visits and counting');
+  assert.match(visitCopy(59,true).label,/৫৯ সাইট ভিজিট/);
+  assert.match(visitCopy(59,true).description,/মানুষের সংখ্যা নয়/);
+});
+test('counter does not block rendering and waits for a visible page; failure stays hidden',async()=>{
+  const node={hidden:true}; const callbacks={}; let task; let calls=0;
+  const doc={visibilityState:'hidden',documentElement:{lang:'bn'},getElementById:()=>node,
+    addEventListener:(k,fn)=>callbacks[k]=fn,removeEventListener:k=>delete callbacks[k]};
+  const deps={countVisit:async()=>{calls++;return null;},schedule:(fn,ms)=>{assert.equal(ms,1500);task=fn;}};
+  initVisits(doc,deps); assert.equal(task,undefined); assert.equal(calls,0);
+  doc.visibilityState='visible';callbacks.visibilitychange(); assert.equal(calls,0);
+  await task(); assert.equal(calls,1); assert.equal(node.hidden,true);
+  initVisits(doc,{...deps,countVisit:async()=>59}); await task();
+  assert.equal(node.hidden,false); assert.match(node.textContent,/৫৯/); assert.match(node.title,/মানুষের/);
+});
 const request = (overrides={}) => new Request('https://food.example/api/visits', {method:'POST',body:'{}',headers:{Origin:'https://food.example','Sec-Fetch-Site':'same-origin','Content-Type':'application/json','Content-Length':'2','X-FoodPath-Visit':'1'},...overrides});
 test('one increment per tab session; new session increments; no identifying payload', async()=>{
   const seen=[]; const fetcher=async(url,options)=>{seen.push([url,options]);return Response.json({count:12});}; const storage=store();

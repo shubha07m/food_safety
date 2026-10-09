@@ -19,6 +19,7 @@ const processChrome = spawn(chrome, [
   '--disable-background-networking', '--disable-component-update', '--disable-sync',
   '--disable-extensions', '--disable-breakpad', '--disable-crash-reporter',
   '--disable-domain-reliability', '--metrics-recording-only',
+  '--mute-audio', // Exercise real decoding/playback without playing through the operator's speakers.
   ...(origin.startsWith('https:') ? ['--allow-insecure-localhost'] : []),
   '--remote-debugging-port=0', `--user-data-dir=${profile}`,
   `--disk-cache-dir=${cache}/disk`, 'about:blank',
@@ -29,6 +30,7 @@ let nextId = 0;
 const requests = new Map();
 const runtimeErrors = [];
 let mapScriptLoads = 0; let placesRequests = 0; let osmRequests = 0;
+let dhaakRequests = 0;
 let intercept = false; let foodFixture = false; let mapFixture = false;
 const osmFixture = JSON.parse(readFileSync(resolve(root, 'site/data/osm_food.json'), 'utf8'));
 const template = osmFixture.pois.find(p => p.name);
@@ -115,6 +117,7 @@ try {
     const message = JSON.parse(data);
     if (message.method === 'Network.requestWillBeSent') {
       const url = new URL(message.params.request.url);
+      if (url.pathname.endsWith('/dhaak.mp3')) { dhaakRequests++; assert.equal(url.origin, origin); }
       if (url.hostname === 'maps.googleapis.com' && url.pathname === '/maps/api/js') mapScriptLoads++;
       if (url.hostname === 'places.googleapis.com' || /searchNearby|place\/nearbysearch/.test(url.pathname)) placesRequests++;
       if (url.hostname.endsWith('openstreetmap.org') || url.hostname.includes('overpass') || url.hostname === 'download.geofabrik.de') osmRequests++;
@@ -570,6 +573,63 @@ try {
       expected:[p.edition.location.venue,p.edition.location.address,p.edition.location.city].filter(Boolean).join(', ')};
   })()`);
   assert.equal(addressTarget.actual,addressTarget.expected);
+  // Optional Puja delights: real audio decoding, no preload, fixture-only counter count.
+  assert.equal(dhaakRequests, 0, 'No audio request before an explicit play gesture');
+  await command('Emulation.setDeviceMetricsOverride', { width: 1440, height: 1000, deviceScaleFactor: 1, mobile: false });
+  await command('Page.navigate', { url: 'http://127.0.0.1:8000/?region=california' });
+  await waitFor("!document.getElementById('puja-calendar').hidden");
+  assert.equal(await evaluate("document.getElementById('dhaak-audio').getAttribute('src')"), null);
+  assert.equal(await evaluate("document.getElementById('dhaak-audio').autoplay"), false);
+  await screenshot('delight-dhaak-idle', false);
+  const playDhaak = async () => {
+    await evaluate("document.getElementById('dhaak-toggle').focus()");
+    await command('Input.dispatchKeyEvent', {type:'keyDown',key:'Enter',code:'Enter',text:'\r',windowsVirtualKeyCode:13});
+    await command('Input.dispatchKeyEvent', {type:'keyUp',key:'Enter',code:'Enter',windowsVirtualKeyCode:13});
+    await waitFor("!document.getElementById('dhaak-audio').paused && document.getElementById('dhaak-audio').currentTime > 0");
+  };
+  await playDhaak();
+  assert.equal(await evaluate("document.getElementById('dhaak-audio').loop"),true);
+  assert.equal(await evaluate("document.getElementById('dhaak-audio').volume"),0.22);
+  assert.equal(await evaluate("document.getElementById('dhaak-toggle').getAttribute('aria-pressed')"),'true');
+  const duration = await evaluate("document.getElementById('dhaak-audio').duration");
+  assert.ok(duration > 59 && duration < 62, 'Supplied MP3 decodes as a one-minute recording');
+  await screenshot('delight-dhaak-playing', false);
+  await evaluate("document.getElementById('dhaak-toggle').click()");
+  assert.equal(await evaluate("document.getElementById('dhaak-audio').currentTime"),0);
+  await playDhaak();
+  await evaluate("import('./routes.mjs').then(({applyRoute})=>applyRoute(document,'?module=safety'))");
+  await waitFor("document.getElementById('dhaak-audio').paused && !document.getElementById('dhaak-audio').loop");
+  assert.equal(await evaluate("document.getElementById('dhaak-audio').currentTime"),0);
+  await command('Page.navigate', {url:'http://127.0.0.1:8000/?module=safety'});
+  await waitFor("document.body.classList.contains('safety-route')");
+  assert.equal(await evaluate("document.getElementById('dhaak-audio').getAttribute('src')"),null);
+  await screenshot('delight-safety-after-audio',false);
+  for(const [width,bn] of [[1440,false],[780,false],[390,false],[390,true]]) {
+    await command('Emulation.setDeviceMetricsOverride',{width,height:1000,deviceScaleFactor:1,mobile:width<500});
+    await command('Page.navigate',{url:`http://127.0.0.1:8000/?region=california${bn?'&lang=bn':''}`});
+    await waitFor("!document.getElementById('puja-calendar').hidden");
+    // Fixed date ensures screenshots/tests do not become empty merely as the season passes.
+    await evaluate(`(async()=>{const {renderCalendar}=await import('./puja-calendar.mjs');const {records}=await(await fetch('data/pandals.json')).json();renderCalendar(document.getElementById('puja-calendar'),records,'california',id=>document.dispatchEvent(new CustomEvent('foodpath-select-pandal',{detail:id})),{bn:${bn},today:'2026-10-09'});})()`);
+    assert.equal(await evaluate("document.querySelectorAll('.calendar-select').length"),3);
+    await evaluate("document.getElementById('puja-calendar').scrollIntoView({block:'center'})");
+    await screenshot(`delight-calendar-${width}-${bn?'bn':'en'}`,false);
+    assert.equal(await evaluate("document.documentElement.scrollWidth <= innerWidth"),true);
+    await evaluate("document.querySelector('.calendar-select').click()");
+    await waitFor("new URL(location.href).searchParams.get('pandal') === 'ca-agomoni'");
+    assert.equal(await evaluate("[...document.querySelectorAll('.puja-actions a')].some(a=>a.textContent==='Directions'||a.textContent==='যাতায়াতের পথ')"),false);
+    await evaluate(`(async()=>{const {renderCalendar}=await import('./puja-calendar.mjs');renderCalendar(document.getElementById('puja-calendar'),[],'california',()=>{},{bn:${bn}});document.getElementById('puja-calendar').scrollIntoView({block:'center'});})()`);
+    assert.equal(await evaluate("document.querySelectorAll('.calendar-empty').length"),1);
+    await delay(350); // Let the existing selected-profile reveal settle before visual QA.
+    await screenshot(`delight-calendar-empty-${width}-${bn?'bn':'en'}`,false);
+    await evaluate("import('./visits.mjs').then(({initVisits})=>initVisits(document,{countVisit:async()=>12483,schedule:fn=>fn()}))");
+    await waitFor("!document.getElementById('site-visits').hidden");
+    await evaluate("document.querySelector('footer').scrollIntoView({block:'end'})");
+    assert.match(await evaluate("document.getElementById('site-visits').textContent"),bn?/গণনা চলছে/:/site visits and counting/);
+    await screenshot(`delight-counter-fixture-${width}-${bn?'bn':'en'}`,false);
+    await evaluate("window.scrollTo(0,0)");
+    await screenshot(`delight-hero-${width}-${bn?'bn':'en'}`,false);
+  }
+  assert.ok(dhaakRequests>0);
   assert.deepEqual(runtimeErrors, []);
   assert.equal(placesRequests, 0);
   assert.equal(osmRequests, 0);

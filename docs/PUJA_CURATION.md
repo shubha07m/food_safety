@@ -1,5 +1,21 @@
 # Puja pandal curation
 
+## California date-only calendar
+
+The compact California calendar derives from the published catalog, not a second
+calendar dataset. Optional `reviewed_dates` contains ISO start/end dates, timezone,
+review time and existing `SourceEvidence` quotes. It is used when a date has been
+reviewed without reviewing an edition's venue. It does not create an edition,
+promote publication status, or change map/Near Me/Directions/food eligibility.
+Confirmed editions with supported structured dates can also supply the calendar.
+Legacy `event_dates` alone and owner identity attestations never qualify.
+
+Ranges are displayed in full, grouped only when identical, and each stable Puja ID
+is counted once. Upcoming/ongoing status uses the California-local date. Missing
+dates remain omitted with an explicit incomplete-coverage notice. The first date-only
+reviews use saved organizer revisions for Agomoni (Oct 16–18, 2026), Pashchimi
+(Oct 16–20) and Ankur (Oct 23–25); other legacy date claims are not calendar evidence.
+
 The Puja catalog is source-backed project data, separate from food POI discovery.
 `config/regions.yml` declares regions and their additional reviewed catalog files.
 `config/puja.yml` and the registry's regional `config/puja-*.yml` files form the

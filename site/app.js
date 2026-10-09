@@ -7,12 +7,14 @@ import './foodpath-copy.mjs';
 import { language, tr, translateStatic, localizedURL } from './locale.mjs';
 import { phase1, sourceWarning, copy as phaseCopy } from './phase1.mjs';
 import { applyRoute, safetyRoute } from './routes.mjs';
+import { initDhaak } from './dhaak.mjs';
 
 translateStatic();
 const pujaHero = document.getElementById('puja-hero-image');
 if (pujaHero) pujaHero.addEventListener('error', () => pujaHero.closest('.puja-hero-art')?.classList.add('image-unavailable'));
 const isRecordRoute = applyRoute(document, location.search);
 const isSafetyRoute = safetyRoute(location.search);
+initDhaak();
 if (isSafetyRoute) {
   document.title = 'Food Safety Evidence · FoodPath';
 }

@@ -91,6 +91,8 @@ def load_config(root: Path, catalog_overrides=None) -> Config:
                 raise ValueError("pandal_region_mismatch")
             if record.edition and region.timezone and record.edition.timezone != region.timezone:
                 raise ValueError("edition_timezone_region_mismatch")
+            if record.reviewed_dates and record.reviewed_dates.timezone != region.timezone:
+                raise ValueError("reviewed_date_timezone_region_mismatch")
             if record.latitude is not None:
                 w, s, e, n = region.geocode_bounds
                 if not (w <= record.longitude <= e and s <= record.latitude <= n):
