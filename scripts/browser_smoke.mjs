@@ -30,7 +30,7 @@ let nextId = 0;
 const requests = new Map();
 const runtimeErrors = [];
 let mapScriptLoads = 0; let placesRequests = 0; let osmRequests = 0;
-let dhaakRequests = 0;
+let dhaakRequests = 0; let dhaakVideoRequests = 0;
 let intercept = false; let foodFixture = false; let mapFixture = false;
 const osmFixture = JSON.parse(readFileSync(resolve(root, 'site/data/osm_food.json'), 'utf8'));
 const template = osmFixture.pois.find(p => p.name);
@@ -118,6 +118,7 @@ try {
     if (message.method === 'Network.requestWillBeSent') {
       const url = new URL(message.params.request.url);
       if (url.pathname.endsWith('/dhaak.mp3')) { dhaakRequests++; assert.equal(url.origin, origin); }
+      if (url.pathname.endsWith('/dhaak-playing.mp4')) { dhaakVideoRequests++; assert.equal(url.origin, origin); }
       if (url.hostname === 'maps.googleapis.com' && url.pathname === '/maps/api/js') mapScriptLoads++;
       if (url.hostname === 'places.googleapis.com' || /searchNearby|place\/nearbysearch/.test(url.pathname)) placesRequests++;
       if (url.hostname.endsWith('openstreetmap.org') || url.hostname.includes('overpass') || url.hostname === 'download.geofabrik.de') osmRequests++;
@@ -575,12 +576,15 @@ try {
   assert.equal(addressTarget.actual,addressTarget.expected);
   // Optional Puja delights: real audio decoding, no preload, fixture-only counter count.
   assert.equal(dhaakRequests, 0, 'No audio request before an explicit play gesture');
+  assert.equal(dhaakVideoRequests, 0, 'No video request before an explicit play gesture');
+  await command('Emulation.setEmulatedMedia', { features: [{ name: 'prefers-reduced-motion', value: 'no-preference' }] });
   await command('Emulation.setDeviceMetricsOverride', { width: 1440, height: 1000, deviceScaleFactor: 1, mobile: false });
   await command('Page.navigate', { url: 'http://127.0.0.1:8000/?region=california' });
   await waitFor("!document.getElementById('puja-calendar').hidden");
   assert.equal(await evaluate("document.getElementById('dhaak-audio').getAttribute('src')"), null);
   assert.equal(await evaluate("document.getElementById('dhaak-audio').autoplay"), false);
   await screenshot('delight-dhaak-idle', false);
+  const idleFootprint = await evaluate("JSON.stringify(document.querySelector('.dhaak-control').getBoundingClientRect().toJSON())");
   const playDhaak = async () => {
     await evaluate("document.getElementById('dhaak-toggle').focus()");
     await command('Input.dispatchKeyEvent', {type:'keyDown',key:'Enter',code:'Enter',text:'\r',windowsVirtualKeyCode:13});
@@ -588,6 +592,12 @@ try {
     await waitFor("!document.getElementById('dhaak-audio').paused && document.getElementById('dhaak-audio').currentTime > 0");
   };
   await playDhaak();
+  await waitFor("document.getElementById('dhaak-video').style.visibility === 'visible' && document.getElementById('dhaak-video').currentTime > 0");
+  assert.equal(await evaluate("JSON.stringify(document.querySelector('.dhaak-control').getBoundingClientRect().toJSON())"),idleFootprint,'Playback must not shift layout');
+  const videoMetadata=await evaluate("(()=>{const v=document.getElementById('dhaak-video');return {duration:v.duration,width:v.videoWidth,height:v.videoHeight,muted:v.muted,volume:v.volume,loop:v.loop,controls:v.controls,autoplay:v.autoplay}})()");
+  assert.ok(videoMetadata.duration>0 && videoMetadata.width>0 && videoMetadata.height>0);
+  assert.deepEqual([videoMetadata.muted,videoMetadata.volume,videoMetadata.loop,videoMetadata.controls,videoMetadata.autoplay],[true,0,true,false,false]);
+  console.log('Dhaak video metadata:',JSON.stringify(videoMetadata));
   assert.equal(await evaluate("document.getElementById('dhaak-audio').loop"),true);
   assert.equal(await evaluate("document.getElementById('dhaak-audio').volume"),0.22);
   assert.equal(await evaluate("document.getElementById('dhaak-toggle').getAttribute('aria-pressed')"),'true');
@@ -596,10 +606,19 @@ try {
   await screenshot('delight-dhaak-playing', false);
   await evaluate("document.getElementById('dhaak-toggle').click()");
   assert.equal(await evaluate("document.getElementById('dhaak-audio').currentTime"),0);
+  assert.equal(await evaluate("document.getElementById('dhaak-video').paused && document.getElementById('dhaak-video').currentTime === 0 && document.getElementById('dhaak-video').style.visibility === 'hidden'"),true);
+  await screenshot('delight-dhaak-stopped',false);
+  await command('Emulation.setEmulatedMedia', {features:[{name:'prefers-reduced-motion',value:'reduce'}]});
+  await playDhaak();
+  assert.equal(await evaluate("document.getElementById('dhaak-video').paused && document.getElementById('dhaak-video').style.visibility === 'hidden'"),true);
+  await screenshot('delight-dhaak-reduced-motion',false);
+  await evaluate("document.getElementById('dhaak-toggle').click()");
+  await command('Emulation.setEmulatedMedia', {features:[{name:'prefers-reduced-motion',value:'no-preference'}]});
   await playDhaak();
   await evaluate("import('./routes.mjs').then(({applyRoute})=>applyRoute(document,'?module=safety'))");
   await waitFor("document.getElementById('dhaak-audio').paused && !document.getElementById('dhaak-audio').loop");
   assert.equal(await evaluate("document.getElementById('dhaak-audio').currentTime"),0);
+  assert.equal(await evaluate("document.getElementById('dhaak-video').paused && document.getElementById('dhaak-video').currentTime === 0 && document.getElementById('dhaak-video').style.visibility === 'hidden'"),true);
   await command('Page.navigate', {url:'http://127.0.0.1:8000/?module=safety'});
   await waitFor("document.body.classList.contains('safety-route')");
   assert.equal(await evaluate("document.getElementById('dhaak-audio').getAttribute('src')"),null);
@@ -628,8 +647,15 @@ try {
     await screenshot(`delight-counter-fixture-${width}-${bn?'bn':'en'}`,false);
     await evaluate("window.scrollTo(0,0)");
     await screenshot(`delight-hero-${width}-${bn?'bn':'en'}`,false);
+    await playDhaak();
+    await waitFor("document.getElementById('dhaak-video').style.visibility === 'visible'");
+    assert.equal(await evaluate("document.documentElement.scrollWidth <= innerWidth"),true);
+    assert.equal(await evaluate("document.getElementById('dhaak-label').textContent"),bn?'ঢাক থামান':'Stop dhaak');
+    await screenshot(`delight-animation-${width}-${bn?'bn':'en'}`,false);
+    await evaluate("document.getElementById('dhaak-toggle').click()");
   }
   assert.ok(dhaakRequests>0);
+  assert.ok(dhaakVideoRequests>0);
   assert.deepEqual(runtimeErrors, []);
   assert.equal(placesRequests, 0);
   assert.equal(osmRequests, 0);

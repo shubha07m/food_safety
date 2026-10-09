@@ -16,6 +16,16 @@ dates remain omitted with an explicit incomplete-coverage notice. The first date
 reviews use saved organizer revisions for Agomoni (Oct 16–18, 2026), Pashchimi
 (Oct 16–20) and Ankur (Oct 23–25); other legacy date claims are not calendar evidence.
 
+The existing private `puja leads` workflow (use `"mode": "profile"` in its seed
+file) requests complete literal date expressions from the bounded extractor.
+The review packet's `supported_dates` normalizes only fully specified ISO dates/ranges
+or English month/day ranges with an explicit year, after exact evidence matching.
+Ambiguous, missing-year or unsupported expressions stay unqualified; no venue facts
+become date evidence. Reviewed packet evidence can populate the same canonical
+`reviewed_dates`; extraction never publishes automatically. The October 9 recheck
+could not retrieve Sanskriti within the existing size limit, or BASC/VBC (HTTP 403),
+so those legacy claims remain excluded rather than inferred.
+
 The Puja catalog is source-backed project data, separate from food POI discovery.
 `config/regions.yml` declares regions and their additional reviewed catalog files.
 `config/puja.yml` and the registry's regional `config/puja-*.yml` files form the
