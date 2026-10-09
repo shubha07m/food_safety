@@ -15,11 +15,9 @@ https://foodpath.nemoneek.com/corrections
 
 ## Food Safety Evidence — West Bengal
 
-Use the separate private-response Food Safety source form when configured through
-community_submission_url. Until then, its form is shown as coming shortly; the
-corrections page also offers public, source-backed correction/source issue templates.
-Never put sensitive correspondence in those public issues. No submission automatically
-changes an evidence record or relaxes the evidence rules.
+Public Food Safety correction submissions are temporarily closed while the intake process is being finalized.
+The correction and source-review policy remains available below. No submission
+automatically changes an evidence record or relaxes the evidence rules.
 
 The public site is https://foodpath.nemoneek.com/ . The Puja suggestion form is configured
 separately from Food Safety intake. No unconfigured email address or form URL is
@@ -29,7 +27,7 @@ Any public intake route must require a source URL where applicable, prohibit arb
 
 A correction should identify the record ID, disputed field, reason and a supporting public source URL. Optional context should avoid personal details. A source suggestion should provide URL, publisher, publication date if known, event description and a short relevant evidence span.
 
-Do not submit unsupported allegations, harassment, discriminatory content, unnecessary personal information or private documents. GitHub controls submission account data and infrastructure logs under its policies. This repository is public: issue text is public. Do not post sensitive legal correspondence in public Issues.
+Correction and source review must exclude unsupported allegations, harassment, discriminatory content, unnecessary personal information and private documents. Sensitive correspondence must not enter public records.
 
 ## Maintainer procedure
 

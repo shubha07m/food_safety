@@ -419,7 +419,7 @@ try {
   assert.equal(await evaluate("document.getElementById('puja').hidden"), true);
   assert.equal(await evaluate("document.querySelector('.area-summary').hidden"), false);
   assert.equal(await evaluate("document.getElementById('festival-food-geography').hidden"), true);
-  assert.equal(await evaluate("document.getElementById('phase1-help').textContent.includes('Submission form coming shortly')"), true);
+  assert.equal(await evaluate("document.getElementById('phase1-help').textContent.includes('Public Food Safety correction submissions are temporarily closed')"), true);
   // README preview is captured from the Puja homepage above.
   await evaluate("document.querySelector('.map-panel').scrollIntoView({block:'start'})");
   await screenshot('map-desktop');
@@ -485,8 +485,8 @@ try {
         assert.equal(await evaluate("document.querySelector('#puja-correction-action a').href"),'https://forms.gle/DfebWArXd7AFtH9d7');
         assert.equal(await evaluate("document.querySelector('#puja-correction-action a').target"),'_blank');
         assert.equal(await evaluate("document.querySelectorAll('#puja-corrections a[href*=github]').length"),0);
-        assert.equal(await evaluate("document.querySelector('[data-evidence-context] #correction-link').href.includes('template=correction.yml')"),true);
-        assert.equal(await evaluate("document.querySelector('[data-evidence-context] #source-link').href.includes('template=source_submission.yml')"),true);
+        assert.equal(await evaluate("document.querySelectorAll('#correction-link,#source-link,#github,a[href*=\"issues/new\"]').length"),0);
+        assert.equal(await evaluate("document.querySelector('[data-evidence-context]').textContent.includes('temporarily closed') || document.querySelector('[data-evidence-context]').textContent.includes('সাময়িকভাবে বন্ধ')"),true);
         await screenshot(`corrections-mobile-${lang?'bn':'en'}`,false);
         await evaluate("document.getElementById('evidence-corrections-heading').scrollIntoView()");
         await screenshot(`corrections-evidence-${lang?'bn':'en'}`,false);
@@ -597,6 +597,8 @@ try {
   await screenshot('delight-dhaak-idle', false);
   const idleFootprint = await evaluate("JSON.stringify(document.querySelector('#dhaak-toggle').getBoundingClientRect().toJSON())");
   assert.equal(await evaluate("document.getElementById('dhaak-toggle').contains(document.getElementById('dhaak-video'))"),true);
+  assert.equal(await evaluate("document.getElementById('dhaak-toggle').innerText.trim()"),'');
+  assert.equal(await evaluate("document.getElementById('dhaak-toggle').getAttribute('aria-label')"),'Play dhaak');
   const playDhaak = async () => {
     await evaluate("document.getElementById('dhaak-toggle').focus()");
     await command('Input.dispatchKeyEvent', {type:'keyDown',key:'Enter',code:'Enter',text:'\r',windowsVirtualKeyCode:13});
@@ -604,6 +606,8 @@ try {
     await waitFor("!document.getElementById('dhaak-audio').paused && document.getElementById('dhaak-audio').currentTime > 0");
   };
   await playDhaak();
+  assert.equal(await evaluate("document.getElementById('dhaak-toggle').matches(':focus-visible')"),true);
+  assert.equal(await evaluate("getComputedStyle(document.getElementById('dhaak-toggle')).outlineStyle"),'solid');
   await waitFor("document.getElementById('dhaak-video').style.visibility === 'visible' && document.getElementById('dhaak-video').currentTime > 0");
   assert.equal(await evaluate("JSON.stringify(document.querySelector('#dhaak-toggle').getBoundingClientRect().toJSON())"),idleFootprint,'Playback must not shift the integrated button');
   const videoMetadata=await evaluate("(()=>{const v=document.getElementById('dhaak-video');return {duration:v.duration,width:v.videoWidth,height:v.videoHeight,muted:v.muted,volume:v.volume,loop:v.loop,controls:v.controls,autoplay:v.autoplay}})()");
@@ -667,7 +671,8 @@ try {
     assert.equal(await evaluate("JSON.stringify(document.getElementById('dhaak-toggle').getBoundingClientRect().toJSON())"),mobileIdle);
     assert.equal(await evaluate("getComputedStyle(document.querySelector('.dhaak-idle-icon')).visibility"),'hidden');
     assert.equal(await evaluate("document.documentElement.scrollWidth <= innerWidth"),true);
-    assert.equal(await evaluate("document.getElementById('dhaak-label').textContent"),bn?'ঢাক থামান':'Stop dhaak');
+    assert.equal(await evaluate("document.getElementById('dhaak-toggle').getAttribute('aria-label')"),bn?'ঢাক থামান':'Stop dhaak');
+    assert.equal(await evaluate("document.getElementById('dhaak-toggle').innerText.trim()"),'');
     await screenshot(`delight-animation-${width}-${bn?'bn':'en'}`,false);
     await evaluate("document.getElementById('dhaak-toggle').click()");
   }
@@ -676,7 +681,9 @@ try {
   await command('Emulation.setDeviceMetricsOverride',{width:1440,height:1000,deviceScaleFactor:1,mobile:false});
   await command('Page.navigate',{url:'http://127.0.0.1:8000/corrections.html?event=WBFS-aaaaaaaaaaaa'});
   await waitFor("document.querySelector('#puja-correction-action a') !== null");
-  assert.equal(await evaluate("new URL(document.getElementById('correction-link').href).searchParams.get('record_id')"),'WBFS-aaaaaaaaaaaa');
+  assert.equal(await evaluate("new URL(location.href).searchParams.get('event')"),'WBFS-aaaaaaaaaaaa');
+  assert.equal(await evaluate("document.querySelectorAll('#correction-link,#source-link,a[href*=\"issues/new\"]').length"),0);
+  assert.equal(await evaluate("document.querySelector('[data-evidence-context]').textContent.includes('Public Food Safety correction submissions are temporarily closed')"),true);
   await screenshot('corrections-desktop',false);
   assert.deepEqual(runtimeErrors, []);
   assert.equal(placesRequests, 0);

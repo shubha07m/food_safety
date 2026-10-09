@@ -6,15 +6,15 @@ import { initDhaak } from '../site/dhaak.mjs';
 function fixture(bn=false, reduced=false) {
   const listeners={};
   const target=()=>({attributes:{},listeners:{},addEventListener(k,fn){this.listeners[k]=fn;},setAttribute(k,v){this.attributes[k]=v;},getAttribute(k){return this.attributes[k];}});
-  const button=target(),audio=target(),video=target(),label={},message={}; let plays=0;
+  const button=target(),audio=target(),video=target(),message={}; let plays=0;
   Object.assign(video,{style:{},currentTime:0,paused:true,play(){this.paused=false;return Promise.resolve();},pause(){this.paused=true;}});
   Object.assign(audio,{currentTime:0,paused:true,play(){plays++;this.paused=false;return Promise.resolve();},pause(){this.paused=true;}});
-  const nodes={'dhaak-toggle':button,'dhaak-audio':audio,'dhaak-video':video,'dhaak-label':label,'dhaak-status':message};
+  const nodes={'dhaak-toggle':button,'dhaak-audio':audio,'dhaak-video':video,'dhaak-status':message};
   const doc={documentElement:{lang:bn?'bn':'en'},visibilityState:'visible',body:{classList:{contains:()=>true}},getElementById:id=>nodes[id],addEventListener(k,fn){listeners[k]=fn;}};
   const motion={matches:reduced,addEventListener(k,fn){this.changed=fn;}};
   const win={location:{search:''},matchMedia:()=>motion,addEventListener(k,fn){listeners[k]=fn;}};
   initDhaak({doc,win});
-  return {button,audio,video,motion,label,message,doc,win,listeners,plays:()=>plays,click:()=>button.listeners.click()};
+  return {button,audio,video,motion,message,doc,win,listeners,plays:()=>plays,click:()=>button.listeners.click()};
 }
 test('no autoplay/source assignment/preference on initialization; native accessible button',()=>{
   const f=fixture(); assert.equal(f.plays(),0); assert.equal(f.audio.getAttribute('src'),undefined);
@@ -22,6 +22,8 @@ test('no autoplay/source assignment/preference on initialization; native accessi
   const html=readFileSync('site/index.html','utf8');
   assert.match(html,/<button id="dhaak-toggle"[^>]*type="button"/);
   assert.match(html,/<audio id="dhaak-audio" preload="none"><\/audio>/);
+  assert.equal(f.button.attributes['aria-label'],'Play dhaak');
+  assert.equal(f.button.attributes.title,'Play dhaak');
 });
 test('Dhaak has one integrated button whose visual state follows actual video playback',async()=>{
   const html=readFileSync('site/index.html','utf8');
@@ -29,6 +31,8 @@ test('Dhaak has one integrated button whose visual state follows actual video pl
   assert.match(control,/<span class="dhaak-visual" aria-hidden="true">/);
   assert.match(control,/<video id="dhaak-video"/);
   assert.match(control,/dhaak-idle-icon/);
+  assert.doesNotMatch(control,/dhaak-label|Hear the dhaak/);
+  assert.equal(control.replace(/<[^>]*>/g,'').trim(),'');
   assert.equal((html.match(/id="dhaak-video"/g)||[]).length,1);
   const f=fixture(); assert.equal(f.button.attributes['data-animated'],'false');
   await f.click(); assert.equal(f.button.attributes['data-animated'],'true');
@@ -39,18 +43,19 @@ test('Dhaak has one integrated button whose visual state follows actual video pl
 });
 test('explicit play loops, second click stops and resets',async()=>{
   const f=fixture(); await f.click(); assert.equal(f.plays(),1); assert.equal(f.audio.loop,true);
-  assert.equal(f.audio.getAttribute('src'),'assets/puja/dhaak.mp3'); assert.equal(f.label.textContent,'Stop dhaak');
+  assert.equal(f.audio.getAttribute('src'),'assets/puja/dhaak.mp3'); assert.equal(f.button.attributes['aria-label'],'Stop dhaak');
+  assert.equal(f.button.attributes.title,'Stop dhaak');
   f.audio.currentTime=12; await f.click(); assert.equal(f.audio.paused,true); assert.equal(f.audio.currentTime,0);
   assert.equal(f.audio.loop,false); assert.equal(f.button.attributes['aria-pressed'],'false');
 });
 test('play rejection and missing recording fail quietly and reset UI',async()=>{
   const f=fixture(); f.audio.play=()=>Promise.reject(Error('unavailable')); await f.click();
   assert.match(f.message.textContent,/unavailable/); assert.equal(f.audio.loop,false);
-  f.audio.listeners.error(); assert.equal(f.label.textContent,'Hear the dhaak');
+  f.audio.listeners.error(); assert.equal(f.button.attributes['aria-label'],'Play dhaak');
 });
 test('ended resets, fresh page never resumes',async()=>{
   const f=fixture(); await f.click(); f.audio.listeners.ended();
-  assert.equal(f.audio.currentTime,0); assert.equal(f.audio.loop,false); assert.equal(f.label.textContent,'Hear the dhaak');
+  assert.equal(f.audio.currentTime,0); assert.equal(f.audio.loop,false); assert.equal(f.button.attributes['aria-label'],'Play dhaak');
   assert.equal(fixture().plays(),0);
 });
 test('hidden page, pagehide, safety/history and document links stop audio',async()=>{
@@ -104,7 +109,7 @@ test('supplied video is unchanged and provenance records its checksum',()=>{
   assert.ok(readFileSync('docs/assets/ASSET_PROVENANCE.md','utf8').includes(hash));
 });
 test('inappropriate context cannot start audio; Bengali labels reflect state',async()=>{
-  const f=fixture(true); assert.equal(f.label.textContent,'ঢাক শুনুন'); await f.click(); assert.equal(f.label.textContent,'ঢাক থামান');
+  const f=fixture(true); assert.equal(f.button.attributes['aria-label'],'ঢাক বাজান'); await f.click(); assert.equal(f.button.attributes['aria-label'],'ঢাক থামান');
   await f.click(); f.doc.body.classList.contains=()=>false; await f.click(); assert.equal(f.plays(),1);
 });
 test('stop while play promise pending cannot leave looping enabled',async()=>{

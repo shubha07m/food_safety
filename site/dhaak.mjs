@@ -1,17 +1,18 @@
 // One local recording, loaded only after an explicit gesture. No saved preference.
 export function initDhaak({ doc = document, win = window } = {}) {
   const button = doc.getElementById('dhaak-toggle'); const audio = doc.getElementById('dhaak-audio');
-  const label = doc.getElementById('dhaak-label'); const message = doc.getElementById('dhaak-status');
+  const message = doc.getElementById('dhaak-status');
   const video = doc.getElementById('dhaak-video');
   const motion = win.matchMedia?.('(prefers-reduced-motion: reduce)');
-  if (!button || !audio || !label || !message) return;
+  if (!button || !audio || !message) return;
   const bn = doc.documentElement.lang === 'bn';
   let enabled = false; let revision = 0;
   const appropriate = () => doc.body.classList.contains('puja-route') && doc.visibilityState !== 'hidden'
     && doc.getElementById('regional-food-discovery')?.hidden !== false;
   const paint = () => {
     button.setAttribute('aria-pressed', String(enabled));
-    label.textContent = enabled ? (bn ? 'ঢাক থামান' : 'Stop dhaak') : (bn ? 'ঢাক শুনুন' : 'Hear the dhaak');
+    const label = enabled ? (bn ? 'ঢাক থামান' : 'Stop dhaak') : (bn ? 'ঢাক বাজান' : 'Play dhaak');
+    button.setAttribute('aria-label', label); button.setAttribute('title', label);
   };
   const mute = () => { if (video) { if (!video.muted) video.muted = true; if (!video.defaultMuted) video.defaultMuted = true; if (video.volume !== 0) video.volume = 0; } };
   const stopVisual = () => {

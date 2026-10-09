@@ -385,11 +385,11 @@ html[lang=bn] .eyebrow, html[lang=bn] .status-strip { letter-spacing: normal; }
 .puja-hero-copy { position:relative; z-index:1; }
 .dhaak-control { grid-column:1; grid-row:2; display:flex; flex-wrap:wrap; align-items:center; gap:10px; margin-top:-40px; }
 .puja-hero-art { grid-column:2; grid-row:1 / span 2; }
-#dhaak-toggle { display:inline-flex; align-items:center; gap:10px; min-height:44px; font-size:14px; padding:5px 18px 5px 6px; border-radius:40px; overflow:hidden; }
-#dhaak-label { min-inline-size:8em; text-align:left; }
-.dhaak-visual { position:relative; display:grid; place-items:center; width:112px; height:64px; flex:none; overflow:hidden; border-radius:32px; }
+#dhaak-toggle { display:inline-grid; place-items:center; padding:0; border:0; border-radius:24px; background:transparent; color:var(--puja-teal); overflow:hidden; }
+#dhaak-toggle:hover { background:var(--puja-sky-soft); }
+.dhaak-visual { position:relative; display:grid; place-items:center; width:96px; height:64px; flex:none; overflow:hidden; border-radius:24px; }
 #dhaak-toggle[data-animated="true"] .dhaak-idle-icon { visibility:hidden; }
-#dhaak-toggle[aria-pressed="true"] { background:var(--puja-blush); border-color:var(--puja-coral); color:var(--puja-ink); }
+#dhaak-toggle[aria-pressed="true"] { color:var(--puja-coral); }
 #dhaak-video { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; transform:scale(1.7); visibility:hidden; pointer-events:none; }
 @media(prefers-reduced-motion:reduce) { #dhaak-video { visibility:hidden !important; } #dhaak-toggle .dhaak-idle-icon { visibility:visible; } }
 .puja-calendar { margin:26px 0; padding:22px 26px; border:1px solid #b6d7da; border-left:3px solid var(--puja-gold); border-radius:14px; background:var(--puja-sky-soft); }
@@ -408,7 +408,7 @@ html[lang=bn] .eyebrow, html[lang=bn] .status-strip { letter-spacing: normal; }
   .puja-hero-art { grid-column:auto; grid-row:auto; }
 }
 @media(max-width:520px) {
-  .dhaak-visual { width:84px; height:52px; }
+  .dhaak-visual { width:76px; height:56px; }
   .puja-calendar { padding:20px; }
   .calendar-range { grid-template-columns:1fr; gap:6px; }
 }
