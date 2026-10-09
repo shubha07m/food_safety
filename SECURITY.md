@@ -1,6 +1,6 @@
 # Security policy
 
-## Structured extraction boundary
+## Food Safety structured extraction boundary
 
 Article text is untrusted data, including prompt-like instructions. The extractor has no tools, browser session, publication permission or configurable destination supplied by article text. The hosted adapter uses a fixed HTTPS endpoint, a header-held credential, bounded input/output, a 20-second timeout, no redirects and no automatic retries. Provider errors are reduced to controlled codes; article bodies and credentials are not logged. A schema-valid answer still needs objective evidence-span, schema, source, policy and publication validation. Source lifecycle checks do not consume model output.
 

@@ -1,14 +1,29 @@
 # Corrections, disputes and source suggestions
 
-Use the private-response Google Form linked by the website when configured. The maintainer must create it and set community_submission_url; until then the site says the form is coming shortly. No submission automatically changes a record or enters the dataset. GitHub Issues remain for project/tooling discussion, not primary evidence intake.
+## Puja and nearby food
 
-The public beta is live at https://foodpath.nemoneek.com/ . Google Form integration remains hidden until the maintainer supplies the real responder URL. No unconfigured email address or form URL is invented. Private form responses are not published or exported by this repository.
+Use “Suggest a Puja” on the homepage for missing listings. For changed dates or venues,
+select the Puja and use “Report changed venue/date”; that correction link opens a
+public GitHub issue, not the private approval workflow. Include a public source and
+no private information. Suggestions require owner approval and do not publish directly.
+
+## Food Safety Evidence — West Bengal
+
+Use the separate private-response Food Safety source form when configured through
+community_submission_url. Until then, its form is shown as coming shortly; the
+corrections page also offers public, source-backed correction/source issue templates.
+Never put sensitive correspondence in those public issues. No submission automatically
+changes an evidence record or relaxes the evidence rules.
+
+The public site is https://foodpath.nemoneek.com/ . The Puja suggestion form is configured
+separately from Food Safety intake. No unconfigured email address or form URL is
+invented. Private form responses are not published or exported by this repository.
 
 Any public intake route must require a source URL where applicable, prohibit arbitrary uploads and unsupported allegations, and never publish submissions automatically. It must remain a controlled manual-review channel rather than a public reporting or comment system.
 
 A correction should identify the record ID, disputed field, reason and a supporting public source URL. Optional context should avoid personal details. A source suggestion should provide URL, publisher, publication date if known, event description and a short relevant evidence span.
 
-Do not submit unsupported allegations, harassment, discriminatory content, unnecessary personal information or private documents. GitHub controls submission account data and infrastructure logs under its policies. Issue text may become visible if the repository later becomes public; keep all submissions suitable for public review. Do not post sensitive legal correspondence in public Issues.
+Do not submit unsupported allegations, harassment, discriminatory content, unnecessary personal information or private documents. GitHub controls submission account data and infrastructure logs under its policies. This repository is public: issue text is public. Do not post sensitive legal correspondence in public Issues.
 
 ## Maintainer procedure
 

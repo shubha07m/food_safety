@@ -461,6 +461,19 @@ try {
     assert.equal(response.status, 200);
     assert.ok((await response.text()).includes('Inclusion is not a finding of wrongdoing'));
   }
+  for (const page of ['methodology', 'corrections', 'contribute', 'policies/privacy']) {
+    for (const lang of ['', '?lang=bn']) {
+      await command('Page.navigate', { url: `http://127.0.0.1:8000/${page}.html${lang}` });
+      await waitFor("document.querySelector('.language-switch') !== null || document.querySelector('[hreflang]') !== null");
+      assert.equal(await evaluate("document.querySelector('.status-strip').textContent.includes('wrongdoing')"), false);
+      assert.equal(await evaluate('document.documentElement.scrollWidth <= window.innerWidth'), true);
+      assert.equal(await evaluate("document.querySelectorAll('link[rel=canonical]').length"), 1);
+      if (lang) {
+        assert.equal(await evaluate("document.documentElement.lang"), 'bn');
+        assert.equal(await evaluate("document.querySelector('main > aside.notice') === null"), true);
+      }
+    }
+  }
   intercept = true;
   await command('Fetch.enable', { patterns: [{ urlPattern: '*data/events.json*' }] });
   await command('Page.addScriptToEvaluateOnNewDocument', { source: `document.addEventListener('DOMContentLoaded', () => { const b = document.createElement('div'); b.textContent = 'SYNTHETIC BROWSER TEST — NOT PRODUCTION DATA'; b.className = 'notice'; document.body.prepend(b); });` });

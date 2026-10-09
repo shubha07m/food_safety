@@ -406,14 +406,18 @@ def build(root):
             '<link rel="stylesheet" href="../styles.css">'
             '<script type="module" src="../pages.js"></script></head><body>'
             '<a class="skip-link" href="#content">Skip to content</a>'
-            '<div class="status-strip">Independent public-source research tracker · '
-            "Not a government database · Inclusion is not a finding of wrongdoing</div>"
+            '<div class="status-strip">THE BENGAL FOODPATH · SOURCE-CONSCIOUS DISCOVERY</div>'
             '<nav class="policy-nav" aria-label="Main">'
             '<a href="../index.html">The Bengal FoodPath</a> '
             '<a href="methodology.html">Methodology</a> <a href="disclaimer.html">Disclaimer</a> '
             '<a href="../corrections.html">Corrections</a> <a href="../data.html">Data</a> '
             '<a href="../corrections.html#github">GitHub</a></nav>'
             f'<main id="content" class="policy"><h1>{title}</h1>'
+            '<section data-evidence-context aria-label="Food Safety Evidence context">'
+            '<p class="fine-print">Food Safety Evidence (West Bengal): independent '
+            'public-source research, not a government database. Inclusion is not '
+            'a finding of wrongdoing. These evidence rules do not describe Puja '
+            'or nearby-food inclusion.</p></section>'
             '<p class="notice">Project policy draft, not legal advice. India-qualified counsel '
             "should review the wording before broad public promotion. Independent legal review "
             "has not been completed.</p>"
