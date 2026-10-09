@@ -16,7 +16,7 @@
     "approved-pc-231aa72c405daf06467b": {
       "error": "OSError",
       "extraction_status": "not_requested",
-      "last_attempt": "2026-10-07T19:59:20.623484+00:00",
+      "last_attempt": "2026-10-09T00:22:17.672059+00:00",
       "last_reviewed_revision": null,
       "status": "unavailable",
       "url": "https://aikotaan.org/"
@@ -25,9 +25,9 @@
       "content_hash": "0c1f974b314b7b51b1fbc33cff1757d76de413447c2222f0a3d200f29520f152",
       "error": "FetchError",
       "extraction_status": "not_requested",
-      "last_attempt": "2026-10-07T19:59:20.623484+00:00",
+      "last_attempt": "2026-10-09T00:22:17.672059+00:00",
       "last_reviewed_revision": null,
-      "last_success": "2026-10-07T19:59:20.623484+00:00",
+      "last_success": "2026-10-09T00:22:17.672059+00:00",
       "pending_change": true,
       "status": "checked",
       "url": "https://sanatanbengalisociety.org/"
@@ -201,21 +201,21 @@
     "london-camden": {
       "content_hash": "411f153093d8e6f18f7cc02b329a8685fd00ebf7c22cf30e51cf0fe127f37f41",
       "extraction_status": "not_requested",
-      "last_attempt": "2026-10-07T19:59:20.623484+00:00",
+      "last_attempt": "2026-10-09T00:22:17.672059+00:00",
       "last_reviewed_revision": null,
-      "last_success": "2026-10-07T19:59:20.623484+00:00",
+      "last_success": "2026-10-09T00:22:17.672059+00:00",
       "pending_change": true,
       "status": "checked",
       "url": "https://www.londonpuja.co.uk/"
     },
     "melbourne-bsm": {
       "content_hash": "028b6b321e36db004d7cf3b3997046642a02cb4208aa93ebb70841ff3e99cd09",
-      "etag": "\"ba6946ca5139e43b1cd2afc20a6e1091\"",
+      "etag": "\"7db955412ce4de342a4992bef83bab9e\"",
       "extraction_status": "not_requested",
-      "last_attempt": "2026-10-07T19:59:20.623484+00:00",
-      "last_modified": "Wed, 07 Oct 2026 12:16:38 GMT",
+      "last_attempt": "2026-10-09T00:22:17.672059+00:00",
+      "last_modified": "Thu, 08 Oct 2026 11:06:43 GMT",
       "last_reviewed_revision": "d2bfae9354454b19fa92aaeed97dbdab2167a1b58e613d44ea0c90aa58fe3341",
-      "last_success": "2026-10-07T19:59:20.623484+00:00",
+      "last_success": "2026-10-09T00:22:17.672059+00:00",
       "pending_change": true,
       "status": "checked",
       "url": "https://bsm.org.au/events/durgotsav"
@@ -223,9 +223,9 @@
     "melbourne-melba": {
       "content_hash": "44e7cfb2d70a5632d9af0608e027cde4904ce0fe8e29d8ded47daad0259d3c26",
       "extraction_status": "not_requested",
-      "last_attempt": "2026-10-07T19:59:20.623484+00:00",
+      "last_attempt": "2026-10-09T00:22:17.672059+00:00",
       "last_reviewed_revision": null,
-      "last_success": "2026-10-07T19:59:20.623484+00:00",
+      "last_success": "2026-10-09T00:22:17.672059+00:00",
       "pending_change": true,
       "status": "checked",
       "url": "https://www.melba.org.au/"
