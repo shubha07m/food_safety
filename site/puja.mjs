@@ -144,6 +144,7 @@ export async function initPuja(onData = () => {}) {
     let data = scopeFood(allData, region, registry.default_region);
     // Missing optional provider files preserve the existing Google-only contract.
     const optional = async path => { try { const r = await fetch(path, { credentials: 'omit' }); return r.ok ? await r.json() : null; } catch { return null; } };
+    const metadata = await optional('repository.json');
     const loaded = new Map(); let generation = 0; let selectionRequest = 0;
     let matches = []; let active = -1;
     const viewTabs = document.getElementById('food-view-tabs');
@@ -175,7 +176,7 @@ export async function initPuja(onData = () => {}) {
       if (updateURL) setFoodView('puja', true);
       close(); input.value = language === 'bn' && p.name_bn ? p.name_bn : p.name;
       selected.hidden = false; selected.replaceChildren();
-      selected.append(renderProfile(p, region, catalog.source_checks, language === 'bn'));
+      selected.append(renderProfile(p, region, catalog.source_checks, language === 'bn', document, metadata?.puja_suggest_form_url));
       document.dispatchEvent(new CustomEvent('foodpath-focus-pandal', { detail: p.pandal_id }));
       const foodSection = el('section', null, 'nearby-food-section');
       foodSection.setAttribute('aria-label', text('Nearby food')); selected.append(foodSection);

@@ -1,6 +1,7 @@
 import { safeExternal } from './data.mjs';
 import { translateStatic, language } from './locale.mjs';
 import { phase1 } from './phase1.mjs';
+import { showPujaSuggestion } from './puja-suggestion.mjs';
 
 translateStatic();
 const evidenceContext = document.querySelector('[data-evidence-context]');
@@ -13,7 +14,10 @@ if (language === 'bn' && evidenceContext) {
 try {
   const response = await fetch(new URL('repository.json', import.meta.url), { credentials: 'omit' });
   if (!response.ok) throw new Error('Unavailable');
-  const repository = (await response.json()).url;
+  const metadata = await response.json();
+  showPujaSuggestion(document.getElementById('puja-correction-action'), metadata.puja_suggest_form_url,
+    language === 'bn' ? 'পুজোর পরামর্শ বা সংশোধন জানান ↗' : 'Suggest or correct a Puja ↗');
+  const repository = metadata.url;
   const safe = safeExternal(repository);
   if (safe && new URL(safe).hostname === 'github.com') {
     const base = safe.replace(/\/$/, '');

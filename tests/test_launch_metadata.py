@@ -145,3 +145,21 @@ def test_social_preview_source_matches_final_brand():
     assert '>FoodPath</text>' in svg
     assert 'The Bengal' not in svg
     assert 'Food Safety Evidence remains a separate West Bengal research module.' in svg
+
+
+def test_puja_and_food_safety_corrections_have_separate_intake_contexts():
+    soup = BeautifulSoup((ROOT / 'site/corrections.html').read_text(), 'html.parser')
+    puja = soup.select_one('#puja-corrections')
+    assert 'Google Form' in puja.get_text()
+    assert 'no GitHub account needed' in puja.get_text()
+    assert puja.select_one('#puja-correction-action')
+    assert not puja.select_one('#correction-link')
+    evidence = soup.select_one('[data-evidence-context]')
+    assert 'West Bengal' in evidence.get_text()
+    assert 'Inclusion is not a finding of wrongdoing' in evidence.get_text()
+    assert evidence.select_one('#correction-link')
+    assert evidence.select_one('#source-link')
+    assert 'record a neutral revision or dispute status' in evidence.get_text()
+    assert 'private GitHub' not in (ROOT / 'CORRECTIONS.md').read_text()
+    policy = BeautifulSoup((ROOT / 'site/policies/corrections.html').read_text(), 'html.parser')
+    assert policy.select_one('a[href="https://foodpath.nemoneek.com/corrections"]')

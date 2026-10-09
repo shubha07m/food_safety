@@ -23,6 +23,20 @@ test('no autoplay/source assignment/preference on initialization; native accessi
   assert.match(html,/<button id="dhaak-toggle"[^>]*type="button"/);
   assert.match(html,/<audio id="dhaak-audio" preload="none"><\/audio>/);
 });
+test('Dhaak has one integrated button whose visual state follows actual video playback',async()=>{
+  const html=readFileSync('site/index.html','utf8');
+  const control=html.match(/<button id="dhaak-toggle"[\s\S]*?<\/button>/)[0];
+  assert.match(control,/<span class="dhaak-visual" aria-hidden="true">/);
+  assert.match(control,/<video id="dhaak-video"/);
+  assert.match(control,/dhaak-idle-icon/);
+  assert.equal((html.match(/id="dhaak-video"/g)||[]).length,1);
+  const f=fixture(); assert.equal(f.button.attributes['data-animated'],'false');
+  await f.click(); assert.equal(f.button.attributes['data-animated'],'true');
+  await f.click(); assert.equal(f.button.attributes['data-animated'],'false');
+  const reduced=fixture(false,true); await reduced.click();
+  assert.equal(reduced.button.attributes['aria-pressed'],'true');
+  assert.equal(reduced.button.attributes['data-animated'],'false');
+});
 test('explicit play loops, second click stops and resets',async()=>{
   const f=fixture(); await f.click(); assert.equal(f.plays(),1); assert.equal(f.audio.loop,true);
   assert.equal(f.audio.getAttribute('src'),'assets/puja/dhaak.mp3'); assert.equal(f.label.textContent,'Stop dhaak');

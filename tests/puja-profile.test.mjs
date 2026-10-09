@@ -88,6 +88,20 @@ class Element {
 }
 const doc={createElement:tag=>new Element(tag),createTextNode:text=>({textContent:text,children:[]})};
 const flatten=n=>[n,...n.children.flatMap(flatten)];
+test('Puja reports reuse only the configured Google Form; missing config stays on Puja instructions',()=>{
+  const form='https://forms.gle/DfebWArXd7AFtH9d7';
+  for (const bn of [false,true]) {
+    const card=renderProfile(p,{label:'London'},[],bn,doc,form);
+    const report=flatten(card).find(n=>n.className==='profile-report');
+    assert.equal(report.href,form); assert.equal(report.target,'_blank'); assert.equal(report.rel,'noopener noreferrer');
+    assert.equal(report.textContent,bn?'স্থান/তারিখ সংশোধন জানান':'Report changed venue/date');
+    for (const config of [null,'https://github.com/example/issues/new']) {
+      const fallback=flatten(renderProfile(p,{label:'London'},[],bn,doc,config)).find(n=>n.className==='profile-report');
+      assert.equal(fallback.href,`corrections.html${bn?'?lang=bn':''}#puja-corrections`);
+      assert.doesNotMatch(fallback.href,/github|issues/);
+    }
+  }
+});
 test('profile shows Directions only for qualified current locations and keeps all other actions',()=>{
   const official_links=[{kind:'website',url:'https://example.org',evidence}];
   for(const edition of [p.edition,null,{...p.edition,year:year-1},{...p.edition,venue_reviewed:false},{...p.edition,location:null}]) {

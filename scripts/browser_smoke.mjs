@@ -480,6 +480,17 @@ try {
         assert.equal(await evaluate("document.querySelector('main > aside.notice') === null"), true);
       }
       if (page === 'methodology' || page === 'policies/privacy') await screenshot(`launch-${page.replace('/', '-')}-${lang ? 'bn' : 'en'}`);
+      if (page === 'corrections') {
+        await waitFor("document.querySelector('#puja-correction-action a') !== null");
+        assert.equal(await evaluate("document.querySelector('#puja-correction-action a').href"),'https://forms.gle/DfebWArXd7AFtH9d7');
+        assert.equal(await evaluate("document.querySelector('#puja-correction-action a').target"),'_blank');
+        assert.equal(await evaluate("document.querySelectorAll('#puja-corrections a[href*=github]').length"),0);
+        assert.equal(await evaluate("document.querySelector('[data-evidence-context] #correction-link').href.includes('template=correction.yml')"),true);
+        assert.equal(await evaluate("document.querySelector('[data-evidence-context] #source-link').href.includes('template=source_submission.yml')"),true);
+        await screenshot(`corrections-mobile-${lang?'bn':'en'}`,false);
+        await evaluate("document.getElementById('evidence-corrections-heading').scrollIntoView()");
+        await screenshot(`corrections-evidence-${lang?'bn':'en'}`,false);
+      }
     }
   }
   intercept = true;
@@ -584,7 +595,8 @@ try {
   assert.equal(await evaluate("document.getElementById('dhaak-audio').getAttribute('src')"), null);
   assert.equal(await evaluate("document.getElementById('dhaak-audio').autoplay"), false);
   await screenshot('delight-dhaak-idle', false);
-  const idleFootprint = await evaluate("JSON.stringify(document.querySelector('.dhaak-control').getBoundingClientRect().toJSON())");
+  const idleFootprint = await evaluate("JSON.stringify(document.querySelector('#dhaak-toggle').getBoundingClientRect().toJSON())");
+  assert.equal(await evaluate("document.getElementById('dhaak-toggle').contains(document.getElementById('dhaak-video'))"),true);
   const playDhaak = async () => {
     await evaluate("document.getElementById('dhaak-toggle').focus()");
     await command('Input.dispatchKeyEvent', {type:'keyDown',key:'Enter',code:'Enter',text:'\r',windowsVirtualKeyCode:13});
@@ -593,7 +605,7 @@ try {
   };
   await playDhaak();
   await waitFor("document.getElementById('dhaak-video').style.visibility === 'visible' && document.getElementById('dhaak-video').currentTime > 0");
-  assert.equal(await evaluate("JSON.stringify(document.querySelector('.dhaak-control').getBoundingClientRect().toJSON())"),idleFootprint,'Playback must not shift layout');
+  assert.equal(await evaluate("JSON.stringify(document.querySelector('#dhaak-toggle').getBoundingClientRect().toJSON())"),idleFootprint,'Playback must not shift the integrated button');
   const videoMetadata=await evaluate("(()=>{const v=document.getElementById('dhaak-video');return {duration:v.duration,width:v.videoWidth,height:v.videoHeight,muted:v.muted,volume:v.volume,loop:v.loop,controls:v.controls,autoplay:v.autoplay}})()");
   assert.ok(videoMetadata.duration>0 && videoMetadata.width>0 && videoMetadata.height>0);
   assert.deepEqual([videoMetadata.muted,videoMetadata.volume,videoMetadata.loop,videoMetadata.controls,videoMetadata.autoplay],[true,0,true,false,false]);
@@ -635,6 +647,8 @@ try {
     assert.equal(await evaluate("document.documentElement.scrollWidth <= innerWidth"),true);
     await evaluate("document.querySelector('.calendar-select').click()");
     await waitFor("new URL(location.href).searchParams.get('pandal') === 'ca-agomoni'");
+    assert.equal(await evaluate("document.querySelector('.profile-report').href"),'https://forms.gle/DfebWArXd7AFtH9d7');
+    assert.equal(await evaluate("document.querySelector('.profile-report').rel"),'noopener noreferrer');
     assert.equal(await evaluate("[...document.querySelectorAll('.puja-actions a')].some(a=>a.textContent==='Directions'||a.textContent==='যাতায়াতের পথ')"),false);
     await evaluate(`(async()=>{const {renderCalendar}=await import('./puja-calendar.mjs');renderCalendar(document.getElementById('puja-calendar'),[],'california',()=>{},{bn:${bn}});document.getElementById('puja-calendar').scrollIntoView({block:'center'});})()`);
     assert.equal(await evaluate("document.querySelectorAll('.calendar-empty').length"),1);
@@ -647,8 +661,11 @@ try {
     await screenshot(`delight-counter-fixture-${width}-${bn?'bn':'en'}`,false);
     await evaluate("window.scrollTo(0,0)");
     await screenshot(`delight-hero-${width}-${bn?'bn':'en'}`,false);
+    const mobileIdle=await evaluate("JSON.stringify(document.getElementById('dhaak-toggle').getBoundingClientRect().toJSON())");
     await playDhaak();
     await waitFor("document.getElementById('dhaak-video').style.visibility === 'visible'");
+    assert.equal(await evaluate("JSON.stringify(document.getElementById('dhaak-toggle').getBoundingClientRect().toJSON())"),mobileIdle);
+    assert.equal(await evaluate("getComputedStyle(document.querySelector('.dhaak-idle-icon')).visibility"),'hidden');
     assert.equal(await evaluate("document.documentElement.scrollWidth <= innerWidth"),true);
     assert.equal(await evaluate("document.getElementById('dhaak-label').textContent"),bn?'ঢাক থামান':'Stop dhaak');
     await screenshot(`delight-animation-${width}-${bn?'bn':'en'}`,false);
@@ -656,6 +673,11 @@ try {
   }
   assert.ok(dhaakRequests>0);
   assert.ok(dhaakVideoRequests>0);
+  await command('Emulation.setDeviceMetricsOverride',{width:1440,height:1000,deviceScaleFactor:1,mobile:false});
+  await command('Page.navigate',{url:'http://127.0.0.1:8000/corrections.html?event=WBFS-aaaaaaaaaaaa'});
+  await waitFor("document.querySelector('#puja-correction-action a') !== null");
+  assert.equal(await evaluate("new URL(document.getElementById('correction-link').href).searchParams.get('record_id')"),'WBFS-aaaaaaaaaaaa');
+  await screenshot('corrections-desktop',false);
   assert.deepEqual(runtimeErrors, []);
   assert.equal(placesRequests, 0);
   assert.equal(osmRequests, 0);

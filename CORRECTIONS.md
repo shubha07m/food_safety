@@ -2,10 +2,16 @@
 
 ## Puja and nearby food
 
-Use “Suggest a Puja” on the homepage for missing listings. For changed dates or venues,
-select the Puja and use “Report changed venue/date”; that correction link opens a
-public GitHub issue, not the private approval workflow. Include a public source and
-no private information. Suggestions require owner approval and do not publish directly.
+Use the existing Google Form for missing Pujas, changed dates/venues and listing
+corrections. “Suggest a Puja” and the selected profile’s “Report changed venue/date”
+open the same form; no GitHub account is required. Provide the Puja name, city/region
+and public source URL. Describe the correction (or nearby-food detail) in Additional
+note. Do not include private information. Responses follow the existing private
+Sheet and owner review process; nothing publishes automatically.
+
+Open the Puja correction form from this page:
+
+https://foodpath.nemoneek.com/corrections
 
 ## Food Safety Evidence — West Bengal
 

@@ -15,6 +15,7 @@ export function initDhaak({ doc = document, win = window } = {}) {
   };
   const mute = () => { if (video) { if (!video.muted) video.muted = true; if (!video.defaultMuted) video.defaultMuted = true; if (video.volume !== 0) video.volume = 0; } };
   const stopVisual = () => {
+    button.setAttribute('data-animated', 'false');
     if (!video) return;
     video.style.visibility = 'hidden'; video.pause(); video.loop = false;
     try { video.currentTime = 0; } catch { /* Not loaded yet. */ }
@@ -26,7 +27,9 @@ export function initDhaak({ doc = document, win = window } = {}) {
     if (!video.getAttribute('src')) video.setAttribute('src', 'assets/puja/dhaak-playing.mp4');
     try {
       await video.play();
-      if (run === revision && enabled && !audio.paused && !motion?.matches && appropriate()) video.style.visibility = 'visible';
+      if (run === revision && enabled && !audio.paused && !motion?.matches && appropriate()) {
+        video.style.visibility = 'visible'; button.setAttribute('data-animated', 'true');
+      }
       else if (!enabled || motion?.matches || !appropriate()) stopVisual();
     } catch { if (run === revision) stopVisual(); /* Decoration never interrupts sound. */ }
   };

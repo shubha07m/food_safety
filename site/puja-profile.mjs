@@ -24,7 +24,7 @@ export function profileView(p, region, checks = [], year = new Date().getUTCFull
     pending: checks.some(c => urls.has(c.url) && c.pending_change),
   };
 }
-export function renderProfile(p, region, checks, bn = false, doc = document) {
+export function renderProfile(p, region, checks, bn = false, doc = document, formURL = null) {
   const v = profileView(p, region, checks, undefined, bn);
   const t = (en, bengali) => bn ? bengali : en;
   const card = node(doc, 'article', null, 'puja-profile'); card.setAttribute('aria-labelledby', 'selected-pandal-title');
@@ -56,7 +56,10 @@ export function renderProfile(p, region, checks, bn = false, doc = document) {
     } catch (e) { if (e.name !== 'AbortError') message.textContent = url; }
   });
   actions.append(share, message); card.append(actions);
-  card.append(link(doc, t('Report changed venue/date', 'স্থান/তারিখ সংশোধন জানান'), reportURL(p), 'profile-report'));
+  const reportLabel = t('Report changed venue/date', 'স্থান/তারিখ সংশোধন জানান');
+  const report = link(doc, reportLabel, reportURL(formURL), 'profile-report') || node(doc, 'a', reportLabel, 'profile-report');
+  if (!report.href) report.href = `corrections.html${bn ? '?lang=bn' : ''}#puja-corrections`;
+  card.append(report);
   card.append(node(doc, 'p', [p.last_verified_at ? `${t('Listing reviewed', 'তালিকা পর্যালোচিত')} ${p.last_verified_at.slice(0, 10)}` : '', v.checked ? `${t('Source checked', 'উৎস দেখা হয়েছে')} ${v.checked.slice(0, 10)}` : ''].filter(Boolean).join(' · '), 'fine-print'));
   if (v.pending) card.append(node(doc, 'p', t('Source change awaiting review', 'উৎসের পরিবর্তন পর্যালোচনার অপেক্ষায়'), 'fine-print'));
   const more = node(doc, 'details', null, 'profile-more'); more.append(node(doc, 'summary', t('More about this Puja', 'এই পুজো সম্পর্কে আরও')));

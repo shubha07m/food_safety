@@ -10,12 +10,12 @@ export function googleFormURL(value) {
   return null;
 }
 
-export function showPujaSuggestion(container, value) {
+export function showPujaSuggestion(container, value, label = 'Suggest a Puja ↗') {
   const url = googleFormURL(value);
   if (!container || !url) return false;
   const link = container.ownerDocument.createElement('a');
   link.className = 'text-link';
-  link.textContent = 'Suggest a Puja ↗';
+  link.textContent = label;
   link.href = url;
   link.target = '_blank';
   link.rel = 'noopener noreferrer';

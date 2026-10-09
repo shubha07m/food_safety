@@ -1,6 +1,15 @@
 // Static editorial UI translations. Source evidence is never sent to a translation API.
 export const language = new URLSearchParams(globalThis.location?.search || '').get('lang') === 'bn' ? 'bn' : 'en';
 export const bn = {
+  'FOODPATH / CORRECTIONS': 'ফুডপাথ / সংশোধন',
+  'Help keep sources and listings accurate.': 'উৎস ও তালিকার তথ্য নির্ভুল রাখতে সাহায্য করুন।',
+  'Puja and nearby food': 'পুজো ও কাছাকাছি খাবার',
+  'Suggest a Puja, report a changed venue/date, or correct a listing using our existing Google Form — no GitHub account needed.': 'নতুন পুজোর পরামর্শ, স্থান/তারিখের পরিবর্তন বা তালিকার সংশোধন জানান আমাদের বর্তমান Google Form-এ — GitHub অ্যাকাউন্টের প্রয়োজন নেই।',
+  'Provide the Puja name, city/region and public source URL. Describe the correction or nearby-food detail in Additional note. Do not include private information. The owner reviews submissions; nothing publishes automatically.': 'পুজোর নাম, শহর/অঞ্চল ও প্রকাশ্য উৎসের URL দিন। Additional note ঘরে সংশোধন বা কাছাকাছি খাবারের তথ্য লিখুন। ব্যক্তিগত তথ্য দেবেন না। মালিক জমা পড়া তথ্য পর্যালোচনা করেন; কিছুই নিজে থেকে প্রকাশিত হয় না।',
+  'Correction form is temporarily unavailable. Please try again later.': 'সংশোধনের ফর্ম এই মুহূর্তে পাওয়া যাচ্ছে না। পরে আবার চেষ্টা করুন।',
+  'Food Safety Evidence · West Bengal': 'খাদ্য সুরক্ষার উৎসভিত্তিক নথি · পশ্চিমবঙ্গ',
+  'Food Safety evidence: GitHub submission access': 'খাদ্য সুরক্ষার নথি: GitHub-এ জমা দেওয়া',
+  'For Food Safety evidence only, use the controlled GitHub Issue Forms above. This repository is public; submitted issue text is public. Do not submit private information. No submission is published automatically.': 'শুধু খাদ্য সুরক্ষার নথির জন্য উপরের নিয়ন্ত্রিত GitHub Issue Form ব্যবহার করুন। এই সংগ্রহ ও জমা দেওয়া লেখাগুলি প্রকাশ্য। ব্যক্তিগত তথ্য দেবেন না। কোনো অনুরোধ নিজে থেকে প্রকাশিত হয় না।',
   'FOODPATH': 'ফুডপাথ',
   'FOODPATH · SOURCE-CONSCIOUS DISCOVERY': 'ফুডপাথ · উৎসসচেতন খোঁজ',
   'Source-conscious Puja and nearby-food discovery. Nearby does not mean recommended, inspected or safety-rated.': 'উৎসসচেতন পুজো ও কাছাকাছি খাবারের খোঁজ। কাছে থাকা মানেই সুপারিশপ্রাপ্ত, পরিদর্শিত বা নিরাপদ বলে চিহ্নিত নয়।',
