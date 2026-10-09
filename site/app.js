@@ -14,7 +14,7 @@ if (pujaHero) pujaHero.addEventListener('error', () => pujaHero.closest('.puja-h
 const isRecordRoute = applyRoute(document, location.search);
 const isSafetyRoute = safetyRoute(location.search);
 if (isSafetyRoute) {
-  document.title = 'Food Safety Evidence · The Bengal FoodPath';
+  document.title = 'Food Safety Evidence · FoodPath';
 }
 if (!isRecordRoute) {
   if (!isSafetyRoute) {

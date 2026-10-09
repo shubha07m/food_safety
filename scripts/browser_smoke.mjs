@@ -151,6 +151,8 @@ try {
   await waitFor(`document.getElementById('metric-events')?.textContent === '${original.record_count}'`);
   assert.equal(await evaluate("document.querySelector('link[rel=canonical]').href"), 'https://foodpath.nemoneek.com/');
   await waitFor("document.querySelectorAll('#featured-pandals button').length > 0");
+  assert.equal(await evaluate("document.querySelector('.identity').getAttribute('aria-label')"), 'FoodPath home');
+  assert.equal(await evaluate("document.title"), 'FoodPath · Puja pandals and nearby food');
   assert.equal(await evaluate("document.querySelector('#puja-suggest-action a')?.href || null"),
     process.env.FOOD_SMOKE_FORM_URL || JSON.parse(readFileSync(resolve(root, 'site/repository.json'), 'utf8')).puja_suggest_form_url);
   if (process.env.FOOD_COUNTER_SMOKE === '1') {
@@ -453,6 +455,7 @@ try {
   assert.equal(await evaluate("document.querySelector('link[rel=canonical]').href"), 'https://foodpath.nemoneek.com/');
   assert.equal(await evaluate("document.querySelectorAll('link[rel=alternate][hreflang]').length"), 0);
   await screenshot('zero-desktop');
+  await publicScreenshot('docs/assets/dashboard_preview.png');
   await command('Emulation.setDeviceMetricsOverride', { width: 390, height: 844, deviceScaleFactor: 1, mobile: true });
   assert.equal(await evaluate('document.documentElement.scrollWidth <= window.innerWidth'), true);
   await screenshot('zero-mobile');
@@ -472,6 +475,7 @@ try {
         assert.equal(await evaluate("document.documentElement.lang"), 'bn');
         assert.equal(await evaluate("document.querySelector('main > aside.notice') === null"), true);
       }
+      if (page === 'methodology' || page === 'policies/privacy') await screenshot(`launch-${page.replace('/', '-')}-${lang ? 'bn' : 'en'}`);
     }
   }
   intercept = true;

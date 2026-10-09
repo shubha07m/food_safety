@@ -400,15 +400,15 @@ def build(root):
         target.write_text(
             '<!doctype html><html lang="en"><head><meta charset="utf-8">'
             '<meta name="viewport" content="width=device-width,initial-scale=1">'
-            f"<title>{title} · The Bengal FoodPath</title>"
+            f"<title>{title} · FoodPath</title>"
             f'<link rel="canonical" href="{escape(settings(root).site_url.rstrip("/"), quote=True)}'
             f'/policies/{name.lower()}">'
             '<link rel="stylesheet" href="../styles.css">'
             '<script type="module" src="../pages.js"></script></head><body>'
             '<a class="skip-link" href="#content">Skip to content</a>'
-            '<div class="status-strip">THE BENGAL FOODPATH · SOURCE-CONSCIOUS DISCOVERY</div>'
+            '<div class="status-strip">FOODPATH · SOURCE-CONSCIOUS DISCOVERY</div>'
             '<nav class="policy-nav" aria-label="Main">'
-            '<a href="../index.html">The Bengal FoodPath</a> '
+            '<a href="../index.html">FoodPath</a> '
             '<a href="methodology.html">Methodology</a> <a href="disclaimer.html">Disclaimer</a> '
             '<a href="../corrections.html">Corrections</a> <a href="../data.html">Data</a> '
             '<a href="../corrections.html#github">GitHub</a></nav>'

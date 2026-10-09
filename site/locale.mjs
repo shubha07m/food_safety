@@ -1,11 +1,10 @@
 // Static editorial UI translations. Source evidence is never sent to a translation API.
 export const language = new URLSearchParams(globalThis.location?.search || '').get('lang') === 'bn' ? 'bn' : 'en';
 export const bn = {
-  'THE BENGAL': 'দ্য বেঙ্গল', 'FOODPATH': 'ফুডপাথ',
-  'THE BENGAL FOODPATH': 'দ্য বেঙ্গল ফুডপাথ',
-  'THE BENGAL FOODPATH · SOURCE-CONSCIOUS DISCOVERY': 'দ্য বেঙ্গল ফুডপাথ · উৎসসচেতন খোঁজ',
+  'FOODPATH': 'ফুডপাথ',
+  'FOODPATH · SOURCE-CONSCIOUS DISCOVERY': 'ফুডপাথ · উৎসসচেতন খোঁজ',
   'Source-conscious Puja and nearby-food discovery. Nearby does not mean recommended, inspected or safety-rated.': 'উৎসসচেতন পুজো ও কাছাকাছি খাবারের খোঁজ। কাছে থাকা মানেই সুপারিশপ্রাপ্ত, পরিদর্শিত বা নিরাপদ বলে চিহ্নিত নয়।',
-  'The Bengal FoodPath uses a bounded language model to extract structured candidate records from public source documents. Published records must pass schema, source, exact evidence-grounding, safety, date, duplicate and publication checks; unsupported candidates are not published.': 'দ্য বেঙ্গল ফুডপাথ প্রকাশ্য উৎসের নথি থেকে কাঠামোবদ্ধ সম্ভাব্য রেকর্ড তৈরিতে সীমিত ব্যবহারের ভাষা মডেল ব্যবহার করে। প্রকাশিত রেকর্ডকে কাঠামো, উৎস, হুবহু প্রমাণ, নিরাপত্তা, তারিখ, নকল ও প্রকাশনার সব যাচাই পেরোতে হয়; অসমর্থিত রেকর্ড প্রকাশিত হয় না।',
+  'FoodPath uses a bounded language model to extract structured candidate records from public source documents. Published records must pass schema, source, exact evidence-grounding, safety, date, duplicate and publication checks; unsupported candidates are not published.': 'ফুডপাথ প্রকাশ্য উৎসের নথি থেকে কাঠামোবদ্ধ সম্ভাব্য রেকর্ড তৈরিতে সীমিত ব্যবহারের ভাষা মডেল ব্যবহার করে। প্রকাশিত রেকর্ডকে কাঠামো, উৎস, হুবহু প্রমাণ, নিরাপত্তা, তারিখ, নকল ও প্রকাশনার সব যাচাই পেরোতে হয়; অসমর্থিত রেকর্ড প্রকাশিত হয় না।',
   'Source-conscious festival and food discovery': 'উৎসসচেতন উৎসব ও খাবারের খোঁজ',
   'Food Safety & Inspection Evidence': 'খাদ্য সুরক্ষা ও পরিদর্শনের উৎসভিত্তিক নথি',
   'Methodology': 'পদ্ধতি', 'Disclaimer': 'দায়-সীমা ও ব্যাখ্যা', 'Corrections': 'সংশোধন',

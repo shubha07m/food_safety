@@ -47,8 +47,10 @@ are governed by their providers' policies; normal external links use no-referrer
 
 Food Safety community intake remains an optional outbound owner-configured Google
 Form, not an embedded write endpoint. Puja suggestions use a separate optional
-Google Form link when configured. Form responses stay with the form owner until a
-manual CSV export. The Puja importer retains only the proposed region, source URL
+Google Form link when configured. Form responses stay in the owner's private linked
+Sheet. The local review app syncs responses using the owner's read-only desktop OAuth
+authorization; no Sheet credentials go to GitHub Actions. CSV import is fallback only.
+The Puja importer retains only the proposed region, source URL
 and name as private leads; optional contact email and free-text notes are discarded
 before candidate processing and are never sent to Gemini or public Git. No public
 suggestion automatically publishes; owner approval is required. Google processes

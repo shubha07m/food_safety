@@ -41,7 +41,7 @@ def test_build_generates_policy_canonicals(project):
     for name in POLICIES:
         path = project / f"site/policies/{name.lower()}.html"
         assert canonical(path) == ORIGIN + "policies/" + name.lower()
-        assert " · The Bengal FoodPath</title>" in path.read_text()
+        assert " · FoodPath</title>" in path.read_text()
 
 
 def test_small_sitemap_and_robots():
@@ -63,9 +63,9 @@ def test_old_origin_absent_from_public_output_and_primary_defaults():
 def test_support_shell_separates_platform_and_evidence(page):
     soup = BeautifulSoup((ROOT / f"site/{page}.html").read_text(), "html.parser")
     assert soup.select_one('.status-strip').get_text() == (
-        "THE BENGAL FOODPATH · SOURCE-CONSCIOUS DISCOVERY"
+        "FOODPATH · SOURCE-CONSCIOUS DISCOVERY"
     )
-    assert soup.select_one('.policy-nav a').get_text() == "The Bengal FoodPath"
+    assert soup.select_one('.policy-nav a').get_text() == "FoodPath"
     assert "Inclusion is not a finding of wrongdoing" in soup.select_one('main').get_text()
     for link in soup.select('a'):
         if "Return to Food Safety Evidence" in link.get_text():
@@ -112,3 +112,36 @@ def test_internal_html_links_and_assets_exist():
             )
             assert (target.exists() or target.with_suffix('.html').exists()
                     or (target / 'index.html').exists()), (path, url.path)
+
+
+def test_final_public_foodpath_brand():
+    old_brand = "bengal" + " foodpath"
+    paths = list(ROOT.glob('*.md')) + list((ROOT / 'docs').rglob('*.md'))
+    paths += list((ROOT / 'docs/assets').glob('*.svg'))
+    paths += [p for p in (ROOT / 'site').rglob('*') if p.suffix in {'.html', '.mjs', '.js', '.svg'}]
+    for path in paths:
+        if path.name == 'AGENTS.md':  # local operator guide is not a public asset
+            continue
+        assert old_brand not in path.read_text().lower(), path
+    html = BeautifulSoup((ROOT / 'site/index.html').read_text(), 'html.parser')
+    assert html.title.get_text() == 'FoodPath · Puja pandals and nearby food'
+    assert html.select_one('.identity')['aria-label'] == 'FoodPath home'
+    assert html.select_one('meta[property="og:title"]')['content'] == 'FoodPath · Puja FoodPath'
+    assert html.select_one('footer strong').get_text() == 'FOODPATH'
+    assert html.select_one('.module-title').get_text() == 'West Bengal Food Safety Evidence Tracker'
+
+
+def test_readme_final_brand_and_owner_command():
+    readme = (ROOT / 'README.md').read_text()
+    assert readme.startswith('# FoodPath\n')
+    assert 'python -m food_safety.cli puja review' in readme
+    assert '**West Bengal only**' in readme
+    assert 'Other festival families are not\nimplemented.' in readme
+    assert 'The local review app syncs responses' in (ROOT / 'PRIVACY.md').read_text()
+
+
+def test_social_preview_source_matches_final_brand():
+    svg = (ROOT / 'site/assets/social-preview.svg').read_text()
+    assert '>FoodPath</text>' in svg
+    assert 'The Bengal' not in svg
+    assert 'Food Safety Evidence remains a separate West Bengal research module.' in svg
