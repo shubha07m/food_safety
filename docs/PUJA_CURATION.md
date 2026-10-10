@@ -18,13 +18,20 @@ reviews use saved organizer revisions for Agomoni (Oct 16–18, 2026), Pashchimi
 
 The existing private `puja leads` workflow (use `"mode": "profile"` in its seed
 file) requests complete literal date expressions from the bounded extractor.
-The review packet's `supported_dates` normalizes only fully specified ISO dates/ranges
-or English month/day ranges with an explicit year, after exact evidence matching.
+The review packet's `supported_dates` normalizes explicit ISO dates/offset timestamps
+and bounded English date formats with an explicit year, after exact evidence matching.
+JSON-LD start/end timestamps retain their written civil dates, not UTC-shifted days,
+and their separate source quotations. Dates do not require a structured venue address.
 Ambiguous, missing-year or unsupported expressions stay unqualified; no venue facts
 become date evidence. Reviewed packet evidence can populate the same canonical
-`reviewed_dates`; extraction never publishes automatically. The October 9 recheck
-could not retrieve Sanskriti within the existing size limit, or BASC/VBC (HTTP 403),
-so those legacy claims remain excluded rather than inferred.
+`reviewed_dates`; extraction never publishes automatically and the approval compiler
+does not automatically promote `supported_dates` into `reviewed_dates`.
+Sanskriti's exact 2026 event URL has a Puja-only 1.25 MiB response ceiling; all other
+URLs retain their existing limits and all retrieval safety checks still apply.
+The repaired live profile extraction retained Sanskriti Oct 9–11 and Aantorik
+Oct 16–18, 2026 privately. BASC/VBC still failed at robots HTTP 403. The prose
+fallback verification was blocked by Gemini resource exhaustion, not missing dates.
+These ingestion results do not change the three canonical calendar entries.
 
 The Puja catalog is source-backed project data, separate from food POI discovery.
 `config/regions.yml` declares regions and their additional reviewed catalog files.
