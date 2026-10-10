@@ -47,6 +47,9 @@ class PinnedHTTP(http.client.HTTPConnection):
 
 
 class Fetcher:
+    def response_limit(self, url):
+        return self.settings.max_response_bytes
+
     def conditional_headers(self, url):
         return {}
 
@@ -117,7 +120,7 @@ class Fetcher:
                 "text/xml",
             }:
                 raise FetchError("unsupported_content_type")
-            limit = self.settings.max_response_bytes
+            limit = self.response_limit(url)
             length = response.getheader("Content-Length")
             if length and int(length) > limit:
                 raise FetchError("response_too_large")

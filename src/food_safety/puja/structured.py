@@ -10,7 +10,7 @@ from ..documents import freeze_document
 from .models import Candidate, Extraction, SupportedValue
 
 
-def events(html_text, url, language):
+def events(html_text, url, language, *, profile=False):
     soup = BeautifulSoup(html_text, "html.parser")
     entries = []
     for script in soup.select('script[type="application/ld+json"]')[:20]:
@@ -34,11 +34,14 @@ def events(html_text, url, language):
             location = event.get("location")
             if not isinstance(name, str) or not re.search(r"puja|pujo|durgotsav", name, re.I):
                 continue
-            if not isinstance(location, dict) or not isinstance(location.get("address"), dict):
-                continue
-            address = location["address"]
+            location = location if isinstance(location, dict) else {}
+            # Dates do not confer a geographic anchor. Preserve the legacy
+            # structured address contract; do not parse a string into a city.
+            address = location.get("address")
+            address = address if isinstance(address, dict) else {}
             city = address.get("addressLocality")
-            if not isinstance(city, str) or not city.strip():
+            location_usable = isinstance(city, str) and bool(city.strip())
+            if not profile and not location_usable:
                 continue
             fields = {
                 "name": name,
@@ -47,7 +50,20 @@ def events(html_text, url, language):
                 "venue": location.get("name"),
                 "address": address.get("streetAddress"),
                 "event_dates": event.get("startDate"),
+                "end_date": event.get("endDate"),
             }
+            if profile:
+                fields = {
+                    "name": name,
+                    "locality": city,
+                    "venue": location.get("name") if location_usable else None,
+                    "address": address.get("streetAddress") if location_usable else None,
+                    "start_date": event.get("startDate"),
+                    "end_date": event.get("endDate"),
+                }
+                start = event.get("startDate")
+                if isinstance(start, str) and re.match(r"^\d{4}-", start):
+                    fields["year"] = start[:4]
             organizer = event.get("organizer")
             if isinstance(organizer, dict):
                 fields["organizer"] = organizer.get("name")
@@ -58,7 +74,8 @@ def events(html_text, url, language):
                 for k, v in fields.items()
                 if isinstance(v, str) and 0 < len(v) <= 300 and v in raw
             }
-            if all(k in fields for k in ("name", "area", "city")):
+            required = ("name",) if profile else ("name", "area", "city")
+            if all(k in fields for k in required):
                 entries.append((raw, fields))
     if not entries:
         return None
@@ -79,6 +96,14 @@ def events(html_text, url, language):
                 supported[key] = SupportedValue(
                     raw_value=value, passage_id=passage.passage_id, original_quote=value
                 )
-        if all(k in supported for k in ("name", "area", "city")):
+        if profile:
+            from .leads import Lead
+
+            candidates.append(Lead(**supported))
+        elif all(k in supported for k in ("name", "area", "city")):
             candidates.append(Candidate(candidate_id=f"C{len(candidates) + 1}", **supported))
+    if profile:
+        from .leads import LeadOutput
+
+        return document, LeadOutput(completion_status="complete", candidates=candidates[:20])
     return document, Extraction(completion_status="complete", candidates=candidates)

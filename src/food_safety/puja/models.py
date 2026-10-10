@@ -255,6 +255,7 @@ class Candidate(Strict):
     venue: SupportedValue | None = None
     address: SupportedValue | None = None
     event_dates: SupportedValue | None = None
+    end_date: SupportedValue | None = None
     latitude: SupportedValue | None = None
     longitude: SupportedValue | None = None
 

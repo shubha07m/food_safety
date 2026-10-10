@@ -7,7 +7,7 @@ sources:
   reviewed_revision: 663916559774ac5ce66c0ff3672fa1435604e5c75062ec92d098006a96008669
 - source_id: ca-sanskriti
   region_id: california
-  url: https://www.sanskriti.org/
+  url: https://www.sanskriti.org/event-details/sanskriti-durga-puja-2026
   publisher: Sanskriti Bay Area
   language: en
 - source_id: ca-agomoni
@@ -33,7 +33,7 @@ sources:
   region_id: california
   reviewed_revision: 7d28d9ffd2fdf2aff68240f661b0d577f9d41291459ff02a588e7c2b3c945b3e
 - source_id: approved-pc-18199c10fccc8e0ebb9f
-  url: https://aantorik.org/
+  url: https://aantorik.org/durgapuja-2026
   publisher: aantorik.org
   region_id: california
   source_kind: association
@@ -48,7 +48,7 @@ sources:
   region_id: california
   source_kind: association
 - source_id: approved-pc-683dd31210b05d14cde1
-  url: https://utsavsac.org/
+  url: https://utsavsac.org/event/utsav-silver-jubilee-durga-puja-2026-october-23rd-to-october-25th/
   publisher: utsavsac.org
   region_id: california
   source_kind: association
@@ -116,6 +116,17 @@ published:
   admin1: California
   metro_region: Bay Area
   name: Sanskriti Durga Puja
+  reviewed_dates:
+    start_date: '2026-10-09'
+    end_date: '2026-10-11'
+    timezone: America/Los_Angeles
+    reviewed_at: '2026-10-10T20:47:04Z'
+    evidence:
+    - source_url: https://www.sanskriti.org/event-details/sanskriti-durga-puja-2026
+      source_title: Sanskriti Durga Puja 2026
+      publisher: Sanskriti Bay Area
+      quote: '"startDate":"2026-10-09T17:30:00-07:00","endDate":"2026-10-11T22:00:00-07:00"'
+      source_revision_id: e9d9070bc6d76f23a6fa2022ac9e9aacfdad040a642170feddb242c695082be2
   organizer: Sanskriti Bay Area
   city: Newark
   area: Newark
@@ -134,6 +145,11 @@ published:
     source_title: Sanskriti — organizer event announcement
     publisher: Sanskriti Bay Area
     quote: Newark Pavilion, 6430 Thornton Ave, Newark, CA 94560, USA
+  - source_url: https://www.sanskriti.org/event-details/sanskriti-durga-puja-2026
+    source_title: Sanskriti Durga Puja 2026
+    publisher: Sanskriti Bay Area
+    quote: '"startDate":"2026-10-09T17:30:00-07:00","endDate":"2026-10-11T22:00:00-07:00"'
+    source_revision_id: e9d9070bc6d76f23a6fa2022ac9e9aacfdad040a642170feddb242c695082be2
 - pandal_id: ca-agomoni
   region_id: california
   country_code: US
@@ -293,6 +309,17 @@ published:
   country_code: US
   admin1: California
   name: Aantorik
+  reviewed_dates:
+    start_date: '2026-10-16'
+    end_date: '2026-10-18'
+    timezone: America/Los_Angeles
+    reviewed_at: '2026-10-10T20:47:04Z'
+    evidence:
+    - source_url: https://aantorik.org/durgapuja-2026
+      source_title: Sharodutsav 2026 - Durga Puja
+      publisher: Aantorik
+      quote: '"startDate":"2026-10-16T18:00:00-07:00","endDate":"2026-10-18T18:00:00-07:00"'
+      source_revision_id: fcc62e90416933f9bc86eceb1ca976985501255662794654e8687e274baea675
   area: California
   city: California
   official_links:
@@ -316,12 +343,28 @@ published:
       gatherings. Our programs welcome families, friends, and neighbors from across
       the Sacramento region.
     source_revision_id: 83c177bdb1e6cebcf4aaedd8d9b5b93133c4decfc0085c5f191b98e9b9d05af1
+  - source_url: https://aantorik.org/durgapuja-2026
+    source_title: Sharodutsav 2026 - Durga Puja
+    publisher: Aantorik
+    quote: '"startDate":"2026-10-16T18:00:00-07:00","endDate":"2026-10-18T18:00:00-07:00"'
+    source_revision_id: fcc62e90416933f9bc86eceb1ca976985501255662794654e8687e274baea675
   last_verified_at: '2026-09-26T21:35:32.987613Z'
 - pandal_id: california-aikotaan
   region_id: california
   country_code: US
   admin1: California
   name: Aikotaan
+  reviewed_dates:
+    start_date: '2026-10-09'
+    end_date: '2026-10-11'
+    timezone: America/Los_Angeles
+    reviewed_at: '2026-10-10T20:47:04Z'
+    evidence:
+    - source_url: https://aikotaan.org/
+      source_title: Aikotaan Durga Puja 2026
+      publisher: Aikotaan
+      quote: 'Date: Friday, October 9 – Sunday, October 11, 2026'
+      source_revision_id: 90f65776708eb0dae9a63a1e54158acd7702669900a2311c80b21e5f724d59cd
   area: California
   city: California
   official_links:
@@ -339,6 +382,11 @@ published:
     publisher: aikotaan.org
     quote: Aikotaan is thrilled to welcome you to our
     source_revision_id: 5c93bb73d6fd367e8f5849620164d4e4d825b78aaa487dd6ec8f6dfd615eabdb
+  - source_url: https://aikotaan.org/
+    source_title: Aikotaan Durga Puja 2026
+    publisher: Aikotaan
+    quote: 'Date: Friday, October 9 – Sunday, October 11, 2026'
+    source_revision_id: 90f65776708eb0dae9a63a1e54158acd7702669900a2311c80b21e5f724d59cd
   last_verified_at: '2026-09-26T21:35:56.375087Z'
 - pandal_id: california-sanatan
   region_id: california
@@ -368,6 +416,17 @@ published:
   country_code: US
   admin1: California
   name: UTSAV
+  reviewed_dates:
+    start_date: '2026-10-23'
+    end_date: '2026-10-25'
+    timezone: America/Los_Angeles
+    reviewed_at: '2026-10-10T20:47:04Z'
+    evidence:
+    - source_url: https://utsavsac.org/event/utsav-silver-jubilee-durga-puja-2026-october-23rd-to-october-25th/
+      source_title: Utsav Silver Jubilee Durga Puja 2026
+      publisher: UTSAV Sacramento
+      quote: Utsav Silver Jubilee Durga Puja 2026 – October 23rd to October 25th
+      source_revision_id: 1b81f93af54d6ae0e0b9393f7a92be467fa85accf954d63357c7c4d913047ade
   area: California
   city: California
   official_links:
@@ -394,4 +453,9 @@ published:
       Sacramento area. With a strong commitment to community building, we strive to
       preserve, promote, and share the essence of Bengali heritage with the world.
     source_revision_id: b1b143146115925f65f3e6ac6bd6223f2e3511b58fd7b10477ca359cf5357acb
+  - source_url: https://utsavsac.org/event/utsav-silver-jubilee-durga-puja-2026-october-23rd-to-october-25th/
+    source_title: Utsav Silver Jubilee Durga Puja 2026
+    publisher: UTSAV Sacramento
+    quote: Utsav Silver Jubilee Durga Puja 2026 – October 23rd to October 25th
+    source_revision_id: 1b81f93af54d6ae0e0b9393f7a92be467fa85accf954d63357c7c4d913047ade
   last_verified_at: '2026-09-26T21:37:22.748498Z'

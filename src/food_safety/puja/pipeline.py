@@ -40,6 +40,13 @@ class PujaFetcher(Fetcher):
 
     missing_robots_hosts: set[str] = set()
 
+    def response_limit(self, url):
+        # This reviewed Wix event document is ~1.03 MiB. Do not raise news,
+        # homepage, robots or redirected-target limits along with it.
+        if url == "https://www.sanskriti.org/event-details/sanskriti-durga-puja-2026":
+            return 1280 * 1024
+        return super().response_limit(url)
+
     def raw(self, url, redirects=0, check_redirect_robots=False):
         try:
             return super().raw(url, redirects, check_redirect_robots)
@@ -232,7 +239,16 @@ def validate_candidate(candidate: Candidate, document: DocumentRevision):
         name: _support(getattr(candidate, name), passages) for name in ("name", "area", "city")
     }
     optional = {}
-    for name in ("name_bn", "neighborhood", "organizer", "year", "venue", "address", "event_dates"):
+    for name in (
+        "name_bn",
+        "neighborhood",
+        "organizer",
+        "year",
+        "venue",
+        "address",
+        "event_dates",
+        "end_date",
+    ):
         try:
             optional[name] = _support(getattr(candidate, name), passages)
         except ValueError:
