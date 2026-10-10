@@ -68,11 +68,20 @@ test('Bengali dates, labels and empty state',()=>{
   renderCalendar(host,[],'california',()=>{},{doc,bn:true});
   assert.match(flatten(host).map(n=>n.textContent).join(' '),/এখনও পাওয়া যায়নি/);
 });
-test('published California eligibility has exactly three supported ranges; no edition promotion',()=>{
+test('published California eligibility includes all seven reviewed listings; no edition promotion',()=>{
   const records=JSON.parse(readFileSync('site/data/pandals.json')).records;
   const groups=calendarGroups(records,'2026-10-09');
   assert.deepEqual(groups.map(g=>[g.start,g.end,g.entries.map(e=>e.pandal.pandal_id)]),[
-    ['2026-10-16','2026-10-18',['ca-agomoni']],['2026-10-16','2026-10-20',['ca-pashchimi']],['2026-10-23','2026-10-25',['ca-ankur']],
+    ['2026-10-09','2026-10-11',['ca-sanskriti','california-aikotaan']],
+    ['2026-10-16','2026-10-18',['ca-agomoni','california-aantorik']],
+    ['2026-10-16','2026-10-20',['ca-pashchimi']],
+    ['2026-10-23','2026-10-25',['ca-ankur','california-utsav']],
   ]);
   for(const g of groups) for(const e of g.entries) assert.equal(e.pandal.edition,null);
+  const host=new Element('section');
+  renderCalendar(host,records,'california',()=>{},{doc,today:'2026-10-10'});
+  assert.deepEqual(flatten(host).filter(n=>n.className==='calendar-select').map(n=>n.textContent),[
+    'Sanskriti Durga Puja','Aikotaan','Agomoni Durga Puja','Aantorik',
+    'Pashchimi Durga Puja','Ankur Sharodotsav','UTSAV',
+  ]);
 });

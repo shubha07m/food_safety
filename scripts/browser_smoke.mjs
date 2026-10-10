@@ -693,12 +693,12 @@ try {
     await waitFor("!document.getElementById('puja-calendar').hidden");
     // Fixed date ensures screenshots/tests do not become empty merely as the season passes.
     await evaluate(`(async()=>{const {renderCalendar}=await import('./puja-calendar.mjs');const {records}=await(await fetch('data/pandals.json')).json();renderCalendar(document.getElementById('puja-calendar'),records,'california',id=>document.dispatchEvent(new CustomEvent('foodpath-select-pandal',{detail:id})),{bn:${bn},today:'2026-10-09'});})()`);
-    assert.equal(await evaluate("document.querySelectorAll('.calendar-select').length"),3);
+    assert.equal(await evaluate("document.querySelectorAll('.calendar-select').length"),7);
     await evaluate("document.getElementById('puja-calendar').scrollIntoView({block:'center'})");
     await screenshot(`delight-calendar-${width}-${bn?'bn':'en'}`,false);
     assert.equal(await evaluate("document.documentElement.scrollWidth <= innerWidth"),true);
     await evaluate("document.querySelector('.calendar-select').click()");
-    await waitFor("new URL(location.href).searchParams.get('pandal') === 'ca-agomoni'");
+    await waitFor("new URL(location.href).searchParams.get('pandal') === 'ca-sanskriti'");
     assert.equal(await evaluate("document.querySelector('.profile-report').href"),'https://forms.gle/DfebWArXd7AFtH9d7');
     assert.equal(await evaluate("document.querySelector('.profile-report').rel"),'noopener noreferrer');
     assert.equal(await evaluate("[...document.querySelectorAll('.puja-actions a')].some(a=>a.textContent==='Directions'||a.textContent==='যাতায়াতের পথ')"),false);

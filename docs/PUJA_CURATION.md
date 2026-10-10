@@ -28,10 +28,14 @@ become date evidence. Reviewed packet evidence can populate the same canonical
 does not automatically promote `supported_dates` into `reviewed_dates`.
 Sanskriti's exact 2026 event URL has a Puja-only 1.25 MiB response ceiling; all other
 URLs retain their existing limits and all retrieval safety checks still apply.
-The repaired live profile extraction retained Sanskriti Oct 9–11 and Aantorik
-Oct 16–18, 2026 privately. BASC/VBC still failed at robots HTTP 403. The prose
-fallback verification was blocked by Gemini resource exhaustion, not missing dates.
-These ingestion results do not change the three canonical calendar entries.
+The 2026 date-only catalog review also includes Sanskriti and Aikotaan (Oct 9–11),
+Aantorik (Oct 16–18), and UTSAV (Oct 23–25). Sanskriti/Aantorik use retained official
+Event JSON-LD; Aikotaan/UTSAV use successfully grounded Gemini profile extraction.
+Exact quotations and source revisions are retained in canonical date evidence.
+The same existing maintainer source-review and regional-config publication path
+used for the first three dates applies; no automatic date-promotion mechanism was
+added. Editions, venue evidence and geographic eligibility remain unchanged.
+BASC/VBC remain excluded because their accepted fetch path fails at robots HTTP 403.
 
 The Puja catalog is source-backed project data, separate from food POI discovery.
 `config/regions.yml` declares regions and their additional reviewed catalog files.
