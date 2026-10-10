@@ -1,5 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
+import { readFileSync } from 'node:fs';
 import worker, { VisitCounter, allowed } from '../worker/visits.mjs';
 import { visitCount, visitCopy, initVisits } from '../site/visits.mjs';
 const store = () => { const rows=new Map(); return {getItem:k=>rows.get(k),setItem:(k,v)=>rows.set(k,v)}; };
@@ -28,8 +29,44 @@ test('one increment per tab session; new session increments; no identifying payl
 });
 test('missing endpoint/storage failures degrade without retries',async()=>{
   const storage=store(); let calls=0; const fetcher=async()=>{calls++;throw Error('offline');};
-  assert.equal(await visitCount({fetcher,storage}),null); assert.equal(calls,1);
+  assert.equal(await visitCount({fetcher,storage}),null); assert.equal(calls,2);
   assert.equal(await visitCount({storage:{getItem(){throw Error('blocked');}},fetcher:async(u,o)=>{assert.equal(o.method,'GET');return new Response('',{status:404});}}),null);
+});
+test('counter initializes before unrelated app initialization awaits',()=>{
+  const app=readFileSync(new URL('../site/app.js',import.meta.url),'utf8');
+  assert.equal(app.split('initVisits();').length,2);
+  assert.ok(app.indexOf('initVisits();') < app.indexOf('initPuja(setMapPandals)'));
+  assert.ok(app.indexOf('initVisits();') < app.indexOf('await Promise.all'));
+});
+test('failed POST permits one GET fallback; receipt prevents repeated writes',async()=>{
+  for(const failure of ['network','http','json','invalid']) {
+    const methods=[];const storage=store();
+    const fetcher=async(url,o)=>{
+      methods.push(o.method);
+      assert.equal(o.credentials,'omit'); assert.equal(o.cache,'no-store');
+      if(o.method==='GET') { assert.equal(o.body,undefined); return Response.json({count:59}); }
+      assert.equal(storage.getItem('foodpath-visit-v1'),'sent');
+      if(failure==='network')throw Error('offline');
+      if(failure==='http')return new Response('',{status:503});
+      if(failure==='json')return new Response('not JSON');
+      return Response.json({count:-1});
+    };
+    assert.equal(await visitCount({fetcher,storage}),59);
+    assert.deepEqual(methods,['POST','GET']);
+    assert.equal(await visitCount({fetcher,storage}),59);
+    assert.deepEqual(methods,['POST','GET','GET']);
+  }
+});
+test('unavailable storage is GET-only, including failed reads',async()=>{
+  for(const operation of ['getItem','setItem']) {
+    const storage={...store(),[operation](){throw Error('blocked');}};
+    const methods=[];
+    assert.equal(await visitCount({storage,fetcher:async(u,o)=>{methods.push(o.method);return Response.json({count:0});}}),0);
+    assert.deepEqual(methods,['GET']);
+    methods.length=0;
+    assert.equal(await visitCount({storage,fetcher:async(u,o)=>{methods.push(o.method);throw Error('offline');}}),null);
+    assert.deepEqual(methods,['GET']);
+  }
 });
 test('malformed and cross-origin writes rejected, GET safe', async()=>{
   assert.ok(allowed(new Request('https://food.example/api/visits'))); assert.ok(allowed(request()));

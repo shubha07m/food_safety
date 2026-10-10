@@ -3,16 +3,19 @@ export async function visitCount({ fetcher = fetch, storage } = {}) {
   let first;
   try { storage ||= globalThis.sessionStorage; first = storage.getItem('foodpath-visit-v1') !== 'sent'; if (first) storage.setItem('foodpath-visit-v1', 'sent'); }
   catch { first = false; } // No persistence available: read-only avoids reload inflation.
-  try {
+  const read = async method => { try {
     const response = await fetcher('/api/visits', {
-      method: first ? 'POST' : 'GET', credentials: 'omit', cache: 'no-store',
-      ...(first ? { headers: { 'Content-Type': 'application/json', 'X-FoodPath-Visit': '1' }, body: '{}' } : {}),
+      method, credentials: 'omit', cache: 'no-store',
+      ...(method === 'POST' ? { headers: { 'Content-Type': 'application/json', 'X-FoodPath-Visit': '1' }, body: '{}' } : {}),
       signal: AbortSignal.timeout(4000),
     });
     if (!response.ok) return null;
     const data = await response.json();
     return Number.isSafeInteger(data.count) && data.count >= 0 ? data.count : null;
-  } catch { return null; }
+  } catch { return null; } };
+  const count = await read(first ? 'POST' : 'GET');
+  // Never retry an uncertain write. One read can still display the aggregate.
+  return count === null && first ? read('GET') : count;
 }
 export function visitCopy(count, bn = false) {
   const n = count.toLocaleString(bn ? 'bn-BD' : 'en-US');

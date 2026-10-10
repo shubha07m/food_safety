@@ -8,8 +8,10 @@ import { language, tr, translateStatic, localizedURL } from './locale.mjs';
 import { phase1, sourceWarning, copy as phaseCopy } from './phase1.mjs';
 import { applyRoute, safetyRoute } from './routes.mjs';
 import { initDhaak } from './dhaak.mjs';
+import { initVisits } from './visits.mjs';
 
 translateStatic();
+initVisits(); // Independent of dashboard, catalog and map initialization.
 const pujaHero = document.getElementById('puja-hero-image');
 if (pujaHero) pujaHero.addEventListener('error', () => pujaHero.closest('.puja-hero-art')?.classList.add('image-unavailable'));
 const isRecordRoute = applyRoute(document, location.search);
@@ -339,5 +341,3 @@ try {
   $('last-update').textContent = 'Status unavailable'; $('last-scan').textContent = 'Status unavailable'; $('dataset-version').textContent = 'Unavailable'; $('run-status').textContent = 'Could not confirm pipeline status.';
   $('search').disabled = true; $('clear-filter').disabled = true;
 }
-import { initVisits } from './visits.mjs';
-initVisits();

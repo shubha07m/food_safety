@@ -12,7 +12,9 @@ changes within a page do not increment. No random identifier is generated.
 
 It is **approximate site visits**, not unique people. New tabs/cleared storage can
 count again; restored tabs can reuse a session. Failed attempts are not retried that
-session. If sessionStorage is unavailable the client reads only. Robots or scripted
+session. A failed POST permits one read-only GET fallback; it never retries the
+increment. Initialization runs before unrelated dashboard/catalog work. If
+sessionStorage is unavailable the client reads only. Robots or scripted
 requests can affect totals; local storage is not an abuse boundary. There is no
 backfill or estimate of past traffic: a new aggregate begins at zero.
 
