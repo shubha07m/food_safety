@@ -31,6 +31,7 @@ const requests = new Map();
 const runtimeErrors = [];
 let mapScriptLoads = 0; let placesRequests = 0; let osmRequests = 0;
 let dhaakRequests = 0; let dhaakVideoRequests = 0;
+const counterRequests = [];
 let intercept = false; let foodFixture = false; let mapFixture = false;
 const osmFixture = JSON.parse(readFileSync(resolve(root, 'site/data/osm_food.json'), 'utf8'));
 const template = osmFixture.pois.find(p => p.name);
@@ -117,6 +118,7 @@ try {
     const message = JSON.parse(data);
     if (message.method === 'Network.requestWillBeSent') {
       const url = new URL(message.params.request.url);
+      if (url.origin === origin && url.pathname === '/api/visits') counterRequests.push(message.params.request.method);
       if (url.pathname.endsWith('/dhaak.mp3')) { dhaakRequests++; assert.equal(url.origin, origin); }
       if (url.pathname.endsWith('/dhaak-playing.mp4')) { dhaakVideoRequests++; assert.equal(url.origin, origin); }
       if (url.hostname === 'maps.googleapis.com' && url.pathname === '/maps/api/js') mapScriptLoads++;
@@ -162,13 +164,58 @@ try {
   if (process.env.FOOD_COUNTER_SMOKE === '1') {
     await waitFor("!document.getElementById('site-visits').hidden");
     const count = await evaluate("document.getElementById('site-visits').textContent");
+    assert.match(count,/^[\d,]+ site visits and counting$/);
+    assert.deepEqual(counterRequests,['POST']);
+    await evaluate("document.getElementById('site-visits').scrollIntoView({block:'center'})");
+    await screenshot('counter-worker-en',false);
     await command('Page.reload');
     await waitFor("!document.getElementById('site-visits').hidden");
     assert.equal(await evaluate("document.getElementById('site-visits').textContent"),count);
+    assert.deepEqual(counterRequests,['POST','GET']);
     await evaluate("sessionStorage.removeItem('foodpath-visit-v1')");
     await command('Page.reload');
     await waitFor("!document.getElementById('site-visits').hidden");
-    assert.notEqual(await evaluate("document.getElementById('site-visits').textContent"),count);
+    const nextCount = await evaluate("document.getElementById('site-visits').textContent");
+    const number = text => Number(text.match(/^[\d,]+/)[0].replaceAll(',',''));
+    assert.equal(number(nextCount),number(count)+1);
+    assert.deepEqual(counterRequests,['POST','GET','POST']);
+    await command('Page.navigate',{url:origin+'/?lang=bn'});
+    await waitFor("!document.getElementById('site-visits').hidden");
+    assert.equal(await evaluate("document.getElementById('site-visits').textContent"),`${number(nextCount).toLocaleString('bn-BD')} সাইট ভিজিট — গণনা চলছে`);
+    await evaluate("document.getElementById('site-visits').scrollIntoView({block:'center'})");
+    await screenshot('counter-worker-bn',false);
+    // Faults affect only browser transport. Successful counts still come from the real Worker/DO.
+    for (const mode of ['post','all','storage']) {
+      await evaluate("sessionStorage.removeItem('foodpath-visit-v1')");
+      const hook = await command('Page.addScriptToEvaluateOnNewDocument',{source:`
+        window.__counterAttempts = [];
+        const nativeFetch = window.fetch.bind(window);
+        window.fetch = (url,options={}) => {
+          const path = new URL(url,location.href).pathname;
+          if(path === '/data/events.json') return new Promise(()=>{});
+          if(path === '/api/visits') {
+            window.__counterAttempts.push(options.method || 'GET');
+            if(${JSON.stringify(mode)} === 'all' || (${JSON.stringify(mode)} === 'post' && options.method === 'POST')) return Promise.reject(new TypeError('Simulated counter transport failure'));
+          }
+          return nativeFetch(url,options);
+        };
+        ${mode === 'storage' ? "Object.defineProperty(window,'sessionStorage',{get(){throw new Error('Storage unavailable');}});" : ''}
+      `});
+      try {
+        await command('Page.navigate',{url:origin+'/'});
+        await waitFor(`window.__counterAttempts?.length === ${mode === 'storage' ? 1 : 2}`);
+        if(mode === 'all') {
+          assert.equal(await evaluate("document.getElementById('site-visits').hidden"),true);
+        } else {
+          await waitFor("!document.getElementById('site-visits').hidden");
+          assert.equal(await evaluate("document.getElementById('site-visits').textContent"),nextCount);
+        }
+        await delay(1800);
+        assert.deepEqual(await evaluate('window.__counterAttempts'),mode === 'storage' ? ['GET'] : ['POST','GET']);
+      } finally { await command('Page.removeScriptToEvaluateOnNewDocument',{identifier:hook.identifier}); }
+    }
+    console.log(`Worker counter verified: ${count}; reload unchanged; next session ${nextCount}; Bengali, stalled dashboard, POST fallback, unavailable storage and hidden failure passed.`);
+    await command('Page.navigate',{url:origin+'/'});
     await waitFor("document.querySelectorAll('#featured-pandals button').length > 0");
   }
   assert.equal(await evaluate("document.body.classList.contains('puja-route')"), true);
@@ -464,9 +511,10 @@ try {
   assert.equal(await evaluate('document.documentElement.scrollWidth <= window.innerWidth'), true);
   await screenshot('zero-mobile');
   for (const page of ['disclaimer', 'methodology', 'corrections', 'data', 'contribute']) {
-    const response = await fetch(`http://127.0.0.1:8000/${page}.html`);
+    // Use the preview's browser origin/certificate, including local Worker HTTPS.
+    const response = await evaluate(`fetch('/${page}.html').then(async r=>({status:r.status,text:await r.text()}))`);
     assert.equal(response.status, 200);
-    assert.ok((await response.text()).includes('Inclusion is not a finding of wrongdoing'));
+    assert.ok(response.text.includes('Inclusion is not a finding of wrongdoing'));
   }
   for (const page of ['methodology', 'corrections', 'contribute', 'policies/privacy']) {
     for (const lang of ['', '?lang=bn']) {
