@@ -61,11 +61,14 @@ export function searchPandals(index, query, limit = 8) {
   const tokens = normalize(query).split(' ').filter(Boolean);
   return index.filter(row => tokens.every(token => row.query.includes(token))).slice(0, Math.min(8, limit)).map(row => row.p);
 }
+const FEATURED_LIMIT = 6;
 export function featuredPandals(data, ids = []) {
+  // Small published catalogs need no shortlist; map eligibility remains separate.
+  if (data.pandals.length <= FEATURED_LIMIT) return data.pandals.slice();
   const eligible = [...new Set(ids)].map(id => data.pandals.find(p => p.pandal_id === id))
     .filter(p => p && publicFood(data, p).named_snapshot_count >= 1);
   const richer = eligible.filter(p => publicFood(data, p).named_snapshot_count >= 3);
-  return (richer.length >= 3 ? richer : eligible).slice(0, 6);
+  return (richer.length >= 3 ? richer : eligible).slice(0, FEATURED_LIMIT);
 }
 export function nextOption(key, active, count) {
   if (!count || key === 'Escape') return -1;

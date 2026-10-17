@@ -5,6 +5,7 @@ import { spawn } from 'node:child_process';
 import { existsSync, mkdirSync, mkdtempSync, readFileSync, writeFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 import { setTimeout as delay } from 'node:timers/promises';
+import { pandalMarkers } from '../site/map-host.mjs';
 
 const root = resolve(import.meta.dirname, '..');
 const origin = process.env.FOOD_SMOKE_ORIGIN || 'http://127.0.0.1:8000';
@@ -386,7 +387,9 @@ try {
       assert.equal(await evaluate("new URL(location.href).searchParams.get('region')"), region);
       assert.equal(await evaluate(`document.getElementById('region-count').textContent.includes('${regionCount(region)} source-backed')`), true);
       assert.equal(await evaluate("document.getElementById('selected-pandal').textContent.includes('Restaurant on Google Maps')"), false);
-      assert.equal(await evaluate("document.querySelectorAll('#featured-pandals button').length <= 6"), true);
+      const featuredCount = await evaluate("document.querySelectorAll('#featured-pandals button').length");
+      if (regionCount(region) <= 6) assert.equal(featuredCount, regionCount(region));
+      else assert.ok(featuredCount <= 6);
       assert.equal(await evaluate("document.querySelectorAll('.restaurant-links li').length <= 20"), true);
       assert.equal(await evaluate("document.querySelector('.profile-report').textContent.includes('Report changed')"), true);
       assert.equal(await evaluate("document.querySelector('.nearby-food-section').previousElementSibling.classList.contains('puja-profile')"), true);
@@ -591,6 +594,32 @@ try {
     await waitFor("document.querySelector('#google-map-host iframe').contentWindow.__foodpathTestMap.data.features.filter(f=>f.properties.kind==='pandal').length === 14");
     assert.equal(await evaluate("document.querySelector('#google-map-host iframe').contentWindow.__foodpathMapInstances"),1);
     assert.equal(await evaluate("document.querySelector('#google-map-host iframe').contentDocument.querySelectorAll('script[src*=maps]').length"),1);
+    for (const region of ['london', 'toronto', 'melbourne', 'california', 'kolkata']) {
+      await evaluate(`document.querySelector('[data-region=${region}]').click()`);
+      await waitFor(`document.querySelector('[data-region=${region}]').getAttribute('aria-selected') === 'true' && document.getElementById('puja-discovery').getAttribute('aria-busy') === 'false'`);
+      const rows = pujaRecords.filter(p => p.region_id === region && p.enabled !== false);
+      const markerIDs = pandalMarkers(rows).map(m => m.id).sort();
+      await waitFor(`JSON.stringify(document.querySelector('#google-map-host iframe').contentWindow.__foodpathTestMap.data.features.filter(f=>f.properties.kind==='pandal').map(f=>f.id).sort()) === ${JSON.stringify(JSON.stringify(markerIDs))}`);
+      const names = await evaluate("[...document.querySelectorAll('#featured-pandals h4')].map(n=>n.textContent)");
+      if (rows.length <= 6) assert.deepEqual(names, rows.map(p => p.name));
+      else assert.ok(names.length <= 6);
+      for (const width of [1440, 390]) {
+        await command('Emulation.setDeviceMetricsOverride', {width,height:1000,deviceScaleFactor:1,mobile:width<600});
+        await evaluate("document.getElementById('featured-heading').scrollIntoView({block:'start'})");
+        await delay(300);
+        assert.equal(await evaluate('document.documentElement.scrollWidth <= innerWidth'),true);
+        await screenshot(`featured-${region}-${width}`, false);
+      }
+      if (rows.length <= 6) {
+        for (const [index, row] of rows.entries()) {
+          await evaluate(`document.querySelectorAll('#featured-pandals button')[${index}].click()`);
+          await waitFor(`new URL(location.href).searchParams.get('pandal') === ${JSON.stringify(row.pandal_id)} && !document.getElementById('selected-pandal').hidden`);
+          assert.equal(await evaluate("new URL(location.href).searchParams.get('region')"), region);
+          assert.ok(await evaluate("document.querySelector('.puja-profile') !== null"));
+        }
+      }
+      console.log(`Regional presentation: ${region}, ${rows.length} published, ${names.length} featured, ${markerIDs.length} eligible markers; desktop/mobile passed.`);
+    }
     console.log('Configured browser map transport: synthetic Google fixture; all five world-marker selections passed, one map instance/script.');
   }
   // Rich/historical profile fixtures are browser-memory only, never catalog facts.
