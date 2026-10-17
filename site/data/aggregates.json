@@ -1,8 +1,8 @@
 {
   "actions": {
     "inspection / visit only": 25,
-    "not reported": 14,
-    "other": 7
+    "not reported": 13,
+    "other": 2
   },
   "areas": {
     "Baduria": 1,
@@ -33,75 +33,67 @@
     "পূর্ব মেদিনীপুর": 1,
     "বকখালি": 1,
     "বাদুড়িয়া": 1,
-    "মধ্যমগ্রামের": 1,
-    "মধ্যমগ্রামের স্টার মলে": 1,
-    "মধ‌্যমগ্রামের": 1,
-    "রাজ্য জুড়ে": 1,
-    "সেক্টর থ্রি-র": 1,
-    "সেক্টর ফাইভের আরডিবি মলের": 1,
-    "সোদপুরের": 1
+    "মধ্যমগ্রামের স্টার মলে": 1
   },
-  "areas_count": 35,
+  "areas_count": 29,
   "business_formats": {
-    "unknown": 46
+    "unknown": 40
   },
   "context_notice": "Independent, non-governmental public-source research. Inclusion is not a finding of wrongdoing. Counts describe records in this tracker, not official totals, prevalence, compliance, risk or group behavior. Read the sources and preserve this context when sharing.",
   "coverage": {
     "business_format": 0,
     "cross_source": 0,
-    "establishment_context": 32,
+    "establishment_context": 27,
     "menu_context": 0,
-    "named_establishment": 29,
-    "reported_action": 31,
+    "named_establishment": 24,
+    "reported_action": 25,
     "reported_quantity": 6
   },
   "establishments": {
     "hotel / hospitality": 2,
     "mall / food court": 6,
     "market / vendor": 3,
-    "restaurant / eatery": 18,
+    "restaurant / eatery": 13,
     "sweet shop / bakery": 3,
-    "unknown": 14
+    "unknown": 13
   },
-  "establishments_count": 29,
-  "generated_at": "2026-10-17T15:31:19.219665+00:00",
+  "establishments_count": 24,
+  "generated_at": "2026-10-17T18:29:21.676337+00:00",
   "map_coverage": {
-    "mapped_records": 23,
+    "mapped_records": 22,
     "precision": {
       "city": 3,
-      "neighborhood": 16,
-      "not mapped": 23,
+      "neighborhood": 15,
+      "not mapped": 18,
       "street": 4
     }
   },
   "menus": {
-    "unknown": 46
+    "unknown": 40
   },
   "pipeline_version": "0.3.0",
   "publishers": {
     "ABP Ananda": 5,
     "Business Today": 5,
     "Indian Express Bangla": 4,
-    "TV9 Bangla": 6,
     "The Times of India": 25,
     "UNI India": 1
   },
-  "record_count": 46,
+  "record_count": 40,
   "schema_version": "1.2.0",
-  "sources_count": 17,
+  "sources_count": 15,
   "timeline": {
     "2025-04-25": 1,
     "2026-09-02": 2,
-    "2026-09-03": 11,
+    "2026-09-03": 6,
     "2026-09-04": 9,
     "2026-09-05": 8,
     "2026-09-06": 10,
     "2026-09-07": 3,
-    "2026-09-08": 1,
     "2026-09-15": 1
   },
-  "total": 46,
+  "total": 40,
   "verification": {
-    "SOURCE VERIFIED": 46
+    "SOURCE VERIFIED": 40
   }
 }
