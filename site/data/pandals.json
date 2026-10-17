@@ -1,9 +1,9 @@
 {
   "coverage": {
-    "catalog_count": 243,
+    "catalog_count": 244,
     "cities": {
       "Ajax": 1,
-      "California": 4,
+      "California": 5,
       "Cerritos": 1,
       "Howrah": 40,
       "Kolkata": 183,
@@ -20,19 +20,19 @@
       "Wyndham Vale": 1
     },
     "featured_count": 6,
-    "last_catalog_update": "2026-09-29T02:54:36.033272+00:00",
+    "last_catalog_update": "2026-10-16T01:40:01.415016+00:00",
     "map_ready_count": 24,
     "regions": {
-      "california": 10,
+      "california": 11,
       "kolkata": 223,
       "london": 4,
       "melbourne": 3,
       "toronto": 3
     },
-    "source_count": 30
+    "source_count": 31
   },
   "generated_from": "source_verified_curated_config",
-  "record_count": 243,
+  "record_count": 244,
   "records": [
     {
       "about": null,
@@ -2914,6 +2914,48 @@
       "venue": null,
       "verification_status": "SOURCE VERIFIED",
       "year": 2025
+    },
+    {
+      "about": null,
+      "address": null,
+      "admin1": "California",
+      "aliases": [],
+      "area": "California",
+      "city": "California",
+      "coordinate_precision": null,
+      "coordinate_source": null,
+      "country_code": "US",
+      "district": null,
+      "edition": null,
+      "event_dates": null,
+      "featured": false,
+      "last_verified_at": "2026-10-16T01:40:01.415016Z",
+      "latitude": null,
+      "location_precision": "locality",
+      "longitude": null,
+      "metro_region": null,
+      "name": "BASC Durgotsav 2026",
+      "name_bn": null,
+      "neighborhood": null,
+      "official_links": [],
+      "organizer": null,
+      "pandal_id": "california-basc-durgotsav-2026",
+      "region_id": "california",
+      "sources": [
+        {
+          "evidence_kind": "owner_attestation",
+          "publication_date": null,
+          "publisher": "bascweb.org",
+          "quote": "Owner approved this submitted Puja identity and region; source text was not automatically verified.",
+          "source_revision_id": "163d8633703f2d8d8fcc9dfb4878d348e5d3aba5a5edc497bc925efeae3d42b3",
+          "source_title": "Owner-submitted Puja source",
+          "source_url": "https://bascweb.org/durgotsav-2026/"
+        }
+      ],
+      "subtitle": null,
+      "venue": null,
+      "verification_status": "SOURCE VERIFIED",
+      "year": null
     },
     {
       "about": null,

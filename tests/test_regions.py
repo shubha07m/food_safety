@@ -61,10 +61,16 @@ def test_migration_keeps_kolkata_ids_and_explicit_california_identity(region_roo
     local = [r for r in records if r.region_id == "kolkata"]
     ca = [r for r in records if r.region_id == "california"]
     assert {r.pandal_id for r in local} == {r["pandal_id"] for r in original}
-    assert len(local) == 223 and len(ca) == 10
+    # Migration preserves the canonical Kolkata identities; later approvals may grow either region.
+    assert len(local) == len(original)
     assert {r.country_code for r in ca} == {"US"}
-    original_ca = [r for r in ca if r.pandal_id.startswith("ca-")]
-    added = [r for r in ca if r.pandal_id.startswith("california-")]
+    migrated = {"ca-sanskriti", "ca-pashchimi", "ca-agomoni", "ca-basc", "ca-vbc", "ca-ankur"}
+    source_listed = {
+        "california-aikotaan", "california-aantorik", "california-utsav", "california-sanatan",
+    }
+    assert migrated | source_listed <= {r.pandal_id for r in ca}
+    original_ca = [r for r in ca if r.pandal_id in migrated]
+    added = [r for r in ca if r.pandal_id in source_listed]
     assert {r.city for r in original_ca} == {
         "Newark",
         "San Ramon",
@@ -75,7 +81,7 @@ def test_migration_keeps_kolkata_ids_and_explicit_california_identity(region_roo
     assert all(r.sources and r.year == 2026 for r in original_ca)
     assert len(added) == 4
     assert all(r.sources and r.year is None and r.latitude is None for r in added)
-    assert sum(r.latitude is not None for r in ca) == 4
+    assert sum(r.latitude is not None for r in original_ca) == 4
 
 
 def test_region_metadata_and_coordinates_fail_closed(region_root):

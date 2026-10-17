@@ -1,0 +1,70 @@
+name: Release Puja approvals only
+on:
+  workflow_run:
+    workflows: [CI]
+    types: [completed]
+    branches: [develop]
+# Same lock as scheduled production refresh. Neither job cancels an active writer.
+concurrency:
+  group: source-update
+  cancel-in-progress: false
+permissions:
+  contents: read
+jobs:
+  release:
+    if: >-
+      github.event.workflow_run.event == 'push' &&
+      github.event.workflow_run.head_repository.full_name == github.repository
+    permissions:
+      contents: write
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      AUTO_PUBLISH: 'false'
+      LLM_ENABLED: 'false'
+      PIP_DISABLE_PIP_VERSION_CHECK: '1'
+      APPROVAL_SHA: ${{ github.event.workflow_run.head_sha }}
+      APPROVAL_CI_RESULT: ${{ github.event.workflow_run.conclusion }}
+    defaults:
+      run:
+        shell: bash -el {0}
+    steps:
+      # workflow_run uses the workflow on main. Never execute develop's scripts
+      # with the write token; all release code/dependencies come from production.
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: main
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: conda-incubator/setup-miniconda@8ee1f361103df19b6f8c8655fd3967a8ecb162d5 # v4.0.1
+        with:
+          activate-environment: food
+          python-version: '3.12'
+          auto-activate: false
+      - name: Install trusted pinned validation dependencies
+        run: |
+          python -m pip install -r requirements-dev.lock
+          python -m pip install --no-deps --no-build-isolation -e .
+          python -m pip install --only-binary=:all: --no-deps osmium==4.3.1
+      - name: Classify, integrate, validate and atomically release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          # Helper is scoped to this process; no credentials in tracked files/logs.
+          export GIT_CONFIG_COUNT=1
+          export GIT_CONFIG_KEY_0=credential.helper
+          export GIT_CONFIG_VALUE_0='!f() { echo username=x-access-token; echo "password=$GH_TOKEN"; }; f'
+          git fetch origin main develop
+          if [ "$(git rev-parse HEAD)" != "$(git rev-parse origin/main)" ]; then
+            echo 'APPROVAL RELEASE BLOCKED — main advanced after trusted checkout; no release attempted.' >> "$GITHUB_STEP_SUMMARY"
+            exit 1
+          fi
+          python -m food_safety.puja.approval_release --sha "$APPROVAL_SHA" --publish
+          # GITHUB_TOKEN's push does not trigger recursive Actions. The existing
+          # Cloudflare Git integration deploys main; generated output is included.
+      - name: Infrastructure failure summary
+        if: failure()
+        run: |
+          echo 'APPROVAL RELEASE BLOCKED — inspect the failed step and detailed release summary. No force push or automatic protection bypass is used.' >> "$GITHUB_STEP_SUMMARY"

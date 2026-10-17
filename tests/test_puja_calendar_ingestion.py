@@ -208,11 +208,18 @@ def test_legacy_structured_end_retained():
     assert result.candidates[0].end_date.raw_value == "2026-10-11"
 
 
-def test_canonical_records_unchanged_by_source_url_precision():
-    from food_safety.puja.pipeline import load_config
+def test_canonical_records_unchanged_by_source_url_precision(tmp_path):
+    import shutil
+
+    from food_safety.puja.pipeline import build_public, load_config
 
     root = Path(__file__).resolve().parents[1]
-    public = json.loads((root / "site/data/pandals.json").read_text())["records"]
+    # Approval commits intentionally contain canonical YAML only. Compare a fresh
+    # export, not yesterday's checked-in artifact before the publication build.
+    shutil.copytree(root / "config", tmp_path / "config")
+    (tmp_path / "data").mkdir()
+    (tmp_path / "site/data").mkdir(parents=True)
+    public = build_public(tmp_path)["records"]
     expected = {p["pandal_id"]: p for p in public if p["region_id"] == "california"}
     actual = {
         p.pandal_id: p.model_dump(mode="json")
