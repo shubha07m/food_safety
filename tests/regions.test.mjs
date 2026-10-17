@@ -2,9 +2,10 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { parseRegions, regionFromURL, regionURL, scopeFood } from '../site/regions.mjs';
-import { featuredPandals, searchPandals } from '../site/puja.mjs';
-import { foodGeography, publicFood, pandalFoodURL } from '../site/nearby-food.mjs';
+import { featuredPandals, searchPandals, parsePlaces } from '../site/puja.mjs';
+import { foodGeography, publicFood, pandalFoodURL, combineFood } from '../site/nearby-food.mjs';
 import { pandalMarkers } from '../site/map-host.mjs';
+import { effectiveLocation } from '../site/puja-location.mjs';
 import { recordRoute, safetyRoute, applyRoute } from '../site/routes.mjs';
 
 const region = (id, country = 'IN') => ({ region_id: id, label: id, country_code: country, food_provider_mode: 'osm',
@@ -40,12 +41,49 @@ test('scoped search, named counts, markers and geography exclude other regions',
   assert.equal(foodGeography(scoped)[0].count, 4);
   assert.deepEqual(pandalMarkers(scoped.pandals).map(m => m.id), ['pandal-Bay Area Puja']);
 });
-test('featured requires sourced coordinates, a meaningful OSM name and curated eligibility', () => {
-  const d = data(); d.pandals.push(p('Sparse'), p('Google only'));
+test('large-catalog featured retains named-food and curated eligibility', () => {
+  const d = data(); d.pandals.push(p('Sparse'), p('Google only'), p('Extra 1'), p('Extra 2'));
   d.groups.set('Google only', [{ id: 'g', name: null, provider: 'google' }]);
   assert.deepEqual(featuredPandals(d, ['Sparse', 'Google only', 'Unmapped', 'Ekdalia']).map(p => p.pandal_id), ['Ekdalia']);
   const scoped = scopeFood(d, registry.regions[1], registry.default_region);
-  assert.deepEqual(featuredPandals(scoped, ['Ekdalia', 'Bay Area Puja']).map(p => p.pandal_id), ['Bay Area Puja']);
+  assert.deepEqual(featuredPandals(scoped, ['Ekdalia', 'Bay Area Puja']).map(p => p.pandal_id), ['Bay Area Puja', 'Unmapped']);
+});
+for (const size of [0, 4, 6]) {
+  test(`${size}-listing catalog features every listing, independently of food and map eligibility`, () => {
+    const pandals = Array.from({ length: size }, (_, i) => p(`Small ${i}`, 'london'));
+    if (size) pandals[0] = { ...pandals[0], latitude: null, longitude: null };
+    const d = { pandals, groups: new Map() };
+    const picks = featuredPandals(d, ['not-present']);
+    assert.deepEqual(picks, pandals);
+    assert.notEqual(picks, pandals);
+    assert.deepEqual(pandalMarkers(picks).map(m => m.id), pandals.slice(1).map(p => `pandal-${p.pandal_id}`));
+  });
+}
+test('small catalog features historical and withheld locations without putting them on the map', () => {
+  const pandals = [p('Located'), { ...p('Historical'), edition: { year: 2020 } },
+    { ...p('Withheld'), edition: { year: new Date().getUTCFullYear(), confirmed: true } }];
+  assert.deepEqual(featuredPandals({ pandals }), pandals);
+  assert.deepEqual(pandalMarkers(pandals).map(m => m.id), ['pandal-Located']);
+});
+test('published regional fixtures show all small catalogs and preserve large-catalog selection', () => {
+  const load = path => JSON.parse(readFileSync(`site/${path}`, 'utf8'));
+  const registry = parseRegions(load('data/regions.json'));
+  const all = parsePlaces(load('data/places.json'), load('data/pandals.json'));
+  for (const region of registry.regions) {
+    const d = combineFood(scopeFood(all, region, registry.default_region), load(region.food_data), load(region.provider_data));
+    const picks = featuredPandals(d, region.featured_ids);
+    if (d.pandals.length <= 6) assert.deepEqual(picks, d.pandals, region.region_id);
+    else {
+      // Exact pre-change algorithm, including food richness preference and ordering.
+      const eligible = [...new Set(region.featured_ids)].map(id => d.pandals.find(p => p.pandal_id === id))
+        .filter(p => p && publicFood(d, p).named_snapshot_count >= 1);
+      const richer = eligible.filter(p => publicFood(d, p).named_snapshot_count >= 3);
+      assert.deepEqual(picks, (richer.length >= 3 ? richer : eligible).slice(0, 6), region.region_id);
+    }
+    assert.deepEqual(pandalMarkers(d.pandals).map(m => m.id),
+      d.pandals.filter(p => effectiveLocation(p).map_eligible).map(p => `pandal-${p.pandal_id}`));
+    for (const pick of picks) assert.ok(searchPandals(d.index, pick.name).some(p => p.pandal_id === pick.pandal_id));
+  }
 });
 test('featured prefers three named matches when enough curated entries qualify and caps at six', () => {
   const d = { pandals: Array.from({ length: 10 }, (_, i) => p(`P${i}`)), groups: new Map() };
