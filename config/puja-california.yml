@@ -52,6 +52,10 @@ sources:
   publisher: utsavsac.org
   region_id: california
   source_kind: association
+- source_id: approved-pc-34a91b8a4ed636ce47fd
+  url: https://bascweb.org/durgotsav-2026/
+  publisher: bascweb.org
+  region_id: california
 published:
 - pandal_id: ca-pashchimi
   region_id: california
@@ -72,7 +76,11 @@ published:
     - source_url: https://pashchimi.org/
       source_title: Pashchimi — Durga Puja 2026 event dates
       publisher: Pashchimi
-      quote: "Friday, October 16th, 2026\nto\nTuesday, October 20th, 2026"
+      quote: 'Friday, October 16th, 2026
+
+        to
+
+        Tuesday, October 20th, 2026'
       source_revision_id: c22b850d93f6ac62ac90957cb2d1fce69a9bb3140bda477eebf610e17f45d78f
   latitude: 37.5483346
   longitude: -122.048156
@@ -278,7 +286,9 @@ published:
     - source_url: https://www.ankurinc.org/
       source_title: Ankur — Sharodotsav 2026 event dates
       publisher: Ankur Inc.
-      quote: "Sharodotsav\n🕐 23-Oct-2026, 3-Days(23-25 Oct) 📍 Sacramento Venue"
+      quote: 'Sharodotsav
+
+        🕐 23-Oct-2026, 3-Days(23-25 Oct) 📍 Sacramento Venue'
       source_revision_id: fe035d8bff2d5a213c477915ebf71a9db181b664208a7fd7d256a25f12480d49
   location_precision: source_zone
   organizer: Ankur Inc.
@@ -459,3 +469,19 @@ published:
     quote: Utsav Silver Jubilee Durga Puja 2026 – October 23rd to October 25th
     source_revision_id: 1b81f93af54d6ae0e0b9393f7a92be467fa85accf954d63357c7c4d913047ade
   last_verified_at: '2026-09-26T21:37:22.748498Z'
+- pandal_id: california-basc-durgotsav-2026
+  region_id: california
+  country_code: US
+  admin1: California
+  name: BASC Durgotsav 2026
+  area: California
+  city: California
+  sources:
+  - evidence_kind: owner_attestation
+    source_url: https://bascweb.org/durgotsav-2026/
+    source_title: Owner-submitted Puja source
+    publisher: bascweb.org
+    quote: Owner approved this submitted Puja identity and region; source text was
+      not automatically verified.
+    source_revision_id: 163d8633703f2d8d8fcc9dfb4878d348e5d3aba5a5edc497bc925efeae3d42b3
+  last_verified_at: '2026-10-16T01:40:01.415016Z'

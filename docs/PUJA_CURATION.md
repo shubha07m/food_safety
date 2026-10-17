@@ -54,8 +54,11 @@ Startup syncs the private response Sheet; the local cards offer **APPROVE** and
 **REJECT** only. Leave a card untouched to keep it pending. Approval is the final
 editorial action: the app validates and saves the Puja directly into its regional
 catalog, commits only those catalog files, and pushes `develop`. CI and the normal
-develop-to-main release/build/deployment follow; no per-Puja publication command
-or approval PR is needed. Complete the one-time setup below first.
+approval-only release/build/deployment follow after CI succeeds; no per-Puja
+publication command or approval PR is needed. Ordinary code releases remain manual.
+The release workflow must first be installed on production through a reviewed normal
+release; adding its implementation to develop never qualifies as an approval release.
+Complete the one-time setup below first.
 
 ### Optional research and diagnostic commands
 
@@ -192,8 +195,55 @@ Private retry state is not a publication input. Raw submissions, rejected decisi
 OAuth files and model/debug output stay ignored. The normal static build reads the
 canonical catalogs directly. There is no approval Issue, extra branch, public request
 file, catalog overlay, or separate scheduled approval consumer. `main` is production;
-`develop` is development. The existing release PR covers code and catalog changes;
-the app does not merge it or push to `main`.
+`develop` is development. The local app never pushes to `main`. Ordinary code/catalog
+maintenance still uses the manual release PR. Only the exact approval-generated
+canonical commit contract qualifies for the dedicated release below.
+
+### Approval-only release boundary
+
+`Release Puja approvals only` runs from the production workflow after push CI on
+develop completes. It checks out trusted main code, not code supplied by the approval.
+Every develop-only commit must be single-parent with the exact existing approval
+subject and `Puja-Revision` trailer. The only accepted input paths are `config/puja.yml`
+and the regional catalog files from the unchanged region registry. Generated files,
+code, dependencies, workflows, other config and private state in an input commit
+are rejected. The guard reconstructs one changed public record/source payload,
+checks candidate identity and revision evidence, and reproduces the existing
+canonical writer's output; message/path matching alone is insufficient. This proves
+the public commit contract, not cryptographic proof of a UI click. Repository write
+access remains a trust boundary.
+
+The release accepts a linear batch of 1–20 approval-only commits. Its shared
+production ancestor must be unambiguous. Any main-only history must consist solely
+of single-parent validated-refresh commits touching the existing generated allowlist.
+Any ordinary code history on either side blocks this path. The runner merges the
+verified approval history onto current main without rewriting history, then rebuilds
+from committed inputs. Only pandals JSON and registry-selected food association/provider
+outputs may change in generation; all other production data must remain intact.
+This is local reassociation, not OSM/Places acquisition or a source/model campaign.
+
+The gate requires successful original CI and repeats schema/source/data validation,
+full Python/Node tests, Ruff, two byte-identical builds, public-output/privacy/index
+guards and dependency audit on the actual integrated tree. Only then does an atomic,
+non-force push advance both main and develop to one auditable merge commit.
+Concurrent branch advances, conflicts, failed checks or protected-branch rejection
+leave both remote refs unchanged. No protection bypass, temporary branch or PR is
+created. The existing Cloudflare main Git deployment remains responsible for serving;
+GITHUB_TOKEN pushes do not recursively trigger Actions, so generated output is already
+included in the release commit. A rerun recognizes an already-released ancestor.
+
+The next local approval can fast-forward over a verified approval-release merge
+already present on main; it does not stash/reset or overwrite local work. Non-release
+divergence and overlapping edits still stop delivery. The UI, decisions, compiler,
+date review, Directions gates and two-button semantics are unchanged.
+
+Actions summaries list approval SHA/candidate/Puja IDs, changed paths, validation,
+release outcome and resulting main SHA. A blocked summary states the reason; the
+approval stays on develop. Rerunning the same release job is safe after a transient
+failure. A mixed code/approval branch needs the normal reviewed manual release, never
+an automatic cherry-pick or broad develop merge. Existing branch protection is not
+changed; if policy later requires a protected PR path, direct publication fails closed
+and must not be enabled by weakening that policy.
 
 Failed delivery retries every minute while review is open and at the next normal
 startup. A persistent unchanged error is reported once; valid approvals continue.

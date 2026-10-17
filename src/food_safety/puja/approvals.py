@@ -165,6 +165,12 @@ def _deliver(root, payload):
             raise ValueError("catalog_symlink_not_supported")
         _git(root, "ls-files", "--error-unmatch", "--", path)
     _git(root, "fetch", "origin", "develop")
+    # A successful approval-only release advances both remote branches. Catch up
+    # only to its verified production merge, without stashing/overwriting owner work.
+    from .approval_release import ancestor, sync_after_release
+
+    if not ancestor(root, "origin/develop", "HEAD"):
+        sync_after_release(root, _git(root, "rev-parse", "origin/develop"))
     _git(root, "merge-base", "--is-ancestor", "origin/develop", "HEAD")
     # Retry may find an earlier approval commit whose push failed. Never push
     # unrelated local code commits as a side effect of an editorial action.
