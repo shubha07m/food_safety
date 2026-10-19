@@ -1,6 +1,6 @@
 {
   "context_notice": "Independent, non-governmental public-source research. Inclusion is not a finding of wrongdoing. Counts describe records in this tracker, not official totals, prevalence, compliance, risk or group behavior. Read the sources and preserve this context when sharing.",
-  "generated_at": "2026-10-19T13:08:35.802650+00:00",
+  "generated_at": "2026-10-19T19:55:22.340266+00:00",
   "pipeline_version": "0.3.0",
   "record_count": 40,
   "records": [
@@ -2305,11 +2305,17 @@
           "note": "Supporting source context revalidated; original evidence retained.",
           "previous_record_sha256": "1b9e22f06f8ceb6e753c433bde81f11ca03ece056685abfd929260cbd972c5d7",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-10-19T19:55:22.340266Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "94c138d09d35d9b7de9a57a227dc06008ba13db43dae3622a96c5ff99860cc28",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-10-17T15:31:19.219665Z",
-      "last_successful_evidence_check_at": "2026-10-17T15:31:19.219665Z",
+      "last_source_checked_at": "2026-10-19T19:55:22.340266Z",
+      "last_successful_evidence_check_at": "2026-10-19T19:55:22.340266Z",
       "llm": {
         "fields_proposed": [],
         "llm_model": null,
@@ -2329,7 +2335,7 @@
       "record_class": "inspection_evidence",
       "record_created_at": "2026-09-07T21:12:32.942437Z",
       "record_scope": "unknown",
-      "record_updated_at": "2026-10-17T15:31:19.219665Z",
+      "record_updated_at": "2026-10-19T19:55:22.340266Z",
       "related_record_ids": [],
       "reported_fact": {
         "area": "South City Mall",
@@ -2790,11 +2796,17 @@
           "note": "Supporting source context revalidated; original evidence retained.",
           "previous_record_sha256": "71b6c98687d8a7751e264be1ae7bada3a4652181d48368a34691da6a308e7e22",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-10-19T19:55:22.340266Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "136dab25d57ec3d14e860ed7a89f7bfb071b20dfd86e00c05499ce028434b8c8",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-10-17T15:31:19.219665Z",
-      "last_successful_evidence_check_at": "2026-10-17T15:31:19.219665Z",
+      "last_source_checked_at": "2026-10-19T19:55:22.340266Z",
+      "last_successful_evidence_check_at": "2026-10-19T19:55:22.340266Z",
       "llm": {
         "fields_proposed": [],
         "llm_model": null,
@@ -2814,7 +2826,7 @@
       "record_class": "inspection_evidence",
       "record_created_at": "2026-09-07T21:12:32.942437Z",
       "record_scope": "unknown",
-      "record_updated_at": "2026-10-17T15:31:19.219665Z",
+      "record_updated_at": "2026-10-19T19:55:22.340266Z",
       "related_record_ids": [],
       "reported_fact": {
         "area": "South City Mall",
@@ -3724,11 +3736,17 @@
           "note": "Supporting source context revalidated; original evidence retained.",
           "previous_record_sha256": "a0dcb0321fa941706fd9d01d18d9614a9439aa6e4adeb93f555f6f27e298ccc9",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-10-19T19:55:22.340266Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "c258485c4f6f50a77aec32b325cc04f08e053fea451d398092ca8449f4214aac",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-10-19T04:37:25.817288Z",
-      "last_successful_evidence_check_at": "2026-10-19T04:37:25.817288Z",
+      "last_source_checked_at": "2026-10-19T19:55:22.340266Z",
+      "last_successful_evidence_check_at": "2026-10-19T19:55:22.340266Z",
       "llm": {
         "fields_proposed": [],
         "llm_model": null,
@@ -3748,7 +3766,7 @@
       "record_class": "inspection_evidence",
       "record_created_at": "2026-09-07T21:12:32.942437Z",
       "record_scope": "unknown",
-      "record_updated_at": "2026-10-19T04:37:25.817288Z",
+      "record_updated_at": "2026-10-19T19:55:22.340266Z",
       "related_record_ids": [],
       "reported_fact": {
         "area": "Hooghly",
@@ -4139,11 +4157,17 @@
           "note": "Supporting source context revalidated; original evidence retained.",
           "previous_record_sha256": "cef68093339caa0f562a3ac26c93632e877dcd9f7d64d0fefe052c64559748ff",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-10-19T19:55:22.340266Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "1d438b1fba52165eb9201ee0a8c157cb30846e7e10d71b3bcf9ec0259eafeb69",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-10-19T04:37:25.817288Z",
-      "last_successful_evidence_check_at": "2026-10-19T04:37:25.817288Z",
+      "last_source_checked_at": "2026-10-19T19:55:22.340266Z",
+      "last_successful_evidence_check_at": "2026-10-19T19:55:22.340266Z",
       "llm": {
         "fields_proposed": [],
         "llm_model": null,
@@ -4163,7 +4187,7 @@
       "record_class": "inspection_evidence",
       "record_created_at": "2026-09-07T21:12:32.942437Z",
       "record_scope": "unknown",
-      "record_updated_at": "2026-10-19T04:37:25.817288Z",
+      "record_updated_at": "2026-10-19T19:55:22.340266Z",
       "related_record_ids": [],
       "reported_fact": {
         "area": "East Midnapore",
@@ -5159,11 +5183,17 @@
           "note": "Supporting source context revalidated; original evidence retained.",
           "previous_record_sha256": "74be5eec77825bc526b600a43a908a17c905fe67d373ee3554d47660ec924ba4",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-10-19T19:55:22.340266Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "4bfed16f242133cb43e82153ca887dc61b14d7991320d65aae1110874b5940db",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-10-17T15:31:19.219665Z",
-      "last_successful_evidence_check_at": "2026-10-17T15:31:19.219665Z",
+      "last_source_checked_at": "2026-10-19T19:55:22.340266Z",
+      "last_successful_evidence_check_at": "2026-10-19T19:55:22.340266Z",
       "llm": {
         "fields_proposed": [],
         "llm_model": null,
@@ -5183,7 +5213,7 @@
       "record_class": "inspection_evidence",
       "record_created_at": "2026-09-07T21:12:32.942437Z",
       "record_scope": "unknown",
-      "record_updated_at": "2026-10-17T15:31:19.219665Z",
+      "record_updated_at": "2026-10-19T19:55:22.340266Z",
       "related_record_ids": [],
       "reported_fact": {
         "area": "Dacres Lane",
@@ -6085,11 +6115,17 @@
           "note": "Supporting source context revalidated; original evidence retained.",
           "previous_record_sha256": "722f6cdb267aad9d42f396730f69d640398d2de9c3adeb857251bf67d3ce7a99",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-10-19T19:55:22.340266Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "a16e5dfafccbc511fdc5cbedc96e76c374a6c52f81fd652b07004542faf1d290",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-10-17T15:31:19.219665Z",
-      "last_successful_evidence_check_at": "2026-10-17T15:31:19.219665Z",
+      "last_source_checked_at": "2026-10-19T19:55:22.340266Z",
+      "last_successful_evidence_check_at": "2026-10-19T19:55:22.340266Z",
       "llm": {
         "fields_proposed": [],
         "llm_model": null,
@@ -6109,7 +6145,7 @@
       "record_class": "inspection_evidence",
       "record_created_at": "2026-09-07T21:12:32.942437Z",
       "record_scope": "unknown",
-      "record_updated_at": "2026-10-17T15:31:19.219665Z",
+      "record_updated_at": "2026-10-19T19:55:22.340266Z",
       "related_record_ids": [],
       "reported_fact": {
         "area": "Kolkata",
@@ -6508,11 +6544,17 @@
           "note": "Supporting source context revalidated; original evidence retained.",
           "previous_record_sha256": "b38c0b58f6adefcacf5380f6c2e5fa6a30e8d06797b38b16dc6e1a40ca663384",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-10-19T19:55:22.340266Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "9d9cccc2349f361229bcada791d48fa5ad4686b6f7647392bd364c67a4b9ee70",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-10-19T04:37:25.817288Z",
-      "last_successful_evidence_check_at": "2026-10-19T04:37:25.817288Z",
+      "last_source_checked_at": "2026-10-19T19:55:22.340266Z",
+      "last_successful_evidence_check_at": "2026-10-19T19:55:22.340266Z",
       "llm": {
         "fields_proposed": [],
         "llm_model": null,
@@ -6532,7 +6574,7 @@
       "record_class": "inspection_evidence",
       "record_created_at": "2026-09-07T21:12:32.942437Z",
       "record_scope": "unknown",
-      "record_updated_at": "2026-10-19T04:37:25.817288Z",
+      "record_updated_at": "2026-10-19T19:55:22.340266Z",
       "related_record_ids": [],
       "reported_fact": {
         "area": "Shaktigarh",
@@ -6983,11 +7025,17 @@
           "note": "Supporting source context revalidated; original evidence retained.",
           "previous_record_sha256": "4c8c25a938fc2b44086b02336f0b4a0634b2bac66447eb088ce43b3df6f85bce",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-10-19T19:55:22.340266Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "b4398a421549f2b441535a1d069b73e261315eee306af21c3fa17be9a5951305",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-10-17T15:31:19.219665Z",
-      "last_successful_evidence_check_at": "2026-10-17T15:31:19.219665Z",
+      "last_source_checked_at": "2026-10-19T19:55:22.340266Z",
+      "last_successful_evidence_check_at": "2026-10-19T19:55:22.340266Z",
       "llm": {
         "fields_proposed": [],
         "llm_model": null,
@@ -7007,7 +7055,7 @@
       "record_class": "inspection_evidence",
       "record_created_at": "2026-09-07T21:12:32.942437Z",
       "record_scope": "unknown",
-      "record_updated_at": "2026-10-17T15:31:19.219665Z",
+      "record_updated_at": "2026-10-19T19:55:22.340266Z",
       "related_record_ids": [],
       "reported_fact": {
         "area": "Kolkata",
@@ -7496,11 +7544,17 @@
           "note": "Supporting source context revalidated; original evidence retained.",
           "previous_record_sha256": "0c8580690a628b63bfbd8b7db825fd9de53f7465993c81b3d591a962b934fa17",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-10-19T19:55:22.340266Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "f5cc8bc25bda1b7c0ac512aff19f0456ecde7b4a4f491d1f551c8f9391c78789",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-10-17T15:31:19.219665Z",
-      "last_successful_evidence_check_at": "2026-10-17T15:31:19.219665Z",
+      "last_source_checked_at": "2026-10-19T19:55:22.340266Z",
+      "last_successful_evidence_check_at": "2026-10-19T19:55:22.340266Z",
       "llm": {
         "fields_proposed": [],
         "llm_model": null,
@@ -7520,7 +7574,7 @@
       "record_class": "inspection_evidence",
       "record_created_at": "2026-09-07T21:12:32.942437Z",
       "record_scope": "unknown",
-      "record_updated_at": "2026-10-17T15:31:19.219665Z",
+      "record_updated_at": "2026-10-19T19:55:22.340266Z",
       "related_record_ids": [],
       "reported_fact": {
         "area": "Dum Dum",
@@ -7975,11 +8029,17 @@
           "note": "Supporting source context revalidated; original evidence retained.",
           "previous_record_sha256": "a0b3f761205d976a7503b14c6661e34757cce74e306f4c1e405edb3694710b9b",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-10-19T19:55:22.340266Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "46dcacd563576d7a672275ed40bc414ff45c9da3a422f35d70b881ef82dc443c",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-10-17T15:31:19.219665Z",
-      "last_successful_evidence_check_at": "2026-10-17T15:31:19.219665Z",
+      "last_source_checked_at": "2026-10-19T19:55:22.340266Z",
+      "last_successful_evidence_check_at": "2026-10-19T19:55:22.340266Z",
       "llm": {
         "fields_proposed": [],
         "llm_model": null,
@@ -7999,7 +8059,7 @@
       "record_class": "inspection_evidence",
       "record_created_at": "2026-09-07T21:12:32.942437Z",
       "record_scope": "unknown",
-      "record_updated_at": "2026-10-17T15:31:19.219665Z",
+      "record_updated_at": "2026-10-19T19:55:22.340266Z",
       "related_record_ids": [],
       "reported_fact": {
         "area": "Kolkata",
@@ -8404,11 +8464,17 @@
           "note": "Supporting source context revalidated; original evidence retained.",
           "previous_record_sha256": "55e9ca033dfa0cb4284a4e762c464b640db5a89212a776d8bd64796c000ae9e5",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-10-19T19:55:22.340266Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "da114292a01f361b2f2205098bd5186f20c8a66afedcf391d51cc7e7833cc65d",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-10-19T04:37:25.817288Z",
-      "last_successful_evidence_check_at": "2026-10-19T04:37:25.817288Z",
+      "last_source_checked_at": "2026-10-19T19:55:22.340266Z",
+      "last_successful_evidence_check_at": "2026-10-19T19:55:22.340266Z",
       "llm": {
         "fields_proposed": [],
         "llm_model": null,
@@ -8428,7 +8494,7 @@
       "record_class": "inspection_evidence",
       "record_created_at": "2026-09-07T21:12:32.942437Z",
       "record_scope": "unknown",
-      "record_updated_at": "2026-10-19T04:37:25.817288Z",
+      "record_updated_at": "2026-10-19T19:55:22.340266Z",
       "related_record_ids": [],
       "reported_fact": {
         "area": "Digha",
@@ -8883,11 +8949,17 @@
           "note": "Supporting source context revalidated; original evidence retained.",
           "previous_record_sha256": "6743139d63dc837f73a8aa8c63370f5dc177b1bf0a5ee4804847c06e93966602",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-10-19T19:55:22.340266Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "57af2c3e888f844c9bab482efc8365c950132cac124e85c9c4b3d6a8eaffe32b",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-10-17T15:31:19.219665Z",
-      "last_successful_evidence_check_at": "2026-10-17T15:31:19.219665Z",
+      "last_source_checked_at": "2026-10-19T19:55:22.340266Z",
+      "last_successful_evidence_check_at": "2026-10-19T19:55:22.340266Z",
       "llm": {
         "fields_proposed": [],
         "llm_model": null,
@@ -8907,7 +8979,7 @@
       "record_class": "inspection_evidence",
       "record_created_at": "2026-09-07T21:12:32.942437Z",
       "record_scope": "unknown",
-      "record_updated_at": "2026-10-17T15:31:19.219665Z",
+      "record_updated_at": "2026-10-19T19:55:22.340266Z",
       "related_record_ids": [],
       "reported_fact": {
         "area": "Bentinck Street and Waterloo Street",
@@ -10298,11 +10370,17 @@
           "note": "Supporting source context revalidated; original evidence retained.",
           "previous_record_sha256": "7f2d6bd5382eaad966859fb8ce0c1528dc6c81931e49c3a8f5f97976e4325ae3",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-10-19T19:55:22.340266Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "a41501f7aae8eaf3975ba5193e9c9945b4f0c6e30b7c2f5cc2fd1c3a5539fd19",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-10-17T15:31:19.219665Z",
-      "last_successful_evidence_check_at": "2026-10-17T15:31:19.219665Z",
+      "last_source_checked_at": "2026-10-19T19:55:22.340266Z",
+      "last_successful_evidence_check_at": "2026-10-19T19:55:22.340266Z",
       "llm": {
         "fields_proposed": [],
         "llm_model": null,
@@ -10322,7 +10400,7 @@
       "record_class": "inspection_evidence",
       "record_created_at": "2026-09-07T21:12:32.942437Z",
       "record_scope": "unknown",
-      "record_updated_at": "2026-10-17T15:31:19.219665Z",
+      "record_updated_at": "2026-10-19T19:55:22.340266Z",
       "related_record_ids": [],
       "reported_fact": {
         "area": "Dacres Lane",
@@ -11158,11 +11236,17 @@
           "note": "Supporting source context revalidated; original evidence retained.",
           "previous_record_sha256": "08db368d94e30e119d97c8198c72832b5c31bf4a66a0922b540b2f4756ef6ddb",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-10-19T19:55:22.340266Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "71b8fc93a492bc30ca32609f22c5ae8dcd48842d255f7e9b6235e10ebcbf7225",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-10-19T04:37:25.817288Z",
-      "last_successful_evidence_check_at": "2026-10-19T04:37:25.817288Z",
+      "last_source_checked_at": "2026-10-19T19:55:22.340266Z",
+      "last_successful_evidence_check_at": "2026-10-19T19:55:22.340266Z",
       "llm": {
         "fields_proposed": [],
         "llm_model": null,
@@ -11182,7 +11266,7 @@
       "record_class": "inspection_evidence",
       "record_created_at": "2026-09-07T21:12:32.942437Z",
       "record_scope": "unknown",
-      "record_updated_at": "2026-10-19T04:37:25.817288Z",
+      "record_updated_at": "2026-10-19T19:55:22.340266Z",
       "related_record_ids": [],
       "reported_fact": {
         "area": "Baduria",
@@ -11671,11 +11755,17 @@
           "note": "Supporting source context revalidated; original evidence retained.",
           "previous_record_sha256": "fd3b10e115a2f23ebcf051577e18efc0414600d6e4a939e4a7bf998bf4f78b15",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-10-19T19:55:22.340266Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "a91978e25ea6f86813ab06b57e43a99790582edbff891faef695f7fec7388fd5",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-10-17T15:31:19.219665Z",
-      "last_successful_evidence_check_at": "2026-10-17T15:31:19.219665Z",
+      "last_source_checked_at": "2026-10-19T19:55:22.340266Z",
+      "last_successful_evidence_check_at": "2026-10-19T19:55:22.340266Z",
       "llm": {
         "fields_proposed": [],
         "llm_model": null,
@@ -11695,7 +11785,7 @@
       "record_class": "inspection_evidence",
       "record_created_at": "2026-09-07T21:12:32.942437Z",
       "record_scope": "unknown",
-      "record_updated_at": "2026-10-17T15:31:19.219665Z",
+      "record_updated_at": "2026-10-19T19:55:22.340266Z",
       "related_record_ids": [],
       "reported_fact": {
         "area": "Jorabagan",
@@ -12703,11 +12793,17 @@
           "note": "Supporting source context revalidated; original evidence retained.",
           "previous_record_sha256": "32bd60849f7a3b82ed39ed56bf8baf53742554e1e2e6e5ce91205684a3265fc1",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-10-19T19:55:22.340266Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "aedda1d767226af69466a21476a95d8e7e77ae91dfc8bf63c71b0b50178a7df1",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-10-17T15:31:19.219665Z",
-      "last_successful_evidence_check_at": "2026-10-17T15:31:19.219665Z",
+      "last_source_checked_at": "2026-10-19T19:55:22.340266Z",
+      "last_successful_evidence_check_at": "2026-10-19T19:55:22.340266Z",
       "llm": {
         "fields_proposed": [],
         "llm_model": null,
@@ -12727,7 +12823,7 @@
       "record_class": "inspection_evidence",
       "record_created_at": "2026-09-07T21:12:32.942437Z",
       "record_scope": "unknown",
-      "record_updated_at": "2026-10-17T15:31:19.219665Z",
+      "record_updated_at": "2026-10-19T19:55:22.340266Z",
       "related_record_ids": [],
       "reported_fact": {
         "area": "Dacres Lane",
@@ -13192,11 +13288,17 @@
           "note": "Supporting source context revalidated; original evidence retained.",
           "previous_record_sha256": "255e56876acb6abf798f91e37d3c4b96c860fb30fea5e5052c048d77a0ebc592",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-10-19T19:55:22.340266Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "d23874c3ea3d670e1d6512175f1b7a52f09cfd3d594ce6c19ffdb5953648bee7",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-10-17T15:31:19.219665Z",
-      "last_successful_evidence_check_at": "2026-10-17T15:31:19.219665Z",
+      "last_source_checked_at": "2026-10-19T19:55:22.340266Z",
+      "last_successful_evidence_check_at": "2026-10-19T19:55:22.340266Z",
       "llm": {
         "fields_proposed": [],
         "llm_model": null,
@@ -13216,7 +13318,7 @@
       "record_class": "inspection_evidence",
       "record_created_at": "2026-09-07T21:12:32.942437Z",
       "record_scope": "unknown",
-      "record_updated_at": "2026-10-17T15:31:19.219665Z",
+      "record_updated_at": "2026-10-19T19:55:22.340266Z",
       "related_record_ids": [],
       "reported_fact": {
         "area": "South City Mall",
@@ -15130,11 +15232,17 @@
           "note": "Supporting source context revalidated; original evidence retained.",
           "previous_record_sha256": "1b3c08b3ee14c0034507b2b79127b35e79e1546e332ae5af03154db48e9e0066",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-10-19T19:55:22.340266Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "6cc9def72f87c0b381e316f166339c02591c5ef2168a90dd0145e3a7613f2c51",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-10-19T04:37:25.817288Z",
-      "last_successful_evidence_check_at": "2026-10-19T04:37:25.817288Z",
+      "last_source_checked_at": "2026-10-19T19:55:22.340266Z",
+      "last_successful_evidence_check_at": "2026-10-19T19:55:22.340266Z",
       "llm": {
         "fields_proposed": [],
         "llm_model": null,
@@ -15154,7 +15262,7 @@
       "record_class": "inspection_evidence",
       "record_created_at": "2026-09-07T21:12:32.942437Z",
       "record_scope": "unknown",
-      "record_updated_at": "2026-10-19T04:37:25.817288Z",
+      "record_updated_at": "2026-10-19T19:55:22.340266Z",
       "related_record_ids": [],
       "reported_fact": {
         "area": "Gariahat",
@@ -16594,11 +16702,17 @@
           "note": "Supporting source context revalidated; original evidence retained.",
           "previous_record_sha256": "f40e3852fde59b3a28bb3c9e23d032dfdf6bb9e5f847fbab7252b98beae6fe0d",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-10-19T19:55:22.340266Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "de18325adff9c7ddce808f9a5d3f66096f3b4317d1bdde749bf33f6788a184c7",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-10-17T15:31:19.219665Z",
-      "last_successful_evidence_check_at": "2026-10-17T15:31:19.219665Z",
+      "last_source_checked_at": "2026-10-19T19:55:22.340266Z",
+      "last_successful_evidence_check_at": "2026-10-19T19:55:22.340266Z",
       "llm": {
         "fields_proposed": [],
         "llm_model": null,
@@ -16618,7 +16732,7 @@
       "record_class": "inspection_evidence",
       "record_created_at": "2026-09-07T21:12:32.942437Z",
       "record_scope": "unknown",
-      "record_updated_at": "2026-10-17T15:31:19.219665Z",
+      "record_updated_at": "2026-10-19T19:55:22.340266Z",
       "related_record_ids": [],
       "reported_fact": {
         "area": "Dacres Lane",
@@ -17023,11 +17137,17 @@
           "note": "Supporting source context revalidated; original evidence retained.",
           "previous_record_sha256": "8e20b952e4b90a75b22c7f90815960187261656bbcb8a5bd74cc81843924b3ff",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-10-19T19:55:22.340266Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "82514674ea08704f34c5f729b247b6149be3778d8a5e0ae999c33de9941586c4",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-10-19T04:37:25.817288Z",
-      "last_successful_evidence_check_at": "2026-10-19T04:37:25.817288Z",
+      "last_source_checked_at": "2026-10-19T19:55:22.340266Z",
+      "last_successful_evidence_check_at": "2026-10-19T19:55:22.340266Z",
       "llm": {
         "fields_proposed": [],
         "llm_model": null,
@@ -17047,7 +17167,7 @@
       "record_class": "inspection_evidence",
       "record_created_at": "2026-09-07T21:12:32.942437Z",
       "record_scope": "unknown",
-      "record_updated_at": "2026-10-19T04:37:25.817288Z",
+      "record_updated_at": "2026-10-19T19:55:22.340266Z",
       "related_record_ids": [],
       "reported_fact": {
         "area": "Bowbazar",
@@ -17428,11 +17548,17 @@
           "note": "Supporting source context revalidated; original evidence retained.",
           "previous_record_sha256": "e47ae29cb785e67d3054e2844d621462aab48678beb6157cb2376d76d6a2d73c",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-10-19T19:55:22.340266Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "a2e9cfdfd4e7a3a89aefea01a3fc223e0d9e0c98a6575390b23008e43024f2c9",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-10-19T04:37:25.817288Z",
-      "last_successful_evidence_check_at": "2026-10-19T04:37:25.817288Z",
+      "last_source_checked_at": "2026-10-19T19:55:22.340266Z",
+      "last_successful_evidence_check_at": "2026-10-19T19:55:22.340266Z",
       "llm": {
         "fields_proposed": [],
         "llm_model": null,
@@ -17452,7 +17578,7 @@
       "record_class": "inspection_evidence",
       "record_created_at": "2026-09-07T21:12:32.942437Z",
       "record_scope": "unknown",
-      "record_updated_at": "2026-10-19T04:37:25.817288Z",
+      "record_updated_at": "2026-10-19T19:55:22.340266Z",
       "related_record_ids": [],
       "reported_fact": {
         "area": "Tangra",
@@ -17851,11 +17977,17 @@
           "note": "Supporting source context revalidated; original evidence retained.",
           "previous_record_sha256": "1880d97844eb5d5df8b54b856022de06f414e4d2e022419aae919b82633c5dbe",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-10-19T19:55:22.340266Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "c2bb49014b969e459380ed04b42f27e0585a5974c3af531de3d598106bb1c374",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-10-19T04:37:25.817288Z",
-      "last_successful_evidence_check_at": "2026-10-19T04:37:25.817288Z",
+      "last_source_checked_at": "2026-10-19T19:55:22.340266Z",
+      "last_successful_evidence_check_at": "2026-10-19T19:55:22.340266Z",
       "llm": {
         "fields_proposed": [],
         "llm_model": null,
@@ -17875,7 +18007,7 @@
       "record_class": "inspection_evidence",
       "record_created_at": "2026-09-07T21:12:32.942437Z",
       "record_scope": "unknown",
-      "record_updated_at": "2026-10-19T04:37:25.817288Z",
+      "record_updated_at": "2026-10-19T19:55:22.340266Z",
       "related_record_ids": [],
       "reported_fact": {
         "area": "Posta",
@@ -18789,11 +18921,17 @@
           "note": "Supporting source context revalidated; original evidence retained.",
           "previous_record_sha256": "3a95008deed87c3fcea8920e7be882ca955378edeb975d9ad424614cad474671",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-10-19T19:55:22.340266Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "d829411eb051fff4652528507e7c182618df572c858b56be892bdf60d3ea9b57",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-10-17T15:31:19.219665Z",
-      "last_successful_evidence_check_at": "2026-10-17T15:31:19.219665Z",
+      "last_source_checked_at": "2026-10-19T19:55:22.340266Z",
+      "last_successful_evidence_check_at": "2026-10-19T19:55:22.340266Z",
       "llm": {
         "fields_proposed": [],
         "llm_model": null,
@@ -18813,7 +18951,7 @@
       "record_class": "inspection_evidence",
       "record_created_at": "2026-09-07T21:12:32.942437Z",
       "record_scope": "unknown",
-      "record_updated_at": "2026-10-17T15:31:19.219665Z",
+      "record_updated_at": "2026-10-19T19:55:22.340266Z",
       "related_record_ids": [],
       "reported_fact": {
         "area": "Lake Market",
