@@ -1,6 +1,6 @@
 {
   "context_notice": "Independent, non-governmental public-source research. Inclusion is not a finding of wrongdoing. Counts describe records in this tracker, not official totals, prevalence, compliance, risk or group behavior. Read the sources and preserve this context when sharing.",
-  "generated_at": "2026-10-23T23:08:02.479104+00:00",
+  "generated_at": "2026-10-24T04:33:05.281395+00:00",
   "pipeline_version": "0.3.0",
   "record_count": 40,
   "records": [
@@ -10179,11 +10179,17 @@
           "note": "Supporting source context revalidated; original evidence retained.",
           "previous_record_sha256": "23dd4408977cb583882c7db21edc82a9d80802fdf9571aec2129fcfdcf30b9be",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-10-24T04:33:05.281395Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "409ba947f8e1b490f19a3830c37bf4de9723c54fa0c11d3333923b0888d1c2e3",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-10-23T18:19:00.535597Z",
-      "last_successful_evidence_check_at": "2026-10-23T18:19:00.535597Z",
+      "last_source_checked_at": "2026-10-24T04:33:05.281395Z",
+      "last_successful_evidence_check_at": "2026-10-24T04:33:05.281395Z",
       "llm": {
         "fields_proposed": [],
         "llm_model": null,
@@ -10203,7 +10209,7 @@
       "record_class": "inspection_evidence",
       "record_created_at": "2026-09-09T23:09:01.232782Z",
       "record_scope": "area_operation",
-      "record_updated_at": "2026-10-23T18:19:00.535597Z",
+      "record_updated_at": "2026-10-24T04:33:05.281395Z",
       "related_record_ids": [],
       "reported_fact": {
         "area": "কলকাতা",
@@ -10630,11 +10636,17 @@
           "note": "Supporting source context revalidated; original evidence retained.",
           "previous_record_sha256": "57ffed3675ddf6d7025c20865c1aa75ebfe677be8751ca0c4d2de7a629f6cf0d",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-10-24T04:33:05.281395Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "61b3f00ecdba8f66e20d9b69eff4b23cb9f858eb618931e6c7a64aa0fca12f1b",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-10-23T18:19:00.535597Z",
-      "last_successful_evidence_check_at": "2026-10-23T18:19:00.535597Z",
+      "last_source_checked_at": "2026-10-24T04:33:05.281395Z",
+      "last_successful_evidence_check_at": "2026-10-24T04:33:05.281395Z",
       "llm": {
         "fields_proposed": [
           "area",
@@ -10659,7 +10671,7 @@
       "record_class": "inspection_evidence",
       "record_created_at": "2026-09-11T00:09:16.296804Z",
       "record_scope": "area_operation",
-      "record_updated_at": "2026-10-23T18:19:00.535597Z",
+      "record_updated_at": "2026-10-24T04:33:05.281395Z",
       "related_record_ids": [
         "WBFS-c391d02b3d97"
       ],
@@ -11637,11 +11649,17 @@
           "note": "Supporting source context revalidated; original evidence retained.",
           "previous_record_sha256": "2136c698586ebad3d4592b45879d0733807853aa2927e25875c295f2a5888329",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-10-24T04:33:05.281395Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "84d91ba237d9773d58336ed482dcfcbb3aa91f27485b6c11532dc897d3147662",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-10-23T18:19:00.535597Z",
-      "last_successful_evidence_check_at": "2026-10-23T18:19:00.535597Z",
+      "last_source_checked_at": "2026-10-24T04:33:05.281395Z",
+      "last_successful_evidence_check_at": "2026-10-24T04:33:05.281395Z",
       "llm": {
         "fields_proposed": [
           "area",
@@ -11667,7 +11685,7 @@
       "record_class": "inspection_evidence",
       "record_created_at": "2026-09-11T00:09:16.296804Z",
       "record_scope": "establishment_event",
-      "record_updated_at": "2026-10-23T18:19:00.535597Z",
+      "record_updated_at": "2026-10-24T04:33:05.281395Z",
       "related_record_ids": [],
       "reported_fact": {
         "area": "মধ্যমগ্রামের স্টার মলে",
@@ -15933,11 +15951,17 @@
           "note": "Supporting source context revalidated; original evidence retained.",
           "previous_record_sha256": "e0a0296f6d602a9edc97e04f744684eb5ca6af1b907fc9c48c00f50c5365db14",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-10-24T04:33:05.281395Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "bebbffb3466ef3df9ba593302cbdb396a7bf726da6e0901be4089b21dbacbd4b",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-10-23T00:39:39.245033Z",
-      "last_successful_evidence_check_at": "2026-10-23T00:39:39.245033Z",
+      "last_source_checked_at": "2026-10-24T04:33:05.281395Z",
+      "last_successful_evidence_check_at": "2026-10-24T04:33:05.281395Z",
       "llm": {
         "fields_proposed": [
           "area",
@@ -15963,7 +15987,7 @@
       "record_class": "inspection_evidence",
       "record_created_at": "2026-09-11T16:27:14.451761Z",
       "record_scope": "district_operation",
-      "record_updated_at": "2026-10-23T00:39:39.245033Z",
+      "record_updated_at": "2026-10-24T04:33:05.281395Z",
       "related_record_ids": [],
       "reported_fact": {
         "area": "পূর্ব মেদিনীপুর",
@@ -17430,11 +17454,17 @@
           "note": "Supporting source context revalidated; original evidence retained.",
           "previous_record_sha256": "9dcaca48a6bc211daed63658b93d179e2c27e856b4554e1fa3fcbb0e063aa1b1",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-10-24T04:33:05.281395Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "1fae58a3b1fa62e0a9afb4b0c130f59b80b77cf69c82cb758cb256929d5515c3",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-10-23T18:19:00.535597Z",
-      "last_successful_evidence_check_at": "2026-10-23T18:19:00.535597Z",
+      "last_source_checked_at": "2026-10-24T04:33:05.281395Z",
+      "last_successful_evidence_check_at": "2026-10-24T04:33:05.281395Z",
       "llm": {
         "fields_proposed": [
           "area",
@@ -17459,7 +17489,7 @@
       "record_class": "inspection_evidence",
       "record_created_at": "2026-09-11T00:09:16.296804Z",
       "record_scope": "area_operation",
-      "record_updated_at": "2026-10-23T18:19:00.535597Z",
+      "record_updated_at": "2026-10-24T04:33:05.281395Z",
       "related_record_ids": [
         "WBFS-5ee36b93256b"
       ],
@@ -19802,11 +19832,17 @@
           "note": "Supporting source context revalidated; original evidence retained.",
           "previous_record_sha256": "e95aae63662822e82e922890c17f82d14919e70bb01605fc9a53ec40dc4197c9",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-10-24T04:33:05.281395Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "d714ddd5e0f7b496bdf2a677d1fcaea7526151bd27c93a62336fc32b3cf2b819",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-10-23T18:19:00.535597Z",
-      "last_successful_evidence_check_at": "2026-10-23T18:19:00.535597Z",
+      "last_source_checked_at": "2026-10-24T04:33:05.281395Z",
+      "last_successful_evidence_check_at": "2026-10-24T04:33:05.281395Z",
       "llm": {
         "fields_proposed": [
           "area",
@@ -19832,7 +19868,7 @@
       "record_class": "inspection_evidence",
       "record_created_at": "2026-09-15T11:42:24.512042Z",
       "record_scope": "establishment_event",
-      "record_updated_at": "2026-10-23T18:19:00.535597Z",
+      "record_updated_at": "2026-10-24T04:33:05.281395Z",
       "related_record_ids": [],
       "reported_fact": {
         "area": "দুর্গাপুরের বেনাচিতি বাজারে",
