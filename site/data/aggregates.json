@@ -1,7 +1,7 @@
 {
   "actions": {
     "inspection / visit only": 25,
-    "not reported": 13,
+    "not reported": 15,
     "other": 2
   },
   "areas": {
@@ -20,6 +20,7 @@
     "Lake Market": 1,
     "Park Street": 5,
     "Posta": 1,
+    "Salt Lake": 1,
     "Shaktigarh": 1,
     "Sonarpur": 1,
     "South City Mall": 3,
@@ -33,11 +34,12 @@
     "পূর্ব মেদিনীপুর": 1,
     "বকখালি": 1,
     "বাদুড়িয়া": 1,
-    "মধ্যমগ্রামের স্টার মলে": 1
+    "মধ্যমগ্রামের স্টার মলে": 1,
+    "সল্টলেকে": 1
   },
-  "areas_count": 29,
+  "areas_count": 31,
   "business_formats": {
-    "unknown": 40
+    "unknown": 42
   },
   "context_notice": "Independent, non-governmental public-source research. Inclusion is not a finding of wrongdoing. Counts describe records in this tracker, not official totals, prevalence, compliance, risk or group behavior. Read the sources and preserve this context when sharing.",
   "coverage": {
@@ -45,8 +47,8 @@
     "cross_source": 0,
     "establishment_context": 27,
     "menu_context": 0,
-    "named_establishment": 24,
-    "reported_action": 25,
+    "named_establishment": 26,
+    "reported_action": 27,
     "reported_quantity": 6
   },
   "establishments": {
@@ -55,33 +57,33 @@
     "market / vendor": 3,
     "restaurant / eatery": 13,
     "sweet shop / bakery": 3,
-    "unknown": 13
+    "unknown": 15
   },
-  "establishments_count": 24,
-  "generated_at": "2026-10-24T15:55:16.847850+00:00",
+  "establishments_count": 26,
+  "generated_at": "2026-10-24T18:47:05.103646+00:00",
   "map_coverage": {
     "mapped_records": 22,
     "precision": {
       "city": 3,
       "neighborhood": 15,
-      "not mapped": 18,
+      "not mapped": 20,
       "street": 4
     }
   },
   "menus": {
-    "unknown": 40
+    "unknown": 42
   },
   "pipeline_version": "0.3.0",
   "publishers": {
-    "ABP Ananda": 5,
+    "ABP Ananda": 6,
     "Business Today": 5,
     "Indian Express Bangla": 4,
-    "The Times of India": 25,
+    "The Times of India": 26,
     "UNI India": 1
   },
-  "record_count": 40,
+  "record_count": 42,
   "schema_version": "1.2.0",
-  "sources_count": 15,
+  "sources_count": 17,
   "timeline": {
     "2025-04-25": 1,
     "2026-09-02": 2,
@@ -90,10 +92,11 @@
     "2026-09-05": 8,
     "2026-09-06": 10,
     "2026-09-07": 3,
-    "2026-09-15": 1
+    "2026-09-15": 1,
+    "2026-10-24": 2
   },
-  "total": 40,
+  "total": 42,
   "verification": {
-    "SOURCE VERIFIED": 40
+    "SOURCE VERIFIED": 42
   }
 }
