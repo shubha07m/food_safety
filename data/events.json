@@ -1,6 +1,6 @@
 {
   "context_notice": "Independent, non-governmental public-source research. Inclusion is not a finding of wrongdoing. Counts describe records in this tracker, not official totals, prevalence, compliance, risk or group behavior. Read the sources and preserve this context when sharing.",
-  "generated_at": "2026-10-28T16:37:25.056729+00:00",
+  "generated_at": "2026-10-28T22:32:33.909290+00:00",
   "pipeline_version": "0.3.0",
   "record_count": 46,
   "records": [
@@ -9482,11 +9482,17 @@
           "note": "Source access unavailable; historical support is not disproved.",
           "previous_record_sha256": "d892c619910cf160253210903a8d628ad59d553c6bf32cab7eebba51cfee563d",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-10-28T22:32:33.909290Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "f9be6adaaa8653dd9050aec9951417e9e0fcdc4922a2f5b1443c78426a4e033d",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-10-28T01:19:09.190771Z",
-      "last_successful_evidence_check_at": "2026-10-27T12:07:29.882160Z",
+      "last_source_checked_at": "2026-10-28T22:32:33.909290Z",
+      "last_successful_evidence_check_at": "2026-10-28T22:32:33.909290Z",
       "llm": {
         "fields_proposed": [
           "area",
@@ -9508,11 +9514,11 @@
       },
       "location_id": null,
       "pipeline_version": "0.3.0",
-      "publication_status": "active_with_warning",
+      "publication_status": "active",
       "record_class": "inspection_evidence",
       "record_created_at": "2026-10-24T18:47:05.103646Z",
       "record_scope": "establishment_event",
-      "record_updated_at": "2026-10-28T01:19:09.190771Z",
+      "record_updated_at": "2026-10-28T22:32:33.909290Z",
       "related_record_ids": [],
       "reported_fact": {
         "area": "Salt Lake",
@@ -9552,8 +9558,8 @@
       "review": null,
       "reviewed_associations": [],
       "reviewer_hold": false,
-      "source_availability": "unavailable",
-      "source_availability_reason": "network_error",
+      "source_availability": "available",
+      "source_availability_reason": null,
       "sources": [
         {
           "archive_url": null,
@@ -9580,7 +9586,7 @@
       "superseded_by": null,
       "validator_id": "objective_source_grounding",
       "validator_version": "2",
-      "verification_notes": "Source access unavailable; historical support is not disproved.",
+      "verification_notes": "Supporting source context revalidated; original evidence retained.",
       "verification_status": "SOURCE VERIFIED"
     },
     {
@@ -12835,11 +12841,17 @@
           "note": "Supporting source context revalidated; original evidence retained.",
           "previous_record_sha256": "b4976e74ef1356a0865464c4eedc9fd129e2832c2cf2f43ed0198cc0b40add35",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-10-28T22:32:33.909290Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "9578ad1eb45b40b78f866e99e20037da43d642e3a605e354fab79c43c4f0a217",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-10-28T01:19:09.190771Z",
-      "last_successful_evidence_check_at": "2026-10-28T01:19:09.190771Z",
+      "last_source_checked_at": "2026-10-28T22:32:33.909290Z",
+      "last_successful_evidence_check_at": "2026-10-28T22:32:33.909290Z",
       "llm": {
         "fields_proposed": [
           "area",
@@ -12865,7 +12877,7 @@
       "record_class": "inspection_evidence",
       "record_created_at": "2026-10-24T18:47:05.103646Z",
       "record_scope": "establishment_event",
-      "record_updated_at": "2026-10-28T01:19:09.190771Z",
+      "record_updated_at": "2026-10-28T22:32:33.909290Z",
       "related_record_ids": [],
       "reported_fact": {
         "area": "সল্টলেকে",
@@ -13008,11 +13020,17 @@
           "note": "Supporting source context revalidated; original evidence retained.",
           "previous_record_sha256": "436878ec9424b20ac0ba322f6691cff3c79aac32bf50f2ddd5518dda4e3f3c3c",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-10-28T22:32:33.909290Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "0b548188337690bb0bc41294f8901f2d9c45cdb4453ec4b5367166cdc741177c",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-10-28T01:19:09.190771Z",
-      "last_successful_evidence_check_at": "2026-10-28T01:19:09.190771Z",
+      "last_source_checked_at": "2026-10-28T22:32:33.909290Z",
+      "last_successful_evidence_check_at": "2026-10-28T22:32:33.909290Z",
       "llm": {
         "fields_proposed": [
           "area",
@@ -13038,7 +13056,7 @@
       "record_class": "inspection_evidence",
       "record_created_at": "2026-10-26T19:55:52.780187Z",
       "record_scope": "area_operation",
-      "record_updated_at": "2026-10-28T01:19:09.190771Z",
+      "record_updated_at": "2026-10-28T22:32:33.909290Z",
       "related_record_ids": [],
       "reported_fact": {
         "area": "নেতাজি ইন্ডোর স্টেডিয়াম ও বাবুঘাট সংলগ্ন বাস টার্মিনাস সংলগ্ন এলাকা",
@@ -15449,11 +15467,17 @@
           "note": "Source-grounded LLM candidate auto-published after deterministic validation.",
           "previous_record_sha256": null,
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-10-28T22:32:33.909290Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "61afbc3dc08c9713f49824d8e5afe2b109254a5dbb9443ec58c6f3f184426caa",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-10-28T01:19:09.190771Z",
-      "last_successful_evidence_check_at": "2026-10-28T01:19:09.190771Z",
+      "last_source_checked_at": "2026-10-28T22:32:33.909290Z",
+      "last_successful_evidence_check_at": "2026-10-28T22:32:33.909290Z",
       "llm": {
         "fields_proposed": [
           "area",
@@ -15480,7 +15504,7 @@
       "record_class": "inspection_evidence",
       "record_created_at": "2026-10-28T01:19:09.190771Z",
       "record_scope": "establishment_event",
-      "record_updated_at": "2026-10-28T01:19:09.190771Z",
+      "record_updated_at": "2026-10-28T22:32:33.909290Z",
       "related_record_ids": [],
       "reported_fact": {
         "area": "ভিআইপি রোড",
@@ -15552,7 +15576,7 @@
       "superseded_by": null,
       "validator_id": "objective_source_grounding",
       "validator_version": "2",
-      "verification_notes": "LLM-assisted candidate; objective source-grounding and publication checks passed. Source verification is not an independent finding of fact.",
+      "verification_notes": "Supporting source context revalidated; original evidence retained.",
       "verification_status": "SOURCE VERIFIED"
     },
     {
@@ -16172,11 +16196,17 @@
           "note": "Source-grounded LLM candidate auto-published after deterministic validation.",
           "previous_record_sha256": null,
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-10-28T22:32:33.909290Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "537688ee31a351ab21bd4db37394f26908961029795d3ee276318961380c853b",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-10-28T01:19:09.190771Z",
-      "last_successful_evidence_check_at": "2026-10-28T01:19:09.190771Z",
+      "last_source_checked_at": "2026-10-28T22:32:33.909290Z",
+      "last_successful_evidence_check_at": "2026-10-28T22:32:33.909290Z",
       "llm": {
         "fields_proposed": [
           "area",
@@ -16203,7 +16233,7 @@
       "record_class": "inspection_evidence",
       "record_created_at": "2026-10-28T01:19:09.190771Z",
       "record_scope": "establishment_event",
-      "record_updated_at": "2026-10-28T01:19:09.190771Z",
+      "record_updated_at": "2026-10-28T22:32:33.909290Z",
       "related_record_ids": [],
       "reported_fact": {
         "area": "ভিআইপি রোডের ওপর",
@@ -16275,7 +16305,7 @@
       "superseded_by": null,
       "validator_id": "objective_source_grounding",
       "validator_version": "2",
-      "verification_notes": "LLM-assisted candidate; objective source-grounding and publication checks passed. Source verification is not an independent finding of fact.",
+      "verification_notes": "Supporting source context revalidated; original evidence retained.",
       "verification_status": "SOURCE VERIFIED"
     },
     {

@@ -29,14 +29,14 @@
       "availability": "available",
       "failures": 0,
       "first_failure": null,
-      "last_attempt": "2026-10-28T01:19:09.190771+00:00",
-      "last_success": "2026-10-28T01:19:09.190771+00:00",
+      "last_attempt": "2026-10-28T22:32:33.909290+00:00",
+      "last_success": "2026-10-28T22:32:33.909290+00:00",
       "next_retry": null,
       "reason": null,
       "review_due": false,
       "source_id": "SRC-11858eef5e2173b96537",
       "supported_records": {
-        "WBFS-7ce19a0b2d10": "2026-10-28T01:19:09.190771+00:00"
+        "WBFS-7ce19a0b2d10": "2026-10-28T22:32:33.909290+00:00"
       }
     },
     "SRC-1296b20e3b23fc752e54": {
@@ -51,17 +51,17 @@
       "source_id": "SRC-1296b20e3b23fc752e54"
     },
     "SRC-1347e2c5ca6ae809cf01": {
-      "availability": "unavailable",
-      "failures": 1,
-      "first_failure": "2026-10-28T01:19:09.190771+00:00",
-      "last_attempt": "2026-10-28T01:19:09.190771+00:00",
-      "last_success": "2026-10-27T12:07:29.882160+00:00",
-      "next_retry": "2026-10-28T05:19:09.190771+00:00",
-      "reason": "network_error",
+      "availability": "available",
+      "failures": 0,
+      "first_failure": null,
+      "last_attempt": "2026-10-28T22:32:33.909290+00:00",
+      "last_success": "2026-10-28T22:32:33.909290+00:00",
+      "next_retry": null,
+      "reason": null,
       "review_due": false,
       "source_id": "SRC-1347e2c5ca6ae809cf01",
       "supported_records": {
-        "WBFS-512c7579c504": "2026-10-27T12:07:29.882160+00:00"
+        "WBFS-512c7579c504": "2026-10-28T22:32:33.909290+00:00"
       }
     },
     "SRC-1594b5e50579bf3c8e34": {
@@ -300,14 +300,14 @@
       "availability": "available",
       "failures": 0,
       "first_failure": null,
-      "last_attempt": "2026-10-28T01:19:09.190771+00:00",
-      "last_success": "2026-10-28T01:19:09.190771+00:00",
+      "last_attempt": "2026-10-28T22:32:33.909290+00:00",
+      "last_success": "2026-10-28T22:32:33.909290+00:00",
       "next_retry": null,
       "reason": null,
       "review_due": false,
       "source_id": "SRC-70157883b3e5c6884538",
       "supported_records": {
-        "WBFS-894921fe4a1e": "2026-10-28T01:19:09.190771+00:00"
+        "WBFS-894921fe4a1e": "2026-10-28T22:32:33.909290+00:00"
       }
     },
     "SRC-793383253f504429c2fb": {
@@ -508,12 +508,15 @@
       "availability": "available",
       "failures": 0,
       "first_failure": null,
-      "last_attempt": "2026-10-28T01:19:09.190771+00:00",
-      "last_success": "2026-10-28T01:19:09.190771+00:00",
+      "last_attempt": "2026-10-28T22:32:33.909290+00:00",
+      "last_success": "2026-10-28T22:32:33.909290+00:00",
       "next_retry": null,
       "reason": null,
       "review_due": false,
-      "source_id": "SRC-b7807669d6bffb14c3b6"
+      "source_id": "SRC-b7807669d6bffb14c3b6",
+      "supported_records": {
+        "WBFS-ab1730080b86": "2026-10-28T22:32:33.909290+00:00"
+      }
     },
     "SRC-b799bf4913ba713c281c": {
       "availability": "available",
@@ -700,12 +703,15 @@
       "availability": "available",
       "failures": 0,
       "first_failure": null,
-      "last_attempt": "2026-10-28T01:19:09.190771+00:00",
-      "last_success": "2026-10-28T01:19:09.190771+00:00",
+      "last_attempt": "2026-10-28T22:32:33.909290+00:00",
+      "last_success": "2026-10-28T22:32:33.909290+00:00",
       "next_retry": null,
       "reason": null,
       "review_due": false,
-      "source_id": "SRC-eb2b3073578a1e6d22bd"
+      "source_id": "SRC-eb2b3073578a1e6d22bd",
+      "supported_records": {
+        "WBFS-a3597c08306e": "2026-10-28T22:32:33.909290+00:00"
+      }
     },
     "SRC-ec927a8e41ae096ec69b": {
       "availability": "unavailable",
@@ -740,7 +746,7 @@
     }
   },
   "context_notice": "Independent, non-governmental public-source research. Inclusion is not a finding of wrongdoing. Counts describe records in this tracker, not official totals, prevalence, compliance, risk or group behavior. Read the sources and preserve this context when sharing.",
-  "generated_at": "2026-10-28T16:37:25.056729+00:00",
+  "generated_at": "2026-10-28T22:32:33.909290+00:00",
   "pipeline_version": "0.3.0",
   "record_count": 0,
   "records": [],
