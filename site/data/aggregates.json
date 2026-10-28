@@ -1,7 +1,7 @@
 {
   "actions": {
     "inspection / visit only": 25,
-    "not reported": 16,
+    "not reported": 19,
     "other": 2
   },
   "areas": {
@@ -35,12 +35,15 @@
     "পূর্ব মেদিনীপুর": 1,
     "বকখালি": 1,
     "বাদুড়িয়া": 1,
+    "ভিআইপি রোড": 1,
+    "ভিআইপি রোডের": 1,
+    "ভিআইপি রোডের ওপর": 1,
     "মধ্যমগ্রামের স্টার মলে": 1,
     "সল্টলেকে": 1
   },
-  "areas_count": 32,
+  "areas_count": 35,
   "business_formats": {
-    "unknown": 43
+    "unknown": 46
   },
   "context_notice": "Independent, non-governmental public-source research. Inclusion is not a finding of wrongdoing. Counts describe records in this tracker, not official totals, prevalence, compliance, risk or group behavior. Read the sources and preserve this context when sharing.",
   "coverage": {
@@ -48,9 +51,9 @@
     "cross_source": 0,
     "establishment_context": 27,
     "menu_context": 0,
-    "named_establishment": 26,
-    "reported_action": 28,
-    "reported_quantity": 7
+    "named_establishment": 29,
+    "reported_action": 31,
+    "reported_quantity": 9
   },
   "establishments": {
     "hotel / hospitality": 2,
@@ -58,33 +61,33 @@
     "market / vendor": 3,
     "restaurant / eatery": 13,
     "sweet shop / bakery": 3,
-    "unknown": 16
+    "unknown": 19
   },
-  "establishments_count": 26,
-  "generated_at": "2026-10-27T22:11:05.326233+00:00",
+  "establishments_count": 28,
+  "generated_at": "2026-10-28T01:19:09.190771+00:00",
   "map_coverage": {
     "mapped_records": 22,
     "precision": {
       "city": 3,
       "neighborhood": 15,
-      "not mapped": 21,
+      "not mapped": 24,
       "street": 4
     }
   },
   "menus": {
-    "unknown": 43
+    "unknown": 46
   },
   "pipeline_version": "0.3.0",
   "publishers": {
-    "ABP Ananda": 7,
+    "ABP Ananda": 10,
     "Business Today": 5,
     "Indian Express Bangla": 4,
     "The Times of India": 26,
     "UNI India": 1
   },
-  "record_count": 43,
+  "record_count": 46,
   "schema_version": "1.2.0",
-  "sources_count": 18,
+  "sources_count": 21,
   "timeline": {
     "2025-04-25": 1,
     "2026-09-02": 2,
@@ -95,10 +98,12 @@
     "2026-09-07": 3,
     "2026-09-15": 1,
     "2026-10-24": 2,
-    "2026-10-26": 1
+    "2026-10-26": 1,
+    "2026-10-27": 1,
+    "2026-10-28": 2
   },
-  "total": 43,
+  "total": 46,
   "verification": {
-    "SOURCE VERIFIED": 43
+    "SOURCE VERIFIED": 46
   }
 }

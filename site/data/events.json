@@ -1,8 +1,8 @@
 {
   "context_notice": "Independent, non-governmental public-source research. Inclusion is not a finding of wrongdoing. Counts describe records in this tracker, not official totals, prevalence, compliance, risk or group behavior. Read the sources and preserve this context when sharing.",
-  "generated_at": "2026-10-27T22:11:05.326233+00:00",
+  "generated_at": "2026-10-28T01:19:09.190771+00:00",
   "pipeline_version": "0.3.0",
-  "record_count": 43,
+  "record_count": 46,
   "records": [
     {
       "automatic_validation": null,
@@ -504,10 +504,16 @@
           "note": "Supporting source context revalidated; original evidence retained.",
           "previous_record_sha256": "e84013e903a99e5d811a7d5798ee195b9746ab28e8c7a3c6956b3d29179d1e03",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-10-28T01:19:09.190771Z",
+          "note": "Source access unavailable; historical support is not disproved.",
+          "previous_record_sha256": "895f9c99bee1234dd22a6749afa23a3dda3e9d8d222a373a3a1f868088435a54",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-10-27T17:58:47.358959Z",
+      "last_source_checked_at": "2026-10-28T01:19:09.190771Z",
       "last_successful_evidence_check_at": "2026-10-27T17:58:47.358959Z",
       "llm": {
         "fields_proposed": [],
@@ -524,11 +530,11 @@
       },
       "location_id": null,
       "pipeline_version": "0.3.0",
-      "publication_status": "active",
+      "publication_status": "active_with_warning",
       "record_class": "inspection_evidence",
       "record_created_at": "2026-09-07T21:12:32.942437Z",
       "record_scope": "unknown",
-      "record_updated_at": "2026-10-27T17:58:47.358959Z",
+      "record_updated_at": "2026-10-28T01:19:09.190771Z",
       "related_record_ids": [],
       "reported_fact": {
         "area": "Park Street",
@@ -574,8 +580,8 @@
       },
       "reviewed_associations": [],
       "reviewer_hold": false,
-      "source_availability": "available",
-      "source_availability_reason": null,
+      "source_availability": "unavailable",
+      "source_availability_reason": "network_error",
       "sources": [
         {
           "archive_url": null,
@@ -602,7 +608,7 @@
       "superseded_by": null,
       "validator_id": "field_evidence_validation",
       "validator_version": "2",
-      "verification_notes": "Supporting source context revalidated; original evidence retained.",
+      "verification_notes": "Source access unavailable; historical support is not disproved.",
       "verification_status": "SOURCE VERIFIED"
     },
     {
@@ -3851,10 +3857,16 @@
           "note": "Supporting source context revalidated; original evidence retained.",
           "previous_record_sha256": "9a128cd050eef80bf57a5dc8d49597feb46f91613ca1f098ecef30d0dddb6c21",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-10-28T01:19:09.190771Z",
+          "note": "Source access unavailable; historical support is not disproved.",
+          "previous_record_sha256": "43481de98d3eb0c098bb2ed922de74059b10235a615a49938e7141b651967c02",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-10-27T17:58:47.358959Z",
+      "last_source_checked_at": "2026-10-28T01:19:09.190771Z",
       "last_successful_evidence_check_at": "2026-10-27T17:58:47.358959Z",
       "llm": {
         "fields_proposed": [],
@@ -3871,11 +3883,11 @@
       },
       "location_id": null,
       "pipeline_version": "0.3.0",
-      "publication_status": "active",
+      "publication_status": "active_with_warning",
       "record_class": "inspection_evidence",
       "record_created_at": "2026-09-07T21:12:32.942437Z",
       "record_scope": "unknown",
-      "record_updated_at": "2026-10-27T17:58:47.358959Z",
+      "record_updated_at": "2026-10-28T01:19:09.190771Z",
       "related_record_ids": [],
       "reported_fact": {
         "area": "Sonarpur",
@@ -3913,8 +3925,8 @@
       },
       "reviewed_associations": [],
       "reviewer_hold": false,
-      "source_availability": "available",
-      "source_availability_reason": null,
+      "source_availability": "unavailable",
+      "source_availability_reason": "network_error",
       "sources": [
         {
           "archive_url": null,
@@ -3941,7 +3953,7 @@
       "superseded_by": null,
       "validator_id": "field_evidence_validation",
       "validator_version": "2",
-      "verification_notes": "Supporting source context revalidated; original evidence retained.",
+      "verification_notes": "Source access unavailable; historical support is not disproved.",
       "verification_status": "SOURCE VERIFIED"
     },
     {
@@ -5394,10 +5406,16 @@
           "note": "Supporting source context revalidated; original evidence retained.",
           "previous_record_sha256": "6d4308488395f3654ead91cc44afced07402803f69e6e94732bd79d2cbabd6dd",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-10-28T01:19:09.190771Z",
+          "note": "Source access unavailable; historical support is not disproved.",
+          "previous_record_sha256": "ef77dbb6b74a7616395486e495be6d40a5445304a79c49c3dead14d2241b868a",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-10-27T17:58:47.358959Z",
+      "last_source_checked_at": "2026-10-28T01:19:09.190771Z",
       "last_successful_evidence_check_at": "2026-10-27T17:58:47.358959Z",
       "llm": {
         "fields_proposed": [],
@@ -5414,11 +5432,11 @@
       },
       "location_id": null,
       "pipeline_version": "0.3.0",
-      "publication_status": "active",
+      "publication_status": "active_with_warning",
       "record_class": "inspection_evidence",
       "record_created_at": "2026-09-07T21:12:32.942437Z",
       "record_scope": "unknown",
-      "record_updated_at": "2026-10-27T17:58:47.358959Z",
+      "record_updated_at": "2026-10-28T01:19:09.190771Z",
       "related_record_ids": [],
       "reported_fact": {
         "area": "Kamalgazi",
@@ -5456,8 +5474,8 @@
       },
       "reviewed_associations": [],
       "reviewer_hold": false,
-      "source_availability": "available",
-      "source_availability_reason": null,
+      "source_availability": "unavailable",
+      "source_availability_reason": "network_error",
       "sources": [
         {
           "archive_url": null,
@@ -5484,7 +5502,7 @@
       "superseded_by": null,
       "validator_id": "field_evidence_validation",
       "validator_version": "2",
-      "verification_notes": "Supporting source context revalidated; original evidence retained.",
+      "verification_notes": "Source access unavailable; historical support is not disproved.",
       "verification_status": "SOURCE VERIFIED"
     },
     {
@@ -9380,10 +9398,16 @@
           "note": "Supporting source context revalidated; original evidence retained.",
           "previous_record_sha256": "df1cbb20926321e2ec8afdcff025d5e5339908af1359e7d37f21153499c12ccf",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-10-28T01:19:09.190771Z",
+          "note": "Source access unavailable; historical support is not disproved.",
+          "previous_record_sha256": "d892c619910cf160253210903a8d628ad59d553c6bf32cab7eebba51cfee563d",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-10-27T12:07:29.882160Z",
+      "last_source_checked_at": "2026-10-28T01:19:09.190771Z",
       "last_successful_evidence_check_at": "2026-10-27T12:07:29.882160Z",
       "llm": {
         "fields_proposed": [
@@ -9406,11 +9430,11 @@
       },
       "location_id": null,
       "pipeline_version": "0.3.0",
-      "publication_status": "active",
+      "publication_status": "active_with_warning",
       "record_class": "inspection_evidence",
       "record_created_at": "2026-10-24T18:47:05.103646Z",
       "record_scope": "establishment_event",
-      "record_updated_at": "2026-10-27T12:07:29.882160Z",
+      "record_updated_at": "2026-10-28T01:19:09.190771Z",
       "related_record_ids": [],
       "reported_fact": {
         "area": "Salt Lake",
@@ -9450,8 +9474,8 @@
       "review": null,
       "reviewed_associations": [],
       "reviewer_hold": false,
-      "source_availability": "available",
-      "source_availability_reason": null,
+      "source_availability": "unavailable",
+      "source_availability_reason": "network_error",
       "sources": [
         {
           "archive_url": null,
@@ -9478,7 +9502,7 @@
       "superseded_by": null,
       "validator_id": "objective_source_grounding",
       "validator_version": "2",
-      "verification_notes": "Supporting source context revalidated; original evidence retained.",
+      "verification_notes": "Source access unavailable; historical support is not disproved.",
       "verification_status": "SOURCE VERIFIED"
     },
     {
@@ -12709,11 +12733,17 @@
           "note": "Supporting source context revalidated; original evidence retained.",
           "previous_record_sha256": "d99a996b91d6b22a3171a384c424b537a26ccc268dd57e6f3ba2ee4adacfa946",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-10-28T01:19:09.190771Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "b4976e74ef1356a0865464c4eedc9fd129e2832c2cf2f43ed0198cc0b40add35",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-10-26T12:56:39.372881Z",
-      "last_successful_evidence_check_at": "2026-10-26T12:56:39.372881Z",
+      "last_source_checked_at": "2026-10-28T01:19:09.190771Z",
+      "last_successful_evidence_check_at": "2026-10-28T01:19:09.190771Z",
       "llm": {
         "fields_proposed": [
           "area",
@@ -12739,7 +12769,7 @@
       "record_class": "inspection_evidence",
       "record_created_at": "2026-10-24T18:47:05.103646Z",
       "record_scope": "establishment_event",
-      "record_updated_at": "2026-10-26T12:56:39.372881Z",
+      "record_updated_at": "2026-10-28T01:19:09.190771Z",
       "related_record_ids": [],
       "reported_fact": {
         "area": "সল্টলেকে",
@@ -12796,11 +12826,11 @@
           "source_language": "bn",
           "source_publisher": "ABP Ananda",
           "source_relationship": "unknown",
-          "source_revision_id": "cf6225ed86b5781db34655c146632439f292bb60a93423ac25800e2e7cecb575",
+          "source_revision_id": "f1942bdfe3306079f366e1303f7c9ffce28c4dc06e26dd898d16710f20339908",
           "source_title": "মাংসের উপর ছত্রাক, বন্ধ হল সল্টলেকের Balle Balle Dhaba, বাতিল লাইসেন্স",
           "source_type": "news",
           "source_url": "https://bengali.abplive.com/district/saltlake-balle-balle-dhaba-closed-after-food-inspection-license-cancelled-1197087",
-          "text_sha256": "cf6225ed86b5781db34655c146632439f292bb60a93423ac25800e2e7cecb575",
+          "text_sha256": "f1942bdfe3306079f366e1303f7c9ffce28c4dc06e26dd898d16710f20339908",
           "tier": "B"
         }
       ],
@@ -12876,11 +12906,17 @@
           "note": "Supporting source context revalidated; original evidence retained.",
           "previous_record_sha256": "d66b454647e5bff9e0b55950f861cc764abd8d1ec09f7fe81192f42c9ae1dee4",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-10-28T01:19:09.190771Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "436878ec9424b20ac0ba322f6691cff3c79aac32bf50f2ddd5518dda4e3f3c3c",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-10-26T23:51:36.416710Z",
-      "last_successful_evidence_check_at": "2026-10-26T23:51:36.416710Z",
+      "last_source_checked_at": "2026-10-28T01:19:09.190771Z",
+      "last_successful_evidence_check_at": "2026-10-28T01:19:09.190771Z",
       "llm": {
         "fields_proposed": [
           "area",
@@ -12906,7 +12942,7 @@
       "record_class": "inspection_evidence",
       "record_created_at": "2026-10-26T19:55:52.780187Z",
       "record_scope": "area_operation",
-      "record_updated_at": "2026-10-26T23:51:36.416710Z",
+      "record_updated_at": "2026-10-28T01:19:09.190771Z",
       "related_record_ids": [],
       "reported_fact": {
         "area": "নেতাজি ইন্ডোর স্টেডিয়াম ও বাবুঘাট সংলগ্ন বাস টার্মিনাস সংলগ্ন এলাকা",
@@ -14547,10 +14583,16 @@
           "note": "Supporting source context revalidated; original evidence retained.",
           "previous_record_sha256": "9127b5ad392410c438b8a6d02e5ccfc214d881a8032d32cf5259ab2c72d4121c",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-10-28T01:19:09.190771Z",
+          "note": "Source access unavailable; historical support is not disproved.",
+          "previous_record_sha256": "0c6747b6912cb4d1423d5822acdd1076a36fb2cf9b676769e853aaf7c20875b1",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-10-27T17:58:47.358959Z",
+      "last_source_checked_at": "2026-10-28T01:19:09.190771Z",
       "last_successful_evidence_check_at": "2026-10-27T17:58:47.358959Z",
       "llm": {
         "fields_proposed": [],
@@ -14567,11 +14609,11 @@
       },
       "location_id": null,
       "pipeline_version": "0.3.0",
-      "publication_status": "active",
+      "publication_status": "active_with_warning",
       "record_class": "inspection_evidence",
       "record_created_at": "2026-09-07T21:12:32.942437Z",
       "record_scope": "unknown",
-      "record_updated_at": "2026-10-27T17:58:47.358959Z",
+      "record_updated_at": "2026-10-28T01:19:09.190771Z",
       "related_record_ids": [],
       "reported_fact": {
         "area": "Park Street",
@@ -14617,8 +14659,8 @@
       },
       "reviewed_associations": [],
       "reviewer_hold": false,
-      "source_availability": "available",
-      "source_availability_reason": null,
+      "source_availability": "unavailable",
+      "source_availability_reason": "network_error",
       "sources": [
         {
           "archive_url": null,
@@ -14645,7 +14687,7 @@
       "superseded_by": null,
       "validator_id": "field_evidence_validation",
       "validator_version": "2",
-      "verification_notes": "Supporting source context revalidated; original evidence retained.",
+      "verification_notes": "Source access unavailable; historical support is not disproved.",
       "verification_status": "SOURCE VERIFIED"
     },
     {
@@ -15234,6 +15276,172 @@
       "verification_status": "SOURCE VERIFIED"
     },
     {
+      "automatic_validation": {
+        "extraction_evidence": {
+          "end": 304,
+          "match_method": "exact",
+          "original_quote": "ভিআইপি রোডের ওপর হলদিরাম প্রভুজির রেস্টুরেন্টে অভিযান খাদ্য সুরক্ষা দফতরের। রেস্টুরেন্টের ভিতরে খাবার তৈরির জায়গা অপরিচ্ছন্ন, অভিযান খাদ্য সুরক্ষা দফতরের। হলদিরাম প্রভুজির রেস্টুরেন্ট ২দিন বন্ধ রাখার নির্দেশ খাদ্য সুরক্ষা দফতরের।",
+          "passage_id": "P008",
+          "source_revision_id": "5edb60a14d72690b9464838b6912089b56639da40e04fccaa16514a9d71e8650",
+          "start": 75
+        },
+        "method": "source_grounded_candidate_v1",
+        "pipeline_version": "0.3.0",
+        "validated_at": "2026-10-28T01:19:09.190771Z"
+      },
+      "context_notice": "Independent, non-governmental public-source research. Inclusion is not a finding of wrongdoing. Counts describe records in this tracker, not official totals, prevalence, compliance, risk or group behavior. Read the sources and preserve this context when sharing.",
+      "derived_context": {
+        "action_category": "not reported",
+        "action_category_confidence": "unknown",
+        "action_category_method": null,
+        "action_category_reviewed": false,
+        "action_category_source": null,
+        "business_format": "unknown",
+        "business_format_confidence": "unknown",
+        "business_format_method": null,
+        "business_format_reviewed": false,
+        "business_format_source": null,
+        "derived_confidence": "unknown",
+        "derived_context_method": "Unknown; no contextual inference performed.",
+        "derived_context_sources": [],
+        "establishment_context": "unknown",
+        "establishment_context_confidence": "unknown",
+        "establishment_context_method": null,
+        "establishment_context_reviewed": false,
+        "establishment_context_source": null,
+        "latitude": null,
+        "location_method": null,
+        "location_precision": null,
+        "location_reviewed": false,
+        "location_source": null,
+        "longitude": null,
+        "menu_context": "unknown",
+        "menu_context_confidence": "unknown",
+        "menu_context_method": null,
+        "menu_context_reviewed": false,
+        "menu_context_source": null,
+        "normalized_area": null
+      },
+      "display_summary": "Source reports a source-reported food-safety event involving হলদিরাম প্রভুজির রেস্টুরেন্ট in ভিআইপি রোড.",
+      "establishment_id": null,
+      "event_id": "WBFS-a3597c08306e",
+      "evidence_support_status": "supported_as_of",
+      "extractor_id": "source_grounded_candidate",
+      "extractor_version": "1",
+      "first_published_at": "2026-10-28T01:19:09.190771Z",
+      "history": [
+        {
+          "at": "2026-10-28T01:19:09.190771Z",
+          "note": "Source-grounded LLM candidate auto-published after deterministic validation.",
+          "previous_record_sha256": null,
+          "status": "SOURCE VERIFIED"
+        }
+      ],
+      "is_fixture": false,
+      "last_source_checked_at": "2026-10-28T01:19:09.190771Z",
+      "last_successful_evidence_check_at": "2026-10-28T01:19:09.190771Z",
+      "llm": {
+        "fields_proposed": [
+          "area",
+          "establishment_name",
+          "reported_action",
+          "reported_authority",
+          "reported_observation",
+          "reported_quantity"
+        ],
+        "llm_model": "gemini-3.5-flash-lite",
+        "llm_output_was_validated": true,
+        "llm_pipeline_version": "0.3.0",
+        "llm_provider": "gemini",
+        "llm_task": "structured source extraction",
+        "llm_task_version": "source_candidates_v2",
+        "llm_used": true,
+        "llm_used_at": "2026-10-28T01:19:19.818957Z",
+        "source_revision_id": "5edb60a14d72690b9464838b6912089b56639da40e04fccaa16514a9d71e8650",
+        "validation_result": "passed"
+      },
+      "location_id": null,
+      "pipeline_version": "0.3.0",
+      "publication_status": "active",
+      "record_class": "inspection_evidence",
+      "record_created_at": "2026-10-28T01:19:09.190771Z",
+      "record_scope": "establishment_event",
+      "record_updated_at": "2026-10-28T01:19:09.190771Z",
+      "related_record_ids": [],
+      "reported_fact": {
+        "area": "ভিআইপি রোড",
+        "district": null,
+        "establishment_name": "হলদিরাম প্রভুজির রেস্টুরেন্ট",
+        "establishment_type": null,
+        "event_date": null,
+        "evidence": {
+          "area": {
+            "quote": "ভিআইপি রোডের ওপর হলদিরাম প্রভুজির রেস্টুরেন্টে অভিযান খাদ্য সুরক্ষা দফতরের। রেস্টুরেন্টের ভিতরে খাবার তৈরির জায়গা অপরিচ্ছন্ন, অভিযান খাদ্য সুরক্ষা দফতরের। হলদিরাম প্রভুজির রেস্টুরেন্ট ২দিন বন্ধ রাখার নির্দেশ খাদ্য সুরক্ষা দফতরের।",
+            "source_url": "https://bengali.abplive.com/videos/news/food-safety-department-conducts-raid-at-haldiram-prabhuji-restaurant-on-vip-road-1197423"
+          },
+          "establishment_name": {
+            "quote": "ভিআইপি রোডের ওপর হলদিরাম প্রভুজির রেস্টুরেন্টে অভিযান খাদ্য সুরক্ষা দফতরের। রেস্টুরেন্টের ভিতরে খাবার তৈরির জায়গা অপরিচ্ছন্ন, অভিযান খাদ্য সুরক্ষা দফতরের। হলদিরাম প্রভুজির রেস্টুরেন্ট ২দিন বন্ধ রাখার নির্দেশ খাদ্য সুরক্ষা দফতরের।",
+            "source_url": "https://bengali.abplive.com/videos/news/food-safety-department-conducts-raid-at-haldiram-prabhuji-restaurant-on-vip-road-1197423"
+          },
+          "reported_action": {
+            "quote": "ভিআইপি রোডের ওপর হলদিরাম প্রভুজির রেস্টুরেন্টে অভিযান খাদ্য সুরক্ষা দফতরের। রেস্টুরেন্টের ভিতরে খাবার তৈরির জায়গা অপরিচ্ছন্ন, অভিযান খাদ্য সুরক্ষা দফতরের। হলদিরাম প্রভুজির রেস্টুরেন্ট ২দিন বন্ধ রাখার নির্দেশ খাদ্য সুরক্ষা দফতরের।",
+            "source_url": "https://bengali.abplive.com/videos/news/food-safety-department-conducts-raid-at-haldiram-prabhuji-restaurant-on-vip-road-1197423"
+          },
+          "reported_authority": {
+            "quote": "ভিআইপি রোডের ওপর হলদিরাম প্রভুজির রেস্টুরেন্টে অভিযান খাদ্য সুরক্ষা দফতরের। রেস্টুরেন্টের ভিতরে খাবার তৈরির জায়গা অপরিচ্ছন্ন, অভিযান খাদ্য সুরক্ষা দফতরের। হলদিরাম প্রভুজির রেস্টুরেন্ট ২দিন বন্ধ রাখার নির্দেশ খাদ্য সুরক্ষা দফতরের।",
+            "source_url": "https://bengali.abplive.com/videos/news/food-safety-department-conducts-raid-at-haldiram-prabhuji-restaurant-on-vip-road-1197423"
+          },
+          "reported_observation": {
+            "quote": "ভিআইপি রোডের ওপর হলদিরাম প্রভুজির রেস্টুরেন্টে অভিযান খাদ্য সুরক্ষা দফতরের। রেস্টুরেন্টের ভিতরে খাবার তৈরির জায়গা অপরিচ্ছন্ন, অভিযান খাদ্য সুরক্ষা দফতরের। হলদিরাম প্রভুজির রেস্টুরেন্ট ২দিন বন্ধ রাখার নির্দেশ খাদ্য সুরক্ষা দফতরের।",
+            "source_url": "https://bengali.abplive.com/videos/news/food-safety-department-conducts-raid-at-haldiram-prabhuji-restaurant-on-vip-road-1197423"
+          },
+          "reported_quantity": {
+            "quote": "ভিআইপি রোডের ওপর হলদিরাম প্রভুজির রেস্টুরেন্টে অভিযান খাদ্য সুরক্ষা দফতরের। রেস্টুরেন্টের ভিতরে খাবার তৈরির জায়গা অপরিচ্ছন্ন, অভিযান খাদ্য সুরক্ষা দফতরের। হলদিরাম প্রভুজির রেস্টুরেন্ট ২দিন বন্ধ রাখার নির্দেশ খাদ্য সুরক্ষা দফতরের।",
+            "source_url": "https://bengali.abplive.com/videos/news/food-safety-department-conducts-raid-at-haldiram-prabhuji-restaurant-on-vip-road-1197423"
+          }
+        },
+        "formal_finding": null,
+        "legal_finding_status": "unknown",
+        "reported_action": "অভিযান",
+        "reported_authority": "খাদ্য সুরক্ষা দফতর",
+        "reported_observation": "রেস্টুরেন্টের ভিতরে খাবার তৈরির জায়গা অপরিচ্ছন্ন",
+        "reported_quantity": "২দিন"
+      },
+      "review": null,
+      "reviewed_associations": [],
+      "reviewer_hold": false,
+      "source_availability": "available",
+      "source_availability_reason": null,
+      "sources": [
+        {
+          "archive_url": null,
+          "evidence_context": "ভিআইপি রোডের ওপর হলদিরাম প্রভুজির রেস্টুরেন্টে অভিযান খাদ্য সুরক্ষা দফতরের। রেস্টুরেন্টের ভিতরে খাবার তৈরির জায়গা অপরিচ্ছন্ন, অভিযান খাদ্য সুরক্ষা দফতরের। হলদিরাম প্রভুজির রেস্টুরেন্ট ২দিন বন্ধ রাখার নির্দেশ খাদ্য সুরক্ষা দফতরের।",
+          "evidence_language": "bn",
+          "evidence_locator": null,
+          "evidence_quote": "রেস্টুরেন্টের ভিতরে খাবার তৈরির জায়গা অপরিচ্ছন্ন",
+          "evidence_span_hash": "181c18c263ad1fc48bb39be6fcd47ae60ba7d42b1805b54b82947386705fbd0f",
+          "origin_source_id": null,
+          "retrieved_at": "2026-10-28T01:19:09.190771Z",
+          "source_date": "2026-10-28",
+          "source_id": "SRC-eb2b3073578a1e6d22bd",
+          "source_language": "bn",
+          "source_publisher": "ABP Ananda",
+          "source_relationship": "unknown",
+          "source_revision_id": "32e4db3952ec3b8b6f7ab45c4a90c3e20c711de91abd50796ca72194436d882b",
+          "source_title": "Haldiram Raid | ভিআইপি রোডের ওপর হলদিরাম প্রভুজির রেস্টুরেন্টে অভিযান খাদ্য সুরক্ষা দফতরের | Food Safety Department conducts raid at Haldiram Prabhuji restaurant on VIP Road",
+          "source_type": "news",
+          "source_url": "https://bengali.abplive.com/videos/news/food-safety-department-conducts-raid-at-haldiram-prabhuji-restaurant-on-vip-road-1197423",
+          "text_sha256": "32e4db3952ec3b8b6f7ab45c4a90c3e20c711de91abd50796ca72194436d882b",
+          "tier": "B"
+        }
+      ],
+      "superseded_by": null,
+      "validator_id": "objective_source_grounding",
+      "validator_version": "2",
+      "verification_notes": "LLM-assisted candidate; objective source-grounding and publication checks passed. Source verification is not an independent finding of fact.",
+      "verification_status": "SOURCE VERIFIED"
+    },
+    {
       "automatic_validation": null,
       "context_notice": "Independent, non-governmental public-source research. Inclusion is not a finding of wrongdoing. Counts describe records in this tracker, not official totals, prevalence, compliance, risk or group behavior. Read the sources and preserve this context when sharing.",
       "derived_context": {
@@ -15785,6 +15993,172 @@
       "verification_status": "SOURCE VERIFIED"
     },
     {
+      "automatic_validation": {
+        "extraction_evidence": {
+          "end": 306,
+          "match_method": "exact",
+          "original_quote": "ভিআইপি রোডের ওপর হলদিরাম প্রভুজির রেস্টুরেন্টে অভিযান খাদ্য সুরক্ষা দফতরের। রেস্টুরেন্টের ভিতরে খাবার তৈরির জায়গা অপরিচ্ছন্ন, অভিযান খাদ্য সুরক্ষা দফতরের। হলদিরাম প্রভুজির রেস্টুরেন্ট ২দিন বন্ধ রাখার নির্দেশ খাদ্য সুরক্ষা দফতরের।",
+          "passage_id": "P008",
+          "source_revision_id": "ddb0944238b47190a3b011af638c24ec89a2b159e472951da43acef98378237d",
+          "start": 77
+        },
+        "method": "source_grounded_candidate_v1",
+        "pipeline_version": "0.3.0",
+        "validated_at": "2026-10-28T01:19:09.190771Z"
+      },
+      "context_notice": "Independent, non-governmental public-source research. Inclusion is not a finding of wrongdoing. Counts describe records in this tracker, not official totals, prevalence, compliance, risk or group behavior. Read the sources and preserve this context when sharing.",
+      "derived_context": {
+        "action_category": "not reported",
+        "action_category_confidence": "unknown",
+        "action_category_method": null,
+        "action_category_reviewed": false,
+        "action_category_source": null,
+        "business_format": "unknown",
+        "business_format_confidence": "unknown",
+        "business_format_method": null,
+        "business_format_reviewed": false,
+        "business_format_source": null,
+        "derived_confidence": "unknown",
+        "derived_context_method": "Unknown; no contextual inference performed.",
+        "derived_context_sources": [],
+        "establishment_context": "unknown",
+        "establishment_context_confidence": "unknown",
+        "establishment_context_method": null,
+        "establishment_context_reviewed": false,
+        "establishment_context_source": null,
+        "latitude": null,
+        "location_method": null,
+        "location_precision": null,
+        "location_reviewed": false,
+        "location_source": null,
+        "longitude": null,
+        "menu_context": "unknown",
+        "menu_context_confidence": "unknown",
+        "menu_context_method": null,
+        "menu_context_reviewed": false,
+        "menu_context_source": null,
+        "normalized_area": null
+      },
+      "display_summary": "Source reports a source-reported food-safety event involving হলদিরাম প্রভুজির রেস্টুরেন্টে in ভিআইপি রোডের ওপর.",
+      "establishment_id": null,
+      "event_id": "WBFS-ab1730080b86",
+      "evidence_support_status": "supported_as_of",
+      "extractor_id": "source_grounded_candidate",
+      "extractor_version": "1",
+      "first_published_at": "2026-10-28T01:19:09.190771Z",
+      "history": [
+        {
+          "at": "2026-10-28T01:19:09.190771Z",
+          "note": "Source-grounded LLM candidate auto-published after deterministic validation.",
+          "previous_record_sha256": null,
+          "status": "SOURCE VERIFIED"
+        }
+      ],
+      "is_fixture": false,
+      "last_source_checked_at": "2026-10-28T01:19:09.190771Z",
+      "last_successful_evidence_check_at": "2026-10-28T01:19:09.190771Z",
+      "llm": {
+        "fields_proposed": [
+          "area",
+          "establishment_name",
+          "reported_action",
+          "reported_authority",
+          "reported_observation",
+          "reported_quantity"
+        ],
+        "llm_model": "gemini-3.5-flash-lite",
+        "llm_output_was_validated": true,
+        "llm_pipeline_version": "0.3.0",
+        "llm_provider": "gemini",
+        "llm_task": "structured source extraction",
+        "llm_task_version": "source_candidates_v2",
+        "llm_used": true,
+        "llm_used_at": "2026-10-28T01:19:15.830965Z",
+        "source_revision_id": "ddb0944238b47190a3b011af638c24ec89a2b159e472951da43acef98378237d",
+        "validation_result": "passed"
+      },
+      "location_id": null,
+      "pipeline_version": "0.3.0",
+      "publication_status": "active",
+      "record_class": "inspection_evidence",
+      "record_created_at": "2026-10-28T01:19:09.190771Z",
+      "record_scope": "establishment_event",
+      "record_updated_at": "2026-10-28T01:19:09.190771Z",
+      "related_record_ids": [],
+      "reported_fact": {
+        "area": "ভিআইপি রোডের ওপর",
+        "district": null,
+        "establishment_name": "হলদিরাম প্রভুজির রেস্টুরেন্টে",
+        "establishment_type": null,
+        "event_date": null,
+        "evidence": {
+          "area": {
+            "quote": "ভিআইপি রোডের ওপর হলদিরাম প্রভুজির রেস্টুরেন্টে অভিযান খাদ্য সুরক্ষা দফতরের। রেস্টুরেন্টের ভিতরে খাবার তৈরির জায়গা অপরিচ্ছন্ন, অভিযান খাদ্য সুরক্ষা দফতরের। হলদিরাম প্রভুজির রেস্টুরেন্ট ২দিন বন্ধ রাখার নির্দেশ খাদ্য সুরক্ষা দফতরের।",
+            "source_url": "https://bengali.abplive.com/videos/news/haldiram-food-safety-raid-at-kolkata-watch-video-1197421"
+          },
+          "establishment_name": {
+            "quote": "ভিআইপি রোডের ওপর হলদিরাম প্রভুজির রেস্টুরেন্টে অভিযান খাদ্য সুরক্ষা দফতরের। রেস্টুরেন্টের ভিতরে খাবার তৈরির জায়গা অপরিচ্ছন্ন, অভিযান খাদ্য সুরক্ষা দফতরের। হলদিরাম প্রভুজির রেস্টুরেন্ট ২দিন বন্ধ রাখার নির্দেশ খাদ্য সুরক্ষা দফতরের।",
+            "source_url": "https://bengali.abplive.com/videos/news/haldiram-food-safety-raid-at-kolkata-watch-video-1197421"
+          },
+          "reported_action": {
+            "quote": "ভিআইপি রোডের ওপর হলদিরাম প্রভুজির রেস্টুরেন্টে অভিযান খাদ্য সুরক্ষা দফতরের। রেস্টুরেন্টের ভিতরে খাবার তৈরির জায়গা অপরিচ্ছন্ন, অভিযান খাদ্য সুরক্ষা দফতরের। হলদিরাম প্রভুজির রেস্টুরেন্ট ২দিন বন্ধ রাখার নির্দেশ খাদ্য সুরক্ষা দফতরের।",
+            "source_url": "https://bengali.abplive.com/videos/news/haldiram-food-safety-raid-at-kolkata-watch-video-1197421"
+          },
+          "reported_authority": {
+            "quote": "ভিআইপি রোডের ওপর হলদিরাম প্রভুজির রেস্টুরেন্টে অভিযান খাদ্য সুরক্ষা দফতরের। রেস্টুরেন্টের ভিতরে খাবার তৈরির জায়গা অপরিচ্ছন্ন, অভিযান খাদ্য সুরক্ষা দফতরের। হলদিরাম প্রভুজির রেস্টুরেন্ট ২দিন বন্ধ রাখার নির্দেশ খাদ্য সুরক্ষা দফতরের।",
+            "source_url": "https://bengali.abplive.com/videos/news/haldiram-food-safety-raid-at-kolkata-watch-video-1197421"
+          },
+          "reported_observation": {
+            "quote": "ভিআইপি রোডের ওপর হলদিরাম প্রভুজির রেস্টুরেন্টে অভিযান খাদ্য সুরক্ষা দফতরের। রেস্টুরেন্টের ভিতরে খাবার তৈরির জায়গা অপরিচ্ছন্ন, অভিযান খাদ্য সুরক্ষা দফতরের। হলদিরাম প্রভুজির রেস্টুরেন্ট ২দিন বন্ধ রাখার নির্দেশ খাদ্য সুরক্ষা দফতরের।",
+            "source_url": "https://bengali.abplive.com/videos/news/haldiram-food-safety-raid-at-kolkata-watch-video-1197421"
+          },
+          "reported_quantity": {
+            "quote": "ভিআইপি রোডের ওপর হলদিরাম প্রভুজির রেস্টুরেন্টে অভিযান খাদ্য সুরক্ষা দফতরের। রেস্টুরেন্টের ভিতরে খাবার তৈরির জায়গা অপরিচ্ছন্ন, অভিযান খাদ্য সুরক্ষা দফতরের। হলদিরাম প্রভুজির রেস্টুরেন্ট ২দিন বন্ধ রাখার নির্দেশ খাদ্য সুরক্ষা দফতরের।",
+            "source_url": "https://bengali.abplive.com/videos/news/haldiram-food-safety-raid-at-kolkata-watch-video-1197421"
+          }
+        },
+        "formal_finding": null,
+        "legal_finding_status": "unknown",
+        "reported_action": "অভিযান",
+        "reported_authority": "খাদ্য সুরক্ষা দফতর",
+        "reported_observation": "রেস্টুরেন্টের ভিতরে খাবার তৈরির জায়গা অপরিচ্ছন্ন",
+        "reported_quantity": "২দিন"
+      },
+      "review": null,
+      "reviewed_associations": [],
+      "reviewer_hold": false,
+      "source_availability": "available",
+      "source_availability_reason": null,
+      "sources": [
+        {
+          "archive_url": null,
+          "evidence_context": "ভিআইপি রোডের ওপর হলদিরাম প্রভুজির রেস্টুরেন্টে অভিযান খাদ্য সুরক্ষা দফতরের। রেস্টুরেন্টের ভিতরে খাবার তৈরির জায়গা অপরিচ্ছন্ন, অভিযান খাদ্য সুরক্ষা দফতরের। হলদিরাম প্রভুজির রেস্টুরেন্ট ২দিন বন্ধ রাখার নির্দেশ খাদ্য সুরক্ষা দফতরের।",
+          "evidence_language": "bn",
+          "evidence_locator": null,
+          "evidence_quote": "রেস্টুরেন্টের ভিতরে খাবার তৈরির জায়গা অপরিচ্ছন্ন",
+          "evidence_span_hash": "181c18c263ad1fc48bb39be6fcd47ae60ba7d42b1805b54b82947386705fbd0f",
+          "origin_source_id": null,
+          "retrieved_at": "2026-10-28T01:19:09.190771Z",
+          "source_date": "2026-10-28",
+          "source_id": "SRC-b7807669d6bffb14c3b6",
+          "source_language": "bn",
+          "source_publisher": "ABP Ananda",
+          "source_relationship": "unknown",
+          "source_revision_id": "03d11a9e6bec677deeea759beedd3b31ce08924304589bbc8041971b230995fc",
+          "source_title": "Haldiram Raid: রেস্টুরেন্টের ভিতরে খাবার তৈরির জায়গা অপরিচ্ছন্ন, অভিযান খাদ্য সুরক্ষা দফতরের | haldiram food safety raid at kolkata watch video",
+          "source_type": "news",
+          "source_url": "https://bengali.abplive.com/videos/news/haldiram-food-safety-raid-at-kolkata-watch-video-1197421",
+          "text_sha256": "03d11a9e6bec677deeea759beedd3b31ce08924304589bbc8041971b230995fc",
+          "tier": "B"
+        }
+      ],
+      "superseded_by": null,
+      "validator_id": "objective_source_grounding",
+      "validator_version": "2",
+      "verification_notes": "LLM-assisted candidate; objective source-grounding and publication checks passed. Source verification is not an independent finding of fact.",
+      "verification_status": "SOURCE VERIFIED"
+    },
+    {
       "automatic_validation": null,
       "context_notice": "Independent, non-governmental public-source research. Inclusion is not a finding of wrongdoing. Counts describe records in this tracker, not official totals, prevalence, compliance, risk or group behavior. Read the sources and preserve this context when sharing.",
       "derived_context": {
@@ -16284,10 +16658,16 @@
           "note": "Supporting source context revalidated; original evidence retained.",
           "previous_record_sha256": "b19b8cf4bfb1ca83aa85cff961dce40cab8e48e1210d3a832b734416c0f8e7fe",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-10-28T01:19:09.190771Z",
+          "note": "Source access unavailable; historical support is not disproved.",
+          "previous_record_sha256": "20130258a58930d5c6b77fd9b85194e17f95021d09442c1016cfc2f7cc0ae4af",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-10-27T17:58:47.358959Z",
+      "last_source_checked_at": "2026-10-28T01:19:09.190771Z",
       "last_successful_evidence_check_at": "2026-10-27T17:58:47.358959Z",
       "llm": {
         "fields_proposed": [],
@@ -16304,11 +16684,11 @@
       },
       "location_id": null,
       "pipeline_version": "0.3.0",
-      "publication_status": "active",
+      "publication_status": "active_with_warning",
       "record_class": "inspection_evidence",
       "record_created_at": "2026-09-07T21:12:32.942437Z",
       "record_scope": "unknown",
-      "record_updated_at": "2026-10-27T17:58:47.358959Z",
+      "record_updated_at": "2026-10-28T01:19:09.190771Z",
       "related_record_ids": [],
       "reported_fact": {
         "area": "Park Street",
@@ -16354,8 +16734,8 @@
       },
       "reviewed_associations": [],
       "reviewer_hold": false,
-      "source_availability": "available",
-      "source_availability_reason": null,
+      "source_availability": "unavailable",
+      "source_availability_reason": "network_error",
       "sources": [
         {
           "archive_url": null,
@@ -16382,7 +16762,7 @@
       "superseded_by": null,
       "validator_id": "field_evidence_validation",
       "validator_version": "2",
-      "verification_notes": "Supporting source context revalidated; original evidence retained.",
+      "verification_notes": "Source access unavailable; historical support is not disproved.",
       "verification_status": "SOURCE VERIFIED"
     },
     {
@@ -16885,10 +17265,16 @@
           "note": "Supporting source context revalidated; original evidence retained.",
           "previous_record_sha256": "1d153ad4a4197979c012544ca2a5d8c30691713ae72ad99497333c78ca953948",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-10-28T01:19:09.190771Z",
+          "note": "Source access unavailable; historical support is not disproved.",
+          "previous_record_sha256": "aa3c9c9867038031d5e978793ba60bfe9af96ce7e8648edeacebded0448539f1",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-10-27T17:58:47.358959Z",
+      "last_source_checked_at": "2026-10-28T01:19:09.190771Z",
       "last_successful_evidence_check_at": "2026-10-27T17:58:47.358959Z",
       "llm": {
         "fields_proposed": [],
@@ -16905,11 +17291,11 @@
       },
       "location_id": null,
       "pipeline_version": "0.3.0",
-      "publication_status": "active",
+      "publication_status": "active_with_warning",
       "record_class": "inspection_evidence",
       "record_created_at": "2026-09-07T21:12:32.942437Z",
       "record_scope": "unknown",
-      "record_updated_at": "2026-10-27T17:58:47.358959Z",
+      "record_updated_at": "2026-10-28T01:19:09.190771Z",
       "related_record_ids": [],
       "reported_fact": {
         "area": "Park Street",
@@ -16955,8 +17341,8 @@
       },
       "reviewed_associations": [],
       "reviewer_hold": false,
-      "source_availability": "available",
-      "source_availability_reason": null,
+      "source_availability": "unavailable",
+      "source_availability_reason": "network_error",
       "sources": [
         {
           "archive_url": null,
@@ -16983,7 +17369,168 @@
       "superseded_by": null,
       "validator_id": "field_evidence_validation",
       "validator_version": "2",
-      "verification_notes": "Supporting source context revalidated; original evidence retained.",
+      "verification_notes": "Source access unavailable; historical support is not disproved.",
+      "verification_status": "SOURCE VERIFIED"
+    },
+    {
+      "automatic_validation": {
+        "extraction_evidence": {
+          "end": 132,
+          "match_method": "exact",
+          "original_quote": "ভিআইপি রোডের ওপর হলদিরাম প্রভুজির রেস্টুরেন্টে অভিযান খাদ্য সুরক্ষা দফতরের। রেস্টুরেন্টের ভিতরে খাবার তৈরির জায়গা অপরিচ্ছন্ন",
+          "passage_id": "P011",
+          "source_revision_id": "67f249a4af1371650fd250d5101893ad5466c4ba74972af486cea69d90a8c242",
+          "start": 8
+        },
+        "method": "source_grounded_candidate_v1",
+        "pipeline_version": "0.3.0",
+        "validated_at": "2026-10-28T01:19:09.190771Z"
+      },
+      "context_notice": "Independent, non-governmental public-source research. Inclusion is not a finding of wrongdoing. Counts describe records in this tracker, not official totals, prevalence, compliance, risk or group behavior. Read the sources and preserve this context when sharing.",
+      "derived_context": {
+        "action_category": "not reported",
+        "action_category_confidence": "unknown",
+        "action_category_method": null,
+        "action_category_reviewed": false,
+        "action_category_source": null,
+        "business_format": "unknown",
+        "business_format_confidence": "unknown",
+        "business_format_method": null,
+        "business_format_reviewed": false,
+        "business_format_source": null,
+        "derived_confidence": "unknown",
+        "derived_context_method": "Unknown; no contextual inference performed.",
+        "derived_context_sources": [],
+        "establishment_context": "unknown",
+        "establishment_context_confidence": "unknown",
+        "establishment_context_method": null,
+        "establishment_context_reviewed": false,
+        "establishment_context_source": null,
+        "latitude": null,
+        "location_method": null,
+        "location_precision": null,
+        "location_reviewed": false,
+        "location_source": null,
+        "longitude": null,
+        "menu_context": "unknown",
+        "menu_context_confidence": "unknown",
+        "menu_context_method": null,
+        "menu_context_reviewed": false,
+        "menu_context_source": null,
+        "normalized_area": null
+      },
+      "display_summary": "Source reports a source-reported food-safety event involving হলদিরাম প্রভুজির রেস্টুরেন্টে in ভিআইপি রোডের.",
+      "establishment_id": null,
+      "event_id": "WBFS-b3fd7e1f15e0",
+      "evidence_support_status": "supported_as_of",
+      "extractor_id": "source_grounded_candidate",
+      "extractor_version": "1",
+      "first_published_at": "2026-10-28T01:19:09.190771Z",
+      "history": [
+        {
+          "at": "2026-10-28T01:19:09.190771Z",
+          "note": "Source-grounded LLM candidate auto-published after deterministic validation.",
+          "previous_record_sha256": null,
+          "status": "SOURCE VERIFIED"
+        }
+      ],
+      "is_fixture": false,
+      "last_source_checked_at": "2026-10-28T01:19:09.190771Z",
+      "last_successful_evidence_check_at": "2026-10-28T01:19:09.190771Z",
+      "llm": {
+        "fields_proposed": [
+          "area",
+          "establishment_name",
+          "reported_action",
+          "reported_authority",
+          "reported_observation"
+        ],
+        "llm_model": "gemini-3.5-flash-lite",
+        "llm_output_was_validated": true,
+        "llm_pipeline_version": "0.3.0",
+        "llm_provider": "gemini",
+        "llm_task": "structured source extraction",
+        "llm_task_version": "source_candidates_v2",
+        "llm_used": true,
+        "llm_used_at": "2026-10-28T01:19:17.841948Z",
+        "source_revision_id": "67f249a4af1371650fd250d5101893ad5466c4ba74972af486cea69d90a8c242",
+        "validation_result": "passed"
+      },
+      "location_id": null,
+      "pipeline_version": "0.3.0",
+      "publication_status": "active",
+      "record_class": "inspection_evidence",
+      "record_created_at": "2026-10-28T01:19:09.190771Z",
+      "record_scope": "establishment_event",
+      "record_updated_at": "2026-10-28T01:19:09.190771Z",
+      "related_record_ids": [],
+      "reported_fact": {
+        "area": "ভিআইপি রোডের",
+        "district": null,
+        "establishment_name": "হলদিরাম প্রভুজির রেস্টুরেন্টে",
+        "establishment_type": null,
+        "event_date": null,
+        "evidence": {
+          "area": {
+            "quote": "ভিআইপি রোডের ওপর হলদিরাম প্রভুজির রেস্টুরেন্টে অভিযান খাদ্য সুরক্ষা দফতরের। রেস্টুরেন্টের ভিতরে খাবার তৈরির জায়গা অপরিচ্ছন্ন",
+            "source_url": "https://bengali.abplive.com/district/food-safety-raid-on-haldiram-prabhuji-restaurant-at-vip-road-breaking-news-1197381"
+          },
+          "establishment_name": {
+            "quote": "ভিআইপি রোডের ওপর হলদিরাম প্রভুজির রেস্টুরেন্টে অভিযান খাদ্য সুরক্ষা দফতরের। রেস্টুরেন্টের ভিতরে খাবার তৈরির জায়গা অপরিচ্ছন্ন",
+            "source_url": "https://bengali.abplive.com/district/food-safety-raid-on-haldiram-prabhuji-restaurant-at-vip-road-breaking-news-1197381"
+          },
+          "reported_action": {
+            "quote": "ভিআইপি রোডের ওপর হলদিরাম প্রভুজির রেস্টুরেন্টে অভিযান খাদ্য সুরক্ষা দফতরের। রেস্টুরেন্টের ভিতরে খাবার তৈরির জায়গা অপরিচ্ছন্ন",
+            "source_url": "https://bengali.abplive.com/district/food-safety-raid-on-haldiram-prabhuji-restaurant-at-vip-road-breaking-news-1197381"
+          },
+          "reported_authority": {
+            "quote": "ভিআইপি রোডের ওপর হলদিরাম প্রভুজির রেস্টুরেন্টে অভিযান খাদ্য সুরক্ষা দফতরের। রেস্টুরেন্টের ভিতরে খাবার তৈরির জায়গা অপরিচ্ছন্ন",
+            "source_url": "https://bengali.abplive.com/district/food-safety-raid-on-haldiram-prabhuji-restaurant-at-vip-road-breaking-news-1197381"
+          },
+          "reported_observation": {
+            "quote": "ভিআইপি রোডের ওপর হলদিরাম প্রভুজির রেস্টুরেন্টে অভিযান খাদ্য সুরক্ষা দফতরের। রেস্টুরেন্টের ভিতরে খাবার তৈরির জায়গা অপরিচ্ছন্ন",
+            "source_url": "https://bengali.abplive.com/district/food-safety-raid-on-haldiram-prabhuji-restaurant-at-vip-road-breaking-news-1197381"
+          }
+        },
+        "formal_finding": null,
+        "legal_finding_status": "unknown",
+        "reported_action": "অভিযান",
+        "reported_authority": "খাদ্য সুরক্ষা দফতর",
+        "reported_observation": "রেস্টুরেন্টের ভিতরে খাবার তৈরির জায়গা অপরিচ্ছন্ন",
+        "reported_quantity": null
+      },
+      "review": null,
+      "reviewed_associations": [],
+      "reviewer_hold": false,
+      "source_availability": "available",
+      "source_availability_reason": null,
+      "sources": [
+        {
+          "archive_url": null,
+          "evidence_context": "ভিআইপি রোডের ওপর হলদিরাম প্রভুজির রেস্টুরেন্টে অভিযান খাদ্য সুরক্ষা দফতরের। রেস্টুরেন্টের ভিতরে খাবার তৈরির জায়গা অপরিচ্ছন্ন",
+          "evidence_language": "bn",
+          "evidence_locator": null,
+          "evidence_quote": "রেস্টুরেন্টের ভিতরে খাবার তৈরির জায়গা অপরিচ্ছন্ন",
+          "evidence_span_hash": "181c18c263ad1fc48bb39be6fcd47ae60ba7d42b1805b54b82947386705fbd0f",
+          "origin_source_id": null,
+          "retrieved_at": "2026-10-28T01:19:09.190771Z",
+          "source_date": "2026-10-27",
+          "source_id": "SRC-68721ffde4967a5887f6",
+          "source_language": "bn",
+          "source_publisher": "ABP Ananda",
+          "source_relationship": "unknown",
+          "source_revision_id": "97a13e89ceafe0de6ab7af79e531107bcf03cd6f61c839ddb227238d0cdbe3bd",
+          "source_title": "Food Safety Raid: হলদিরাম প্রভুজির রেস্টুরেন্টে হানা খাদ্য সুরক্ষা দফতরের, VIP রোডের উপর এই দোকান থেকে যা বেরিয়ে এল ..",
+          "source_type": "news",
+          "source_url": "https://bengali.abplive.com/district/food-safety-raid-on-haldiram-prabhuji-restaurant-at-vip-road-breaking-news-1197381",
+          "text_sha256": "97a13e89ceafe0de6ab7af79e531107bcf03cd6f61c839ddb227238d0cdbe3bd",
+          "tier": "B"
+        }
+      ],
+      "superseded_by": null,
+      "validator_id": "objective_source_grounding",
+      "validator_version": "2",
+      "verification_notes": "LLM-assisted candidate; objective source-grounding and publication checks passed. Source verification is not an independent finding of fact.",
       "verification_status": "SOURCE VERIFIED"
     },
     {
@@ -18532,10 +19079,16 @@
           "note": "Supporting source context revalidated; original evidence retained.",
           "previous_record_sha256": "ace97e757cefe61eeba596871f80853865d47d4ce60986b96ee2316f65271c72",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-10-28T01:19:09.190771Z",
+          "note": "Source access unavailable; historical support is not disproved.",
+          "previous_record_sha256": "bd5a87a4e9d73962a76a075209f3cbc7f5dec1e0e190653d55021a98f11322df",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-10-27T17:58:47.358959Z",
+      "last_source_checked_at": "2026-10-28T01:19:09.190771Z",
       "last_successful_evidence_check_at": "2026-10-27T17:58:47.358959Z",
       "llm": {
         "fields_proposed": [],
@@ -18552,11 +19105,11 @@
       },
       "location_id": null,
       "pipeline_version": "0.3.0",
-      "publication_status": "active",
+      "publication_status": "active_with_warning",
       "record_class": "inspection_evidence",
       "record_created_at": "2026-09-07T21:12:32.942437Z",
       "record_scope": "unknown",
-      "record_updated_at": "2026-10-27T17:58:47.358959Z",
+      "record_updated_at": "2026-10-28T01:19:09.190771Z",
       "related_record_ids": [],
       "reported_fact": {
         "area": "Park Street",
@@ -18602,8 +19155,8 @@
       },
       "reviewed_associations": [],
       "reviewer_hold": false,
-      "source_availability": "available",
-      "source_availability_reason": null,
+      "source_availability": "unavailable",
+      "source_availability_reason": "network_error",
       "sources": [
         {
           "archive_url": null,
@@ -18630,7 +19183,7 @@
       "superseded_by": null,
       "validator_id": "field_evidence_validation",
       "validator_version": "2",
-      "verification_notes": "Supporting source context revalidated; original evidence retained.",
+      "verification_notes": "Source access unavailable; historical support is not disproved.",
       "verification_status": "SOURCE VERIFIED"
     },
     {
