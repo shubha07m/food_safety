@@ -1,8 +1,8 @@
 {
   "context_notice": "Independent, non-governmental public-source research. Inclusion is not a finding of wrongdoing. Counts describe records in this tracker, not official totals, prevalence, compliance, risk or group behavior. Read the sources and preserve this context when sharing.",
-  "generated_at": "2026-10-29T05:44:24.591541+00:00",
+  "generated_at": "2026-10-29T12:56:37.268966+00:00",
   "pipeline_version": "0.3.0",
-  "record_count": 46,
+  "record_count": 45,
   "records": [
     {
       "automatic_validation": null,
@@ -1090,11 +1090,17 @@
           "note": "Supporting source context revalidated; original evidence retained.",
           "previous_record_sha256": "ad9fe428e3a9e3c355bdceb6ff62202036a478936dd433d6ef629e689e0be72b",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-10-29T12:56:37.268966Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "c07de1e5f3397536a0dfd6687669915bd901eafa4c7b6a2a1d7b9250277e1de6",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-10-28T16:37:25.056729Z",
-      "last_successful_evidence_check_at": "2026-10-28T16:37:25.056729Z",
+      "last_source_checked_at": "2026-10-29T12:56:37.268966Z",
+      "last_successful_evidence_check_at": "2026-10-29T12:56:37.268966Z",
       "llm": {
         "fields_proposed": [],
         "llm_model": null,
@@ -1114,7 +1120,7 @@
       "record_class": "inspection_evidence",
       "record_created_at": "2026-09-09T23:11:25.626009Z",
       "record_scope": "area_operation",
-      "record_updated_at": "2026-10-28T16:37:25.056729Z",
+      "record_updated_at": "2026-10-29T12:56:37.268966Z",
       "related_record_ids": [],
       "reported_fact": {
         "area": "ডেকার্স লেন",
@@ -1641,11 +1647,17 @@
           "note": "Supporting source context revalidated; original evidence retained.",
           "previous_record_sha256": "fc2b807793a4b060e03cbde99527114f5505b3053a8a5c5df4173efbeb97fa79",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-10-29T12:56:37.268966Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "99775c40e7e923d68998c3319ff30a17d459fc0611b97735b8d00ef45a7cc8da",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-10-28T16:37:25.056729Z",
-      "last_successful_evidence_check_at": "2026-10-28T16:37:25.056729Z",
+      "last_source_checked_at": "2026-10-29T12:56:37.268966Z",
+      "last_successful_evidence_check_at": "2026-10-29T12:56:37.268966Z",
       "llm": {
         "fields_proposed": [
           "area",
@@ -1672,7 +1684,7 @@
       "record_class": "inspection_evidence",
       "record_created_at": "2026-09-11T11:18:01.816017Z",
       "record_scope": "establishment_event",
-      "record_updated_at": "2026-10-28T16:37:25.056729Z",
+      "record_updated_at": "2026-10-29T12:56:37.268966Z",
       "related_record_ids": [],
       "reported_fact": {
         "area": "বাদুড়িয়া",
@@ -2179,11 +2191,17 @@
           "note": "Supporting source context revalidated; original evidence retained.",
           "previous_record_sha256": "27f8f89894c22c470e87b5e150c49759da496aacf0c0ee7881ecc24be52ebfcb",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-10-29T12:56:37.268966Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "a9009a15a1658e16a435c7b0665a6905bc1ff3ca0fc95fa332b893cf52b89d0a",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-10-28T16:37:25.056729Z",
-      "last_successful_evidence_check_at": "2026-10-28T16:37:25.056729Z",
+      "last_source_checked_at": "2026-10-29T12:56:37.268966Z",
+      "last_successful_evidence_check_at": "2026-10-29T12:56:37.268966Z",
       "llm": {
         "fields_proposed": [
           "area",
@@ -2210,7 +2228,7 @@
       "record_class": "inspection_evidence",
       "record_created_at": "2026-09-11T04:37:44.799127Z",
       "record_scope": "establishment_event",
-      "record_updated_at": "2026-10-28T16:37:25.056729Z",
+      "record_updated_at": "2026-10-29T12:56:37.268966Z",
       "related_record_ids": [],
       "reported_fact": {
         "area": "ট্যাংরার",
@@ -10697,564 +10715,6 @@
     },
     {
       "automatic_validation": {
-        "extraction_evidence": null,
-        "method": "explicit_inspection_sentence_v2",
-        "pipeline_version": "0.3.0",
-        "validated_at": "2026-09-09T23:09:01.232782Z"
-      },
-      "context_notice": "Independent, non-governmental public-source research. Inclusion is not a finding of wrongdoing. Counts describe records in this tracker, not official totals, prevalence, compliance, risk or group behavior. Read the sources and preserve this context when sharing.",
-      "derived_context": {
-        "action_category": "not reported",
-        "action_category_confidence": "unknown",
-        "action_category_method": null,
-        "action_category_reviewed": false,
-        "action_category_source": null,
-        "business_format": "unknown",
-        "business_format_confidence": "unknown",
-        "business_format_method": null,
-        "business_format_reviewed": false,
-        "business_format_source": null,
-        "derived_confidence": "unknown",
-        "derived_context_method": "Unknown; no contextual inference performed.",
-        "derived_context_sources": [],
-        "establishment_context": "unknown",
-        "establishment_context_confidence": "unknown",
-        "establishment_context_method": null,
-        "establishment_context_reviewed": false,
-        "establishment_context_source": null,
-        "latitude": null,
-        "location_method": null,
-        "location_precision": null,
-        "location_reviewed": false,
-        "location_source": null,
-        "longitude": null,
-        "menu_context": "unknown",
-        "menu_context_confidence": "unknown",
-        "menu_context_method": null,
-        "menu_context_reviewed": false,
-        "menu_context_source": null,
-        "normalized_area": null
-      },
-      "display_summary": "Source reports a source-reported food-safety event involving an unnamed establishment in কলকাতা.",
-      "establishment_id": null,
-      "event_id": "WBFS-5d8f54ec5d53",
-      "evidence_support_status": "supported_as_of",
-      "extractor_id": "explicit_inspection_sentence",
-      "extractor_version": "2",
-      "first_published_at": "2026-09-09T23:09:01.232782Z",
-      "history": [
-        {
-          "at": "2026-09-09T23:09:01.232782Z",
-          "note": "Deterministic inspection and source validation passed.",
-          "previous_record_sha256": null,
-          "status": "SOURCE VERIFIED"
-        },
-        {
-          "at": "2026-09-10T04:39:32.448783Z",
-          "note": "Supporting source context revalidated; original evidence retained.",
-          "previous_record_sha256": "4ca3bc9d4c53aa68f2432bc425b59ef288c9303883b8b24a5d302a7380ae6a48",
-          "status": "SOURCE VERIFIED"
-        },
-        {
-          "at": "2026-09-11T00:09:16.296804Z",
-          "note": "Supporting source context revalidated; original evidence retained.",
-          "previous_record_sha256": "ca99e71841ca827f2b4414f79190b018cecebe0345b4da4214947875e1a23199",
-          "status": "SOURCE VERIFIED"
-        },
-        {
-          "at": "2026-09-11T04:37:44.799127Z",
-          "note": "Supporting source context revalidated; original evidence retained.",
-          "previous_record_sha256": "663ce57e8d1d9dc29e0067f26bc46bdde6626d9237b15552190feb03e6605c2d",
-          "status": "SOURCE VERIFIED"
-        },
-        {
-          "at": "2026-09-11T11:18:01.816017Z",
-          "note": "Supporting source context revalidated; original evidence retained.",
-          "previous_record_sha256": "6a82101f1a4c06c67e3382115881f5c0ca887af5faac554d37eedd1ff87896f0",
-          "status": "SOURCE VERIFIED"
-        },
-        {
-          "at": "2026-09-12T04:40:26.034447Z",
-          "note": "Supporting source context revalidated; original evidence retained.",
-          "previous_record_sha256": "217ca9a5adadb1222428f82061ae1d7a2d53e200cb45fae00538d33185b9e7e6",
-          "status": "SOURCE VERIFIED"
-        },
-        {
-          "at": "2026-09-12T15:30:34.437299Z",
-          "note": "Supporting source context revalidated; original evidence retained.",
-          "previous_record_sha256": "5adec51f416773cef0e197d2a12527207e15eb8b71778a54b0a3f05692fe17b2",
-          "status": "SOURCE VERIFIED"
-        },
-        {
-          "at": "2026-09-13T11:48:42.474489Z",
-          "note": "Supporting source context revalidated; original evidence retained.",
-          "previous_record_sha256": "8fe017bc00e2bee36180caed31dd8ad606f57fa544b1b1d233801dc71048667a",
-          "status": "SOURCE VERIFIED"
-        },
-        {
-          "at": "2026-09-13T18:47:49.902898Z",
-          "note": "Supporting source context revalidated; original evidence retained.",
-          "previous_record_sha256": "6c3ace12e249ddde06b65f554349c11683f826724c297526c163f5dcee628db4",
-          "status": "SOURCE VERIFIED"
-        },
-        {
-          "at": "2026-09-14T23:07:56.567251Z",
-          "note": "Supporting source context revalidated; original evidence retained.",
-          "previous_record_sha256": "44aeebc33471260daca42ed7c6276a9c6a9056de1518f5576366eca9120784c3",
-          "status": "SOURCE VERIFIED"
-        },
-        {
-          "at": "2026-09-16T00:18:10.938254Z",
-          "note": "Supporting source context revalidated; original evidence retained.",
-          "previous_record_sha256": "a53b35a1c57852086034950ab90a48e5ec2a639a9d7175bdcc1acd357ec7be46",
-          "status": "SOURCE VERIFIED"
-        },
-        {
-          "at": "2026-09-16T18:11:46.666448Z",
-          "note": "Supporting source context revalidated; original evidence retained.",
-          "previous_record_sha256": "014eeb29d2e5f81bd41a4ed0e1848e5968258a580a4bbd7e36aa903bf34f9db8",
-          "status": "SOURCE VERIFIED"
-        },
-        {
-          "at": "2026-09-17T13:25:51.653462Z",
-          "note": "Supporting source context revalidated; original evidence retained.",
-          "previous_record_sha256": "83a137dff5b1c3a7b572f43b32a315e41c64a72a975e64e65b78a7d40fc3955b",
-          "status": "SOURCE VERIFIED"
-        },
-        {
-          "at": "2026-09-18T00:16:19.943050Z",
-          "note": "Supporting source context revalidated; original evidence retained.",
-          "previous_record_sha256": "b30d17ce4f16ab3761296b6eeaec23aeea5cfd6a463c33e2585347458598533b",
-          "status": "SOURCE VERIFIED"
-        },
-        {
-          "at": "2026-09-18T16:23:08.226498Z",
-          "note": "Supporting source context revalidated; original evidence retained.",
-          "previous_record_sha256": "21b935ba3676a58546f29f8b777a3bc1eed1be9ca7d9a34e9142a1e1fc19bed9",
-          "status": "SOURCE VERIFIED"
-        },
-        {
-          "at": "2026-09-19T07:19:40.764708Z",
-          "note": "Supporting source context revalidated; original evidence retained.",
-          "previous_record_sha256": "b6970da764d61e41ce4781db0d6b70754764021fb4e78afd7911dd42ce11bcdb",
-          "status": "SOURCE VERIFIED"
-        },
-        {
-          "at": "2026-09-19T20:38:05.366067Z",
-          "note": "Supporting source context revalidated; original evidence retained.",
-          "previous_record_sha256": "49753ef2e149806fbc0bb64fd3abb7f810d2b85eaedaf30dd64b50b4d840e890",
-          "status": "SOURCE VERIFIED"
-        },
-        {
-          "at": "2026-09-20T16:03:37.875038Z",
-          "note": "Supporting source context revalidated; original evidence retained.",
-          "previous_record_sha256": "88cd262ebd3064b3d927af89ad8a2f4ec968a5871b4ccf871e881071716e3bc7",
-          "status": "SOURCE VERIFIED"
-        },
-        {
-          "at": "2026-09-21T04:52:47.650674Z",
-          "note": "Supporting source context revalidated; original evidence retained.",
-          "previous_record_sha256": "70fb5008dc7be51d97ccc68b47645c2783d716c8fa89feb173cae8cccb714261",
-          "status": "SOURCE VERIFIED"
-        },
-        {
-          "at": "2026-09-22T04:52:38.950631Z",
-          "note": "Supporting source context revalidated; original evidence retained.",
-          "previous_record_sha256": "e7f1b9963cf373c1c7e2263af8aea789dedccca6b1bfeab0148e14cb479d86fa",
-          "status": "SOURCE VERIFIED"
-        },
-        {
-          "at": "2026-09-22T21:17:07.091471Z",
-          "note": "Supporting source context revalidated; original evidence retained.",
-          "previous_record_sha256": "96f057a46dc14523dae36895c14b0c2ab7cbd4d8e55cb5ddc01bac69117ae253",
-          "status": "SOURCE VERIFIED"
-        },
-        {
-          "at": "2026-09-23T18:24:35.320124Z",
-          "note": "Supporting source context revalidated; original evidence retained.",
-          "previous_record_sha256": "d993caf7673fca9778a5067b34be6305c508570707b0c37683b1ff3955c22ead",
-          "status": "SOURCE VERIFIED"
-        },
-        {
-          "at": "2026-09-24T11:42:35.353310Z",
-          "note": "Supporting source context revalidated; original evidence retained.",
-          "previous_record_sha256": "5c2834230ba4d0a696e609feb01bc30de47f14ec88433bfe55b236058caaa862",
-          "status": "SOURCE VERIFIED"
-        },
-        {
-          "at": "2026-09-25T00:33:19.189760Z",
-          "note": "Supporting source context revalidated; original evidence retained.",
-          "previous_record_sha256": "23a0cbfef91ddbea6b6a80c6f79ec6b5e8c8f2f4c13b9b860a9ba643df52a73e",
-          "status": "SOURCE VERIFIED"
-        },
-        {
-          "at": "2026-09-25T23:17:52.389251Z",
-          "note": "Supporting source context revalidated; original evidence retained.",
-          "previous_record_sha256": "0fb7cd6ab86452ac2bf946c0419ce477ea3a63ccd9b5d4eb2d0648c9c4c3d73f",
-          "status": "SOURCE VERIFIED"
-        },
-        {
-          "at": "2026-09-26T16:22:00.216193Z",
-          "note": "Supporting source context revalidated; original evidence retained.",
-          "previous_record_sha256": "766276df04f9178e745f3708728ab556a41556629e2b150363ce63392c7007aa",
-          "status": "SOURCE VERIFIED"
-        },
-        {
-          "at": "2026-09-27T13:57:04.711043Z",
-          "note": "Supporting source context revalidated; original evidence retained.",
-          "previous_record_sha256": "542ac9f5afbf5ada4e619478065fe2bd3fe772c12dad89487dfa9faceaac8fa2",
-          "status": "SOURCE VERIFIED"
-        },
-        {
-          "at": "2026-09-28T13:50:22.214544Z",
-          "note": "Supporting source context revalidated; original evidence retained.",
-          "previous_record_sha256": "d6433d24ec36045a0f16dacbe90373be65776f42cd94d1bea412fde00c7f792b",
-          "status": "SOURCE VERIFIED"
-        },
-        {
-          "at": "2026-09-29T08:27:16.458531Z",
-          "note": "Supporting source context revalidated; original evidence retained.",
-          "previous_record_sha256": "0ce3a9c36a6de01c8f32e306b1f4446ee24db1b9286d4e8172fa9dc4138742f5",
-          "status": "SOURCE VERIFIED"
-        },
-        {
-          "at": "2026-09-30T01:17:46.923790Z",
-          "note": "Supporting source context revalidated; original evidence retained.",
-          "previous_record_sha256": "631e52f6a93fe6ed9ac55544bb057442631ca08d8d1a52f20cfcc1a475e41f80",
-          "status": "SOURCE VERIFIED"
-        },
-        {
-          "at": "2026-10-01T01:17:57.650335Z",
-          "note": "Supporting source context revalidated; original evidence retained.",
-          "previous_record_sha256": "00d4eb120f54da8d29e897a92caba59b15c5115065482354581ff28a6d79be57",
-          "status": "SOURCE VERIFIED"
-        },
-        {
-          "at": "2026-10-01T22:40:02.762261Z",
-          "note": "Supporting source context revalidated; original evidence retained.",
-          "previous_record_sha256": "c82d6c08c593e48e241edc689c74015b0a2972b10a2294fb0839c818f24e1d74",
-          "status": "SOURCE VERIFIED"
-        },
-        {
-          "at": "2026-10-02T19:17:05.165653Z",
-          "note": "Supporting source context revalidated; original evidence retained.",
-          "previous_record_sha256": "15faed34aa5fb780d0bdea08ef0f11a7ac330b9f3fafd5ab31ccb74c78fb10b3",
-          "status": "SOURCE VERIFIED"
-        },
-        {
-          "at": "2026-10-03T16:16:04.579535Z",
-          "note": "Supporting source context revalidated; original evidence retained.",
-          "previous_record_sha256": "2c668cf1352b3ae0f48b566a4e6719905de65c45c98ec8f02ed4fc2d31e01ff3",
-          "status": "SOURCE VERIFIED"
-        },
-        {
-          "at": "2026-10-04T05:49:52.161739Z",
-          "note": "Supporting source context revalidated; original evidence retained.",
-          "previous_record_sha256": "fa589d9b8f1a02b5f2d722b59c687bbfa02fc9b2de742bebbc67a1c53fd66c23",
-          "status": "SOURCE VERIFIED"
-        },
-        {
-          "at": "2026-10-04T21:22:02.959690Z",
-          "note": "Supporting source context revalidated; original evidence retained.",
-          "previous_record_sha256": "4abc6d4203087b647f52b049599c699eb42564e0fc69fe01f1c6121c20e61839",
-          "status": "SOURCE VERIFIED"
-        },
-        {
-          "at": "2026-10-06T01:17:54.839282Z",
-          "note": "Supporting source context revalidated; original evidence retained.",
-          "previous_record_sha256": "f5d78c7665fee34ab093144deed55236aea3ef69286053731da9185be9c72155",
-          "status": "SOURCE VERIFIED"
-        },
-        {
-          "at": "2026-10-06T22:39:03.866547Z",
-          "note": "Supporting source context revalidated; original evidence retained.",
-          "previous_record_sha256": "cfab6901bec9324f70e4be327bc3d7bebaf6921dad18834a0b1bde6d740011c8",
-          "status": "SOURCE VERIFIED"
-        },
-        {
-          "at": "2026-10-07T19:59:11.007365Z",
-          "note": "Supporting source context revalidated; original evidence retained.",
-          "previous_record_sha256": "fd6e1076ca892b824fd785f39b3cfe5000a9e56d1cf836f87dc44109cbbd979d",
-          "status": "SOURCE VERIFIED"
-        },
-        {
-          "at": "2026-10-08T13:25:40.409988Z",
-          "note": "Supporting source context revalidated; original evidence retained.",
-          "previous_record_sha256": "e413c2ebf748a1abb79f2200a6c4377fa5b0242dae911b6d00827fe1916f4c57",
-          "status": "SOURCE VERIFIED"
-        },
-        {
-          "at": "2026-10-09T09:00:22.060541Z",
-          "note": "Supporting source context revalidated; original evidence retained.",
-          "previous_record_sha256": "d21076d4e3b77a272c5402f1aa06b169be30bb855466bf1757f76b867d2b02b8",
-          "status": "SOURCE VERIFIED"
-        },
-        {
-          "at": "2026-10-10T18:33:41.842716Z",
-          "note": "Supporting source context revalidated; original evidence retained.",
-          "previous_record_sha256": "b4559ada790f4cd206178505cf9ae880093efdf6211c4e31cf8c8a3a44974335",
-          "status": "SOURCE VERIFIED"
-        },
-        {
-          "at": "2026-10-11T18:53:12.801096Z",
-          "note": "Supporting source context revalidated; original evidence retained.",
-          "previous_record_sha256": "753625a760d7d6a4109fc6a59f6d4322c5dbe767924551663a52514c8bbffd5e",
-          "status": "SOURCE VERIFIED"
-        },
-        {
-          "at": "2026-10-12T15:18:39.075651Z",
-          "note": "Supporting source context revalidated; original evidence retained.",
-          "previous_record_sha256": "102c74ee19e6e9f30877d921053d602f8cf525d5c8a6d8750a1ea1feb4dab8cc",
-          "status": "SOURCE VERIFIED"
-        },
-        {
-          "at": "2026-10-13T15:56:38.898308Z",
-          "note": "Supporting source context revalidated; original evidence retained.",
-          "previous_record_sha256": "eddba2e01a1cb672ed61d628926a53ef6e4ec5384b4819698dce4c4352d0d824",
-          "status": "SOURCE VERIFIED"
-        },
-        {
-          "at": "2026-10-14T13:42:12.826140Z",
-          "note": "Supporting source context revalidated; original evidence retained.",
-          "previous_record_sha256": "4f76eb7c71447bd6b603b7da1a045ece62de9b69c9ea2f3419234e51ecd1ac3a",
-          "status": "SOURCE VERIFIED"
-        },
-        {
-          "at": "2026-10-15T04:34:56.860980Z",
-          "note": "Supporting source context revalidated; original evidence retained.",
-          "previous_record_sha256": "0d5c30947476eebe52ec4253b660823a716d9130f248aa643c979e1170dc17d8",
-          "status": "SOURCE VERIFIED"
-        },
-        {
-          "at": "2026-10-15T21:21:04.272320Z",
-          "note": "Supporting source context revalidated; original evidence retained.",
-          "previous_record_sha256": "e5c297066f3f54ac01e69bf67b3a012080474aa9bc3d09e83dc9435431004d8b",
-          "status": "SOURCE VERIFIED"
-        },
-        {
-          "at": "2026-10-16T13:14:06.463136Z",
-          "note": "Supporting source context revalidated; original evidence retained.",
-          "previous_record_sha256": "2c8f1d316d500b8e3ba112f267150a3bf66deaba8083a55cac1446b6740c1119",
-          "status": "SOURCE VERIFIED"
-        },
-        {
-          "at": "2026-10-16T21:04:52.541254Z",
-          "note": "Supporting source context revalidated; original evidence retained.",
-          "previous_record_sha256": "d3820923853f3431ca76f419fcd7fe77bc8ed093f5953154b42a4ee12e832dfb",
-          "status": "SOURCE VERIFIED"
-        },
-        {
-          "at": "2026-10-17T12:10:46.969224Z",
-          "note": "Supporting source context revalidated; original evidence retained.",
-          "previous_record_sha256": "18c7298cc4b2599711f4a95d0d2fcb65eb3d92f9f190d285c5c430eb9f92d858",
-          "status": "SOURCE VERIFIED"
-        },
-        {
-          "at": "2026-10-17T22:17:02.709479Z",
-          "note": "Supporting source context revalidated; original evidence retained.",
-          "previous_record_sha256": "a9ac6574b28a2e917153d0c6cb71aa582c302cf8bdece77d30ac91da98435fed",
-          "status": "SOURCE VERIFIED"
-        },
-        {
-          "at": "2026-10-18T04:28:59.667940Z",
-          "note": "Supporting source context revalidated; original evidence retained.",
-          "previous_record_sha256": "ed80dd55e99b5b88c1815527dc82cb2fe89a7bc4023d39034b200f01475b6384",
-          "status": "SOURCE VERIFIED"
-        },
-        {
-          "at": "2026-10-18T15:50:14.541416Z",
-          "note": "Supporting source context revalidated; original evidence retained.",
-          "previous_record_sha256": "bb4c809434b1f1145bc239d66eec4bbf88a4e672ede1891aaa605354081a02c2",
-          "status": "SOURCE VERIFIED"
-        },
-        {
-          "at": "2026-10-18T22:25:11.102713Z",
-          "note": "Supporting source context revalidated; original evidence retained.",
-          "previous_record_sha256": "7276a7bfdf991b7fd6833b0c9fe6cda2fe891644bed0acc830f071f6bc08c730",
-          "status": "SOURCE VERIFIED"
-        },
-        {
-          "at": "2026-10-19T13:08:35.802650Z",
-          "note": "Supporting source context revalidated; original evidence retained.",
-          "previous_record_sha256": "2ff1a4aa7d8dd7d22d0af5fe7228c73ca9f5827abfde6c0fa987178f3f68d9b7",
-          "status": "SOURCE VERIFIED"
-        },
-        {
-          "at": "2026-10-19T23:38:08.451822Z",
-          "note": "Supporting source context revalidated; original evidence retained.",
-          "previous_record_sha256": "e0df522a75e7dcf1fc68eafe31b9791e40469f98410a7fc7ff46bbae3f2cf11b",
-          "status": "SOURCE VERIFIED"
-        },
-        {
-          "at": "2026-10-20T17:00:42.499626Z",
-          "note": "Supporting source context revalidated; original evidence retained.",
-          "previous_record_sha256": "0c6a07dd8645fbcde4b25b2a3f385fa43ae5c9b3e53439b610d367c629c8ab44",
-          "status": "SOURCE VERIFIED"
-        },
-        {
-          "at": "2026-10-21T00:37:03.011110Z",
-          "note": "Supporting source context revalidated; original evidence retained.",
-          "previous_record_sha256": "61f4a42260ae42f23b9b700a703e842c3035b5ac8b96b78d94488245a0980713",
-          "status": "SOURCE VERIFIED"
-        },
-        {
-          "at": "2026-10-22T04:40:32.614160Z",
-          "note": "Supporting source context revalidated; original evidence retained.",
-          "previous_record_sha256": "03b3c7f2da063131012446449ddd45e3926cc1670cf345ad96e31b9c0425bf40",
-          "status": "SOURCE VERIFIED"
-        },
-        {
-          "at": "2026-10-22T17:08:44.721829Z",
-          "note": "Supporting source context revalidated; original evidence retained.",
-          "previous_record_sha256": "050eda6e69d738f818ace35fd44445bfdfedda7e4cea54f58329db4d8919b073",
-          "status": "SOURCE VERIFIED"
-        },
-        {
-          "at": "2026-10-23T18:19:00.535597Z",
-          "note": "Supporting source context revalidated; original evidence retained.",
-          "previous_record_sha256": "23dd4408977cb583882c7db21edc82a9d80802fdf9571aec2129fcfdcf30b9be",
-          "status": "SOURCE VERIFIED"
-        },
-        {
-          "at": "2026-10-24T04:33:05.281395Z",
-          "note": "Supporting source context revalidated; original evidence retained.",
-          "previous_record_sha256": "409ba947f8e1b490f19a3830c37bf4de9723c54fa0c11d3333923b0888d1c2e3",
-          "status": "SOURCE VERIFIED"
-        },
-        {
-          "at": "2026-10-24T15:55:16.847850Z",
-          "note": "Supporting source context revalidated; original evidence retained.",
-          "previous_record_sha256": "e14eef9b90759615d1855e99772a392a12e1377baddb823e36d38e4261ac7455",
-          "status": "SOURCE VERIFIED"
-        },
-        {
-          "at": "2026-10-24T22:28:17.389424Z",
-          "note": "Supporting source context revalidated; original evidence retained.",
-          "previous_record_sha256": "768c23715414c834ed6529d9644da7c39f005b89637ae47fb345762b31537c64",
-          "status": "SOURCE VERIFIED"
-        },
-        {
-          "at": "2026-10-25T11:22:37.691511Z",
-          "note": "Supporting source context revalidated; original evidence retained.",
-          "previous_record_sha256": "278928e600ae04ce43806ac6a2d2317cafc3959d1bd65847e14894616daadabc",
-          "status": "SOURCE VERIFIED"
-        },
-        {
-          "at": "2026-10-25T19:02:32.855071Z",
-          "note": "Supporting source context revalidated; original evidence retained.",
-          "previous_record_sha256": "5572702acd0fc301e712b63f6b42ccae904cf3c3342f7ee4053d31811fafd6a1",
-          "status": "SOURCE VERIFIED"
-        },
-        {
-          "at": "2026-10-26T12:56:39.372881Z",
-          "note": "Supporting source context revalidated; original evidence retained.",
-          "previous_record_sha256": "a7c8e7f1a0de01af8633933287c63efee8b246ae53936b68fba59f58e508003d",
-          "status": "SOURCE VERIFIED"
-        },
-        {
-          "at": "2026-10-27T12:07:29.882160Z",
-          "note": "Supporting source context revalidated; original evidence retained.",
-          "previous_record_sha256": "17c5741a57dd969f1e31375c57e4453ddf81723cde775802f490961b48a79e5e",
-          "status": "SOURCE VERIFIED"
-        },
-        {
-          "at": "2026-10-28T16:37:25.056729Z",
-          "note": "Supporting source context revalidated; original evidence retained.",
-          "previous_record_sha256": "0d07f9fd42a7bb09208d3bc997f906ed0c984b4226cbaf68bddc793690a2b5c8",
-          "status": "SOURCE VERIFIED"
-        }
-      ],
-      "is_fixture": false,
-      "last_source_checked_at": "2026-10-28T16:37:25.056729Z",
-      "last_successful_evidence_check_at": "2026-10-28T16:37:25.056729Z",
-      "llm": {
-        "fields_proposed": [],
-        "llm_model": null,
-        "llm_output_was_validated": false,
-        "llm_pipeline_version": null,
-        "llm_provider": null,
-        "llm_task": null,
-        "llm_task_version": null,
-        "llm_used": false,
-        "llm_used_at": null,
-        "source_revision_id": null,
-        "validation_result": "not_used"
-      },
-      "location_id": null,
-      "pipeline_version": "0.3.0",
-      "publication_status": "active",
-      "record_class": "inspection_evidence",
-      "record_created_at": "2026-09-09T23:09:01.232782Z",
-      "record_scope": "area_operation",
-      "record_updated_at": "2026-10-28T16:37:25.056729Z",
-      "related_record_ids": [],
-      "reported_fact": {
-        "area": "কলকাতা",
-        "district": null,
-        "establishment_name": null,
-        "establishment_type": null,
-        "event_date": null,
-        "evidence": {
-          "area": {
-            "quote": "কলকাতা: রবিবার সকালে শহর কলকাতার একের পর এক রেস্তোরাঁয় অভিযান চালাচ্ছে খাদ্য সুরক্ষা দফতর।",
-            "source_url": "https://bengali.abplive.com/district/food-safety-raid-on-south-city-mall-jadavpur-breaking-news-1191822"
-          },
-          "reported_action": {
-            "quote": "কলকাতা: রবিবার সকালে শহর কলকাতার একের পর এক রেস্তোরাঁয় অভিযান চালাচ্ছে খাদ্য সুরক্ষা দফতর।",
-            "source_url": "https://bengali.abplive.com/district/food-safety-raid-on-south-city-mall-jadavpur-breaking-news-1191822"
-          },
-          "reported_authority": {
-            "quote": "কলকাতা: রবিবার সকালে শহর কলকাতার একের পর এক রেস্তোরাঁয় অভিযান চালাচ্ছে খাদ্য সুরক্ষা দফতর।",
-            "source_url": "https://bengali.abplive.com/district/food-safety-raid-on-south-city-mall-jadavpur-breaking-news-1191822"
-          },
-          "reported_observation": {
-            "quote": "কলকাতা: রবিবার সকালে শহর কলকাতার একের পর এক রেস্তোরাঁয় অভিযান চালাচ্ছে খাদ্য সুরক্ষা দফতর।",
-            "source_url": "https://bengali.abplive.com/district/food-safety-raid-on-south-city-mall-jadavpur-breaking-news-1191822"
-          }
-        },
-        "formal_finding": null,
-        "legal_finding_status": "unknown",
-        "reported_action": "অভিযান চালাচ্ছে",
-        "reported_authority": "খাদ্য সুরক্ষা দফতর",
-        "reported_observation": "কলকাতা: রবিবার সকালে শহর কলকাতার একের পর এক রেস্তোরাঁয় অভিযান চালাচ্ছে খাদ্য সুরক্ষা দফতর।",
-        "reported_quantity": null
-      },
-      "review": null,
-      "reviewed_associations": [],
-      "reviewer_hold": false,
-      "source_availability": "available",
-      "source_availability_reason": null,
-      "sources": [
-        {
-          "archive_url": null,
-          "evidence_context": "কলকাতা: রবিবার সকালে শহর কলকাতার একের পর এক রেস্তোরাঁয় অভিযান চালাচ্ছে খাদ্য সুরক্ষা দফতর।",
-          "evidence_language": "bn",
-          "evidence_locator": null,
-          "evidence_quote": "কলকাতা: রবিবার সকালে শহর কলকাতার একের পর এক রেস্তোরাঁয় অভিযান চালাচ্ছে খাদ্য সুরক্ষা দফতর।",
-          "evidence_span_hash": "da506a948af807c9dadfbdd25b9305ca5f199400cc1e994a46bd1b1654cfe8d2",
-          "origin_source_id": null,
-          "retrieved_at": "2026-09-09T23:09:01.232782Z",
-          "source_date": "2026-09-06",
-          "source_id": "SRC-15e0ca4c8a5c08ff93cf",
-          "source_language": "bn",
-          "source_publisher": "ABP Ananda",
-          "source_relationship": "unknown",
-          "source_revision_id": "02236eec108ed545ba13e70e0a4501d7a38858c917f9298e4725cb11c168d001",
-          "source_title": "Food Safety Raid: এবার সাউথ সিথি মলের রেস্তোরাঁতেও হানা",
-          "source_type": "news",
-          "source_url": "https://bengali.abplive.com/district/food-safety-raid-on-south-city-mall-jadavpur-breaking-news-1191822",
-          "text_sha256": "02236eec108ed545ba13e70e0a4501d7a38858c917f9298e4725cb11c168d001",
-          "tier": "B"
-        }
-      ],
-      "superseded_by": null,
-      "validator_id": "field_evidence_validation",
-      "validator_version": "2",
-      "verification_notes": "Supporting source context revalidated; original evidence retained.",
-      "verification_status": "SOURCE VERIFIED"
-    },
-    {
-      "automatic_validation": {
         "extraction_evidence": {
           "end": 142,
           "match_method": "exact",
@@ -18253,11 +17713,17 @@
           "note": "Supporting source context revalidated; original evidence retained.",
           "previous_record_sha256": "745924fabe069dac3f58ac6011e39fa362d5c443a223aa77e2536b427ee1846c",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-10-29T12:56:37.268966Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "8c41daaff955a39bcee4f9d0b3aa02073400d711cb886641258bf5aef3882b4a",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-10-28T16:37:25.056729Z",
-      "last_successful_evidence_check_at": "2026-10-28T16:37:25.056729Z",
+      "last_source_checked_at": "2026-10-29T12:56:37.268966Z",
+      "last_successful_evidence_check_at": "2026-10-29T12:56:37.268966Z",
       "llm": {
         "fields_proposed": [
           "area",
@@ -18283,7 +17749,7 @@
       "record_class": "inspection_evidence",
       "record_created_at": "2026-09-11T16:27:14.451761Z",
       "record_scope": "district_operation",
-      "record_updated_at": "2026-10-28T16:37:25.056729Z",
+      "record_updated_at": "2026-10-29T12:56:37.268966Z",
       "related_record_ids": [],
       "reported_fact": {
         "area": "পূর্ব মেদিনীপুর",
