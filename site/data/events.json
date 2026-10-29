@@ -1,6 +1,6 @@
 {
   "context_notice": "Independent, non-governmental public-source research. Inclusion is not a finding of wrongdoing. Counts describe records in this tracker, not official totals, prevalence, compliance, risk or group behavior. Read the sources and preserve this context when sharing.",
-  "generated_at": "2026-10-29T12:56:37.268966+00:00",
+  "generated_at": "2026-10-29T19:37:41.952405+00:00",
   "pipeline_version": "0.3.0",
   "record_count": 45,
   "records": [
@@ -9566,11 +9566,17 @@
           "note": "Supporting source context revalidated; original evidence retained.",
           "previous_record_sha256": "f9be6adaaa8653dd9050aec9951417e9e0fcdc4922a2f5b1443c78426a4e033d",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-10-29T19:37:41.952405Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "59aad7d8efa9b7a08b6ebf4522855392630ed89fcb388cef4139ddfef915cc25",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-10-28T22:32:33.909290Z",
-      "last_successful_evidence_check_at": "2026-10-28T22:32:33.909290Z",
+      "last_source_checked_at": "2026-10-29T19:37:41.952405Z",
+      "last_successful_evidence_check_at": "2026-10-29T19:37:41.952405Z",
       "llm": {
         "fields_proposed": [
           "area",
@@ -9596,7 +9602,7 @@
       "record_class": "inspection_evidence",
       "record_created_at": "2026-10-24T18:47:05.103646Z",
       "record_scope": "establishment_event",
-      "record_updated_at": "2026-10-28T22:32:33.909290Z",
+      "record_updated_at": "2026-10-29T19:37:41.952405Z",
       "related_record_ids": [],
       "reported_fact": {
         "area": "Salt Lake",
@@ -9653,11 +9659,11 @@
           "source_language": "en",
           "source_publisher": "The Times of India",
           "source_relationship": "unknown",
-          "source_revision_id": "9218a11a4b1e9bb14ce1877fac0bfdcb39c8f1537adb2da96c0e6e73ebc7ec0a",
+          "source_revision_id": "121b6bbca58bb6f20d0939080acfc990f3fa356b790695136694f6fd0a33b660",
           "source_title": "Salt Lake eateries shut after food safety raid | Kolkata News - The Times of India",
           "source_type": "news",
           "source_url": "https://timesofindia.indiatimes.com/city/kolkata/salt-lake-eateries-shut-after-food-safety-raid/articleshow/135176005.cms",
-          "text_sha256": "9218a11a4b1e9bb14ce1877fac0bfdcb39c8f1537adb2da96c0e6e73ebc7ec0a",
+          "text_sha256": "121b6bbca58bb6f20d0939080acfc990f3fa356b790695136694f6fd0a33b660",
           "tier": "B"
         }
       ],
@@ -12379,11 +12385,17 @@
           "note": "Supporting source context revalidated; original evidence retained.",
           "previous_record_sha256": "9578ad1eb45b40b78f866e99e20037da43d642e3a605e354fab79c43c4f0a217",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-10-29T19:37:41.952405Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "5f3c2e5cde484d7b2dc590acc0c2780e341c574accb60a76439c4649ef0e47cc",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-10-28T22:32:33.909290Z",
-      "last_successful_evidence_check_at": "2026-10-28T22:32:33.909290Z",
+      "last_source_checked_at": "2026-10-29T19:37:41.952405Z",
+      "last_successful_evidence_check_at": "2026-10-29T19:37:41.952405Z",
       "llm": {
         "fields_proposed": [
           "area",
@@ -12409,7 +12421,7 @@
       "record_class": "inspection_evidence",
       "record_created_at": "2026-10-24T18:47:05.103646Z",
       "record_scope": "establishment_event",
-      "record_updated_at": "2026-10-28T22:32:33.909290Z",
+      "record_updated_at": "2026-10-29T19:37:41.952405Z",
       "related_record_ids": [],
       "reported_fact": {
         "area": "সল্টলেকে",
@@ -12558,11 +12570,17 @@
           "note": "Supporting source context revalidated; original evidence retained.",
           "previous_record_sha256": "0b548188337690bb0bc41294f8901f2d9c45cdb4453ec4b5367166cdc741177c",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-10-29T19:37:41.952405Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "b9679785874f6701cc31a29e12068b544b0c76be733f169732726c548c3abfd0",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-10-28T22:32:33.909290Z",
-      "last_successful_evidence_check_at": "2026-10-28T22:32:33.909290Z",
+      "last_source_checked_at": "2026-10-29T19:37:41.952405Z",
+      "last_successful_evidence_check_at": "2026-10-29T19:37:41.952405Z",
       "llm": {
         "fields_proposed": [
           "area",
@@ -12588,7 +12606,7 @@
       "record_class": "inspection_evidence",
       "record_created_at": "2026-10-26T19:55:52.780187Z",
       "record_scope": "area_operation",
-      "record_updated_at": "2026-10-28T22:32:33.909290Z",
+      "record_updated_at": "2026-10-29T19:37:41.952405Z",
       "related_record_ids": [],
       "reported_fact": {
         "area": "নেতাজি ইন্ডোর স্টেডিয়াম ও বাবুঘাট সংলগ্ন বাস টার্মিনাস সংলগ্ন এলাকা",
@@ -12645,11 +12663,11 @@
           "source_language": "bn",
           "source_publisher": "ABP Ananda",
           "source_relationship": "unknown",
-          "source_revision_id": "75f8bf1332ff5696332c06552024579217ecc4cac8cb0ba9f9366acaf9a47175",
+          "source_revision_id": "22aa226696da39018fd5440df3514178f1b803ad2e4f7d39e1208e9ba8c547c3",
           "source_title": "West Bengal News Live : ফের অ্যাকশনে কলকাতা পুরসভার খাদ্য সুরক্ষা বিভাগ, খাবারের গুণগত মান যাচাই | West Bengal News 26 October 2026 Chorbagan Puja incident Suvendu Adhikari targets left parties TMC Symbol tussle Weather news update",
           "source_type": "news",
           "source_url": "https://bengali.abplive.com/district/west-bengal-news-26-october-2026-chorbagan-puja-incident-suvendu-adhikari-targets-left-parties-tmc-symbol-tussle-weather-news-update-1197260",
-          "text_sha256": "75f8bf1332ff5696332c06552024579217ecc4cac8cb0ba9f9366acaf9a47175",
+          "text_sha256": "22aa226696da39018fd5440df3514178f1b803ad2e4f7d39e1208e9ba8c547c3",
           "tier": "B"
         }
       ],
@@ -15023,11 +15041,17 @@
           "note": "Supporting source context revalidated; original evidence retained.",
           "previous_record_sha256": "61afbc3dc08c9713f49824d8e5afe2b109254a5dbb9443ec58c6f3f184426caa",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-10-29T19:37:41.952405Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "9226306ba444621014fe36b6f11b16e7121c10207c0eeb985ffaa73ce7398b08",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-10-28T22:32:33.909290Z",
-      "last_successful_evidence_check_at": "2026-10-28T22:32:33.909290Z",
+      "last_source_checked_at": "2026-10-29T19:37:41.952405Z",
+      "last_successful_evidence_check_at": "2026-10-29T19:37:41.952405Z",
       "llm": {
         "fields_proposed": [
           "area",
@@ -15054,7 +15078,7 @@
       "record_class": "inspection_evidence",
       "record_created_at": "2026-10-28T01:19:09.190771Z",
       "record_scope": "establishment_event",
-      "record_updated_at": "2026-10-28T22:32:33.909290Z",
+      "record_updated_at": "2026-10-29T19:37:41.952405Z",
       "related_record_ids": [],
       "reported_fact": {
         "area": "ভিআইপি রোড",
@@ -15758,11 +15782,17 @@
           "note": "Supporting source context revalidated; original evidence retained.",
           "previous_record_sha256": "537688ee31a351ab21bd4db37394f26908961029795d3ee276318961380c853b",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-10-29T19:37:41.952405Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "65fd6c4f4222743d9546ce18a188e21cfa8974ec037fc084b0208a56c2a521e6",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-10-28T22:32:33.909290Z",
-      "last_successful_evidence_check_at": "2026-10-28T22:32:33.909290Z",
+      "last_source_checked_at": "2026-10-29T19:37:41.952405Z",
+      "last_successful_evidence_check_at": "2026-10-29T19:37:41.952405Z",
       "llm": {
         "fields_proposed": [
           "area",
@@ -15789,7 +15819,7 @@
       "record_class": "inspection_evidence",
       "record_created_at": "2026-10-28T01:19:09.190771Z",
       "record_scope": "establishment_event",
-      "record_updated_at": "2026-10-28T22:32:33.909290Z",
+      "record_updated_at": "2026-10-29T19:37:41.952405Z",
       "related_record_ids": [],
       "reported_fact": {
         "area": "ভিআইপি রোডের ওপর",
