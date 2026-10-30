@@ -1,6 +1,6 @@
 {
   "context_notice": "Independent, non-governmental public-source research. Inclusion is not a finding of wrongdoing. Counts describe records in this tracker, not official totals, prevalence, compliance, risk or group behavior. Read the sources and preserve this context when sharing.",
-  "generated_at": "2026-10-30T05:43:40.631985+00:00",
+  "generated_at": "2026-10-30T12:50:12.958387+00:00",
   "pipeline_version": "0.3.0",
   "record_count": 45,
   "records": [
@@ -12493,11 +12493,17 @@
           "note": "Supporting source context revalidated; original evidence retained.",
           "previous_record_sha256": "5f3c2e5cde484d7b2dc590acc0c2780e341c574accb60a76439c4649ef0e47cc",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-10-30T12:50:12.958387Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "caa457626d8c259ebac45592ad7880bb094b6af2238f07201bc19d95307f8aee",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-10-29T19:37:41.952405Z",
-      "last_successful_evidence_check_at": "2026-10-29T19:37:41.952405Z",
+      "last_source_checked_at": "2026-10-30T12:50:12.958387Z",
+      "last_successful_evidence_check_at": "2026-10-30T12:50:12.958387Z",
       "llm": {
         "fields_proposed": [
           "area",
@@ -12523,7 +12529,7 @@
       "record_class": "inspection_evidence",
       "record_created_at": "2026-10-24T18:47:05.103646Z",
       "record_scope": "establishment_event",
-      "record_updated_at": "2026-10-29T19:37:41.952405Z",
+      "record_updated_at": "2026-10-30T12:50:12.958387Z",
       "related_record_ids": [],
       "reported_fact": {
         "area": "সল্টলেকে",
@@ -12580,11 +12586,11 @@
           "source_language": "bn",
           "source_publisher": "ABP Ananda",
           "source_relationship": "unknown",
-          "source_revision_id": "f1942bdfe3306079f366e1303f7c9ffce28c4dc06e26dd898d16710f20339908",
+          "source_revision_id": "833075f6b0160d03dc5e7cecd80895231a8658e175a71693fba049530d3e72ec",
           "source_title": "মাংসের উপর ছত্রাক, বন্ধ হল সল্টলেকের Balle Balle Dhaba, বাতিল লাইসেন্স",
           "source_type": "news",
           "source_url": "https://bengali.abplive.com/district/saltlake-balle-balle-dhaba-closed-after-food-inspection-license-cancelled-1197087",
-          "text_sha256": "f1942bdfe3306079f366e1303f7c9ffce28c4dc06e26dd898d16710f20339908",
+          "text_sha256": "833075f6b0160d03dc5e7cecd80895231a8658e175a71693fba049530d3e72ec",
           "tier": "B"
         }
       ],
@@ -12678,11 +12684,17 @@
           "note": "Supporting source context revalidated; original evidence retained.",
           "previous_record_sha256": "b9679785874f6701cc31a29e12068b544b0c76be733f169732726c548c3abfd0",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-10-30T12:50:12.958387Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "32ed5aaebc08bfd1a696363973e48b27ec8f9db8a0edf171ca46b405b4f4eb9f",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-10-29T19:37:41.952405Z",
-      "last_successful_evidence_check_at": "2026-10-29T19:37:41.952405Z",
+      "last_source_checked_at": "2026-10-30T12:50:12.958387Z",
+      "last_successful_evidence_check_at": "2026-10-30T12:50:12.958387Z",
       "llm": {
         "fields_proposed": [
           "area",
@@ -12708,7 +12720,7 @@
       "record_class": "inspection_evidence",
       "record_created_at": "2026-10-26T19:55:52.780187Z",
       "record_scope": "area_operation",
-      "record_updated_at": "2026-10-29T19:37:41.952405Z",
+      "record_updated_at": "2026-10-30T12:50:12.958387Z",
       "related_record_ids": [],
       "reported_fact": {
         "area": "নেতাজি ইন্ডোর স্টেডিয়াম ও বাবুঘাট সংলগ্ন বাস টার্মিনাস সংলগ্ন এলাকা",
@@ -15167,11 +15179,17 @@
           "note": "Supporting source context revalidated; original evidence retained.",
           "previous_record_sha256": "9226306ba444621014fe36b6f11b16e7121c10207c0eeb985ffaa73ce7398b08",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-10-30T12:50:12.958387Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "af98c6d1805b025e4169731352e349d6587783f1d8efcbf1490b44dfdc9df300",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-10-29T19:37:41.952405Z",
-      "last_successful_evidence_check_at": "2026-10-29T19:37:41.952405Z",
+      "last_source_checked_at": "2026-10-30T12:50:12.958387Z",
+      "last_successful_evidence_check_at": "2026-10-30T12:50:12.958387Z",
       "llm": {
         "fields_proposed": [
           "area",
@@ -15198,7 +15216,7 @@
       "record_class": "inspection_evidence",
       "record_created_at": "2026-10-28T01:19:09.190771Z",
       "record_scope": "establishment_event",
-      "record_updated_at": "2026-10-29T19:37:41.952405Z",
+      "record_updated_at": "2026-10-30T12:50:12.958387Z",
       "related_record_ids": [],
       "reported_fact": {
         "area": "ভিআইপি রোড",
@@ -15914,11 +15932,17 @@
           "note": "Supporting source context revalidated; original evidence retained.",
           "previous_record_sha256": "65fd6c4f4222743d9546ce18a188e21cfa8974ec037fc084b0208a56c2a521e6",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-10-30T12:50:12.958387Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "c4b6d38dd2510e2a85678f7bd2af814ceab429331ba52d286b928d27cc356585",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-10-29T19:37:41.952405Z",
-      "last_successful_evidence_check_at": "2026-10-29T19:37:41.952405Z",
+      "last_source_checked_at": "2026-10-30T12:50:12.958387Z",
+      "last_successful_evidence_check_at": "2026-10-30T12:50:12.958387Z",
       "llm": {
         "fields_proposed": [
           "area",
@@ -15945,7 +15969,7 @@
       "record_class": "inspection_evidence",
       "record_created_at": "2026-10-28T01:19:09.190771Z",
       "record_scope": "establishment_event",
-      "record_updated_at": "2026-10-29T19:37:41.952405Z",
+      "record_updated_at": "2026-10-30T12:50:12.958387Z",
       "related_record_ids": [],
       "reported_fact": {
         "area": "ভিআইপি রোডের ওপর",
@@ -17318,11 +17342,17 @@
           "note": "Source-grounded LLM candidate auto-published after deterministic validation.",
           "previous_record_sha256": null,
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-10-30T12:50:12.958387Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "b69d2e7179ad78a5654d0b58816523716b8efb490c118286d25060a120d686a4",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-10-28T01:19:09.190771Z",
-      "last_successful_evidence_check_at": "2026-10-28T01:19:09.190771Z",
+      "last_source_checked_at": "2026-10-30T12:50:12.958387Z",
+      "last_successful_evidence_check_at": "2026-10-30T12:50:12.958387Z",
       "llm": {
         "fields_proposed": [
           "area",
@@ -17348,7 +17378,7 @@
       "record_class": "inspection_evidence",
       "record_created_at": "2026-10-28T01:19:09.190771Z",
       "record_scope": "establishment_event",
-      "record_updated_at": "2026-10-28T01:19:09.190771Z",
+      "record_updated_at": "2026-10-30T12:50:12.958387Z",
       "related_record_ids": [],
       "reported_fact": {
         "area": "ভিআইপি রোডের",
@@ -17405,18 +17435,18 @@
           "source_language": "bn",
           "source_publisher": "ABP Ananda",
           "source_relationship": "unknown",
-          "source_revision_id": "97a13e89ceafe0de6ab7af79e531107bcf03cd6f61c839ddb227238d0cdbe3bd",
+          "source_revision_id": "a92d3127d6924b032a5544f03ad50a263466a896775dbf35d6e74eeb387a9001",
           "source_title": "Food Safety Raid: হলদিরাম প্রভুজির রেস্টুরেন্টে হানা খাদ্য সুরক্ষা দফতরের, VIP রোডের উপর এই দোকান থেকে যা বেরিয়ে এল ..",
           "source_type": "news",
           "source_url": "https://bengali.abplive.com/district/food-safety-raid-on-haldiram-prabhuji-restaurant-at-vip-road-breaking-news-1197381",
-          "text_sha256": "97a13e89ceafe0de6ab7af79e531107bcf03cd6f61c839ddb227238d0cdbe3bd",
+          "text_sha256": "a92d3127d6924b032a5544f03ad50a263466a896775dbf35d6e74eeb387a9001",
           "tier": "B"
         }
       ],
       "superseded_by": null,
       "validator_id": "objective_source_grounding",
       "validator_version": "2",
-      "verification_notes": "LLM-assisted candidate; objective source-grounding and publication checks passed. Source verification is not an independent finding of fact.",
+      "verification_notes": "Supporting source context revalidated; original evidence retained.",
       "verification_status": "SOURCE VERIFIED"
     },
     {
