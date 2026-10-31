@@ -1,8 +1,8 @@
 {
   "context_notice": "Independent, non-governmental public-source research. Inclusion is not a finding of wrongdoing. Counts describe records in this tracker, not official totals, prevalence, compliance, risk or group behavior. Read the sources and preserve this context when sharing.",
-  "generated_at": "2026-10-31T12:22:33.306824+00:00",
+  "generated_at": "2026-10-31T18:32:14.872220+00:00",
   "pipeline_version": "0.3.0",
-  "record_count": 47,
+  "record_count": 49,
   "records": [
     {
       "automatic_validation": null,
@@ -1689,11 +1689,17 @@
           "note": "Supporting source context revalidated; original evidence retained.",
           "previous_record_sha256": "81cf561bf53cc6527f8ca0461ecd4b70edb06092f48e88bd413be19b91ddeec7",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-10-31T18:32:14.872220Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "fd34d4d994ba18e6a78571408d3bdc84b654cb12e64c83705ef7ff0d05497d6a",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-10-31T12:22:33.306824Z",
-      "last_successful_evidence_check_at": "2026-10-31T12:22:33.306824Z",
+      "last_source_checked_at": "2026-10-31T18:32:14.872220Z",
+      "last_successful_evidence_check_at": "2026-10-31T18:32:14.872220Z",
       "llm": {
         "fields_proposed": [
           "area",
@@ -1720,7 +1726,7 @@
       "record_class": "inspection_evidence",
       "record_created_at": "2026-09-11T11:18:01.816017Z",
       "record_scope": "establishment_event",
-      "record_updated_at": "2026-10-31T12:22:33.306824Z",
+      "record_updated_at": "2026-10-31T18:32:14.872220Z",
       "related_record_ids": [],
       "reported_fact": {
         "area": "বাদুড়িয়া",
@@ -2251,11 +2257,17 @@
           "note": "Supporting source context revalidated; original evidence retained.",
           "previous_record_sha256": "977e423e0ab239f6b1f3b6d423e7be56eb0b51d545f793532fc4a8539019baa4",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-10-31T18:32:14.872220Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "be5af8d7ea29a435fc95b10c34c3d2acf2a15921679fdf524ce808436674ac98",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-10-31T12:22:33.306824Z",
-      "last_successful_evidence_check_at": "2026-10-31T12:22:33.306824Z",
+      "last_source_checked_at": "2026-10-31T18:32:14.872220Z",
+      "last_successful_evidence_check_at": "2026-10-31T18:32:14.872220Z",
       "llm": {
         "fields_proposed": [
           "area",
@@ -2282,7 +2294,7 @@
       "record_class": "inspection_evidence",
       "record_created_at": "2026-09-11T04:37:44.799127Z",
       "record_scope": "establishment_event",
-      "record_updated_at": "2026-10-31T12:22:33.306824Z",
+      "record_updated_at": "2026-10-31T18:32:14.872220Z",
       "related_record_ids": [],
       "reported_fact": {
         "area": "ট্যাংরার",
@@ -5084,6 +5096,164 @@
       "validator_id": "field_evidence_validation",
       "validator_version": "2",
       "verification_notes": "Supporting source context revalidated; original evidence retained.",
+      "verification_status": "SOURCE VERIFIED"
+    },
+    {
+      "automatic_validation": {
+        "extraction_evidence": {
+          "end": 338,
+          "match_method": "exact",
+          "original_quote": "সকাল সকাল ফের কলকাতা পুরসভার খাদ্য সুরক্ষা বিভাগের অভিযান। এবার অভিযান চালানো হল শিয়ালদহ স্টেশন সংলগ্ন এলাকায় থাকা খাবারের দোকানগুলিতে। সোশ্যাল মিডিয়ায় ভাইরাল রাজুদার পকেট পরোটার দোকান থেকে শুরু করে ফুটপাথ ও ফ্লাইওভারের নীচে থাকা অন্যান্য খাবারের দোকানগুলিতে অভিযান চালানো হয়। প্রতিটি দোকান থেকে খাবারের নমুনা সংগ্রহ করে পরীক্ষা করা হয়।",
+          "passage_id": "P022",
+          "source_revision_id": "f1a5dca2101a006d36f385458db1139ac3b82264cb82c451d3c332903959a724",
+          "start": 0
+        },
+        "method": "source_grounded_candidate_v1",
+        "pipeline_version": "0.3.0",
+        "validated_at": "2026-10-31T18:32:14.872220Z"
+      },
+      "context_notice": "Independent, non-governmental public-source research. Inclusion is not a finding of wrongdoing. Counts describe records in this tracker, not official totals, prevalence, compliance, risk or group behavior. Read the sources and preserve this context when sharing.",
+      "derived_context": {
+        "action_category": "not reported",
+        "action_category_confidence": "unknown",
+        "action_category_method": null,
+        "action_category_reviewed": false,
+        "action_category_source": null,
+        "business_format": "unknown",
+        "business_format_confidence": "unknown",
+        "business_format_method": null,
+        "business_format_reviewed": false,
+        "business_format_source": null,
+        "derived_confidence": "unknown",
+        "derived_context_method": "Unknown; no contextual inference performed.",
+        "derived_context_sources": [],
+        "establishment_context": "unknown",
+        "establishment_context_confidence": "unknown",
+        "establishment_context_method": null,
+        "establishment_context_reviewed": false,
+        "establishment_context_source": null,
+        "latitude": null,
+        "location_method": null,
+        "location_precision": null,
+        "location_reviewed": false,
+        "location_source": null,
+        "longitude": null,
+        "menu_context": "unknown",
+        "menu_context_confidence": "unknown",
+        "menu_context_method": null,
+        "menu_context_reviewed": false,
+        "menu_context_source": null,
+        "normalized_area": null
+      },
+      "display_summary": "Source reports a source-reported food-safety event involving an unnamed establishment in শিয়ালদহ স্টেশন সংলগ্ন এলাকায়.",
+      "establishment_id": null,
+      "event_id": "WBFS-25b3c280cfeb",
+      "evidence_support_status": "supported_as_of",
+      "extractor_id": "source_grounded_candidate",
+      "extractor_version": "1",
+      "first_published_at": "2026-10-31T18:32:14.872220Z",
+      "history": [
+        {
+          "at": "2026-10-31T18:32:14.872220Z",
+          "note": "Source-grounded LLM candidate auto-published after deterministic validation.",
+          "previous_record_sha256": null,
+          "status": "SOURCE VERIFIED"
+        }
+      ],
+      "is_fixture": false,
+      "last_source_checked_at": "2026-10-31T18:32:14.872220Z",
+      "last_successful_evidence_check_at": "2026-10-31T18:32:14.872220Z",
+      "llm": {
+        "fields_proposed": [
+          "area",
+          "reported_action",
+          "reported_authority",
+          "reported_observation"
+        ],
+        "llm_model": "gemini-3.5-flash-lite",
+        "llm_output_was_validated": true,
+        "llm_pipeline_version": "0.3.0",
+        "llm_provider": "gemini",
+        "llm_task": "structured source extraction",
+        "llm_task_version": "source_candidates_v2",
+        "llm_used": true,
+        "llm_used_at": "2026-10-31T18:32:24.252912Z",
+        "source_revision_id": "f1a5dca2101a006d36f385458db1139ac3b82264cb82c451d3c332903959a724",
+        "validation_result": "passed"
+      },
+      "location_id": null,
+      "pipeline_version": "0.3.0",
+      "publication_status": "active",
+      "record_class": "inspection_evidence",
+      "record_created_at": "2026-10-31T18:32:14.872220Z",
+      "record_scope": "area_operation",
+      "record_updated_at": "2026-10-31T18:32:14.872220Z",
+      "related_record_ids": [
+        "WBFS-47ff92d5ba15"
+      ],
+      "reported_fact": {
+        "area": "শিয়ালদহ স্টেশন সংলগ্ন এলাকায়",
+        "district": null,
+        "establishment_name": null,
+        "establishment_type": null,
+        "event_date": null,
+        "evidence": {
+          "area": {
+            "quote": "সকাল সকাল ফের কলকাতা পুরসভার খাদ্য সুরক্ষা বিভাগের অভিযান। এবার অভিযান চালানো হল শিয়ালদহ স্টেশন সংলগ্ন এলাকায় থাকা খাবারের দোকানগুলিতে। সোশ্যাল মিডিয়ায় ভাইরাল রাজুদার পকেট পরোটার দোকান থেকে শুরু করে ফুটপাথ ও ফ্লাইওভারের নীচে থাকা অন্যান্য খাবারের দোকানগুলিতে অভিযান চালানো হয়। প্রতিটি দোকান থেকে খাবারের নমুনা সংগ্রহ করে পরীক্ষা করা হয়।",
+            "source_url": "https://tv9bangla.com/kolkata/west-bengal-news-live-congress-public-impeachment-maa-flyover-accident-suvendu-adhikari-abhishek-banerjee-food-safety-in-sealdah-1357185.html"
+          },
+          "reported_action": {
+            "quote": "সকাল সকাল ফের কলকাতা পুরসভার খাদ্য সুরক্ষা বিভাগের অভিযান। এবার অভিযান চালানো হল শিয়ালদহ স্টেশন সংলগ্ন এলাকায় থাকা খাবারের দোকানগুলিতে। সোশ্যাল মিডিয়ায় ভাইরাল রাজুদার পকেট পরোটার দোকান থেকে শুরু করে ফুটপাথ ও ফ্লাইওভারের নীচে থাকা অন্যান্য খাবারের দোকানগুলিতে অভিযান চালানো হয়। প্রতিটি দোকান থেকে খাবারের নমুনা সংগ্রহ করে পরীক্ষা করা হয়।",
+            "source_url": "https://tv9bangla.com/kolkata/west-bengal-news-live-congress-public-impeachment-maa-flyover-accident-suvendu-adhikari-abhishek-banerjee-food-safety-in-sealdah-1357185.html"
+          },
+          "reported_authority": {
+            "quote": "সকাল সকাল ফের কলকাতা পুরসভার খাদ্য সুরক্ষা বিভাগের অভিযান। এবার অভিযান চালানো হল শিয়ালদহ স্টেশন সংলগ্ন এলাকায় থাকা খাবারের দোকানগুলিতে। সোশ্যাল মিডিয়ায় ভাইরাল রাজুদার পকেট পরোটার দোকান থেকে শুরু করে ফুটপাথ ও ফ্লাইওভারের নীচে থাকা অন্যান্য খাবারের দোকানগুলিতে অভিযান চালানো হয়। প্রতিটি দোকান থেকে খাবারের নমুনা সংগ্রহ করে পরীক্ষা করা হয়।",
+            "source_url": "https://tv9bangla.com/kolkata/west-bengal-news-live-congress-public-impeachment-maa-flyover-accident-suvendu-adhikari-abhishek-banerjee-food-safety-in-sealdah-1357185.html"
+          },
+          "reported_observation": {
+            "quote": "সকাল সকাল ফের কলকাতা পুরসভার খাদ্য সুরক্ষা বিভাগের অভিযান। এবার অভিযান চালানো হল শিয়ালদহ স্টেশন সংলগ্ন এলাকায় থাকা খাবারের দোকানগুলিতে। সোশ্যাল মিডিয়ায় ভাইরাল রাজুদার পকেট পরোটার দোকান থেকে শুরু করে ফুটপাথ ও ফ্লাইওভারের নীচে থাকা অন্যান্য খাবারের দোকানগুলিতে অভিযান চালানো হয়। প্রতিটি দোকান থেকে খাবারের নমুনা সংগ্রহ করে পরীক্ষা করা হয়।",
+            "source_url": "https://tv9bangla.com/kolkata/west-bengal-news-live-congress-public-impeachment-maa-flyover-accident-suvendu-adhikari-abhishek-banerjee-food-safety-in-sealdah-1357185.html"
+          }
+        },
+        "formal_finding": null,
+        "legal_finding_status": "unknown",
+        "reported_action": "অভিযান চালানো হল",
+        "reported_authority": "কলকাতা পুরসভার খাদ্য সুরক্ষা বিভাগের",
+        "reported_observation": "অভিযান চালানো হল শিয়ালদহ স্টেশন সংলগ্ন এলাকায় থাকা খাবারের দোকানগুলিতে",
+        "reported_quantity": null
+      },
+      "review": null,
+      "reviewed_associations": [],
+      "reviewer_hold": false,
+      "source_availability": "available",
+      "source_availability_reason": null,
+      "sources": [
+        {
+          "archive_url": null,
+          "evidence_context": "সকাল সকাল ফের কলকাতা পুরসভার খাদ্য সুরক্ষা বিভাগের অভিযান। এবার অভিযান চালানো হল শিয়ালদহ স্টেশন সংলগ্ন এলাকায় থাকা খাবারের দোকানগুলিতে। সোশ্যাল মিডিয়ায় ভাইরাল রাজুদার পকেট পরোটার দোকান থেকে শুরু করে ফুটপাথ ও ফ্লাইওভারের নীচে থাকা অন্যান্য খাবারের দোকানগুলিতে অভিযান চালানো হয়। প্রতিটি দোকান থেকে খাবারের নমুনা সংগ্রহ করে পরীক্ষা করা হয়।",
+          "evidence_language": "bn",
+          "evidence_locator": null,
+          "evidence_quote": "অভিযান চালানো হল শিয়ালদহ স্টেশন সংলগ্ন এলাকায় থাকা খাবারের দোকানগুলিতে",
+          "evidence_span_hash": "e13ec250c2bb38dc640b21c05b447631a08bebc97e865fa438c0ac0a948aa3d0",
+          "origin_source_id": null,
+          "retrieved_at": "2026-10-31T18:32:14.872220Z",
+          "source_date": "2026-10-31",
+          "source_id": "SRC-aa2679fdc93db9e1e39c",
+          "source_language": "bn",
+          "source_publisher": "TV9 Bangla",
+          "source_relationship": "unknown",
+          "source_revision_id": "557546a1bc182b4663f289e80d6317245b4c3b98e5895e840c3074a1d8897621",
+          "source_title": "West Bengal News Live: ছোট আঙারিয়ার কেস রিওপেন করব: শুভেন্দু | West Bengal News Live: Congress public impeachment, Maa flyover accident, Suvendu Adhikari Abhishek Banerjee food safety in sealdah | TV9 Bangla News",
+          "source_type": "news",
+          "source_url": "https://tv9bangla.com/kolkata/west-bengal-news-live-congress-public-impeachment-maa-flyover-accident-suvendu-adhikari-abhishek-banerjee-food-safety-in-sealdah-1357185.html",
+          "text_sha256": "557546a1bc182b4663f289e80d6317245b4c3b98e5895e840c3074a1d8897621",
+          "tier": "B"
+        }
+      ],
+      "superseded_by": null,
+      "validator_id": "objective_source_grounding",
+      "validator_version": "2",
+      "verification_notes": "LLM-assisted candidate; objective source-grounding and publication checks passed. Source verification is not an independent finding of fact.",
       "verification_status": "SOURCE VERIFIED"
     },
     {
@@ -9629,6 +9799,169 @@
     {
       "automatic_validation": {
         "extraction_evidence": {
+          "end": 338,
+          "match_method": "exact",
+          "original_quote": "সকাল সকাল ফের কলকাতা পুরসভার খাদ্য সুরক্ষা বিভাগের অভিযান। এবার অভিযান চালানো হল শিয়ালদহ স্টেশন সংলগ্ন এলাকায় থাকা খাবারের দোকানগুলিতে। সোশ্যাল মিডিয়ায় ভাইরাল রাজুদার পকেট পরোটার দোকান থেকে শুরু করে ফুটপাথ ও ফ্লাইওভারের নীচে থাকা অন্যান্য খাবারের দোকানগুলিতে অভিযান চালানো হয়। প্রতিটি দোকান থেকে খাবারের নমুনা সংগ্রহ করে পরীক্ষা করা হয়।",
+          "passage_id": "P022",
+          "source_revision_id": "f1a5dca2101a006d36f385458db1139ac3b82264cb82c451d3c332903959a724",
+          "start": 0
+        },
+        "method": "source_grounded_candidate_v1",
+        "pipeline_version": "0.3.0",
+        "validated_at": "2026-10-31T18:32:14.872220Z"
+      },
+      "context_notice": "Independent, non-governmental public-source research. Inclusion is not a finding of wrongdoing. Counts describe records in this tracker, not official totals, prevalence, compliance, risk or group behavior. Read the sources and preserve this context when sharing.",
+      "derived_context": {
+        "action_category": "not reported",
+        "action_category_confidence": "unknown",
+        "action_category_method": null,
+        "action_category_reviewed": false,
+        "action_category_source": null,
+        "business_format": "unknown",
+        "business_format_confidence": "unknown",
+        "business_format_method": null,
+        "business_format_reviewed": false,
+        "business_format_source": null,
+        "derived_confidence": "unknown",
+        "derived_context_method": "Unknown; no contextual inference performed.",
+        "derived_context_sources": [],
+        "establishment_context": "unknown",
+        "establishment_context_confidence": "unknown",
+        "establishment_context_method": null,
+        "establishment_context_reviewed": false,
+        "establishment_context_source": null,
+        "latitude": null,
+        "location_method": null,
+        "location_precision": null,
+        "location_reviewed": false,
+        "location_source": null,
+        "longitude": null,
+        "menu_context": "unknown",
+        "menu_context_confidence": "unknown",
+        "menu_context_method": null,
+        "menu_context_reviewed": false,
+        "menu_context_source": null,
+        "normalized_area": null
+      },
+      "display_summary": "Source reports a source-reported food-safety event involving রাজুদার পকেট পরোটার দোকান in শিয়ালদহ স্টেশন.",
+      "establishment_id": null,
+      "event_id": "WBFS-47ff92d5ba15",
+      "evidence_support_status": "supported_as_of",
+      "extractor_id": "source_grounded_candidate",
+      "extractor_version": "1",
+      "first_published_at": "2026-10-31T18:32:14.872220Z",
+      "history": [
+        {
+          "at": "2026-10-31T18:32:14.872220Z",
+          "note": "Source-grounded LLM candidate auto-published after deterministic validation.",
+          "previous_record_sha256": null,
+          "status": "SOURCE VERIFIED"
+        }
+      ],
+      "is_fixture": false,
+      "last_source_checked_at": "2026-10-31T18:32:14.872220Z",
+      "last_successful_evidence_check_at": "2026-10-31T18:32:14.872220Z",
+      "llm": {
+        "fields_proposed": [
+          "area",
+          "establishment_name",
+          "reported_action",
+          "reported_authority",
+          "reported_observation"
+        ],
+        "llm_model": "gemini-3.5-flash-lite",
+        "llm_output_was_validated": true,
+        "llm_pipeline_version": "0.3.0",
+        "llm_provider": "gemini",
+        "llm_task": "structured source extraction",
+        "llm_task_version": "source_candidates_v2",
+        "llm_used": true,
+        "llm_used_at": "2026-10-31T18:32:24.252912Z",
+        "source_revision_id": "f1a5dca2101a006d36f385458db1139ac3b82264cb82c451d3c332903959a724",
+        "validation_result": "passed"
+      },
+      "location_id": null,
+      "pipeline_version": "0.3.0",
+      "publication_status": "active",
+      "record_class": "inspection_evidence",
+      "record_created_at": "2026-10-31T18:32:14.872220Z",
+      "record_scope": "establishment_event",
+      "record_updated_at": "2026-10-31T18:32:14.872220Z",
+      "related_record_ids": [
+        "WBFS-25b3c280cfeb"
+      ],
+      "reported_fact": {
+        "area": "শিয়ালদহ স্টেশন",
+        "district": null,
+        "establishment_name": "রাজুদার পকেট পরোটার দোকান",
+        "establishment_type": null,
+        "event_date": null,
+        "evidence": {
+          "area": {
+            "quote": "সকাল সকাল ফের কলকাতা পুরসভার খাদ্য সুরক্ষা বিভাগের অভিযান। এবার অভিযান চালানো হল শিয়ালদহ স্টেশন সংলগ্ন এলাকায় থাকা খাবারের দোকানগুলিতে। সোশ্যাল মিডিয়ায় ভাইরাল রাজুদার পকেট পরোটার দোকান থেকে শুরু করে ফুটপাথ ও ফ্লাইওভারের নীচে থাকা অন্যান্য খাবারের দোকানগুলিতে অভিযান চালানো হয়। প্রতিটি দোকান থেকে খাবারের নমুনা সংগ্রহ করে পরীক্ষা করা হয়।",
+            "source_url": "https://tv9bangla.com/kolkata/west-bengal-news-live-congress-public-impeachment-maa-flyover-accident-suvendu-adhikari-abhishek-banerjee-food-safety-in-sealdah-1357185.html"
+          },
+          "establishment_name": {
+            "quote": "সকাল সকাল ফের কলকাতা পুরসভার খাদ্য সুরক্ষা বিভাগের অভিযান। এবার অভিযান চালানো হল শিয়ালদহ স্টেশন সংলগ্ন এলাকায় থাকা খাবারের দোকানগুলিতে। সোশ্যাল মিডিয়ায় ভাইরাল রাজুদার পকেট পরোটার দোকান থেকে শুরু করে ফুটপাথ ও ফ্লাইওভারের নীচে থাকা অন্যান্য খাবারের দোকানগুলিতে অভিযান চালানো হয়। প্রতিটি দোকান থেকে খাবারের নমুনা সংগ্রহ করে পরীক্ষা করা হয়।",
+            "source_url": "https://tv9bangla.com/kolkata/west-bengal-news-live-congress-public-impeachment-maa-flyover-accident-suvendu-adhikari-abhishek-banerjee-food-safety-in-sealdah-1357185.html"
+          },
+          "reported_action": {
+            "quote": "সকাল সকাল ফের কলকাতা পুরসভার খাদ্য সুরক্ষা বিভাগের অভিযান। এবার অভিযান চালানো হল শিয়ালদহ স্টেশন সংলগ্ন এলাকায় থাকা খাবারের দোকানগুলিতে। সোশ্যাল মিডিয়ায় ভাইরাল রাজুদার পকেট পরোটার দোকান থেকে শুরু করে ফুটপাথ ও ফ্লাইওভারের নীচে থাকা অন্যান্য খাবারের দোকানগুলিতে অভিযান চালানো হয়। প্রতিটি দোকান থেকে খাবারের নমুনা সংগ্রহ করে পরীক্ষা করা হয়।",
+            "source_url": "https://tv9bangla.com/kolkata/west-bengal-news-live-congress-public-impeachment-maa-flyover-accident-suvendu-adhikari-abhishek-banerjee-food-safety-in-sealdah-1357185.html"
+          },
+          "reported_authority": {
+            "quote": "সকাল সকাল ফের কলকাতা পুরসভার খাদ্য সুরক্ষা বিভাগের অভিযান। এবার অভিযান চালানো হল শিয়ালদহ স্টেশন সংলগ্ন এলাকায় থাকা খাবারের দোকানগুলিতে। সোশ্যাল মিডিয়ায় ভাইরাল রাজুদার পকেট পরোটার দোকান থেকে শুরু করে ফুটপাথ ও ফ্লাইওভারের নীচে থাকা অন্যান্য খাবারের দোকানগুলিতে অভিযান চালানো হয়। প্রতিটি দোকান থেকে খাবারের নমুনা সংগ্রহ করে পরীক্ষা করা হয়।",
+            "source_url": "https://tv9bangla.com/kolkata/west-bengal-news-live-congress-public-impeachment-maa-flyover-accident-suvendu-adhikari-abhishek-banerjee-food-safety-in-sealdah-1357185.html"
+          },
+          "reported_observation": {
+            "quote": "সকাল সকাল ফের কলকাতা পুরসভার খাদ্য সুরক্ষা বিভাগের অভিযান। এবার অভিযান চালানো হল শিয়ালদহ স্টেশন সংলগ্ন এলাকায় থাকা খাবারের দোকানগুলিতে। সোশ্যাল মিডিয়ায় ভাইরাল রাজুদার পকেট পরোটার দোকান থেকে শুরু করে ফুটপাথ ও ফ্লাইওভারের নীচে থাকা অন্যান্য খাবারের দোকানগুলিতে অভিযান চালানো হয়। প্রতিটি দোকান থেকে খাবারের নমুনা সংগ্রহ করে পরীক্ষা করা হয়।",
+            "source_url": "https://tv9bangla.com/kolkata/west-bengal-news-live-congress-public-impeachment-maa-flyover-accident-suvendu-adhikari-abhishek-banerjee-food-safety-in-sealdah-1357185.html"
+          }
+        },
+        "formal_finding": null,
+        "legal_finding_status": "unknown",
+        "reported_action": "অভিযান চালানো হয়",
+        "reported_authority": "কলকাতা পুরসভার খাদ্য সুরক্ষা বিভাগের",
+        "reported_observation": "রাজুদার পকেট পরোটার দোকান থেকে শুরু করে ফুটপাথ ও ফ্লাইওভারের নীচে থাকা অন্যান্য খাবারের দোকানগুলিতে অভিযান চালানো হয়",
+        "reported_quantity": null
+      },
+      "review": null,
+      "reviewed_associations": [],
+      "reviewer_hold": false,
+      "source_availability": "available",
+      "source_availability_reason": null,
+      "sources": [
+        {
+          "archive_url": null,
+          "evidence_context": "সকাল সকাল ফের কলকাতা পুরসভার খাদ্য সুরক্ষা বিভাগের অভিযান। এবার অভিযান চালানো হল শিয়ালদহ স্টেশন সংলগ্ন এলাকায় থাকা খাবারের দোকানগুলিতে। সোশ্যাল মিডিয়ায় ভাইরাল রাজুদার পকেট পরোটার দোকান থেকে শুরু করে ফুটপাথ ও ফ্লাইওভারের নীচে থাকা অন্যান্য খাবারের দোকানগুলিতে অভিযান চালানো হয়। প্রতিটি দোকান থেকে খাবারের নমুনা সংগ্রহ করে পরীক্ষা করা হয়।",
+          "evidence_language": "bn",
+          "evidence_locator": null,
+          "evidence_quote": "রাজুদার পকেট পরোটার দোকান থেকে শুরু করে ফুটপাথ ও ফ্লাইওভারের নীচে থাকা অন্যান্য খাবারের দোকানগুলিতে অভিযান চালানো হয়",
+          "evidence_span_hash": "e531d1e90906a9a0e3d8b006a497818b9c0740f5e9b86ba816fc9c60b639a803",
+          "origin_source_id": null,
+          "retrieved_at": "2026-10-31T18:32:14.872220Z",
+          "source_date": "2026-10-31",
+          "source_id": "SRC-aa2679fdc93db9e1e39c",
+          "source_language": "bn",
+          "source_publisher": "TV9 Bangla",
+          "source_relationship": "unknown",
+          "source_revision_id": "557546a1bc182b4663f289e80d6317245b4c3b98e5895e840c3074a1d8897621",
+          "source_title": "West Bengal News Live: ছোট আঙারিয়ার কেস রিওপেন করব: শুভেন্দু | West Bengal News Live: Congress public impeachment, Maa flyover accident, Suvendu Adhikari Abhishek Banerjee food safety in sealdah | TV9 Bangla News",
+          "source_type": "news",
+          "source_url": "https://tv9bangla.com/kolkata/west-bengal-news-live-congress-public-impeachment-maa-flyover-accident-suvendu-adhikari-abhishek-banerjee-food-safety-in-sealdah-1357185.html",
+          "text_sha256": "557546a1bc182b4663f289e80d6317245b4c3b98e5895e840c3074a1d8897621",
+          "tier": "B"
+        }
+      ],
+      "superseded_by": null,
+      "validator_id": "objective_source_grounding",
+      "validator_version": "2",
+      "verification_notes": "LLM-assisted candidate; objective source-grounding and publication checks passed. Source verification is not an independent finding of fact.",
+      "verification_status": "SOURCE VERIFIED"
+    },
+    {
+      "automatic_validation": {
+        "extraction_evidence": {
           "end": 298,
           "match_method": "exact",
           "original_quote": "The state govt’s food safety wing on Saturday indefinitely shut a popular dhaba and closed a well-known sweet and bhujia shop and a fast-food eatery located adjacent to City Centre mall in Salt Lake for the next few days following a surprise raid after finding rotten and stale food items.",
@@ -11295,11 +11628,17 @@
           "note": "Supporting source context revalidated; original evidence retained.",
           "previous_record_sha256": "fdbbfa9c2136971b2fcc43add99cf8077812ef600a7efa6b700f4bd4cb18088c",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-10-31T18:32:14.872220Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "ecf3cccf3791a34bdf9cca8205aaaf7385b69900b6c08d6bd7f6ef8cd9f239a3",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-10-30T23:44:13.619708Z",
-      "last_successful_evidence_check_at": "2026-10-30T23:44:13.619708Z",
+      "last_source_checked_at": "2026-10-31T18:32:14.872220Z",
+      "last_successful_evidence_check_at": "2026-10-31T18:32:14.872220Z",
       "llm": {
         "fields_proposed": [
           "area",
@@ -11324,7 +11663,7 @@
       "record_class": "inspection_evidence",
       "record_created_at": "2026-09-11T00:09:16.296804Z",
       "record_scope": "area_operation",
-      "record_updated_at": "2026-10-30T23:44:13.619708Z",
+      "record_updated_at": "2026-10-31T18:32:14.872220Z",
       "related_record_ids": [
         "WBFS-c391d02b3d97"
       ],
@@ -12559,11 +12898,17 @@
           "note": "Supporting source context revalidated; original evidence retained.",
           "previous_record_sha256": "bf8d7cb71edcd9cd28aae0cb1cdfa3e803eda38fc37f78bd6ff4e71fa9179712",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-10-31T18:32:14.872220Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "4e33c00d001f71974f9967480e321eb79c4aae455e5b386e489f94b42c5da801",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-10-30T23:44:13.619708Z",
-      "last_successful_evidence_check_at": "2026-10-30T23:44:13.619708Z",
+      "last_source_checked_at": "2026-10-31T18:32:14.872220Z",
+      "last_successful_evidence_check_at": "2026-10-31T18:32:14.872220Z",
       "llm": {
         "fields_proposed": [
           "area",
@@ -12589,7 +12934,7 @@
       "record_class": "inspection_evidence",
       "record_created_at": "2026-09-11T00:09:16.296804Z",
       "record_scope": "establishment_event",
-      "record_updated_at": "2026-10-30T23:44:13.619708Z",
+      "record_updated_at": "2026-10-31T18:32:14.872220Z",
       "related_record_ids": [],
       "reported_fact": {
         "area": "মধ্যমগ্রামের স্টার মলে",
@@ -12646,11 +12991,11 @@
           "source_language": "bn",
           "source_publisher": "ABP Ananda",
           "source_relationship": "unknown",
-          "source_revision_id": "06d4f99a29378ecc40566e1ce15532d8f0692720562e8d8f0a9d5152b75c6feb",
+          "source_revision_id": "dcd576996233fb1872e4ba9f0b5236ee46a17e3de5172dc2022bd17b5f2c676b",
           "source_title": "Food Safety: অ্যাবসোলিউট বারবেকিউ -এর স্টোররুমে পচা মাংস, লাইসেন্স বাতিল রং দে বাসন্তি ধাবার, একাধিক নামী রেস্তরাঁয় শনিবার অভিযান | Rotten meat in Absolute Barbeque's storeroom Rang De Basanti Dhaba license cancelled raids at multiple renowned restaurants",
           "source_type": "news",
           "source_url": "https://bengali.abplive.com/district/rotten-meat-in-absolute-barbeque-s-storeroom-rang-de-basanti-dhaba-license-cancelled-raids-at-multiple-renowned-restaurants-1191753",
-          "text_sha256": "06d4f99a29378ecc40566e1ce15532d8f0692720562e8d8f0a9d5152b75c6feb",
+          "text_sha256": "dcd576996233fb1872e4ba9f0b5236ee46a17e3de5172dc2022bd17b5f2c676b",
           "tier": "B"
         }
       ],
@@ -18228,11 +18573,17 @@
           "note": "Supporting source context revalidated; original evidence retained.",
           "previous_record_sha256": "ff59e76859452ad73a30338aec12a3de207d9014c3165bdcfbc25bb36436f358",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-10-31T18:32:14.872220Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "13d443cfc04cc5aaafa87c4ebed850aacce8d8ef4b6962e506e5dbd26f175fcd",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-10-31T12:22:33.306824Z",
-      "last_successful_evidence_check_at": "2026-10-31T12:22:33.306824Z",
+      "last_source_checked_at": "2026-10-31T18:32:14.872220Z",
+      "last_successful_evidence_check_at": "2026-10-31T18:32:14.872220Z",
       "llm": {
         "fields_proposed": [
           "area",
@@ -18258,7 +18609,7 @@
       "record_class": "inspection_evidence",
       "record_created_at": "2026-09-11T16:27:14.451761Z",
       "record_scope": "district_operation",
-      "record_updated_at": "2026-10-31T12:22:33.306824Z",
+      "record_updated_at": "2026-10-31T18:32:14.872220Z",
       "related_record_ids": [],
       "reported_fact": {
         "area": "পূর্ব মেদিনীপুর",
@@ -19875,11 +20226,17 @@
           "note": "Supporting source context revalidated; original evidence retained.",
           "previous_record_sha256": "4bd4f3d09b3877b15328183f40b0384b91e5ac91d3d3451a94018ca149cd7473",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-10-31T18:32:14.872220Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "7a1127f7a17e847d9a820fc718aac12de5ced4c1020776024f270178640067b3",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-10-30T23:44:13.619708Z",
-      "last_successful_evidence_check_at": "2026-10-30T23:44:13.619708Z",
+      "last_source_checked_at": "2026-10-31T18:32:14.872220Z",
+      "last_successful_evidence_check_at": "2026-10-31T18:32:14.872220Z",
       "llm": {
         "fields_proposed": [
           "area",
@@ -19904,7 +20261,7 @@
       "record_class": "inspection_evidence",
       "record_created_at": "2026-09-11T00:09:16.296804Z",
       "record_scope": "area_operation",
-      "record_updated_at": "2026-10-30T23:44:13.619708Z",
+      "record_updated_at": "2026-10-31T18:32:14.872220Z",
       "related_record_ids": [
         "WBFS-5ee36b93256b"
       ],
