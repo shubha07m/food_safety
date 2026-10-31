@@ -1,8 +1,8 @@
 {
   "context_notice": "Independent, non-governmental public-source research. Inclusion is not a finding of wrongdoing. Counts describe records in this tracker, not official totals, prevalence, compliance, risk or group behavior. Read the sources and preserve this context when sharing.",
-  "generated_at": "2026-10-31T05:36:44.441544+00:00",
+  "generated_at": "2026-10-31T12:22:33.306824+00:00",
   "pipeline_version": "0.3.0",
-  "record_count": 45,
+  "record_count": 47,
   "records": [
     {
       "automatic_validation": null,
@@ -1114,11 +1114,17 @@
           "note": "Supporting source context revalidated; original evidence retained.",
           "previous_record_sha256": "d591131f6f227a967b44088c9bda8a35a1cc5c9c5c95a3f124bf29b82c99a56c",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-10-31T12:22:33.306824Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "b6b20d087b37730e07f39e2328693f20cbbda81bb9f9eb74632133d57f4dcce9",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-10-30T19:20:07.169268Z",
-      "last_successful_evidence_check_at": "2026-10-30T19:20:07.169268Z",
+      "last_source_checked_at": "2026-10-31T12:22:33.306824Z",
+      "last_successful_evidence_check_at": "2026-10-31T12:22:33.306824Z",
       "llm": {
         "fields_proposed": [],
         "llm_model": null,
@@ -1138,7 +1144,7 @@
       "record_class": "inspection_evidence",
       "record_created_at": "2026-09-09T23:11:25.626009Z",
       "record_scope": "area_operation",
-      "record_updated_at": "2026-10-30T19:20:07.169268Z",
+      "record_updated_at": "2026-10-31T12:22:33.306824Z",
       "related_record_ids": [],
       "reported_fact": {
         "area": "ডেকার্স লেন",
@@ -1677,11 +1683,17 @@
           "note": "Supporting source context revalidated; original evidence retained.",
           "previous_record_sha256": "93750ba4e2aef0cf02b29fcdf5a115855bdec9abee155c6b450e9dbe75642e3e",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-10-31T12:22:33.306824Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "81cf561bf53cc6527f8ca0461ecd4b70edb06092f48e88bd413be19b91ddeec7",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-10-30T05:43:40.631985Z",
-      "last_successful_evidence_check_at": "2026-10-30T05:43:40.631985Z",
+      "last_source_checked_at": "2026-10-31T12:22:33.306824Z",
+      "last_successful_evidence_check_at": "2026-10-31T12:22:33.306824Z",
       "llm": {
         "fields_proposed": [
           "area",
@@ -1708,7 +1720,7 @@
       "record_class": "inspection_evidence",
       "record_created_at": "2026-09-11T11:18:01.816017Z",
       "record_scope": "establishment_event",
-      "record_updated_at": "2026-10-30T05:43:40.631985Z",
+      "record_updated_at": "2026-10-31T12:22:33.306824Z",
       "related_record_ids": [],
       "reported_fact": {
         "area": "বাদুড়িয়া",
@@ -2233,11 +2245,17 @@
           "note": "Supporting source context revalidated; original evidence retained.",
           "previous_record_sha256": "cd49cf146c5111e9f92bd903550e8cc6c9f2463c70e5630647ca8eb82d1c7b67",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-10-31T12:22:33.306824Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "977e423e0ab239f6b1f3b6d423e7be56eb0b51d545f793532fc4a8539019baa4",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-10-30T23:44:13.619708Z",
-      "last_successful_evidence_check_at": "2026-10-30T23:44:13.619708Z",
+      "last_source_checked_at": "2026-10-31T12:22:33.306824Z",
+      "last_successful_evidence_check_at": "2026-10-31T12:22:33.306824Z",
       "llm": {
         "fields_proposed": [
           "area",
@@ -2264,7 +2282,7 @@
       "record_class": "inspection_evidence",
       "record_created_at": "2026-09-11T04:37:44.799127Z",
       "record_scope": "establishment_event",
-      "record_updated_at": "2026-10-30T23:44:13.619708Z",
+      "record_updated_at": "2026-10-31T12:22:33.306824Z",
       "related_record_ids": [],
       "reported_fact": {
         "area": "ট্যাংরার",
@@ -6714,11 +6732,17 @@
           "note": "Supporting source context revalidated; original evidence retained.",
           "previous_record_sha256": "36a84ae4f22e97902e9cfc00844cb5c76cddce92afb42bf887ccdf9a4354a928",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-10-31T12:22:33.306824Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "b401532635f5ce7e0b8926ea5796cb0a060d4c08d758e37f288e36c5b3a6db6e",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-10-30T19:20:07.169268Z",
-      "last_successful_evidence_check_at": "2026-10-30T19:20:07.169268Z",
+      "last_source_checked_at": "2026-10-31T12:22:33.306824Z",
+      "last_successful_evidence_check_at": "2026-10-31T12:22:33.306824Z",
       "llm": {
         "fields_proposed": [
           "area",
@@ -6744,7 +6768,7 @@
       "record_class": "inspection_evidence",
       "record_created_at": "2026-09-13T11:48:42.474489Z",
       "record_scope": "statewide_operation",
-      "record_updated_at": "2026-10-30T19:20:07.169268Z",
+      "record_updated_at": "2026-10-31T12:22:33.306824Z",
       "related_record_ids": [],
       "reported_fact": {
         "area": "across the state",
@@ -11970,6 +11994,167 @@
       "validator_id": "field_evidence_validation",
       "validator_version": "2",
       "verification_notes": "Supporting source context revalidated; original evidence retained.",
+      "verification_status": "SOURCE VERIFIED"
+    },
+    {
+      "automatic_validation": {
+        "extraction_evidence": {
+          "end": 228,
+          "match_method": "exact",
+          "original_quote": "শিয়ালদহের ভাইরাল ‘রাজুদার পকেট পরোটা’র দোকানে হানা কলকাতা পুরসভার খাদ্য সুরক্ষা বিভাগের। বৈধ লাইসেন্স না থাকায় দ্রুত লাইসেন্স করার নির্দেশ। পরোটা ও তরকারির নমুনা পরীক্ষার জন্য ল্যাবরেটরিতে পাঠানো হয়েছে।",
+          "passage_id": "P003",
+          "source_revision_id": "65db55743c96b65ddd755ce4749242de767cb7865a15c998f62c9bb6e96a4941",
+          "start": 23
+        },
+        "method": "source_grounded_candidate_v1",
+        "pipeline_version": "0.3.0",
+        "validated_at": "2026-10-31T12:22:33.306824Z"
+      },
+      "context_notice": "Independent, non-governmental public-source research. Inclusion is not a finding of wrongdoing. Counts describe records in this tracker, not official totals, prevalence, compliance, risk or group behavior. Read the sources and preserve this context when sharing.",
+      "derived_context": {
+        "action_category": "not reported",
+        "action_category_confidence": "unknown",
+        "action_category_method": null,
+        "action_category_reviewed": false,
+        "action_category_source": null,
+        "business_format": "unknown",
+        "business_format_confidence": "unknown",
+        "business_format_method": null,
+        "business_format_reviewed": false,
+        "business_format_source": null,
+        "derived_confidence": "unknown",
+        "derived_context_method": "Unknown; no contextual inference performed.",
+        "derived_context_sources": [],
+        "establishment_context": "unknown",
+        "establishment_context_confidence": "unknown",
+        "establishment_context_method": null,
+        "establishment_context_reviewed": false,
+        "establishment_context_source": null,
+        "latitude": null,
+        "location_method": null,
+        "location_precision": null,
+        "location_reviewed": false,
+        "location_source": null,
+        "longitude": null,
+        "menu_context": "unknown",
+        "menu_context_confidence": "unknown",
+        "menu_context_method": null,
+        "menu_context_reviewed": false,
+        "menu_context_source": null,
+        "normalized_area": null
+      },
+      "display_summary": "Source reports a source-reported food-safety event involving রাজুদার পকেট পরোটা in শিয়ালদহ.",
+      "establishment_id": null,
+      "event_id": "WBFS-6e2bfddd8138",
+      "evidence_support_status": "supported_as_of",
+      "extractor_id": "source_grounded_candidate",
+      "extractor_version": "1",
+      "first_published_at": "2026-10-31T12:22:33.306824Z",
+      "history": [
+        {
+          "at": "2026-10-31T12:22:33.306824Z",
+          "note": "Source-grounded LLM candidate auto-published after deterministic validation.",
+          "previous_record_sha256": null,
+          "status": "SOURCE VERIFIED"
+        }
+      ],
+      "is_fixture": false,
+      "last_source_checked_at": "2026-10-31T12:22:33.306824Z",
+      "last_successful_evidence_check_at": "2026-10-31T12:22:33.306824Z",
+      "llm": {
+        "fields_proposed": [
+          "area",
+          "establishment_name",
+          "reported_action",
+          "reported_authority",
+          "reported_observation"
+        ],
+        "llm_model": "gemini-3.5-flash-lite",
+        "llm_output_was_validated": true,
+        "llm_pipeline_version": "0.3.0",
+        "llm_provider": "gemini",
+        "llm_task": "structured source extraction",
+        "llm_task_version": "source_candidates_v2",
+        "llm_used": true,
+        "llm_used_at": "2026-10-31T12:22:38.818284Z",
+        "source_revision_id": "65db55743c96b65ddd755ce4749242de767cb7865a15c998f62c9bb6e96a4941",
+        "validation_result": "passed"
+      },
+      "location_id": null,
+      "pipeline_version": "0.3.0",
+      "publication_status": "active",
+      "record_class": "inspection_evidence",
+      "record_created_at": "2026-10-31T12:22:33.306824Z",
+      "record_scope": "establishment_event",
+      "record_updated_at": "2026-10-31T12:22:33.306824Z",
+      "related_record_ids": [],
+      "reported_fact": {
+        "area": "শিয়ালদহ",
+        "district": null,
+        "establishment_name": "রাজুদার পকেট পরোটা",
+        "establishment_type": null,
+        "event_date": null,
+        "evidence": {
+          "area": {
+            "quote": "শিয়ালদহের ভাইরাল ‘রাজুদার পকেট পরোটা’র দোকানে হানা কলকাতা পুরসভার খাদ্য সুরক্ষা বিভাগের। বৈধ লাইসেন্স না থাকায় দ্রুত লাইসেন্স করার নির্দেশ। পরোটা ও তরকারির নমুনা পরীক্ষার জন্য ল্যাবরেটরিতে পাঠানো হয়েছে।",
+            "source_url": "https://bengali.indianexpress.com/west-bengal/sealdah-rajuda-pocket-paratha-food-safety-raid-no-license-12770682"
+          },
+          "establishment_name": {
+            "quote": "শিয়ালদহের ভাইরাল ‘রাজুদার পকেট পরোটা’র দোকানে হানা কলকাতা পুরসভার খাদ্য সুরক্ষা বিভাগের। বৈধ লাইসেন্স না থাকায় দ্রুত লাইসেন্স করার নির্দেশ। পরোটা ও তরকারির নমুনা পরীক্ষার জন্য ল্যাবরেটরিতে পাঠানো হয়েছে।",
+            "source_url": "https://bengali.indianexpress.com/west-bengal/sealdah-rajuda-pocket-paratha-food-safety-raid-no-license-12770682"
+          },
+          "reported_action": {
+            "quote": "শিয়ালদহের ভাইরাল ‘রাজুদার পকেট পরোটা’র দোকানে হানা কলকাতা পুরসভার খাদ্য সুরক্ষা বিভাগের। বৈধ লাইসেন্স না থাকায় দ্রুত লাইসেন্স করার নির্দেশ। পরোটা ও তরকারির নমুনা পরীক্ষার জন্য ল্যাবরেটরিতে পাঠানো হয়েছে।",
+            "source_url": "https://bengali.indianexpress.com/west-bengal/sealdah-rajuda-pocket-paratha-food-safety-raid-no-license-12770682"
+          },
+          "reported_authority": {
+            "quote": "শিয়ালদহের ভাইরাল ‘রাজুদার পকেট পরোটা’র দোকানে হানা কলকাতা পুরসভার খাদ্য সুরক্ষা বিভাগের। বৈধ লাইসেন্স না থাকায় দ্রুত লাইসেন্স করার নির্দেশ। পরোটা ও তরকারির নমুনা পরীক্ষার জন্য ল্যাবরেটরিতে পাঠানো হয়েছে।",
+            "source_url": "https://bengali.indianexpress.com/west-bengal/sealdah-rajuda-pocket-paratha-food-safety-raid-no-license-12770682"
+          },
+          "reported_observation": {
+            "quote": "শিয়ালদহের ভাইরাল ‘রাজুদার পকেট পরোটা’র দোকানে হানা কলকাতা পুরসভার খাদ্য সুরক্ষা বিভাগের। বৈধ লাইসেন্স না থাকায় দ্রুত লাইসেন্স করার নির্দেশ। পরোটা ও তরকারির নমুনা পরীক্ষার জন্য ল্যাবরেটরিতে পাঠানো হয়েছে।",
+            "source_url": "https://bengali.indianexpress.com/west-bengal/sealdah-rajuda-pocket-paratha-food-safety-raid-no-license-12770682"
+          }
+        },
+        "formal_finding": null,
+        "legal_finding_status": "unknown",
+        "reported_action": "দ্রুত লাইসেন্স করার নির্দেশ",
+        "reported_authority": "কলকাতা পুরসভার খাদ্য সুরক্ষা বিভাগের",
+        "reported_observation": "বৈধ লাইসেন্স না থাকায়",
+        "reported_quantity": null
+      },
+      "review": null,
+      "reviewed_associations": [],
+      "reviewer_hold": false,
+      "source_availability": "available",
+      "source_availability_reason": null,
+      "sources": [
+        {
+          "archive_url": null,
+          "evidence_context": "শিয়ালদহের ভাইরাল ‘রাজুদার পকেট পরোটা’র দোকানে হানা কলকাতা পুরসভার খাদ্য সুরক্ষা বিভাগের। বৈধ লাইসেন্স না থাকায় দ্রুত লাইসেন্স করার নির্দেশ। পরোটা ও তরকারির নমুনা পরীক্ষার জন্য ল্যাবরেটরিতে পাঠানো হয়েছে।",
+          "evidence_language": "bn",
+          "evidence_locator": null,
+          "evidence_quote": "বৈধ লাইসেন্স না থাকায়",
+          "evidence_span_hash": "e91086bba8bbe604056d2fb572abed31750440f77690428e440935981b4820a1",
+          "origin_source_id": null,
+          "retrieved_at": "2026-10-31T12:22:33.306824Z",
+          "source_date": "2026-10-31",
+          "source_id": "SRC-2a44c4bc86d363409d41",
+          "source_language": "bn",
+          "source_publisher": "Indian Express Bangla",
+          "source_relationship": "unknown",
+          "source_revision_id": "54e129f36e6cd2ddbb1c62203b60c29d5368771b8e56348855db218915ba7d74",
+          "source_title": "লাইসেন্স নেই তবে রাজুদা 'কনফিডেন্ট'! খাদ্য সুরক্ষা বিভাগের হানার পর বললেন, ‘আমার তরকারি ১০০-তে ১০০ পাবে!’",
+          "source_type": "news",
+          "source_url": "https://bengali.indianexpress.com/west-bengal/sealdah-rajuda-pocket-paratha-food-safety-raid-no-license-12770682",
+          "text_sha256": "54e129f36e6cd2ddbb1c62203b60c29d5368771b8e56348855db218915ba7d74",
+          "tier": "B"
+        }
+      ],
+      "superseded_by": null,
+      "validator_id": "objective_source_grounding",
+      "validator_version": "2",
+      "verification_notes": "LLM-assisted candidate; objective source-grounding and publication checks passed. Source verification is not an independent finding of fact.",
       "verification_status": "SOURCE VERIFIED"
     },
     {
@@ -18037,11 +18222,17 @@
           "note": "Supporting source context revalidated; original evidence retained.",
           "previous_record_sha256": "c4d1876524a879c1132e0fe88e9eefc97f1a11f58edc4cdcc8f71d4de7821d5a",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-10-31T12:22:33.306824Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "ff59e76859452ad73a30338aec12a3de207d9014c3165bdcfbc25bb36436f358",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-10-30T23:44:13.619708Z",
-      "last_successful_evidence_check_at": "2026-10-30T23:44:13.619708Z",
+      "last_source_checked_at": "2026-10-31T12:22:33.306824Z",
+      "last_successful_evidence_check_at": "2026-10-31T12:22:33.306824Z",
       "llm": {
         "fields_proposed": [
           "area",
@@ -18067,7 +18258,7 @@
       "record_class": "inspection_evidence",
       "record_created_at": "2026-09-11T16:27:14.451761Z",
       "record_scope": "district_operation",
-      "record_updated_at": "2026-10-30T23:44:13.619708Z",
+      "record_updated_at": "2026-10-31T12:22:33.306824Z",
       "related_record_ids": [],
       "reported_fact": {
         "area": "পূর্ব মেদিনীপুর",
@@ -22407,6 +22598,162 @@
       "validator_id": "objective_source_grounding",
       "validator_version": "2",
       "verification_notes": "Supporting source context revalidated; original evidence retained.",
+      "verification_status": "SOURCE VERIFIED"
+    },
+    {
+      "automatic_validation": {
+        "extraction_evidence": {
+          "end": 238,
+          "match_method": "exact",
+          "original_quote": "শিয়ালদা স্টেশন চত্বরে কলকাতা পুরসভার খাদ্য় সুরক্ষা দফতরের। স্টেশন চত্বরের বিভিন্ন দোকানে হানা খাদ্য় সুরক্ষা দফতরের। একটি দোকানে তরকারি ও সিঙাড়ায় নিম্নমানের হলুদ ব্য়বহার করা হয়েছে। সেগুলি ফেলে দেন খাদ্য় সুরক্ষা দফতরের প্রতিনিধিরা।",
+          "passage_id": "P011",
+          "source_revision_id": "52bb333007b338fa98d88aff4ffd165ac724324f48072a7a6c9ba72d8630f223",
+          "start": 8
+        },
+        "method": "source_grounded_candidate_v1",
+        "pipeline_version": "0.3.0",
+        "validated_at": "2026-10-31T12:22:33.306824Z"
+      },
+      "context_notice": "Independent, non-governmental public-source research. Inclusion is not a finding of wrongdoing. Counts describe records in this tracker, not official totals, prevalence, compliance, risk or group behavior. Read the sources and preserve this context when sharing.",
+      "derived_context": {
+        "action_category": "not reported",
+        "action_category_confidence": "unknown",
+        "action_category_method": null,
+        "action_category_reviewed": false,
+        "action_category_source": null,
+        "business_format": "unknown",
+        "business_format_confidence": "unknown",
+        "business_format_method": null,
+        "business_format_reviewed": false,
+        "business_format_source": null,
+        "derived_confidence": "unknown",
+        "derived_context_method": "Unknown; no contextual inference performed.",
+        "derived_context_sources": [],
+        "establishment_context": "unknown",
+        "establishment_context_confidence": "unknown",
+        "establishment_context_method": null,
+        "establishment_context_reviewed": false,
+        "establishment_context_source": null,
+        "latitude": null,
+        "location_method": null,
+        "location_precision": null,
+        "location_reviewed": false,
+        "location_source": null,
+        "longitude": null,
+        "menu_context": "unknown",
+        "menu_context_confidence": "unknown",
+        "menu_context_method": null,
+        "menu_context_reviewed": false,
+        "menu_context_source": null,
+        "normalized_area": null
+      },
+      "display_summary": "Source reports a source-reported food-safety event involving an unnamed establishment in শিয়ালদা স্টেশন চত্বরে.",
+      "establishment_id": null,
+      "event_id": "WBFS-eeebf7bae5a3",
+      "evidence_support_status": "supported_as_of",
+      "extractor_id": "source_grounded_candidate",
+      "extractor_version": "1",
+      "first_published_at": "2026-10-31T12:22:33.306824Z",
+      "history": [
+        {
+          "at": "2026-10-31T12:22:33.306824Z",
+          "note": "Source-grounded LLM candidate auto-published after deterministic validation.",
+          "previous_record_sha256": null,
+          "status": "SOURCE VERIFIED"
+        }
+      ],
+      "is_fixture": false,
+      "last_source_checked_at": "2026-10-31T12:22:33.306824Z",
+      "last_successful_evidence_check_at": "2026-10-31T12:22:33.306824Z",
+      "llm": {
+        "fields_proposed": [
+          "area",
+          "reported_action",
+          "reported_authority",
+          "reported_observation"
+        ],
+        "llm_model": "gemini-3.5-flash-lite",
+        "llm_output_was_validated": true,
+        "llm_pipeline_version": "0.3.0",
+        "llm_provider": "gemini",
+        "llm_task": "structured source extraction",
+        "llm_task_version": "source_candidates_v2",
+        "llm_used": true,
+        "llm_used_at": "2026-10-31T12:22:43.935133Z",
+        "source_revision_id": "52bb333007b338fa98d88aff4ffd165ac724324f48072a7a6c9ba72d8630f223",
+        "validation_result": "passed"
+      },
+      "location_id": null,
+      "pipeline_version": "0.3.0",
+      "publication_status": "active",
+      "record_class": "inspection_evidence",
+      "record_created_at": "2026-10-31T12:22:33.306824Z",
+      "record_scope": "area_operation",
+      "record_updated_at": "2026-10-31T12:22:33.306824Z",
+      "related_record_ids": [],
+      "reported_fact": {
+        "area": "শিয়ালদা স্টেশন চত্বরে",
+        "district": null,
+        "establishment_name": null,
+        "establishment_type": null,
+        "event_date": null,
+        "evidence": {
+          "area": {
+            "quote": "শিয়ালদা স্টেশন চত্বরে কলকাতা পুরসভার খাদ্য় সুরক্ষা দফতরের। স্টেশন চত্বরের বিভিন্ন দোকানে হানা খাদ্য় সুরক্ষা দফতরের। একটি দোকানে তরকারি ও সিঙাড়ায় নিম্নমানের হলুদ ব্য়বহার করা হয়েছে। সেগুলি ফেলে দেন খাদ্য় সুরক্ষা দফতরের প্রতিনিধিরা।",
+            "source_url": "https://bengali.abplive.com/district/sealdah-station-many-food-shop-illegalities-singara-curry-in-probe-1197808"
+          },
+          "reported_action": {
+            "quote": "শিয়ালদা স্টেশন চত্বরে কলকাতা পুরসভার খাদ্য় সুরক্ষা দফতরের। স্টেশন চত্বরের বিভিন্ন দোকানে হানা খাদ্য় সুরক্ষা দফতরের। একটি দোকানে তরকারি ও সিঙাড়ায় নিম্নমানের হলুদ ব্য়বহার করা হয়েছে। সেগুলি ফেলে দেন খাদ্য় সুরক্ষা দফতরের প্রতিনিধিরা।",
+            "source_url": "https://bengali.abplive.com/district/sealdah-station-many-food-shop-illegalities-singara-curry-in-probe-1197808"
+          },
+          "reported_authority": {
+            "quote": "শিয়ালদা স্টেশন চত্বরে কলকাতা পুরসভার খাদ্য় সুরক্ষা দফতরের। স্টেশন চত্বরের বিভিন্ন দোকানে হানা খাদ্য় সুরক্ষা দফতরের। একটি দোকানে তরকারি ও সিঙাড়ায় নিম্নমানের হলুদ ব্য়বহার করা হয়েছে। সেগুলি ফেলে দেন খাদ্য় সুরক্ষা দফতরের প্রতিনিধিরা।",
+            "source_url": "https://bengali.abplive.com/district/sealdah-station-many-food-shop-illegalities-singara-curry-in-probe-1197808"
+          },
+          "reported_observation": {
+            "quote": "শিয়ালদা স্টেশন চত্বরে কলকাতা পুরসভার খাদ্য় সুরক্ষা দফতরের। স্টেশন চত্বরের বিভিন্ন দোকানে হানা খাদ্য় সুরক্ষা দফতরের। একটি দোকানে তরকারি ও সিঙাড়ায় নিম্নমানের হলুদ ব্য়বহার করা হয়েছে। সেগুলি ফেলে দেন খাদ্য় সুরক্ষা দফতরের প্রতিনিধিরা।",
+            "source_url": "https://bengali.abplive.com/district/sealdah-station-many-food-shop-illegalities-singara-curry-in-probe-1197808"
+          }
+        },
+        "formal_finding": null,
+        "legal_finding_status": "unknown",
+        "reported_action": "ফেলে দেন",
+        "reported_authority": "কলকাতা পুরসভার খাদ্য় সুরক্ষা দফতরের",
+        "reported_observation": "তরকারি ও সিঙাড়ায় নিম্নমানের হলুদ ব্য়বহার করা হয়েছে",
+        "reported_quantity": null
+      },
+      "review": null,
+      "reviewed_associations": [],
+      "reviewer_hold": false,
+      "source_availability": "available",
+      "source_availability_reason": null,
+      "sources": [
+        {
+          "archive_url": null,
+          "evidence_context": "শিয়ালদা স্টেশন চত্বরে কলকাতা পুরসভার খাদ্য় সুরক্ষা দফতরের। স্টেশন চত্বরের বিভিন্ন দোকানে হানা খাদ্য় সুরক্ষা দফতরের। একটি দোকানে তরকারি ও সিঙাড়ায় নিম্নমানের হলুদ ব্য়বহার করা হয়েছে। সেগুলি ফেলে দেন খাদ্য় সুরক্ষা দফতরের প্রতিনিধিরা।",
+          "evidence_language": "bn",
+          "evidence_locator": null,
+          "evidence_quote": "তরকারি ও সিঙাড়ায় নিম্নমানের হলুদ ব্য়বহার করা হয়েছে",
+          "evidence_span_hash": "6d8072ed27afd015f2cb965da9c7d81aead72295f06fa5f50c8256356b120688",
+          "origin_source_id": null,
+          "retrieved_at": "2026-10-31T12:22:33.306824Z",
+          "source_date": "2026-10-31",
+          "source_id": "SRC-b0b6cc0b42fcff7e54d0",
+          "source_language": "bn",
+          "source_publisher": "ABP Ananda",
+          "source_relationship": "unknown",
+          "source_revision_id": "f51db1f51730a60de24623c1d0430a5005b272d26c9082799cfaaf61504b3313",
+          "source_title": "শিয়ালদা স্টেশন চত্বরে বিভিন্ন দোকানে হানা খাদ্য় সুরক্ষা দফতরের, তরকারি ও সিঙাড়ায় নিম্নমানের হলুদ",
+          "source_type": "news",
+          "source_url": "https://bengali.abplive.com/district/sealdah-station-many-food-shop-illegalities-singara-curry-in-probe-1197808",
+          "text_sha256": "f51db1f51730a60de24623c1d0430a5005b272d26c9082799cfaaf61504b3313",
+          "tier": "B"
+        }
+      ],
+      "superseded_by": null,
+      "validator_id": "objective_source_grounding",
+      "validator_version": "2",
+      "verification_notes": "LLM-assisted candidate; objective source-grounding and publication checks passed. Source verification is not an independent finding of fact.",
       "verification_status": "SOURCE VERIFIED"
     },
     {
