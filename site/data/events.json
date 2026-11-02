@@ -1,6 +1,6 @@
 {
   "context_notice": "Independent, non-governmental public-source research. Inclusion is not a finding of wrongdoing. Counts describe records in this tracker, not official totals, prevalence, compliance, risk or group behavior. Read the sources and preserve this context when sharing.",
-  "generated_at": "2026-11-02T15:44:15.726697+00:00",
+  "generated_at": "2026-11-02T23:29:17.074922+00:00",
   "pipeline_version": "0.3.0",
   "record_count": 47,
   "records": [
@@ -9872,11 +9872,17 @@
           "note": "Supporting source context revalidated; original evidence retained.",
           "previous_record_sha256": "4200de78e14dac04bb30e193405a6195496fca6a6eea35c68e15eeeb999d04a3",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-11-02T23:29:17.074922Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "f250eefb0fdf36054c34858b1045b4a12bb92da2000934a1c969677690633a86",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-11-01T23:34:17.748054Z",
-      "last_successful_evidence_check_at": "2026-11-01T23:34:17.748054Z",
+      "last_source_checked_at": "2026-11-02T23:29:17.074922Z",
+      "last_successful_evidence_check_at": "2026-11-02T23:29:17.074922Z",
       "llm": {
         "fields_proposed": [
           "area",
@@ -9902,7 +9908,7 @@
       "record_class": "inspection_evidence",
       "record_created_at": "2026-10-24T18:47:05.103646Z",
       "record_scope": "establishment_event",
-      "record_updated_at": "2026-11-01T23:34:17.748054Z",
+      "record_updated_at": "2026-11-02T23:29:17.074922Z",
       "related_record_ids": [],
       "reported_fact": {
         "area": "Salt Lake",
@@ -12236,11 +12242,17 @@
           "note": "Supporting source context revalidated; original evidence retained.",
           "previous_record_sha256": "d0e3730dc3c243adad50fce322ddc228a7f07883e067e82ad6bae776d4eb2be8",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-11-02T23:29:17.074922Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "3f2299735d0eae1e75ae09d15b81ba1936d5df1fa8572c4ce6b4f3b07f726fdd",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-11-01T18:55:29.597876Z",
-      "last_successful_evidence_check_at": "2026-11-01T18:55:29.597876Z",
+      "last_source_checked_at": "2026-11-02T23:29:17.074922Z",
+      "last_successful_evidence_check_at": "2026-11-02T23:29:17.074922Z",
       "llm": {
         "fields_proposed": [
           "area",
@@ -12266,7 +12278,7 @@
       "record_class": "inspection_evidence",
       "record_created_at": "2026-10-31T12:22:33.306824Z",
       "record_scope": "establishment_event",
-      "record_updated_at": "2026-11-01T18:55:29.597876Z",
+      "record_updated_at": "2026-11-02T23:29:17.074922Z",
       "related_record_ids": [],
       "reported_fact": {
         "area": "শিয়ালদহ",
@@ -12966,11 +12978,17 @@
           "note": "Supporting source context revalidated; original evidence retained.",
           "previous_record_sha256": "31813d9eba3266a687943a814df05ad5711b9199a39431351625b60ec6c43366",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-11-02T23:29:17.074922Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "183e13d527a20e9dd1f6e1e6585657dbe15395bd59f5f6fde23caba55c6cc74d",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-11-01T18:55:29.597876Z",
-      "last_successful_evidence_check_at": "2026-11-01T18:55:29.597876Z",
+      "last_source_checked_at": "2026-11-02T23:29:17.074922Z",
+      "last_successful_evidence_check_at": "2026-11-02T23:29:17.074922Z",
       "llm": {
         "fields_proposed": [
           "area",
@@ -12996,7 +13014,7 @@
       "record_class": "inspection_evidence",
       "record_created_at": "2026-10-24T18:47:05.103646Z",
       "record_scope": "establishment_event",
-      "record_updated_at": "2026-11-01T18:55:29.597876Z",
+      "record_updated_at": "2026-11-02T23:29:17.074922Z",
       "related_record_ids": [],
       "reported_fact": {
         "area": "সল্টলেকে",
@@ -13053,11 +13071,11 @@
           "source_language": "bn",
           "source_publisher": "ABP Ananda",
           "source_relationship": "unknown",
-          "source_revision_id": "833075f6b0160d03dc5e7cecd80895231a8658e175a71693fba049530d3e72ec",
+          "source_revision_id": "02426d32c5054f9412ac9530b0b2ee65a29ac8ea2a5f3b7f1e5350e40ba8b271",
           "source_title": "মাংসের উপর ছত্রাক, বন্ধ হল সল্টলেকের Balle Balle Dhaba, বাতিল লাইসেন্স",
           "source_type": "news",
           "source_url": "https://bengali.abplive.com/district/saltlake-balle-balle-dhaba-closed-after-food-inspection-license-cancelled-1197087",
-          "text_sha256": "833075f6b0160d03dc5e7cecd80895231a8658e175a71693fba049530d3e72ec",
+          "text_sha256": "02426d32c5054f9412ac9530b0b2ee65a29ac8ea2a5f3b7f1e5350e40ba8b271",
           "tier": "B"
         }
       ],
@@ -13163,11 +13181,17 @@
           "note": "Supporting source context revalidated; original evidence retained.",
           "previous_record_sha256": "00ecd4f13767ddc9ffd4a92f6e7889786d592673344f6a0367c5d2ac9ce9f457",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-11-02T23:29:17.074922Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "851ffa818c98d48da4776f4451bf4beb86266b88890afbd21d81c374e61c5465",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-11-01T05:58:39.484673Z",
-      "last_successful_evidence_check_at": "2026-11-01T05:58:39.484673Z",
+      "last_source_checked_at": "2026-11-02T23:29:17.074922Z",
+      "last_successful_evidence_check_at": "2026-11-02T23:29:17.074922Z",
       "llm": {
         "fields_proposed": [
           "area",
@@ -13193,7 +13217,7 @@
       "record_class": "inspection_evidence",
       "record_created_at": "2026-10-26T19:55:52.780187Z",
       "record_scope": "area_operation",
-      "record_updated_at": "2026-11-01T05:58:39.484673Z",
+      "record_updated_at": "2026-11-02T23:29:17.074922Z",
       "related_record_ids": [],
       "reported_fact": {
         "area": "নেতাজি ইন্ডোর স্টেডিয়াম ও বাবুঘাট সংলগ্ন বাস টার্মিনাস সংলগ্ন এলাকা",
@@ -13250,11 +13274,11 @@
           "source_language": "bn",
           "source_publisher": "ABP Ananda",
           "source_relationship": "unknown",
-          "source_revision_id": "22aa226696da39018fd5440df3514178f1b803ad2e4f7d39e1208e9ba8c547c3",
+          "source_revision_id": "db76c6fbb2e6abd6fae5ec1c0e528b39238c1dc5386c76254dbdfe62a0716917",
           "source_title": "West Bengal News Live : ফের অ্যাকশনে কলকাতা পুরসভার খাদ্য সুরক্ষা বিভাগ, খাবারের গুণগত মান যাচাই | West Bengal News 26 October 2026 Chorbagan Puja incident Suvendu Adhikari targets left parties TMC Symbol tussle Weather news update",
           "source_type": "news",
           "source_url": "https://bengali.abplive.com/district/west-bengal-news-26-october-2026-chorbagan-puja-incident-suvendu-adhikari-targets-left-parties-tmc-symbol-tussle-weather-news-update-1197260",
-          "text_sha256": "22aa226696da39018fd5440df3514178f1b803ad2e4f7d39e1208e9ba8c547c3",
+          "text_sha256": "db76c6fbb2e6abd6fae5ec1c0e528b39238c1dc5386c76254dbdfe62a0716917",
           "tier": "B"
         }
       ],
@@ -15706,11 +15730,17 @@
           "note": "Supporting source context revalidated; original evidence retained.",
           "previous_record_sha256": "ae7b329db3dbb2aab895d826ce0f97c37bd54022942b53b3790cee3a7a94f604",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-11-02T23:29:17.074922Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "87476bb5c0ddf6e64b6802e7b972addc60b2ef2ed79e6cc959fbde34d9ed6597",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-11-01T05:58:39.484673Z",
-      "last_successful_evidence_check_at": "2026-11-01T05:58:39.484673Z",
+      "last_source_checked_at": "2026-11-02T23:29:17.074922Z",
+      "last_successful_evidence_check_at": "2026-11-02T23:29:17.074922Z",
       "llm": {
         "fields_proposed": [
           "area",
@@ -15737,7 +15767,7 @@
       "record_class": "inspection_evidence",
       "record_created_at": "2026-10-28T01:19:09.190771Z",
       "record_scope": "establishment_event",
-      "record_updated_at": "2026-11-01T05:58:39.484673Z",
+      "record_updated_at": "2026-11-02T23:29:17.074922Z",
       "related_record_ids": [],
       "reported_fact": {
         "area": "ভিআইপি রোড",
@@ -15798,11 +15828,11 @@
           "source_language": "bn",
           "source_publisher": "ABP Ananda",
           "source_relationship": "unknown",
-          "source_revision_id": "d93159591bba366c388bf505278f3bdf321892ed8f72038a3341e9b5079e2b88",
+          "source_revision_id": "e9e5b0302c2858f96731d77f443cb927d4da08ddbcca7c86f1abf35a704c213d",
           "source_title": "Haldiram Raid | ভিআইপি রোডের ওপর হলদিরাম প্রভুজির রেস্টুরেন্টে অভিযান খাদ্য সুরক্ষা দফতরের | Food Safety Department conducts raid at Haldiram Prabhuji restaurant on VIP Road",
           "source_type": "news",
           "source_url": "https://bengali.abplive.com/videos/news/food-safety-department-conducts-raid-at-haldiram-prabhuji-restaurant-on-vip-road-1197423",
-          "text_sha256": "d93159591bba366c388bf505278f3bdf321892ed8f72038a3341e9b5079e2b88",
+          "text_sha256": "e9e5b0302c2858f96731d77f443cb927d4da08ddbcca7c86f1abf35a704c213d",
           "tier": "B"
         }
       ],
