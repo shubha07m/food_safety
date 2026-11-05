@@ -1,6 +1,6 @@
 {
   "context_notice": "Independent, non-governmental public-source research. Inclusion is not a finding of wrongdoing. Counts describe records in this tracker, not official totals, prevalence, compliance, risk or group behavior. Read the sources and preserve this context when sharing.",
-  "generated_at": "2026-11-05T09:27:03.316539+00:00",
+  "generated_at": "2026-11-05T18:00:10.449609+00:00",
   "pipeline_version": "0.3.0",
   "record_count": 47,
   "records": [
@@ -10082,11 +10082,17 @@
           "note": "Supporting source context revalidated; original evidence retained.",
           "previous_record_sha256": "e82b5b1e4a4ef61974a963d94031833d57938170830d0d2f60b283a2b6d7462a",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-11-05T18:00:10.449609Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "900b7daabd97c8c260ffb078af12718031d93d9bb602a090190c3859bb0e32ad",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-11-04T19:44:01.346259Z",
-      "last_successful_evidence_check_at": "2026-11-04T19:44:01.346259Z",
+      "last_source_checked_at": "2026-11-05T18:00:10.449609Z",
+      "last_successful_evidence_check_at": "2026-11-05T18:00:10.449609Z",
       "llm": {
         "fields_proposed": [
           "area",
@@ -10112,7 +10118,7 @@
       "record_class": "inspection_evidence",
       "record_created_at": "2026-10-24T18:47:05.103646Z",
       "record_scope": "establishment_event",
-      "record_updated_at": "2026-11-04T19:44:01.346259Z",
+      "record_updated_at": "2026-11-05T18:00:10.449609Z",
       "related_record_ids": [],
       "reported_fact": {
         "area": "Salt Lake",
@@ -10169,11 +10175,11 @@
           "source_language": "en",
           "source_publisher": "The Times of India",
           "source_relationship": "unknown",
-          "source_revision_id": "0f87ec49ea9791dfa1c905c2d853b12379c27c528f1ee5b14f5d9024d965729e",
+          "source_revision_id": "121b6bbca58bb6f20d0939080acfc990f3fa356b790695136694f6fd0a33b660",
           "source_title": "Salt Lake eateries shut after food safety raid | Kolkata News - The Times of India",
           "source_type": "news",
           "source_url": "https://timesofindia.indiatimes.com/city/kolkata/salt-lake-eateries-shut-after-food-safety-raid/articleshow/135176005.cms",
-          "text_sha256": "0f87ec49ea9791dfa1c905c2d853b12379c27c528f1ee5b14f5d9024d965729e",
+          "text_sha256": "121b6bbca58bb6f20d0939080acfc990f3fa356b790695136694f6fd0a33b660",
           "tier": "B"
         }
       ],
@@ -11685,11 +11691,17 @@
           "note": "Supporting source context revalidated; original evidence retained.",
           "previous_record_sha256": "2f18fca78f72032c0b572165195faa224787b61ebac320999b929a530a3f406d",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-11-05T18:00:10.449609Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "0742ea1fdd2a6e3d031b1d06afbda148010c7166789243dd48c2bc640d960baf",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-11-04T19:44:01.346259Z",
-      "last_successful_evidence_check_at": "2026-11-04T19:44:01.346259Z",
+      "last_source_checked_at": "2026-11-05T18:00:10.449609Z",
+      "last_successful_evidence_check_at": "2026-11-05T18:00:10.449609Z",
       "llm": {
         "fields_proposed": [
           "area",
@@ -11714,7 +11726,7 @@
       "record_class": "inspection_evidence",
       "record_created_at": "2026-09-11T00:09:16.296804Z",
       "record_scope": "area_operation",
-      "record_updated_at": "2026-11-04T19:44:01.346259Z",
+      "record_updated_at": "2026-11-05T18:00:10.449609Z",
       "related_record_ids": [
         "WBFS-c391d02b3d97"
       ],
@@ -11769,11 +11781,11 @@
           "source_language": "bn",
           "source_publisher": "ABP Ananda",
           "source_relationship": "unknown",
-          "source_revision_id": "d219ef3dbe6b868163ee4bd69a2a20b4829722c29e7c34a4232ea39ff4087ea7",
+          "source_revision_id": "c08d113fe9e8e700064cdf77f29f85c0b7c067a55a4298e90a97ea4eae77a834",
           "source_title": "Food Safety: বনগাঁয় খাদ্য সুরক্ষা দফতরের হানা, বাসি মাংস, খারাপ আলু দেখে স্বেচ্ছায় দোকান বন্ধ রেখে পরিস্কারের নির্দেশ",
           "source_type": "news",
           "source_url": "https://bengali.abplive.com/district/north-24-paraganas/food-safety-authority-raids-bongaoan-restaurant-asks-to-clear-shop-closing-it-1191576",
-          "text_sha256": "d219ef3dbe6b868163ee4bd69a2a20b4829722c29e7c34a4232ea39ff4087ea7",
+          "text_sha256": "c08d113fe9e8e700064cdf77f29f85c0b7c067a55a4298e90a97ea4eae77a834",
           "tier": "B"
         }
       ],
@@ -12494,11 +12506,17 @@
           "note": "Supporting source context revalidated; original evidence retained.",
           "previous_record_sha256": "c6fe539c0e0a2de2c94143507e2dbd4ab9817a3294f31b80301af2fbed566323",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-11-05T18:00:10.449609Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "fcd5bb5eb4776d2245c59c53a7ef98f9403b584ec4202aafd4acfe4939185a9a",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-11-04T19:44:01.346259Z",
-      "last_successful_evidence_check_at": "2026-11-04T19:44:01.346259Z",
+      "last_source_checked_at": "2026-11-05T18:00:10.449609Z",
+      "last_successful_evidence_check_at": "2026-11-05T18:00:10.449609Z",
       "llm": {
         "fields_proposed": [
           "area",
@@ -12524,7 +12542,7 @@
       "record_class": "inspection_evidence",
       "record_created_at": "2026-10-31T12:22:33.306824Z",
       "record_scope": "establishment_event",
-      "record_updated_at": "2026-11-04T19:44:01.346259Z",
+      "record_updated_at": "2026-11-05T18:00:10.449609Z",
       "related_record_ids": [],
       "reported_fact": {
         "area": "শিয়ালদহ",
@@ -13248,11 +13266,17 @@
           "note": "Supporting source context revalidated; original evidence retained.",
           "previous_record_sha256": "8edaafcd892333e02ed718048933267e17a11dc6489d46b8c0d70be236583fd7",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-11-05T18:00:10.449609Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "6976a8223c9e3d627c988aedf8d0d3557336723ca7eaf93ed216eae5fe72bb1f",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-11-04T19:44:01.346259Z",
-      "last_successful_evidence_check_at": "2026-11-04T19:44:01.346259Z",
+      "last_source_checked_at": "2026-11-05T18:00:10.449609Z",
+      "last_successful_evidence_check_at": "2026-11-05T18:00:10.449609Z",
       "llm": {
         "fields_proposed": [
           "area",
@@ -13278,7 +13302,7 @@
       "record_class": "inspection_evidence",
       "record_created_at": "2026-10-24T18:47:05.103646Z",
       "record_scope": "establishment_event",
-      "record_updated_at": "2026-11-04T19:44:01.346259Z",
+      "record_updated_at": "2026-11-05T18:00:10.449609Z",
       "related_record_ids": [],
       "reported_fact": {
         "area": "সল্টলেকে",
@@ -13335,11 +13359,11 @@
           "source_language": "bn",
           "source_publisher": "ABP Ananda",
           "source_relationship": "unknown",
-          "source_revision_id": "02426d32c5054f9412ac9530b0b2ee65a29ac8ea2a5f3b7f1e5350e40ba8b271",
+          "source_revision_id": "96790cf46f93668327b985458288c8e437a7693c56bf48c6de50e2ab0b948e89",
           "source_title": "মাংসের উপর ছত্রাক, বন্ধ হল সল্টলেকের Balle Balle Dhaba, বাতিল লাইসেন্স",
           "source_type": "news",
           "source_url": "https://bengali.abplive.com/district/saltlake-balle-balle-dhaba-closed-after-food-inspection-license-cancelled-1197087",
-          "text_sha256": "02426d32c5054f9412ac9530b0b2ee65a29ac8ea2a5f3b7f1e5350e40ba8b271",
+          "text_sha256": "96790cf46f93668327b985458288c8e437a7693c56bf48c6de50e2ab0b948e89",
           "tier": "B"
         }
       ],
@@ -13457,11 +13481,17 @@
           "note": "Supporting source context revalidated; original evidence retained.",
           "previous_record_sha256": "433c9ae9aa712429e9fb38ed8e599084ede1b4c4960e4edf9226212e962a5883",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-11-05T18:00:10.449609Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "fc423fbfa4179ebcb9057de4d26f5a683edd7424ebde3b1e7c5c64fed5530e64",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-11-03T21:46:52.159145Z",
-      "last_successful_evidence_check_at": "2026-11-03T21:46:52.159145Z",
+      "last_source_checked_at": "2026-11-05T18:00:10.449609Z",
+      "last_successful_evidence_check_at": "2026-11-05T18:00:10.449609Z",
       "llm": {
         "fields_proposed": [
           "area",
@@ -13487,7 +13517,7 @@
       "record_class": "inspection_evidence",
       "record_created_at": "2026-10-26T19:55:52.780187Z",
       "record_scope": "area_operation",
-      "record_updated_at": "2026-11-03T21:46:52.159145Z",
+      "record_updated_at": "2026-11-05T18:00:10.449609Z",
       "related_record_ids": [],
       "reported_fact": {
         "area": "নেতাজি ইন্ডোর স্টেডিয়াম ও বাবুঘাট সংলগ্ন বাস টার্মিনাস সংলগ্ন এলাকা",
@@ -13544,11 +13574,11 @@
           "source_language": "bn",
           "source_publisher": "ABP Ananda",
           "source_relationship": "unknown",
-          "source_revision_id": "db76c6fbb2e6abd6fae5ec1c0e528b39238c1dc5386c76254dbdfe62a0716917",
+          "source_revision_id": "e1865f283b75c41b2d5a49d442b78608eda0123759c8acad323e2b719506b847",
           "source_title": "West Bengal News Live : ফের অ্যাকশনে কলকাতা পুরসভার খাদ্য সুরক্ষা বিভাগ, খাবারের গুণগত মান যাচাই | West Bengal News 26 October 2026 Chorbagan Puja incident Suvendu Adhikari targets left parties TMC Symbol tussle Weather news update",
           "source_type": "news",
           "source_url": "https://bengali.abplive.com/district/west-bengal-news-26-october-2026-chorbagan-puja-incident-suvendu-adhikari-targets-left-parties-tmc-symbol-tussle-weather-news-update-1197260",
-          "text_sha256": "db76c6fbb2e6abd6fae5ec1c0e528b39238c1dc5386c76254dbdfe62a0716917",
+          "text_sha256": "e1865f283b75c41b2d5a49d442b78608eda0123759c8acad323e2b719506b847",
           "tier": "B"
         }
       ],
@@ -20655,11 +20685,17 @@
           "note": "Supporting source context revalidated; original evidence retained.",
           "previous_record_sha256": "e00539e1bf31cd01fa78f4bf64068b57f4df7613107f54855b62942451b0e1c1",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-11-05T18:00:10.449609Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "9f6196dc9d029c2f483a13a956858f8e5d652b7c6fb687a16b5f0eb2f5fb2005",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-11-04T19:44:01.346259Z",
-      "last_successful_evidence_check_at": "2026-11-04T19:44:01.346259Z",
+      "last_source_checked_at": "2026-11-05T18:00:10.449609Z",
+      "last_successful_evidence_check_at": "2026-11-05T18:00:10.449609Z",
       "llm": {
         "fields_proposed": [
           "area",
@@ -20684,7 +20720,7 @@
       "record_class": "inspection_evidence",
       "record_created_at": "2026-09-11T00:09:16.296804Z",
       "record_scope": "area_operation",
-      "record_updated_at": "2026-11-04T19:44:01.346259Z",
+      "record_updated_at": "2026-11-05T18:00:10.449609Z",
       "related_record_ids": [
         "WBFS-5ee36b93256b"
       ],
@@ -20739,11 +20775,11 @@
           "source_language": "bn",
           "source_publisher": "ABP Ananda",
           "source_relationship": "unknown",
-          "source_revision_id": "d219ef3dbe6b868163ee4bd69a2a20b4829722c29e7c34a4232ea39ff4087ea7",
+          "source_revision_id": "c08d113fe9e8e700064cdf77f29f85c0b7c067a55a4298e90a97ea4eae77a834",
           "source_title": "Food Safety: বনগাঁয় খাদ্য সুরক্ষা দফতরের হানা, বাসি মাংস, খারাপ আলু দেখে স্বেচ্ছায় দোকান বন্ধ রেখে পরিস্কারের নির্দেশ",
           "source_type": "news",
           "source_url": "https://bengali.abplive.com/district/north-24-paraganas/food-safety-authority-raids-bongaoan-restaurant-asks-to-clear-shop-closing-it-1191576",
-          "text_sha256": "d219ef3dbe6b868163ee4bd69a2a20b4829722c29e7c34a4232ea39ff4087ea7",
+          "text_sha256": "c08d113fe9e8e700064cdf77f29f85c0b7c067a55a4298e90a97ea4eae77a834",
           "tier": "B"
         }
       ],
