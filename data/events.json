@@ -1,8 +1,8 @@
 {
   "context_notice": "Independent, non-governmental public-source research. Inclusion is not a finding of wrongdoing. Counts describe records in this tracker, not official totals, prevalence, compliance, risk or group behavior. Read the sources and preserve this context when sharing.",
-  "generated_at": "2026-11-06T06:38:08.460728+00:00",
+  "generated_at": "2026-11-06T15:54:45.750200+00:00",
   "pipeline_version": "0.3.0",
-  "record_count": 47,
+  "record_count": 48,
   "records": [
     {
       "automatic_validation": null,
@@ -10172,11 +10172,17 @@
           "note": "Supporting source context revalidated; original evidence retained.",
           "previous_record_sha256": "900b7daabd97c8c260ffb078af12718031d93d9bb602a090190c3859bb0e32ad",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-11-06T15:54:45.750200Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "b41a6b7e1086d8696b909e930a1cf4414f93781c20749402ef3f21de0e07c642",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-11-05T18:00:10.449609Z",
-      "last_successful_evidence_check_at": "2026-11-05T18:00:10.449609Z",
+      "last_source_checked_at": "2026-11-06T15:54:45.750200Z",
+      "last_successful_evidence_check_at": "2026-11-06T15:54:45.750200Z",
       "llm": {
         "fields_proposed": [
           "area",
@@ -10202,7 +10208,7 @@
       "record_class": "inspection_evidence",
       "record_created_at": "2026-10-24T18:47:05.103646Z",
       "record_scope": "establishment_event",
-      "record_updated_at": "2026-11-05T18:00:10.449609Z",
+      "record_updated_at": "2026-11-06T15:54:45.750200Z",
       "related_record_ids": [],
       "reported_fact": {
         "area": "Salt Lake",
@@ -11787,11 +11793,17 @@
           "note": "Supporting source context revalidated; original evidence retained.",
           "previous_record_sha256": "0742ea1fdd2a6e3d031b1d06afbda148010c7166789243dd48c2bc640d960baf",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-11-06T15:54:45.750200Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "5d55dc49a10faa209d157fd3105ed25a6b847cbd6e48b434bc7835df9905dae0",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-11-05T18:00:10.449609Z",
-      "last_successful_evidence_check_at": "2026-11-05T18:00:10.449609Z",
+      "last_source_checked_at": "2026-11-06T15:54:45.750200Z",
+      "last_successful_evidence_check_at": "2026-11-06T15:54:45.750200Z",
       "llm": {
         "fields_proposed": [
           "area",
@@ -11816,7 +11828,7 @@
       "record_class": "inspection_evidence",
       "record_created_at": "2026-09-11T00:09:16.296804Z",
       "record_scope": "area_operation",
-      "record_updated_at": "2026-11-05T18:00:10.449609Z",
+      "record_updated_at": "2026-11-06T15:54:45.750200Z",
       "related_record_ids": [
         "WBFS-c391d02b3d97"
       ],
@@ -12608,11 +12620,17 @@
           "note": "Supporting source context revalidated; original evidence retained.",
           "previous_record_sha256": "fcd5bb5eb4776d2245c59c53a7ef98f9403b584ec4202aafd4acfe4939185a9a",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-11-06T15:54:45.750200Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "069c2476aa209a8a10733a59617ea8e724e4bd58968c61572ff1e2669d52d040",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-11-05T18:00:10.449609Z",
-      "last_successful_evidence_check_at": "2026-11-05T18:00:10.449609Z",
+      "last_source_checked_at": "2026-11-06T15:54:45.750200Z",
+      "last_successful_evidence_check_at": "2026-11-06T15:54:45.750200Z",
       "llm": {
         "fields_proposed": [
           "area",
@@ -12638,7 +12656,7 @@
       "record_class": "inspection_evidence",
       "record_created_at": "2026-10-31T12:22:33.306824Z",
       "record_scope": "establishment_event",
-      "record_updated_at": "2026-11-05T18:00:10.449609Z",
+      "record_updated_at": "2026-11-06T15:54:45.750200Z",
       "related_record_ids": [],
       "reported_fact": {
         "area": "শিয়ালদহ",
@@ -13368,11 +13386,17 @@
           "note": "Supporting source context revalidated; original evidence retained.",
           "previous_record_sha256": "6976a8223c9e3d627c988aedf8d0d3557336723ca7eaf93ed216eae5fe72bb1f",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-11-06T15:54:45.750200Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "f0653b16dc7067cecb926d44fcb610f081d70c3402fb055e98bc76bd6c037c6b",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-11-05T18:00:10.449609Z",
-      "last_successful_evidence_check_at": "2026-11-05T18:00:10.449609Z",
+      "last_source_checked_at": "2026-11-06T15:54:45.750200Z",
+      "last_successful_evidence_check_at": "2026-11-06T15:54:45.750200Z",
       "llm": {
         "fields_proposed": [
           "area",
@@ -13398,7 +13422,7 @@
       "record_class": "inspection_evidence",
       "record_created_at": "2026-10-24T18:47:05.103646Z",
       "record_scope": "establishment_event",
-      "record_updated_at": "2026-11-05T18:00:10.449609Z",
+      "record_updated_at": "2026-11-06T15:54:45.750200Z",
       "related_record_ids": [],
       "reported_fact": {
         "area": "সল্টলেকে",
@@ -13583,11 +13607,17 @@
           "note": "Supporting source context revalidated; original evidence retained.",
           "previous_record_sha256": "fc423fbfa4179ebcb9057de4d26f5a683edd7424ebde3b1e7c5c64fed5530e64",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-11-06T15:54:45.750200Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "4179090ced0903604b63e03021ff3351da264733c377dbc0c8ee9f9d73764497",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-11-05T18:00:10.449609Z",
-      "last_successful_evidence_check_at": "2026-11-05T18:00:10.449609Z",
+      "last_source_checked_at": "2026-11-06T15:54:45.750200Z",
+      "last_successful_evidence_check_at": "2026-11-06T15:54:45.750200Z",
       "llm": {
         "fields_proposed": [
           "area",
@@ -13613,7 +13643,7 @@
       "record_class": "inspection_evidence",
       "record_created_at": "2026-10-26T19:55:52.780187Z",
       "record_scope": "area_operation",
-      "record_updated_at": "2026-11-05T18:00:10.449609Z",
+      "record_updated_at": "2026-11-06T15:54:45.750200Z",
       "related_record_ids": [],
       "reported_fact": {
         "area": "নেতাজি ইন্ডোর স্টেডিয়াম ও বাবুঘাট সংলগ্ন বাস টার্মিনাস সংলগ্ন এলাকা",
@@ -16106,6 +16136,162 @@
       "validator_id": "field_evidence_validation",
       "validator_version": "2",
       "verification_notes": "Supporting source context revalidated; original evidence retained.",
+      "verification_status": "SOURCE VERIFIED"
+    },
+    {
+      "automatic_validation": {
+        "extraction_evidence": {
+          "end": 279,
+          "match_method": "exact",
+          "original_quote": "দুর্গাপুরে ফের খাদ্য সুরক্ষা দফতরের অভিযান। হোটেল-রেস্তোরাঁগুলিতে মিলল পচা খাবার, দুর্গন্ধযুক্ত মাখন, মেয়াদ উত্তীর্ণ পাঁউরুটি। ফ্রিজের ভিতর থেকে উদ্ধার জমিয়ে রাখা পুরোন গ্রেভি উদ্ধার বাসি মুরগির মাংসও। জরিমানা করা হয়েছে হোটেল-রেস্তোঁরা কর্তৃপক্ষকে।",
+          "passage_id": "P008",
+          "source_revision_id": "90c647e9f3491402e09118dee52013b1e0a50e9b9c8a4ff13315bc2e2ac0f119",
+          "start": 31
+        },
+        "method": "source_grounded_candidate_v1",
+        "pipeline_version": "0.3.0",
+        "validated_at": "2026-11-06T15:54:45.750200Z"
+      },
+      "context_notice": "Independent, non-governmental public-source research. Inclusion is not a finding of wrongdoing. Counts describe records in this tracker, not official totals, prevalence, compliance, risk or group behavior. Read the sources and preserve this context when sharing.",
+      "derived_context": {
+        "action_category": "not reported",
+        "action_category_confidence": "unknown",
+        "action_category_method": null,
+        "action_category_reviewed": false,
+        "action_category_source": null,
+        "business_format": "unknown",
+        "business_format_confidence": "unknown",
+        "business_format_method": null,
+        "business_format_reviewed": false,
+        "business_format_source": null,
+        "derived_confidence": "unknown",
+        "derived_context_method": "Unknown; no contextual inference performed.",
+        "derived_context_sources": [],
+        "establishment_context": "unknown",
+        "establishment_context_confidence": "unknown",
+        "establishment_context_method": null,
+        "establishment_context_reviewed": false,
+        "establishment_context_source": null,
+        "latitude": null,
+        "location_method": null,
+        "location_precision": null,
+        "location_reviewed": false,
+        "location_source": null,
+        "longitude": null,
+        "menu_context": "unknown",
+        "menu_context_confidence": "unknown",
+        "menu_context_method": null,
+        "menu_context_reviewed": false,
+        "menu_context_source": null,
+        "normalized_area": null
+      },
+      "display_summary": "Source reports a source-reported food-safety event involving an unnamed establishment in দুর্গাপুরে.",
+      "establishment_id": null,
+      "event_id": "WBFS-966ef2cc840c",
+      "evidence_support_status": "supported_as_of",
+      "extractor_id": "source_grounded_candidate",
+      "extractor_version": "1",
+      "first_published_at": "2026-11-06T15:54:45.750200Z",
+      "history": [
+        {
+          "at": "2026-11-06T15:54:45.750200Z",
+          "note": "Source-grounded LLM candidate auto-published after deterministic validation.",
+          "previous_record_sha256": null,
+          "status": "SOURCE VERIFIED"
+        }
+      ],
+      "is_fixture": false,
+      "last_source_checked_at": "2026-11-06T15:54:45.750200Z",
+      "last_successful_evidence_check_at": "2026-11-06T15:54:45.750200Z",
+      "llm": {
+        "fields_proposed": [
+          "area",
+          "reported_action",
+          "reported_authority",
+          "reported_observation"
+        ],
+        "llm_model": "gemini-3.5-flash-lite",
+        "llm_output_was_validated": true,
+        "llm_pipeline_version": "0.3.0",
+        "llm_provider": "gemini",
+        "llm_task": "structured source extraction",
+        "llm_task_version": "source_candidates_v2",
+        "llm_used": true,
+        "llm_used_at": "2026-11-06T15:54:52.909646Z",
+        "source_revision_id": "90c647e9f3491402e09118dee52013b1e0a50e9b9c8a4ff13315bc2e2ac0f119",
+        "validation_result": "passed"
+      },
+      "location_id": null,
+      "pipeline_version": "0.3.0",
+      "publication_status": "active",
+      "record_class": "inspection_evidence",
+      "record_created_at": "2026-11-06T15:54:45.750200Z",
+      "record_scope": "area_operation",
+      "record_updated_at": "2026-11-06T15:54:45.750200Z",
+      "related_record_ids": [],
+      "reported_fact": {
+        "area": "দুর্গাপুরে",
+        "district": null,
+        "establishment_name": null,
+        "establishment_type": null,
+        "event_date": null,
+        "evidence": {
+          "area": {
+            "quote": "দুর্গাপুরে ফের খাদ্য সুরক্ষা দফতরের অভিযান। হোটেল-রেস্তোরাঁগুলিতে মিলল পচা খাবার, দুর্গন্ধযুক্ত মাখন, মেয়াদ উত্তীর্ণ পাঁউরুটি। ফ্রিজের ভিতর থেকে উদ্ধার জমিয়ে রাখা পুরোন গ্রেভি উদ্ধার বাসি মুরগির মাংসও। জরিমানা করা হয়েছে হোটেল-রেস্তোঁরা কর্তৃপক্ষকে।",
+            "source_url": "https://bengali.abplive.com/videos/district/food-safety-department-inspection-before-kali-puja-watch-video-1198527"
+          },
+          "reported_action": {
+            "quote": "দুর্গাপুরে ফের খাদ্য সুরক্ষা দফতরের অভিযান। হোটেল-রেস্তোরাঁগুলিতে মিলল পচা খাবার, দুর্গন্ধযুক্ত মাখন, মেয়াদ উত্তীর্ণ পাঁউরুটি। ফ্রিজের ভিতর থেকে উদ্ধার জমিয়ে রাখা পুরোন গ্রেভি উদ্ধার বাসি মুরগির মাংসও। জরিমানা করা হয়েছে হোটেল-রেস্তোঁরা কর্তৃপক্ষকে।",
+            "source_url": "https://bengali.abplive.com/videos/district/food-safety-department-inspection-before-kali-puja-watch-video-1198527"
+          },
+          "reported_authority": {
+            "quote": "দুর্গাপুরে ফের খাদ্য সুরক্ষা দফতরের অভিযান। হোটেল-রেস্তোরাঁগুলিতে মিলল পচা খাবার, দুর্গন্ধযুক্ত মাখন, মেয়াদ উত্তীর্ণ পাঁউরুটি। ফ্রিজের ভিতর থেকে উদ্ধার জমিয়ে রাখা পুরোন গ্রেভি উদ্ধার বাসি মুরগির মাংসও। জরিমানা করা হয়েছে হোটেল-রেস্তোঁরা কর্তৃপক্ষকে।",
+            "source_url": "https://bengali.abplive.com/videos/district/food-safety-department-inspection-before-kali-puja-watch-video-1198527"
+          },
+          "reported_observation": {
+            "quote": "দুর্গাপুরে ফের খাদ্য সুরক্ষা দফতরের অভিযান। হোটেল-রেস্তোরাঁগুলিতে মিলল পচা খাবার, দুর্গন্ধযুক্ত মাখন, মেয়াদ উত্তীর্ণ পাঁউরুটি। ফ্রিজের ভিতর থেকে উদ্ধার জমিয়ে রাখা পুরোন গ্রেভি উদ্ধার বাসি মুরগির মাংসও। জরিমানা করা হয়েছে হোটেল-রেস্তোঁরা কর্তৃপক্ষকে।",
+            "source_url": "https://bengali.abplive.com/videos/district/food-safety-department-inspection-before-kali-puja-watch-video-1198527"
+          }
+        },
+        "formal_finding": null,
+        "legal_finding_status": "unknown",
+        "reported_action": "জরিমানা করা হয়েছে",
+        "reported_authority": "খাদ্য সুরক্ষা দফতর",
+        "reported_observation": "হোটেল-রেস্তোরাঁগুলিতে মিলল পচা খাবার, দুর্গন্ধযুক্ত মাখন, মেয়াদ উত্তীর্ণ পাঁউরুটি। ফ্রিজের ভিতর থেকে উদ্ধার জমিয়ে রাখা পুরোন গ্রেভি উদ্ধার বাসি মুরগির মাংসও।",
+        "reported_quantity": null
+      },
+      "review": null,
+      "reviewed_associations": [],
+      "reviewer_hold": false,
+      "source_availability": "available",
+      "source_availability_reason": null,
+      "sources": [
+        {
+          "archive_url": null,
+          "evidence_context": "দুর্গাপুরে ফের খাদ্য সুরক্ষা দফতরের অভিযান। হোটেল-রেস্তোরাঁগুলিতে মিলল পচা খাবার, দুর্গন্ধযুক্ত মাখন, মেয়াদ উত্তীর্ণ পাঁউরুটি। ফ্রিজের ভিতর থেকে উদ্ধার জমিয়ে রাখা পুরোন গ্রেভি উদ্ধার বাসি মুরগির মাংসও। জরিমানা করা হয়েছে হোটেল-রেস্তোঁরা কর্তৃপক্ষকে।",
+          "evidence_language": "bn",
+          "evidence_locator": null,
+          "evidence_quote": "হোটেল-রেস্তোরাঁগুলিতে মিলল পচা খাবার, দুর্গন্ধযুক্ত মাখন, মেয়াদ উত্তীর্ণ পাঁউরুটি। ফ্রিজের ভিতর থেকে উদ্ধার জমিয়ে রাখা পুরোন গ্রেভি উদ্ধার বাসি মুরগির মাংসও।",
+          "evidence_span_hash": "40c8c91782329d6ca090a327be2df33267dbfd408fbccf6968d1cfa43cd5d00a",
+          "origin_source_id": null,
+          "retrieved_at": "2026-11-06T15:54:45.750200Z",
+          "source_date": "2026-11-06",
+          "source_id": "SRC-5e75a5854c92dfd9b398",
+          "source_language": "bn",
+          "source_publisher": "ABP Ananda",
+          "source_relationship": "unknown",
+          "source_revision_id": "3aa383910b89b5938038e39fd1cc1e088fcb1355df76faf9b2e7a2146dc378c4",
+          "source_title": "Food Safety: ফের খাদ্য সুরক্ষা দফতরের অভিযান Durgapur-এ, হোটেল-রেস্তোরাঁ থেকে মিলল পচা খাবার | food safety department inspection before kali puja watch video",
+          "source_type": "news",
+          "source_url": "https://bengali.abplive.com/videos/district/food-safety-department-inspection-before-kali-puja-watch-video-1198527",
+          "text_sha256": "3aa383910b89b5938038e39fd1cc1e088fcb1355df76faf9b2e7a2146dc378c4",
+          "tier": "B"
+        }
+      ],
+      "superseded_by": null,
+      "validator_id": "objective_source_grounding",
+      "validator_version": "2",
+      "verification_notes": "LLM-assisted candidate; objective source-grounding and publication checks passed. Source verification is not an independent finding of fact.",
       "verification_status": "SOURCE VERIFIED"
     },
     {
@@ -20835,11 +21021,17 @@
           "note": "Supporting source context revalidated; original evidence retained.",
           "previous_record_sha256": "9f6196dc9d029c2f483a13a956858f8e5d652b7c6fb687a16b5f0eb2f5fb2005",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-11-06T15:54:45.750200Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "9055b84a388d73235d802ad30392f92c832d9d20c796578bee24dd39c156ae57",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-11-05T18:00:10.449609Z",
-      "last_successful_evidence_check_at": "2026-11-05T18:00:10.449609Z",
+      "last_source_checked_at": "2026-11-06T15:54:45.750200Z",
+      "last_successful_evidence_check_at": "2026-11-06T15:54:45.750200Z",
       "llm": {
         "fields_proposed": [
           "area",
@@ -20864,7 +21056,7 @@
       "record_class": "inspection_evidence",
       "record_created_at": "2026-09-11T00:09:16.296804Z",
       "record_scope": "area_operation",
-      "record_updated_at": "2026-11-05T18:00:10.449609Z",
+      "record_updated_at": "2026-11-06T15:54:45.750200Z",
       "related_record_ids": [
         "WBFS-5ee36b93256b"
       ],

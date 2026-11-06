@@ -1,7 +1,7 @@
 {
   "actions": {
     "inspection / visit only": 25,
-    "not reported": 20,
+    "not reported": 21,
     "other": 2
   },
   "areas": {
@@ -29,6 +29,7 @@
     "কাকদ্বীপ মহকুমার নামখানা ও জুমাইনস্করহাট এলাকা": 1,
     "ট্যাংরার": 1,
     "ডেকার্স লেন": 1,
+    "দুর্গাপুরে": 1,
     "দুর্গাপুরের বেনাচিতি বাজারে": 1,
     "নেতাজি ইন্ডোর স্টেডিয়াম ও বাবুঘাট সংলগ্ন বাস টার্মিনাস সংলগ্ন এলাকা": 1,
     "পূর্ব মেদিনীপুর": 1,
@@ -42,9 +43,9 @@
     "শিয়ালদা স্টেশন চত্বরে": 1,
     "সল্টলেকে": 1
   },
-  "areas_count": 36,
+  "areas_count": 37,
   "business_formats": {
-    "unknown": 47
+    "unknown": 48
   },
   "context_notice": "Independent, non-governmental public-source research. Inclusion is not a finding of wrongdoing. Counts describe records in this tracker, not official totals, prevalence, compliance, risk or group behavior. Read the sources and preserve this context when sharing.",
   "coverage": {
@@ -53,7 +54,7 @@
     "establishment_context": 27,
     "menu_context": 0,
     "named_establishment": 30,
-    "reported_action": 32,
+    "reported_action": 33,
     "reported_quantity": 9
   },
   "establishments": {
@@ -62,33 +63,33 @@
     "market / vendor": 3,
     "restaurant / eatery": 13,
     "sweet shop / bakery": 3,
-    "unknown": 20
+    "unknown": 21
   },
   "establishments_count": 29,
-  "generated_at": "2026-11-06T06:38:08.460728+00:00",
+  "generated_at": "2026-11-06T15:54:45.750200+00:00",
   "map_coverage": {
     "mapped_records": 22,
     "precision": {
       "city": 3,
       "neighborhood": 15,
-      "not mapped": 25,
+      "not mapped": 26,
       "street": 4
     }
   },
   "menus": {
-    "unknown": 47
+    "unknown": 48
   },
   "pipeline_version": "0.3.0",
   "publishers": {
-    "ABP Ananda": 10,
+    "ABP Ananda": 11,
     "Business Today": 5,
     "Indian Express Bangla": 5,
     "The Times of India": 26,
     "UNI India": 1
   },
-  "record_count": 47,
+  "record_count": 48,
   "schema_version": "1.2.0",
-  "sources_count": 22,
+  "sources_count": 23,
   "timeline": {
     "2025-04-25": 1,
     "2026-09-02": 2,
@@ -102,10 +103,11 @@
     "2026-10-26": 1,
     "2026-10-27": 1,
     "2026-10-28": 2,
-    "2026-10-31": 2
+    "2026-10-31": 2,
+    "2026-11-06": 1
   },
-  "total": 47,
+  "total": 48,
   "verification": {
-    "SOURCE VERIFIED": 47
+    "SOURCE VERIFIED": 48
   }
 }
