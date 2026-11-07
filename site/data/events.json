@@ -1,6 +1,6 @@
 {
   "context_notice": "Independent, non-governmental public-source research. Inclusion is not a finding of wrongdoing. Counts describe records in this tracker, not official totals, prevalence, compliance, risk or group behavior. Read the sources and preserve this context when sharing.",
-  "generated_at": "2026-11-06T21:29:00.935828+00:00",
+  "generated_at": "2026-11-07T01:54:23.914342+00:00",
   "pipeline_version": "0.3.0",
   "record_count": 48,
   "records": [
@@ -10202,11 +10202,17 @@
           "note": "Supporting source context revalidated; original evidence retained.",
           "previous_record_sha256": "b41a6b7e1086d8696b909e930a1cf4414f93781c20749402ef3f21de0e07c642",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-11-07T01:54:23.914342Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "67c2f28c2e4d988304b5787af06392dfd4d83bd3f82a21ad3dfe76e30b908c83",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-11-06T15:54:45.750200Z",
-      "last_successful_evidence_check_at": "2026-11-06T15:54:45.750200Z",
+      "last_source_checked_at": "2026-11-07T01:54:23.914342Z",
+      "last_successful_evidence_check_at": "2026-11-07T01:54:23.914342Z",
       "llm": {
         "fields_proposed": [
           "area",
@@ -10232,7 +10238,7 @@
       "record_class": "inspection_evidence",
       "record_created_at": "2026-10-24T18:47:05.103646Z",
       "record_scope": "establishment_event",
-      "record_updated_at": "2026-11-06T15:54:45.750200Z",
+      "record_updated_at": "2026-11-07T01:54:23.914342Z",
       "related_record_ids": [],
       "reported_fact": {
         "area": "Salt Lake",
@@ -10289,11 +10295,11 @@
           "source_language": "en",
           "source_publisher": "The Times of India",
           "source_relationship": "unknown",
-          "source_revision_id": "121b6bbca58bb6f20d0939080acfc990f3fa356b790695136694f6fd0a33b660",
+          "source_revision_id": "0f87ec49ea9791dfa1c905c2d853b12379c27c528f1ee5b14f5d9024d965729e",
           "source_title": "Salt Lake eateries shut after food safety raid | Kolkata News - The Times of India",
           "source_type": "news",
           "source_url": "https://timesofindia.indiatimes.com/city/kolkata/salt-lake-eateries-shut-after-food-safety-raid/articleshow/135176005.cms",
-          "text_sha256": "121b6bbca58bb6f20d0939080acfc990f3fa356b790695136694f6fd0a33b660",
+          "text_sha256": "0f87ec49ea9791dfa1c905c2d853b12379c27c528f1ee5b14f5d9024d965729e",
           "tier": "B"
         }
       ],
@@ -12650,11 +12656,17 @@
           "note": "Supporting source context revalidated; original evidence retained.",
           "previous_record_sha256": "069c2476aa209a8a10733a59617ea8e724e4bd58968c61572ff1e2669d52d040",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-11-07T01:54:23.914342Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "7cabbe8ebf8c41f8f51885c26028259ebcd0c293a3598c50cf245438f4bc9133",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-11-06T15:54:45.750200Z",
-      "last_successful_evidence_check_at": "2026-11-06T15:54:45.750200Z",
+      "last_source_checked_at": "2026-11-07T01:54:23.914342Z",
+      "last_successful_evidence_check_at": "2026-11-07T01:54:23.914342Z",
       "llm": {
         "fields_proposed": [
           "area",
@@ -12680,7 +12692,7 @@
       "record_class": "inspection_evidence",
       "record_created_at": "2026-10-31T12:22:33.306824Z",
       "record_scope": "establishment_event",
-      "record_updated_at": "2026-11-06T15:54:45.750200Z",
+      "record_updated_at": "2026-11-07T01:54:23.914342Z",
       "related_record_ids": [],
       "reported_fact": {
         "area": "শিয়ালদহ",
@@ -13416,11 +13428,17 @@
           "note": "Supporting source context revalidated; original evidence retained.",
           "previous_record_sha256": "f0653b16dc7067cecb926d44fcb610f081d70c3402fb055e98bc76bd6c037c6b",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-11-07T01:54:23.914342Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "a0373d880924a92eaa9fcebbfca4a1a087d3b72272f4281708ac3c0dc79dfb09",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-11-06T15:54:45.750200Z",
-      "last_successful_evidence_check_at": "2026-11-06T15:54:45.750200Z",
+      "last_source_checked_at": "2026-11-07T01:54:23.914342Z",
+      "last_successful_evidence_check_at": "2026-11-07T01:54:23.914342Z",
       "llm": {
         "fields_proposed": [
           "area",
@@ -13446,7 +13464,7 @@
       "record_class": "inspection_evidence",
       "record_created_at": "2026-10-24T18:47:05.103646Z",
       "record_scope": "establishment_event",
-      "record_updated_at": "2026-11-06T15:54:45.750200Z",
+      "record_updated_at": "2026-11-07T01:54:23.914342Z",
       "related_record_ids": [],
       "reported_fact": {
         "area": "সল্টলেকে",
@@ -13637,11 +13655,17 @@
           "note": "Supporting source context revalidated; original evidence retained.",
           "previous_record_sha256": "4179090ced0903604b63e03021ff3351da264733c377dbc0c8ee9f9d73764497",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-11-07T01:54:23.914342Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "a938b00746612971631ae2dd9fa39073fb3317f7d3d8cf702f1c7932e6d828ad",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-11-06T15:54:45.750200Z",
-      "last_successful_evidence_check_at": "2026-11-06T15:54:45.750200Z",
+      "last_source_checked_at": "2026-11-07T01:54:23.914342Z",
+      "last_successful_evidence_check_at": "2026-11-07T01:54:23.914342Z",
       "llm": {
         "fields_proposed": [
           "area",
@@ -13667,7 +13691,7 @@
       "record_class": "inspection_evidence",
       "record_created_at": "2026-10-26T19:55:52.780187Z",
       "record_scope": "area_operation",
-      "record_updated_at": "2026-11-06T15:54:45.750200Z",
+      "record_updated_at": "2026-11-07T01:54:23.914342Z",
       "related_record_ids": [],
       "reported_fact": {
         "area": "নেতাজি ইন্ডোর স্টেডিয়াম ও বাবুঘাট সংলগ্ন বাস টার্মিনাস সংলগ্ন এলাকা",
@@ -16222,11 +16246,17 @@
           "note": "Source-grounded LLM candidate auto-published after deterministic validation.",
           "previous_record_sha256": null,
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-11-07T01:54:23.914342Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "a33a63ec0965b4fec16d430889a7eaeb2a01fe3886ad1b54c247ef267d45b9d9",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-11-06T15:54:45.750200Z",
-      "last_successful_evidence_check_at": "2026-11-06T15:54:45.750200Z",
+      "last_source_checked_at": "2026-11-07T01:54:23.914342Z",
+      "last_successful_evidence_check_at": "2026-11-07T01:54:23.914342Z",
       "llm": {
         "fields_proposed": [
           "area",
@@ -16251,7 +16281,7 @@
       "record_class": "inspection_evidence",
       "record_created_at": "2026-11-06T15:54:45.750200Z",
       "record_scope": "area_operation",
-      "record_updated_at": "2026-11-06T15:54:45.750200Z",
+      "record_updated_at": "2026-11-07T01:54:23.914342Z",
       "related_record_ids": [],
       "reported_fact": {
         "area": "দুর্গাপুরে",
@@ -16315,7 +16345,7 @@
       "superseded_by": null,
       "validator_id": "objective_source_grounding",
       "validator_version": "2",
-      "verification_notes": "LLM-assisted candidate; objective source-grounding and publication checks passed. Source verification is not an independent finding of fact.",
+      "verification_notes": "Supporting source context revalidated; original evidence retained.",
       "verification_status": "SOURCE VERIFIED"
     },
     {
