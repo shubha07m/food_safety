@@ -29,14 +29,14 @@
       "availability": "available",
       "failures": 0,
       "first_failure": null,
-      "last_attempt": "2026-11-07T01:54:23.914342+00:00",
-      "last_success": "2026-11-07T01:54:23.914342+00:00",
+      "last_attempt": "2026-11-07T21:47:12.520764+00:00",
+      "last_success": "2026-11-07T21:47:12.520764+00:00",
       "next_retry": null,
       "reason": null,
       "review_due": false,
       "source_id": "SRC-11858eef5e2173b96537",
       "supported_records": {
-        "WBFS-7ce19a0b2d10": "2026-11-07T01:54:23.914342+00:00"
+        "WBFS-7ce19a0b2d10": "2026-11-07T21:47:12.520764+00:00"
       }
     },
     "SRC-1296b20e3b23fc752e54": {
@@ -51,13 +51,13 @@
       "source_id": "SRC-1296b20e3b23fc752e54"
     },
     "SRC-1347e2c5ca6ae809cf01": {
-      "availability": "available",
-      "failures": 0,
-      "first_failure": null,
-      "last_attempt": "2026-11-07T01:54:23.914342+00:00",
+      "availability": "unavailable",
+      "failures": 1,
+      "first_failure": "2026-11-07T21:47:12.520764+00:00",
+      "last_attempt": "2026-11-07T21:47:12.520764+00:00",
       "last_success": "2026-11-07T01:54:23.914342+00:00",
-      "next_retry": null,
-      "reason": null,
+      "next_retry": "2026-11-08T01:47:12.520764+00:00",
+      "reason": "network_error",
       "review_due": false,
       "source_id": "SRC-1347e2c5ca6ae809cf01",
       "supported_records": {
@@ -162,14 +162,14 @@
       "availability": "available",
       "failures": 0,
       "first_failure": null,
-      "last_attempt": "2026-11-07T01:54:23.914342+00:00",
-      "last_success": "2026-11-07T01:54:23.914342+00:00",
+      "last_attempt": "2026-11-07T21:47:12.520764+00:00",
+      "last_success": "2026-11-07T21:47:12.520764+00:00",
       "next_retry": null,
       "reason": null,
       "review_due": false,
       "source_id": "SRC-2a44c4bc86d363409d41",
       "supported_records": {
-        "WBFS-6e2bfddd8138": "2026-11-07T01:54:23.914342+00:00"
+        "WBFS-6e2bfddd8138": "2026-11-07T21:47:12.520764+00:00"
       }
     },
     "SRC-2dc72771eb00cd4f5f55": {
@@ -364,14 +364,14 @@
       "availability": "available",
       "failures": 0,
       "first_failure": null,
-      "last_attempt": "2026-11-07T01:54:23.914342+00:00",
-      "last_success": "2026-11-07T01:54:23.914342+00:00",
+      "last_attempt": "2026-11-07T21:47:12.520764+00:00",
+      "last_success": "2026-11-07T21:47:12.520764+00:00",
       "next_retry": null,
       "reason": null,
       "review_due": false,
       "source_id": "SRC-70157883b3e5c6884538",
       "supported_records": {
-        "WBFS-894921fe4a1e": "2026-11-07T01:54:23.914342+00:00"
+        "WBFS-894921fe4a1e": "2026-11-07T21:47:12.520764+00:00"
       }
     },
     "SRC-793383253f504429c2fb": {
@@ -446,15 +446,15 @@
       "availability": "available",
       "failures": 0,
       "first_failure": null,
-      "last_attempt": "2026-11-06T15:54:45.750200+00:00",
-      "last_success": "2026-11-06T15:54:45.750200+00:00",
+      "last_attempt": "2026-11-07T21:47:12.520764+00:00",
+      "last_success": "2026-11-07T21:47:12.520764+00:00",
       "next_retry": null,
       "reason": null,
       "review_due": false,
       "source_id": "SRC-8f8f07c75d8f6bf2ee85",
       "supported_records": {
-        "WBFS-5ee36b93256b": "2026-11-06T15:54:45.750200+00:00",
-        "WBFS-c391d02b3d97": "2026-11-06T15:54:45.750200+00:00"
+        "WBFS-5ee36b93256b": "2026-11-07T21:47:12.520764+00:00",
+        "WBFS-c391d02b3d97": "2026-11-07T21:47:12.520764+00:00"
       }
     },
     "SRC-8fa85f586a906bb80c9d": {
@@ -835,7 +835,7 @@
     }
   },
   "context_notice": "Independent, non-governmental public-source research. Inclusion is not a finding of wrongdoing. Counts describe records in this tracker, not official totals, prevalence, compliance, risk or group behavior. Read the sources and preserve this context when sharing.",
-  "generated_at": "2026-11-07T16:24:42.630688+00:00",
+  "generated_at": "2026-11-07T21:47:12.520764+00:00",
   "pipeline_version": "0.3.0",
   "record_count": 0,
   "records": [],

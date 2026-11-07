@@ -1,6 +1,6 @@
 {
   "context_notice": "Independent, non-governmental public-source research. Inclusion is not a finding of wrongdoing. Counts describe records in this tracker, not official totals, prevalence, compliance, risk or group behavior. Read the sources and preserve this context when sharing.",
-  "generated_at": "2026-11-07T16:24:42.630688+00:00",
+  "generated_at": "2026-11-07T21:47:12.520764+00:00",
   "pipeline_version": "0.3.0",
   "record_count": 48,
   "records": [
@@ -10292,10 +10292,16 @@
           "note": "Supporting source context revalidated; original evidence retained.",
           "previous_record_sha256": "67c2f28c2e4d988304b5787af06392dfd4d83bd3f82a21ad3dfe76e30b908c83",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-11-07T21:47:12.520764Z",
+          "note": "Source access unavailable; historical support is not disproved.",
+          "previous_record_sha256": "edada7b1a0dfbe25dae26684ca2209d5993ac27f8c70623ef44924ff7a04190b",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-11-07T01:54:23.914342Z",
+      "last_source_checked_at": "2026-11-07T21:47:12.520764Z",
       "last_successful_evidence_check_at": "2026-11-07T01:54:23.914342Z",
       "llm": {
         "fields_proposed": [
@@ -10318,11 +10324,11 @@
       },
       "location_id": null,
       "pipeline_version": "0.3.0",
-      "publication_status": "active",
+      "publication_status": "active_with_warning",
       "record_class": "inspection_evidence",
       "record_created_at": "2026-10-24T18:47:05.103646Z",
       "record_scope": "establishment_event",
-      "record_updated_at": "2026-11-07T01:54:23.914342Z",
+      "record_updated_at": "2026-11-07T21:47:12.520764Z",
       "related_record_ids": [],
       "reported_fact": {
         "area": "Salt Lake",
@@ -10362,8 +10368,8 @@
       "review": null,
       "reviewed_associations": [],
       "reviewer_hold": false,
-      "source_availability": "available",
-      "source_availability_reason": null,
+      "source_availability": "unavailable",
+      "source_availability_reason": "network_error",
       "sources": [
         {
           "archive_url": null,
@@ -10390,7 +10396,7 @@
       "superseded_by": null,
       "validator_id": "objective_source_grounding",
       "validator_version": "2",
-      "verification_notes": "Supporting source context revalidated; original evidence retained.",
+      "verification_notes": "Source access unavailable; historical support is not disproved.",
       "verification_status": "SOURCE VERIFIED"
     },
     {
@@ -11919,11 +11925,17 @@
           "note": "Supporting source context revalidated; original evidence retained.",
           "previous_record_sha256": "5d55dc49a10faa209d157fd3105ed25a6b847cbd6e48b434bc7835df9905dae0",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-11-07T21:47:12.520764Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "2de52c68ce19b3a10b0793b6babec82ded8a507cc9e053c7e183630a84bf05c4",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-11-06T15:54:45.750200Z",
-      "last_successful_evidence_check_at": "2026-11-06T15:54:45.750200Z",
+      "last_source_checked_at": "2026-11-07T21:47:12.520764Z",
+      "last_successful_evidence_check_at": "2026-11-07T21:47:12.520764Z",
       "llm": {
         "fields_proposed": [
           "area",
@@ -11948,7 +11960,7 @@
       "record_class": "inspection_evidence",
       "record_created_at": "2026-09-11T00:09:16.296804Z",
       "record_scope": "area_operation",
-      "record_updated_at": "2026-11-06T15:54:45.750200Z",
+      "record_updated_at": "2026-11-07T21:47:12.520764Z",
       "related_record_ids": [
         "WBFS-c391d02b3d97"
       ],
@@ -12758,11 +12770,17 @@
           "note": "Supporting source context revalidated; original evidence retained.",
           "previous_record_sha256": "7cabbe8ebf8c41f8f51885c26028259ebcd0c293a3598c50cf245438f4bc9133",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-11-07T21:47:12.520764Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "ccf31fcc4af5b3648317152a3deb952271d2645432d8b2ff4a272efc49d0892b",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-11-07T01:54:23.914342Z",
-      "last_successful_evidence_check_at": "2026-11-07T01:54:23.914342Z",
+      "last_source_checked_at": "2026-11-07T21:47:12.520764Z",
+      "last_successful_evidence_check_at": "2026-11-07T21:47:12.520764Z",
       "llm": {
         "fields_proposed": [
           "area",
@@ -12788,7 +12806,7 @@
       "record_class": "inspection_evidence",
       "record_created_at": "2026-10-31T12:22:33.306824Z",
       "record_scope": "establishment_event",
-      "record_updated_at": "2026-11-07T01:54:23.914342Z",
+      "record_updated_at": "2026-11-07T21:47:12.520764Z",
       "related_record_ids": [],
       "reported_fact": {
         "area": "শিয়ালদহ",
@@ -13530,11 +13548,17 @@
           "note": "Supporting source context revalidated; original evidence retained.",
           "previous_record_sha256": "a0373d880924a92eaa9fcebbfca4a1a087d3b72272f4281708ac3c0dc79dfb09",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-11-07T21:47:12.520764Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "ee84d781c4f7a246fde03d00c60973b90a377692a3420cc00840aebc9fbe8281",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-11-07T01:54:23.914342Z",
-      "last_successful_evidence_check_at": "2026-11-07T01:54:23.914342Z",
+      "last_source_checked_at": "2026-11-07T21:47:12.520764Z",
+      "last_successful_evidence_check_at": "2026-11-07T21:47:12.520764Z",
       "llm": {
         "fields_proposed": [
           "area",
@@ -13560,7 +13584,7 @@
       "record_class": "inspection_evidence",
       "record_created_at": "2026-10-24T18:47:05.103646Z",
       "record_scope": "establishment_event",
-      "record_updated_at": "2026-11-07T01:54:23.914342Z",
+      "record_updated_at": "2026-11-07T21:47:12.520764Z",
       "related_record_ids": [],
       "reported_fact": {
         "area": "সল্টলেকে",
@@ -13617,11 +13641,11 @@
           "source_language": "bn",
           "source_publisher": "ABP Ananda",
           "source_relationship": "unknown",
-          "source_revision_id": "96790cf46f93668327b985458288c8e437a7693c56bf48c6de50e2ab0b948e89",
+          "source_revision_id": "22d208fb4c2a4e47972f9d57dd182f81b57c16adffa5b747baa3bbe17f764efc",
           "source_title": "মাংসের উপর ছত্রাক, বন্ধ হল সল্টলেকের Balle Balle Dhaba, বাতিল লাইসেন্স",
           "source_type": "news",
           "source_url": "https://bengali.abplive.com/district/saltlake-balle-balle-dhaba-closed-after-food-inspection-license-cancelled-1197087",
-          "text_sha256": "96790cf46f93668327b985458288c8e437a7693c56bf48c6de50e2ab0b948e89",
+          "text_sha256": "22d208fb4c2a4e47972f9d57dd182f81b57c16adffa5b747baa3bbe17f764efc",
           "tier": "B"
         }
       ],
@@ -13757,11 +13781,17 @@
           "note": "Supporting source context revalidated; original evidence retained.",
           "previous_record_sha256": "a938b00746612971631ae2dd9fa39073fb3317f7d3d8cf702f1c7932e6d828ad",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-11-07T21:47:12.520764Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "e2f8ec7382ff5805e09457ebcd76cf9f84d07eab36e5141dbf1d2840ed4a99d2",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-11-07T01:54:23.914342Z",
-      "last_successful_evidence_check_at": "2026-11-07T01:54:23.914342Z",
+      "last_source_checked_at": "2026-11-07T21:47:12.520764Z",
+      "last_successful_evidence_check_at": "2026-11-07T21:47:12.520764Z",
       "llm": {
         "fields_proposed": [
           "area",
@@ -13787,7 +13817,7 @@
       "record_class": "inspection_evidence",
       "record_created_at": "2026-10-26T19:55:52.780187Z",
       "record_scope": "area_operation",
-      "record_updated_at": "2026-11-07T01:54:23.914342Z",
+      "record_updated_at": "2026-11-07T21:47:12.520764Z",
       "related_record_ids": [],
       "reported_fact": {
         "area": "নেতাজি ইন্ডোর স্টেডিয়াম ও বাবুঘাট সংলগ্ন বাস টার্মিনাস সংলগ্ন এলাকা",
@@ -13844,11 +13874,11 @@
           "source_language": "bn",
           "source_publisher": "ABP Ananda",
           "source_relationship": "unknown",
-          "source_revision_id": "e1865f283b75c41b2d5a49d442b78608eda0123759c8acad323e2b719506b847",
+          "source_revision_id": "1352fda4332a142ab78364b4fa182feadce6193f76193c0a6cdfed81cadcc298",
           "source_title": "West Bengal News Live : ফের অ্যাকশনে কলকাতা পুরসভার খাদ্য সুরক্ষা বিভাগ, খাবারের গুণগত মান যাচাই | West Bengal News 26 October 2026 Chorbagan Puja incident Suvendu Adhikari targets left parties TMC Symbol tussle Weather news update",
           "source_type": "news",
           "source_url": "https://bengali.abplive.com/district/west-bengal-news-26-october-2026-chorbagan-puja-incident-suvendu-adhikari-targets-left-parties-tmc-symbol-tussle-weather-news-update-1197260",
-          "text_sha256": "e1865f283b75c41b2d5a49d442b78608eda0123759c8acad323e2b719506b847",
+          "text_sha256": "1352fda4332a142ab78364b4fa182feadce6193f76193c0a6cdfed81cadcc298",
           "tier": "B"
         }
       ],
@@ -21231,11 +21261,17 @@
           "note": "Supporting source context revalidated; original evidence retained.",
           "previous_record_sha256": "9055b84a388d73235d802ad30392f92c832d9d20c796578bee24dd39c156ae57",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-11-07T21:47:12.520764Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "1af1062ebf7b90f3d083c0cce6620b9306edee9cf10b4a993927e9c3c296bb5c",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-11-06T15:54:45.750200Z",
-      "last_successful_evidence_check_at": "2026-11-06T15:54:45.750200Z",
+      "last_source_checked_at": "2026-11-07T21:47:12.520764Z",
+      "last_successful_evidence_check_at": "2026-11-07T21:47:12.520764Z",
       "llm": {
         "fields_proposed": [
           "area",
@@ -21260,7 +21296,7 @@
       "record_class": "inspection_evidence",
       "record_created_at": "2026-09-11T00:09:16.296804Z",
       "record_scope": "area_operation",
-      "record_updated_at": "2026-11-06T15:54:45.750200Z",
+      "record_updated_at": "2026-11-07T21:47:12.520764Z",
       "related_record_ids": [
         "WBFS-5ee36b93256b"
       ],
