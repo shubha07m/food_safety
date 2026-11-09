@@ -1,6 +1,6 @@
 {
   "context_notice": "Independent, non-governmental public-source research. Inclusion is not a finding of wrongdoing. Counts describe records in this tracker, not official totals, prevalence, compliance, risk or group behavior. Read the sources and preserve this context when sharing.",
-  "generated_at": "2026-11-09T09:45:27.111169+00:00",
+  "generated_at": "2026-11-09T20:42:41.636686+00:00",
   "pipeline_version": "0.3.0",
   "record_count": 48,
   "records": [
@@ -16810,11 +16810,17 @@
           "note": "Supporting source context revalidated; original evidence retained.",
           "previous_record_sha256": "c57814b6d4429b08a776c278f277809292326bfadcec59ec2780638edb388f57",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-11-09T20:42:41.636686Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "1972ef451ecf4255f09897de59d5398a48b898a7899ff9d98245ef2fb3dd11e4",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-11-03T21:46:52.159145Z",
-      "last_successful_evidence_check_at": "2026-11-03T21:46:52.159145Z",
+      "last_source_checked_at": "2026-11-09T20:42:41.636686Z",
+      "last_successful_evidence_check_at": "2026-11-09T20:42:41.636686Z",
       "llm": {
         "fields_proposed": [
           "area",
@@ -16841,7 +16847,7 @@
       "record_class": "inspection_evidence",
       "record_created_at": "2026-10-28T01:19:09.190771Z",
       "record_scope": "establishment_event",
-      "record_updated_at": "2026-11-03T21:46:52.159145Z",
+      "record_updated_at": "2026-11-09T20:42:41.636686Z",
       "related_record_ids": [],
       "reported_fact": {
         "area": "ভিআইপি রোড",
@@ -16902,11 +16908,11 @@
           "source_language": "bn",
           "source_publisher": "ABP Ananda",
           "source_relationship": "unknown",
-          "source_revision_id": "e9e5b0302c2858f96731d77f443cb927d4da08ddbcca7c86f1abf35a704c213d",
+          "source_revision_id": "54786bd3015da528a5e51be92c0362b6e0aed499e0f88abcdb3307ae4758bb97",
           "source_title": "Haldiram Raid | ভিআইপি রোডের ওপর হলদিরাম প্রভুজির রেস্টুরেন্টে অভিযান খাদ্য সুরক্ষা দফতরের | Food Safety Department conducts raid at Haldiram Prabhuji restaurant on VIP Road",
           "source_type": "news",
           "source_url": "https://bengali.abplive.com/videos/news/food-safety-department-conducts-raid-at-haldiram-prabhuji-restaurant-on-vip-road-1197423",
-          "text_sha256": "e9e5b0302c2858f96731d77f443cb927d4da08ddbcca7c86f1abf35a704c213d",
+          "text_sha256": "54786bd3015da528a5e51be92c0362b6e0aed499e0f88abcdb3307ae4758bb97",
           "tier": "B"
         }
       ],
@@ -17599,11 +17605,17 @@
           "note": "Supporting source context revalidated; original evidence retained.",
           "previous_record_sha256": "d23d3e521ed44182bedf6638542e004dcb6df1d4741789b1b33a2bfe4b72b58f",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-11-09T20:42:41.636686Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "f7c43dce5c58bc82c1677fb44d944e63ca8e886ba47928fa3360f2122f3182ce",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-11-08T22:00:26.324019Z",
-      "last_successful_evidence_check_at": "2026-11-08T22:00:26.324019Z",
+      "last_source_checked_at": "2026-11-09T20:42:41.636686Z",
+      "last_successful_evidence_check_at": "2026-11-09T20:42:41.636686Z",
       "llm": {
         "fields_proposed": [
           "area",
@@ -17630,7 +17642,7 @@
       "record_class": "inspection_evidence",
       "record_created_at": "2026-10-28T01:19:09.190771Z",
       "record_scope": "establishment_event",
-      "record_updated_at": "2026-11-08T22:00:26.324019Z",
+      "record_updated_at": "2026-11-09T20:42:41.636686Z",
       "related_record_ids": [],
       "reported_fact": {
         "area": "ভিআইপি রোডের ওপর",
@@ -19153,11 +19165,17 @@
           "note": "Supporting source context revalidated; original evidence retained.",
           "previous_record_sha256": "5caa7c88d15e2848a730e39015ae48debc04e4c8423dd52358c656d04e5584ea",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-11-09T20:42:41.636686Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "0ce2f993d9210bf728734485f3824f114546a29c0d81cda023858040662d24c9",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-11-08T22:00:26.324019Z",
-      "last_successful_evidence_check_at": "2026-11-08T22:00:26.324019Z",
+      "last_source_checked_at": "2026-11-09T20:42:41.636686Z",
+      "last_successful_evidence_check_at": "2026-11-09T20:42:41.636686Z",
       "llm": {
         "fields_proposed": [
           "area",
@@ -19183,7 +19201,7 @@
       "record_class": "inspection_evidence",
       "record_created_at": "2026-10-28T01:19:09.190771Z",
       "record_scope": "establishment_event",
-      "record_updated_at": "2026-11-08T22:00:26.324019Z",
+      "record_updated_at": "2026-11-09T20:42:41.636686Z",
       "related_record_ids": [],
       "reported_fact": {
         "area": "ভিআইপি রোডের",
@@ -24275,11 +24293,17 @@
           "note": "Supporting source context revalidated; original evidence retained.",
           "previous_record_sha256": "f1b92e307d471e099cc526347310e0e3a7233403755cf47d486ac916efc8985e",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-11-09T20:42:41.636686Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "ea64f02b9e30092aa0ecaa30d67801a49d794e6d79bd914c5138fe32ea7c496a",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-11-08T22:00:26.324019Z",
-      "last_successful_evidence_check_at": "2026-11-08T22:00:26.324019Z",
+      "last_source_checked_at": "2026-11-09T20:42:41.636686Z",
+      "last_successful_evidence_check_at": "2026-11-09T20:42:41.636686Z",
       "llm": {
         "fields_proposed": [
           "area",
@@ -24305,7 +24329,7 @@
       "record_class": "inspection_evidence",
       "record_created_at": "2026-09-15T11:42:24.512042Z",
       "record_scope": "establishment_event",
-      "record_updated_at": "2026-11-08T22:00:26.324019Z",
+      "record_updated_at": "2026-11-09T20:42:41.636686Z",
       "related_record_ids": [],
       "reported_fact": {
         "area": "দুর্গাপুরের বেনাচিতি বাজারে",
@@ -24362,11 +24386,11 @@
           "source_language": "bn",
           "source_publisher": "ABP Ananda",
           "source_relationship": "unknown",
-          "source_revision_id": "d42ad5ea4c856f4aed28e02c436d55de8d5764eebec1b7fc38da6f4f9ecbda14",
+          "source_revision_id": "f30403a2ab26a7e02542ef64d0ecb977951d21fba180b388bfe118d2b7ff5ff0",
           "source_title": "Rotten Food: পিৎজায় ফাঙ্গাস! খাবার থেকে বেরোচ্ছে পচা, বাসি গন্ধ, শাটার নামল এই দোকানের | Durgapur Fungus on the pizza odor food shop has been shut down",
           "source_type": "news",
           "source_url": "https://bengali.abplive.com/district/durgapur-fungus-on-the-pizza-odor-food-shop-has-been-shut-down-1192879",
-          "text_sha256": "d42ad5ea4c856f4aed28e02c436d55de8d5764eebec1b7fc38da6f4f9ecbda14",
+          "text_sha256": "f30403a2ab26a7e02542ef64d0ecb977951d21fba180b388bfe118d2b7ff5ff0",
           "tier": "B"
         }
       ],
@@ -24484,11 +24508,17 @@
           "note": "Supporting source context revalidated; original evidence retained.",
           "previous_record_sha256": "06920f3435f88941de4a252b1d7dfaa5b16b51de618278243578c43ca48e54db",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-11-09T20:42:41.636686Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "cce728e9bce135f3d01e404bc90cb9edbb491c17c7d8b9b255fd57636fae5307",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-11-08T22:00:26.324019Z",
-      "last_successful_evidence_check_at": "2026-11-08T22:00:26.324019Z",
+      "last_source_checked_at": "2026-11-09T20:42:41.636686Z",
+      "last_successful_evidence_check_at": "2026-11-09T20:42:41.636686Z",
       "llm": {
         "fields_proposed": [
           "area",
@@ -24513,7 +24543,7 @@
       "record_class": "inspection_evidence",
       "record_created_at": "2026-10-31T12:22:33.306824Z",
       "record_scope": "area_operation",
-      "record_updated_at": "2026-11-08T22:00:26.324019Z",
+      "record_updated_at": "2026-11-09T20:42:41.636686Z",
       "related_record_ids": [],
       "reported_fact": {
         "area": "শিয়ালদা স্টেশন চত্বরে",
