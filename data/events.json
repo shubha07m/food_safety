@@ -1,6 +1,6 @@
 {
   "context_notice": "Independent, non-governmental public-source research. Inclusion is not a finding of wrongdoing. Counts describe records in this tracker, not official totals, prevalence, compliance, risk or group behavior. Read the sources and preserve this context when sharing.",
-  "generated_at": "2026-11-10T12:36:04.251510+00:00",
+  "generated_at": "2026-11-10T20:48:55.325370+00:00",
   "pipeline_version": "0.3.0",
   "record_count": 48,
   "records": [
@@ -16684,11 +16684,17 @@
           "note": "Supporting source context revalidated; original evidence retained.",
           "previous_record_sha256": "a33a63ec0965b4fec16d430889a7eaeb2a01fe3886ad1b54c247ef267d45b9d9",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-11-10T20:48:55.325370Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "02d73f1feba009c6f9474faa41a386d45e6c9c09b0fcab2ec99c8f97daf09677",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-11-07T01:54:23.914342Z",
-      "last_successful_evidence_check_at": "2026-11-07T01:54:23.914342Z",
+      "last_source_checked_at": "2026-11-10T20:48:55.325370Z",
+      "last_successful_evidence_check_at": "2026-11-10T20:48:55.325370Z",
       "llm": {
         "fields_proposed": [
           "area",
@@ -16713,7 +16719,7 @@
       "record_class": "inspection_evidence",
       "record_created_at": "2026-11-06T15:54:45.750200Z",
       "record_scope": "area_operation",
-      "record_updated_at": "2026-11-07T01:54:23.914342Z",
+      "record_updated_at": "2026-11-10T20:48:55.325370Z",
       "related_record_ids": [],
       "reported_fact": {
         "area": "দুর্গাপুরে",
@@ -16766,11 +16772,11 @@
           "source_language": "bn",
           "source_publisher": "ABP Ananda",
           "source_relationship": "unknown",
-          "source_revision_id": "3aa383910b89b5938038e39fd1cc1e088fcb1355df76faf9b2e7a2146dc378c4",
+          "source_revision_id": "569fc9ff5b918fa15c394e09655e5677875ffc8e897f2da0a3e15ead9ee0acc8",
           "source_title": "Food Safety: ফের খাদ্য সুরক্ষা দফতরের অভিযান Durgapur-এ, হোটেল-রেস্তোরাঁ থেকে মিলল পচা খাবার | food safety department inspection before kali puja watch video",
           "source_type": "news",
           "source_url": "https://bengali.abplive.com/videos/district/food-safety-department-inspection-before-kali-puja-watch-video-1198527",
-          "text_sha256": "3aa383910b89b5938038e39fd1cc1e088fcb1355df76faf9b2e7a2146dc378c4",
+          "text_sha256": "569fc9ff5b918fa15c394e09655e5677875ffc8e897f2da0a3e15ead9ee0acc8",
           "tier": "B"
         }
       ],
@@ -16888,11 +16894,17 @@
           "note": "Supporting source context revalidated; original evidence retained.",
           "previous_record_sha256": "1972ef451ecf4255f09897de59d5398a48b898a7899ff9d98245ef2fb3dd11e4",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-11-10T20:48:55.325370Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "084a87786fc79037ba60c42ee0a3b5994fdb780b198361a31905064cca502a6c",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-11-09T20:42:41.636686Z",
-      "last_successful_evidence_check_at": "2026-11-09T20:42:41.636686Z",
+      "last_source_checked_at": "2026-11-10T20:48:55.325370Z",
+      "last_successful_evidence_check_at": "2026-11-10T20:48:55.325370Z",
       "llm": {
         "fields_proposed": [
           "area",
@@ -16919,7 +16931,7 @@
       "record_class": "inspection_evidence",
       "record_created_at": "2026-10-28T01:19:09.190771Z",
       "record_scope": "establishment_event",
-      "record_updated_at": "2026-11-09T20:42:41.636686Z",
+      "record_updated_at": "2026-11-10T20:48:55.325370Z",
       "related_record_ids": [],
       "reported_fact": {
         "area": "ভিআইপি রোড",
@@ -17683,11 +17695,17 @@
           "note": "Supporting source context revalidated; original evidence retained.",
           "previous_record_sha256": "f7c43dce5c58bc82c1677fb44d944e63ca8e886ba47928fa3360f2122f3182ce",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-11-10T20:48:55.325370Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "480d1facf433050b8f0b3493508a52fc775dcab55b61204d8d0037e7eae73782",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-11-09T20:42:41.636686Z",
-      "last_successful_evidence_check_at": "2026-11-09T20:42:41.636686Z",
+      "last_source_checked_at": "2026-11-10T20:48:55.325370Z",
+      "last_successful_evidence_check_at": "2026-11-10T20:48:55.325370Z",
       "llm": {
         "fields_proposed": [
           "area",
@@ -17714,7 +17732,7 @@
       "record_class": "inspection_evidence",
       "record_created_at": "2026-10-28T01:19:09.190771Z",
       "record_scope": "establishment_event",
-      "record_updated_at": "2026-11-09T20:42:41.636686Z",
+      "record_updated_at": "2026-11-10T20:48:55.325370Z",
       "related_record_ids": [],
       "reported_fact": {
         "area": "ভিআইপি রোডের ওপর",
@@ -19243,11 +19261,17 @@
           "note": "Supporting source context revalidated; original evidence retained.",
           "previous_record_sha256": "0ce2f993d9210bf728734485f3824f114546a29c0d81cda023858040662d24c9",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-11-10T20:48:55.325370Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "1ac804e8ef21cbc5daebee706511161eec45efaa4bd570bc8ade57b80f33dce6",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-11-09T20:42:41.636686Z",
-      "last_successful_evidence_check_at": "2026-11-09T20:42:41.636686Z",
+      "last_source_checked_at": "2026-11-10T20:48:55.325370Z",
+      "last_successful_evidence_check_at": "2026-11-10T20:48:55.325370Z",
       "llm": {
         "fields_proposed": [
           "area",
@@ -19273,7 +19297,7 @@
       "record_class": "inspection_evidence",
       "record_created_at": "2026-10-28T01:19:09.190771Z",
       "record_scope": "establishment_event",
-      "record_updated_at": "2026-11-09T20:42:41.636686Z",
+      "record_updated_at": "2026-11-10T20:48:55.325370Z",
       "related_record_ids": [],
       "reported_fact": {
         "area": "ভিআইপি রোডের",
@@ -19330,11 +19354,11 @@
           "source_language": "bn",
           "source_publisher": "ABP Ananda",
           "source_relationship": "unknown",
-          "source_revision_id": "9057ef58607088d04553975a2d06f1e6e609575d8a75d03464076fdc27eed1aa",
+          "source_revision_id": "ef7eabad8e8ab5c21e75f050f67bb0a171b17f63042bcf81608407609f262244",
           "source_title": "Food Safety Raid: হলদিরাম প্রভুজির রেস্টুরেন্টে হানা খাদ্য সুরক্ষা দফতরের, VIP রোডের উপর এই দোকান থেকে যা বেরিয়ে এল ..",
           "source_type": "news",
           "source_url": "https://bengali.abplive.com/district/food-safety-raid-on-haldiram-prabhuji-restaurant-at-vip-road-breaking-news-1197381",
-          "text_sha256": "9057ef58607088d04553975a2d06f1e6e609575d8a75d03464076fdc27eed1aa",
+          "text_sha256": "ef7eabad8e8ab5c21e75f050f67bb0a171b17f63042bcf81608407609f262244",
           "tier": "B"
         }
       ],
@@ -24389,11 +24413,17 @@
           "note": "Supporting source context revalidated; original evidence retained.",
           "previous_record_sha256": "ea64f02b9e30092aa0ecaa30d67801a49d794e6d79bd914c5138fe32ea7c496a",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-11-10T20:48:55.325370Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "9e0e63e431fa0b2218135e67aa8404585e11bb6d08cf78b93fb56716628e7ac5",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-11-09T20:42:41.636686Z",
-      "last_successful_evidence_check_at": "2026-11-09T20:42:41.636686Z",
+      "last_source_checked_at": "2026-11-10T20:48:55.325370Z",
+      "last_successful_evidence_check_at": "2026-11-10T20:48:55.325370Z",
       "llm": {
         "fields_proposed": [
           "area",
@@ -24419,7 +24449,7 @@
       "record_class": "inspection_evidence",
       "record_created_at": "2026-09-15T11:42:24.512042Z",
       "record_scope": "establishment_event",
-      "record_updated_at": "2026-11-09T20:42:41.636686Z",
+      "record_updated_at": "2026-11-10T20:48:55.325370Z",
       "related_record_ids": [],
       "reported_fact": {
         "area": "দুর্গাপুরের বেনাচিতি বাজারে",
