@@ -1,6 +1,6 @@
 {
   "context_notice": "Independent, non-governmental public-source research. Inclusion is not a finding of wrongdoing. Counts describe records in this tracker, not official totals, prevalence, compliance, risk or group behavior. Read the sources and preserve this context when sharing.",
-  "generated_at": "2026-11-13T06:39:48.619980+00:00",
+  "generated_at": "2026-11-13T16:18:13.915448+00:00",
   "pipeline_version": "0.3.0",
   "record_count": 48,
   "records": [
@@ -14046,11 +14046,17 @@
           "note": "Supporting source context revalidated; original evidence retained.",
           "previous_record_sha256": "6655947d54d96d8d2d853a84982f9ad0e559552fced5cf857d0dd6548ffa883d",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-11-13T16:18:13.915448Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "aedb4d23f0ad8a9e6b8b550c5025ecfea350dd16cc0ca7f74c9cee95c2670ec7",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-11-09T09:45:27.111169Z",
-      "last_successful_evidence_check_at": "2026-11-09T09:45:27.111169Z",
+      "last_source_checked_at": "2026-11-13T16:18:13.915448Z",
+      "last_successful_evidence_check_at": "2026-11-13T16:18:13.915448Z",
       "llm": {
         "fields_proposed": [
           "area",
@@ -14076,7 +14082,7 @@
       "record_class": "inspection_evidence",
       "record_created_at": "2026-10-24T18:47:05.103646Z",
       "record_scope": "establishment_event",
-      "record_updated_at": "2026-11-09T09:45:27.111169Z",
+      "record_updated_at": "2026-11-13T16:18:13.915448Z",
       "related_record_ids": [],
       "reported_fact": {
         "area": "সল্টলেকে",
@@ -14133,11 +14139,11 @@
           "source_language": "bn",
           "source_publisher": "ABP Ananda",
           "source_relationship": "unknown",
-          "source_revision_id": "22d208fb4c2a4e47972f9d57dd182f81b57c16adffa5b747baa3bbe17f764efc",
+          "source_revision_id": "ad4ce43b500b97d4daca9ac057b7af8343e1fc6f456a33ab25d6553fff1fad49",
           "source_title": "মাংসের উপর ছত্রাক, বন্ধ হল সল্টলেকের Balle Balle Dhaba, বাতিল লাইসেন্স",
           "source_type": "news",
           "source_url": "https://bengali.abplive.com/district/saltlake-balle-balle-dhaba-closed-after-food-inspection-license-cancelled-1197087",
-          "text_sha256": "22d208fb4c2a4e47972f9d57dd182f81b57c16adffa5b747baa3bbe17f764efc",
+          "text_sha256": "ad4ce43b500b97d4daca9ac057b7af8343e1fc6f456a33ab25d6553fff1fad49",
           "tier": "B"
         }
       ],
@@ -14291,11 +14297,17 @@
           "note": "Supporting source context revalidated; original evidence retained.",
           "previous_record_sha256": "1d96e34518a9deae818d73a3373dd3a0e7610dabc4666ef3754fc70061651220",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-11-13T16:18:13.915448Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "0af101e3d6f8a26c7504afc01af965217e70f9be466d3f710bb8ba8fa8af735b",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-11-12T18:16:49.343016Z",
-      "last_successful_evidence_check_at": "2026-11-12T18:16:49.343016Z",
+      "last_source_checked_at": "2026-11-13T16:18:13.915448Z",
+      "last_successful_evidence_check_at": "2026-11-13T16:18:13.915448Z",
       "llm": {
         "fields_proposed": [
           "area",
@@ -14321,7 +14333,7 @@
       "record_class": "inspection_evidence",
       "record_created_at": "2026-10-26T19:55:52.780187Z",
       "record_scope": "area_operation",
-      "record_updated_at": "2026-11-12T18:16:49.343016Z",
+      "record_updated_at": "2026-11-13T16:18:13.915448Z",
       "related_record_ids": [],
       "reported_fact": {
         "area": "নেতাজি ইন্ডোর স্টেডিয়াম ও বাবুঘাট সংলগ্ন বাস টার্মিনাস সংলগ্ন এলাকা",
@@ -14378,11 +14390,11 @@
           "source_language": "bn",
           "source_publisher": "ABP Ananda",
           "source_relationship": "unknown",
-          "source_revision_id": "2b9d15fb23d3dd7b8f5ef52fd4cfc6f72fcfe2e970dded62448a8dcb4fbec005",
+          "source_revision_id": "373b59da0df68186abd6cc18a83ab33510969d79f37001447df2f5327ae8a8c7",
           "source_title": "West Bengal News Live : ফের অ্যাকশনে কলকাতা পুরসভার খাদ্য সুরক্ষা বিভাগ, খাবারের গুণগত মান যাচাই | West Bengal News 26 October 2026 Chorbagan Puja incident Suvendu Adhikari targets left parties TMC Symbol tussle Weather news update",
           "source_type": "news",
           "source_url": "https://bengali.abplive.com/district/west-bengal-news-26-october-2026-chorbagan-puja-incident-suvendu-adhikari-targets-left-parties-tmc-symbol-tussle-weather-news-update-1197260",
-          "text_sha256": "2b9d15fb23d3dd7b8f5ef52fd4cfc6f72fcfe2e970dded62448a8dcb4fbec005",
+          "text_sha256": "373b59da0df68186abd6cc18a83ab33510969d79f37001447df2f5327ae8a8c7",
           "tier": "B"
         }
       ],
@@ -16972,11 +16984,17 @@
           "note": "Supporting source context revalidated; original evidence retained.",
           "previous_record_sha256": "35525342271994cb7f7a3c78aba61ee6d38672ab15f32eefc97cb76e40e48573",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-11-13T16:18:13.915448Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "7ee748dc069796b4b66b44774014fe794668d6adb5f0ee4dbd2bf2d8b9ce4de6",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-11-12T18:16:49.343016Z",
-      "last_successful_evidence_check_at": "2026-11-12T18:16:49.343016Z",
+      "last_source_checked_at": "2026-11-13T16:18:13.915448Z",
+      "last_successful_evidence_check_at": "2026-11-13T16:18:13.915448Z",
       "llm": {
         "fields_proposed": [
           "area",
@@ -17001,7 +17019,7 @@
       "record_class": "inspection_evidence",
       "record_created_at": "2026-11-06T15:54:45.750200Z",
       "record_scope": "area_operation",
-      "record_updated_at": "2026-11-12T18:16:49.343016Z",
+      "record_updated_at": "2026-11-13T16:18:13.915448Z",
       "related_record_ids": [],
       "reported_fact": {
         "area": "দুর্গাপুরে",
@@ -17194,11 +17212,17 @@
           "note": "Supporting source context revalidated; original evidence retained.",
           "previous_record_sha256": "6ba2e1fe698c16b885b2e9c85c39a0c597cd47a7c86fb67ac1bb952610eaea42",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-11-13T16:18:13.915448Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "43575f997bb5bb170d7606170908dc78f5b0f58d533b0a5d1deb71e90a2d4a44",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-11-12T18:16:49.343016Z",
-      "last_successful_evidence_check_at": "2026-11-12T18:16:49.343016Z",
+      "last_source_checked_at": "2026-11-13T16:18:13.915448Z",
+      "last_successful_evidence_check_at": "2026-11-13T16:18:13.915448Z",
       "llm": {
         "fields_proposed": [
           "area",
@@ -17225,7 +17249,7 @@
       "record_class": "inspection_evidence",
       "record_created_at": "2026-10-28T01:19:09.190771Z",
       "record_scope": "establishment_event",
-      "record_updated_at": "2026-11-12T18:16:49.343016Z",
+      "record_updated_at": "2026-11-13T16:18:13.915448Z",
       "related_record_ids": [],
       "reported_fact": {
         "area": "ভিআইপি রোড",
