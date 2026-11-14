@@ -1,6 +1,6 @@
 {
   "context_notice": "Independent, non-governmental public-source research. Inclusion is not a finding of wrongdoing. Counts describe records in this tracker, not official totals, prevalence, compliance, risk or group behavior. Read the sources and preserve this context when sharing.",
-  "generated_at": "2026-11-13T23:30:51.881814+00:00",
+  "generated_at": "2026-11-14T06:16:17.970667+00:00",
   "pipeline_version": "0.3.0",
   "record_count": 48,
   "records": [
@@ -1899,11 +1899,17 @@
           "note": "Supporting source context revalidated; original evidence retained.",
           "previous_record_sha256": "172bec2f7bb7868ac89c9741af28db8bfb6885a00910587019873bd37fe15b23",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-11-14T06:16:17.970667Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "524109d2130e3f5c196e063e976b65781053854515a2f1a1e2bc3b05a4c5db49",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-11-13T06:39:48.619980Z",
-      "last_successful_evidence_check_at": "2026-11-13T06:39:48.619980Z",
+      "last_source_checked_at": "2026-11-14T06:16:17.970667Z",
+      "last_successful_evidence_check_at": "2026-11-14T06:16:17.970667Z",
       "llm": {
         "fields_proposed": [
           "area",
@@ -1930,7 +1936,7 @@
       "record_class": "inspection_evidence",
       "record_created_at": "2026-09-11T11:18:01.816017Z",
       "record_scope": "establishment_event",
-      "record_updated_at": "2026-11-13T06:39:48.619980Z",
+      "record_updated_at": "2026-11-14T06:16:17.970667Z",
       "related_record_ids": [],
       "reported_fact": {
         "area": "বাদুড়িয়া",
@@ -2557,11 +2563,17 @@
           "note": "Supporting source context revalidated; original evidence retained.",
           "previous_record_sha256": "10ac50651344962ddc0922ed4e8b8d2ef65c5e75d9f8fc81fd91815483a2010f",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-11-14T06:16:17.970667Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "c06ba6a90ab9c9ff34426dd2458c28c55cb0c723c0dad5fa17a4485132911b26",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-11-13T06:39:48.619980Z",
-      "last_successful_evidence_check_at": "2026-11-13T06:39:48.619980Z",
+      "last_source_checked_at": "2026-11-14T06:16:17.970667Z",
+      "last_successful_evidence_check_at": "2026-11-14T06:16:17.970667Z",
       "llm": {
         "fields_proposed": [
           "area",
@@ -2588,7 +2600,7 @@
       "record_class": "inspection_evidence",
       "record_created_at": "2026-09-11T04:37:44.799127Z",
       "record_scope": "establishment_event",
-      "record_updated_at": "2026-11-13T06:39:48.619980Z",
+      "record_updated_at": "2026-11-14T06:16:17.970667Z",
       "related_record_ids": [],
       "reported_fact": {
         "area": "ট্যাংরার",
@@ -12423,11 +12435,17 @@
           "note": "Supporting source context revalidated; original evidence retained.",
           "previous_record_sha256": "62d03faf9331296a324c7717f3e0d1726d2ec268ac2b32331c181be28126f2e4",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-11-14T06:16:17.970667Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "f1ff7de9c659204906bdd2fa30ac761df761102147e51b4031b5f1016f10c00d",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-11-13T06:39:48.619980Z",
-      "last_successful_evidence_check_at": "2026-11-13T06:39:48.619980Z",
+      "last_source_checked_at": "2026-11-14T06:16:17.970667Z",
+      "last_successful_evidence_check_at": "2026-11-14T06:16:17.970667Z",
       "llm": {
         "fields_proposed": [
           "area",
@@ -12452,7 +12470,7 @@
       "record_class": "inspection_evidence",
       "record_created_at": "2026-09-11T00:09:16.296804Z",
       "record_scope": "area_operation",
-      "record_updated_at": "2026-11-13T06:39:48.619980Z",
+      "record_updated_at": "2026-11-14T06:16:17.970667Z",
       "related_record_ids": [
         "WBFS-c391d02b3d97"
       ],
@@ -12507,11 +12525,11 @@
           "source_language": "bn",
           "source_publisher": "ABP Ananda",
           "source_relationship": "unknown",
-          "source_revision_id": "618f79dae8064c51f8c2efaadea8bd142ef6ad943739b300842522f6faf02bbd",
+          "source_revision_id": "302baeaaf9cb9e3efa668297dccc5d4725a278b16bf269691aaac7e03a22cc13",
           "source_title": "Food Safety: বনগাঁয় খাদ্য সুরক্ষা দফতরের হানা, বাসি মাংস, খারাপ আলু দেখে স্বেচ্ছায় দোকান বন্ধ রেখে পরিস্কারের নির্দেশ",
           "source_type": "news",
           "source_url": "https://bengali.abplive.com/district/north-24-paraganas/food-safety-authority-raids-bongaoan-restaurant-asks-to-clear-shop-closing-it-1191576",
-          "text_sha256": "618f79dae8064c51f8c2efaadea8bd142ef6ad943739b300842522f6faf02bbd",
+          "text_sha256": "302baeaaf9cb9e3efa668297dccc5d4725a278b16bf269691aaac7e03a22cc13",
           "tier": "B"
         }
       ],
@@ -13861,11 +13879,17 @@
           "note": "Supporting source context revalidated; original evidence retained.",
           "previous_record_sha256": "b7c6cde5cb4316235304bea6dbec7e66047f6cea953b5d5b746cf3c5dbf1b37d",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-11-14T06:16:17.970667Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "127f5c03dd70a1683a1cdfb9dfac3867398b9d653e2bfb88697efabf689dbe6e",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-11-13T06:39:48.619980Z",
-      "last_successful_evidence_check_at": "2026-11-13T06:39:48.619980Z",
+      "last_source_checked_at": "2026-11-14T06:16:17.970667Z",
+      "last_successful_evidence_check_at": "2026-11-14T06:16:17.970667Z",
       "llm": {
         "fields_proposed": [
           "area",
@@ -13891,7 +13915,7 @@
       "record_class": "inspection_evidence",
       "record_created_at": "2026-09-11T00:09:16.296804Z",
       "record_scope": "establishment_event",
-      "record_updated_at": "2026-11-13T06:39:48.619980Z",
+      "record_updated_at": "2026-11-14T06:16:17.970667Z",
       "related_record_ids": [],
       "reported_fact": {
         "area": "মধ্যমগ্রামের স্টার মলে",
@@ -20388,11 +20412,17 @@
           "note": "Supporting source context revalidated; original evidence retained.",
           "previous_record_sha256": "bb2b134b673ce4e1725d47fb80ca8b2f406be0225ad53ee2e84595cac871f9bf",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-11-14T06:16:17.970667Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "de557d2d338579915768c79b2eb7cf2548c9673c0b9b83274a167ea9b4e71891",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-11-13T06:39:48.619980Z",
-      "last_successful_evidence_check_at": "2026-11-13T06:39:48.619980Z",
+      "last_source_checked_at": "2026-11-14T06:16:17.970667Z",
+      "last_successful_evidence_check_at": "2026-11-14T06:16:17.970667Z",
       "llm": {
         "fields_proposed": [
           "area",
@@ -20418,7 +20448,7 @@
       "record_class": "inspection_evidence",
       "record_created_at": "2026-09-11T16:27:14.451761Z",
       "record_scope": "district_operation",
-      "record_updated_at": "2026-11-13T06:39:48.619980Z",
+      "record_updated_at": "2026-11-14T06:16:17.970667Z",
       "related_record_ids": [],
       "reported_fact": {
         "area": "পূর্ব মেদিনীপুর",
@@ -22197,11 +22227,17 @@
           "note": "Supporting source context revalidated; original evidence retained.",
           "previous_record_sha256": "67bfb0c0f4c47ba90e4e83cf4d1894d06a50f4fbabcc0eeb36c57d386497d1d4",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-11-14T06:16:17.970667Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "3cbb4e16a02075639d2149312d1ec23f76a30f408e7a888ce6c3e9f45b15f0b4",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-11-13T06:39:48.619980Z",
-      "last_successful_evidence_check_at": "2026-11-13T06:39:48.619980Z",
+      "last_source_checked_at": "2026-11-14T06:16:17.970667Z",
+      "last_successful_evidence_check_at": "2026-11-14T06:16:17.970667Z",
       "llm": {
         "fields_proposed": [
           "area",
@@ -22226,7 +22262,7 @@
       "record_class": "inspection_evidence",
       "record_created_at": "2026-09-11T00:09:16.296804Z",
       "record_scope": "area_operation",
-      "record_updated_at": "2026-11-13T06:39:48.619980Z",
+      "record_updated_at": "2026-11-14T06:16:17.970667Z",
       "related_record_ids": [
         "WBFS-5ee36b93256b"
       ],
@@ -22281,11 +22317,11 @@
           "source_language": "bn",
           "source_publisher": "ABP Ananda",
           "source_relationship": "unknown",
-          "source_revision_id": "618f79dae8064c51f8c2efaadea8bd142ef6ad943739b300842522f6faf02bbd",
+          "source_revision_id": "302baeaaf9cb9e3efa668297dccc5d4725a278b16bf269691aaac7e03a22cc13",
           "source_title": "Food Safety: বনগাঁয় খাদ্য সুরক্ষা দফতরের হানা, বাসি মাংস, খারাপ আলু দেখে স্বেচ্ছায় দোকান বন্ধ রেখে পরিস্কারের নির্দেশ",
           "source_type": "news",
           "source_url": "https://bengali.abplive.com/district/north-24-paraganas/food-safety-authority-raids-bongaoan-restaurant-asks-to-clear-shop-closing-it-1191576",
-          "text_sha256": "618f79dae8064c51f8c2efaadea8bd142ef6ad943739b300842522f6faf02bbd",
+          "text_sha256": "302baeaaf9cb9e3efa668297dccc5d4725a278b16bf269691aaac7e03a22cc13",
           "tier": "B"
         }
       ],
