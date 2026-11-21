@@ -1,6 +1,6 @@
 {
   "context_notice": "Independent, non-governmental public-source research. Inclusion is not a finding of wrongdoing. Counts describe records in this tracker, not official totals, prevalence, compliance, risk or group behavior. Read the sources and preserve this context when sharing.",
-  "generated_at": "2026-11-21T01:29:33.852131+00:00",
+  "generated_at": "2026-11-21T09:45:19.223492+00:00",
   "pipeline_version": "0.3.0",
   "record_count": 48,
   "records": [
@@ -14748,11 +14748,17 @@
           "note": "Supporting source context revalidated; original evidence retained.",
           "previous_record_sha256": "bbd1d861b93650902d6a8893df598b8a66a1cbe8c17ec55813744b3de1e4be0d",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-11-21T09:45:19.223492Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "4c90c5c866eaeed3d0e79518ab10943795370211b01cbfa2b03b11ebb463da33",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-11-18T07:22:48.492747Z",
-      "last_successful_evidence_check_at": "2026-11-18T07:22:48.492747Z",
+      "last_source_checked_at": "2026-11-21T09:45:19.223492Z",
+      "last_successful_evidence_check_at": "2026-11-21T09:45:19.223492Z",
       "llm": {
         "fields_proposed": [
           "area",
@@ -14778,7 +14784,7 @@
       "record_class": "inspection_evidence",
       "record_created_at": "2026-10-24T18:47:05.103646Z",
       "record_scope": "establishment_event",
-      "record_updated_at": "2026-11-18T07:22:48.492747Z",
+      "record_updated_at": "2026-11-21T09:45:19.223492Z",
       "related_record_ids": [],
       "reported_fact": {
         "area": "সল্টলেকে",
@@ -14835,11 +14841,11 @@
           "source_language": "bn",
           "source_publisher": "ABP Ananda",
           "source_relationship": "unknown",
-          "source_revision_id": "36ceeb3c8ffffdbe80167ee77ba0b9116e2c578b0aaeddf3b14483044b319992",
+          "source_revision_id": "1ba95ff7a50c799a160c5764ef31f6fe19adbff9c6cddd990e52ea37fe3762a2",
           "source_title": "মাংসের উপর ছত্রাক, বন্ধ হল সল্টলেকের Balle Balle Dhaba, বাতিল লাইসেন্স",
           "source_type": "news",
           "source_url": "https://bengali.abplive.com/district/saltlake-balle-balle-dhaba-closed-after-food-inspection-license-cancelled-1197087",
-          "text_sha256": "36ceeb3c8ffffdbe80167ee77ba0b9116e2c578b0aaeddf3b14483044b319992",
+          "text_sha256": "1ba95ff7a50c799a160c5764ef31f6fe19adbff9c6cddd990e52ea37fe3762a2",
           "tier": "B"
         }
       ],
@@ -15035,11 +15041,17 @@
           "note": "Supporting source context revalidated; original evidence retained.",
           "previous_record_sha256": "a889778971b289022dfcd83f88db844735d8694a6be14a18080b880583da6f80",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-11-21T09:45:19.223492Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "8cc18a002bc881ec8fbf4b47f5a3f8191c9dd0c96fc07b445d008c06871f96c0",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-11-20T09:59:29.947498Z",
-      "last_successful_evidence_check_at": "2026-11-20T09:59:29.947498Z",
+      "last_source_checked_at": "2026-11-21T09:45:19.223492Z",
+      "last_successful_evidence_check_at": "2026-11-21T09:45:19.223492Z",
       "llm": {
         "fields_proposed": [
           "area",
@@ -15065,7 +15077,7 @@
       "record_class": "inspection_evidence",
       "record_created_at": "2026-10-26T19:55:52.780187Z",
       "record_scope": "area_operation",
-      "record_updated_at": "2026-11-20T09:59:29.947498Z",
+      "record_updated_at": "2026-11-21T09:45:19.223492Z",
       "related_record_ids": [],
       "reported_fact": {
         "area": "নেতাজি ইন্ডোর স্টেডিয়াম ও বাবুঘাট সংলগ্ন বাস টার্মিনাস সংলগ্ন এলাকা",
@@ -17836,11 +17848,17 @@
           "note": "Supporting source context revalidated; original evidence retained.",
           "previous_record_sha256": "ff74f744314657d155d54737c2d1927b0b87c8b48509eb33066455b0e5b9f987",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-11-21T09:45:19.223492Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "096b1fcef45cdab72b2b6bbb31d7a99eed28f26a0984b7a817791cdbd081a086",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-11-20T09:59:29.947498Z",
-      "last_successful_evidence_check_at": "2026-11-20T09:59:29.947498Z",
+      "last_source_checked_at": "2026-11-21T09:45:19.223492Z",
+      "last_successful_evidence_check_at": "2026-11-21T09:45:19.223492Z",
       "llm": {
         "fields_proposed": [
           "area",
@@ -17865,7 +17883,7 @@
       "record_class": "inspection_evidence",
       "record_created_at": "2026-11-06T15:54:45.750200Z",
       "record_scope": "area_operation",
-      "record_updated_at": "2026-11-20T09:59:29.947498Z",
+      "record_updated_at": "2026-11-21T09:45:19.223492Z",
       "related_record_ids": [],
       "reported_fact": {
         "area": "দুর্গাপুরে",
@@ -17918,11 +17936,11 @@
           "source_language": "bn",
           "source_publisher": "ABP Ananda",
           "source_relationship": "unknown",
-          "source_revision_id": "a4cad937aa37aba59c6b9a5929c5c1c6f488f2267be22675aa54d20e264e221b",
+          "source_revision_id": "8d57c982176fa7e85478dd8babd60a2875964ff75ba9a2f272d2812705bfb98a",
           "source_title": "Food Safety: ফের খাদ্য সুরক্ষা দফতরের অভিযান Durgapur-এ, হোটেল-রেস্তোরাঁ থেকে মিলল পচা খাবার | food safety department inspection before kali puja watch video",
           "source_type": "news",
           "source_url": "https://bengali.abplive.com/videos/district/food-safety-department-inspection-before-kali-puja-watch-video-1198527",
-          "text_sha256": "a4cad937aa37aba59c6b9a5929c5c1c6f488f2267be22675aa54d20e264e221b",
+          "text_sha256": "8d57c982176fa7e85478dd8babd60a2875964ff75ba9a2f272d2812705bfb98a",
           "tier": "B"
         }
       ],
@@ -18106,11 +18124,17 @@
           "note": "Supporting source context revalidated; original evidence retained.",
           "previous_record_sha256": "cb09394e34464d3cb1240cbc3f5aa8386bbaeef77fa638547f5b1414c2d3b1dc",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-11-21T09:45:19.223492Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "0ebbe80eca05e034abfdd804fec9bed81b3f43917698737a98ee3e3d0fc091cf",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-11-20T09:59:29.947498Z",
-      "last_successful_evidence_check_at": "2026-11-20T09:59:29.947498Z",
+      "last_source_checked_at": "2026-11-21T09:45:19.223492Z",
+      "last_successful_evidence_check_at": "2026-11-21T09:45:19.223492Z",
       "llm": {
         "fields_proposed": [
           "area",
@@ -18137,7 +18161,7 @@
       "record_class": "inspection_evidence",
       "record_created_at": "2026-10-28T01:19:09.190771Z",
       "record_scope": "establishment_event",
-      "record_updated_at": "2026-11-20T09:59:29.947498Z",
+      "record_updated_at": "2026-11-21T09:45:19.223492Z",
       "related_record_ids": [],
       "reported_fact": {
         "area": "ভিআইপি রোড",
@@ -18198,11 +18222,11 @@
           "source_language": "bn",
           "source_publisher": "ABP Ananda",
           "source_relationship": "unknown",
-          "source_revision_id": "026b6c0ffee09d75749b489c9f05d7de92759f1e1ca1a7ad709ae02c18452115",
+          "source_revision_id": "250587b78afaa968456ebc7548ec905759980290d9d7ee652e4a4adca5c5e2b5",
           "source_title": "Haldiram Raid | ভিআইপি রোডের ওপর হলদিরাম প্রভুজির রেস্টুরেন্টে অভিযান খাদ্য সুরক্ষা দফতরের | Food Safety Department conducts raid at Haldiram Prabhuji restaurant on VIP Road",
           "source_type": "news",
           "source_url": "https://bengali.abplive.com/videos/news/food-safety-department-conducts-raid-at-haldiram-prabhuji-restaurant-on-vip-road-1197423",
-          "text_sha256": "026b6c0ffee09d75749b489c9f05d7de92759f1e1ca1a7ad709ae02c18452115",
+          "text_sha256": "250587b78afaa968456ebc7548ec905759980290d9d7ee652e4a4adca5c5e2b5",
           "tier": "B"
         }
       ],
@@ -19009,11 +19033,17 @@
           "note": "Supporting source context revalidated; original evidence retained.",
           "previous_record_sha256": "caeab551400b0c90dbcf1dca0ac0df7b1dff8aaf2158197c2bdb425723906f10",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-11-21T09:45:19.223492Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "847de012af8b88cbdd66e6baed4423c59bc84458f39709bf1e28de71d0713f28",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-11-20T09:59:29.947498Z",
-      "last_successful_evidence_check_at": "2026-11-20T09:59:29.947498Z",
+      "last_source_checked_at": "2026-11-21T09:45:19.223492Z",
+      "last_successful_evidence_check_at": "2026-11-21T09:45:19.223492Z",
       "llm": {
         "fields_proposed": [
           "area",
@@ -19040,7 +19070,7 @@
       "record_class": "inspection_evidence",
       "record_created_at": "2026-10-28T01:19:09.190771Z",
       "record_scope": "establishment_event",
-      "record_updated_at": "2026-11-20T09:59:29.947498Z",
+      "record_updated_at": "2026-11-21T09:45:19.223492Z",
       "related_record_ids": [],
       "reported_fact": {
         "area": "ভিআইপি রোডের ওপর",
@@ -19101,11 +19131,11 @@
           "source_language": "bn",
           "source_publisher": "ABP Ananda",
           "source_relationship": "unknown",
-          "source_revision_id": "4d2aa915b45867a652092c6b70fb88bc48e7a8d1dfe7f77d2c89791b3830abf3",
+          "source_revision_id": "3fcb999c60ce1137facb5356d52a53bef70530711eae8e93fc581900050c6725",
           "source_title": "Haldiram Raid: রেস্টুরেন্টের ভিতরে খাবার তৈরির জায়গা অপরিচ্ছন্ন, অভিযান খাদ্য সুরক্ষা দফতরের | haldiram food safety raid at kolkata watch video",
           "source_type": "news",
           "source_url": "https://bengali.abplive.com/videos/news/haldiram-food-safety-raid-at-kolkata-watch-video-1197421",
-          "text_sha256": "4d2aa915b45867a652092c6b70fb88bc48e7a8d1dfe7f77d2c89791b3830abf3",
+          "text_sha256": "3fcb999c60ce1137facb5356d52a53bef70530711eae8e93fc581900050c6725",
           "tier": "B"
         }
       ],
