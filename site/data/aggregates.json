@@ -1,7 +1,7 @@
 {
   "actions": {
     "inspection / visit only": 25,
-    "not reported": 21,
+    "not reported": 18,
     "other": 2
   },
   "areas": {
@@ -29,9 +29,7 @@
     "কাকদ্বীপ মহকুমার নামখানা ও জুমাইনস্করহাট এলাকা": 1,
     "ট্যাংরার": 1,
     "ডেকার্স লেন": 1,
-    "দুর্গাপুরে": 1,
     "দুর্গাপুরের বেনাচিতি বাজারে": 1,
-    "নেতাজি ইন্ডোর স্টেডিয়াম ও বাবুঘাট সংলগ্ন বাস টার্মিনাস সংলগ্ন এলাকা": 1,
     "পূর্ব মেদিনীপুর": 1,
     "বকখালি": 1,
     "বাদুড়িয়া": 1,
@@ -40,12 +38,11 @@
     "ভিআইপি রোডের ওপর": 1,
     "মধ্যমগ্রামের স্টার মলে": 1,
     "শিয়ালদহ": 1,
-    "শিয়ালদা স্টেশন চত্বরে": 1,
-    "সল্টলেকে": 1
+    "শিয়ালদা স্টেশন চত্বরে": 1
   },
-  "areas_count": 37,
+  "areas_count": 34,
   "business_formats": {
-    "unknown": 48
+    "unknown": 45
   },
   "context_notice": "Independent, non-governmental public-source research. Inclusion is not a finding of wrongdoing. Counts describe records in this tracker, not official totals, prevalence, compliance, risk or group behavior. Read the sources and preserve this context when sharing.",
   "coverage": {
@@ -53,9 +50,9 @@
     "cross_source": 0,
     "establishment_context": 27,
     "menu_context": 0,
-    "named_establishment": 30,
-    "reported_action": 33,
-    "reported_quantity": 9
+    "named_establishment": 29,
+    "reported_action": 30,
+    "reported_quantity": 8
   },
   "establishments": {
     "hotel / hospitality": 2,
@@ -63,33 +60,33 @@
     "market / vendor": 3,
     "restaurant / eatery": 13,
     "sweet shop / bakery": 3,
-    "unknown": 21
+    "unknown": 18
   },
-  "establishments_count": 29,
-  "generated_at": "2026-11-24T02:54:00.834613+00:00",
+  "establishments_count": 28,
+  "generated_at": "2026-11-24T14:50:37.674634+00:00",
   "map_coverage": {
     "mapped_records": 22,
     "precision": {
       "city": 3,
       "neighborhood": 15,
-      "not mapped": 26,
+      "not mapped": 23,
       "street": 4
     }
   },
   "menus": {
-    "unknown": 48
+    "unknown": 45
   },
   "pipeline_version": "0.3.0",
   "publishers": {
-    "ABP Ananda": 11,
+    "ABP Ananda": 8,
     "Business Today": 5,
     "Indian Express Bangla": 5,
     "The Times of India": 26,
     "UNI India": 1
   },
-  "record_count": 48,
+  "record_count": 45,
   "schema_version": "1.2.0",
-  "sources_count": 23,
+  "sources_count": 20,
   "timeline": {
     "2025-04-25": 1,
     "2026-09-02": 2,
@@ -99,15 +96,13 @@
     "2026-09-06": 9,
     "2026-09-07": 3,
     "2026-09-15": 1,
-    "2026-10-24": 2,
-    "2026-10-26": 1,
+    "2026-10-24": 1,
     "2026-10-27": 1,
     "2026-10-28": 2,
-    "2026-10-31": 2,
-    "2026-11-06": 1
+    "2026-10-31": 2
   },
-  "total": 48,
+  "total": 45,
   "verification": {
-    "SOURCE VERIFIED": 48
+    "SOURCE VERIFIED": 45
   }
 }
