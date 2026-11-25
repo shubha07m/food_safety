@@ -1,8 +1,8 @@
 {
   "context_notice": "Independent, non-governmental public-source research. Inclusion is not a finding of wrongdoing. Counts describe records in this tracker, not official totals, prevalence, compliance, risk or group behavior. Read the sources and preserve this context when sharing.",
-  "generated_at": "2026-11-24T14:50:37.674634+00:00",
+  "generated_at": "2026-11-25T00:41:07.716687+00:00",
   "pipeline_version": "0.3.0",
-  "record_count": 45,
+  "record_count": 43,
   "records": [
     {
       "automatic_validation": null,
@@ -588,11 +588,17 @@
           "note": "Supporting source context revalidated; original evidence retained.",
           "previous_record_sha256": "3f79ba7df118b1e89cfb6824f668f5e62d8a1575e291df6b2bdbc2750a8a1dee",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-11-25T00:41:07.716687Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "5fe4bcdc7c98b675313f44d5050f071ec34e7c883f54813910804002b71b5312",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-11-23T14:33:43.304943Z",
-      "last_successful_evidence_check_at": "2026-11-23T14:33:43.304943Z",
+      "last_source_checked_at": "2026-11-25T00:41:07.716687Z",
+      "last_successful_evidence_check_at": "2026-11-25T00:41:07.716687Z",
       "llm": {
         "fields_proposed": [],
         "llm_model": null,
@@ -612,7 +618,7 @@
       "record_class": "inspection_evidence",
       "record_created_at": "2026-09-07T21:12:32.942437Z",
       "record_scope": "unknown",
-      "record_updated_at": "2026-11-23T14:33:43.304943Z",
+      "record_updated_at": "2026-11-25T00:41:07.716687Z",
       "related_record_ids": [],
       "reported_fact": {
         "area": "Park Street",
@@ -4709,11 +4715,17 @@
           "note": "Supporting source context revalidated; original evidence retained.",
           "previous_record_sha256": "5bafd463e6b41c8f8e67064307c41e7eb261362b7f5c838a8e7b698afb4320f4",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-11-25T00:41:07.716687Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "faf09adb84dd248b7abc3812f0d484b43705982d912d858bea2878337707b56a",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-11-23T14:33:43.304943Z",
-      "last_successful_evidence_check_at": "2026-11-23T14:33:43.304943Z",
+      "last_source_checked_at": "2026-11-25T00:41:07.716687Z",
+      "last_successful_evidence_check_at": "2026-11-25T00:41:07.716687Z",
       "llm": {
         "fields_proposed": [],
         "llm_model": null,
@@ -4733,7 +4745,7 @@
       "record_class": "inspection_evidence",
       "record_created_at": "2026-09-07T21:12:32.942437Z",
       "record_scope": "unknown",
-      "record_updated_at": "2026-11-23T14:33:43.304943Z",
+      "record_updated_at": "2026-11-25T00:41:07.716687Z",
       "related_record_ids": [],
       "reported_fact": {
         "area": "Sonarpur",
@@ -6540,11 +6552,17 @@
           "note": "Supporting source context revalidated; original evidence retained.",
           "previous_record_sha256": "1d923e1bcf36cf5001bbfe0799be06366a38032e4b7811f2d801000edd98c2b3",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-11-25T00:41:07.716687Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "3371a2ec745563bc9dd4667a8a88a74dd4542343bb8188458024f354f0a22627",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-11-23T14:33:43.304943Z",
-      "last_successful_evidence_check_at": "2026-11-23T14:33:43.304943Z",
+      "last_source_checked_at": "2026-11-25T00:41:07.716687Z",
+      "last_successful_evidence_check_at": "2026-11-25T00:41:07.716687Z",
       "llm": {
         "fields_proposed": [],
         "llm_model": null,
@@ -6564,7 +6582,7 @@
       "record_class": "inspection_evidence",
       "record_created_at": "2026-09-07T21:12:32.942437Z",
       "record_scope": "unknown",
-      "record_updated_at": "2026-11-23T14:33:43.304943Z",
+      "record_updated_at": "2026-11-25T00:41:07.716687Z",
       "related_record_ids": [],
       "reported_fact": {
         "area": "Kamalgazi",
@@ -16738,11 +16756,17 @@
           "note": "Supporting source context revalidated; original evidence retained.",
           "previous_record_sha256": "6ae9c86f8b39e38989a42449ef88b7760be8af9b8f9481c6bbe8e282a04c2d9d",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-11-25T00:41:07.716687Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "b1917b7824741322cb8fbb9d5b91d926291b115c4690a6ec575c2b0ceec064cd",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-11-23T14:33:43.304943Z",
-      "last_successful_evidence_check_at": "2026-11-23T14:33:43.304943Z",
+      "last_source_checked_at": "2026-11-25T00:41:07.716687Z",
+      "last_successful_evidence_check_at": "2026-11-25T00:41:07.716687Z",
       "llm": {
         "fields_proposed": [],
         "llm_model": null,
@@ -16762,7 +16786,7 @@
       "record_class": "inspection_evidence",
       "record_created_at": "2026-09-07T21:12:32.942437Z",
       "record_scope": "unknown",
-      "record_updated_at": "2026-11-23T14:33:43.304943Z",
+      "record_updated_at": "2026-11-25T00:41:07.716687Z",
       "related_record_ids": [],
       "reported_fact": {
         "area": "Park Street",
@@ -18627,11 +18651,17 @@
           "note": "Supporting source context revalidated; original evidence retained.",
           "previous_record_sha256": "847de012af8b88cbdd66e6baed4423c59bc84458f39709bf1e28de71d0713f28",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-11-25T00:41:07.716687Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "feeae09341c18add5befacc5312a7d164093899a2beaabd9182105eb66e25c25",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-11-21T09:45:19.223492Z",
-      "last_successful_evidence_check_at": "2026-11-21T09:45:19.223492Z",
+      "last_source_checked_at": "2026-11-25T00:41:07.716687Z",
+      "last_successful_evidence_check_at": "2026-11-25T00:41:07.716687Z",
       "llm": {
         "fields_proposed": [
           "area",
@@ -18658,7 +18688,7 @@
       "record_class": "inspection_evidence",
       "record_created_at": "2026-10-28T01:19:09.190771Z",
       "record_scope": "establishment_event",
-      "record_updated_at": "2026-11-21T09:45:19.223492Z",
+      "record_updated_at": "2026-11-25T00:41:07.716687Z",
       "related_record_ids": [],
       "reported_fact": {
         "area": "ভিআইপি রোডের ওপর",
@@ -18719,11 +18749,11 @@
           "source_language": "bn",
           "source_publisher": "ABP Ananda",
           "source_relationship": "unknown",
-          "source_revision_id": "3fcb999c60ce1137facb5356d52a53bef70530711eae8e93fc581900050c6725",
+          "source_revision_id": "02a5cdb20a29372ca7fa58d8f788027ea019ac5af0ddd3cb2bd230540d0ad9f9",
           "source_title": "Haldiram Raid: রেস্টুরেন্টের ভিতরে খাবার তৈরির জায়গা অপরিচ্ছন্ন, অভিযান খাদ্য সুরক্ষা দফতরের | haldiram food safety raid at kolkata watch video",
           "source_type": "news",
           "source_url": "https://bengali.abplive.com/videos/news/haldiram-food-safety-raid-at-kolkata-watch-video-1197421",
-          "text_sha256": "3fcb999c60ce1137facb5356d52a53bef70530711eae8e93fc581900050c6725",
+          "text_sha256": "02a5cdb20a29372ca7fa58d8f788027ea019ac5af0ddd3cb2bd230540d0ad9f9",
           "tier": "B"
         }
       ],
@@ -19317,11 +19347,17 @@
           "note": "Supporting source context revalidated; original evidence retained.",
           "previous_record_sha256": "1aec523c9eb5ec4df8d5a758639a73e0d34c6edc6d00170dad929f72037a0a79",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-11-25T00:41:07.716687Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "3d2a28bcd776e97787833031e4670557510acdb7e2b6680c29efb4ba988564f4",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-11-23T14:33:43.304943Z",
-      "last_successful_evidence_check_at": "2026-11-23T14:33:43.304943Z",
+      "last_source_checked_at": "2026-11-25T00:41:07.716687Z",
+      "last_successful_evidence_check_at": "2026-11-25T00:41:07.716687Z",
       "llm": {
         "fields_proposed": [],
         "llm_model": null,
@@ -19341,7 +19377,7 @@
       "record_class": "inspection_evidence",
       "record_created_at": "2026-09-07T21:12:32.942437Z",
       "record_scope": "unknown",
-      "record_updated_at": "2026-11-23T14:33:43.304943Z",
+      "record_updated_at": "2026-11-25T00:41:07.716687Z",
       "related_record_ids": [],
       "reported_fact": {
         "area": "Park Street",
@@ -20002,11 +20038,17 @@
           "note": "Supporting source context revalidated; original evidence retained.",
           "previous_record_sha256": "9d51560b43274fd9593adccf5fc916b3be51c10b4bf3caebe4ff8905cc6aca78",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-11-25T00:41:07.716687Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "ec0cddcf4ac2f4c72590134b438fd798fecca6788100fc11c5a699a54314c3be",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-11-23T14:33:43.304943Z",
-      "last_successful_evidence_check_at": "2026-11-23T14:33:43.304943Z",
+      "last_source_checked_at": "2026-11-25T00:41:07.716687Z",
+      "last_successful_evidence_check_at": "2026-11-25T00:41:07.716687Z",
       "llm": {
         "fields_proposed": [],
         "llm_model": null,
@@ -20026,7 +20068,7 @@
       "record_class": "inspection_evidence",
       "record_created_at": "2026-09-07T21:12:32.942437Z",
       "record_scope": "unknown",
-      "record_updated_at": "2026-11-23T14:33:43.304943Z",
+      "record_updated_at": "2026-11-25T00:41:07.716687Z",
       "related_record_ids": [],
       "reported_fact": {
         "area": "Park Street",
@@ -20099,251 +20141,6 @@
       ],
       "superseded_by": null,
       "validator_id": "field_evidence_validation",
-      "validator_version": "2",
-      "verification_notes": "Supporting source context revalidated; original evidence retained.",
-      "verification_status": "SOURCE VERIFIED"
-    },
-    {
-      "automatic_validation": {
-        "extraction_evidence": {
-          "end": 132,
-          "match_method": "exact",
-          "original_quote": "ভিআইপি রোডের ওপর হলদিরাম প্রভুজির রেস্টুরেন্টে অভিযান খাদ্য সুরক্ষা দফতরের। রেস্টুরেন্টের ভিতরে খাবার তৈরির জায়গা অপরিচ্ছন্ন",
-          "passage_id": "P011",
-          "source_revision_id": "67f249a4af1371650fd250d5101893ad5466c4ba74972af486cea69d90a8c242",
-          "start": 8
-        },
-        "method": "source_grounded_candidate_v1",
-        "pipeline_version": "0.3.0",
-        "validated_at": "2026-10-28T01:19:09.190771Z"
-      },
-      "context_notice": "Independent, non-governmental public-source research. Inclusion is not a finding of wrongdoing. Counts describe records in this tracker, not official totals, prevalence, compliance, risk or group behavior. Read the sources and preserve this context when sharing.",
-      "derived_context": {
-        "action_category": "not reported",
-        "action_category_confidence": "unknown",
-        "action_category_method": null,
-        "action_category_reviewed": false,
-        "action_category_source": null,
-        "business_format": "unknown",
-        "business_format_confidence": "unknown",
-        "business_format_method": null,
-        "business_format_reviewed": false,
-        "business_format_source": null,
-        "derived_confidence": "unknown",
-        "derived_context_method": "Unknown; no contextual inference performed.",
-        "derived_context_sources": [],
-        "establishment_context": "unknown",
-        "establishment_context_confidence": "unknown",
-        "establishment_context_method": null,
-        "establishment_context_reviewed": false,
-        "establishment_context_source": null,
-        "latitude": null,
-        "location_method": null,
-        "location_precision": null,
-        "location_reviewed": false,
-        "location_source": null,
-        "longitude": null,
-        "menu_context": "unknown",
-        "menu_context_confidence": "unknown",
-        "menu_context_method": null,
-        "menu_context_reviewed": false,
-        "menu_context_source": null,
-        "normalized_area": null
-      },
-      "display_summary": "Source reports a source-reported food-safety event involving হলদিরাম প্রভুজির রেস্টুরেন্টে in ভিআইপি রোডের.",
-      "establishment_id": null,
-      "event_id": "WBFS-b3fd7e1f15e0",
-      "evidence_support_status": "supported_as_of",
-      "extractor_id": "source_grounded_candidate",
-      "extractor_version": "1",
-      "first_published_at": "2026-10-28T01:19:09.190771Z",
-      "history": [
-        {
-          "at": "2026-10-28T01:19:09.190771Z",
-          "note": "Source-grounded LLM candidate auto-published after deterministic validation.",
-          "previous_record_sha256": null,
-          "status": "SOURCE VERIFIED"
-        },
-        {
-          "at": "2026-10-30T12:50:12.958387Z",
-          "note": "Supporting source context revalidated; original evidence retained.",
-          "previous_record_sha256": "b69d2e7179ad78a5654d0b58816523716b8efb490c118286d25060a120d686a4",
-          "status": "SOURCE VERIFIED"
-        },
-        {
-          "at": "2026-10-31T05:36:44.441544Z",
-          "note": "Supporting source context revalidated; original evidence retained.",
-          "previous_record_sha256": "dc087eab1df30a6c7cab5434779d5546707777b27f7ab756fda88fc08a568d9f",
-          "status": "SOURCE VERIFIED"
-        },
-        {
-          "at": "2026-11-01T05:58:39.484673Z",
-          "note": "Supporting source context revalidated; original evidence retained.",
-          "previous_record_sha256": "94b1bfe5a86be8e7cfe2164425378b863d340282a62058ea5e6701159fd0da03",
-          "status": "SOURCE VERIFIED"
-        },
-        {
-          "at": "2026-11-02T05:58:00.937853Z",
-          "note": "Supporting source context revalidated; original evidence retained.",
-          "previous_record_sha256": "9815ec3a7513e804eca13badc05ce6a2b41a69877ece4022070d5f291cd460bf",
-          "status": "SOURCE VERIFIED"
-        },
-        {
-          "at": "2026-11-05T00:53:51.194081Z",
-          "note": "Supporting source context revalidated; original evidence retained.",
-          "previous_record_sha256": "d5f05b3376fcc7aa49a531849fe7ac5157a34186a6d0ab8d409c5001991886a9",
-          "status": "SOURCE VERIFIED"
-        },
-        {
-          "at": "2026-11-08T01:26:02.522298Z",
-          "note": "Supporting source context revalidated; original evidence retained.",
-          "previous_record_sha256": "61ac5f25236cc8f80a8f4a2b8480c0410518996cc3954003df48d5c0ba7f053b",
-          "status": "SOURCE VERIFIED"
-        },
-        {
-          "at": "2026-11-08T22:00:26.324019Z",
-          "note": "Supporting source context revalidated; original evidence retained.",
-          "previous_record_sha256": "5caa7c88d15e2848a730e39015ae48debc04e4c8423dd52358c656d04e5584ea",
-          "status": "SOURCE VERIFIED"
-        },
-        {
-          "at": "2026-11-09T20:42:41.636686Z",
-          "note": "Supporting source context revalidated; original evidence retained.",
-          "previous_record_sha256": "0ce2f993d9210bf728734485f3824f114546a29c0d81cda023858040662d24c9",
-          "status": "SOURCE VERIFIED"
-        },
-        {
-          "at": "2026-11-10T20:48:55.325370Z",
-          "note": "Supporting source context revalidated; original evidence retained.",
-          "previous_record_sha256": "1ac804e8ef21cbc5daebee706511161eec45efaa4bd570bc8ade57b80f33dce6",
-          "status": "SOURCE VERIFIED"
-        },
-        {
-          "at": "2026-11-11T17:53:16.627763Z",
-          "note": "Supporting source context revalidated; original evidence retained.",
-          "previous_record_sha256": "b4924854155120fb44c080bf24f66d3f4e9e1102cc47e463243d84711e9332ed",
-          "status": "SOURCE VERIFIED"
-        },
-        {
-          "at": "2026-11-12T18:16:49.343016Z",
-          "note": "Supporting source context revalidated; original evidence retained.",
-          "previous_record_sha256": "c0489bdedf79343f5cf1c69b821541e0cf12f1ad482240b2aff99a80c8558ec0",
-          "status": "SOURCE VERIFIED"
-        },
-        {
-          "at": "2026-11-15T06:24:16.592992Z",
-          "note": "Supporting source context revalidated; original evidence retained.",
-          "previous_record_sha256": "ef89abb4d6bf6034ef405804401fe194c201ffbe7ac26559c4d5f209013e8057",
-          "status": "SOURCE VERIFIED"
-        },
-        {
-          "at": "2026-11-16T02:01:50.715518Z",
-          "note": "Supporting source context revalidated; original evidence retained.",
-          "previous_record_sha256": "bd814e846c18de6cddff06949d62fc2553a4304e686b2b69a30ea142421c3585",
-          "status": "SOURCE VERIFIED"
-        },
-        {
-          "at": "2026-11-20T09:59:29.947498Z",
-          "note": "Supporting source context revalidated; original evidence retained.",
-          "previous_record_sha256": "674e4d1b9eef510943cfc52c1ee7f879b6e58941fa70ee87b3b8a650624703b0",
-          "status": "SOURCE VERIFIED"
-        }
-      ],
-      "is_fixture": false,
-      "last_source_checked_at": "2026-11-20T09:59:29.947498Z",
-      "last_successful_evidence_check_at": "2026-11-20T09:59:29.947498Z",
-      "llm": {
-        "fields_proposed": [
-          "area",
-          "establishment_name",
-          "reported_action",
-          "reported_authority",
-          "reported_observation"
-        ],
-        "llm_model": "gemini-3.5-flash-lite",
-        "llm_output_was_validated": true,
-        "llm_pipeline_version": "0.3.0",
-        "llm_provider": "gemini",
-        "llm_task": "structured source extraction",
-        "llm_task_version": "source_candidates_v2",
-        "llm_used": true,
-        "llm_used_at": "2026-10-28T01:19:17.841948Z",
-        "source_revision_id": "67f249a4af1371650fd250d5101893ad5466c4ba74972af486cea69d90a8c242",
-        "validation_result": "passed"
-      },
-      "location_id": null,
-      "pipeline_version": "0.3.0",
-      "publication_status": "active",
-      "record_class": "inspection_evidence",
-      "record_created_at": "2026-10-28T01:19:09.190771Z",
-      "record_scope": "establishment_event",
-      "record_updated_at": "2026-11-20T09:59:29.947498Z",
-      "related_record_ids": [],
-      "reported_fact": {
-        "area": "ভিআইপি রোডের",
-        "district": null,
-        "establishment_name": "হলদিরাম প্রভুজির রেস্টুরেন্টে",
-        "establishment_type": null,
-        "event_date": null,
-        "evidence": {
-          "area": {
-            "quote": "ভিআইপি রোডের ওপর হলদিরাম প্রভুজির রেস্টুরেন্টে অভিযান খাদ্য সুরক্ষা দফতরের। রেস্টুরেন্টের ভিতরে খাবার তৈরির জায়গা অপরিচ্ছন্ন",
-            "source_url": "https://bengali.abplive.com/district/food-safety-raid-on-haldiram-prabhuji-restaurant-at-vip-road-breaking-news-1197381"
-          },
-          "establishment_name": {
-            "quote": "ভিআইপি রোডের ওপর হলদিরাম প্রভুজির রেস্টুরেন্টে অভিযান খাদ্য সুরক্ষা দফতরের। রেস্টুরেন্টের ভিতরে খাবার তৈরির জায়গা অপরিচ্ছন্ন",
-            "source_url": "https://bengali.abplive.com/district/food-safety-raid-on-haldiram-prabhuji-restaurant-at-vip-road-breaking-news-1197381"
-          },
-          "reported_action": {
-            "quote": "ভিআইপি রোডের ওপর হলদিরাম প্রভুজির রেস্টুরেন্টে অভিযান খাদ্য সুরক্ষা দফতরের। রেস্টুরেন্টের ভিতরে খাবার তৈরির জায়গা অপরিচ্ছন্ন",
-            "source_url": "https://bengali.abplive.com/district/food-safety-raid-on-haldiram-prabhuji-restaurant-at-vip-road-breaking-news-1197381"
-          },
-          "reported_authority": {
-            "quote": "ভিআইপি রোডের ওপর হলদিরাম প্রভুজির রেস্টুরেন্টে অভিযান খাদ্য সুরক্ষা দফতরের। রেস্টুরেন্টের ভিতরে খাবার তৈরির জায়গা অপরিচ্ছন্ন",
-            "source_url": "https://bengali.abplive.com/district/food-safety-raid-on-haldiram-prabhuji-restaurant-at-vip-road-breaking-news-1197381"
-          },
-          "reported_observation": {
-            "quote": "ভিআইপি রোডের ওপর হলদিরাম প্রভুজির রেস্টুরেন্টে অভিযান খাদ্য সুরক্ষা দফতরের। রেস্টুরেন্টের ভিতরে খাবার তৈরির জায়গা অপরিচ্ছন্ন",
-            "source_url": "https://bengali.abplive.com/district/food-safety-raid-on-haldiram-prabhuji-restaurant-at-vip-road-breaking-news-1197381"
-          }
-        },
-        "formal_finding": null,
-        "legal_finding_status": "unknown",
-        "reported_action": "অভিযান",
-        "reported_authority": "খাদ্য সুরক্ষা দফতর",
-        "reported_observation": "রেস্টুরেন্টের ভিতরে খাবার তৈরির জায়গা অপরিচ্ছন্ন",
-        "reported_quantity": null
-      },
-      "review": null,
-      "reviewed_associations": [],
-      "reviewer_hold": false,
-      "source_availability": "available",
-      "source_availability_reason": null,
-      "sources": [
-        {
-          "archive_url": null,
-          "evidence_context": "ভিআইপি রোডের ওপর হলদিরাম প্রভুজির রেস্টুরেন্টে অভিযান খাদ্য সুরক্ষা দফতরের। রেস্টুরেন্টের ভিতরে খাবার তৈরির জায়গা অপরিচ্ছন্ন",
-          "evidence_language": "bn",
-          "evidence_locator": null,
-          "evidence_quote": "রেস্টুরেন্টের ভিতরে খাবার তৈরির জায়গা অপরিচ্ছন্ন",
-          "evidence_span_hash": "181c18c263ad1fc48bb39be6fcd47ae60ba7d42b1805b54b82947386705fbd0f",
-          "origin_source_id": null,
-          "retrieved_at": "2026-10-28T01:19:09.190771Z",
-          "source_date": "2026-10-27",
-          "source_id": "SRC-68721ffde4967a5887f6",
-          "source_language": "bn",
-          "source_publisher": "ABP Ananda",
-          "source_relationship": "unknown",
-          "source_revision_id": "68ce74755e141ebbe61c94f18acbc9f46392e84535578a4d3ab78cd5dfeb64f7",
-          "source_title": "Food Safety Raid: হলদিরাম প্রভুজির রেস্টুরেন্টে হানা খাদ্য সুরক্ষা দফতরের, VIP রোডের উপর এই দোকান থেকে যা বেরিয়ে এল ..",
-          "source_type": "news",
-          "source_url": "https://bengali.abplive.com/district/food-safety-raid-on-haldiram-prabhuji-restaurant-at-vip-road-breaking-news-1197381",
-          "text_sha256": "68ce74755e141ebbe61c94f18acbc9f46392e84535578a4d3ab78cd5dfeb64f7",
-          "tier": "B"
-        }
-      ],
-      "superseded_by": null,
-      "validator_id": "objective_source_grounding",
       "validator_version": "2",
       "verification_notes": "Supporting source context revalidated; original evidence retained.",
       "verification_status": "SOURCE VERIFIED"
@@ -22278,11 +22075,17 @@
           "note": "Supporting source context revalidated; original evidence retained.",
           "previous_record_sha256": "c65ea8aeb604fe790da9d90851e57406a87e7c34916ccf3a4951a54d6bc4f7a2",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-11-25T00:41:07.716687Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "932fce5ca1477f497d1221dc08b4d50c4a068804a699dc5dbdf05c0f841c4e3f",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-11-23T14:33:43.304943Z",
-      "last_successful_evidence_check_at": "2026-11-23T14:33:43.304943Z",
+      "last_source_checked_at": "2026-11-25T00:41:07.716687Z",
+      "last_successful_evidence_check_at": "2026-11-25T00:41:07.716687Z",
       "llm": {
         "fields_proposed": [],
         "llm_model": null,
@@ -22302,7 +22105,7 @@
       "record_class": "inspection_evidence",
       "record_created_at": "2026-09-07T21:12:32.942437Z",
       "record_scope": "unknown",
-      "record_updated_at": "2026-11-23T14:33:43.304943Z",
+      "record_updated_at": "2026-11-25T00:41:07.716687Z",
       "related_record_ids": [],
       "reported_fact": {
         "area": "Park Street",
@@ -25474,551 +25277,6 @@
     {
       "automatic_validation": {
         "extraction_evidence": {
-          "end": 202,
-          "match_method": "exact",
-          "original_quote": "পশ্চিম বর্ধমানের দুর্গাপুরের বেনাচিতি বাজারে বেকারি সংস্থার বিরুদ্ধে গুরুতর অভিযোগ উঠতেই দ্রুত অ্যাকশন নিল পুলিশ। সাময়িকভাবে বন্ধ করা হল দোকানের ঝাঁপ।",
-          "passage_id": "P012",
-          "source_revision_id": "cd6f8c578c0a5d0763855edd8bb198012e5d944d4c5861d2b92f26d1a5e5675e",
-          "start": 52
-        },
-        "method": "source_grounded_candidate_v1",
-        "pipeline_version": "0.3.0",
-        "validated_at": "2026-09-15T11:42:24.512042Z"
-      },
-      "context_notice": "Independent, non-governmental public-source research. Inclusion is not a finding of wrongdoing. Counts describe records in this tracker, not official totals, prevalence, compliance, risk or group behavior. Read the sources and preserve this context when sharing.",
-      "derived_context": {
-        "action_category": "not reported",
-        "action_category_confidence": "unknown",
-        "action_category_method": null,
-        "action_category_reviewed": false,
-        "action_category_source": null,
-        "business_format": "unknown",
-        "business_format_confidence": "unknown",
-        "business_format_method": null,
-        "business_format_reviewed": false,
-        "business_format_source": null,
-        "derived_confidence": "unknown",
-        "derived_context_method": "Unknown; no contextual inference performed.",
-        "derived_context_sources": [],
-        "establishment_context": "unknown",
-        "establishment_context_confidence": "unknown",
-        "establishment_context_method": null,
-        "establishment_context_reviewed": false,
-        "establishment_context_source": null,
-        "latitude": null,
-        "location_method": null,
-        "location_precision": null,
-        "location_reviewed": false,
-        "location_source": null,
-        "longitude": null,
-        "menu_context": "unknown",
-        "menu_context_confidence": "unknown",
-        "menu_context_method": null,
-        "menu_context_reviewed": false,
-        "menu_context_source": null,
-        "normalized_area": null
-      },
-      "display_summary": "Source reports a source-reported food-safety event involving বেকারি সংস্থা in দুর্গাপুরের বেনাচিতি বাজারে.",
-      "establishment_id": null,
-      "event_id": "WBFS-e1bd4ea695e6",
-      "evidence_support_status": "supported_as_of",
-      "extractor_id": "source_grounded_candidate",
-      "extractor_version": "1",
-      "first_published_at": "2026-09-15T11:42:24.512042Z",
-      "history": [
-        {
-          "at": "2026-09-15T11:42:24.512042Z",
-          "note": "Source-grounded LLM candidate auto-published after deterministic validation.",
-          "previous_record_sha256": null,
-          "status": "SOURCE VERIFIED"
-        },
-        {
-          "at": "2026-09-15T16:57:14.324563Z",
-          "note": "Supporting source context revalidated; original evidence retained.",
-          "previous_record_sha256": "a4ba868ea924e7e2f98e558e4a0655eb8b8f7b0ed738abaf574a584a11c4d964",
-          "status": "SOURCE VERIFIED"
-        },
-        {
-          "at": "2026-09-16T07:40:40.128159Z",
-          "note": "Supporting source context revalidated; original evidence retained.",
-          "previous_record_sha256": "401ba6595a6a6df9d849c000d6f60bbe4b51a1c49782fbdd150cda44fdc9911e",
-          "status": "SOURCE VERIFIED"
-        },
-        {
-          "at": "2026-09-17T00:30:33.231284Z",
-          "note": "Supporting source context revalidated; original evidence retained.",
-          "previous_record_sha256": "935f03258835ee5ee94ca6cdc8f997b3d94297af4f36473a7256f175b10e6f93",
-          "status": "SOURCE VERIFIED"
-        },
-        {
-          "at": "2026-09-17T18:11:39.420014Z",
-          "note": "Supporting source context revalidated; original evidence retained.",
-          "previous_record_sha256": "4a2225985ab470d5ceac0745a48f1b8229f504bf38e959b16f98dc58dea71358",
-          "status": "SOURCE VERIFIED"
-        },
-        {
-          "at": "2026-09-18T04:45:35.199179Z",
-          "note": "Supporting source context revalidated; original evidence retained.",
-          "previous_record_sha256": "431c4662148c5b277680d19abb95d3bbb8a4ac730c9aeb4f996e1c183958b8e6",
-          "status": "SOURCE VERIFIED"
-        },
-        {
-          "at": "2026-09-18T20:53:35.875858Z",
-          "note": "Supporting source context revalidated; original evidence retained.",
-          "previous_record_sha256": "2e8b4059f1b2a23b4d2fdf2009e935e060fb38785baef79df7f9f685fdced295",
-          "status": "SOURCE VERIFIED"
-        },
-        {
-          "at": "2026-09-19T12:29:36.982812Z",
-          "note": "Supporting source context revalidated; original evidence retained.",
-          "previous_record_sha256": "4d227e8ef84d02e72267b04d6ea6a3724b791372af7564f1890cced715d4f07b",
-          "status": "SOURCE VERIFIED"
-        },
-        {
-          "at": "2026-09-20T00:08:51.734619Z",
-          "note": "Supporting source context revalidated; original evidence retained.",
-          "previous_record_sha256": "4283f5be4342117ec5653e71e59ace97269d2e957107a1091ea76f070db749de",
-          "status": "SOURCE VERIFIED"
-        },
-        {
-          "at": "2026-09-20T18:46:52.638069Z",
-          "note": "Supporting source context revalidated; original evidence retained.",
-          "previous_record_sha256": "8cf9f5975dd12c23f60424e9bb0be0e3776121ddd008146261e05b213e03714b",
-          "status": "SOURCE VERIFIED"
-        },
-        {
-          "at": "2026-09-21T12:44:53.797425Z",
-          "note": "Supporting source context revalidated; original evidence retained.",
-          "previous_record_sha256": "8e314710295ecc5f7bb2b32296d991ce07439a3f101f6fa7109e191d4e93e781",
-          "status": "SOURCE VERIFIED"
-        },
-        {
-          "at": "2026-09-22T11:35:18.949174Z",
-          "note": "Supporting source context revalidated; original evidence retained.",
-          "previous_record_sha256": "f5a69bf73fa98a809753f7970798cc7c597d81160d6be942a044cfd22ce38632",
-          "status": "SOURCE VERIFIED"
-        },
-        {
-          "at": "2026-09-23T00:30:34.974799Z",
-          "note": "Supporting source context revalidated; original evidence retained.",
-          "previous_record_sha256": "0d323fd8ecae6d4946fa2d53c3c71d90e1f9e0d57026debc8dbe4a9e8048ac3f",
-          "status": "SOURCE VERIFIED"
-        },
-        {
-          "at": "2026-09-24T17:08:51.785573Z",
-          "note": "Supporting source context revalidated; original evidence retained.",
-          "previous_record_sha256": "8a5ee8be14e0357af37fa6ba1262033d628895efb452e7ff99c5c03ef5b67702",
-          "status": "SOURCE VERIFIED"
-        },
-        {
-          "at": "2026-09-25T07:46:23.109397Z",
-          "note": "Supporting source context revalidated; original evidence retained.",
-          "previous_record_sha256": "3c7396aff87a4f430e84fbb255d882084c7094a0408732be3ba7eac780f86539",
-          "status": "SOURCE VERIFIED"
-        },
-        {
-          "at": "2026-09-26T04:55:22.449714Z",
-          "note": "Supporting source context revalidated; original evidence retained.",
-          "previous_record_sha256": "16296363118e872191b908109031823f3cd83a9750e6d00ddb8ab5d5eae04c38",
-          "status": "SOURCE VERIFIED"
-        },
-        {
-          "at": "2026-09-26T21:08:27.547724Z",
-          "note": "Supporting source context revalidated; original evidence retained.",
-          "previous_record_sha256": "21190929cef42684ecc414b75b23c7a15ff50d69905ed183877aaa2ccbd5b534",
-          "status": "SOURCE VERIFIED"
-        },
-        {
-          "at": "2026-09-27T18:22:31.158745Z",
-          "note": "Supporting source context revalidated; original evidence retained.",
-          "previous_record_sha256": "ca149e1092980c584c0627568ea9c9d524a78b377e5ad7fc5b176982c90a67fd",
-          "status": "SOURCE VERIFIED"
-        },
-        {
-          "at": "2026-09-28T20:33:40.938108Z",
-          "note": "Supporting source context revalidated; original evidence retained.",
-          "previous_record_sha256": "f109af5b4c3835158c1dffcafa4b90b3862e11c84eb314c751ea9f683dfa6f8a",
-          "status": "SOURCE VERIFIED"
-        },
-        {
-          "at": "2026-09-29T16:30:45.539342Z",
-          "note": "Supporting source context revalidated; original evidence retained.",
-          "previous_record_sha256": "215c3f57e59eb908941023923ee88f766621d4902be1be01cd4b48d69a738327",
-          "status": "SOURCE VERIFIED"
-        },
-        {
-          "at": "2026-09-30T08:31:28.560934Z",
-          "note": "Supporting source context revalidated; original evidence retained.",
-          "previous_record_sha256": "c35ac3f8dcab31df340feb0c7e74a9bc6695ed7e7fb959351236b239465f1099",
-          "status": "SOURCE VERIFIED"
-        },
-        {
-          "at": "2026-10-01T01:17:57.650335Z",
-          "note": "Supporting source context revalidated; original evidence retained.",
-          "previous_record_sha256": "160cc56cfb5d936d8381f840f9b66c28c814a54e96ebef0a755bcc3bae66b117",
-          "status": "SOURCE VERIFIED"
-        },
-        {
-          "at": "2026-10-02T05:34:44.261707Z",
-          "note": "Supporting source context revalidated; original evidence retained.",
-          "previous_record_sha256": "9bf4f0856b7c9ab36834134f24a5594963781e82288f1fd0f5359baa2bd4a794",
-          "status": "SOURCE VERIFIED"
-        },
-        {
-          "at": "2026-10-02T23:46:35.449751Z",
-          "note": "Supporting source context revalidated; original evidence retained.",
-          "previous_record_sha256": "48ffab930f7ff7d71752908b3af40512b5ada376f4c6f2a332c732d0230f3211",
-          "status": "SOURCE VERIFIED"
-        },
-        {
-          "at": "2026-10-03T16:16:04.579535Z",
-          "note": "Supporting source context revalidated; original evidence retained.",
-          "previous_record_sha256": "16dbc16e7ddf726041a38f1c99b49231193a2b74f72398f4de906b100830fbab",
-          "status": "SOURCE VERIFIED"
-        },
-        {
-          "at": "2026-10-04T12:18:58.068629Z",
-          "note": "Supporting source context revalidated; original evidence retained.",
-          "previous_record_sha256": "7e72859e10f8bd98354ae3aa953a04d9223491212d6e9397af5b87a97bc789d9",
-          "status": "SOURCE VERIFIED"
-        },
-        {
-          "at": "2026-10-05T00:54:59.970308Z",
-          "note": "Supporting source context revalidated; original evidence retained.",
-          "previous_record_sha256": "a476313fac05adf9e2cd4ee3852eb1b0abdebf634e3c595e6228b5baf931c5aa",
-          "status": "SOURCE VERIFIED"
-        },
-        {
-          "at": "2026-10-06T01:17:54.839282Z",
-          "note": "Supporting source context revalidated; original evidence retained.",
-          "previous_record_sha256": "5cf38c27b09054b1aed979f9cdf0f0834b95741c167c7ac88ad34cbc4eb35638",
-          "status": "SOURCE VERIFIED"
-        },
-        {
-          "at": "2026-10-06T22:39:03.866547Z",
-          "note": "Supporting source context revalidated; original evidence retained.",
-          "previous_record_sha256": "adc45356ab4bd3b2012a390133b48ffa33a5cc2a8a1be0a912150413dc0b3119",
-          "status": "SOURCE VERIFIED"
-        },
-        {
-          "at": "2026-10-07T19:59:11.007365Z",
-          "note": "Supporting source context revalidated; original evidence retained.",
-          "previous_record_sha256": "5fd42bf4f769e8d5db16824e3f4358139ccbc5d22fadaa9fab316c826627671b",
-          "status": "SOURCE VERIFIED"
-        },
-        {
-          "at": "2026-10-08T19:56:31.726526Z",
-          "note": "Supporting source context revalidated; original evidence retained.",
-          "previous_record_sha256": "1600d15e94143059b7c240e20a4f63ff3e96934528b273be5aeda5c41fe4663d",
-          "status": "SOURCE VERIFIED"
-        },
-        {
-          "at": "2026-10-10T05:49:08.411792Z",
-          "note": "Supporting source context revalidated; original evidence retained.",
-          "previous_record_sha256": "de4384480cd7f00d642de6be5de0d325d0d2638866600d51609cdf6beb15ba94",
-          "status": "SOURCE VERIFIED"
-        },
-        {
-          "at": "2026-10-10T23:32:20.146873Z",
-          "note": "Supporting source context revalidated; original evidence retained.",
-          "previous_record_sha256": "65f8245919ba375266acf212d199d5e26ca8fe5f15a62e8035dc1974efdf163b",
-          "status": "SOURCE VERIFIED"
-        },
-        {
-          "at": "2026-10-11T23:39:03.875820Z",
-          "note": "Supporting source context revalidated; original evidence retained.",
-          "previous_record_sha256": "5728cc9dc669481c88a8808bfb74f4521bf343c8e811a2cecb54aa492e634efa",
-          "status": "SOURCE VERIFIED"
-        },
-        {
-          "at": "2026-10-12T22:57:14.023107Z",
-          "note": "Supporting source context revalidated; original evidence retained.",
-          "previous_record_sha256": "64b550d50db57b8055acd5fce95f08d8c742a244f28696e0ffacb2059d608527",
-          "status": "SOURCE VERIFIED"
-        },
-        {
-          "at": "2026-10-13T21:14:15.145466Z",
-          "note": "Supporting source context revalidated; original evidence retained.",
-          "previous_record_sha256": "14973d82762cc636cbfb79430fab46021db2631c3025d98ba7657deab30f29e3",
-          "status": "SOURCE VERIFIED"
-        },
-        {
-          "at": "2026-10-14T13:42:12.826140Z",
-          "note": "Supporting source context revalidated; original evidence retained.",
-          "previous_record_sha256": "50ea1491a9097e96f6a8d56281495168f0753bc6f30f71c0cdd3ed9b9d6625f7",
-          "status": "SOURCE VERIFIED"
-        },
-        {
-          "at": "2026-10-15T11:25:27.009333Z",
-          "note": "Supporting source context revalidated; original evidence retained.",
-          "previous_record_sha256": "73c423074fa732474b9ada2bcf0e31c4826e37577269139cff09342af61b1f1e",
-          "status": "SOURCE VERIFIED"
-        },
-        {
-          "at": "2026-10-16T00:23:03.496943Z",
-          "note": "Supporting source context revalidated; original evidence retained.",
-          "previous_record_sha256": "2c914adf937e2ba6f96587a3d69226271e5245562d1242a6221ff395c32682f9",
-          "status": "SOURCE VERIFIED"
-        },
-        {
-          "at": "2026-10-16T18:02:31.625965Z",
-          "note": "Supporting source context revalidated; original evidence retained.",
-          "previous_record_sha256": "27e3c06956bc2385a17f7a28f0389d0124757d70144398aea2620399dae54b62",
-          "status": "SOURCE VERIFIED"
-        },
-        {
-          "at": "2026-10-17T00:27:40.383598Z",
-          "note": "Supporting source context revalidated; original evidence retained.",
-          "previous_record_sha256": "8674f5b9a25d3a0ebc47806900a3309e785661c399589dcb61c9f16624acfed1",
-          "status": "SOURCE VERIFIED"
-        },
-        {
-          "at": "2026-10-17T22:17:02.709479Z",
-          "note": "Supporting source context revalidated; original evidence retained.",
-          "previous_record_sha256": "546711f5842bd30ce511ed4a0d087f0ea2561d01ba9cdf858f48805d1575f159",
-          "status": "SOURCE VERIFIED"
-        },
-        {
-          "at": "2026-10-18T04:28:59.667940Z",
-          "note": "Supporting source context revalidated; original evidence retained.",
-          "previous_record_sha256": "5d97de0d9e2e0205e0c65e90417538c230d924bf128b8a9292541afb7ceec4a3",
-          "status": "SOURCE VERIFIED"
-        },
-        {
-          "at": "2026-10-18T15:50:14.541416Z",
-          "note": "Supporting source context revalidated; original evidence retained.",
-          "previous_record_sha256": "63a2bd8a9b986bf23da0b5e3e0e9bbf918b653fe44486d8cb648a31802823641",
-          "status": "SOURCE VERIFIED"
-        },
-        {
-          "at": "2026-10-18T22:25:11.102713Z",
-          "note": "Supporting source context revalidated; original evidence retained.",
-          "previous_record_sha256": "da6b1b9fe7199197593e9c0d6c8d6ed8c5c0559dafc69c0c0e8ddd0abdfe7b93",
-          "status": "SOURCE VERIFIED"
-        },
-        {
-          "at": "2026-10-20T04:46:28.035845Z",
-          "note": "Supporting source context revalidated; original evidence retained.",
-          "previous_record_sha256": "af6ddf1c28e6a93e51882f3cdf2305446b640c262a3cf2d868c6d42e774cb58e",
-          "status": "SOURCE VERIFIED"
-        },
-        {
-          "at": "2026-10-20T17:00:42.499626Z",
-          "note": "Supporting source context revalidated; original evidence retained.",
-          "previous_record_sha256": "683c0c6a791851675789e222a2eff23ce98f9baf6f17210e53e9396435a22f76",
-          "status": "SOURCE VERIFIED"
-        },
-        {
-          "at": "2026-10-21T18:36:44.017780Z",
-          "note": "Supporting source context revalidated; original evidence retained.",
-          "previous_record_sha256": "4f570640bf0f195f98aa90bc20e4cc4c2145511b1a4b81658de829ec3d1d0c26",
-          "status": "SOURCE VERIFIED"
-        },
-        {
-          "at": "2026-10-22T04:40:32.614160Z",
-          "note": "Supporting source context revalidated; original evidence retained.",
-          "previous_record_sha256": "afc7cc2e7cb090ce6e775e5cdbce897910234491f40713ee1d0d1956d484ec73",
-          "status": "SOURCE VERIFIED"
-        },
-        {
-          "at": "2026-10-23T07:29:29.317140Z",
-          "note": "Supporting source context revalidated; original evidence retained.",
-          "previous_record_sha256": "22227bbdcdc8e0938aa5d5b24e3c8c10879bca687c227562f0525165a43cecc7",
-          "status": "SOURCE VERIFIED"
-        },
-        {
-          "at": "2026-10-23T18:19:00.535597Z",
-          "note": "Supporting source context revalidated; original evidence retained.",
-          "previous_record_sha256": "e95aae63662822e82e922890c17f82d14919e70bb01605fc9a53ec40dc4197c9",
-          "status": "SOURCE VERIFIED"
-        },
-        {
-          "at": "2026-10-24T04:33:05.281395Z",
-          "note": "Supporting source context revalidated; original evidence retained.",
-          "previous_record_sha256": "d714ddd5e0f7b496bdf2a677d1fcaea7526151bd27c93a62336fc32b3cf2b819",
-          "status": "SOURCE VERIFIED"
-        },
-        {
-          "at": "2026-10-25T22:32:13.083067Z",
-          "note": "Supporting source context revalidated; original evidence retained.",
-          "previous_record_sha256": "7ee1ccf981e02fac0a1b6e584b2c65e392021a833d51ff3dddad4e76cf4bd246",
-          "status": "SOURCE VERIFIED"
-        },
-        {
-          "at": "2026-10-26T23:51:36.416710Z",
-          "note": "Supporting source context revalidated; original evidence retained.",
-          "previous_record_sha256": "acc42958ba437de24e239f1ab5a6afbb4a5d0bb71aa8a05dbe79bda99163e2b4",
-          "status": "SOURCE VERIFIED"
-        },
-        {
-          "at": "2026-10-27T17:58:47.358959Z",
-          "note": "Supporting source context revalidated; original evidence retained.",
-          "previous_record_sha256": "8fa2b5638619306b2548124594f19c3def5b2bd3098f995c388d11c69f3b83dd",
-          "status": "SOURCE VERIFIED"
-        },
-        {
-          "at": "2026-10-31T05:36:44.441544Z",
-          "note": "Supporting source context revalidated; original evidence retained.",
-          "previous_record_sha256": "d3959efe8898bd43546f45db6661a7edc99d855ffe5acd1b17219372c277317e",
-          "status": "SOURCE VERIFIED"
-        },
-        {
-          "at": "2026-11-01T05:58:39.484673Z",
-          "note": "Supporting source context revalidated; original evidence retained.",
-          "previous_record_sha256": "d530a6abb347c4f7ab2e322c0513e4de1369d662096db83e59f3becb177832c2",
-          "status": "SOURCE VERIFIED"
-        },
-        {
-          "at": "2026-11-02T05:58:00.937853Z",
-          "note": "Supporting source context revalidated; original evidence retained.",
-          "previous_record_sha256": "087e3d6b34cec7856e5ad33065ab647406c4ed1f9169bfcfc15f5ddd75de312a",
-          "status": "SOURCE VERIFIED"
-        },
-        {
-          "at": "2026-11-05T00:53:51.194081Z",
-          "note": "Supporting source context revalidated; original evidence retained.",
-          "previous_record_sha256": "0e65a0332eb837c62bfe3c359bdca28769e9d313b3363cfe1ef87895487ca460",
-          "status": "SOURCE VERIFIED"
-        },
-        {
-          "at": "2026-11-05T23:37:30.395489Z",
-          "note": "Supporting source context revalidated; original evidence retained.",
-          "previous_record_sha256": "25ff12adbe06378be12efd4e95e4347e5b455e0cf8873f3768337ac71aeeaad9",
-          "status": "SOURCE VERIFIED"
-        },
-        {
-          "at": "2026-11-07T08:44:57.544640Z",
-          "note": "Supporting source context revalidated; original evidence retained.",
-          "previous_record_sha256": "3fd4c9dcab46f1ecc744326bfe1ef307178c302dfab6734bf43b2db082739d48",
-          "status": "SOURCE VERIFIED"
-        },
-        {
-          "at": "2026-11-08T01:26:02.522298Z",
-          "note": "Supporting source context revalidated; original evidence retained.",
-          "previous_record_sha256": "c7c572d2e6ed52877c23f4a2d122c32e8475c51d83ba032baf2353c1d9f7b5ac",
-          "status": "SOURCE VERIFIED"
-        },
-        {
-          "at": "2026-11-08T22:00:26.324019Z",
-          "note": "Supporting source context revalidated; original evidence retained.",
-          "previous_record_sha256": "f1b92e307d471e099cc526347310e0e3a7233403755cf47d486ac916efc8985e",
-          "status": "SOURCE VERIFIED"
-        },
-        {
-          "at": "2026-11-09T20:42:41.636686Z",
-          "note": "Supporting source context revalidated; original evidence retained.",
-          "previous_record_sha256": "ea64f02b9e30092aa0ecaa30d67801a49d794e6d79bd914c5138fe32ea7c496a",
-          "status": "SOURCE VERIFIED"
-        },
-        {
-          "at": "2026-11-10T20:48:55.325370Z",
-          "note": "Supporting source context revalidated; original evidence retained.",
-          "previous_record_sha256": "9e0e63e431fa0b2218135e67aa8404585e11bb6d08cf78b93fb56716628e7ac5",
-          "status": "SOURCE VERIFIED"
-        }
-      ],
-      "is_fixture": false,
-      "last_source_checked_at": "2026-11-10T20:48:55.325370Z",
-      "last_successful_evidence_check_at": "2026-11-10T20:48:55.325370Z",
-      "llm": {
-        "fields_proposed": [
-          "area",
-          "establishment_name",
-          "reported_action",
-          "reported_authority",
-          "reported_observation"
-        ],
-        "llm_model": "gemini-3.5-flash-lite",
-        "llm_output_was_validated": true,
-        "llm_pipeline_version": "0.3.0",
-        "llm_provider": "gemini",
-        "llm_task": "structured source extraction",
-        "llm_task_version": "source_candidates_v2",
-        "llm_used": true,
-        "llm_used_at": "2026-09-15T11:42:44.571516Z",
-        "source_revision_id": "cd6f8c578c0a5d0763855edd8bb198012e5d944d4c5861d2b92f26d1a5e5675e",
-        "validation_result": "passed"
-      },
-      "location_id": null,
-      "pipeline_version": "0.3.0",
-      "publication_status": "active",
-      "record_class": "inspection_evidence",
-      "record_created_at": "2026-09-15T11:42:24.512042Z",
-      "record_scope": "establishment_event",
-      "record_updated_at": "2026-11-10T20:48:55.325370Z",
-      "related_record_ids": [],
-      "reported_fact": {
-        "area": "দুর্গাপুরের বেনাচিতি বাজারে",
-        "district": null,
-        "establishment_name": "বেকারি সংস্থা",
-        "establishment_type": null,
-        "event_date": null,
-        "evidence": {
-          "area": {
-            "quote": "পশ্চিম বর্ধমানের দুর্গাপুরের বেনাচিতি বাজারে বেকারি সংস্থার বিরুদ্ধে গুরুতর অভিযোগ উঠতেই দ্রুত অ্যাকশন নিল পুলিশ। সাময়িকভাবে বন্ধ করা হল দোকানের ঝাঁপ।",
-            "source_url": "https://bengali.abplive.com/district/durgapur-fungus-on-the-pizza-odor-food-shop-has-been-shut-down-1192879"
-          },
-          "establishment_name": {
-            "quote": "পশ্চিম বর্ধমানের দুর্গাপুরের বেনাচিতি বাজারে বেকারি সংস্থার বিরুদ্ধে গুরুতর অভিযোগ উঠতেই দ্রুত অ্যাকশন নিল পুলিশ। সাময়িকভাবে বন্ধ করা হল দোকানের ঝাঁপ।",
-            "source_url": "https://bengali.abplive.com/district/durgapur-fungus-on-the-pizza-odor-food-shop-has-been-shut-down-1192879"
-          },
-          "reported_action": {
-            "quote": "পশ্চিম বর্ধমানের দুর্গাপুরের বেনাচিতি বাজারে বেকারি সংস্থার বিরুদ্ধে গুরুতর অভিযোগ উঠতেই দ্রুত অ্যাকশন নিল পুলিশ। সাময়িকভাবে বন্ধ করা হল দোকানের ঝাঁপ।",
-            "source_url": "https://bengali.abplive.com/district/durgapur-fungus-on-the-pizza-odor-food-shop-has-been-shut-down-1192879"
-          },
-          "reported_authority": {
-            "quote": "পশ্চিম বর্ধমানের দুর্গাপুরের বেনাচিতি বাজারে বেকারি সংস্থার বিরুদ্ধে গুরুতর অভিযোগ উঠতেই দ্রুত অ্যাকশন নিল পুলিশ। সাময়িকভাবে বন্ধ করা হল দোকানের ঝাঁপ।",
-            "source_url": "https://bengali.abplive.com/district/durgapur-fungus-on-the-pizza-odor-food-shop-has-been-shut-down-1192879"
-          },
-          "reported_observation": {
-            "quote": "পশ্চিম বর্ধমানের দুর্গাপুরের বেনাচিতি বাজারে বেকারি সংস্থার বিরুদ্ধে গুরুতর অভিযোগ উঠতেই দ্রুত অ্যাকশন নিল পুলিশ। সাময়িকভাবে বন্ধ করা হল দোকানের ঝাঁপ।",
-            "source_url": "https://bengali.abplive.com/district/durgapur-fungus-on-the-pizza-odor-food-shop-has-been-shut-down-1192879"
-          }
-        },
-        "formal_finding": null,
-        "legal_finding_status": "unknown",
-        "reported_action": "সাময়িকভাবে বন্ধ করা হল দোকানের ঝাঁপ",
-        "reported_authority": "পুলিশ",
-        "reported_observation": "গুরুতর অভিযোগ",
-        "reported_quantity": null
-      },
-      "review": null,
-      "reviewed_associations": [],
-      "reviewer_hold": false,
-      "source_availability": "available",
-      "source_availability_reason": null,
-      "sources": [
-        {
-          "archive_url": null,
-          "evidence_context": "পশ্চিম বর্ধমানের দুর্গাপুরের বেনাচিতি বাজারে বেকারি সংস্থার বিরুদ্ধে গুরুতর অভিযোগ উঠতেই দ্রুত অ্যাকশন নিল পুলিশ। সাময়িকভাবে বন্ধ করা হল দোকানের ঝাঁপ।",
-          "evidence_language": "bn",
-          "evidence_locator": null,
-          "evidence_quote": "গুরুতর অভিযোগ",
-          "evidence_span_hash": "b6bdfba66f3c3c2f0ad48217813a65472b08d4735e85b8572999db420a5c9f36",
-          "origin_source_id": null,
-          "retrieved_at": "2026-09-15T11:42:24.512042Z",
-          "source_date": "2026-09-15",
-          "source_id": "SRC-84958c32320348974a97",
-          "source_language": "bn",
-          "source_publisher": "ABP Ananda",
-          "source_relationship": "unknown",
-          "source_revision_id": "f30403a2ab26a7e02542ef64d0ecb977951d21fba180b388bfe118d2b7ff5ff0",
-          "source_title": "Rotten Food: পিৎজায় ফাঙ্গাস! খাবার থেকে বেরোচ্ছে পচা, বাসি গন্ধ, শাটার নামল এই দোকানের | Durgapur Fungus on the pizza odor food shop has been shut down",
-          "source_type": "news",
-          "source_url": "https://bengali.abplive.com/district/durgapur-fungus-on-the-pizza-odor-food-shop-has-been-shut-down-1192879",
-          "text_sha256": "f30403a2ab26a7e02542ef64d0ecb977951d21fba180b388bfe118d2b7ff5ff0",
-          "tier": "B"
-        }
-      ],
-      "superseded_by": null,
-      "validator_id": "objective_source_grounding",
-      "validator_version": "2",
-      "verification_notes": "Supporting source context revalidated; original evidence retained.",
-      "verification_status": "SOURCE VERIFIED"
-    },
-    {
-      "automatic_validation": {
-        "extraction_evidence": {
           "end": 238,
           "match_method": "exact",
           "original_quote": "শিয়ালদা স্টেশন চত্বরে কলকাতা পুরসভার খাদ্য় সুরক্ষা দফতরের। স্টেশন চত্বরের বিভিন্ন দোকানে হানা খাদ্য় সুরক্ষা দফতরের। একটি দোকানে তরকারি ও সিঙাড়ায় নিম্নমানের হলুদ ব্য়বহার করা হয়েছে। সেগুলি ফেলে দেন খাদ্য় সুরক্ষা দফতরের প্রতিনিধিরা।",
@@ -26136,11 +25394,17 @@
           "note": "Supporting source context revalidated; original evidence retained.",
           "previous_record_sha256": "578631e47eb6e7fd9fbf9a8a872d9565c65c6c5f6fc7de9077d50095fba98434",
           "status": "SOURCE VERIFIED"
+        },
+        {
+          "at": "2026-11-25T00:41:07.716687Z",
+          "note": "Supporting source context revalidated; original evidence retained.",
+          "previous_record_sha256": "84066124afc0c2941057a59ea3f7a3e8c6608a8face1c58915c06b3cf0b7b93e",
+          "status": "SOURCE VERIFIED"
         }
       ],
       "is_fixture": false,
-      "last_source_checked_at": "2026-11-23T14:33:43.304943Z",
-      "last_successful_evidence_check_at": "2026-11-23T14:33:43.304943Z",
+      "last_source_checked_at": "2026-11-25T00:41:07.716687Z",
+      "last_successful_evidence_check_at": "2026-11-25T00:41:07.716687Z",
       "llm": {
         "fields_proposed": [
           "area",
@@ -26165,7 +25429,7 @@
       "record_class": "inspection_evidence",
       "record_created_at": "2026-10-31T12:22:33.306824Z",
       "record_scope": "area_operation",
-      "record_updated_at": "2026-11-23T14:33:43.304943Z",
+      "record_updated_at": "2026-11-25T00:41:07.716687Z",
       "related_record_ids": [],
       "reported_fact": {
         "area": "শিয়ালদা স্টেশন চত্বরে",
