@@ -1,8 +1,8 @@
 {
   "context_notice": "Independent, non-governmental public-source research. Inclusion is not a finding of wrongdoing. Counts describe records in this tracker, not official totals, prevalence, compliance, risk or group behavior. Read the sources and preserve this context when sharing.",
-  "generated_at": "2026-11-25T11:14:03.304217+00:00",
+  "generated_at": "2026-11-25T21:39:01.203554+00:00",
   "pipeline_version": "0.3.0",
-  "record_count": 17,
+  "record_count": 19,
   "records": [
     {
       "context_notice": "Independent, non-governmental public-source research. Inclusion is not a finding of wrongdoing. Counts describe records in this tracker, not official totals, prevalence, compliance, risk or group behavior. Read the sources and preserve this context when sharing.",
@@ -221,6 +221,32 @@
       "source_availability_reason": null,
       "source_url_sha256": [
         "84958c32320348974a97510c4ff070a9daf3d36c1aa7305aca8c26b60e409d7e"
+      ],
+      "superseded_by": null,
+      "verification_status": "PENDING REVIEW"
+    },
+    {
+      "context_notice": "Independent, non-governmental public-source research. Inclusion is not a finding of wrongdoing. Counts describe records in this tracker, not official totals, prevalence, compliance, risk or group behavior. Read the sources and preserve this context when sharing.",
+      "event_id": "WBFS-5ee36b93256b",
+      "first_published_at": "2026-09-11T00:09:16.296804+00:00",
+      "publication_status": "needs_review",
+      "record_updated_at": "2026-11-25T21:39:01.203554+00:00",
+      "source_availability_reason": null,
+      "source_url_sha256": [
+        "8f8f07c75d8f6bf2ee85ae18e0e99d3e7f5a8e06ac4106e8e5273b49f6f0d28a"
+      ],
+      "superseded_by": null,
+      "verification_status": "PENDING REVIEW"
+    },
+    {
+      "context_notice": "Independent, non-governmental public-source research. Inclusion is not a finding of wrongdoing. Counts describe records in this tracker, not official totals, prevalence, compliance, risk or group behavior. Read the sources and preserve this context when sharing.",
+      "event_id": "WBFS-c391d02b3d97",
+      "first_published_at": "2026-09-11T00:09:16.296804+00:00",
+      "publication_status": "needs_review",
+      "record_updated_at": "2026-11-25T21:39:01.203554+00:00",
+      "source_availability_reason": null,
+      "source_url_sha256": [
+        "8f8f07c75d8f6bf2ee85ae18e0e99d3e7f5a8e06ac4106e8e5273b49f6f0d28a"
       ],
       "superseded_by": null,
       "verification_status": "PENDING REVIEW"
