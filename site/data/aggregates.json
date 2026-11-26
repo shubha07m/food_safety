@@ -1,7 +1,7 @@
 {
   "actions": {
     "inspection / visit only": 25,
-    "not reported": 13,
+    "not reported": 12,
     "other": 2
   },
   "areas": {
@@ -32,12 +32,11 @@
     "বাদুড়িয়া": 1,
     "ভিআইপি রোডের ওপর": 1,
     "মধ্যমগ্রামের স্টার মলে": 1,
-    "শিয়ালদহ": 1,
-    "শিয়ালদা স্টেশন চত্বরে": 1
+    "শিয়ালদহ": 1
   },
-  "areas_count": 29,
+  "areas_count": 28,
   "business_formats": {
-    "unknown": 40
+    "unknown": 39
   },
   "context_notice": "Independent, non-governmental public-source research. Inclusion is not a finding of wrongdoing. Counts describe records in this tracker, not official totals, prevalence, compliance, risk or group behavior. Read the sources and preserve this context when sharing.",
   "coverage": {
@@ -46,7 +45,7 @@
     "establishment_context": 27,
     "menu_context": 0,
     "named_establishment": 26,
-    "reported_action": 25,
+    "reported_action": 24,
     "reported_quantity": 7
   },
   "establishments": {
@@ -55,33 +54,33 @@
     "market / vendor": 3,
     "restaurant / eatery": 13,
     "sweet shop / bakery": 3,
-    "unknown": 13
+    "unknown": 12
   },
   "establishments_count": 26,
-  "generated_at": "2026-11-26T13:52:12.586840+00:00",
+  "generated_at": "2026-11-26T22:58:30.944591+00:00",
   "map_coverage": {
     "mapped_records": 22,
     "precision": {
       "city": 3,
       "neighborhood": 15,
-      "not mapped": 18,
+      "not mapped": 17,
       "street": 4
     }
   },
   "menus": {
-    "unknown": 40
+    "unknown": 39
   },
   "pipeline_version": "0.3.0",
   "publishers": {
-    "ABP Ananda": 3,
+    "ABP Ananda": 2,
     "Business Today": 5,
     "Indian Express Bangla": 5,
     "The Times of India": 26,
     "UNI India": 1
   },
-  "record_count": 40,
+  "record_count": 39,
   "schema_version": "1.2.0",
-  "sources_count": 16,
+  "sources_count": 15,
   "timeline": {
     "2025-04-25": 1,
     "2026-09-02": 2,
@@ -92,10 +91,10 @@
     "2026-09-07": 3,
     "2026-10-24": 1,
     "2026-10-28": 1,
-    "2026-10-31": 2
+    "2026-10-31": 1
   },
-  "total": 40,
+  "total": 39,
   "verification": {
-    "SOURCE VERIFIED": 40
+    "SOURCE VERIFIED": 39
   }
 }
