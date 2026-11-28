@@ -1,8 +1,8 @@
 {
   "context_notice": "Independent, non-governmental public-source research. Inclusion is not a finding of wrongdoing. Counts describe records in this tracker, not official totals, prevalence, compliance, risk or group behavior. Read the sources and preserve this context when sharing.",
-  "generated_at": "2026-11-28T02:40:27.327786+00:00",
+  "generated_at": "2026-11-28T12:57:06.719217+00:00",
   "pipeline_version": "0.3.0",
-  "record_count": 22,
+  "record_count": 23,
   "records": [
     {
       "context_notice": "Independent, non-governmental public-source research. Inclusion is not a finding of wrongdoing. Counts describe records in this tracker, not official totals, prevalence, compliance, risk or group behavior. Read the sources and preserve this context when sharing.",
@@ -286,6 +286,19 @@
       "source_availability_reason": null,
       "source_url_sha256": [
         "4c8cc315415119bda93f1922fd487a9bd3246559a31c7b997928224cac37487c"
+      ],
+      "superseded_by": null,
+      "verification_status": "PENDING REVIEW"
+    },
+    {
+      "context_notice": "Independent, non-governmental public-source research. Inclusion is not a finding of wrongdoing. Counts describe records in this tracker, not official totals, prevalence, compliance, risk or group behavior. Read the sources and preserve this context when sharing.",
+      "event_id": "WBFS-ab1730080b86",
+      "first_published_at": "2026-10-28T01:19:09.190771+00:00",
+      "publication_status": "needs_review",
+      "record_updated_at": "2026-11-28T12:57:06.719217+00:00",
+      "source_availability_reason": null,
+      "source_url_sha256": [
+        "b7807669d6bffb14c3b6948e164b0f57f98cae3be983893db259dea4f3dbe167"
       ],
       "superseded_by": null,
       "verification_status": "PENDING REVIEW"
